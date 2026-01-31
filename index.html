@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Alchemy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #111;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.6;
+    }
+    .lang {
+      font-size: 0.9em;
+      margin-bottom: 24px;
+    }
+    .lang a {
+      margin-right: 12px;
+      cursor: pointer;
+      text-decoration: underline;
+      color: #111;
+    }
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    .small {
+      font-size: 0.85em;
+      color: #555;
+      margin-top: 40px;
+    }
+    hr {
+      margin: 24px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang">
+  <a onclick="setLang('tr')">TR</a>
+  <a onclick="setLang('en')">EN</a>
+</div>
+
+<div id="tr" class="section active">
+  <p>
+  Market Alchemy (MA),<br>
+  biyolojik sınırlara sahip beşer bir varlığın;<br>
+  kendi dürtülerinin yarattığı sürtünmeyi fark edebilmesi için,<br>
+  fizik yasalarıyla işleyen piyasa sisteminde<br>
+  masada kalma maliyetini görünür kılan ve<br>
+  yalnızca düşük sürtünmeli ellere girmesine yardımcı olan<br>
+  bir beşer kontrol destek mimarisidir.
+  </p>
+
+  <hr>
+
+  <p>
+  MA bir sinyal servisi değildir.<br>
+  MA bir otomatik kazanç sistemi değildir.<br>
+  MA bir vaat mekanizması değildir.
+  </p>
+
+  <hr>
+
+  <ul>
+    <li>Vector / Friction</li>
+    <li>Zaman = maliyet</li>
+    <li>Reform = gecikme</li>
+    <li>Eleyici mantık</li>
+  </ul>
+
+  <hr>
+
+  <p>
+  Market Alchemy,<br>
+  her zaman içerik üretmez.<br>
+  Her soruya cevap vermez.<br>
+  Her talebi kabul etmez.
+  </p>
+
+  <p>
+  Sessizlik,<br>
+  bu mimarinin doğal bir parçasıdır.
+  </p>
+</div>
+
+<div id="en" class="section">
+  <p>
+  Market Alchemy (MA) is a behavioral control-support architecture<br>
+  designed for a biologically constrained human agent<br>
+  to recognize the friction created by their own impulses,<br>
+  within a market system governed by physical laws,<br>
+  making the cost of staying at the table visible,<br>
+  and assisting capital to remain only in low-friction hands.
+  </p>
+
+  <hr>
+
+  <p>
+  MA is not a signal service.<br>
+  MA is not an automated profit system.<br>
+  MA is not a promise mechanism.
+  </p>
+
+  <hr>
+
+  <ul>
+    <li>Vector / Friction</li>
+    <li>Time = cost</li>
+    <li>Reform = delay</li>
+    <li>Eliminative logic</li>
+  </ul>
+
+  <hr>
+
+  <p>
+  Market Alchemy<br>
+  does not always produce content.<br>
+  Does not answer every question.<br>
+  Does not accept every demand.
+  </p>
+
+  <p>
+  Silence<br>
+  is a natural part of this architecture.
+  </p>
+</div>
+
+<p class="small">
+YouTube · X
+</p>
+
+<script>
+  function setLang(lang) {
+    document.getElementById('tr').classList.remove('active');
+    document.getElementById('en').classList.remove('active');
+    document.getElementById(lang).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
