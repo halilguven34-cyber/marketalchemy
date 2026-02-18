@@ -68,6 +68,28 @@ hr {
     margin:40px 0;
 }
 </style>
+<style>
+.book-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+  margin-top:20px;
+}
+
+.book-card{
+  border:1px solid #222;
+  padding:20px;
+}
+
+.book-card h3{
+  margin:0 0 10px 0;
+}
+
+.book-card a{
+  text-decoration:none;
+  font-size:14px;
+}
+</style>
 </head>
 
 <body>
@@ -126,9 +148,33 @@ Elimination Logic
 <h2 class="tr" style="display:none;">KİTAPLAR</h2>
 
 <div class="books">
-<a href="#" target="_blank">The Place of Time</a>
-<a href="#" target="_blank">The Condensation Point</a>
-<a href="#" target="_blank">Market Alchemy</a>
+
+  <h2>BOOKS</h2>
+
+  <div class="book-grid">
+
+    <div class="book-card">
+      <img src="cover1.jpg" alt="The Place of Time">
+      <h3>The Place of Time</h3>
+      <p>$4.99</p>
+      <a href="AMAZON_LINK_1" target="_blank">View on Amazon</a>
+    </div>
+
+    <div class="book-card">
+      <img src="cover2.jpg" alt="The Condensation Point">
+      <h3>The Condensation Point</h3>
+      <p>$2.99</p>
+      <a href="AMAZON_LINK_2" target="_blank">View on Amazon</a>
+    </div>
+
+    <div class="book-card">
+      <img src="cover3.jpg" alt="Market Alchemy">
+      <h3>Market Alchemy</h3>
+      <p>$1.49</p>
+      <a href="AMAZON_LINK_3" target="_blank">View on Amazon</a>
+    </div>
+
+  </div>
 </div>
 
 <div class="footer">
