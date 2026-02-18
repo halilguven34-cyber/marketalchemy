@@ -8,7 +8,7 @@
 <style>
 body {
     margin:0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:-apple-system, BlinkMacSystemFont, sans-serif;
     background:#0d0f14;
     color:#e8ecf1;
     line-height:1.6;
@@ -36,16 +36,6 @@ h2 {
 .muted {
     opacity:0.6;
 }
-.books a {
-    display:block;
-    margin:12px 0;
-    color:#ffffff;
-    text-decoration:none;
-    opacity:0.9;
-}
-.books a:hover {
-    opacity:1;
-}
 .lang-toggle {
     position:fixed;
     top:20px;
@@ -67,27 +57,40 @@ hr {
     border-top:1px solid #1f2430;
     margin:40px 0;
 }
-</style>
-<style>
+
+/* BOOK GRID */
 .book-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:20px;
-  margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+    margin-top:20px;
 }
 
 .book-card{
-  border:1px solid #222;
-  padding:20px;
+    border:1px solid #1f2430;
+    padding:24px;
+}
+
+.book-card img{
+    width:100%;
+    height:auto;
+    margin-bottom:16px;
 }
 
 .book-card h3{
-  margin:0 0 10px 0;
+    margin:0 0 10px 0;
+    font-weight:500;
+}
+
+.book-card p{
+    margin:0 0 12px 0;
+    opacity:0.8;
 }
 
 .book-card a{
-  text-decoration:none;
-  font-size:14px;
+    text-decoration:none;
+    font-size:14px;
+    color:#4da3ff;
 }
 </style>
 </head>
@@ -100,6 +103,7 @@ hr {
 
 <!-- HERO -->
 <h1>MARKET ALCHEMY</h1>
+
 <div class="section en">
 Applied Structural Decision Architecture<br>
 <span class="muted">Framework by Halil İbrahim Güven</span>
@@ -149,32 +153,27 @@ Elimination Logic
 
 <div class="book-grid">
 
-  <h2>BOOKS</h2>
-
-  <div class="book-grid">
-
     <div class="book-card">
-      <img src="Theplaceoftime.jpg" alt="The Place of Time">
-      <h3>The Place of Time</h3>
-      <p>$4.99</p>
-      <a href="AMAZON_LINK_1" target="_blank">View on Amazon</a>
+        <img src="Theplaceoftime.jpg" alt="The Place of Time">
+        <h3>The Place of Time</h3>
+        <p>$4.99</p>
+        <a href="AMAZON_LINK_1" target="_blank">View on Amazon</a>
     </div>
 
     <div class="book-card">
-      <img src="Thecondensationpoint.png" alt="The Condensation Point">
-      <h3>The Condensation Point</h3>
-      <p>$2.99</p>
-      <a href="AMAZON_LINK_2" target="_blank">View on Amazon</a>
+        <img src="Thecondensationpoint.png" alt="The Condensation Point">
+        <h3>The Condensation Point</h3>
+        <p>$2.99</p>
+        <a href="AMAZON_LINK_2" target="_blank">View on Amazon</a>
     </div>
 
     <div class="book-card">
-      <img src="Liquidation.jpg" alt="Market Alchemy">
-      <h3>Market Alchemy</h3>
-      <p>$1.49</p>
-      <a href="AMAZON_LINK_3" target="_blank">View on Amazon</a>
+        <img src="Liquidation.jpg" alt="Market Alchemy">
+        <h3>Market Alchemy</h3>
+        <p>$1.49</p>
+        <a href="AMAZON_LINK_3" target="_blank">View on Amazon</a>
     </div>
 
-  </div>
 </div>
 
 <div class="footer">
