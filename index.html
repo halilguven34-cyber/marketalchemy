@@ -1,147 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Market Alchemy</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #111;
-      max-width: 720px;
-      margin: 40px auto;
-      padding: 0 16px;
-      line-height: 1.6;
-    }
-    .lang {
-      font-size: 0.9em;
-      margin-bottom: 24px;
-    }
-    .lang a {
-      margin-right: 12px;
-      cursor: pointer;
-      text-decoration: underline;
-      color: #111;
-    }
-    .section {
-      display: none;
-    }
-    .section.active {
-      display: block;
-    }
-    .small {
-      font-size: 0.85em;
-      color: #555;
-      margin-top: 40px;
-    }
-    hr {
-      margin: 24px 0;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Alchemy</title>
+
+<style>
+body {
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background:#0d0f14;
+    color:#e8ecf1;
+    line-height:1.6;
+}
+.container {
+    max-width:900px;
+    margin:0 auto;
+    padding:60px 24px;
+}
+h1 {
+    font-size:42px;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+h2 {
+    margin-top:60px;
+    font-weight:500;
+    font-size:20px;
+    letter-spacing:1px;
+    opacity:0.9;
+}
+.section {
+    margin-top:20px;
+}
+.muted {
+    opacity:0.6;
+}
+.books a {
+    display:block;
+    margin:12px 0;
+    color:#ffffff;
+    text-decoration:none;
+    opacity:0.9;
+}
+.books a:hover {
+    opacity:1;
+}
+.lang-toggle {
+    position:fixed;
+    top:20px;
+    right:20px;
+    cursor:pointer;
+    font-size:14px;
+    opacity:0.7;
+}
+.lang-toggle:hover {
+    opacity:1;
+}
+.footer {
+    margin-top:80px;
+    opacity:0.4;
+    font-size:13px;
+}
+hr {
+    border:none;
+    border-top:1px solid #1f2430;
+    margin:40px 0;
+}
+</style>
 </head>
+
 <body>
 
-<div class="lang">
-  <a onclick="setLang('tr')">TR</a>
-  <a onclick="setLang('en')">EN</a>
+<div class="lang-toggle" onclick="toggleLang()">TR</div>
+
+<div class="container">
+
+<!-- HERO -->
+<h1>MARKET ALCHEMY</h1>
+<div class="section en">
+Applied Structural Decision Architecture<br>
+<span class="muted">Framework by Halil İbrahim Güven</span>
 </div>
 
-<div id="tr" class="section active">
-  <p>
-  Market Alchemy (MA),<br>
-  biyolojik sınırlara sahip beşer bir varlığın;<br>
-  kendi dürtülerinin yarattığı sürtünmeyi fark edebilmesi için,<br>
-  fizik yasalarıyla işleyen piyasa sisteminde<br>
-  masada kalma maliyetini görünür kılan ve<br>
-  yalnızca düşük sürtünmeli ellere girmesine yardımcı olan<br>
-  bir beşer kontrol destek mimarisidir.
-  </p>
-
-  <hr>
-
-  <p>
-  MA bir sinyal servisi değildir.<br>
-  MA bir otomatik kazanç sistemi değildir.<br>
-  MA bir vaat mekanizması değildir.
-  </p>
-
-  <hr>
-
-  <ul>
-    <li>Vector / Friction</li>
-    <li>Zaman = maliyet</li>
-    <li>Reform = gecikme</li>
-    <li>Eleyici mantık</li>
-  </ul>
-
-  <hr>
-
-  <p>
-  Market Alchemy,<br>
-  her zaman içerik üretmez.<br>
-  Her soruya cevap vermez.<br>
-  Her talebi kabul etmez.
-  </p>
-
-  <p>
-  Sessizlik,<br>
-  bu mimarinin doğal bir parçasıdır.
-  </p>
+<div class="section tr" style="display:none;">
+Uygulamalı Yapısal Karar Mimarisi<br>
+<span class="muted">Mimar: Halil İbrahim Güven</span>
 </div>
 
-<div id="en" class="section">
-  <p>
-  Market Alchemy (MA) is a behavioral control-support architecture<br>
-  designed for a biologically constrained human agent<br>
-  to recognize the friction created by their own impulses,<br>
-  within a market system governed by physical laws,<br>
-  making the cost of staying at the table visible,<br>
-  and assisting capital to remain only in low-friction hands.
-  </p>
+<hr>
 
-  <hr>
+<!-- APPLIED SYSTEMS -->
+<h2 class="en">APPLIED SYSTEMS</h2>
+<h2 class="tr" style="display:none;">UYGULAMALI SİSTEMLER</h2>
 
-  <p>
-  MA is not a signal service.<br>
-  MA is not an automated profit system.<br>
-  MA is not a promise mechanism.
-  </p>
-
-  <hr>
-
-  <ul>
-    <li>Vector / Friction</li>
-    <li>Time = cost</li>
-    <li>Reform = delay</li>
-    <li>Eliminative logic</li>
-  </ul>
-
-  <hr>
-
-  <p>
-  Market Alchemy<br>
-  does not always produce content.<br>
-  Does not answer every question.<br>
-  Does not accept every demand.
-  </p>
-
-  <p>
-  Silence<br>
-  is a natural part of this architecture.
-  </p>
+<div class="section en">
+MA Laboratory Engine – Mechanical liquidation modeling.<br>
+MA Indicators – Vector/Friction signal modeling.<br>
+<span class="muted">Status: Research Phase.</span>
 </div>
 
-<p class="small">
-YouTube · X
-</p>
+<div class="section tr" style="display:none;">
+MA Laboratuvar Motoru – Mekanik likidasyon modelleme.<br>
+MA İndikatörleri – Vektör/Sürtünme sinyal modelleme.<br>
+<span class="muted">Durum: Araştırma Aşaması.</span>
+</div>
+
+<hr>
+
+<!-- FRAMEWORK -->
+<h2 class="en">FRAMEWORK</h2>
+<h2 class="tr" style="display:none;">ÇERÇEVE</h2>
+
+<div class="section">
+Vector / Friction<br>
+Time = Cost<br>
+Reform = Delay<br>
+Elimination Logic
+</div>
+
+<hr>
+
+<!-- BOOKS -->
+<h2 class="en">BOOKS</h2>
+<h2 class="tr" style="display:none;">KİTAPLAR</h2>
+
+<div class="books">
+<a href="#" target="_blank">The Place of Time</a>
+<a href="#" target="_blank">The Condensation Point</a>
+<a href="#" target="_blank">Market Alchemy</a>
+</div>
+
+<div class="footer">
+Silence is structural.
+</div>
+
+</div>
 
 <script>
-  function setLang(lang) {
-    document.getElementById('tr').classList.remove('active');
-    document.getElementById('en').classList.remove('active');
-    document.getElementById(lang).classList.add('active');
-  }
+function toggleLang(){
+    const en = document.querySelectorAll(".en");
+    const tr = document.querySelectorAll(".tr");
+    const toggle = document.querySelector(".lang-toggle");
+
+    if(en[0].style.display === "none"){
+        en.forEach(e=>e.style.display="block");
+        tr.forEach(e=>e.style.display="none");
+        toggle.innerText="TR";
+    } else {
+        en.forEach(e=>e.style.display="none");
+        tr.forEach(e=>e.style.display="block");
+        toggle.innerText="EN";
+    }
+}
 </script>
 
 </body>
