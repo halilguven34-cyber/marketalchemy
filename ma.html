@@ -40,21 +40,41 @@ a {
     color:#4da3ff;
     text-decoration:none;
 }
+.lang-toggle {
+    position:fixed;
+    top:20px;
+    right:20px;
+    cursor:pointer;
+    font-size:14px;
+    opacity:0.7;
+}
+.lang-toggle:hover {
+    opacity:1;
+}
 </style>
 </head>
 
 <body>
 
+<div class="lang-toggle" onclick="toggleLang()">TR</div>
+
 <div class="container">
 
-<div class="center">
+<!-- HERO -->
+<div class="center en">
 <p class="big">MA is not here to be understood.</p>
 <p class="muted">If you’re still reading, continue.</p>
 </div>
 
+<div class="center tr" style="display:none;">
+<p class="big">MA anlaşılmak için burada değil.</p>
+<p class="muted">Hâlâ okuyorsan devam et.</p>
+</div>
+
 <hr>
 
-<div class="section">
+<!-- WHAT IS MA -->
+<div class="section en">
 MA is a portable law under entropy.<br><br>
 
 It is not a system.<br>
@@ -65,9 +85,21 @@ Not a teaching.<br><br>
 It operates.
 </div>
 
+<div class="section tr" style="display:none;">
+MA, entropi altında çalışan taşınabilir bir yasadır.<br><br>
+
+Sistem değildir.<br>
+Ürün değildir.<br>
+Metot değildir.<br>
+Öğreti değildir.<br><br>
+
+Çalışır.
+</div>
+
 <hr>
 
-<div class="section">
+<!-- ASSUMPTIONS -->
+<div class="section en">
 Entropy is not optional.<br>
 Noise increases.<br>
 Uncertainty persists.<br><br>
@@ -80,9 +112,23 @@ Every move has a cost.<br>
 Waiting is a move.
 </div>
 
+<div class="section tr" style="display:none;">
+Entropi kaçınılmazdır.<br>
+Gürültü artar.<br>
+Belirsizlik kalıcıdır.<br><br>
+
+Zaman geri alınamaz.<br>
+Gecikme maliyettir.<br><br>
+
+Sürtünme vardır.<br>
+Her hamlenin bedeli vardır.<br>
+Beklemek de hamledir.
+</div>
+
 <hr>
 
-<div class="section">
+<!-- DOES NOT -->
+<div class="section en">
 MA does not search for truth.<br>
 It does not promise optimal outcomes.<br>
 It does not accelerate blindly.<br>
@@ -92,16 +138,33 @@ It does not operate on hope.<br><br>
 MA eliminates.
 </div>
 
-<hr>
+<div class="section tr" style="display:none;">
+MA doğruyu aramaz.<br>
+En iyiyi vaat etmez.<br>
+Kör hızlanmaz.<br>
+Fırsat dili kullanmaz.<br>
+Umutla çalışmaz.<br><br>
 
-<div class="section center">
-<p class="big">Am I in the wrong place?</p>
-<p class="muted">This is the only question.</p>
+MA eler.
 </div>
 
 <hr>
 
-<div class="section">
+<!-- CORE -->
+<div class="section center en">
+<p class="big">Am I in the wrong place?</p>
+<p class="muted">This is the only question.</p>
+</div>
+
+<div class="section center tr" style="display:none;">
+<p class="big">Yanlış yerde miyim?</p>
+<p class="muted">Tek soru budur.</p>
+</div>
+
+<hr>
+
+<!-- BULLET -->
+<div class="section en">
 There is no last bullet.<br><br>
 
 Bullets do not end.<br>
@@ -110,23 +173,59 @@ You do.<br><br>
 MA tracks the carrier, not the shot.
 </div>
 
+<div class="section tr" style="display:none;">
+Son fişek yoktur.<br><br>
+
+Fişekler bitmez.<br>
+Biten sensin.<br><br>
+
+MA atışı değil, taşıyıcıyı izler.
+</div>
+
 <hr>
 
-<div class="section center">
+<!-- PURPOSE -->
+<div class="section center en">
 <p class="big">
 MA is not designed to make you win.<br><br>
 It is designed to prevent your exhaustion.
 </p>
 </div>
 
+<div class="section center tr" style="display:none;">
+<p class="big">
+MA seni kazandırmak için tasarlanmaz.<br><br>
+Seni tüketmemek için tasarlanır.
+</p>
+</div>
+
 <hr>
 
+<!-- LINKS -->
 <div class="section center">
 <a href="/library">Library</a><br><br>
 <a href="/lab">Laboratory</a>
 </div>
 
 </div>
+
+<script>
+function toggleLang(){
+    const en = document.querySelectorAll(".en");
+    const tr = document.querySelectorAll(".tr");
+    const toggle = document.querySelector(".lang-toggle");
+
+    if(en[0].style.display === "none"){
+        en.forEach(e=>e.style.display="block");
+        tr.forEach(e=>e.style.display="none");
+        toggle.innerText="TR";
+    } else {
+        en.forEach(e=>e.style.display="none");
+        tr.forEach(e=>e.style.display="block");
+        toggle.innerText="EN";
+    }
+}
+</script>
 
 </body>
 </html>
