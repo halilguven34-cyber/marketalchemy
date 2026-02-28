@@ -1,165 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Lab</title>
-
-<style>
-body {
-    margin:0;
-    background:#0d0f14;
-    color:#e8ecf1;
-    font-family:-apple-system, BlinkMacSystemFont, sans-serif;
-}
-.container {
-    max-width:800px;
-    margin:auto;
-    padding:80px 24px;
-}
-h1 {
-    font-size:32px;
-    margin-bottom:60px;
-}
-.section {
-    margin-top:40px;
-}
-.muted {
-    opacity:0.6;
-}
-.big {
-    font-size:24px;
-    font-weight:600;
-}
-.lang-toggle {
-    position:fixed;
-    top:20px;
-    right:20px;
-    cursor:pointer;
-    font-size:14px;
-    opacity:0.7;
-}
-hr {
-    border:none;
-    border-top:1px solid #1f2430;
-    margin:50px 0;
-}
-</style>
-</head>
-
-<body>
-
-<div class="lang-toggle" onclick="toggleLang()">TR</div>
-
-<div class="container">
-
-<!-- TITLE -->
-<h1 class="en">Laboratory</h1>
-<h1 class="tr" style="display:none;">Laboratuvar</h1>
-
-<!-- STATE -->
-<div class="section en">
-<p class="big">State</p>
-Research Phase<br>
-Signal Collection<br>
-Live Observation<br><br>
-<span class="muted">No conclusions. Only observation.</span>
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">Durum</p>
-Araştırma Aşaması<br>
-Sinyal Toplama<br>
-Canlı Gözlem<br><br>
-<span class="muted">Sonuç yok. Sadece gözlem.</span>
-</div>
-
-<hr>
-
 <!-- SYSTEMS -->
 <div class="section en">
 <p class="big">Systems</p>
 
 MA Engine – Mechanical liquidation modeling<br>
-<span class="muted">Market stress / forced movement detection</span><br><br>
+<span class="muted">Detects forced movement and structural stress</span><br><br>
 
 MA State Engine – Market environment classification<br>
-<span class="muted">When the market should not be traded</span><br><br>
+<span class="muted">Defines when trading conditions are invalid</span><br><br>
 
-MA Experimental Bots – Live condition tracking<br>
-<span class="muted">Compression / expansion observation</span>
+MA Experimental Bots – Live observation layer<br>
+<span class="muted">Tracks compression and early pressure states</span>
 </div>
 
 <div class="section tr" style="display:none;">
 <p class="big">Sistemler</p>
 
 MA Motoru – Mekanik likidasyon modelleme<br>
-<span class="muted">Piyasa stresi / zorunlu hareket tespiti</span><br><br>
+<span class="muted">Zorunlu hareket ve yapısal stresi tespit eder</span><br><br>
 
 MA Durum Motoru – Piyasa ortam sınıflandırması<br>
-<span class="muted">Ne zaman işlem yapılmaması gerektiği</span><br><br>
+<span class="muted">İşlem yapılmaması gereken koşulları tanımlar</span><br><br>
 
-MA Deneysel Botlar – Canlı durum takibi<br>
-<span class="muted">Sıkışma / genişleme gözlemi</span>
+MA Deneysel Botlar – Canlı gözlem katmanı<br>
+<span class="muted">Sıkışma ve erken basınç durumlarını izler</span>
 </div>
 
 <hr>
 
-<!-- OBSERVATION -->
+<!-- WHY THIS EXISTS -->
 <div class="section en">
-<p class="big">Observation</p>
+<p class="big">Why this exists</p>
 
-– Compression phases<br>
-– Expansion behavior<br>
-– Friction spikes<br><br>
+Most systems try to find trades.<br><br>
+
+This system removes where trades should not exist.<br><br>
 
 <span class="muted">
-No optimization applied.<br>
-Patterns are recorded, not used.
+The problem is not entry.<br>
+The problem is environment.
 </span>
 </div>
 
 <div class="section tr" style="display:none;">
-<p class="big">Gözlem</p>
+<p class="big">Neden var</p>
 
-– Sıkışma fazları<br>
-– Genişleme davranışı<br>
-– Sürtünme artışları<br><br>
+Çoğu sistem işlem bulmaya çalışır.<br><br>
 
-<span class="muted">
-Optimizasyon uygulanmaz.<br>
-Patternler kaydedilir, kullanılmaz.
-</span>
-</div>
-
-<hr>
-
-<!-- STATE ENGINE -->
-<div class="section en">
-<p class="big">MA State Engine</p>
-
-This model does not generate signals.<br><br>
-
-– Tradable<br>
-– Unstable<br>
-– No trade<br><br>
+Bu sistem işlem yapılmaması gereken yerleri kaldırır.<br><br>
 
 <span class="muted">
-It eliminates invalid environments.
-</span>
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">MA Durum Motoru</p>
-
-Bu model sinyal üretmez.<br><br>
-
-– İşlem yapılabilir<br>
-– Kararsız<br>
-– İşlem yok<br><br>
-
-<span class="muted">
-Geçersiz ortamları eler.
+Sorun giriş değildir.<br>
+Sorun ortamdır.
 </span>
 </div>
 
@@ -169,26 +60,53 @@ Geçersiz ortamları eler.
 <div class="section en">
 <p class="big">Compression Detector (Experimental)</p>
 
-A live compression detection model is running.<br><br>
+A live model is running.<br><br>
 
-Early pressure is observed before expansion.<br><br>
+It observes pressure build-up before expansion.<br><br>
 
 <span class="muted">
-Observations are limited.<br>
-No statistical conclusion.
+Only early-stage behavior is tracked.<br>
+No execution logic is used.
 </span>
 </div>
 
 <div class="section tr" style="display:none;">
 <p class="big">Sıkışma Dedektörü (Deneysel)</p>
 
-Canlı çalışan bir sıkışma tespit modeli bulunmaktadır.<br><br>
+Canlı model çalışmaktadır.<br><br>
 
-Genişleme öncesi erken basınç gözlemlenir.<br><br>
+Genişleme öncesi basınç birikimini gözlemler.<br><br>
 
 <span class="muted">
-Gözlemler sınırlıdır.<br>
-İstatistiksel sonuç yoktur.
+Sadece erken aşama davranışı izlenir.<br>
+Herhangi bir işlem mantığı yoktur.
+</span>
+</div>
+
+<hr>
+
+<!-- REALITY -->
+<div class="section en">
+<p class="big">Current State</p>
+
+Live observation active.<br>
+Signals are limited.<br><br>
+
+<span class="muted">
+No validated model.<br>
+No statistical edge confirmed.
+</span>
+</div>
+
+<div class="section tr" style="display:none;">
+<p class="big">Mevcut Durum</p>
+
+Canlı gözlem aktif.<br>
+Sinyaller sınırlı.<br><br>
+
+<span class="muted">
+Doğrulanmış model yok.<br>
+İstatistiksel avantaj kanıtlanmış değil.
 </span>
 </div>
 
@@ -198,61 +116,21 @@ Gözlemler sınırlıdır.<br>
 <div class="section en">
 <p class="big">Access</p>
 
-Live detector access is limited.<br><br>
+A live detector stream exists.<br><br>
 
 <span class="muted">
-This is not a signal service.<br>
-It is a research stream.
+Access is limited.<br>
+For observation only.
 </span>
 </div>
 
 <div class="section tr" style="display:none;">
 <p class="big">Erişim</p>
 
-Canlı dedektöre erişim sınırlıdır.<br><br>
+Canlı dedektör akışı mevcuttur.<br><br>
 
 <span class="muted">
-Bu bir sinyal servisi değildir.<br>
-Bu bir araştırma akışıdır.
+Erişim sınırlıdır.<br>
+Sadece gözlem amaçlıdır.
 </span>
 </div>
-
-<hr>
-
-<!-- FINAL -->
-<div class="section en muted">
-No optimization.<br>
-Only elimination.<br><br>
-
-If you are looking for signals, this is the wrong place.
-</div>
-
-<div class="section tr muted" style="display:none;">
-Optimizasyon yok.<br>
-Sadece eleme.<br><br>
-
-Sinyal arıyorsanız, burası doğru yer değil.
-</div>
-
-</div>
-
-<script>
-function toggleLang(){
-    const en = document.querySelectorAll(".en");
-    const tr = document.querySelectorAll(".tr");
-    const toggle = document.querySelector(".lang-toggle");
-
-    if(en[0].style.display === "none"){
-        en.forEach(e=>e.style.display="block");
-        tr.forEach(e=>e.style.display="none");
-        toggle.innerText="TR";
-    } else {
-        en.forEach(e=>e.style.display="none");
-        tr.forEach(e=>e.style.display="block");
-        toggle.innerText="EN";
-    }
-}
-</script>
-
-</body>
-</html>
