@@ -73,39 +73,3 @@ No action required.
 
 </body>
 </html>
-
-<script>
-const states = [
-    {
-        text: "WAIT",
-        class: "wait",
-        desc: "System stable.\nNo action required."
-    },
-    {
-        text: "PREPARE",
-        class: "prepare",
-        desc: "Friction increasing.\nMonitor closely."
-    },
-    {
-        text: "ACT",
-        class: "act",
-        desc: "Conditions aligned.\nExecute."
-    }
-];
-
-let i = 0;
-
-setInterval(() => {
-    i = (i + 1) % states.length;
-
-    const s = states[i];
-
-    const status = document.querySelector(".status");
-    const desc = document.querySelector(".desc");
-
-    status.innerText = s.text;
-    status.className = "status " + s.class;
-    desc.innerText = s.desc;
-
-}, 4000);
-</script>
