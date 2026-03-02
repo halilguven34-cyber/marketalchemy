@@ -21,27 +21,56 @@ h1 {
     font-size:34px;
     margin-bottom:60px;
 }
-.book {
-    margin-bottom:50px;
-    border:1px solid #1f2430;
-    padding:24px;
+
+/* GRID */
+.book-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:40px;
 }
-.book h3 {
+
+/* CARD */
+.book{
+    border:1px solid #1f2430;
+    padding:20px;
+    transition:all 0.3s ease;
+}
+.book:hover{
+    border-color:#4da3ff;
+    transform:translateY(-3px);
+}
+
+/* IMAGE */
+.book img{
+    width:100%;
+    height:auto;
+    margin-bottom:16px;
+}
+
+/* TEXT */
+.book h3{
     margin-bottom:10px;
 }
-.book p {
+.book p{
     opacity:0.7;
     margin-bottom:12px;
 }
-a {
+
+/* LINK */
+.book a{
     color:#4da3ff;
     text-decoration:none;
 }
-.muted {
+
+/* FOOT */
+.muted{
     opacity:0.5;
     font-size:14px;
+    margin-top:60px;
 }
-.lang-toggle {
+
+/* LANG */
+.lang-toggle{
     position:fixed;
     top:20px;
     right:20px;
@@ -62,8 +91,11 @@ a {
 <h1 class="en">Library</h1>
 <h1 class="tr" style="display:none;">Kütüphane</h1>
 
+<div class="book-grid">
+
 <!-- BOOK 1 -->
 <div class="book">
+<img src="Theplaceoftime.jpg">
 <h3>The Place of Time</h3>
 <p class="en">On irreversibility, structure, and the illusion of flow.</p>
 <p class="tr" style="display:none;">Geri döndürülemezlik, yapı ve akış illüzyonu üzerine.</p>
@@ -72,6 +104,7 @@ a {
 
 <!-- BOOK 2 -->
 <div class="book">
+<img src="Thecondinsationpoint.png">
 <h3>The Condensation Point</h3>
 <p class="en">Where structure collapses into inevitability.</p>
 <p class="tr" style="display:none;">Yapının kaçınılmazlığa çöktüğü nokta.</p>
@@ -80,10 +113,13 @@ a {
 
 <!-- BOOK 3 -->
 <div class="book">
+<img src="Liquidation.jpg">
 <h3>Market Alchemy</h3>
 <p class="en">Entropy, energy, and systemic liquidation.</p>
 <p class="tr" style="display:none;">Entropi, enerji ve sistemik tasfiye.</p>
 <a href="https://www.amazon.com/dp/B0GLDSHXCK" target="_blank">Open</a>
+</div>
+
 </div>
 
 <!-- FOOT -->
