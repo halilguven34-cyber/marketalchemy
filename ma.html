@@ -3,215 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA</title>
+<title>MA Engine</title>
 
 <style>
-body {
+body{
     margin:0;
     background:#0d0f14;
     color:#e8ecf1;
     font-family:-apple-system, BlinkMacSystemFont, sans-serif;
-    line-height:1.7;
-}
-.container {
-    max-width:800px;
-    margin:auto;
-    padding:80px 24px;
-}
-.big {
-    font-size:28px;
-    font-weight:600;
-}
-.section {
-    margin-top:40px;
-}
-.muted {
-    opacity:0.6;
-}
-.center {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
     text-align:center;
 }
-hr {
-    border:none;
-    border-top:1px solid #1f2430;
-    margin:50px 0;
+
+.container{
+    max-width:500px;
 }
-a {
+
+.status{
+    font-size:72px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.wait{ color:#8a93a3; }
+.prepare{ color:#f0c36d; }
+.act{ color:#ff5c5c; }
+
+.desc{
+    opacity:0.7;
+    font-size:18px;
+    margin-bottom:40px;
+}
+
+.nav{
+    margin-top:40px;
+    font-size:14px;
+    opacity:0.4;
+}
+
+.nav a{
     color:#4da3ff;
     text-decoration:none;
-}
-.lang-toggle {
-    position:fixed;
-    top:20px;
-    right:20px;
-    cursor:pointer;
-    font-size:14px;
-    opacity:0.7;
+    margin:0 10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="lang-toggle" onclick="toggleLang()">TR</div>
-
 <div class="container">
 
-<!-- HERO -->
-<div class="center en">
-<p class="big">MA does not guide you.</p>
-<p class="muted">It removes where you should not be.</p>
+<div class="status wait">WAIT</div>
+
+<div class="desc">
+System stable.<br>
+No action required.
 </div>
 
-<div class="center tr" style="display:none;">
-<p class="big">MA sana yol göstermez.</p>
-<p class="muted">Sadece olmaman gereken yeri ortadan kaldırır.</p>
-</div>
-
-<hr>
-
-<!-- ELIMINATION -->
-<div class="section en">
-MA does not optimize.<br>
-It eliminates.<br><br>
-
-It does not ask:<br>
-“What is the best move?”<br><br>
-
-It asks:<br>
-“What should not be done?”<br><br>
-
-And removes it.
-</div>
-
-<div class="section tr" style="display:none;">
-MA optimize etmez.<br>
-Eler.<br><br>
-
-Şunu sormaz:<br>
-“En iyi hamle ne?”<br><br>
-
-Şunu sorar:<br>
-“Ne yapılmamalı?”<br><br>
-
-Ve onu kaldırır.
-</div>
-
-<hr>
-
-<!-- WRONG PLACE -->
-<div class="section en">
-Being in the wrong place is not passive.<br>
-It is an active decision.<br><br>
-
-Not acting is also a position.<br>
-Waiting is also a cost.<br>
-Silence is also a state.
-</div>
-
-<div class="section tr" style="display:none;">
-Yanlış yerde olmak pasif değildir.<br>
-Aktif bir tercihtir.<br><br>
-
-Hiçbir şey yapmamak da pozisyondur.<br>
-Beklemek de maliyettir.<br>
-Sessizlik de bir durumdur.
-</div>
-
-<hr>
-
-<!-- HUMAN -->
-<div class="section en">
-Human is not weakness.<br>
-Not error.<br>
-Not noise.<br><br>
-
-Human is the boundary condition.<br><br>
-
-MA exists to prevent<br>
-the system from burning the carrier.
-</div>
-
-<div class="section tr" style="display:none;">
-Beşer zayıflık değildir.<br>
-Hata değildir.<br>
-Gürültü değildir.<br><br>
-
-Beşer sınır koşuludur.<br><br>
-
-MA’nın amacı:<br>
-taşıyıcının yanmasını engellemektir.
-</div>
-
-<hr>
-
-<!-- DECISION -->
-<div class="section en">
-Decision is not impulse.<br><br>
-
-Visibility is not decision.<br>
-Escape is not decision.<br>
-Noise is not decision.<br><br>
-
-Decision =<br>
-energy budget + entropy rate
-</div>
-
-<div class="section tr" style="display:none;">
-Karar dürtü değildir.<br><br>
-
-Görünürlük karar değildir.<br>
-Kaçış karar değildir.<br>
-Gürültü karar değildir.<br><br>
-
-Karar =<br>
-enerji bütçesi + entropi hızı
-</div>
-
-<hr>
-
-<!-- FINAL -->
-<div class="section center en">
-<p class="big">
-MA does not protect profit.<br>
-It protects structure.
-</p>
-</div>
-
-<div class="section center tr" style="display:none;">
-<p class="big">
-MA kazancı korumaz.<br>
-Yapıyı korur.
-</p>
-</div>
-
-<hr>
-
-<!-- LINKS -->
-<div class="section center">
-<a href="/library">Library</a><br><br>
-<a href="/lab">Laboratory</a>
+<div class="nav">
+    <a href="/">Home</a>
+    <a href="/library">Library</a>
+    <a href="/lab">Laboratory</a>
 </div>
 
 </div>
-
-<script>
-function toggleLang(){
-    const en = document.querySelectorAll(".en");
-    const tr = document.querySelectorAll(".tr");
-    const toggle = document.querySelector(".lang-toggle");
-
-    if(en[0].style.display === "none"){
-        en.forEach(e=>e.style.display="block");
-        tr.forEach(e=>e.style.display="none");
-        toggle.innerText="TR";
-    } else {
-        en.forEach(e=>e.style.display="none");
-        tr.forEach(e=>e.style.display="block");
-        toggle.innerText="EN";
-    }
-}
-</script>
 
 </body>
 </html>
