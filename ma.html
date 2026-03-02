@@ -26,6 +26,7 @@ body{
     font-size:72px;
     font-weight:700;
     margin-bottom:20px;
+    transition:all 0.4s ease;
 }
 
 .wait{ color:#8a93a3; }
@@ -36,6 +37,7 @@ body{
     opacity:0.7;
     font-size:18px;
     margin-bottom:40px;
+    transition:all 0.4s ease;
 }
 
 .nav{
@@ -70,6 +72,54 @@ No action required.
 </div>
 
 </div>
+
+<script>
+
+const states = [
+    {
+        text: "WAIT",
+        class: "wait",
+        desc: "System stable.\nNo action required."
+    },
+    {
+        text: "PREPARE",
+        class: "prepare",
+        desc: "Friction increasing.\nMonitor closely."
+    },
+    {
+        text: "ACT",
+        class: "act",
+        desc: "Conditions aligned.\nExecute."
+    }
+];
+
+// MA mantığı: WAIT default
+function getState(){
+    const r = Math.random();
+
+    if(r < 0.65) return states[0];   // WAIT çoğunluk
+    if(r < 0.9) return states[1];    // PREPARE
+    return states[2];                // ACT nadir
+}
+
+function updateState(){
+    const s = getState();
+
+    const status = document.querySelector(".status");
+    const desc = document.querySelector(".desc");
+
+    status.innerText = s.text;
+    status.className = "status " + s.class;
+    desc.innerText = s.desc;
+}
+
+// ilk yükleme
+updateState();
+
+// periyodik güncelleme
+setInterval(updateState, 4000);
+
+</script>
 
 </body>
 </html>
