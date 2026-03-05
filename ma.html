@@ -19,7 +19,14 @@ body{
 }
 
 .container{
-    max-width:500px;
+    max-width:520px;
+}
+
+.label{
+    font-size:12px;
+    letter-spacing:2px;
+    opacity:0.4;
+    margin-bottom:10px;
 }
 
 .status{
@@ -36,9 +43,35 @@ body{
 .desc{
     opacity:0.7;
     font-size:18px;
-    margin-bottom:40px;
+    margin-bottom:30px;
     transition:all 0.4s ease;
 }
+
+.framework{
+    opacity:0.45;
+    font-size:14px;
+    margin-top:8px;
+}
+
+/* friction bar */
+
+.bar{
+    width:100%;
+    height:6px;
+    background:#1f2430;
+    margin-top:20px;
+    border-radius:4px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    width:30%;
+    background:#4da3ff;
+    transition:width 0.6s ease;
+}
+
+/* navigation */
 
 .nav{
     margin-top:40px;
@@ -58,11 +91,20 @@ body{
 
 <div class="container">
 
+<div class="label">ENGINE STATE</div>
+
 <div class="status wait">WAIT</div>
 
 <div class="desc">
 System stable.<br>
 No action required.
+<div class="framework">
+Vector – Friction – Time
+</div>
+</div>
+
+<div class="bar">
+<div class="fill"></div>
 </div>
 
 <div class="nav">
@@ -76,48 +118,56 @@ No action required.
 <script>
 
 const states = [
-    {
-        text: "WAIT",
-        class: "wait",
-        desc: "System stable.\nNo action required."
-    },
-    {
-        text: "PREPARE",
-        class: "prepare",
-        desc: "Friction increasing.\nMonitor closely."
-    },
-    {
-        text: "ACT",
-        class: "act",
-        desc: "Conditions aligned.\nExecute."
-    }
+{
+text:"WAIT",
+class:"wait",
+desc:"System stable.\nNo action required.",
+friction:25
+},
+{
+text:"PREPARE",
+class:"prepare",
+desc:"Friction increasing.\nMonitor closely.",
+friction:60
+},
+{
+text:"ACT",
+class:"act",
+desc:"Conditions aligned.\nExecute.",
+friction:95
+}
 ];
 
-// MA mantığı: WAIT default
 function getState(){
-    const r = Math.random();
 
-    if(r < 0.65) return states[0];   // WAIT çoğunluk
-    if(r < 0.9) return states[1];    // PREPARE
-    return states[2];                // ACT nadir
+const r=Math.random();
+
+if(r<0.65) return states[0];
+if(r<0.9) return states[1];
+return states[2];
+
 }
 
 function updateState(){
-    const s = getState();
 
-    const status = document.querySelector(".status");
-    const desc = document.querySelector(".desc");
+const s=getState();
 
-    status.innerText = s.text;
-    status.className = "status " + s.class;
-    desc.innerText = s.desc;
+const status=document.querySelector(".status");
+const desc=document.querySelector(".desc");
+const fill=document.querySelector(".fill");
+
+status.innerText=s.text;
+status.className="status "+s.class;
+
+desc.childNodes[0].nodeValue=s.desc;
+
+fill.style.width=s.friction+"%";
+
 }
 
-// ilk yükleme
 updateState();
 
-// periyodik güncelleme
-setInterval(updateState, 4000);
+setInterval(updateState,4000);
 
 </script>
 
