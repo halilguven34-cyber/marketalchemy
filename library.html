@@ -6,82 +6,93 @@
 <title>MA Library</title>
 
 <style>
-body {
-    margin:0;
-    background:#0d0f14;
-    color:#e8ecf1;
-    font-family:-apple-system, BlinkMacSystemFont, sans-serif;
+body{
+margin:0;
+background:#0d0f14;
+color:#e8ecf1;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
-.container {
-    max-width:900px;
-    margin:auto;
-    padding:80px 24px;
+
+.container{
+max-width:900px;
+margin:auto;
+padding:80px 24px;
 }
-h1 {
-    font-size:34px;
-    margin-bottom:10px;
+
+h1{
+font-size:34px;
+margin-bottom:10px;
 }
 
 .subtitle{
-    opacity:0.6;
-    margin-bottom:60px;
+opacity:0.6;
+margin-bottom:60px;
 }
 
 /* GRID */
+
 .book-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:40px;
+display:grid;
+grid-template-columns:1fr;
+gap:40px;
 }
 
 /* CARD */
+
 .book{
-    border:1px solid #1f2430;
-    padding:20px;
-    transition:all 0.3s ease;
+border:1px solid #1f2430;
+padding:20px;
+transition:all .3s ease;
 }
+
 .book:hover{
-    border-color:#4da3ff;
-    transform:translateY(-3px);
+border-color:#4da3ff;
+transform:translateY(-3px);
 }
 
 /* IMAGE */
+
 .book img{
-    width:100%;
-    height:auto;
-    margin-bottom:16px;
+width:100%;
+height:auto;
+margin-bottom:16px;
 }
 
 /* TEXT */
+
 .book h3{
-    margin-bottom:10px;
+margin-bottom:10px;
 }
+
 .book p{
-    opacity:0.7;
-    margin-bottom:12px;
+opacity:.7;
+margin-bottom:12px;
 }
 
 /* LINK */
+
 .book a{
-    color:#4da3ff;
-    text-decoration:none;
+color:#4da3ff;
+text-decoration:none;
 }
 
 /* FOOT */
+
 .muted{
-    opacity:0.5;
-    font-size:14px;
-    margin-top:60px;
+opacity:.5;
+font-size:14px;
+margin-top:60px;
 }
 
 /* LANG */
+
 .lang-toggle{
-    position:fixed;
-    top:20px;
-    right:20px;
-    cursor:pointer;
-    font-size:14px;
-    opacity:0.7;
+position:fixed;
+top:20px;
+right:20px;
+cursor:pointer;
+font-size:14px;
+opacity:.7;
 }
 </style>
 </head>
@@ -100,40 +111,65 @@ h1 {
 
 <div class="book-grid">
 
-<!-- CORE BOOK -->
+<!-- TASFIYE -->
+
 <div class="book">
+
 <img src="Tasfiye.png">
-<h3>Tasfiye</h3>
+
+<h3 class="en">Liquidation</h3>
+<h3 class="tr" style="display:none;">Tasfiye</h3>
+
 <p class="en">The era of thermodynamic bankruptcy. Entropy, energy and phase transition.</p>
 <p class="tr" style="display:none;">Termodinamik iflas çağı. Entropi, enerji ve faz geçişi.</p>
+
 <a href="https://play.google.com/store/books/details?id=KsbbEQAAQBAJ" target="_blank">Open</a>
+
 </div>
 
-<!-- BOOK -->
+<!-- CONDENSATION -->
+
 <div class="book">
+
 <img src="Thecondinsationpoint.png">
+
 <h3>The Condensation Point</h3>
+
 <p class="en">Where structure collapses into inevitability.</p>
 <p class="tr" style="display:none;">Yapının kaçınılmazlığa çöktüğü nokta.</p>
+
 <a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">Open</a>
+
 </div>
 
-<!-- BOOK -->
+<!-- PLACE OF TIME -->
+
 <div class="book">
+
 <img src="Theplaceoftime.jpg">
+
 <h3>The Place of Time</h3>
+
 <p class="en">On irreversibility, structure, and the illusion of flow.</p>
 <p class="tr" style="display:none;">Geri döndürülemezlik, yapı ve akış illüzyonu üzerine.</p>
+
 <a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Open</a>
+
 </div>
 
-<!-- BOOK -->
+<!-- MARKET ALCHEMY -->
+
 <div class="book">
+
 <img src="Liquidation.jpg">
+
 <h3>Market Alchemy</h3>
+
 <p class="en">Entropy, energy, and systemic liquidation.</p>
 <p class="tr" style="display:none;">Entropi, enerji ve sistemik tasfiye.</p>
+
 <a href="https://www.amazon.com/dp/B0GLDSHXCK" target="_blank">Open</a>
+
 </div>
 
 </div>
@@ -144,21 +180,29 @@ h1 {
 </div>
 
 <script>
-function toggleLang(){
-    const en = document.querySelectorAll(".en");
-    const tr = document.querySelectorAll(".tr");
-    const toggle = document.querySelector(".lang-toggle");
 
-    if(en[0].style.display === "none"){
-        en.forEach(e=>e.style.display="block");
-        tr.forEach(e=>e.style.display="none");
-        toggle.innerText="TR";
-    } else {
-        en.forEach(e=>e.style.display="none");
-        tr.forEach(e=>e.style.display="block");
-        toggle.innerText="EN";
-    }
+function toggleLang(){
+
+const en=document.querySelectorAll(".en")
+const tr=document.querySelectorAll(".tr")
+const toggle=document.querySelector(".lang-toggle")
+
+if(en[0].style.display==="none"){
+
+en.forEach(e=>e.style.display="block")
+tr.forEach(e=>e.style.display="none")
+toggle.innerText="TR"
+
+}else{
+
+en.forEach(e=>e.style.display="none")
+tr.forEach(e=>e.style.display="block")
+toggle.innerText="EN"
+
 }
+
+}
+
 </script>
 
 </body>
