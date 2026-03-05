@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Alchemy</title>
+
+<style>
+
+body{
+margin:0;
+background:#0d0f14;
+color:#e8ecf1;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+padding:100px 24px;
+}
+
+h1{
+font-size:36px;
+margin-bottom:60px;
+}
+
+p{
+margin-bottom:26px;
+opacity:.8;
+line-height:1.6;
+}
+
+.muted{
+opacity:.45;
+margin-top:60px;
+}
+
+.lang-toggle{
+position:fixed;
+top:20px;
+right:20px;
+cursor:pointer;
+font-size:14px;
+opacity:.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="lang-toggle" onclick="toggleLang()">TR</div>
+
+<div class="container">
+
+<h1 class="en">Market Alchemy</h1>
+<h1 class="tr" style="display:none;">Market Alchemy</h1>
+
+<p class="en">
+Markets are not rational systems.
+They are thermodynamic systems.
+</p>
+
+<p class="tr" style="display:none;">
+Piyasalar rasyonel sistemler değildir.
+Termodinamik sistemlerdir.
+</p>
+
+<p class="en">
+Price does not move because of information.
+Price moves because of pressure.
+</p>
+
+<p class="tr" style="display:none;">
+Fiyat bilgi nedeniyle hareket etmez.
+Fiyat basınç nedeniyle hareket eder.
+</p>
+
+<p class="en">
+Liquidations are not accidents.
+They are structural releases of accumulated energy.
+</p>
+
+<p class="tr" style="display:none;">
+Likidasyonlar kazalar değildir.
+Biriken enerjinin yapısal boşalmasıdır.
+</p>
+
+<p class="en">
+Market Alchemy is not a trading strategy.
+It is a mechanical observation of pressure, friction and release.
+</p>
+
+<p class="tr" style="display:none;">
+Market Alchemy bir işlem stratejisi değildir.
+Basınç, sürtünme ve boşalmanın mekanik gözlemidir.
+</p>
+
+<p class="muted en">
+Vector – Friction – Time
+</p>
+
+<p class="muted tr" style="display:none;">
+Vektör – Sürtünme – Zaman
+</p>
+
+</div>
+
+<script>
+
+function toggleLang(){
+
+const en=document.querySelectorAll(".en")
+const tr=document.querySelectorAll(".tr")
+const toggle=document.querySelector(".lang-toggle")
+
+if(en[0].style.display==="none"){
+
+en.forEach(e=>e.style.display="block")
+tr.forEach(e=>e.style.display="none")
+toggle.innerText="TR"
+
+}else{
+
+en.forEach(e=>e.style.display="none")
+tr.forEach(e=>e.style.display="block")
+toggle.innerText="EN"
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
