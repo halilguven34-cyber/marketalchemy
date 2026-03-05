@@ -6,128 +6,142 @@
 <title>Market Alchemy</title>
 
 <style>
-body {
-    margin:0;
-    font-family:-apple-system, BlinkMacSystemFont, sans-serif;
-    background:#0d0f14;
-    color:#e8ecf1;
-    line-height:1.6;
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+background:#0d0f14;
+color:#e8ecf1;
+line-height:1.6;
 }
-.container {
-    max-width:900px;
-    margin:0 auto;
-    padding:60px 24px;
+
+.container{
+max-width:900px;
+margin:0 auto;
+padding:60px 24px;
 }
-h1 {
-    font-size:42px;
-    letter-spacing:2px;
-    margin-bottom:10px;
+
+h1{
+font-size:42px;
+letter-spacing:2px;
+margin-bottom:10px;
 }
-h2 {
-    margin-top:60px;
-    font-weight:500;
-    font-size:20px;
-    letter-spacing:1px;
-    opacity:0.9;
+
+h2{
+margin-top:60px;
+font-weight:500;
+font-size:20px;
+letter-spacing:1px;
+opacity:0.9;
 }
-.section {
-    margin-top:20px;
+
+.section{
+margin-top:20px;
 }
-.big {
-    font-size:26px;
-    font-weight:600;
+
+.big{
+font-size:26px;
+font-weight:600;
 }
-.center {
-    text-align:center;
+
+.center{
+text-align:center;
 }
-.muted {
-    opacity:0.6;
+
+.muted{
+opacity:0.6;
 }
-.lang-toggle {
-    position:fixed;
-    top:20px;
-    right:20px;
-    cursor:pointer;
-    font-size:14px;
-    opacity:0.7;
+
+.lang-toggle{
+position:fixed;
+top:20px;
+right:20px;
+cursor:pointer;
+font-size:14px;
+opacity:0.7;
 }
-.lang-toggle:hover {
-    opacity:1;
+
+.lang-toggle:hover{
+opacity:1;
 }
-.footer {
-    margin-top:80px;
-    opacity:0.4;
-    font-size:13px;
+
+.footer{
+margin-top:80px;
+opacity:0.4;
+font-size:13px;
 }
-hr {
-    border:none;
-    border-top:1px solid #1f2430;
-    margin:50px 0;
+
+hr{
+border:none;
+border-top:1px solid #1f2430;
+margin:50px 0;
 }
 
 /* ENGINE */
+
 .engine-box{
-    border:1px solid #1f2430;
-    padding:40px 20px;
-    margin-bottom:60px;
+border:1px solid #1f2430;
+padding:40px 20px;
+margin-bottom:60px;
 }
 
 .status{
-    font-size:48px;
-    font-weight:700;
-    margin-top:10px;
+font-size:48px;
+font-weight:700;
+margin-top:10px;
 }
 
-.wait{ color:#8a93a3; }
-.prepare{ color:#f0c36d; }
-.act{ color:#ff5c5c; }
+.wait{color:#8a93a3;}
+.prepare{color:#f0c36d;}
+.act{color:#ff5c5c;}
 
 .engine-desc{
-    margin-top:10px;
-    opacity:0.7;
+margin-top:10px;
+opacity:0.7;
 }
 
 .enter-btn{
-    display:inline-block;
-    margin-top:20px;
-    color:#4da3ff;
-    text-decoration:none;
-    font-size:16px;
+display:inline-block;
+margin-top:16px;
+margin-right:14px;
+color:#4da3ff;
+text-decoration:none;
+font-size:16px;
 }
 
 /* BOOK GRID */
+
 .book-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:24px;
-    margin-top:20px;
+display:grid;
+grid-template-columns:1fr;
+gap:24px;
+margin-top:20px;
 }
 
 .book-card{
-    border:1px solid #1f2430;
-    padding:24px;
+border:1px solid #1f2430;
+padding:24px;
 }
 
 .book-card img{
-    width:100%;
-    height:auto;
-    margin-bottom:16px;
+width:100%;
+height:auto;
+margin-bottom:16px;
 }
 
 .book-card h3{
-    margin:0 0 10px 0;
-    font-weight:500;
+margin:0 0 10px 0;
+font-weight:500;
 }
 
 .book-card p{
-    margin:0 0 12px 0;
-    opacity:0.8;
+margin:0 0 12px 0;
+opacity:0.8;
 }
 
 .book-card a{
-    text-decoration:none;
-    font-size:14px;
-    color:#4da3ff;
+text-decoration:none;
+font-size:14px;
+color:#4da3ff;
 }
 </style>
 </head>
@@ -138,26 +152,33 @@ hr {
 
 <div class="container">
 
-<!-- ENGINE (NEW CORE) -->
+<!-- ENGINE -->
+
 <div class="engine-box center">
-    <div class="muted">MA ENGINE</div>
-    
-    <div class="status wait">WAIT</div>
-    
-    <div class="engine-desc en">
-        System stable.<br>
-        No action required.
-    </div>
 
-    <div class="engine-desc tr" style="display:none;">
-        Sistem stabil.<br>
-        Aksiyon gerekmez.
-    </div>
+<div class="muted">MA ENGINE</div>
 
-    <a href="/ma" class="enter-btn">Enter</a>
+<div class="status wait">WAIT</div>
+
+<div class="engine-desc en">
+System stable.<br>
+No action required.
+</div>
+
+<div class="engine-desc tr" style="display:none;">
+Sistem stabil.<br>
+Aksiyon gerekmez.
+</div>
+
+<a href="/ma" class="enter-btn">Enter Engine</a>
+<a href="/manifesto" class="enter-btn">Manifesto</a>
+<a href="/library" class="enter-btn">Library</a>
+<a href="/lab" class="enter-btn">Lab</a>
+
 </div>
 
 <!-- HERO -->
+
 <h1>MARKET ALCHEMY</h1>
 
 <div class="section center en">
@@ -174,20 +195,17 @@ hr {
 
 <hr>
 
-<!-- (BURADAN SONRASI AYNEN SENİN YAPI) -->
-
 <!-- WHAT IS MA -->
+
 <h2 class="en">WHAT IS MA</h2>
 <h2 class="tr" style="display:none;">MA NEDİR</h2>
 
 <div class="section en">
 MA is a portable law that allows decision under entropy.<br><br>
 A decision system product.<br><br>
-
 Not a typical product.<br>
 Not a signal.<br>
 Not a prediction model.<br><br>
-
 It operates.
 </div>
 
@@ -202,6 +220,7 @@ Metot değildir.<br><br>
 <hr>
 
 <!-- ASSUMPTIONS -->
+
 <h2 class="en">ASSUMPTIONS</h2>
 <h2 class="tr" style="display:none;">ÖN KABULLER</h2>
 
@@ -231,26 +250,30 @@ Her hamlenin bedeli vardır<br>
 Beklemek de hamledir
 </div>
 
-<hr>
-
-<!-- (devamı aynen bırakıldı) -->
-
 <script>
-function toggleLang(){
-    const en = document.querySelectorAll(".en");
-    const tr = document.querySelectorAll(".tr");
-    const toggle = document.querySelector(".lang-toggle");
 
-    if(en[0].style.display === "none"){
-        en.forEach(e=>e.style.display="block");
-        tr.forEach(e=>e.style.display="none");
-        toggle.innerText="TR";
-    } else {
-        en.forEach(e=>e.style.display="none");
-        tr.forEach(e=>e.style.display="block");
-        toggle.innerText="EN";
-    }
+function toggleLang(){
+
+const en=document.querySelectorAll(".en")
+const tr=document.querySelectorAll(".tr")
+const toggle=document.querySelector(".lang-toggle")
+
+if(en[0].style.display==="none"){
+
+en.forEach(e=>e.style.display="block")
+tr.forEach(e=>e.style.display="none")
+toggle.innerText="TR"
+
+}else{
+
+en.forEach(e=>e.style.display="none")
+tr.forEach(e=>e.style.display="block")
+toggle.innerText="EN"
+
 }
+
+}
+
 </script>
 
 </body>
