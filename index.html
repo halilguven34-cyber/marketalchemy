@@ -6,6 +6,7 @@
 <title>Market Alchemy</title>
 
 <style>
+
 body{
 margin:0;
 font-family:-apple-system,BlinkMacSystemFont,sans-serif;
@@ -64,12 +65,6 @@ opacity:0.7;
 opacity:1;
 }
 
-.footer{
-margin-top:80px;
-opacity:0.4;
-font-size:13px;
-}
-
 hr{
 border:none;
 border-top:1px solid #1f2430;
@@ -88,6 +83,7 @@ margin-bottom:60px;
 font-size:48px;
 font-weight:700;
 margin-top:10px;
+transition:all .4s ease;
 }
 
 .wait{color:#8a93a3;}
@@ -97,6 +93,7 @@ margin-top:10px;
 .engine-desc{
 margin-top:10px;
 opacity:0.7;
+white-space:pre-line;
 }
 
 .enter-btn{
@@ -108,41 +105,6 @@ text-decoration:none;
 font-size:16px;
 }
 
-/* BOOK GRID */
-
-.book-grid{
-display:grid;
-grid-template-columns:1fr;
-gap:24px;
-margin-top:20px;
-}
-
-.book-card{
-border:1px solid #1f2430;
-padding:24px;
-}
-
-.book-card img{
-width:100%;
-height:auto;
-margin-bottom:16px;
-}
-
-.book-card h3{
-margin:0 0 10px 0;
-font-weight:500;
-}
-
-.book-card p{
-margin:0 0 12px 0;
-opacity:0.8;
-}
-
-.book-card a{
-text-decoration:none;
-font-size:14px;
-color:#4da3ff;
-}
 </style>
 </head>
 
@@ -161,16 +123,16 @@ color:#4da3ff;
 <div class="status wait">WAIT</div>
 
 <div class="engine-desc en">
-System stable.<br>
+System stable.
 No action required.
 </div>
 
 <div class="engine-desc tr" style="display:none;">
-Sistem stabil.<br>
+Sistem stabil.
 Aksiyon gerekmez.
 </div>
 
-<a href="/ma" class="enter-btn">Enter Engine</a>
+<a href="/ma" class="enter-btn">Engine</a>
 <a href="/manifesto" class="enter-btn">Manifesto</a>
 <a href="/library" class="enter-btn">Library</a>
 <a href="/lab" class="enter-btn">Lab</a>
@@ -201,20 +163,29 @@ Aksiyon gerekmez.
 <h2 class="tr" style="display:none;">MA NEDİR</h2>
 
 <div class="section en">
+
 MA is a portable law that allows decision under entropy.<br><br>
+
 A decision system product.<br><br>
+
 Not a typical product.<br>
 Not a signal.<br>
 Not a prediction model.<br><br>
+
 It operates.
+
 </div>
 
 <div class="section tr" style="display:none;">
+
 MA, entropi altında karar almayı mümkün kılan taşınabilir bir yasadır.<br><br>
+
 Sistem değildir.<br>
 Ürün değildir.<br>
 Metot değildir.<br><br>
+
 Çalışır.
+
 </div>
 
 <hr>
@@ -225,6 +196,7 @@ Metot değildir.<br><br>
 <h2 class="tr" style="display:none;">ÖN KABULLER</h2>
 
 <div class="section en">
+
 Irreversible Time<br>
 Delay = Cost<br><br>
 
@@ -235,9 +207,11 @@ Uncertainty persists<br><br>
 Friction<br>
 Every move has a cost<br>
 Waiting is a move
+
 </div>
 
 <div class="section tr" style="display:none;">
+
 Zaman geri alınamaz<br>
 Gecikme = maliyet<br><br>
 
@@ -248,9 +222,14 @@ Belirsizlik kalıcıdır<br><br>
 Sürtünme<br>
 Her hamlenin bedeli vardır<br>
 Beklemek de hamledir
+
+</div>
+
 </div>
 
 <script>
+
+/* LANGUAGE */
 
 function toggleLang(){
 
@@ -273,6 +252,64 @@ toggle.innerText="EN"
 }
 
 }
+
+/* ENGINE STATE */
+
+const states=[
+
+{
+text:"WAIT",
+class:"wait",
+desc_en:"System stable.\nNo action required.",
+desc_tr:"Sistem stabil.\nAksiyon gerekmez."
+},
+
+{
+text:"PREPARE",
+class:"prepare",
+desc_en:"Friction increasing.\nMonitor closely.",
+desc_tr:"Sürtünme artıyor.\nDikkatle izle."
+},
+
+{
+text:"ACT",
+class:"act",
+desc_en:"Conditions aligned.\nExecute.",
+desc_tr:"Koşullar hizalandı.\nUygula."
+}
+
+]
+
+function getState(){
+
+const r=Math.random()
+
+if(r<0.65) return states[0]
+if(r<0.9) return states[1]
+
+return states[2]
+
+}
+
+function updateState(){
+
+const s=getState()
+
+const status=document.querySelector(".status")
+const en=document.querySelector(".engine-desc.en")
+const tr=document.querySelector(".engine-desc.tr")
+
+status.innerText=s.text
+status.className="status "+s.class
+
+en.innerText=s.desc_en
+tr.innerText=s.desc_tr
+
+}
+
+updateState()
+
+setInterval(updateState,4000)
 
 </script>
 
