@@ -3,37 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Engine</title>
+<title>MA Engine — Market Alchemy</title>
 
 <style>
+
 body{
-    margin:0;
-    background:#0d0f14;
-    color:#e8ecf1;
-    font-family:-apple-system, BlinkMacSystemFont, sans-serif;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    height:100vh;
-    text-align:center;
+margin:0;
+background:#0d0f14;
+color:#e8ecf1;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+text-align:center;
 }
 
 .container{
-    max-width:520px;
+max-width:520px;
 }
 
 .label{
-    font-size:12px;
-    letter-spacing:2px;
-    opacity:0.4;
-    margin-bottom:10px;
+font-size:12px;
+letter-spacing:2px;
+opacity:0.4;
+margin-bottom:10px;
 }
 
 .status{
-    font-size:72px;
-    font-weight:700;
-    margin-bottom:20px;
-    transition:all 0.4s ease;
+font-size:72px;
+font-weight:700;
+margin-bottom:20px;
+transition:all 0.4s ease;
 }
 
 .wait{ color:#8a93a3; }
@@ -41,49 +42,46 @@ body{
 .act{ color:#ff5c5c; }
 
 .desc{
-    opacity:0.7;
-    font-size:18px;
-    margin-bottom:30px;
-    transition:all 0.4s ease;
+opacity:0.7;
+font-size:18px;
+margin-bottom:30px;
+transition:all 0.4s ease;
 }
 
 .framework{
-    opacity:0.45;
-    font-size:14px;
-    margin-top:8px;
+opacity:0.45;
+font-size:14px;
+margin-top:8px;
 }
 
-/* friction bar */
-
 .bar{
-    width:100%;
-    height:6px;
-    background:#1f2430;
-    margin-top:20px;
-    border-radius:4px;
-    overflow:hidden;
+width:100%;
+height:6px;
+background:#1f2430;
+margin-top:20px;
+border-radius:4px;
+overflow:hidden;
 }
 
 .fill{
-    height:100%;
-    width:30%;
-    background:#4da3ff;
-    transition:width 0.6s ease;
+height:100%;
+width:30%;
+background:#4da3ff;
+transition:width 0.6s ease;
 }
 
-/* navigation */
-
 .nav{
-    margin-top:40px;
-    font-size:14px;
-    opacity:0.4;
+margin-top:40px;
+font-size:14px;
+opacity:0.4;
 }
 
 .nav a{
-    color:#4da3ff;
-    text-decoration:none;
-    margin:0 10px;
+color:#4da3ff;
+text-decoration:none;
+margin:0 10px;
 }
+
 </style>
 </head>
 
@@ -108,32 +106,35 @@ Vector – Friction – Time
 </div>
 
 <div class="nav">
-    <a href="/">Home</a>
-    <a href="/library">Library</a>
-    <a href="/lab">Laboratory</a>
+<a href="index.html">Home</a>
+<a href="manifesto.html">MA Law</a>
+<a href="library.html">Library</a>
+<a href="papers.html">Papers</a>
+<a href="lab.html">Lab</a>
+<a href="carrier.html">Carrier</a>
 </div>
 
 </div>
 
 <script>
 
-const states = [
+const states=[
 {
 text:"WAIT",
 class:"wait",
-desc:"System stable.\nNo action required.",
+desc:"System stable.<br>No action required.",
 friction:25
 },
 {
 text:"PREPARE",
 class:"prepare",
-desc:"Friction increasing.\nMonitor closely.",
+desc:"Friction increasing.<br>Monitor closely.",
 friction:60
 },
 {
 text:"ACT",
 class:"act",
-desc:"Conditions aligned.\nExecute.",
+desc:"Conditions aligned.<br>Execute.",
 friction:95
 }
 ];
@@ -159,7 +160,7 @@ const fill=document.querySelector(".fill");
 status.innerText=s.text;
 status.className="status "+s.class;
 
-desc.childNodes[0].nodeValue=s.desc;
+desc.innerHTML=s.desc+'<div class="framework">Vector – Friction – Time</div>';
 
 fill.style.width=s.friction+"%";
 
