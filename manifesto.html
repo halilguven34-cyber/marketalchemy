@@ -6,7 +6,6 @@
 <title>MA Law</title>
 
 <style>
-
 body{
 margin:0;
 background:#0d0f14;
@@ -17,23 +16,26 @@ font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 .container{
 max-width:800px;
 margin:auto;
-padding:100px 24px;
+padding:80px 24px;
 }
 
 h1{
-font-size:36px;
-margin-bottom:60px;
+font-size:32px;
+margin-bottom:40px;
 }
 
-p{
-margin-bottom:26px;
-opacity:.8;
-line-height:1.6;
+.section{
+margin-top:40px;
 }
 
 .muted{
-opacity:.45;
-margin-top:60px;
+opacity:0.6;
+}
+
+.big{
+font-size:24px;
+font-weight:600;
+margin-bottom:20px;
 }
 
 .lang-toggle{
@@ -42,9 +44,14 @@ top:20px;
 right:20px;
 cursor:pointer;
 font-size:14px;
-opacity:.7;
+opacity:0.7;
 }
 
+hr{
+border:none;
+border-top:1px solid #1f2430;
+margin:50px 0;
+}
 </style>
 </head>
 
@@ -57,100 +64,102 @@ opacity:.7;
 <h1 class="en">MA Law</h1>
 <h1 class="tr" style="display:none;">MA Yasası</h1>
 
-<p class="en">
+<div class="section en">
 Market Alchemy is the law of decision under entropy.
-</p>
+<br><br>
 
-<p class="tr" style="display:none;">
+All systems accumulate pressure. All systems experience friction. All systems release energy.
+</div>
+
+<div class="section tr" style="display:none;">
 Market Alchemy, entropi altında kararın yasasıdır.
-</p>
+<br><br>
 
-<p class="en">
-All systems accumulate pressure.  
-All systems experience friction.  
-All systems release energy.
-</p>
+Tüm sistemler basınç biriktirir. Tüm sistemler sürtünme yaşar. Tüm sistemler enerji boşaltır.
+</div>
 
-<p class="tr" style="display:none;">
-Tüm sistemler basınç biriktirir.  
-Tüm sistemlerde sürtünme vardır.  
-Tüm sistemler enerjiyi boşaltır.
-</p>
+<hr>
 
-<p class="en">
-Time is irreversible.  
-Delay has a cost.  
-Waiting is a move.
-</p>
+<div class="section en">
+<p class="big">Core Principles</p>
 
-<p class="tr" style="display:none;">
-Zaman geri döndürülemez.  
-Gecikmenin maliyeti vardır.  
-Beklemek de bir hamledir.
-</p>
+Energy accumulates.<br>
+Friction delays movement.<br>
+Release becomes forced.
+</div>
 
-<p class="en">
-When pressure exceeds structure,  
-systems transition.
-</p>
+<div class="section tr" style="display:none;">
+<p class="big">Temel İlkeler</p>
 
-<p class="tr" style="display:none;">
-Basınç yapıyı aştığında  
-sistemler faz değiştirir.
-</p>
+Enerji birikir.<br>
+Sürtünme hareketi geciktirir.<br>
+Boşalma zorunlu hale gelir.
+</div>
 
-<p class="en">
-Markets are one environment  
-where this law becomes visible.
-</p>
+<hr>
 
-<p class="tr" style="display:none;">
-Piyasalar,  
-bu yasanın görünür olduğu ortamlardan biridir.
-</p>
+<div class="section en">
+Time is irreversible. Delay has a cost. Waiting is a move.
+<br><br>
 
-<p class="muted en">
+When pressure exceeds structure, systems transition.
+</div>
+
+<div class="section tr" style="display:none;">
+Zaman geri döndürülemezdir. Gecikmenin bir maliyeti vardır. Beklemek bir harekettir.
+<br><br>
+
+Basınç yapı sınırını aştığında sistemler faz değiştirir.
+</div>
+
+<hr>
+
+<div class="section en">
+Markets are one environment where this law becomes visible.
+<br><br>
+
+Markets do not create this law. They reveal it.
+</div>
+
+<div class="section tr" style="display:none;">
+Piyasalar bu yasanın görünür olduğu ortamlardan biridir.
+<br><br>
+
+Piyasalar bu yasayı oluşturmaz. Onu görünür kılar.
+</div>
+
+<hr>
+
+<div class="section en muted">
 Vector – Friction – Time
-</p>
-
-<p class="muted tr" style="display:none;">
-Vektör – Sürtünme – Zaman
-</p>
-
-<p class="muted en">
+<br><br>
 The framework continues to evolve.
-</p>
+</div>
 
-<p class="muted tr" style="display:none;">
+<div class="section tr muted" style="display:none;">
+Vektör – Sürtünme – Zaman
+<br><br>
 Çerçeve gelişmeye devam ediyor.
-</p>
+</div>
 
 </div>
 
 <script>
-
 function toggleLang(){
-
-const en=document.querySelectorAll(".en")
-const tr=document.querySelectorAll(".tr")
-const toggle=document.querySelector(".lang-toggle")
+const en=document.querySelectorAll(".en");
+const tr=document.querySelectorAll(".tr");
+const toggle=document.querySelector(".lang-toggle");
 
 if(en[0].style.display==="none"){
-
-en.forEach(e=>e.style.display="block")
-tr.forEach(e=>e.style.display="none")
-toggle.innerText="TR"
-
+en.forEach(e=>e.style.display="block");
+tr.forEach(e=>e.style.display="none");
+toggle.innerText="TR";
 }else{
-
-en.forEach(e=>e.style.display="none")
-tr.forEach(e=>e.style.display="block")
-toggle.innerText="EN"
-
+en.forEach(e=>e.style.display="none");
+tr.forEach(e=>e.style.display="block");
+toggle.innerText="EN";
 }
-
 }
-
 </script>
 
 </body>
