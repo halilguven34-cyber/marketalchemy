@@ -6,58 +6,88 @@
 <title>Papers — Market Alchemy</title>
 
 <style>
+
 body{
-    margin:0;
-    background:#0d0f14;
-    color:#e8ecf1;
-    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+margin:0;
+background:#0d0f14;
+color:#e8ecf1;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 .container{
-    max-width:800px;
-    margin:auto;
-    padding:80px 24px;
+max-width:800px;
+margin:auto;
+padding:80px 24px;
 }
 
 h1{
-    font-size:34px;
-    margin-bottom:20px;
+font-size:32px;
+margin-bottom:20px;
 }
 
 .subtitle{
-    opacity:0.6;
-    margin-bottom:60px;
+opacity:0.6;
+margin-bottom:60px;
 }
 
 .paper{
-    margin-top:50px;
+margin-top:40px;
 }
 
 .paper-title{
-    font-size:26px;
-    margin-bottom:12px;
+font-size:24px;
+font-weight:600;
+margin-bottom:8px;
 }
 
 .paper-meta{
-    opacity:0.6;
+opacity:0.6;
+}
+
+.lang-toggle{
+position:fixed;
+top:20px;
+right:20px;
+cursor:pointer;
+font-size:14px;
+opacity:0.7;
 }
 
 hr{
-    border:none;
-    border-top:1px solid #1f2430;
-    margin:50px 0;
+border:none;
+border-top:1px solid #1f2430;
+margin:50px 0;
 }
+
+a{
+color:#e8ecf1;
+text-decoration:none;
+}
+
+a:hover{
+opacity:0.7;
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="lang-toggle" onclick="toggleLang()">TR</div>
+
 <div class="container">
 
-<h1>Papers</h1>
+<h1 class="en">Papers</h1>
+<h1 class="tr" style="display:none;">Makaleler</h1>
 
-<p class="subtitle">
-Research papers and theoretical work
+<p class="subtitle en">
+Research papers and theoretical work<br>
+by H. I. Guven
+</p>
+
+<p class="subtitle tr" style="display:none;">
+Araştırma makaleleri ve teorik çalışmalar<br>
+H. I. Guven
 </p>
 
 <hr>
@@ -65,11 +95,17 @@ Research papers and theoretical work
 <div class="paper">
 
 <div class="paper-title">
+<a href="/papers/structural-depth-theory.html">
 Structural Depth Theory
+</a>
 </div>
 
-<div class="paper-meta">
+<div class="paper-meta en">
 A structural interpretation of time — H. I. Guven — March 2026
+</div>
+
+<div class="paper-meta tr" style="display:none;">
+Zamanın yapısal yorumu — H. I. Guven — Mart 2026
 </div>
 
 </div>
@@ -79,16 +115,44 @@ A structural interpretation of time — H. I. Guven — March 2026
 <div class="paper">
 
 <div class="paper-title">
+<a href="/papers/fiyatin-gosterdigi-faz.html">
 Fiyatın Gösterdiği Faz: Türkiye Ekonomisinde Nominal Çıpa Sorunu
+</a>
 </div>
 
-<div class="paper-meta">
+<div class="paper-meta en">
+Price-based macroeconomic analysis — H. I. Guven — March 2026
+</div>
+
+<div class="paper-meta tr" style="display:none;">
 Fiyat temelli makroekonomik analiz — H. I. Guven — Mart 2026
 </div>
 
 </div>
 
 </div>
+
+<script>
+
+function toggleLang(){
+
+const en=document.querySelectorAll(".en");
+const tr=document.querySelectorAll(".tr");
+const toggle=document.querySelector(".lang-toggle");
+
+if(en[0].style.display==="none"){
+en.forEach(e=>e.style.display="block");
+tr.forEach(e=>e.style.display="none");
+toggle.innerText="TR";
+}else{
+en.forEach(e=>e.style.display="none");
+tr.forEach(e=>e.style.display="block");
+toggle.innerText="EN";
+}
+
+}
+
+</script>
 
 </body>
 </html>
