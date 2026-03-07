@@ -6,330 +6,241 @@
 <title>Market Alchemy</title>
 
 <style>
-
 body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-background:#0d0f14;
-color:#e8ecf1;
-line-height:1.6;
+    margin:0;
+    background:#0d0f14;
+    color:#e8ecf1;
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 .container{
-max-width:900px;
-margin:0 auto;
-padding:60px 24px;
+    max-width:800px;
+    margin:auto;
+    padding:100px 24px;
 }
 
 h1{
-font-size:42px;
-letter-spacing:2px;
-margin-bottom:10px;
+    font-size:42px;
+    margin-bottom:20px;
 }
 
-h2{
-margin-top:60px;
-font-weight:500;
-font-size:20px;
-letter-spacing:1px;
-opacity:0.9;
+.subtitle{
+    opacity:0.7;
+    font-size:18px;
+    margin-bottom:60px;
 }
 
 .section{
-margin-top:20px;
+    margin-top:80px;
 }
 
 .big{
-font-size:26px;
-font-weight:600;
-}
-
-.center{
-text-align:center;
+    font-size:24px;
+    font-weight:600;
+    margin-bottom:20px;
 }
 
 .muted{
-opacity:0.6;
+    opacity:0.6;
 }
 
-.lang-toggle{
-position:fixed;
-top:20px;
-right:20px;
-cursor:pointer;
-font-size:14px;
-opacity:0.7;
+.nav{
+    margin-top:40px;
 }
 
-.lang-toggle:hover{
-opacity:1;
+.nav a{
+    color:#6da8ff;
+    text-decoration:none;
+    margin-right:24px;
 }
 
 hr{
-border:none;
-border-top:1px solid #1f2430;
-margin:50px 0;
+    border:none;
+    border-top:1px solid #1f2430;
+    margin:80px 0;
 }
 
-/* ENGINE */
-
-.engine-box{
-border:1px solid #1f2430;
-padding:40px 20px;
-margin-bottom:60px;
+.lang{
+    position:fixed;
+    top:20px;
+    right:20px;
+    opacity:0.6;
+    cursor:pointer;
 }
-
-.status{
-font-size:48px;
-font-weight:700;
-margin-top:10px;
-transition:all .4s ease;
-}
-
-.wait{color:#8a93a3;}
-.prepare{color:#f0c36d;}
-.act{color:#ff5c5c;}
-
-.engine-desc{
-margin-top:10px;
-opacity:0.7;
-white-space:pre-line;
-}
-
-.engine-signature{
-margin-top:16px;
-opacity:.45;
-font-size:14px;
-}
-
-.nav-links{
-margin-top:20px;
-}
-
-.enter-btn{
-display:inline-block;
-margin:6px 10px;
-color:#4da3ff;
-text-decoration:none;
-font-size:16px;
-}
-
-.enter-btn:hover{
-opacity:.8;
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="lang-toggle" onclick="toggleLang()">TR</div>
+<div class="lang" onclick="toggleLang()">TR</div>
 
 <div class="container">
 
-<!-- ENGINE -->
+<h1 class="en">MARKET ALCHEMY</h1>
+<h1 class="tr" style="display:none;">MARKET ALCHEMY</h1>
 
-<div class="engine-box center">
+<p class="subtitle en">
+A research framework for understanding market behavior under entropy.
+</p>
 
-<div class="muted">MA ENGINE</div>
+<p class="subtitle tr" style="display:none;">
+Entropi altında piyasa davranışını anlamaya çalışan bir araştırma çerçevesi.
+</p>
 
-<div class="status wait">WAIT</div>
+<p class="muted en">
+Vector — Friction — Time
+</p>
 
-<div class="engine-desc en">
-System stable.
-No action required.
-</div>
+<p class="muted tr" style="display:none;">
+Vektör — Sürtünme — Zaman
+</p>
 
-<div class="engine-desc tr" style="display:none;">
-Sistem stabil.
-Aksiyon gerekmez.
-</div>
-
-<div class="engine-signature">
-Vector – Friction – Time
-</div>
-
-<div class="nav-links">
-<a href="/ma" class="enter-btn">Engine</a>
-<a href="/manifesto" class="enter-btn">MA Law</a>
-<a href="/library" class="enter-btn">Library</a>
-<a href="/papers" class="enter-btn">Papers</a>
-<a href="/lab" class="enter-btn">Lab</a>
-<a href="/carrier" class="enter-btn">Carrier</a>
-</div>
-
-</div>
-
-<!-- HERO -->
-
-<h1>MARKET ALCHEMY</h1>
-
-<div class="section center en">
-<p class="big">A portable law under entropy.</p>
-<p class="muted">It doesn’t teach. It doesn’t promise. It works.</p>
-<p class="muted">Scroll if you're still here.</p>
-</div>
-
-<div class="section center tr" style="display:none;">
-<p class="big">Entropi altında çalışan taşınabilir bir yasa.</p>
-<p class="muted">Öğretmez. Vaat etmez. Çalışır.</p>
-<p class="muted">Hâlâ buradaysan devam et.</p>
+<div class="nav">
+<a href="/engine">Engine</a>
+<a href="/ma-law">MA Law</a>
+<a href="/library">Library</a>
+<a href="/papers">Papers</a>
+<a href="/lab">Lab</a>
+<a href="/carrier">Carrier</a>
 </div>
 
 <hr>
 
-<!-- WHAT IS MA -->
-
-<h2 class="en">WHAT IS MA</h2>
-<h2 class="tr" style="display:none;">MA NEDİR</h2>
-
 <div class="section en">
+<p class="big">What is Market Alchemy</p>
 
-MA is a portable law that allows decision under entropy.<br><br>
+<p>
+Market Alchemy studies how markets behave under pressure.
+</p>
 
-A decision system product.<br><br>
+<p>
+All systems accumulate pressure.<br>
+All systems experience friction.<br>
+All systems release energy.
+</p>
 
-Not a typical product.<br>
-Not a signal.<br>
-Not a prediction model.<br><br>
-
-It operates.
-
+<p>
+Markets are one environment where this law becomes visible.
+</p>
 </div>
 
 <div class="section tr" style="display:none;">
+<p class="big">Market Alchemy Nedir</p>
 
-MA, entropi altında karar almayı mümkün kılan taşınabilir bir yasadır.<br><br>
+<p>
+Market Alchemy, piyasaların baskı altında nasıl davrandığını inceler.
+</p>
 
-Sistem değildir.<br>
-Ürün değildir.<br>
-Metot değildir.<br><br>
+<p>
+Tüm sistemler basınç biriktirir.<br>
+Tüm sistemler sürtünme yaşar.<br>
+Tüm sistemler enerji boşaltır.
+</p>
 
-Çalışır.
-
+<p>
+Piyasalar bu yasanın görünür olduğu ortamlardan biridir.
+</p>
 </div>
 
 <hr>
 
-<!-- ASSUMPTIONS -->
-
-<h2 class="en">ASSUMPTIONS</h2>
-<h2 class="tr" style="display:none;">ÖN KABULLER</h2>
-
 <div class="section en">
+<p class="big">Framework</p>
 
-Irreversible Time<br>
-Delay = Cost<br><br>
+<p>
+The research structure consists of three layers.
+</p>
 
-Entropy<br>
-Noise increases<br>
-Uncertainty persists<br><br>
+<br>
 
-Friction<br>
-Every move has a cost<br>
-Waiting is a move
+<p>MA Law</p>
+<p class="muted">The theoretical structure.</p>
 
+<br>
+
+<p>MA Lab</p>
+<p class="muted">Experimental observation.</p>
+
+<br>
+
+<p>MA Engines</p>
+<p class="muted">Mechanical models of market behavior.</p>
 </div>
 
 <div class="section tr" style="display:none;">
+<p class="big">Çerçeve</p>
 
-Zaman geri alınamaz<br>
-Gecikme = maliyet<br><br>
+<p>
+Araştırma yapısı üç katmandan oluşur.
+</p>
 
-Entropi<br>
-Gürültü artar<br>
-Belirsizlik kalıcıdır<br><br>
+<br>
 
-Sürtünme<br>
-Her hamlenin bedeli vardır<br>
-Beklemek de hamledir
+<p>MA Law</p>
+<p class="muted">Teorik yapı.</p>
 
+<br>
+
+<p>MA Lab</p>
+<p class="muted">Deneysel gözlem.</p>
+
+<br>
+
+<p>MA Motorları</p>
+<p class="muted">Piyasa davranışının mekanik modelleri.</p>
+</div>
+
+<hr>
+
+<div class="section en muted">
+<p>
+Observe pressure.<br>
+Eliminate noise.<br>
+Wait.
+</p>
+
+<br>
+
+<p>
+This is not a signal service.<br>
+This is an ongoing research framework.
+</p>
+</div>
+
+<div class="section tr muted" style="display:none;">
+<p>
+Basıncı gözlemle.<br>
+Gürültüyü ele.<br>
+Bekle.
+</p>
+
+<br>
+
+<p>
+Bu bir sinyal servisi değildir.<br>
+Bu devam eden bir araştırma çerçevesidir.
+</p>
 </div>
 
 </div>
 
 <script>
-
 function toggleLang(){
+const en = document.querySelectorAll(".en");
+const tr = document.querySelectorAll(".tr");
+const btn = document.querySelector(".lang");
 
-const en=document.querySelectorAll(".en")
-const tr=document.querySelectorAll(".tr")
-const toggle=document.querySelector(".lang-toggle")
-
-if(en[0].style.display==="none"){
-
-en.forEach(e=>e.style.display="block")
-tr.forEach(e=>e.style.display="none")
-toggle.innerText="TR"
-
-}else{
-
-en.forEach(e=>e.style.display="none")
-tr.forEach(e=>e.style.display="block")
-toggle.innerText="EN"
-
+if(en[0].style.display === "none"){
+en.forEach(e=>e.style.display="block");
+tr.forEach(e=>e.style.display="none");
+btn.innerText="TR";
 }
-
+else{
+en.forEach(e=>e.style.display="none");
+tr.forEach(e=>e.style.display="block");
+btn.innerText="EN";
 }
-
-/* ENGINE STATE */
-
-const states=[
-
-{
-text:"WAIT",
-class:"wait",
-desc_en:"System stable.\nNo action required.",
-desc_tr:"Sistem stabil.\nAksiyon gerekmez."
-},
-
-{
-text:"PREPARE",
-class:"prepare",
-desc_en:"Friction increasing.\nMonitor closely.",
-desc_tr:"Sürtünme artıyor.\nDikkatle izle."
-},
-
-{
-text:"ACT",
-class:"act",
-desc_en:"Conditions aligned.\nExecute.",
-desc_tr:"Koşullar hizalandı.\nUygula."
 }
-
-]
-
-function getState(){
-
-const r=Math.random()
-
-if(r<0.65) return states[0]
-if(r<0.9) return states[1]
-
-return states[2]
-
-}
-
-function updateState(){
-
-const s=getState()
-
-const status=document.querySelector(".status")
-const en=document.querySelector(".engine-desc.en")
-const tr=document.querySelector(".engine-desc.tr")
-
-status.innerText=s.text
-status.className="status "+s.class
-
-en.innerText=s.desc_en
-tr.innerText=s.desc_tr
-
-}
-
-updateState()
-
-setInterval(updateState,4000)
-
 </script>
 
 </body>
