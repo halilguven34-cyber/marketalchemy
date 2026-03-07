@@ -17,30 +17,25 @@ font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 .container{
 max-width:800px;
 margin:auto;
-padding:100px 24px;
+padding:80px 24px;
 }
 
 h1{
-font-size:36px;
-margin-bottom:60px;
+font-size:32px;
+margin-bottom:30px;
 }
 
-p{
-margin-bottom:26px;
-opacity:.8;
-line-height:1.6;
+.section{
+margin-top:40px;
 }
 
 .muted{
-opacity:.45;
-margin-top:60px;
+opacity:0.6;
 }
 
-.links a{
-display:block;
-margin-bottom:12px;
-color:#4da3ff;
-text-decoration:none;
+.big{
+font-size:24px;
+font-weight:600;
 }
 
 .lang-toggle{
@@ -49,7 +44,22 @@ top:20px;
 right:20px;
 cursor:pointer;
 font-size:14px;
-opacity:.7;
+opacity:0.7;
+}
+
+a{
+color:#6da8ff;
+text-decoration:none;
+}
+
+a:hover{
+opacity:0.7;
+}
+
+hr{
+border:none;
+border-top:1px solid #1f2430;
+margin:60px 0;
 }
 
 </style>
@@ -65,67 +75,96 @@ opacity:.7;
 <h1 class="tr" style="display:none;">Taşıyıcı</h1>
 
 <p class="en">
-Market Alchemy is carried by a single operator.
+Market Alchemy is carried by a single author.
 </p>
 
 <p class="tr" style="display:none;">
 Market Alchemy tek bir taşıyıcı tarafından yürütülür.
 </p>
 
+<div class="section">
+
+<p class="big en">Halil Ibrahim Guven</p>
+<p class="big tr" style="display:none;">Halil İbrahim Güven</p>
+
 <p class="en">
-Carrier<br>
-Halil İbrahim Güven
+Researcher and author.
 </p>
 
 <p class="tr" style="display:none;">
-Taşıyıcı<br>
-Halil İbrahim Güven
+Araştırmacı ve yazar.
 </p>
 
-<p class="en">
+<br>
+
+<p class="en muted">
 MBA graduate.<br>
-Licensed by the Turkish Capital Markets Board (SPK).<br>
-Former banking analyst.<br>
+Licensed by the Capital Markets Board of Turkey (SPK).<br>
+Former bank analyst.
+</p>
+
+<p class="tr muted" style="display:none;">
+MBA mezunu.<br>
+Sermaye Piyasası Kurulu (SPK) lisanslarına sahip.<br>
+Eski banka analisti.
+</p>
+
+<br>
+
+<p class="en">
 Independent researcher since 2015.
 </p>
 
 <p class="tr" style="display:none;">
-MBA mezunu.<br>
-Sermaye Piyasası Kurulu (SPK) lisanslarına sahip.<br>
-Eski banka analisti.<br>
 2015 yılından beri bağımsız araştırmacı.
 </p>
 
+<br>
+
 <p class="en">
+Works on financial markets, complex systems
+and structural interpretations of time.
+</p>
+
+<p class="tr" style="display:none;">
+Finansal piyasalar, karmaşık sistemler ve
+zamanın yapısal yorumları üzerine çalışır.
+</p>
+
+<br>
+
+<p class="en muted">
 Carrier of the Market Alchemy framework since 2026.
 </p>
 
-<p class="tr" style="display:none;">
+<p class="tr muted" style="display:none;">
 2026 itibariyle Market Alchemy çerçevesinin taşıyıcısı.
 </p>
 
-<p class="en">
-Transmission
-</p>
+</div>
 
-<p class="tr" style="display:none;">
-İletişim
-</p>
+<hr>
 
-<div class="links">
+<div class="section">
 
-<a href="https://x.com/forex_analiz_" target="_blank">X</a>
+<p class="big en">Contact</p>
+<p class="big tr" style="display:none;">İletişim</p>
 
-<a href="https://www.instagram.com/market_alchemy?igsh=MW9mcjZ2eml2dDJqMA==" target="_blank">Instagram</a>
+<br>
+
+<a href="https://x.com">X</a><br><br>
+<a href="https://instagram.com">Instagram</a>
 
 </div>
 
+<hr>
+
 <p class="muted en">
-Vector – Friction – Time
+Vector — Friction — Time
 </p>
 
 <p class="muted tr" style="display:none;">
-Vektör – Sürtünme – Zaman
+Vektör — Sürtünme — Zaman
 </p>
 
 </div>
@@ -134,22 +173,18 @@ Vektör – Sürtünme – Zaman
 
 function toggleLang(){
 
-const en=document.querySelectorAll(".en")
-const tr=document.querySelectorAll(".tr")
-const toggle=document.querySelector(".lang-toggle")
+const en=document.querySelectorAll(".en");
+const tr=document.querySelectorAll(".tr");
+const toggle=document.querySelector(".lang-toggle");
 
 if(en[0].style.display==="none"){
-
-en.forEach(e=>e.style.display="block")
-tr.forEach(e=>e.style.display="none")
-toggle.innerText="TR"
-
+en.forEach(e=>e.style.display="block");
+tr.forEach(e=>e.style.display="none");
+toggle.innerText="TR";
 }else{
-
-en.forEach(e=>e.style.display="none")
-tr.forEach(e=>e.style.display="block")
-toggle.innerText="EN"
-
+en.forEach(e=>e.style.display="none");
+tr.forEach(e=>e.style.display="block");
+toggle.innerText="EN";
 }
 
 }
