@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MA Library</title>
 
 <style>
@@ -15,7 +17,7 @@ font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 .container{
-max-width:800px;
+max-width:1100px;
 margin:auto;
 padding:80px 24px;
 }
@@ -36,33 +38,43 @@ font-size:20px;
 opacity:.8;
 }
 
-.book{
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:28px;
 margin-top:20px;
-padding:16px;
-border:1px solid #1f2430;
-cursor:pointer;
 }
 
-.book-title{
-font-size:18px;
+.book{
+text-align:center;
+transition:transform .2s;
 }
 
-.book-content{
-display:none;
-margin-top:14px;
-opacity:.8;
+.book:hover{
+transform:translateY(-6px);
 }
 
 .book img{
-width:120px;
+width:100%;
+border-radius:6px;
+box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+
+.book-title{
 margin-top:10px;
-border-radius:4px;
+font-size:16px;
 }
 
 .book a{
+display:inline-block;
+margin-top:8px;
+font-size:14px;
 color:#4da3ff;
 text-decoration:none;
-margin-right:14px;
+}
+
+.book a:hover{
+text-decoration:underline;
 }
 
 .lang-toggle{
@@ -75,6 +87,7 @@ opacity:.7;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -93,88 +106,51 @@ opacity:.7;
 <p class="subtitle tr" style="display:none;">Yasanın belgeleri.</p>
 
 
+
 <h2>English Publications</h2>
 
-<div class="book" onclick="toggleBook(this)">
+<div class="grid">
+
+<div class="book">
+<img src="Thecondinsationpoint.png">
 <div class="book-title">The Condensation Point</div>
-
-<div class="book-content">
-
-<p>
-Where structure collapses into inevitability.
-</p>
-
 <a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">Amazon</a>
-
-</div>
 </div>
 
-
-<div class="book" onclick="toggleBook(this)">
+<div class="book">
+<img src="Theplaceoftime.jpg">
 <div class="book-title">The Place of Time</div>
-
-<div class="book-content">
-
-<p>
-On irreversibility, structure, and the illusion of flow.
-</p>
-
 <a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Amazon</a>
-
-</div>
 </div>
 
-
-<div class="book" onclick="toggleBook(this)">
+<div class="book">
+<img src="Liquidation.jpg">
 <div class="book-title">Liquidation</div>
-
-<div class="book-content">
-
-<p>
-Entropy, energy and systemic liquidation.
-</p>
-
 <a href="https://www.amazon.com/dp/B0GLDSHXCK" target="_blank">Amazon</a>
+</div>
 
 </div>
-</div>
+
 
 
 <h2>Türkçe Yayınlar</h2>
 
-<div class="book" onclick="toggleBook(this)">
+<div class="grid">
+
+<div class="book">
+<img src="Tasfiye.png">
 <div class="book-title">Tasfiye</div>
-
-<div class="book-content">
-
-<img src="https://books.google.com/books/content?id=KsbbEQAAQBAJ&printsec=frontcover&img=1&zoom=1">
-
-<p>
-Termodinamik iflas çağı.<br>
-Entropi, enerji ve faz geçişi.
-</p>
-
-<a href="https://play.google.com/books/reader?id=GGKEY:THHG9W21T93" target="_blank">Read / Buy</a>
-
+<a href="https://play.google.com/store/books/details/Tasfiye?id=GGKEY:THHG9W21T93" target="_blank">Google Play</a>
 </div>
+
 </div>
 
 
 </div>
+
 
 
 <script>
-
-function toggleBook(el){
-
-let content = el.querySelector(".book-content")
-
-content.style.display =
-content.style.display === "block"
-? "none"
-: "block"
-
-}
 
 function toggleLang(){
 
@@ -201,4 +177,5 @@ toggle.innerText="EN"
 </script>
 
 </body>
+
 </html>
