@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MA Library</title>
+<title>Tasfiye</title>
 
 <style>
 
@@ -17,73 +17,51 @@ font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 .container{
-max-width:1100px;
+max-width:700px;
 margin:auto;
 padding:80px 24px;
+text-align:center;
+}
+
+img{
+width:260px;
+border-radius:8px;
+box-shadow:0 20px 40px rgba(0,0,0,.6);
 }
 
 h1{
-font-size:34px;
-margin-bottom:10px;
+margin-top:30px;
+font-size:28px;
 }
 
-.subtitle{
-opacity:.6;
-margin-bottom:10px;
+.desc{
+opacity:.75;
+margin-top:16px;
+line-height:1.6;
 }
 
-h2{
-margin-top:60px;
-font-size:20px;
-opacity:.8;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:28px;
-margin-top:20px;
-}
-
-.book{
-text-align:center;
-transition:transform .2s;
-}
-
-.book:hover{
-transform:translateY(-6px);
-}
-
-.book img{
-width:100%;
+.buy{
+display:inline-block;
+margin-top:30px;
+padding:14px 28px;
+background:#4da3ff;
+color:white;
+text-decoration:none;
 border-radius:6px;
-box-shadow:0 10px 30px rgba(0,0,0,.5);
-}
-
-.book-title{
-margin-top:10px;
 font-size:16px;
 }
 
-.book a{
-display:inline-block;
-margin-top:8px;
+.buy:hover{
+opacity:.85;
+}
+
+.back{
+display:block;
+margin-top:40px;
 font-size:14px;
-color:#4da3ff;
+opacity:.6;
 text-decoration:none;
-}
-
-.book a:hover{
-text-decoration:underline;
-}
-
-.lang-toggle{
-position:fixed;
-top:20px;
-right:20px;
-cursor:pointer;
-font-size:14px;
-opacity:.7;
+color:#e8ecf1;
 }
 
 </style>
@@ -92,100 +70,28 @@ opacity:.7;
 
 <body>
 
-<div class="lang-toggle" onclick="toggleLang()">TR</div>
-
 <div class="container">
 
-<h1 class="en">Library</h1>
-<h1 class="tr" style="display:none;">Kütüphane</h1>
-
-<p class="subtitle en">Framework texts.</p>
-<p class="subtitle tr" style="display:none;">Çerçeve metinleri.</p>
-
-<p class="subtitle en">Documents of the law.</p>
-<p class="subtitle tr" style="display:none;">Yasanın belgeleri.</p>
-
-
-
-<h2>English Publications</h2>
-
-<div class="grid">
-
-<div class="book">
-<a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">
-<img src="Thecondinsationpoint.png">
-</a>
-<div class="book-title">The Condensation Point</div>
-<a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">Amazon</a>
-</div>
-
-<div class="book">
-<a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">
-<img src="Theplaceoftime.jpg">
-</a>
-<div class="book-title">The Place of Time</div>
-<a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Amazon</a>
-</div>
-
-<div class="book">
-<a href="https://www.amazon.com/dp/B0GLDSHXCK" target="_blank">
-<img src="Liquidation.jpg">
-</a>
-<div class="book-title">Liquidation</div>
-<a href="https://www.amazon.com/dp/B0GLDSHXCK" target="_blank">Amazon</a>
-</div>
-
-</div>
-
-
-
-<h2>Türkçe Yayınlar</h2>
-
-<div class="grid">
-
-<div class="book">
-<a href="https://books.google.com/books?id=KsbbEQAAQBAJ" target="_blank">
 <img src="Tasfiye.png">
+
+<h1>Tasfiye</h1>
+
+<div class="desc">
+Termodinamik iflas çağı.<br>
+Entropi, enerji ve faz geçişi.
+</div>
+
+<a class="buy"
+href="https://play.google.com/store/books/details?id=GGKEY:THHG9W21T93"
+target="_blank">
+Buy on Google Play
 </a>
-<div class="book-title">Tasfiye</div>
-<a href="https://books.google.com/books?id=KsbbEQAAQBAJ" target="_blank">
-Google Books
+
+<a class="back" href="/lib">
+← Library
 </a>
-</div>
 
 </div>
-
-
-</div>
-
-
-
-<script>
-
-function toggleLang(){
-
-const en=document.querySelectorAll(".en")
-const tr=document.querySelectorAll(".tr")
-const toggle=document.querySelector(".lang-toggle")
-
-if(en[0].style.display==="none"){
-
-en.forEach(e=>e.style.display="block")
-tr.forEach(e=>e.style.display="none")
-toggle.innerText="TR"
-
-}else{
-
-en.forEach(e=>e.style.display="none")
-tr.forEach(e=>e.style.display="block")
-toggle.innerText="EN"
-
-}
-
-}
-
-</script>
 
 </body>
-
 </html>
