@@ -17,7 +17,7 @@ font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 .container{
-max-width:1100px;
+max-width:900px;
 margin:auto;
 padding:80px 24px;
 }
@@ -38,37 +38,33 @@ font-size:20px;
 opacity:.8;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:40px;
-margin-top:20px;
-justify-items:center;
-}
-
 .book{
-text-align:center;
-max-width:200px;
-transition:transform .2s;
-}
-
-.book:hover{
-transform:translateY(-6px);
+display:flex;
+gap:20px;
+padding:20px 0;
+border-bottom:1px solid #1f2430;
+align-items:flex-start;
 }
 
 .book img{
-width:100%;
-max-width:160px;
-height:auto;
+width:90px;
 border-radius:6px;
-box-shadow:0 10px 30px rgba(0,0,0,.5);
-display:block;
-margin:auto;
+box-shadow:0 8px 20px rgba(0,0,0,.5);
+}
+
+.book-info{
+flex:1;
 }
 
 .book-title{
-margin-top:12px;
-font-size:16px;
+font-size:18px;
+margin-bottom:6px;
+}
+
+.book-desc{
+font-size:14px;
+opacity:.7;
+line-height:1.5;
 }
 
 .book a{
@@ -81,12 +77,6 @@ text-decoration:none;
 
 .book a:hover{
 text-decoration:underline;
-}
-
-.book-note{
-margin-top:8px;
-font-size:14px;
-opacity:.7;
 }
 
 .lang-toggle{
@@ -121,53 +111,82 @@ opacity:.7;
 
 <h2>English Publications</h2>
 
-<div class="grid">
-
 <div class="book">
-<a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">
 <img src="Thecondinsationpoint.png">
-</a>
+
+<div class="book-info">
+
 <div class="book-title">The Condensation Point</div>
+
+<div class="book-desc">
+Debt, energy and the narrowing of global coordination.
+</div>
+
 <a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">Amazon</a>
+
+</div>
 </div>
 
+
+
 <div class="book">
-<a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">
 <img src="Theplaceoftime.jpg">
-</a>
+
+<div class="book-info">
+
 <div class="book-title">The Place of Time</div>
-<a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Amazon</a>
+
+<div class="book-desc">
+Time interpreted as structural hierarchy and depth.
 </div>
+
+<a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Amazon</a>
+
+</div>
+</div>
+
+
 
 <div class="book">
-<a href="https://www.amazon.com/dp/B0GLDSHXCK" target="_blank">
 <img src="Liquidation.jpg">
-</a>
+
+<div class="book-info">
+
 <div class="book-title">Liquidation</div>
-<a href="https://www.amazon.com/dp/B0GLDSHXCK" target="_blank">Amazon</a>
+
+<div class="book-desc">
+Market entropy and the mechanics of systemic liquidation.
 </div>
 
+<a href="https://www.amazon.com/dp/B0GLDSHXCK" target="_blank">Amazon</a>
+
+</div>
 </div>
 
 
 
 <h2>Türkçe Yayınlar</h2>
 
-<div class="grid">
-
 <div class="book">
 <img src="Tasfiye.png">
+
+<div class="book-info">
+
 <div class="book-title">Tasfiye</div>
-<div class="book-note">
+
+<div class="book-desc">
+Termodinamik iflas çağı. Entropi, enerji ve faz geçişi.
+</div>
+
+<div class="book-desc">
 Google Play Books'ta okuyabilir ve satın alabilirsiniz.
 </div>
-</div>
 
 </div>
+</div>
 
 
 </div>
-
 
 
 <script>
@@ -197,5 +216,4 @@ toggle.innerText="EN"
 </script>
 
 </body>
-
 </html>
