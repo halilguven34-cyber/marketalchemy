@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MA Library</title>
+<title>Market Alchemy Library</title>
 
 <style>
 
@@ -23,37 +23,55 @@ padding:80px 24px;
 }
 
 h1{
-font-size:34px;
-margin-bottom:10px;
+font-size:36px;
+margin-bottom:8px;
 }
 
 .subtitle{
 opacity:.6;
-margin-bottom:10px;
+margin-bottom:6px;
+line-height:1.5;
 }
 
-h2{
-margin-top:60px;
-font-size:20px;
-opacity:.8;
+.section{
+margin-top:70px;
+}
+
+.section-title{
+font-size:22px;
+margin-bottom:10px;
+opacity:.9;
+}
+
+.section-desc{
+opacity:.55;
+font-size:14px;
+margin-bottom:30px;
 }
 
 .book{
 display:flex;
 gap:20px;
-padding:20px 0;
+padding:22px 0;
 border-bottom:1px solid #1f2430;
 align-items:flex-start;
 }
 
 .book img{
-width:90px;
+width:92px;
 border-radius:6px;
-box-shadow:0 8px 20px rgba(0,0,0,.5);
+box-shadow:0 8px 20px rgba(0,0,0,.55);
 }
 
 .book-info{
 flex:1;
+}
+
+.series{
+font-size:12px;
+opacity:.45;
+margin-bottom:6px;
+letter-spacing:.5px;
 }
 
 .book-title{
@@ -65,18 +83,29 @@ margin-bottom:6px;
 font-size:14px;
 opacity:.7;
 line-height:1.5;
+margin-bottom:6px;
 }
 
-.book a{
+.links a{
 display:inline-block;
+margin-right:14px;
 margin-top:8px;
 font-size:14px;
 color:#4da3ff;
 text-decoration:none;
 }
 
-.book a:hover{
+.links a:hover{
 text-decoration:underline;
+}
+
+.citation{
+margin-top:80px;
+padding-top:30px;
+border-top:1px solid #1f2430;
+font-size:13px;
+opacity:.6;
+line-height:1.6;
 }
 
 .lang-toggle{
@@ -98,61 +127,40 @@ opacity:.7;
 
 <div class="container">
 
-<h1 class="en">Library</h1>
-<h1 class="tr" style="display:none;">Kütüphane</h1>
+<h1 class="en">Market Alchemy Library</h1>
+<h1 class="tr" style="display:none;">Market Alchemy Kütüphanesi</h1>
 
-<p class="subtitle en">Framework texts.</p>
-<p class="subtitle tr" style="display:none;">Çerçeve metinleri.</p>
+<p class="subtitle en">
+A collection of texts exploring structural systems, economic phase transitions and the mechanics of systemic collapse.
+</p>
 
-<p class="subtitle en">Documents of the law.</p>
-<p class="subtitle tr" style="display:none;">Yasanın belgeleri.</p>
+<p class="subtitle tr" style="display:none;">
+Yapısal sistemler, ekonomik faz geçişleri ve sistemik çöküş mekanikleri üzerine metinler.
+</p>
 
 
 
-<h2>English Publications</h2>
+<div class="section">
 
+<div class="section-title en">Framework Texts</div>
+<div class="section-title tr" style="display:none;">Çerçeve Metinleri</div>
+
+<div class="section-desc en">
+Core doctrinal texts defining the Market Alchemy framework.
+</div>
+
+<div class="section-desc tr" style="display:none;">
+Market Alchemy çerçevesini tanımlayan temel metinler.
+</div>
 
 
 <div class="book">
-<img src="Thecondinsationpoint.png">
 
-<div class="book-info">
-
-<div class="book-title">The Condensation Point</div>
-
-<div class="book-desc">
-Debt, energy and the narrowing of global coordination.
-</div>
-
-<a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">Read on Amazon</a>
-
-</div>
-</div>
-
-
-
-<div class="book">
-<img src="Theplaceoftime.jpg">
-
-<div class="book-info">
-
-<div class="book-title">The Place of Time</div>
-
-<div class="book-desc">
-Time interpreted as structural hierarchy and depth.
-</div>
-
-<a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Read on Amazon</a>
-
-</div>
-</div>
-
-
-
-<div class="book">
 <img src="liquidation-framework.jpg">
 
 <div class="book-info">
+
+<div class="series">MARKET ALCHEMY FRAMEWORK</div>
 
 <div class="book-title">Liquidation — The Market Alchemy Framework</div>
 
@@ -160,17 +168,21 @@ Time interpreted as structural hierarchy and depth.
 Energy, liquidity and the mechanics of systemic liquidation.
 </div>
 
-<a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank">Read on Amazon</a>
+<div class="links">
+<a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank">Amazon</a>
+</div>
 
 </div>
 </div>
-
 
 
 <div class="book">
+
 <img src="Liquidation.jpg">
 
 <div class="book-info">
+
+<div class="series">DOCTRINAL INTRODUCTION</div>
 
 <div class="book-title">Market Alchemy</div>
 
@@ -178,18 +190,89 @@ Energy, liquidity and the mechanics of systemic liquidation.
 Short doctrinal introduction to the Market Alchemy framework.
 </div>
 
-<a href="https://www.amazon.com/dp/B0GLDSHXCK" target="_blank">Read on Amazon</a>
+<div class="links">
+<a href="https://www.amazon.com/dp/B0GLDSHXCK" target="_blank">Amazon</a>
+</div>
 
 </div>
 </div>
 
+</div>
 
 
-<h2>Türkçe Yayınlar</h2>
+
+<div class="section">
+
+<div class="section-title en">Structural Systems Series</div>
+<div class="section-title tr" style="display:none;">Yapısal Sistemler Serisi</div>
+
+<div class="section-desc en">
+Studies exploring time, coordination, energy and systemic constraints.
+</div>
+
+<div class="section-desc tr" style="display:none;">
+Zaman, koordinasyon, enerji ve sistem kısıtlarını inceleyen çalışmalar.
+</div>
 
 
 
 <div class="book">
+
+<img src="Theplaceoftime.jpg">
+
+<div class="book-info">
+
+<div class="series">STRUCTURAL SYSTEMS SERIES — I</div>
+
+<div class="book-title">The Place of Time</div>
+
+<div class="book-desc">
+Time interpreted as structural hierarchy and depth.
+</div>
+
+<div class="links">
+<a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Amazon</a>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="book">
+
+<img src="Thecondinsationpoint.png">
+
+<div class="book-info">
+
+<div class="series">STRUCTURAL SYSTEMS SERIES — II</div>
+
+<div class="book-title">The Condensation Point</div>
+
+<div class="book-desc">
+Debt, energy and the narrowing of global coordination.
+</div>
+
+<div class="links">
+<a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">Amazon</a>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<div class="section">
+
+<div class="section-title en">Turkish Editions</div>
+<div class="section-title tr" style="display:none;">Türkçe Yayınlar</div>
+
+
+
+<div class="book">
+
 <img src="Tasfiye.png">
 
 <div class="book-info">
@@ -200,15 +283,34 @@ Short doctrinal introduction to the Market Alchemy framework.
 Termodinamik iflas çağı. Entropi, enerji ve faz geçişi.
 </div>
 
-<div class="book-desc">
-Google Play Books'ta okuyabilir ve satın alabilirsiniz.
+<div class="links">
+<a href="https://play.google.com/store/books/details?id=SE7GEQAAQBAJ" target="_blank">Google Play</a>
 </div>
-
-<a href="https://play.google.com/store/books/details?id=SE7GEQAAQBAJ" target="_blank">Google Play'de Oku</a>
 
 </div>
 </div>
 
+</div>
+
+
+
+<div class="citation">
+
+<b>Citation</b><br><br>
+
+Güven, Halil İbrahim.<br>
+<i>Liquidation: The Market Alchemy Framework.</i><br>
+Market Alchemy Library.<br><br>
+
+Güven, Halil İbrahim.<br>
+<i>The Place of Time.</i><br>
+Structural Systems Series.<br><br>
+
+Güven, Halil İbrahim.<br>
+<i>The Condensation Point.</i><br>
+Structural Systems Series.
+
+</div>
 
 
 </div>
