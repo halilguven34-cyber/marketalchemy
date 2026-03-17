@@ -117,7 +117,7 @@ padding:20px;
 border:1px solid #1f2430;
 }
 
-/* NEW: DOI BLOCK */
+/* DOI BLOCK */
 .doi-block{
 margin-top:60px;
 padding:24px;
@@ -134,6 +134,17 @@ margin-bottom:10px;
 color:#6da8ff;
 text-decoration:none;
 word-break:break-all;
+}
+
+/* NEW ENTRY BLOCK */
+.entry-block{
+margin-top:40px;
+padding:24px;
+border:1px solid #1f2430;
+}
+
+.entry-block p{
+margin:0 0 12px 0;
 }
 </style>
 </head>
@@ -164,7 +175,26 @@ Basıncın nasıl biriktiğini, sürtünmenin hareketi nasıl geciktirdiğini
 ve sistemlerin enerjiyi nasıl boşalttığını inceleyen bir araştırma çerçevesi.
 </p>
 
-<!-- 🔥 NEW: DOI AUTHORITY BLOCK -->
+<!-- 🔥 ENTRY LAYER -->
+<div class="entry-block en">
+<p>Most models treat time as something that flows.</p>
+<p><b>This work shows:</b> time does not flow.</p>
+<p>It expands as structure.</p>
+<a class="doi-link" href="https://doi.org/10.5281/zenodo.19071535" target="_blank" rel="noopener">
+Start here →
+</a>
+</div>
+
+<div class="entry-block tr" style="display:none;">
+<p>Çoğu model zamanı akan bir şey olarak ele alır.</p>
+<p><b>Bu çalışma şunu gösterir:</b> zaman akmaz.</p>
+<p>Yapı olarak genişler.</p>
+<a class="doi-link" href="https://doi.org/10.5281/zenodo.19071535" target="_blank" rel="noopener">
+Buradan başla →
+</a>
+</div>
+
+<!-- DOI BLOCK -->
 <div class="doi-block en">
 <div class="doi-title">Published Research</div>
 <div class="muted">The Structural Depth Law of Time</div>
