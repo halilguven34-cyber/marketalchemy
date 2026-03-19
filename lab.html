@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Lab</title>
+<title>Lab — Market Alchemy</title>
 
 <style>
-body {
+
+body{
 margin:0;
 background:#0d0f14;
 color:#e8ecf1;
-font-family:-apple-system, BlinkMacSystemFont, sans-serif;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 .container{
-max-width:800px;
+max-width:720px;
 margin:auto;
-padding:80px 24px;
+padding:80px 20px;
 }
 
 h1{
@@ -24,23 +25,37 @@ font-size:32px;
 margin-bottom:20px;
 }
 
-.subtitle{
-opacity:0.65;
-margin-bottom:60px;
-line-height:1.6;
+.section{
+margin-top:50px;
 }
 
-.section{
-margin-top:40px;
+.big{
+font-size:22px;
+font-weight:600;
+margin-bottom:12px;
 }
 
 .muted{
 opacity:0.6;
+line-height:1.6;
 }
 
-.big{
-font-size:24px;
-font-weight:600;
+.box{
+margin-top:20px;
+padding:20px;
+border:1px solid #1f2430;
+font-family:monospace;
+font-size:14px;
+opacity:0.85;
+}
+
+.cta{
+display:inline-block;
+margin-top:20px;
+padding:12px 20px;
+border:1px solid #6da8ff;
+color:#6da8ff;
+text-decoration:none;
 }
 
 .lang-toggle{
@@ -48,7 +63,6 @@ position:fixed;
 top:20px;
 right:20px;
 cursor:pointer;
-font-size:14px;
 opacity:0.7;
 }
 
@@ -57,6 +71,7 @@ border:none;
 border-top:1px solid #1f2430;
 margin:50px 0;
 }
+
 </style>
 </head>
 
@@ -66,211 +81,214 @@ margin:50px 0;
 
 <div class="container">
 
-<h1 class="en">Laboratory</h1>
+<h1 class="en">Lab</h1>
 <h1 class="tr" style="display:none;">Laboratuvar</h1>
 
-<p class="subtitle en">
-Market Alchemy experimental systems are now active.
-The laboratory is currently observing live crypto markets in order to study
-compression dynamics, liquidation cascades and structural friction.
+<!-- 🔥 CONTEXT -->
+
+<div class="section">
+
+<p class="big en">This is not a finished system.</p>
+<p class="big tr" style="display:none;">Bu tamamlanmış bir sistem değildir.</p>
+
+<p class="muted en">
+This is where models are tested under real conditions.
 </p>
 
-<p class="subtitle tr" style="display:none;">
-Market Alchemy deneysel sistemleri aktif hale getirildi.
-Laboratuvar şu anda kripto piyasasını canlı olarak gözlemlemekte ve
-sıkışma dinamikleri, likidasyon zincirleri ve piyasa sürtünmesini incelemektedir.
+<p class="muted tr" style="display:none;">
+Burası modellerin gerçek koşullarda test edildiği yerdir.
 </p>
 
-<p class="subtitle en">
-Markets are approached as physical systems governed by energy accumulation,
-friction and forced movement.
+</div>
+
+<hr>
+
+<!-- 🔥 SAMPLE -->
+
+<div class="section">
+
+<p class="big en">Sample Output</p>
+<p class="big tr" style="display:none;">Örnek Çıktı</p>
+
+<div class="box">
+vector: unstable<br>
+friction: increasing<br>
+compression: detected<br>
+bias: downside<br><br>
+
+state: PREPARE
+</div>
+
+</div>
+
+<hr>
+
+<!-- 🔥 LIVE SYSTEMS -->
+
+<div class="section">
+
+<p class="big en">Live Systems</p>
+<p class="big tr" style="display:none;">Canlı Sistemler</p>
+
+<div class="box">
+BTC/USDT<br>
+state: PREPARE<br>
+compression: building<br>
+bias: downside
+</div>
+
+<div class="box">
+ETH/USDT<br>
+state: WAIT<br>
+friction: low<br>
+no alignment
+</div>
+
+<div class="box">
+XAU/USD<br>
+state: ACT<br>
+release: active<br>
+volatility expansion
+</div>
+
+</div>
+
+<hr>
+
+<!-- 🔥 INTERPRETATION -->
+
+<div class="section">
+
+<p class="big en">What this means</p>
+<p class="big tr" style="display:none;">Bu ne demek</p>
+
+<p class="muted en">
+Price is not moving yet.  
+But conditions are forming.
 </p>
 
-<p class="subtitle tr" style="display:none;">
-Piyasalar enerji birikimi, sürtünme ve zorunlu hareketler tarafından
-yönetilen fiziksel sistemler olarak ele alınmaktadır.
+<p class="muted tr" style="display:none;">
+Fiyat henüz hareket etmiyor.  
+Ama koşullar oluşuyor.
 </p>
 
-<hr>
-
-<div class="section en">
-<p class="big">Live Systems</p>
-
-Compression Detector — active<br>
-<span class="muted">
-Structural compression and pressure buildup monitoring
-</span><br><br>
-
-GodMode Mechanics Engine — active<br>
-<span class="muted">
-Mechanical liquidation cascade observation
-</span><br><br>
-
-<span class="muted">
-Both systems operate continuously and record live market states.
-Collected data is used for research and structural analysis.
-</span>
-
 </div>
 
-<div class="section tr" style="display:none;">
-<p class="big">Canlı Sistemler</p>
+<hr>
 
-Sıkışma Dedektörü — aktif<br>
-<span class="muted">
-Yapısal sıkışma ve basınç birikimi takibi
-</span><br><br>
+<!-- 🔥 LIMIT -->
 
-GodMode Mekanik Motoru — aktif<br>
-<span class="muted">
-Likidasyon zinciri ve zorunlu hareket gözlemi
-</span><br><br>
+<div class="section">
 
-<span class="muted">
-Her iki sistem sürekli çalışır ve canlı piyasa durumlarını kaydeder.
-Toplanan veriler araştırma ve yapısal analiz için kullanılır.
-</span>
+<p class="big en">You are seeing a fragment.</p>
+<p class="big tr" style="display:none;">Bir parçayı görüyorsun.</p>
+
+<p class="muted en">
+Full interpretation requires understanding the framework.
+</p>
+
+<p class="muted tr" style="display:none;">
+Tam yorum için çerçevenin anlaşılması gerekir.
+</p>
 
 </div>
 
 <hr>
 
-<div class="section en">
-<p class="big">Observation</p>
+<!-- 🔥 REQUEST ACCESS -->
 
-– Compression phases<br>
-– Expansion behavior<br>
-– Liquidation cascades<br>
-– Market friction spikes<br><br>
+<div class="section" style="text-align:center;">
 
-<span class="muted">
-Patterns are recorded for research purposes.
-No optimization is applied.
-</span>
-</div>
+<p class="big en">Access the system</p>
+<p class="big tr" style="display:none;">Sisteme eriş</p>
 
-<div class="section tr" style="display:none;">
-<p class="big">Gözlem</p>
+<p class="muted en">
+Live signals.  
+Structural interpretation.  
+No indicators.
+</p>
 
-– Sıkışma fazları<br>
-– Genişleme davranışı<br>
-– Likidasyon zincirleri<br>
-– Piyasa sürtünmesi artışları<br><br>
+<p class="muted tr" style="display:none;">
+Canlı sinyaller.  
+Yapısal yorum.  
+İndikatör yok.
+</p>
 
-<span class="muted">
-Patternler araştırma amacıyla kaydedilir.
-Optimizasyon uygulanmaz.
-</span>
+<a class="cta" href="https://x.com" target="_blank">
+Request Access
+</a>
+
 </div>
 
 <hr>
 
-<div class="section en">
-<p class="big">Systems</p>
+<!-- 🔥 BUILD REQUEST -->
 
-MA Engine — Mechanical liquidation modeling<br>
-<span class="muted">
-Market stress / forced movement detection
-</span><br><br>
+<div class="section">
 
-MA State Engine — Market environment classification<br>
-<span class="muted">
-When the market should not be traded
-</span><br><br>
+<p class="big en">Request a system</p>
+<p class="big tr" style="display:none;">Sistem talep et</p>
 
-MA Experimental Bots — Live condition tracking<br>
-<span class="muted">
-Compression / expansion observation
-</span>
-</div>
+<p class="muted en">
+Crypto. Gold. Indices.<br>
+If the structure exists, it can be modeled.
+</p>
 
-<div class="section tr" style="display:none;">
-<p class="big">Sistemler</p>
+<p class="muted tr" style="display:none;">
+Kripto. Altın. Endeksler.<br>
+Yapı varsa modellenebilir.
+</p>
 
-MA Motoru — Mekanik likidasyon modelleme<br>
-<span class="muted">
-Piyasa stresi / zorunlu hareket tespiti
-</span><br><br>
+<p class="muted en">
+Describe the market.<br>
+We build the lens.
+</p>
 
-MA Durum Motoru — Piyasa ortam sınıflandırması<br>
-<span class="muted">
-Ne zaman işlem yapılmaması gerektiği
-</span><br><br>
+<p class="muted tr" style="display:none;">
+Piyasayı tanımla.<br>
+Lens’i biz kurarız.
+</p>
 
-MA Deneysel Botlar — Canlı durum takibi<br>
-<span class="muted">
-Sıkışma / genişleme gözlemi
-</span>
 </div>
 
 <hr>
 
-<div class="section en">
-<p class="big">MA State Engine</p>
+<!-- 🔁 CTA -->
 
-This model does not generate signals.<br><br>
+<div class="section" style="text-align:center;">
 
-– Tradable<br>
-– Unstable<br>
-– No trade<br><br>
+<p class="muted en">
+Learn how to read this.
+</p>
 
-<span class="muted">
-Invalid environments are eliminated.
-</span>
-</div>
+<p class="muted tr" style="display:none;">
+Bunu nasıl okuyacağını öğren.
+</p>
 
-<div class="section tr" style="display:none;">
-<p class="big">MA Durum Motoru</p>
+<a class="cta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
+ACCESS — $9
+</a>
 
-Bu model sinyal üretmez.<br><br>
-
-– İşlem yapılabilir<br>
-– Kararsız<br>
-– İşlem yok<br><br>
-
-<span class="muted">
-Geçersiz ortamlar elenir.
-</span>
-</div>
-
-<hr>
-
-<div class="section en muted">
-No optimization.<br>
-Only elimination.
-</div>
-
-<div class="section tr muted" style="display:none;">
-Optimizasyon yok.<br>
-Sadece eleme.
 </div>
 
 </div>
 
 <script>
-
 function toggleLang(){
+const en=document.querySelectorAll(".en");
+const tr=document.querySelectorAll(".tr");
+const toggle=document.querySelector(".lang-toggle");
 
-const en = document.querySelectorAll(".en")
-const tr = document.querySelectorAll(".tr")
-const toggle = document.querySelector(".lang-toggle")
-
-if(en[0].style.display === "none"){
-
-en.forEach(e=>e.style.display="block")
-tr.forEach(e=>e.style.display="none")
-toggle.innerText="TR"
-
+if(en[0].style.display==="none"){
+en.forEach(e=>e.style.display="block");
+tr.forEach(e=>e.style.display="none");
+toggle.innerText="TR";
 }else{
-
-en.forEach(e=>e.style.display="none")
-tr.forEach(e=>e.style.display="block")
-toggle.innerText="EN"
-
+en.forEach(e=>e.style.display="none");
+tr.forEach(e=>e.style.display="block");
+toggle.innerText="EN";
 }
-
 }
-
 </script>
 
 </body>
