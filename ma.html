@@ -44,7 +44,7 @@ transition:all 0.4s ease;
 .desc{
 opacity:0.7;
 font-size:18px;
-margin-bottom:30px;
+margin-bottom:20px;
 transition:all 0.4s ease;
 }
 
@@ -68,6 +68,15 @@ height:100%;
 width:30%;
 background:#4da3ff;
 transition:width 0.6s ease;
+}
+
+.cta{
+display:inline-block;
+margin-top:30px;
+padding:12px 20px;
+border:1px solid #6da8ff;
+color:#6da8ff;
+text-decoration:none;
 }
 
 .nav{
@@ -105,6 +114,19 @@ Vector – Friction – Time
 <div class="fill"></div>
 </div>
 
+<!-- 🔥 INTERPRETATION -->
+
+<div class="desc" id="insight" style="margin-top:25px; font-size:15px; opacity:0.5;">
+You are seeing states.<br>
+Most traders don’t.
+</div>
+
+<!-- 🔁 CTA -->
+
+<a class="cta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
+Learn to read this — $9
+</a>
+
 <div class="nav">
 <a href="index.html">Home</a>
 <a href="manifesto.html">MA Law</a>
@@ -123,19 +145,22 @@ const states=[
 text:"WAIT",
 class:"wait",
 desc:"System stable.<br>No action required.",
-friction:25
+friction:25,
+insight:"Nothing moves without pressure."
 },
 {
 text:"PREPARE",
 class:"prepare",
 desc:"Friction increasing.<br>Monitor closely.",
-friction:60
+friction:60,
+insight:"Compression builds before movement."
 },
 {
 text:"ACT",
 class:"act",
 desc:"Conditions aligned.<br>Execute.",
-friction:95
+friction:95,
+insight:"Release is not optional anymore."
 }
 ];
 
@@ -156,6 +181,7 @@ const s=getState();
 const status=document.querySelector(".status");
 const desc=document.querySelector(".desc");
 const fill=document.querySelector(".fill");
+const insight=document.getElementById("insight");
 
 status.innerText=s.text;
 status.className="status "+s.class;
@@ -163,6 +189,8 @@ status.className="status "+s.class;
 desc.innerHTML=s.desc+'<div class="framework">Vector – Friction – Time</div>';
 
 fill.style.width=s.friction+"%";
+
+insight.innerHTML=s.insight;
 
 }
 
