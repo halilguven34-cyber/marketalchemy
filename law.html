@@ -48,19 +48,34 @@ border-top:1px solid #1f2430;
 margin:50px 0;
 }
 
+/* ✅ NEW NAVBAR */
 nav{
+width:100%;
 display:flex;
-justify-content:center;
-gap:20px;
-padding:20px;
+gap:18px;
+padding:14px 16px;
 border-bottom:1px solid #1f2430;
 font-size:14px;
-opacity:0.8;
+overflow-x:auto;
+white-space:nowrap;
+-webkit-overflow-scrolling:touch;
+}
+
+nav::-webkit-scrollbar{
+display:none;
 }
 
 nav a{
 color:#e8ecf1;
 text-decoration:none;
+opacity:0.7;
+flex-shrink:0;
+}
+
+nav a.active{
+color:#6da8ff;
+opacity:1;
+font-weight:600;
 }
 
 </style>
@@ -68,29 +83,29 @@ text-decoration:none;
 
 <body>
 
-<!-- NAV -->
-
 <nav>
-    <a class="en" href="index.html">Main</a>
-    <a class="tr" href="index.html" style="display:none;">Ana Sayfa</a>
 
-    <a class="en" href="research.html">Research</a>
-    <a class="tr" href="research.html" style="display:none;">Araştırma</a>
+<a href="index.html" class="en">Main</a>
+<a href="index.html" class="tr" style="display:none;">Ana Sayfa</a>
 
-    <a class="en" href="lab.html">Lab</a>
-    <a class="tr" href="lab.html" style="display:none;">Lab</a>
+<a href="research.html" class="en">Research</a>
+<a href="research.html" class="tr" style="display:none;">Araştırma</a>
 
-    <a class="en" href="law.html" style="color:#6da8ff; font-weight:bold;">Law</a>
-    <a class="tr" href="law.html" style="display:none; color:#6da8ff; font-weight:bold;">Yasa</a>
+<a href="lab.html" class="en">Lab</a>
+<a href="lab.html" class="tr" style="display:none;">Laboratuvar</a>
 
-    <a class="en" href="library.html">Library</a>
-    <a class="tr" href="library.html" style="display:none;">Kütüphane</a>
+<a href="law.html" class="en active">Law</a>
+<a href="law.html" class="tr active" style="display:none;">Yasa</a>
 
-    <a class="en" href="career.html">Career</a>
-    <a class="tr" href="career.html" style="display:none;">Kariyer</a>
+<a href="library.html" class="en">Library</a>
+<a href="library.html" class="tr" style="display:none;">Kütüphane</a>
 
-    <a class="en" href="ma.html">Engine</a>
-    <a class="tr" href="ma.html" style="display:none;">Motor</a>
+<a href="career.html" class="en">Career</a>
+<a href="career.html" class="tr" style="display:none;">Kariyer</a>
+
+<a href="ma.html" class="en">Engine</a>
+<a href="ma.html" class="tr" style="display:none;">Motor</a>
+
 </nav>
 
 <!-- LANGUAGE SYSTEM -->
@@ -108,8 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <h1 class="en">MA LAW</h1>
 <h1 class="tr" style="display:none;">MA YASASI</h1>
-
-<!-- MANIFESTO -->
 
 <div class="section en">
 
@@ -156,8 +169,6 @@ Durmaz.
 </div>
 
 <hr>
-
-<!-- ORIGINAL -->
 
 <div class="section en">
 Market Alchemy is the law of decision under entropy.
@@ -245,8 +256,6 @@ Vektör – Sürtünme – Zaman
 
 <hr>
 
-<!-- FLOW (CTA REMOVED) -->
-
 <div class="section" style="text-align:center;">
 
 <p class="muted en">
@@ -262,8 +271,6 @@ Piyasada görmek başka bir şeydir.
 </div>
 
 </div>
-
-<!-- STRUCTURED DATA -->
 
 <script type="application/ld+json">
 {
