@@ -6,174 +6,45 @@
 <title>MA Engine — Market Alchemy</title>  
 
 <style>  
-
-body{  
-margin:0;  
-background:#0d0f14;  
-color:#e8ecf1;  
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;  
-display:flex;  
-flex-direction:column;  
-align-items:center;  
-justify-content:flex-start;  
-min-height:100vh;  
-text-align:center;  
-}  
-
-.container{  
-max-width:520px;  
-margin-top:80px;  
-padding:0 16px;
-}  
-
-.label{  
-font-size:12px;  
-letter-spacing:2px;  
-opacity:0.4;  
-margin-bottom:10px;  
-}  
-
-.status{  
-font-size:64px;  
-font-weight:700;  
-margin-bottom:20px;  
-transition:all 0.4s ease;  
-}  
-
+body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;text-align:center;}  
+.container{max-width:520px;margin-top:80px;padding:0 16px;}  
+.label{font-size:12px;letter-spacing:2px;opacity:0.4;margin-bottom:10px;}  
+.status{font-size:64px;font-weight:700;margin-bottom:20px;}  
 .wait{ color:#8a93a3; }  
 .prepare{ color:#f0c36d; }  
 .act{ color:#ff5c5c; }  
+.desc{opacity:0.7;font-size:18px;margin-bottom:10px;}  
+.framework{opacity:0.45;font-size:14px;margin-top:8px;}  
+.bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;overflow:hidden;}  
+.fill{height:100%;width:30%;background:#4da3ff;}  
+.insight{margin-top:25px;font-size:15px;opacity:0.5;}  
+.bridge{margin-top:20px;font-size:14px;opacity:0.75;line-height:1.6;}  
+.sectionTitle{margin-top:40px;font-size:13px;opacity:0.5;letter-spacing:1px;}  
 
-.desc{  
-opacity:0.7;  
-font-size:18px;  
-margin-bottom:10px;  
-transition:all 0.4s ease;  
-}  
+.subcta{display:block;margin-top:12px;padding:14px;border:1px solid #1f2430;color:#e8ecf1;text-decoration:none;opacity:0.85;text-align:left;font-size:15px;}  
+.subcta:hover{border-color:#6da8ff;opacity:1;}  
 
-.framework{  
-opacity:0.45;  
-font-size:14px;  
-margin-top:8px;  
-}  
-
-.bar{  
-width:100%;  
-height:6px;  
-background:#1f2430;  
-margin-top:20px;  
-border-radius:4px;  
-overflow:hidden;  
-}  
-
-.fill{  
-height:100%;  
-width:30%;  
-background:#4da3ff;  
-transition:width 0.6s ease;  
-}  
-
-.insight{  
-margin-top:25px;  
-font-size:15px;  
-opacity:0.5;
-}  
-
-.bridge{  
-margin-top:25px;  
-font-size:14px;  
-opacity:0.7;
-line-height:1.6;
-}  
-
-.sectionTitle{
-margin-top:40px;
-margin-bottom:10px;
-font-size:14px;
-opacity:0.5;
-letter-spacing:1px;
-}
-
-.subcta{  
-display:block;  
-margin-top:12px;  
-padding:14px;  
-border:1px solid #1f2430;  
-color:#e8ecf1;  
-text-decoration:none;  
-opacity:0.85;  
-text-align:left;
-font-size:15px;
-transition:all 0.2s ease;
-}  
-
-.subcta:hover{
-border-color:#6da8ff;
-opacity:1;
-}
-
-/* NAV */
-nav{  
-width:100%;
-display:flex;
-gap:18px;
-padding:14px 16px;
-border-bottom:1px solid #1f2430;
-font-size:14px;
-overflow-x:auto;
-white-space:nowrap;
--webkit-overflow-scrolling:touch;
-}  
-
-nav::-webkit-scrollbar{
-display:none;
-}
-
-nav a{  
-color:#e8ecf1;  
-text-decoration:none;  
-opacity:0.7;
-flex-shrink:0;
-}  
-
-nav a.active{
-color:#6da8ff;
-opacity:1;
-font-weight:600;
-}
-
+nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}  
+nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}  
+nav a.active{color:#6da8ff;opacity:1;font-weight:600;}  
 </style>  
 </head>  
 
 <body>  
 
 <nav>
-
 <a href="index.html" class="en">Main</a>
 <a href="index.html" class="tr" style="display:none;">Ana Sayfa</a>
-
-<a href="research.html" class="en">Research</a>
-<a href="research.html" class="tr" style="display:none;">Araştırma</a>
-
-<a href="lab.html" class="en">Lab</a>
-<a href="lab.html" class="tr" style="display:none;">Laboratuvar</a>
-
-<a href="law.html" class="en">Law</a>
-<a href="law.html" class="tr" style="display:none;">Yasa</a>
-
-<a href="library.html" class="en">Library</a>
-<a href="library.html" class="tr" style="display:none;">Kütüphane</a>
-
-<a href="career.html" class="en">Career</a>
-<a href="career.html" class="tr" style="display:none;">Kariyer</a>
-
 <a href="ma.html" class="en active">Engine</a>
 <a href="ma.html" class="tr active" style="display:none;">Motor</a>
-
 </nav>
 
 <script>
-const lang = localStorage.getItem("lang") || "en";
+if(!localStorage.getItem("lang")){
+  const userLang = navigator.language || navigator.userLanguage;
+  localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
+}
+const lang = localStorage.getItem("lang");
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
@@ -183,120 +54,116 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div class="container">  
 
-<div class="label">ENGINE STATE</div>  
+<div class="label en">ENGINE STATE</div>  
+<div class="label tr" style="display:none;">SİSTEM DURUMU</div>  
 
 <div class="status wait">WAIT</div>  
 
-<div class="desc">  
-System stable.<br>  
-No action required.  
-<div class="framework">  
-Vector – Friction – Time  
-</div>  
-</div>  
+<div class="desc en">
+System stable.<br>No action required.
+<div class="framework">Vector – Friction – Time</div>
+</div>
 
-<div class="bar">  
-<div class="fill"></div>  
-</div>  
+<div class="desc tr" style="display:none;">
+Sistem stabil.<br>Aksiyon gerekmiyor.
+<div class="framework">Vektör – Sürtünme – Zaman</div>
+</div>
 
-<div class="insight" id="insight">  
-Nothing moves without pressure.  
-</div>  
+<div class="bar"><div class="fill"></div></div>  
 
-<!-- 🔥 USER POSITION + PRODUCT DEFINITION -->
+<div class="insight" id="insight">Nothing moves without pressure.</div>  
 
-<div class="bridge">
+<!-- CORE -->
+
+<div class="bridge en">
 This system does not give signals.<br>
 It removes bad decisions.
 </div>
 
-<div class="bridge" style="opacity:0.5;">
-You don’t predict this.<br>
-You align with it.
+<div class="bridge tr" style="display:none;">
+Bu sistem sinyal vermez.<br>
+Yanlış kararları ortadan kaldırır.
 </div>
 
-<!-- 🔥 DECISION FRAME -->
-
-<div class="sectionTitle">
-START WHERE YOU ARE
+<div class="bridge en" style="opacity:0.5;">
+You don’t predict this.<br>You align with it.
 </div>
 
-<div style="width:100%;">
+<div class="bridge tr" style="display:none; opacity:0.5;">
+Bunu tahmin etmezsin.<br>Uyum sağlarsın.
+</div>
+
+<!-- DECISION -->
+
+<div class="sectionTitle en">START WHERE YOU ARE</div>
+<div class="sectionTitle tr" style="display:none;">BULUNDUĞUN YERDEN BAŞLA</div>
+
+<div>
 
 <a class="subcta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
-Research Papers → Understand the structure
+<span class="en">Research Papers → Understand the structure</span>
+<span class="tr" style="display:none;">Research Papers → Yapıyı öğren</span>
 </a>
 
 <a class="subcta" href="https://guvenhalil.gumroad.com/l/yrrrn" target="_blank">
-Research Series → See the full system
+<span class="en">Research Series → Full system</span>
+<span class="tr" style="display:none;">Research Series → Tam yapı</span>
 </a>
 
 <a class="subcta" href="library.html">
-Books → Build theoretical depth
+<span class="en">Books → Theory</span>
+<span class="tr" style="display:none;">Kitaplar → Teori</span>
 </a>
 
 <a class="subcta" href="https://instagram.com/market_alchemy" target="_blank">
-Decision Engine → Daily structural signals
-</a>
-
-<a class="subcta" href="https://instagram.com/market_alchemy" target="_blank">
-Signal Systems → Direct system access
+<span class="en">Decision Engine → Daily signals</span>
+<span class="tr" style="display:none;">Decision Engine → Günlük sinyaller</span>
 </a>
 
 <a class="subcta" href="https://x.com/forex_analiz_" target="_blank">
-Godmode → Execution layer (advanced)
-</a>
-
-<a class="subcta" href="https://x.com/forex_analiz_" target="_blank">
-Consulting → Direct guidance
-</a>
-
-<a class="subcta" href="https://instagram.com/market_alchemy" target="_blank">
-Custom Systems → Build your own system
+<span class="en">Godmode → Advanced execution</span>
+<span class="tr" style="display:none;">Godmode → İleri seviye execution</span>
 </a>
 
 </div>
 
 </div>  
 
-<script>  
+<script>
+const states=[
+{text:"WAIT",class:"wait",descEN:"System stable.<br>No action required.",descTR:"Sistem stabil.<br>Aksiyon gerekmiyor.",friction:25,insightEN:"Nothing moves without pressure.",insightTR:"Hiçbir şey baskı olmadan hareket etmez."},
+{text:"PREPARE",class:"prepare",descEN:"Friction increasing.<br>Monitor closely.",descTR:"Sürtünme artıyor.<br>Dikkatle izle.",friction:60,insightEN:"Compression builds before movement.",insightTR:"Hareketten önce sıkışma oluşur."},
+{text:"ACT",class:"act",descEN:"Conditions aligned.<br>Execute.",descTR:"Koşullar hizalandı.<br>Uygula.",friction:95,insightEN:"Release is inevitable.",insightTR:"Boşalma kaçınılmazdır."}
+];
 
-const states=[  
-{text:"WAIT",class:"wait",desc:"System stable.<br>No action required.",friction:25,insight:"Nothing moves without pressure."},  
-{text:"PREPARE",class:"prepare",desc:"Friction increasing.<br>Monitor closely.",friction:60,insight:"Compression builds before movement."},  
-{text:"ACT",class:"act",desc:"Conditions aligned.<br>Execute.",friction:95,insight:"Release is not optional anymore."}  
-];  
+function getState(){
+const r=Math.random();
+if(r<0.65) return states[0];
+if(r<0.9) return states[1];
+return states[2];
+}
 
-function getState(){  
-const r=Math.random();  
-if(r<0.65) return states[0];  
-if(r<0.9) return states[1];  
-return states[2];  
-}  
+function updateState(){
+const s=getState();
+const status=document.querySelector(".status");
+const desc=document.querySelectorAll(".desc");
+const fill=document.querySelector(".fill");
+const insight=document.getElementById("insight");
 
-function updateState(){  
+status.innerText=s.text;
+status.className="status "+s.class;
 
-const s=getState();  
+desc.forEach(d=>{
+  if(d.classList.contains("en")) d.innerHTML=s.descEN+'<div class="framework">Vector – Friction – Time</div>';
+  if(d.classList.contains("tr")) d.innerHTML=s.descTR+'<div class="framework">Vektör – Sürtünme – Zaman</div>';
+});
 
-const status=document.querySelector(".status");  
-const desc=document.querySelector(".desc");  
-const fill=document.querySelector(".fill");  
-const insight=document.getElementById("insight");  
+fill.style.width=s.friction+"%";
+insight.innerHTML=(lang==="tr"?s.insightTR:s.insightEN);
+}
 
-status.innerText=s.text;  
-status.className="status "+s.class;  
-
-desc.innerHTML=s.desc+'<div class="framework">Vector – Friction – Time</div>';  
-
-fill.style.width=s.friction+"%";  
-
-insight.innerHTML=s.insight;  
-
-}  
-
-updateState();  
-setInterval(updateState,4000);  
-
+updateState();
+setInterval(updateState,4000);
 </script>  
 
 </body>  
