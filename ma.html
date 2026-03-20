@@ -114,6 +114,17 @@ text-decoration:none;
     <a href="ma.html" style="color:#6da8ff; font-weight:bold;">Engine</a>
 </nav>
 
+<!-- LANGUAGE SYSTEM -->
+
+<script>
+const lang = localStorage.getItem("lang") || "en";
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+});
+</script>
+
 <div class="container">
 
 <div class="label">ENGINE STATE</div>
