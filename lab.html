@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab — Market Alchemy</title>
+
+<style>
+
+body{
+margin:0;
+background:#0d0f14;
+color:#e8ecf1;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+.container{
+max-width:720px;
+margin:auto;
+padding:80px 20px;
+}
+
+h1{
+font-size:32px;
+margin-bottom:20px;
+}
+
+.section{
+margin-top:50px;
+}
+
+.big{
+font-size:22px;
+font-weight:600;
+margin-bottom:12px;
+}
+
+.muted{
+opacity:0.6;
+line-height:1.6;
+}
+
+.box{
+margin-top:20px;
+padding:20px;
+border:1px solid #1f2430;
+font-family:monospace;
+font-size:14px;
+opacity:0.85;
+}
+
+hr{
+border:none;
+border-top:1px solid #1f2430;
+margin:50px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav style="display:flex; justify-content:center; gap:20px; padding:20px; border-bottom:1px solid #1f2430; font-size:14px; opacity:0.8;">
+    <a class="en" href="index.html">Main</a>
+    <a class="tr" href="index.html" style="display:none;">Ana Sayfa</a>
+
+    <a class="en" href="research.html">Research</a>
+    <a class="tr" href="research.html" style="display:none;">Araştırma</a>
+
+    <a class="en" href="lab.html" style="color:#6da8ff; font-weight:bold;">Lab</a>
+    <a class="tr" href="lab.html" style="display:none; color:#6da8ff; font-weight:bold;">Laboratuvar</a>
+
+    <a class="en" href="law.html">Law</a>
+    <a class="tr" href="law.html" style="display:none;">Yasa</a>
+
+    <a class="en" href="library.html">Library</a>
+    <a class="tr" href="library.html" style="display:none;">Kütüphane</a>
+
+    <a class="en" href="career.html">Career</a>
+    <a class="tr" href="career.html" style="display:none;">Kariyer</a>
+
+    <a class="en" href="ma.html">Engine</a>
+    <a class="tr" href="ma.html" style="display:none;">Motor</a>
+</nav>
+
+<!-- LANGUAGE SYSTEM -->
+
+<script>
+const lang = localStorage.getItem("lang") || "en";
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+});
+</script>
+
+<div class="container">
+
+<h1 class="en">Lab</h1>
+<h1 class="tr" style="display:none;">Laboratuvar</h1>
+
+<!-- CONTEXT -->
+
+<div class="section">
+<p class="big en">This system does not finish.</p>
+<p class="big tr" style="display:none;">Bu sistem tamamlanmaz.</p>
+
+<p class="muted en">
+Markets are not static.<br>
+Neither is the structure behind them.<br><br>
+
+This is where models evolve under real conditions.
+</p>
+
+<p class="muted tr" style="display:none;">
+Piyasalar statik değildir.<br>
+Arkasındaki yapı da değildir.<br><br>
+
+Burası modellerin gerçek koşullarda evrildiği yerdir.
+</p>
+</div>
+
+<hr>
+
+<!-- SNAPSHOT -->
+
+<div class="section">
+<p class="big en">System Snapshot</p>
+<p class="big tr" style="display:none;">Sistem Kesiti</p>
+
+<div class="box">
+vector: unstable<br>
+friction: increasing<br>
+compression: detected<br>
+bias: directional<br><br>
+
+state: PREPARE
+</div>
+</div>
+
+<hr>
+
+<!-- LIVE SYSTEMS -->
+
+<div class="section">
+<p class="big en">Live Systems</p>
+<p class="big tr" style="display:none;">Canlı Sistemler</p>
+
+<div class="box">
+CRYPTO MARKETS<br>
+compression tracking<br>
+liquidation detection<br>
+multi-asset monitoring
+</div>
+
+<div class="box">
+FOREX<br>
+phase transition tracking<br>
+volatility compression<br>
+directional bias mapping
+</div>
+
+<div class="box">
+COMMODITIES & GOLD<br>
+energy release zones<br>
+structural pressure analysis<br>
+macro-driven flows
+</div>
+
+<div class="box">
+EQUITY INDICES<br>
+liquidity mapping<br>
+systemic stress signals<br>
+trend exhaustion zones
+</div>
+
+</div>
+
+<hr>
+
+<!-- POWER BLOCK -->
+
+<div class="section">
+
+<p class="big en">This is not noise.</p>
+<p class="big tr" style="display:none;">Bu gürültü değil.</p>
+
+<p class="muted en">
+Most people see randomness.<br>
+This is structure under pressure.
+</p>
+
+<p class="muted tr" style="display:none;">
+Çoğu insan rastgelelik görür.<br>
+Bu, basınç altındaki yapıdır.
+</p>
+
+</div>
+
+<hr>
+
+<div class="section">
+
+<p class="big en">Interpretation is not optional.</p>
+<p class="big tr" style="display:none;">Yorum opsiyonel değildir.</p>
+
+<p class="muted en">
+If you can't read structure,<br>
+you become part of it.
+</p>
+
+<p class="muted tr" style="display:none;">
+Yapıyı okuyamıyorsan,<br>
+onun parçası olursun.
+</p>
+
+</div>
+
+<hr>
+
+<!-- ACCESS BARRIER -->
+
+<div class="section">
+
+<p class="big en">Access is restricted.</p>
+<p class="big tr" style="display:none;">Erişim sınırlıdır.</p>
+
+<p class="muted en">
+This system can be observed.<br>
+Usage is not public.<br><br>
+
+Not everyone gets access.
+</p>
+
+<p class="muted tr" style="display:none;">
+Bu sistem gözlemlenebilir.<br>
+Kullanım herkese açık değildir.<br><br>
+
+Erişim herkes için değildir.
+</p>
+
+</div>
+
+</div>
+
+<!-- STRUCTURED DATA -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Halil Ibrahim Guven",
+  "jobTitle": "Independent Researcher",
+  "url": "https://marketalchemy.io",
+  "description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",
+  "knowsAbout": [
+    "Financial Markets",
+    "Thermodynamics",
+    "Systems Theory",
+    "Macroeconomics"
+  ],
+  "publishingPrinciples": "https://marketalchemy.io/law.html"
+}
+</script>
+
+</body>
+</html>
