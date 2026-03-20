@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Career — Market Alchemy</title>
+<title>Selection — Market Alchemy</title>
 
 <style>
 body{
@@ -53,13 +53,26 @@ text-decoration:none;
 <body>
 
 <nav style="display:flex; justify-content:center; gap:20px; padding:20px; border-bottom:1px solid #1f2430; font-size:14px; opacity:0.8;">
-    <a href="index.html">Main</a>
-    <a href="research.html">Research</a>
-    <a href="lab.html">Lab</a>
-    <a href="law.html">Law</a>
-    <a href="library.html">Library</a>
-    <a href="career.html" style="color:#6da8ff; font-weight:bold;">Career</a>
-    <a href="ma.html">Engine</a>
+    <a class="en" href="index.html">Main</a>
+    <a class="tr" href="index.html" style="display:none;">Ana Sayfa</a>
+
+    <a class="en" href="research.html">Research</a>
+    <a class="tr" href="research.html" style="display:none;">Araştırma</a>
+
+    <a class="en" href="lab.html">Lab</a>
+    <a class="tr" href="lab.html" style="display:none;">Lab</a>
+
+    <a class="en" href="law.html">Law</a>
+    <a class="tr" href="law.html" style="display:none;">Yasa</a>
+
+    <a class="en" href="library.html">Library</a>
+    <a class="tr" href="library.html" style="display:none;">Kütüphane</a>
+
+    <a class="en" href="career.html" style="color:#6da8ff; font-weight:bold;">Selection</a>
+    <a class="tr" href="career.html" style="display:none; color:#6da8ff; font-weight:bold;">Seçim</a>
+
+    <a class="en" href="ma.html">Engine</a>
+    <a class="tr" href="ma.html" style="display:none;">Motor</a>
 </nav>
 
 <script>
@@ -72,8 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div class="container">
 
-<h1 class="en">Career</h1>
-<h1 class="tr" style="display:none;">Kariyer</h1>
+<h1 class="en">Selection</h1>
+<h1 class="tr" style="display:none;">Seçim</h1>
 
 <div class="section">
 <p class="big en">This is not a job.</p>
@@ -101,13 +114,17 @@ Rol değil.
 <p class="muted en">
 No CV.<br>
 No process.<br>
-No forms.
+No forms.<br>
+No evaluation.<br>
+There is signal.
 </p>
 
 <p class="muted tr" style="display:none;">
 CV yok.<br>
 Süreç yok.<br>
-Form yok.
+Form yok.<br>
+Değerlendirme yok.<br>
+Sinyal var.
 </p>
 </div>
 
@@ -168,9 +185,19 @@ burada sana göre bir şey yok.
 
 <hr>
 
-<!-- ACTION LAYER (KRİTİK EKLEME) -->
+<!-- ACTION LAYER -->
 
 <div class="section" style="text-align:center;">
+
+<p class="muted en">
+This is not an entry.<br>
+It is a threshold.
+</p>
+
+<p class="muted tr" style="display:none;">
+Bu bir giriş değil.<br>
+Bir eşiktir.
+</p>
 
 <p class="muted en">
 If you reached here,<br>
