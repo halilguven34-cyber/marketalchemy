@@ -74,7 +74,7 @@ transition:width 0.6s ease;
 
 .cta{
 display:inline-block;
-margin-top:30px;
+margin-top:20px;
 padding:12px 20px;
 border:1px solid #6da8ff;
 color:#6da8ff;
@@ -102,8 +102,6 @@ text-decoration:none;
 
 <body>
 
-<!-- NAV -->
-
 <nav>
     <a href="index.html">Main</a>
     <a href="research.html">Research</a>
@@ -114,11 +112,8 @@ text-decoration:none;
     <a href="ma.html" style="color:#6da8ff; font-weight:bold;">Engine</a>
 </nav>
 
-<!-- LANGUAGE SYSTEM -->
-
 <script>
 const lang = localStorage.getItem("lang") || "en";
-
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
   document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
@@ -143,18 +138,14 @@ Vector – Friction – Time
 <div class="fill"></div>
 </div>
 
-<!-- INTERPRETATION -->
-
 <div class="desc" id="insight" style="margin-top:25px; font-size:15px; opacity:0.5;">
 You are seeing states.<br>
 Most traders don’t.
 </div>
 
-<!-- CTA -->
+<!-- DYNAMIC OFFER -->
 
-<a class="cta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
-Learn to read this — $9
-</a>
+<div id="offers"></div>
 
 </div>
 
@@ -205,13 +196,45 @@ insight:"Release is not optional anymore."
 ];
 
 function getState(){
-
 const r=Math.random();
-
 if(r<0.65) return states[0];
 if(r<0.9) return states[1];
 return states[2];
+}
 
+function getOffer(state){
+
+if(state.text==="WAIT"){
+return `
+<p style="opacity:0.6;">You are early.</p>
+<a class="cta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
+Start understanding — $9
+</a>
+`;
+}
+
+if(state.text==="PREPARE"){
+return `
+<p style="opacity:0.6;">You see it forming.</p>
+<a class="cta" href="#">
+Join Signal Engine — $49
+</a>
+`;
+}
+
+if(state.text==="ACT"){
+return `
+<p style="opacity:0.6;">You need precision.</p>
+<a class="cta" href="#">
+Apply for consulting
+</a>
+`;
+}
+
+}
+
+function updateOffer(state){
+document.getElementById("offers").innerHTML = getOffer(state);
 }
 
 function updateState(){
@@ -232,10 +255,11 @@ fill.style.width=s.friction+"%";
 
 insight.innerHTML=s.insight;
 
+updateOffer(s);
+
 }
 
 updateState();
-
 setInterval(updateState,4000);
 
 </script>
