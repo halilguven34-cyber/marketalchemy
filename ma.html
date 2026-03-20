@@ -1,268 +1,272 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Engine — Market Alchemy</title>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>MA Engine — Market Alchemy</title>  
 
-<style>
+<style>  
 
-body{
-margin:0;
-background:#0d0f14;
-color:#e8ecf1;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:flex-start;
-min-height:100vh;
-text-align:center;
-}
+body{  
+margin:0;  
+background:#0d0f14;  
+color:#e8ecf1;  
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;  
+display:flex;  
+flex-direction:column;  
+align-items:center;  
+justify-content:flex-start;  
+min-height:100vh;  
+text-align:center;  
+}  
 
-.container{
-max-width:520px;
-margin-top:80px;
-}
+.container{  
+max-width:520px;  
+margin-top:80px;  
+}  
 
-.label{
-font-size:12px;
-letter-spacing:2px;
-opacity:0.4;
-margin-bottom:10px;
-}
+.label{  
+font-size:12px;  
+letter-spacing:2px;  
+opacity:0.4;  
+margin-bottom:10px;  
+}  
 
-.status{
-font-size:72px;
-font-weight:700;
-margin-bottom:20px;
-transition:all 0.4s ease;
-}
+.status{  
+font-size:72px;  
+font-weight:700;  
+margin-bottom:20px;  
+transition:all 0.4s ease;  
+}  
 
-.wait{ color:#8a93a3; }
-.prepare{ color:#f0c36d; }
-.act{ color:#ff5c5c; }
+.wait{ color:#8a93a3; }  
+.prepare{ color:#f0c36d; }  
+.act{ color:#ff5c5c; }  
 
-.desc{
-opacity:0.7;
-font-size:18px;
-margin-bottom:20px;
-transition:all 0.4s ease;
-}
+.desc{  
+opacity:0.7;  
+font-size:18px;  
+margin-bottom:20px;  
+transition:all 0.4s ease;  
+}  
 
-.framework{
-opacity:0.45;
-font-size:14px;
-margin-top:8px;
-}
+.framework{  
+opacity:0.45;  
+font-size:14px;  
+margin-top:8px;  
+}  
 
-.bar{
-width:100%;
-height:6px;
-background:#1f2430;
-margin-top:20px;
-border-radius:4px;
-overflow:hidden;
-}
+.bar{  
+width:100%;  
+height:6px;  
+background:#1f2430;  
+margin-top:20px;  
+border-radius:4px;  
+overflow:hidden;  
+}  
 
-.fill{
-height:100%;
-width:30%;
-background:#4da3ff;
-transition:width 0.6s ease;
-}
+.fill{  
+height:100%;  
+width:30%;  
+background:#4da3ff;  
+transition:width 0.6s ease;  
+}  
 
-.cta{
-display:inline-block;
-margin-top:20px;
-padding:12px 20px;
-border:1px solid #6da8ff;
-color:#6da8ff;
-text-decoration:none;
-}
+.cta{  
+display:inline-block;  
+margin-top:30px;  
+padding:12px 20px;  
+border:1px solid #6da8ff;  
+color:#6da8ff;  
+text-decoration:none;  
+}  
 
-nav{
-width:100%;
-display:flex;
-justify-content:center;
-gap:20px;
-padding:20px;
-border-bottom:1px solid #1f2430;
-font-size:14px;
-opacity:0.8;
-}
+.subcta{  
+display:block;  
+margin-top:12px;  
+padding:10px 16px;  
+border:1px solid #1f2430;  
+color:#e8ecf1;  
+text-decoration:none;  
+opacity:0.7;  
+}  
 
-nav a{
-color:#e8ecf1;
-text-decoration:none;
-}
+nav{  
+width:100%;  
+display:flex;  
+justify-content:center;  
+gap:20px;  
+padding:20px;  
+border-bottom:1px solid #1f2430;  
+font-size:14px;  
+opacity:0.8;  
+}  
 
-</style>
-</head>
+nav a{  
+color:#e8ecf1;  
+text-decoration:none;  
+}  
 
-<body>
+</style>  
+</head>  
 
-<nav>
-    <a href="index.html">Main</a>
-    <a href="research.html">Research</a>
-    <a href="lab.html">Lab</a>
-    <a href="law.html">Law</a>
-    <a href="library.html">Library</a>
-    <a href="career.html">Career</a>
-    <a href="ma.html" style="color:#6da8ff; font-weight:bold;">Engine</a>
-</nav>
+<body>  
 
-<script>
-const lang = localStorage.getItem("lang") || "en";
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
-});
-</script>
+<nav>  
+<a href="index.html">Main</a>  
+<a href="research.html">Research</a>  
+<a href="lab.html">Lab</a>  
+<a href="law.html">Law</a>  
+<a href="library.html">Library</a>  
+<a href="career.html">Career</a>  
+<a href="ma.html" style="color:#6da8ff; font-weight:bold;">Engine</a>  
+</nav>  
 
-<div class="container">
+<script>  
+const lang = localStorage.getItem("lang") || "en";  
 
-<div class="label">ENGINE STATE</div>
+document.addEventListener("DOMContentLoaded", () => {  
+document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));  
+document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));  
+});  
+</script>  
 
-<div class="status wait">WAIT</div>
+<div class="container">  
 
-<div class="desc">
-System stable.<br>
-No action required.
-<div class="framework">
-Vector – Friction – Time
-</div>
-</div>
+<div class="label">ENGINE STATE</div>  
 
-<div class="bar">
-<div class="fill"></div>
-</div>
+<div class="status wait">WAIT</div>  
 
-<div class="desc" id="insight" style="margin-top:25px; font-size:15px; opacity:0.5;">
-You are seeing states.<br>
-Most traders don’t.
-</div>
+<div class="desc">  
+System stable.<br>  
+No action required.  
+<div class="framework">  
+Vector – Friction – Time  
+</div>  
+</div>  
 
-<!-- DYNAMIC OFFER -->
+<div class="bar">  
+<div class="fill"></div>  
+</div>  
 
-<div id="offers"></div>
+<div class="desc" id="insight" style="margin-top:25px; font-size:15px; opacity:0.5;">  
+You are seeing states.<br>  
+Most traders don’t.  
+</div>  
 
-</div>
+<!-- CTA (ORİJİNAL) -->
 
-<!-- STRUCTURED DATA -->
+<a class="cta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">  
+Learn to read this — $9  
+</a>  
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Halil Ibrahim Guven",
-  "jobTitle": "Independent Researcher",
-  "url": "https://marketalchemy.io",
-  "description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",
-  "knowsAbout": [
-    "Financial Markets",
-    "Thermodynamics",
-    "Systems Theory",
-    "Macroeconomics"
-  ],
-  "publishingPrinciples": "https://marketalchemy.io/law.html"
-}
-</script>
+<!-- 🔥 EKLENEN KATMAN -->
 
-<script>
+<div style="margin-top:30px;">
 
-const states=[
-{
-text:"WAIT",
-class:"wait",
-desc:"System stable.<br>No action required.",
-friction:25,
-insight:"Nothing moves without pressure."
-},
-{
-text:"PREPARE",
-class:"prepare",
-desc:"Friction increasing.<br>Monitor closely.",
-friction:60,
-insight:"Compression builds before movement."
-},
-{
-text:"ACT",
-class:"act",
-desc:"Conditions aligned.<br>Execute.",
-friction:95,
-insight:"Release is not optional anymore."
-}
-];
-
-function getState(){
-const r=Math.random();
-if(r<0.65) return states[0];
-if(r<0.9) return states[1];
-return states[2];
-}
-
-function getOffer(state){
-
-if(state.text==="WAIT"){
-return `
-<p style="opacity:0.6;">You are early.</p>
-<a class="cta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
-Start understanding — $9
+<a class="subcta" href="mailto:halilguven34@gmail.com?subject=MA Consulting">
+Danışmanlık al
 </a>
-`;
-}
 
-if(state.text==="PREPARE"){
-return `
-<p style="opacity:0.6;">You see it forming.</p>
-<a class="cta" href="#">
-Join Signal Engine — $49
+<a class="subcta" href="lab.html">
+MA Lab karar destek sistemleri üyeliği
 </a>
-`;
-}
 
-if(state.text==="ACT"){
-return `
-<p style="opacity:0.6;">You need precision.</p>
-<a class="cta" href="#">
-Apply for consulting
+<a class="subcta" href="research.html">
+MA Research satın al
 </a>
-`;
-}
 
-}
+<a class="subcta" href="library.html">
+MA kitaplığına git, kitap al
+</a>
 
-function updateOffer(state){
-document.getElementById("offers").innerHTML = getOffer(state);
-}
+<a class="subcta" href="#">
+Telegram Signal üyeliği
+</a>
 
-function updateState(){
+<a class="subcta" href="mailto:halilguven34@gmail.com?subject=Custom Decision Systems">
+Kişiye özel karar destek çözümleri
+</a>
 
-const s=getState();
+</div>
 
-const status=document.querySelector(".status");
-const desc=document.querySelector(".desc");
-const fill=document.querySelector(".fill");
-const insight=document.getElementById("insight");
+</div>  
 
-status.innerText=s.text;
-status.className="status "+s.class;
+<script type="application/ld+json">  
+{  
+"@context": "https://schema.org",  
+"@type": "Person",  
+"name": "Halil Ibrahim Guven",  
+"jobTitle": "Independent Researcher",  
+"url": "https://marketalchemy.io",  
+"description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",  
+"knowsAbout": [  
+"Financial Markets",  
+"Thermodynamics",  
+"Systems Theory",  
+"Macroeconomics"  
+],  
+"publishingPrinciples": "https://marketalchemy.io/law.html"  
+}  
+</script>  
 
-desc.innerHTML=s.desc+'<div class="framework">Vector – Friction – Time</div>';
+<script>  
 
-fill.style.width=s.friction+"%";
+const states=[  
+{  
+text:"WAIT",  
+class:"wait",  
+desc:"System stable.<br>No action required.",  
+friction:25,  
+insight:"Nothing moves without pressure."  
+},  
+{  
+text:"PREPARE",  
+class:"prepare",  
+desc:"Friction increasing.<br>Monitor closely.",  
+friction:60,  
+insight:"Compression builds before movement."  
+},  
+{  
+text:"ACT",  
+class:"act",  
+desc:"Conditions aligned.<br>Execute.",  
+friction:95,  
+insight:"Release is not optional anymore."  
+}  
+];  
 
-insight.innerHTML=s.insight;
+function getState(){  
+const r=Math.random();  
+if(r<0.65) return states[0];  
+if(r<0.9) return states[1];  
+return states[2];  
+}  
 
-updateOffer(s);
+function updateState(){  
 
-}
+const s=getState();  
 
-updateState();
-setInterval(updateState,4000);
+const status=document.querySelector(".status");  
+const desc=document.querySelector(".desc");  
+const fill=document.querySelector(".fill");  
+const insight=document.getElementById("insight");  
 
-</script>
+status.innerText=s.text;  
+status.className="status "+s.class;  
 
-</body>
+desc.innerHTML=s.desc+'<div class="framework">Vector – Friction – Time</div>';  
+
+fill.style.width=s.friction+"%";  
+
+insight.innerHTML=s.insight;  
+
+}  
+
+updateState();  
+setInterval(updateState,4000);  
+
+</script>  
+
+</body>  
 </html>
