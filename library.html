@@ -82,14 +82,6 @@ text-decoration:none;
 margin-right:12px;
 font-size:14px;
 }
-
-.lang-toggle{
-position:fixed;
-top:20px;
-right:20px;
-cursor:pointer;
-opacity:.7;
-}
 </style>
 
 </head>
@@ -105,9 +97,19 @@ opacity:.7;
     <a href="law.html" style="color:#e8ecf1; text-decoration:none;">Law</a>
     <a href="library.html" style="color:#6da8ff; font-weight:bold; text-decoration:none;">Library</a>
     <a href="career.html" style="color:#e8ecf1; text-decoration:none;">Career</a>
+    <a href="ma.html" style="color:#e8ecf1; text-decoration:none;">Engine</a>
 </nav>
 
-<div class="lang-toggle" onclick="toggleLang()">TR</div>
+<!-- LANGUAGE SYSTEM -->
+
+<script>
+const lang = localStorage.getItem("lang") || "en";
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+});
+</script>
 
 <div class="container">
 
@@ -245,24 +247,6 @@ START HERE — $9
     "Macroeconomics"
   ],
   "publishingPrinciples": "https://marketalchemy.io/law.html"
-}
-</script>
-
-<script>
-function toggleLang(){
-const en=document.querySelectorAll(".en")
-const tr=document.querySelectorAll(".tr")
-const toggle=document.querySelector(".lang-toggle")
-
-if(en[0].style.display==="none"){
-en.forEach(e=>e.style.display="block")
-tr.forEach(e=>e.style.display="none")
-toggle.innerText="TR"
-}else{
-en.forEach(e=>e.style.display="none")
-tr.forEach(e=>e.style.display="block")
-toggle.innerText="EN"
-}
 }
 </script>
 
