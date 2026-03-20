@@ -73,35 +73,65 @@ text-decoration:none;
 margin-right:12px;
 font-size:14px;
 }
+
+/* ✅ NEW NAVBAR */
+nav{
+width:100%;
+display:flex;
+gap:18px;
+padding:14px 16px;
+border-bottom:1px solid #1f2430;
+font-size:14px;
+overflow-x:auto;
+white-space:nowrap;
+-webkit-overflow-scrolling:touch;
+}
+
+nav::-webkit-scrollbar{
+display:none;
+}
+
+nav a{
+color:#e8ecf1;
+text-decoration:none;
+opacity:0.7;
+flex-shrink:0;
+}
+
+nav a.active{
+color:#6da8ff;
+opacity:1;
+font-weight:600;
+}
 </style>
 
 </head>
 
 <body>
 
-<!-- NAV -->
+<nav>
 
-<nav style="display:flex; justify-content:center; gap:20px; padding:20px; border-bottom:1px solid #1f2430; font-size:14px; opacity:0.8;">
-    <a class="en" href="index.html">Main</a>
-    <a class="tr" href="index.html" style="display:none;">Ana Sayfa</a>
+<a href="index.html" class="en">Main</a>
+<a href="index.html" class="tr" style="display:none;">Ana Sayfa</a>
 
-    <a class="en" href="research.html">Research</a>
-    <a class="tr" href="research.html" style="display:none;">Araştırma</a>
+<a href="research.html" class="en">Research</a>
+<a href="research.html" class="tr" style="display:none;">Araştırma</a>
 
-    <a class="en" href="lab.html">Lab</a>
-    <a class="tr" href="lab.html" style="display:none;">Lab</a>
+<a href="lab.html" class="en">Lab</a>
+<a href="lab.html" class="tr" style="display:none;">Laboratuvar</a>
 
-    <a class="en" href="law.html">Law</a>
-    <a class="tr" href="law.html" style="display:none;">Yasa</a>
+<a href="law.html" class="en">Law</a>
+<a href="law.html" class="tr" style="display:none;">Yasa</a>
 
-    <a class="en" href="library.html" style="color:#6da8ff; font-weight:bold;">Library</a>
-    <a class="tr" href="library.html" style="display:none; color:#6da8ff; font-weight:bold;">Kütüphane</a>
+<a href="library.html" class="en active">Library</a>
+<a href="library.html" class="tr active" style="display:none;">Kütüphane</a>
 
-    <a class="en" href="career.html">Career</a>
-    <a class="tr" href="career.html" style="display:none;">Kariyer</a>
+<a href="career.html" class="en">Career</a>
+<a href="career.html" class="tr" style="display:none;">Kariyer</a>
 
-    <a class="en" href="ma.html">Engine</a>
-    <a class="tr" href="ma.html" style="display:none;">Motor</a>
+<a href="ma.html" class="en">Engine</a>
+<a href="ma.html" class="tr" style="display:none;">Motor</a>
+
 </nav>
 
 <!-- LANGUAGE SYSTEM -->
@@ -128,8 +158,6 @@ Published and ongoing works.
 Yayınlanmış ve üzerine çalışılan eserler.
 </p>
 
-<!-- IDENTITY -->
-
 <div class="section">
 
 <p class="muted en">
@@ -143,8 +171,6 @@ Farklı formlarda yapısal temsillerdir.
 </p>
 
 </div>
-
-<!-- PUBLISHED -->
 
 <div class="section">
 
@@ -184,8 +210,6 @@ Farklı formlarda yapısal temsillerdir.
 
 </div>
 
-<!-- IN PROGRESS -->
-
 <div class="section">
 
 <p class="big en">In Progress</p>
@@ -204,8 +228,6 @@ Farklı formlarda yapısal temsillerdir.
 </div>
 
 </div>
-
-<!-- STRUCTURED DATA -->
 
 <script type="application/ld+json">
 {
