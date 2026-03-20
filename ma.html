@@ -13,14 +13,16 @@ background:#0d0f14;
 color:#e8ecf1;
 font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 display:flex;
+flex-direction:column;
 align-items:center;
-justify-content:center;
-height:100vh;
+justify-content:flex-start;
+min-height:100vh;
 text-align:center;
 }
 
 .container{
 max-width:520px;
+margin-top:80px;
 }
 
 .label{
@@ -79,22 +81,38 @@ color:#6da8ff;
 text-decoration:none;
 }
 
-.nav{
-margin-top:40px;
+nav{
+width:100%;
+display:flex;
+justify-content:center;
+gap:20px;
+padding:20px;
+border-bottom:1px solid #1f2430;
 font-size:14px;
-opacity:0.4;
+opacity:0.8;
 }
 
-.nav a{
-color:#4da3ff;
+nav a{
+color:#e8ecf1;
 text-decoration:none;
-margin:0 10px;
 }
 
 </style>
 </head>
 
 <body>
+
+<!-- NAV -->
+
+<nav>
+    <a href="index.html">Main</a>
+    <a href="research.html">Research</a>
+    <a href="lab.html">Lab</a>
+    <a href="law.html">Law</a>
+    <a href="library.html">Library</a>
+    <a href="career.html">Career</a>
+    <a href="ma.html" style="color:#6da8ff; font-weight:bold;">Engine</a>
+</nav>
 
 <div class="container">
 
@@ -114,29 +132,40 @@ Vector – Friction – Time
 <div class="fill"></div>
 </div>
 
-<!-- 🔥 INTERPRETATION -->
+<!-- INTERPRETATION -->
 
 <div class="desc" id="insight" style="margin-top:25px; font-size:15px; opacity:0.5;">
 You are seeing states.<br>
 Most traders don’t.
 </div>
 
-<!-- 🔁 CTA -->
+<!-- CTA -->
 
 <a class="cta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
 Learn to read this — $9
 </a>
 
-<div class="nav">
-<a href="index.html">Home</a>
-<a href="manifesto.html">MA Law</a>
-<a href="library.html">Library</a>
-<a href="papers.html">Papers</a>
-<a href="lab.html">Lab</a>
-<a href="carrier.html">Carrier</a>
 </div>
 
-</div>
+<!-- STRUCTURED DATA -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Halil Ibrahim Guven",
+  "jobTitle": "Independent Researcher",
+  "url": "https://marketalchemy.io",
+  "description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",
+  "knowsAbout": [
+    "Financial Markets",
+    "Thermodynamics",
+    "Systems Theory",
+    "Macroeconomics"
+  ],
+  "publishingPrinciples": "https://marketalchemy.io/law.html"
+}
+</script>
 
 <script>
 
