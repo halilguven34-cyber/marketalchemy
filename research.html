@@ -28,6 +28,7 @@ margin-bottom:10px;
 .subtitle{
 opacity:0.6;
 margin-bottom:40px;
+line-height:1.6;
 }
 
 .section{
@@ -72,15 +73,6 @@ text-decoration:none;
 
 a:hover{
 opacity:0.75;
-}
-
-.cta{
-display:inline-block;
-margin-top:20px;
-padding:12px 20px;
-border:1px solid #6da8ff;
-color:#6da8ff;
-text-decoration:none;
 }
 
 hr{
@@ -140,8 +132,8 @@ text-decoration:none;
 const lang = localStorage.getItem("lang") || "en";
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"inline":"none"));
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"inline":"none"));
+  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 });
 </script>
 
@@ -151,11 +143,23 @@ document.addEventListener("DOMContentLoaded", () => {
 <h1 class="tr" style="display:none;">Araştırma</h1>
 
 <p class="subtitle en">
-This is the theoretical layer behind Market Alchemy.
+This is the theoretical layer of Market Alchemy.<br><br>
+
+What you find here belongs to the carrier of MA Law:<br>
+Internationally published papers.<br><br>
+
+Research reports (built on 17 years of observation, explained through mathematics and physics) are offered as paid access for sustainability.<br>
+You can contribute to the development of the research.
 </p>
 
 <p class="subtitle tr" style="display:none;">
-Bu, Market Alchemy’nin teorik katmanıdır.
+Bu, Market Alchemy’nin teorik katmanıdır.<br><br>
+
+Burada bulacaklarınız, MA yasasının taşıyıcısına aittir:<br>
+Uluslararası yayınlanmış makaleler.<br><br>
+
+Araştırma raporları (17 yıllık gözlem sonucu, matematiksel ve fiziksel açıklamaya tabi) sürdürülebilirlik için ücretli olarak sunulmaktadır.<br>
+Araştırmayı geliştirmeye katkıda bulunabilirsiniz.
 </p>
 
 <!-- CONTEXT -->
@@ -289,28 +293,17 @@ Price-based macroeconomic analysis — March 2026
 
 <hr>
 
-<!-- RETURN FLOW -->
+<div class="section en muted">
+Observe structure.<br>
+Not price.
+</div>
 
+<div class="section tr muted" style="display:none;">
+Yapıyı gözlemle.<br>
+Fiyatı değil.
+</div>
 
-<!-- STRUCTURED DATA -->
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Halil Ibrahim Guven",
-  "jobTitle": "Independent Researcher",
-  "url": "https://marketalchemy.io",
-  "description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",
-  "knowsAbout": [
-    "Financial Markets",
-    "Thermodynamics",
-    "Systems Theory",
-    "Macroeconomics"
-  ],
-  "publishingPrinciples": "https://marketalchemy.io/law.html"
-}
-</script>
+</div>
 
 </body>
 </html>
