@@ -34,7 +34,7 @@ margin-bottom:10px;
 }  
 
 .status{  
-font-size:72px;  
+font-size:64px;  
 font-weight:700;  
 margin-bottom:20px;  
 transition:all 0.4s ease;  
@@ -76,23 +76,28 @@ transition:width 0.6s ease;
 .subcta{  
 display:block;  
 margin-top:12px;  
-padding:12px 16px;  
+padding:14px;  
 border:1px solid #1f2430;  
 color:#e8ecf1;  
 text-decoration:none;  
-opacity:0.75;  
-text-align:left;  
+opacity:0.8;  
+text-align:left;
+font-size:15px;
 }  
+
+.subcta:hover{
+border-color:#6da8ff;
+}
 
 nav{  
 width:100%;  
 display:flex;  
 justify-content:center;  
-gap:12px;  
-padding:14px;  
+gap:14px;  
+padding:16px;  
 border-bottom:1px solid #1f2430;  
 font-size:13px;  
-flex-wrap:wrap;  
+flex-wrap:wrap;
 }  
 
 nav a{  
@@ -105,41 +110,15 @@ text-decoration:none;
 
 <body>  
 
-<!-- NAV (DUAL LANGUAGE) -->
-
 <nav>  
-<a class="en" href="index.html">Main</a>  
-<a class="tr" href="index.html" style="display:none;">Ana Sayfa</a>  
-
-<a class="en" href="research.html">Research</a>  
-<a class="tr" href="research.html" style="display:none;">Araştırma</a>  
-
-<a class="en" href="lab.html">Lab</a>  
-<a class="tr" href="lab.html" style="display:none;">Lab</a>  
-
-<a class="en" href="law.html">Law</a>  
-<a class="tr" href="law.html" style="display:none;">Yasa</a>  
-
-<a class="en" href="library.html">Library</a>  
-<a class="tr" href="library.html" style="display:none;">Kütüphane</a>  
-
-<a class="en" href="career.html">Career</a>  
-<a class="tr" href="career.html" style="display:none;">Kariyer</a>  
-
-<a class="en" href="ma.html" style="color:#6da8ff; font-weight:bold;">Engine</a>  
-<a class="tr" href="ma.html" style="display:none; color:#6da8ff; font-weight:bold;">Motor</a>  
+<a href="index.html">Ana Sayfa</a>  
+<a href="research.html">Araştırma</a>  
+<a href="lab.html">Lab</a>  
+<a href="law.html">Yasa</a>  
+<a href="library.html">Kütüphane</a>  
+<a href="career.html">Kariyer</a>  
+<a href="ma.html" style="color:#6da8ff; font-weight:bold;">Engine</a>  
 </nav>  
-
-<!-- LANGUAGE -->
-
-<script>  
-const lang = localStorage.getItem("lang") || "en";  
-
-document.addEventListener("DOMContentLoaded", () => {  
-document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));  
-document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));  
-});  
-</script>  
 
 <div class="container">  
 
@@ -160,80 +139,55 @@ Vector – Friction – Time
 </div>  
 
 <div class="desc" id="insight" style="margin-top:25px; font-size:15px; opacity:0.5;">  
-You are seeing states.<br>  
-Most traders don’t.  
+Nothing moves without pressure.  
 </div>  
 
-<!-- ÜRÜN KATMANI -->
+<!-- 🔥 ÜRÜN KATMANI -->
 
-<div style="margin-top:30px;">
+<div style="margin-top:40px; width:100%;">
 
-<a class="subcta" href="https://guvenhalil.gumroad.com" target="_blank">
-Research papers — ARGE desteği ver ve yapıyı öğren
+<a class="subcta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
+Research Papers → Yapıyı öğren & ARGE desteği ver
 </a>
 
-<a class="subcta" href="https://x.com/forex_analiz_" target="_blank">
-Bot / Signal / Godmode — erişim için X üzerinden yaz
+<a class="subcta" href="https://guvenhalil.gumroad.com/l/yrrrn" target="_blank">
+Research Series → Derinleş (Full yapı)
 </a>
 
 <a class="subcta" href="library.html">
-Kitaplar — kütüphaneye git
-</a>
-
-<a class="subcta" href="https://x.com/forex_analiz_" target="_blank">
-Danışmanlık — X üzerinden yaz
+Kitaplar → Teorik altyapıya git
 </a>
 
 <a class="subcta" href="https://instagram.com/market_alchemy" target="_blank">
-Özel bot / dijital çözüm — Instagram üzerinden talep et
+Signal Systems → Bot erişimi için yaz
+</a>
+
+<a class="subcta" href="https://instagram.com/market_alchemy" target="_blank">
+Decision Engine → Günlük yapı sinyalleri
+</a>
+
+<a class="subcta" href="https://x.com/forex_analiz_" target="_blank">
+Godmode → Sniper seviyesinde execution
+</a>
+
+<a class="subcta" href="https://x.com/forex_analiz_" target="_blank">
+Danışmanlık → Direkt rehberlik al
+</a>
+
+<a class="subcta" href="https://instagram.com/market_alchemy" target="_blank">
+Custom Systems → Kendine özel sistem talep et
 </a>
 
 </div>
 
 </div>  
 
-<script type="application/ld+json">  
-{  
-"@context": "https://schema.org",  
-"@type": "Person",  
-"name": "Halil Ibrahim Guven",  
-"jobTitle": "Independent Researcher",  
-"url": "https://marketalchemy.io",  
-"description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",  
-"knowsAbout": [  
-"Financial Markets",  
-"Thermodynamics",  
-"Systems Theory",  
-"Macroeconomics"  
-],  
-"publishingPrinciples": "https://marketalchemy.io/law.html"  
-}  
-</script>  
-
 <script>  
 
 const states=[  
-{  
-text:"WAIT",  
-class:"wait",  
-desc:"System stable.<br>No action required.",  
-friction:25,  
-insight:"Nothing moves without pressure."  
-},  
-{  
-text:"PREPARE",  
-class:"prepare",  
-desc:"Friction increasing.<br>Monitor closely.",  
-friction:60,  
-insight:"Compression builds before movement."  
-},  
-{  
-text:"ACT",  
-class:"act",  
-desc:"Conditions aligned.<br>Execute.",  
-friction:95,  
-insight:"Release is not optional anymore."  
-}  
+{text:"WAIT",class:"wait",desc:"System stable.<br>No action required.",friction:25,insight:"Nothing moves without pressure."},  
+{text:"PREPARE",class:"prepare",desc:"Friction increasing.<br>Monitor closely.",friction:60,insight:"Compression builds before movement."},  
+{text:"ACT",class:"act",desc:"Conditions aligned.<br>Execute.",friction:95,insight:"Release is not optional anymore."}  
 ];  
 
 function getState(){  
