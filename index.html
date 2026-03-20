@@ -65,16 +65,6 @@ margin-bottom:16px;
 opacity:0.6;
 }
 
-.nav{
-margin-top:60px;
-}
-
-.nav a{
-color:#6da8ff;
-text-decoration:none;
-margin-right:20px;
-}
-
 hr{
 border:none;
 border-top:1px solid #1f2430;
@@ -93,6 +83,16 @@ cursor:pointer;
 
 <body>
 
+<!-- NAV -->
+
+<nav style="display:flex; justify-content:center; gap:20px; padding:20px; border-bottom:1px solid #1f2430; font-size:14px; opacity:0.8;">
+    <a href="index.html" style="color:#6da8ff; font-weight:bold; text-decoration:none;">Main</a>
+    <a href="research.html" style="color:#e8ecf1; text-decoration:none;">Research</a>
+    <a href="lab.html" style="color:#e8ecf1; text-decoration:none;">Lab</a>
+    <a href="law.html" style="color:#e8ecf1; text-decoration:none;">Law</a>
+    <a href="career.html" style="color:#e8ecf1; text-decoration:none;">Career</a>
+</nav>
+
 <div class="lang" onclick="toggleLang()">TR</div>
 
 <div class="container">
@@ -102,7 +102,7 @@ cursor:pointer;
 <p class="subtitle en">Vector — Friction — Time</p>
 <p class="subtitle tr" style="display:none;">Vektör — Sürtünme — Zaman</p>
 
-<!-- 🔥 HERO -->
+<!-- HERO -->
 
 <div class="hero en">
 <h2>Markets are not random.<br>They are forced.</h2>
@@ -130,7 +130,7 @@ BURADAN BAŞLA — $9
 </a>
 </div>
 
-<!-- 🔥 PROBLEM -->
+<!-- PROBLEM -->
 
 <div class="section en">
 <p class="big">You are reading price.<br>You should be reading pressure.</p>
@@ -152,7 +152,7 @@ Pozisyonlar zorla kapatıldığı için hareket eder.
 </p>
 </div>
 
-<!-- 🔥 STRUCTURE VISUAL (EKLENDİ) -->
+<!-- STRUCTURE -->
 
 <div class="section en">
 <p class="big">Structure is layered.</p>
@@ -184,7 +184,7 @@ Yapıyı görüyorsun.
 </p>
 </div>
 
-<!-- 🔥 WHAT YOU GET -->
+<!-- WHAT YOU GET -->
 
 <div class="section en">
 <p class="big">What you will understand</p>
@@ -208,7 +208,7 @@ Yapıyı görüyorsun.
 </p>
 </div>
 
-<!-- 🔁 CTA -->
+<!-- CTA -->
 
 <div class="section" style="text-align:center;">
 <a class="cta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
@@ -242,17 +242,6 @@ Paket — Yapısal Piyasa Dinamikleri ($19)
 
 <hr>
 
-<div class="nav">
-<a href="ma.html">Engine</a>
-<a href="manifesto.html">MA Law</a>
-<a href="library.html">Library</a>
-<a href="papers.html">Papers</a>
-<a href="lab.html">Lab</a>
-<a href="carrier.html">Carrier</a>
-</div>
-
-<hr>
-
 <div class="section en muted">
 Observe pressure.<br>
 Eliminate noise.<br>
@@ -266,6 +255,26 @@ Bekle.
 </div>
 
 </div>
+
+<!-- STRUCTURED DATA -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Halil Ibrahim Guven",
+  "jobTitle": "Independent Researcher",
+  "url": "https://marketalchemy.io",
+  "description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",
+  "knowsAbout": [
+    "Financial Markets",
+    "Thermodynamics",
+    "Systems Theory",
+    "Macroeconomics"
+  ],
+  "publishingPrinciples": "https://marketalchemy.io/law.html"
+}
+</script>
 
 <script>
 function toggleLang(){
