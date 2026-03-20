@@ -70,14 +70,6 @@ border:none;
 border-top:1px solid #1f2430;
 margin:60px 0;
 }
-
-.lang{
-position:fixed;
-top:20px;
-right:20px;
-opacity:0.6;
-cursor:pointer;
-}
 </style>
 </head>
 
@@ -86,14 +78,25 @@ cursor:pointer;
 <!-- NAV -->
 
 <nav style="display:flex; justify-content:center; gap:20px; padding:20px; border-bottom:1px solid #1f2430; font-size:14px; opacity:0.8;">
-    <a href="index.html" style="color:#6da8ff; font-weight:bold; text-decoration:none;">Main</a>
+    <a href="home.html" style="color:#6da8ff; font-weight:bold; text-decoration:none;">Main</a>
     <a href="research.html" style="color:#e8ecf1; text-decoration:none;">Research</a>
     <a href="lab.html" style="color:#e8ecf1; text-decoration:none;">Lab</a>
     <a href="law.html" style="color:#e8ecf1; text-decoration:none;">Law</a>
+    <a href="library.html" style="color:#e8ecf1; text-decoration:none;">Library</a>
     <a href="career.html" style="color:#e8ecf1; text-decoration:none;">Career</a>
+    <a href="ma.html" style="color:#e8ecf1; text-decoration:none;">Engine</a>
 </nav>
 
-<div class="lang" onclick="toggleLang()">TR</div>
+<!-- LANGUAGE SYSTEM -->
+
+<script>
+const lang = localStorage.getItem("lang") || "en";
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+});
+</script>
 
 <div class="container">
 
@@ -273,24 +276,6 @@ Bekle.
     "Macroeconomics"
   ],
   "publishingPrinciples": "https://marketalchemy.io/law.html"
-}
-</script>
-
-<script>
-function toggleLang(){
-const en=document.querySelectorAll(".en");
-const tr=document.querySelectorAll(".tr");
-const btn=document.querySelector(".lang");
-
-if(en[0].style.display==="none"){
-en.forEach(e=>e.style.display="block");
-tr.forEach(e=>e.style.display="none");
-btn.innerText="TR";
-}else{
-en.forEach(e=>e.style.display="none");
-tr.forEach(e=>e.style.display="block");
-btn.innerText="EN";
-}
 }
 </script>
 
