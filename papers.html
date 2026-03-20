@@ -97,10 +97,37 @@ border-top:1px solid #1f2430;
 margin:50px 0;
 }
 
+nav{
+display:flex;
+justify-content:center;
+gap:20px;
+padding:20px;
+border-bottom:1px solid #1f2430;
+font-size:14px;
+opacity:0.8;
+}
+
+nav a{
+color:#e8ecf1;
+text-decoration:none;
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- NAV -->
+
+<nav>
+    <a href="index.html">Main</a>
+    <a href="research.html" style="color:#6da8ff; font-weight:bold;">Research</a>
+    <a href="lab.html">Lab</a>
+    <a href="law.html">Law</a>
+    <a href="library.html">Library</a>
+    <a href="career.html">Career</a>
+    <a href="ma.html">Engine</a>
+</nav>
 
 <div class="lang-toggle" onclick="toggleLang()">TR</div>
 
@@ -117,7 +144,7 @@ This is the theoretical layer behind Market Alchemy.
 Bu, Market Alchemy’nin teorik katmanıdır.
 </p>
 
-<!-- 🔥 CONTEXT -->
+<!-- CONTEXT -->
 
 <div class="section">
 
@@ -248,7 +275,7 @@ Price-based macroeconomic analysis — March 2026
 
 <hr>
 
-<!-- 🔁 RETURN FLOW -->
+<!-- RETURN FLOW -->
 
 <div class="section" style="text-align:center;">
 
@@ -267,6 +294,26 @@ START HERE — $9
 </div>
 
 </div>
+
+<!-- STRUCTURED DATA -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Halil Ibrahim Guven",
+  "jobTitle": "Independent Researcher",
+  "url": "https://marketalchemy.io",
+  "description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",
+  "knowsAbout": [
+    "Financial Markets",
+    "Thermodynamics",
+    "Systems Theory",
+    "Macroeconomics"
+  ],
+  "publishingPrinciples": "https://marketalchemy.io/law.html"
+}
+</script>
 
 <script>
 function toggleLang(){
