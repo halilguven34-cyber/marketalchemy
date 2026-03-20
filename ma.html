@@ -1,254 +1,272 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Engine — Market Alchemy</title>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>MA Engine — Market Alchemy</title>  
 
-<style>
+<style>  
 
-body{
-margin:0;
-background:#0d0f14;
-color:#e8ecf1;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-display:flex;
-flex-direction:column;
-align-items:center;
-min-height:100vh;
-text-align:center;
-}
+body{  
+margin:0;  
+background:#0d0f14;  
+color:#e8ecf1;  
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;  
+display:flex;  
+flex-direction:column;  
+align-items:center;  
+justify-content:flex-start;  
+min-height:100vh;  
+text-align:center;  
+}  
 
-.container{
-max-width:520px;
-margin-top:80px;
+.container{  
+max-width:520px;  
+margin-top:80px;  
 padding:0 16px;
-}
+}  
 
-.label{
-font-size:12px;
-letter-spacing:2px;
-opacity:0.4;
-margin-bottom:10px;
-}
+.label{  
+font-size:12px;  
+letter-spacing:2px;  
+opacity:0.4;  
+margin-bottom:10px;  
+}  
 
-.status{
-font-size:64px;
-font-weight:700;
-margin-bottom:20px;
-}
+.status{  
+font-size:72px;  
+font-weight:700;  
+margin-bottom:20px;  
+transition:all 0.4s ease;  
+}  
 
-.wait{ color:#8a93a3; }
-.prepare{ color:#f0c36d; }
-.act{ color:#ff5c5c; }
+.wait{ color:#8a93a3; }  
+.prepare{ color:#f0c36d; }  
+.act{ color:#ff5c5c; }  
 
-.desc{
-opacity:0.7;
-font-size:18px;
-margin-bottom:20px;
-}
+.desc{  
+opacity:0.7;  
+font-size:18px;  
+margin-bottom:20px;  
+transition:all 0.4s ease;  
+}  
 
-.framework{
-opacity:0.45;
-font-size:14px;
-margin-top:8px;
-}
+.framework{  
+opacity:0.45;  
+font-size:14px;  
+margin-top:8px;  
+}  
 
-.bar{
-width:100%;
-height:6px;
-background:#1f2430;
-margin-top:20px;
-border-radius:4px;
-overflow:hidden;
-}
+.bar{  
+width:100%;  
+height:6px;  
+background:#1f2430;  
+margin-top:20px;  
+border-radius:4px;  
+overflow:hidden;  
+}  
 
-.fill{
-height:100%;
-width:30%;
-background:#4da3ff;
-}
+.fill{  
+height:100%;  
+width:30%;  
+background:#4da3ff;  
+transition:width 0.6s ease;  
+}  
 
-.cta{
-display:inline-block;
-margin-top:30px;
-padding:14px 24px;
-border:1px solid #6da8ff;
-color:#6da8ff;
-text-decoration:none;
-}
+.subcta{  
+display:block;  
+margin-top:12px;  
+padding:12px 16px;  
+border:1px solid #1f2430;  
+color:#e8ecf1;  
+text-decoration:none;  
+opacity:0.75;  
+text-align:left;  
+}  
 
-.section{
-margin-top:40px;
-text-align:left;
-}
+nav{  
+width:100%;  
+display:flex;  
+justify-content:center;  
+gap:12px;  
+padding:14px;  
+border-bottom:1px solid #1f2430;  
+font-size:13px;  
+flex-wrap:wrap;  
+}  
 
-.section-title{
-font-size:14px;
-opacity:0.5;
-margin-bottom:10px;
-}
+nav a{  
+color:#e8ecf1;  
+text-decoration:none;  
+}  
 
-.block{
-padding:14px;
-border:1px solid #1f2430;
-margin-top:10px;
-}
+</style>  
+</head>  
 
-nav{
-width:100%;
-display:flex;
-justify-content:center;
-gap:12px;
-padding:14px;
-border-bottom:1px solid #1f2430;
-font-size:13px;
-flex-wrap:wrap;
-}
+<body>  
 
-nav a{
-color:#e8ecf1;
-text-decoration:none;
-}
+<!-- NAV (DUAL LANGUAGE) -->
 
-</style>
-</head>
+<nav>  
+<a class="en" href="index.html">Main</a>  
+<a class="tr" href="index.html" style="display:none;">Ana Sayfa</a>  
 
-<body>
+<a class="en" href="research.html">Research</a>  
+<a class="tr" href="research.html" style="display:none;">Araştırma</a>  
 
-<!-- NAV (DUAL) -->
+<a class="en" href="lab.html">Lab</a>  
+<a class="tr" href="lab.html" style="display:none;">Lab</a>  
 
-<nav>
-<a class="en" href="index.html">Main</a>
-<a class="tr" href="index.html" style="display:none;">Ana Sayfa</a>
+<a class="en" href="law.html">Law</a>  
+<a class="tr" href="law.html" style="display:none;">Yasa</a>  
 
-<a class="en" href="research.html">Research</a>
-<a class="tr" href="research.html" style="display:none;">Araştırma</a>
+<a class="en" href="library.html">Library</a>  
+<a class="tr" href="library.html" style="display:none;">Kütüphane</a>  
 
-<a class="en" href="lab.html">Lab</a>
-<a class="tr" href="lab.html" style="display:none;">Lab</a>
+<a class="en" href="career.html">Career</a>  
+<a class="tr" href="career.html" style="display:none;">Kariyer</a>  
 
-<a class="en" href="law.html">Law</a>
-<a class="tr" href="law.html" style="display:none;">Yasa</a>
-
-<a class="en" href="library.html">Library</a>
-<a class="tr" href="library.html" style="display:none;">Kütüphane</a>
-
-<a class="en" href="career.html">Career</a>
-<a class="tr" href="career.html" style="display:none;">Kariyer</a>
-
-<a class="en" href="ma.html" style="color:#6da8ff;">Engine</a>
-<a class="tr" href="ma.html" style="display:none;color:#6da8ff;">Motor</a>
-</nav>
+<a class="en" href="ma.html" style="color:#6da8ff; font-weight:bold;">Engine</a>  
+<a class="tr" href="ma.html" style="display:none; color:#6da8ff; font-weight:bold;">Motor</a>  
+</nav>  
 
 <!-- LANGUAGE -->
 
-<script>
-const lang = localStorage.getItem("lang") || "en";
-document.addEventListener("DOMContentLoaded", () => {
-document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
-});
-</script>
+<script>  
+const lang = localStorage.getItem("lang") || "en";  
 
-<div class="container">
+document.addEventListener("DOMContentLoaded", () => {  
+document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));  
+document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));  
+});  
+</script>  
 
-<div class="label">ENGINE STATE</div>
+<div class="container">  
 
-<div class="status wait">WAIT</div>
+<div class="label">ENGINE STATE</div>  
 
-<div class="desc">
-System stable.<br>
-No action required.
-<div class="framework">Vector – Friction – Time</div>
-</div>
+<div class="status wait">WAIT</div>  
 
-<div class="bar"><div class="fill"></div></div>
+<div class="desc">  
+System stable.<br>  
+No action required.  
+<div class="framework">  
+Vector – Friction – Time  
+</div>  
+</div>  
 
-<div class="desc" id="insight" style="margin-top:20px;font-size:14px;opacity:0.5;">
-You are seeing states.<br>Most traders don’t.
-</div>
+<div class="bar">  
+<div class="fill"></div>  
+</div>  
 
-<!-- CTA (İÇERİ SCROLL) -->
-
-<a class="cta" href="#products">
-Learn to read this
-</a>
+<div class="desc" id="insight" style="margin-top:25px; font-size:15px; opacity:0.5;">  
+You are seeing states.<br>  
+Most traders don’t.  
+</div>  
 
 <!-- ÜRÜN KATMANI -->
 
-<div id="products">
+<div style="margin-top:30px;">
 
-<div class="section">
-<div class="section-title">LEARN</div>
+<a class="subcta" href="https://guvenhalil.gumroad.com" target="_blank">
+Research papers — ARGE desteği ver ve yapıyı öğren
+</a>
 
-<div class="block">
-Research papers — yapıyı öğren ve ARGE’ye destek ol
-</div>
-</div>
+<a class="subcta" href="https://x.com/forex_analiz_" target="_blank">
+Bot / Signal / Godmode — erişim için X üzerinden yaz
+</a>
 
-<div class="section">
-<div class="section-title">SYSTEMS</div>
+<a class="subcta" href="library.html">
+Kitaplar — kütüphaneye git
+</a>
 
-<div class="block">
-Signal systems — sıkışma takibi / 20–25 uyarı
-</div>
+<a class="subcta" href="https://x.com/forex_analiz_" target="_blank">
+Danışmanlık — X üzerinden yaz
+</a>
 
-<div class="block">
-Decision engine — günlük 10–15 yapı sinyali
-</div>
-
-<div class="block">
-Godmode — nadir, yüksek hassasiyetli girişler
-</div>
-</div>
-
-<div class="section">
-<div class="section-title">ACCESS</div>
-
-<div class="block">
-Danışmanlık talep et
-</div>
-
-<div class="block">
-Kişiye özel sistem talep et
-</div>
-</div>
+<a class="subcta" href="https://instagram.com/market_alchemy" target="_blank">
+Özel bot / dijital çözüm — Instagram üzerinden talep et
+</a>
 
 </div>
 
-</div>
+</div>  
 
-<!-- ENGINE SCRIPT (AYNI) -->
+<script type="application/ld+json">  
+{  
+"@context": "https://schema.org",  
+"@type": "Person",  
+"name": "Halil Ibrahim Guven",  
+"jobTitle": "Independent Researcher",  
+"url": "https://marketalchemy.io",  
+"description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",  
+"knowsAbout": [  
+"Financial Markets",  
+"Thermodynamics",  
+"Systems Theory",  
+"Macroeconomics"  
+],  
+"publishingPrinciples": "https://marketalchemy.io/law.html"  
+}  
+</script>  
 
-<script>
+<script>  
 
-const states=[
-{text:"WAIT",class:"wait",desc:"System stable.<br>No action required.",friction:25,insight:"Nothing moves without pressure."},
-{text:"PREPARE",class:"prepare",desc:"Friction increasing.<br>Monitor closely.",friction:60,insight:"Compression builds before movement."},
-{text:"ACT",class:"act",desc:"Conditions aligned.<br>Execute.",friction:95,insight:"Release is not optional anymore."}
-];
+const states=[  
+{  
+text:"WAIT",  
+class:"wait",  
+desc:"System stable.<br>No action required.",  
+friction:25,  
+insight:"Nothing moves without pressure."  
+},  
+{  
+text:"PREPARE",  
+class:"prepare",  
+desc:"Friction increasing.<br>Monitor closely.",  
+friction:60,  
+insight:"Compression builds before movement."  
+},  
+{  
+text:"ACT",  
+class:"act",  
+desc:"Conditions aligned.<br>Execute.",  
+friction:95,  
+insight:"Release is not optional anymore."  
+}  
+];  
 
-function getState(){
-const r=Math.random();
-if(r<0.65) return states[0];
-if(r<0.9) return states[1];
-return states[2];
-}
+function getState(){  
+const r=Math.random();  
+if(r<0.65) return states[0];  
+if(r<0.9) return states[1];  
+return states[2];  
+}  
 
-function updateState(){
-const s=getState();
-document.querySelector(".status").innerText=s.text;
-document.querySelector(".status").className="status "+s.class;
-document.querySelector(".desc").innerHTML=s.desc+'<div class="framework">Vector – Friction – Time</div>';
-document.querySelector(".fill").style.width=s.friction+"%";
-document.getElementById("insight").innerHTML=s.insight;
-}
+function updateState(){  
 
-updateState();
-setInterval(updateState,4000);
+const s=getState();  
 
-</script>
+const status=document.querySelector(".status");  
+const desc=document.querySelector(".desc");  
+const fill=document.querySelector(".fill");  
+const insight=document.getElementById("insight");  
 
-</body>
+status.innerText=s.text;  
+status.className="status "+s.class;  
+
+desc.innerHTML=s.desc+'<div class="framework">Vector – Friction – Time</div>';  
+
+fill.style.width=s.friction+"%";  
+
+insight.innerHTML=s.insight;  
+
+}  
+
+updateState();  
+setInterval(updateState,4000);  
+
+</script>  
+
+</body>  
 </html>
