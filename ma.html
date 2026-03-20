@@ -89,36 +89,76 @@ font-size:15px;
 border-color:#6da8ff;
 }
 
+/* ✅ NEW NAVBAR */
 nav{  
-width:100%;  
-display:flex;  
-justify-content:center;  
-gap:14px;  
-padding:16px;  
-border-bottom:1px solid #1f2430;  
-font-size:13px;  
-flex-wrap:wrap;
+width:100%;
+display:flex;
+gap:18px;
+padding:14px 16px;
+border-bottom:1px solid #1f2430;
+font-size:14px;
+overflow-x:auto;
+white-space:nowrap;
+-webkit-overflow-scrolling:touch;
 }  
+
+nav::-webkit-scrollbar{
+display:none;
+}
 
 nav a{  
 color:#e8ecf1;  
 text-decoration:none;  
+opacity:0.7;
+flex-shrink:0;
 }  
+
+nav a.active{
+color:#6da8ff;
+opacity:1;
+font-weight:600;
+}
 
 </style>  
 </head>  
 
 <body>  
 
-<nav>  
-<a href="index.html">Ana Sayfa</a>  
-<a href="research.html">Araştırma</a>  
-<a href="lab.html">Lab</a>  
-<a href="law.html">Yasa</a>  
-<a href="library.html">Kütüphane</a>  
-<a href="career.html">Kariyer</a>  
-<a href="ma.html" style="color:#6da8ff; font-weight:bold;">Engine</a>  
-</nav>  
+<nav>
+
+<a href="index.html" class="en">Main</a>
+<a href="index.html" class="tr" style="display:none;">Ana Sayfa</a>
+
+<a href="research.html" class="en">Research</a>
+<a href="research.html" class="tr" style="display:none;">Araştırma</a>
+
+<a href="lab.html" class="en">Lab</a>
+<a href="lab.html" class="tr" style="display:none;">Laboratuvar</a>
+
+<a href="law.html" class="en">Law</a>
+<a href="law.html" class="tr" style="display:none;">Yasa</a>
+
+<a href="library.html" class="en">Library</a>
+<a href="library.html" class="tr" style="display:none;">Kütüphane</a>
+
+<a href="career.html" class="en">Career</a>
+<a href="career.html" class="tr" style="display:none;">Kariyer</a>
+
+<a href="ma.html" class="en active">Engine</a>
+<a href="ma.html" class="tr active" style="display:none;">Motor</a>
+
+</nav>
+
+<!-- LANGUAGE -->
+
+<script>
+const lang = localStorage.getItem("lang") || "en";
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+});
+</script>
 
 <div class="container">  
 
@@ -141,8 +181,6 @@ Vector – Friction – Time
 <div class="desc" id="insight" style="margin-top:25px; font-size:15px; opacity:0.5;">  
 Nothing moves without pressure.  
 </div>  
-
-<!-- 🔥 ÜRÜN KATMANI -->
 
 <div style="margin-top:40px; width:100%;">
 
