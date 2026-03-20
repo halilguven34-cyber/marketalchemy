@@ -112,13 +112,26 @@ text-decoration:none;
 <!-- NAV -->
 
 <nav>
-    <a href="index.html">Main</a>
-    <a href="research.html" style="color:#6da8ff; font-weight:bold;">Research</a>
-    <a href="lab.html">Lab</a>
-    <a href="law.html">Law</a>
-    <a href="library.html">Library</a>
-    <a href="career.html">Career</a>
-    <a href="ma.html">Engine</a>
+    <a class="en" href="index.html">Main</a>
+    <a class="tr" href="index.html" style="display:none;">Ana Sayfa</a>
+
+    <a class="en" href="research.html" style="color:#6da8ff; font-weight:bold;">Research</a>
+    <a class="tr" href="research.html" style="display:none; color:#6da8ff; font-weight:bold;">Araştırma</a>
+
+    <a class="en" href="lab.html">Lab</a>
+    <a class="tr" href="lab.html" style="display:none;">Lab</a>
+
+    <a class="en" href="law.html">Law</a>
+    <a class="tr" href="law.html" style="display:none;">Yasa</a>
+
+    <a class="en" href="library.html">Library</a>
+    <a class="tr" href="library.html" style="display:none;">Kütüphane</a>
+
+    <a class="en" href="career.html">Career</a>
+    <a class="tr" href="career.html" style="display:none;">Kariyer</a>
+
+    <a class="en" href="ma.html">Engine</a>
+    <a class="tr" href="ma.html" style="display:none;">Motor</a>
 </nav>
 
 <!-- LANGUAGE SYSTEM -->
@@ -127,8 +140,8 @@ text-decoration:none;
 const lang = localStorage.getItem("lang") || "en";
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"inline":"none"));
+  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"inline":"none"));
 });
 </script>
 
