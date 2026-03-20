@@ -49,6 +49,15 @@ font-size:14px;
 opacity:0.85;
 }
 
+.cta{
+display:inline-block;
+margin-top:20px;
+padding:12px 20px;
+border:1px solid #6da8ff;
+color:#6da8ff;
+text-decoration:none;
+}
+
 hr{
 border:none;
 border-top:1px solid #1f2430;
@@ -59,8 +68,6 @@ margin:50px 0;
 </head>
 
 <body>
-
-<!-- NAV -->
 
 <nav style="display:flex; justify-content:center; gap:20px; padding:20px; border-bottom:1px solid #1f2430; font-size:14px; opacity:0.8;">
     <a class="en" href="index.html">Main</a>
@@ -85,8 +92,6 @@ margin:50px 0;
     <a class="tr" href="ma.html" style="display:none;">Motor</a>
 </nav>
 
-<!-- LANGUAGE SYSTEM -->
-
 <script>
 const lang = localStorage.getItem("lang") || "en";
 
@@ -100,8 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <h1 class="en">Lab</h1>
 <h1 class="tr" style="display:none;">Laboratuvar</h1>
-
-<!-- CONTEXT -->
 
 <div class="section">
 <p class="big en">This system does not finish.</p>
@@ -142,8 +145,6 @@ Burada hiçbir şey gerçeklikten izole değildir.
 
 <hr>
 
-<!-- SNAPSHOT -->
-
 <div class="section">
 <p class="big en">System Snapshot</p>
 <p class="big tr" style="display:none;">Sistem Kesiti</p>
@@ -159,8 +160,6 @@ state: PREPARE
 </div>
 
 <hr>
-
-<!-- LIVE SYSTEMS -->
 
 <div class="section">
 <p class="big en">Live Systems</p>
@@ -198,10 +197,7 @@ trend exhaustion zones
 
 <hr>
 
-<!-- POWER BLOCK -->
-
 <div class="section">
-
 <p class="big en">This is not noise.</p>
 <p class="big tr" style="display:none;">Bu gürültü değil.</p>
 
@@ -214,13 +210,11 @@ This is structure under pressure.
 Çoğu insan rastgelelik görür.<br>
 Bu, basınç altındaki yapıdır.
 </p>
-
 </div>
 
 <hr>
 
 <div class="section">
-
 <p class="big en">Interpretation is not optional.</p>
 <p class="big tr" style="display:none;">Yorum opsiyonel değildir.</p>
 
@@ -233,15 +227,11 @@ you become part of it.
 Yapıyı okuyamıyorsan,<br>
 onun parçası olursun.
 </p>
-
 </div>
 
 <hr>
 
-<!-- ACCESS BARRIER -->
-
 <div class="section">
-
 <p class="big en">Access is restricted.</p>
 <p class="big tr" style="display:none;">Erişim sınırlıdır.</p>
 
@@ -258,12 +248,31 @@ Kullanım herkese açık değildir.<br><br>
 
 Erişim herkes için değildir.
 </p>
+</div>
+
+<hr>
+
+<!-- R&D BRIDGE -->
+
+<div class="section" style="text-align:center;">
+
+<p class="muted en">
+Support ongoing research and development.<br>
+Access is granted through contribution.
+</p>
+
+<p class="muted tr" style="display:none;">
+Devam eden araştırma ve geliştirme çalışmalarını destekleyin.<br>
+Erişim katkı yoluyla sağlanır.
+</p>
+
+<a class="cta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
+R&D ACCESS
+</a>
 
 </div>
 
 </div>
-
-<!-- STRUCTURED DATA -->
 
 <script type="application/ld+json">
 {
@@ -271,15 +280,7 @@ Erişim herkes için değildir.
   "@type": "Person",
   "name": "Halil Ibrahim Guven",
   "jobTitle": "Independent Researcher",
-  "url": "https://marketalchemy.io",
-  "description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",
-  "knowsAbout": [
-    "Financial Markets",
-    "Thermodynamics",
-    "Systems Theory",
-    "Macroeconomics"
-  ],
-  "publishingPrinciples": "https://marketalchemy.io/law.html"
+  "url": "https://marketalchemy.io"
 }
 </script>
 
