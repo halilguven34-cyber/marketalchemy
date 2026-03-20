@@ -47,7 +47,7 @@ transition:all 0.4s ease;
 .desc{  
 opacity:0.7;  
 font-size:18px;  
-margin-bottom:20px;  
+margin-bottom:10px;  
 transition:all 0.4s ease;  
 }  
 
@@ -73,6 +73,27 @@ background:#4da3ff;
 transition:width 0.6s ease;  
 }  
 
+.insight{  
+margin-top:25px;  
+font-size:15px;  
+opacity:0.5;
+}  
+
+.bridge{  
+margin-top:25px;  
+font-size:14px;  
+opacity:0.7;
+line-height:1.6;
+}  
+
+.sectionTitle{
+margin-top:40px;
+margin-bottom:10px;
+font-size:14px;
+opacity:0.5;
+letter-spacing:1px;
+}
+
 .subcta{  
 display:block;  
 margin-top:12px;  
@@ -80,16 +101,18 @@ padding:14px;
 border:1px solid #1f2430;  
 color:#e8ecf1;  
 text-decoration:none;  
-opacity:0.8;  
+opacity:0.85;  
 text-align:left;
 font-size:15px;
+transition:all 0.2s ease;
 }  
 
 .subcta:hover{
 border-color:#6da8ff;
+opacity:1;
 }
 
-/* ✅ NEW NAVBAR */
+/* NAV */
 nav{  
 width:100%;
 display:flex;
@@ -149,8 +172,6 @@ font-weight:600;
 
 </nav>
 
-<!-- LANGUAGE -->
-
 <script>
 const lang = localStorage.getItem("lang") || "en";
 
@@ -178,42 +199,60 @@ Vector – Friction – Time
 <div class="fill"></div>  
 </div>  
 
-<div class="desc" id="insight" style="margin-top:25px; font-size:15px; opacity:0.5;">  
+<div class="insight" id="insight">  
 Nothing moves without pressure.  
 </div>  
 
-<div style="margin-top:40px; width:100%;">
+<!-- 🔥 USER POSITION + PRODUCT DEFINITION -->
+
+<div class="bridge">
+This system does not give signals.<br>
+It removes bad decisions.
+</div>
+
+<div class="bridge" style="opacity:0.5;">
+You don’t predict this.<br>
+You align with it.
+</div>
+
+<!-- 🔥 DECISION FRAME -->
+
+<div class="sectionTitle">
+START WHERE YOU ARE
+</div>
+
+<div style="width:100%;">
 
 <a class="subcta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
-Research Papers → Yapıyı öğren & ARGE desteği ver
+Research Papers → Understand the structure
 </a>
 
 <a class="subcta" href="https://guvenhalil.gumroad.com/l/yrrrn" target="_blank">
-Research Series → Derinleş (Full yapı)
+Research Series → See the full system
 </a>
 
 <a class="subcta" href="library.html">
-Kitaplar → Teorik altyapıya git
+Books → Build theoretical depth
 </a>
 
 <a class="subcta" href="https://instagram.com/market_alchemy" target="_blank">
-Signal Systems → Bot erişimi için yaz
+Decision Engine → Daily structural signals
 </a>
 
 <a class="subcta" href="https://instagram.com/market_alchemy" target="_blank">
-Decision Engine → Günlük yapı sinyalleri
+Signal Systems → Direct system access
 </a>
 
 <a class="subcta" href="https://x.com/forex_analiz_" target="_blank">
-Godmode → Sniper seviyesinde execution
+Godmode → Execution layer (advanced)
 </a>
 
 <a class="subcta" href="https://x.com/forex_analiz_" target="_blank">
-Danışmanlık → Direkt rehberlik al
+Consulting → Direct guidance
 </a>
 
 <a class="subcta" href="https://instagram.com/market_alchemy" target="_blank">
-Custom Systems → Kendine özel sistem talep et
+Custom Systems → Build your own system
 </a>
 
 </div>
