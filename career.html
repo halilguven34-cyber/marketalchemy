@@ -7,69 +7,55 @@
 <title>Career — Market Alchemy</title>
 
 <style>
-
 body{
 margin:0;
 background:#0d0f14;
 color:#e8ecf1;
 font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
-
 .container{
 max-width:720px;
 margin:auto;
 padding:80px 20px;
 }
-
 h1{
-font-size:36px;
-letter-spacing:1px;
+font-size:32px;
 margin-bottom:20px;
 }
-
 .section{
 margin-top:50px;
 }
-
 .big{
 font-size:22px;
 font-weight:600;
 margin-bottom:12px;
 }
-
 .muted{
 opacity:0.6;
 line-height:1.6;
 }
-
 hr{
 border:none;
 border-top:1px solid #1f2430;
 margin:50px 0;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-
 <nav style="display:flex; justify-content:center; gap:20px; padding:20px; border-bottom:1px solid #1f2430; font-size:14px; opacity:0.8;">
-    <a href="index.html" style="color:#e8ecf1; text-decoration:none;">Main</a>
-    <a href="research.html" style="color:#e8ecf1; text-decoration:none;">Research</a>
-    <a href="lab.html" style="color:#e8ecf1; text-decoration:none;">Lab</a>
-    <a href="law.html" style="color:#e8ecf1; text-decoration:none;">Law</a>
-    <a href="library.html" style="color:#e8ecf1; text-decoration:none;">Library</a>
-    <a href="career.html" style="color:#6da8ff; font-weight:bold; text-decoration:none;">Career</a>
-    <a href="ma.html" style="color:#e8ecf1; text-decoration:none;">Engine</a>
+    <a href="index.html">Main</a>
+    <a href="research.html">Research</a>
+    <a href="lab.html">Lab</a>
+    <a href="law.html">Law</a>
+    <a href="library.html">Library</a>
+    <a href="career.html" style="color:#6da8ff; font-weight:bold;">Career</a>
+    <a href="ma.html">Engine</a>
 </nav>
-
-<!-- LANGUAGE SYSTEM -->
 
 <script>
 const lang = localStorage.getItem("lang") || "en";
-
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
   document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
@@ -78,13 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div class="container">
 
-<h1 class="en">CAREER</h1>
-<h1 class="tr" style="display:none;">KARİYER</h1>
-
-<!-- CORE -->
+<h1 class="en">Career</h1>
+<h1 class="tr" style="display:none;">Kariyer</h1>
 
 <div class="section">
-
 <p class="big en">This is not a job.</p>
 <p class="big tr" style="display:none;">Bu bir iş değil.</p>
 
@@ -99,15 +82,11 @@ Bu bir sistemle hizalanmadır.<br>
 İstihdam değil.<br>
 Rol değil.
 </p>
-
 </div>
 
 <hr>
 
-<!-- FILTER -->
-
 <div class="section">
-
 <p class="big en">No applications.</p>
 <p class="big tr" style="display:none;">Başvuru yok.</p>
 
@@ -122,15 +101,11 @@ CV yok.<br>
 Süreç yok.<br>
 Form yok.
 </p>
-
 </div>
 
 <hr>
 
-<!-- STRUCTURAL IDENTITY -->
-
 <div class="section">
-
 <p class="big en">Market Alchemy is carried by Halil Ibrahim Guven.</p>
 <p class="big tr" style="display:none;">Market Alchemy, Halil İbrahim Güven tarafından taşınmaktadır.</p>
 
@@ -147,15 +122,11 @@ MBA mezunu.<br>
 SPK lisans sahibi.<br>
 Banka analist geçmişi.
 </p>
-
 </div>
 
 <hr>
 
-<!-- SELECTION -->
-
 <div class="section">
-
 <p class="big en">Selection is structural.</p>
 <p class="big tr" style="display:none;">Seçim yapısaldır.</p>
 
@@ -168,15 +139,11 @@ You are revealed by alignment.
 Başvurarak seçilmezsin.<br>
 Hizalanarak ortaya çıkarsın.
 </p>
-
 </div>
 
 <hr>
 
-<!-- FINAL -->
-
 <div class="section">
-
 <p class="big en">If you understand, you will find a way.</p>
 <p class="big tr" style="display:none;">Anlıyorsan, yolunu bulursun.</p>
 
@@ -189,30 +156,32 @@ there is nothing here for you.
 Anlamıyorsan,<br>
 burada sana göre bir şey yok.
 </p>
+</div>
 
+<hr>
+
+<!-- SOCIAL -->
+
+<div class="section" style="text-align:center;">
+
+<p class="muted en">
+You don’t apply.<br>
+You connect.
+</p>
+
+<p class="muted tr" style="display:none;">
+Başvurmazsın.<br>
+Bağlanırsın.
+</p>
+
+<div style="margin-top:20px;">
+<a href="https://x.com/forex_analiz_" target="_blank" style="margin-right:15px; color:#6da8ff;">X</a>
+<a href="https://instagram.com/halilguven34" target="_blank" style="color:#6da8ff;">Instagram</a>
 </div>
 
 </div>
 
-<!-- STRUCTURED DATA -->
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Halil Ibrahim Guven",
-  "jobTitle": "Independent Researcher",
-  "url": "https://marketalchemy.io",
-  "description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",
-  "knowsAbout": [
-    "Financial Markets",
-    "Thermodynamics",
-    "Systems Theory",
-    "Macroeconomics"
-  ],
-  "publishingPrinciples": "https://marketalchemy.io/law.html"
-}
-</script>
+</div>
 
 </body>
 </html>
