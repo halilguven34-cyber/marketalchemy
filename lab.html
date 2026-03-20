@@ -68,6 +68,16 @@ margin:50px 0;
 
 <body>
 
+<!-- NAV -->
+
+<nav style="display:flex; justify-content:center; gap:20px; padding:20px; border-bottom:1px solid #1f2430; font-size:14px; opacity:0.8;">
+    <a href="index.html" style="color:#e8ecf1; text-decoration:none;">Main</a>
+    <a href="research.html" style="color:#e8ecf1; text-decoration:none;">Research</a>
+    <a href="lab.html" style="color:#6da8ff; font-weight:bold; text-decoration:none;">Lab</a>
+    <a href="law.html" style="color:#e8ecf1; text-decoration:none;">Law</a>
+    <a href="career.html" style="color:#e8ecf1; text-decoration:none;">Career</a>
+</nav>
+
 <div class="lang-toggle" onclick="toggleLang()">TR</div>
 
 <div class="container">
@@ -187,6 +197,26 @@ onun parçası olursun.
 </div>
 
 </div>
+
+<!-- STRUCTURED DATA -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Halil Ibrahim Guven",
+  "jobTitle": "Independent Researcher",
+  "url": "https://marketalchemy.io",
+  "description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models.",
+  "knowsAbout": [
+    "Financial Markets",
+    "Thermodynamics",
+    "Systems Theory",
+    "Macroeconomics"
+  ],
+  "publishingPrinciples": "https://marketalchemy.io/law.html"
+}
+</script>
 
 <script>
 function toggleLang(){
