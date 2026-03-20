@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+if(!localStorage.getItem("lang")){
+  const userLang = navigator.language || navigator.userLanguage;
+
+  if(userLang.toLowerCase().startsWith("tr")){
+    localStorage.setItem("lang","tr");
+  }else{
+    localStorage.setItem("lang","en");
+  }
+}
+</script>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Market Alchemy — Liquidation Mechanics</title>
+
+<style>
+body{
+margin:0;
+background:#0d0f14;
+color:#e8ecf1;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+.container{
+max-width:720px;
+margin:auto;
+padding:80px 20px;
+}
+
+h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.subtitle{
+opacity:0.7;
+font-size:16px;
+margin-bottom:60px;
+}
+
+.section{
+margin-top:80px;
+}
+
+.big{
+font-size:26px;
+font-weight:600;
+margin-bottom:18px;
+line-height:1.4;
+}
+
+.muted{
+opacity:0.6;
+line-height:1.7;
+}
+
+hr{
+border:none;
+border-top:1px solid #1f2430;
+margin:60px 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav style="display:flex; justify-content:center; gap:20px; padding:20px; border-bottom:1px solid #1f2430; font-size:14px; opacity:0.8;">
+    <a class="en" href="index.html" style="color:#6da8ff; font-weight:bold;">Main</a>
+    <a class="tr" href="index.html" style="display:none; color:#6da8ff; font-weight:bold;">Ana Sayfa</a>
+
+    <a class="en" href="research.html">Research</a>
+    <a class="tr" href="research.html" style="display:none;">Araştırma</a>
+
+    <a class="en" href="lab.html">Lab</a>
+    <a class="tr" href="lab.html" style="display:none;">Lab</a>
+
+    <a class="en" href="law.html">Law</a>
+    <a class="tr" href="law.html" style="display:none;">Yasa</a>
+
+    <a class="en" href="library.html">Library</a>
+    <a class="tr" href="library.html" style="display:none;">Kütüphane</a>
+
+    <a class="en" href="career.html">Career</a>
+    <a class="tr" href="career.html" style="display:none;">Kariyer</a>
+
+    <a class="en" href="ma.html">Engine</a>
+    <a class="tr" href="ma.html" style="display:none;">Motor</a>
+</nav>
+
+<!-- LANGUAGE -->
+
+<script>
+const lang = localStorage.getItem("lang") || "en";
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+});
+</script>
+
+<div class="container">
+
+<h1>MARKET ALCHEMY</h1>
+
+<p class="subtitle en">Vector — Friction — Time</p>
+<p class="subtitle tr" style="display:none;">Vektör — Sürtünme — Zaman</p>
+
+<!-- CORE BREAK -->
+
+<div class="section en">
+<p class="big">
+Price does not move.<br>
+Positions are removed.
+</p>
+
+<p class="muted">
+Movement is a side effect.<br>
+Not a cause.
+</p>
+</div>
+
+<div class="section tr" style="display:none;">
+<p class="big">
+Fiyat hareket etmez.<br>
+Pozisyonlar temizlenir.
+</p>
+
+<p class="muted">
+Hareket bir sonuçtur.<br>
+Sebep değil.
+</p>
+</div>
+
+<hr>
+
+<!-- PRESSURE -->
+
+<div class="section en">
+<p class="big">
+You are not reading the market.<br>
+You are reacting to it.
+</p>
+
+<p class="muted">
+Markets do not follow opinions.<br>
+They follow forced decisions.
+</p>
+</div>
+
+<div class="section tr" style="display:none;">
+<p class="big">
+Piyasayı okumuyorsun.<br>
+Ona tepki veriyorsun.
+</p>
+
+<p class="muted">
+Piyasalar fikirleri takip etmez.<br>
+Zorlanan kararları takip eder.
+</p>
+</div>
+
+<hr>
+
+<!-- STRUCTURE -->
+
+<div class="section en">
+<p class="big">
+Structure decides visibility.
+</p>
+
+<p class="muted">
+What you see is not reality.<br>
+It is your position inside it.
+</p>
+
+<img src="time.diagram.jpg" style="width:100%; max-width:680px; display:block; margin:40px auto;">
+</div>
+
+<div class="section tr" style="display:none;">
+<p class="big">
+Yapı görünürlüğü belirler.
+</p>
+
+<p class="muted">
+Gördüğün şey gerçeklik değildir.<br>
+İçindeki konumundur.
+</p>
+
+<img src="time.diagram.jpg" style="width:100%; max-width:680px; display:block; margin:40px auto;">
+</div>
+
+<hr>
+
+<!-- SYSTEM -->
+
+<div class="section en">
+<p class="big">
+This is not analysis.<br>
+This is a system.
+</p>
+
+<p class="muted">
+Markets are one instance.<br>
+Decision under entropy is the law.
+</p>
+</div>
+
+<div class="section tr" style="display:none;">
+<p class="big">
+Bu analiz değil.<br>
+Bu bir sistem.
+</p>
+
+<p class="muted">
+Piyasalar bunun bir örneğidir.<br>
+Entropi altında karar yasadır.
+</p>
+</div>
+
+<hr>
+
+<!-- FILTER -->
+
+<div class="section en muted">
+If this feels unclear,<br>
+you are not ready.
+</div>
+
+<div class="section tr muted" style="display:none;">
+Bu sana net gelmiyorsa,<br>
+henüz hazır değilsin.
+</div>
+
+</div>
+
+</body>
+</html>
