@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<script>
+if(!localStorage.getItem("lang")){
+  const userLang = navigator.language || navigator.userLanguage;
+
+  if(userLang.toLowerCase().startsWith("tr")){
+    localStorage.setItem("lang","tr");
+  }else{
+    localStorage.setItem("lang","en");
+  }
+}
+</script>
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
