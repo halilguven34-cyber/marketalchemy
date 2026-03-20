@@ -41,7 +41,7 @@ margin-bottom:10px;
 .subtitle{
 opacity:0.7;
 font-size:16px;
-margin-bottom:60px;
+margin-bottom:40px;
 }
 
 .section{
@@ -60,13 +60,18 @@ opacity:0.6;
 line-height:1.7;
 }
 
+.bridge{
+opacity:0.8;
+margin-bottom:20px;
+line-height:1.6;
+}
+
 hr{
 border:none;
 border-top:1px solid #1f2430;
 margin:60px 0;
 }
 
-/* ✅ NEW NAVBAR */
 nav{
 width:100%;
 display:flex;
@@ -100,8 +105,6 @@ font-weight:600;
 
 <body>
 
-<!-- NAV -->
-
 <nav>
 
 <a href="index.html" class="en active">Main</a>
@@ -127,8 +130,6 @@ font-weight:600;
 
 </nav>
 
-<!-- LANGUAGE -->
-
 <script>
 const lang = localStorage.getItem("lang") || "en";
 
@@ -145,7 +146,41 @@ document.addEventListener("DOMContentLoaded", () => {
 <p class="subtitle en">Vector — Friction — Time</p>
 <p class="subtitle tr" style="display:none;">Vektör — Sürtünme — Zaman</p>
 
-<!-- CORE BREAK -->
+<!-- 🔥 NEW ENTRY (HOOK) -->
+
+<div class="section en">
+<p class="big">
+This is not a trading system.
+</p>
+
+<p class="bridge">
+It is a filter that prevents you from trading at the wrong time.
+</p>
+
+<p class="muted">
+Most losses do not come from wrong direction.<br>
+They come from wrong timing.
+</p>
+</div>
+
+<div class="section tr" style="display:none;">
+<p class="big">
+Bu bir trading sistemi değil.
+</p>
+
+<p class="bridge">
+Yanlış zamanda işlem yapmanı engelleyen bir filtredir.
+</p>
+
+<p class="muted">
+Zararın çoğu yanlış yönden değil,<br>
+yanlış zamandan gelir.
+</p>
+</div>
+
+<hr>
+
+<!-- CORE -->
 
 <div class="section en">
 <p class="big">
@@ -208,9 +243,9 @@ Zorlanan kararları takip eder.
 Structure decides visibility.
 </p>
 
-<p class="muted">
-What you see is not reality.<br>
-It is your position inside it.
+<p class="bridge">
+You do not see the market.<br>
+You see your position inside it.
 </p>
 
 <img src="time.diagram.jpg" style="width:100%; max-width:680px; display:block; margin:40px auto;">
@@ -221,9 +256,9 @@ It is your position inside it.
 Yapı görünürlüğü belirler.
 </p>
 
-<p class="muted">
-Gördüğün şey gerçeklik değildir.<br>
-İçindeki konumundur.
+<p class="bridge">
+Piyasayı görmezsin.<br>
+İçindeki konumunu görürsün.
 </p>
 
 <img src="time.diagram.jpg" style="width:100%; max-width:680px; display:block; margin:40px auto;">
@@ -259,7 +294,7 @@ Entropi altında karar yasadır.
 
 <hr>
 
-<!-- FILTER -->
+<!-- FILTER (moved down) -->
 
 <div class="section en muted">
 If this feels unclear,<br>
