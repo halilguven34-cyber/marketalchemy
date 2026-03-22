@@ -19,121 +19,43 @@ if(!localStorage.getItem("lang")){
 
 <title>Market Alchemy — Liquidation Mechanics</title>
 <meta name="description" content="Market Alchemy Research & Systems: Structural Depth Law of Time and System Entropy. Developed by Halil İbrahim Güven.">
-<meta name="keywords" content="Market Alchemy, Halil İbrahim Güven, System Entropy, Structural Depth Law, Pascal Model, Trading Filter, Liquidation Mechanics">
-<meta name="author" content="Halil İbrahim Güven">
-<link rel="canonical" href="https://marketalchemy.io/">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Market Alchemy Engine",
-  "operatingSystem": "Web",
-  "applicationCategory": "FinancialApplication",
-  "author": {
-    "@type": "Person",
-    "name": "Halil İbrahim Güven",
-    "jobTitle": "System Architect & Researcher",
-    "url": "https://marketalchemy.io"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Market Alchemy Research & Systems",
-    "location": {
-      "@type": "Place",
-      "address": "Türkiye"
-    }
-  }
-}
-</script>
 
 <style>
-body{
-margin:0;
-background:#0d0f14;
-color:#e8ecf1;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-}
+body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+.container{max-width:720px;margin:auto;padding:80px 20px;}
+h1{font-size:40px;margin-bottom:10px;}
+.subtitle{opacity:0.7;font-size:16px;margin-bottom:40px;}
+.section{margin-top:80px;}
+.big{font-size:26px;font-weight:600;margin-bottom:18px;line-height:1.4;}
+.muted{opacity:0.6;line-height:1.7;}
+.bridge{opacity:0.8;margin-bottom:20px;line-height:1.6;}
+hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
 
-.container{
-max-width:720px;
-margin:auto;
-padding:80px 20px;
-}
+nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}
+nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}
+nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
 
-h1{
-font-size:40px;
+/* NEW ENGINE BLOCK */
+.engineBox{
+margin-top:30px;
+padding:20px;
+border:1px solid #1f2430;
+font-family:monospace;
+text-align:left;
+opacity:0.9;
+}
+.status{
+font-size:18px;
 margin-bottom:10px;
 }
-
-.subtitle{
-opacity:0.7;
-font-size:16px;
-margin-bottom:40px;
-}
-
-.section{
-margin-top:80px;
-}
-
-.big{
-font-size:26px;
-font-weight:600;
-margin-bottom:18px;
-line-height:1.4;
-}
-
-.muted{
-opacity:0.6;
-line-height:1.7;
-}
-
-.bridge{
-opacity:0.8;
-margin-bottom:20px;
-line-height:1.6;
-}
-
-hr{
-border:none;
-border-top:1px solid #1f2430;
-margin:60px 0;
-}
-
-nav{
-width:100%;
-display:flex;
-gap:18px;
-padding:14px 16px;
-border-bottom:1px solid #1f2430;
-font-size:14px;
-overflow-x:auto;
-white-space:nowrap;
--webkit-overflow-scrolling:touch;
-}
-
-nav::-webkit-scrollbar{
-display:none;
-}
-
-nav a{
-color:#e8ecf1;
-text-decoration:none;
-opacity:0.7;
-flex-shrink:0;
-}
-
-nav a.active{
-color:#6da8ff;
-opacity:1;
-font-weight:600;
-}
+.wait{color:#8a93a3;}
+.prepare{color:#f0c36d;}
+.act{color:#ff5c5c;}
 </style>
 </head>
 
 <body>
 
-<!-- DYNAMIC NAV -->
 <div id="nav"></div>
 
 <script>
@@ -155,7 +77,7 @@ fetch("nav.html?v=" + Date.now())
 <p class="subtitle en">Vector — Friction — Time</p>
 <p class="subtitle tr" style="display:none;">Vektör — Sürtünme — Zaman</p>
 
-<!-- ✅ NEW CORE TEXT -->
+<!-- CORE -->
 
 <div class="section en">
 <p class="big">
@@ -179,6 +101,26 @@ Matematik ve fizik ile ilerleriz.<br>
 Piyasadaki enerjiyi ölçeriz.<br><br>
 Ölçülebiliyorsa, görünür.
 </p>
+</div>
+
+<!-- ✅ NEW ENGINE SYSTEM -->
+
+<div class="engineBox">
+
+<div class="status wait" id="state">STATE: WAIT</div>
+
+<div class="en">
+Decision Engine<br>
+Indicator Systems<br>
+Research Reports
+</div>
+
+<div class="tr" style="display:none;">
+Karar Motoru<br>
+İndikatör Sistemleri<br>
+Araştırma Raporları
+</div>
+
 </div>
 
 <hr>
@@ -217,133 +159,23 @@ yanlış zamandan gelir.
 
 <hr>
 
-<div class="section en">
-<p class="big">
-Price does not move.<br>
-Positions are removed.
-</p>
-
-<p class="muted">
-Movement is a side effect.<br>
-Not a cause.
-</p>
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">
-Fiyat hareket etmez.<br>
-Pozisyonlar temizlenir.
-</p>
-
-<p class="muted">
-Hareket bir sonuçtur.<br>
-Sebep değil.
-</p>
-</div>
-
-<hr>
-
-<div class="section en">
-<p class="big">
-You are not reading the market.<br>
-You are reacting to it.
-</p>
-
-<p class="muted">
-Markets do not follow opinions.<br>
-They follow forced decisions.
-</p>
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">
-Piyasayı okumuyorsun.<br>
-Ona tepki veriyorsun.
-</p>
-
-<p class="muted">
-Piyasalar fikirleri takip etmez.<br>
-Zorlanan kararları takip eder.
-</p>
-</div>
-
-<hr>
-
-<div class="section en">
-<p class="big">
-Structure decides visibility.
-</p>
-
-<p class="bridge">
-You do not see the market.<br>
-You see your position inside it.
-</p>
-
-<p class="bridge">
-This is how decisions become visible.
-</p>
-
-<img src="time.diagram.jpg" style="width:100%; max-width:680px; display:block; margin:40px auto;">
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">
-Yapı görünürlüğü belirler.
-</p>
-
-<p class="bridge">
-Piyasayı görmezsin.<br>
-İçindeki konumunu görürsün.
-</p>
-
-<p class="bridge">
-Karar bu şekilde görünür hale gelir.
-</p>
-
-<img src="time.diagram.jpg" style="width:100%; max-width:680px; display:block; margin:40px auto;">
-</div>
-
-<hr>
-
-<div class="section en">
-<p class="big">
-This is a decision visibility system.
-</p>
-
-<p class="muted">
-Markets are one instance.<br>
-Decision under entropy is the law.
-</p>
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">
-Bu, karar görünürlüğü sistemidir.
-</p>
-
-<p class="muted">
-Piyasalar bunun bir örneğidir.<br>
-Entropi altında karar yasadır.
-</p>
-</div>
-
-<hr>
-
-<div class="section en muted">
-This system is developed to make decision timing visible.<br>
-Research and implementation are ongoing.
-</div>
-
-<div class="section tr muted" style="display:none;">
-Bu sistem, karar zamanını görünür hale getirmek için geliştirilmiştir.<br>
-Araştırma ve uygulama sürekli devam eder.
-</div>
-
 <div style="margin-top: 100px; font-size: 11px; opacity: 0.4; text-align: center;">
 Market Alchemy Research & Systems • Principal: Halil İbrahim Güven
 </div>
 
 </div>
+
+<script>
+const states=["WAIT","PREPARE","ACT"];
+function updateState(){
+  const s=states[Math.floor(Math.random()*states.length)];
+  const el=document.getElementById("state");
+  el.innerText="STATE: "+s;
+  el.className="status "+s.toLowerCase();
+}
+updateState();
+setInterval(updateState,4000);
+</script>
 
 </body>
 </html>
