@@ -66,21 +66,22 @@ opacity:0.8;
 
 <body>  
 
-<nav>
-<a href="index.html" class="en">Main</a>
-<a href="index.html" class="tr" style="display:none;">Ana Sayfa</a>
-<a href="ma.html" class="en active">Engine</a>
-<a href="ma.html" class="tr active" style="display:none;">Motor</a>
-</nav>
+<!-- DYNAMIC NAV -->
+<div id="nav"></div>
 
 <script>
-if(!localStorage.getItem("lang")){
-  const userLang = navigator.language || navigator.userLanguage;
-  localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
-}
-const lang = localStorage.getItem("lang");
+fetch("nav.html")
+.then(res => res.text())
+.then(data => {
+  document.getElementById("nav").innerHTML = data;
 
-document.addEventListener("DOMContentLoaded", () => {
+  if(!localStorage.getItem("lang")){
+    const userLang = navigator.language || navigator.userLanguage;
+    localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
+  }
+
+  const lang = localStorage.getItem("lang");
+
   document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
   document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 });
@@ -234,6 +235,7 @@ desc.forEach(d=>{
 });
 
 fill.style.width=s.friction+"%";
+const lang = localStorage.getItem("lang") || "en";
 insight.innerHTML=(lang==="tr"?s.insightTR:s.insightEN);
 }
 
