@@ -65,7 +65,6 @@ opacity:0.8;
 
 <body>  
 
-<!-- DYNAMIC NAV -->
 <div id="nav"></div>
 
 <script>
@@ -107,45 +106,29 @@ Sistem stabil.<br>Aksiyon gerekmiyor.
 
 <div class="insight" id="insight">Nothing moves without pressure.</div>  
 
-<!-- 🔥 LIVE SYSTEM -->
+<!-- 🔥 SYSTEM CORE -->
 
-<div class="sectionTitle en">LIVE SYSTEM</div>
-<div class="sectionTitle tr" style="display:none;">CANLI SİSTEM</div>
+<div class="sectionTitle en">SYSTEM CORE</div>
+<div class="sectionTitle tr" style="display:none;">SİSTEM ÇEKİRDEĞİ</div>
 
 <div style="margin-top:20px;text-align:left;">
 
 <div class="subcta" style="font-family:monospace;">
-vector: unstable<br>
-friction: increasing<br>
-compression: detected<br>
-bias: directional<br><br>
-state: PREPARE
+Digital R&D is conducted for productization.
 </div>
 
 <div class="subcta" style="font-family:monospace;">
-CRYPTO<br>
-liquidity: shifting<br>
-compression: building<br>
-phase: near expansion
+One core principle is scalability.<br>
+From micro to macro.
 </div>
 
 <div class="subcta" style="font-family:monospace;">
-FOREX<br>
-volatility: low<br>
-pressure: increasing<br>
-bias: neutral → directional
-</div>
-
-<div class="subcta" style="font-family:monospace;">
-GOLD<br>
-macro pressure: active<br>
-release zones: forming<br>
-structure: unstable
+Productization exists only if necessary.
 </div>
 
 </div>
 
-<!-- 🔥 DESCRIPTION -->
+<!-- DESCRIPTION -->
 
 <div class="bridge en">
 Market Alchemy is a decision support engine.<br><br>
@@ -165,46 +148,24 @@ Tahmin etmez.<br>
 Geçersiz kararları eler.
 </div>
 
-<div class="bridge en" style="opacity:0.6;">
-Used as:<br>
-• Indicator for traders<br>
-• Decision system for individuals
-</div>
-
-<div class="bridge tr" style="display:none; opacity:0.6;">
-Kullanım:<br>
-• Trader için indikatör<br>
-• Birey için karar sistemi
-</div>
-
 <div class="sectionTitle en">ACCESS THE SYSTEM</div>
 <div class="sectionTitle tr" style="display:none;">SİSTEME ERİŞ</div>
 
 <div>
 
 <a class="subcta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
-<span class="en">Understand how decisions become visible → Research Papers</span>
-<span class="tr" style="display:none;">Kararın nasıl görünür hale geldiğini anla → Araştırma Raporları</span>
-</a>
-
-<a class="subcta" href="https://guvenhalil.gumroad.com/l/yrrrn" target="_blank">
-<span class="en">See the full decision system → Research Series</span>
-<span class="tr" style="display:none;">Tam karar sistemini gör → Araştırma Serisi</span>
+<span class="en">Research Papers</span>
+<span class="tr" style="display:none;">Araştırma Raporları</span>
 </a>
 
 <a class="subcta" href="library.html">
-<span class="en">Deep dive into the logic → Books</span>
-<span class="tr" style="display:none;">Mantığın derinine in → Kitaplar</span>
+<span class="en">Books</span>
+<span class="tr" style="display:none;">Kitaplar</span>
 </a>
 
 <a class="subcta" href="#" onclick="openModal()">
-<span class="en">Use the system in real conditions → Decision Engine</span>
-<span class="tr" style="display:none;">Sistemi gerçek koşullarda kullan → Karar Sistemi</span>
-</a>
-
-<a class="subcta" href="#" onclick="openModal()">
-<span class="en">Execute with precision when it matters → Godmode</span>
-<span class="tr" style="display:none;">Kritik anda hassas execution → Godmode</span>
+<span class="en">Decision Engine</span>
+<span class="tr" style="display:none;">Karar Sistemi</span>
 </a>
 
 </div>
@@ -217,17 +178,13 @@ Kullanım:<br>
 <div class="modalContent">
 
 <div class="modalText en">
-System currently under development.<br><br>
-The engine is being tested in the laboratory.<br>
-Data is being collected and refined.<br><br>
-Access will be available soon.
+System under development.<br><br>
+Engine is being tested in the laboratory.
 </div>
 
 <div class="modalText tr" style="display:none;">
-Sistem şu anda geliştirme aşamasında.<br><br>
-Motor laboratuvarda test ediliyor.<br>
-Veri toplanıyor ve iyileştiriliyor.<br><br>
-Erişim yakında açılacak.
+Sistem geliştirme aşamasında.<br><br>
+Motor laboratuvarda test ediliyor.
 </div>
 
 <div class="closeBtn" onclick="closeModal()">OK</div>
@@ -246,9 +203,9 @@ document.getElementById("modal").style.display="none";
 
 <script>
 const states=[
-{text:"WAIT",class:"wait",descEN:"System stable.<br>No action required.",descTR:"Sistem stabil.<br>Aksiyon gerekmiyor.",friction:25,insightEN:"Nothing moves without pressure.",insightTR:"Hiçbir şey baskı olmadan hareket etmez."},
-{text:"PREPARE",class:"prepare",descEN:"Friction increasing.<br>Monitor closely.",descTR:"Sürtünme artıyor.<br>Dikkatle izle.",friction:60,insightEN:"Compression builds before movement.",insightTR:"Hareketten önce sıkışma oluşur."},
-{text:"ACT",class:"act",descEN:"Conditions aligned.<br>Execute.",descTR:"Koşullar hizalandı.<br>Uygula.",friction:95,insightEN:"Release is inevitable.",insightTR:"Boşalma kaçınılmazdır."}
+{text:"WAIT",class:"wait",friction:25},
+{text:"PREPARE",class:"prepare",friction:60},
+{text:"ACT",class:"act",friction:95}
 ];
 
 function getState(){
@@ -260,22 +217,9 @@ return states[2];
 
 function updateState(){
 const s=getState();
-const status=document.querySelector(".status");
-const desc=document.querySelectorAll(".desc");
-const fill=document.querySelector(".fill");
-const insight=document.getElementById("insight");
-
-status.innerText=s.text;
-status.className="status "+s.class;
-
-desc.forEach(d=>{
-  if(d.classList.contains("en")) d.innerHTML=s.descEN+'<div class="framework">Vector – Friction – Time</div>';
-  if(d.classList.contains("tr")) d.innerHTML=s.descTR+'<div class="framework">Vektör – Sürtünme – Zaman</div>';
-});
-
-fill.style.width=s.friction+"%";
-const lang = localStorage.getItem("lang") || "en";
-insight.innerHTML=(lang==="tr"?s.insightTR:s.insightEN);
+document.querySelector(".status").innerText=s.text;
+document.querySelector(".status").className="status "+s.class;
+document.querySelector(".fill").style.width=s.friction+"%";
 }
 
 updateState();
