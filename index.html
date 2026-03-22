@@ -137,7 +137,7 @@ font-weight:600;
 <div id="nav"></div>
 
 <script>
-fetch("nav.html")
+fetch("nav.html?v=" + Date.now())
 .then(res => res.text())
 .then(data => {
   document.getElementById("nav").innerHTML = data;
