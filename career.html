@@ -48,7 +48,7 @@ color:#6da8ff;
 text-decoration:none;
 }
 
-/* ✅ NEW NAVBAR */
+/* NAVBAR */
 nav{
 width:100%;
 display:flex;
@@ -79,34 +79,16 @@ font-weight:600;
 
 <body>
 
-<nav>
-
-<a href="index.html" class="en">Main</a>
-<a href="index.html" class="tr" style="display:none;">Ana Sayfa</a>
-
-<a href="research.html" class="en">Research</a>
-<a href="research.html" class="tr" style="display:none;">Araştırma</a>
-
-<a href="lab.html" class="en">Lab</a>
-<a href="lab.html" class="tr" style="display:none;">Laboratuvar</a>
-
-<a href="law.html" class="en">Law</a>
-<a href="law.html" class="tr" style="display:none;">Yasa</a>
-
-<a href="library.html" class="en">Library</a>
-<a href="library.html" class="tr" style="display:none;">Kütüphane</a>
-
-<a href="career.html" class="en active">Selection</a>
-<a href="career.html" class="tr active" style="display:none;">Seçim</a>
-
-<a href="ma.html" class="en">Engine</a>
-<a href="ma.html" class="tr" style="display:none;">Motor</a>
-
-</nav>
+<!-- DYNAMIC NAV -->
+<div id="nav"></div>
 
 <script>
-const lang = localStorage.getItem("lang") || "en";
-document.addEventListener("DOMContentLoaded", () => {
+fetch("nav.html")
+.then(res => res.text())
+.then(data => {
+  document.getElementById("nav").innerHTML = data;
+
+  const lang = localStorage.getItem("lang") || "en";
   document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
   document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 });
