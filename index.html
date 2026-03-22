@@ -133,35 +133,16 @@ font-weight:600;
 
 <body>
 
-<nav>
-
-<a href="index.html" class="en active">Main</a>
-<a href="index.html" class="tr active" style="display:none;">Ana Sayfa</a>
-
-<a href="research.html" class="en">Research</a>
-<a href="research.html" class="tr" style="display:none;">Araştırma</a>
-
-<a href="lab.html" class="en">Lab</a>
-<a href="lab.html" class="tr" style="display:none;">Laboratuvar</a>
-
-<a href="law.html" class="en">Law</a>
-<a href="law.html" class="tr" style="display:none;">Yasa</a>
-
-<a href="library.html" class="en">Library</a>
-<a href="library.html" class="tr" style="display:none;">Kütüphane</a>
-
-<a href="career.html" class="en">Career</a>
-<a href="career.html" class="tr" style="display:none;">Kariyer</a>
-
-<a href="ma.html" class="en">Engine</a>
-<a href="ma.html" class="tr" style="display:none;">Motor</a>
-
-</nav>
+<!-- DYNAMIC NAV -->
+<div id="nav"></div>
 
 <script>
-const lang = localStorage.getItem("lang") || "en";
+fetch("nav.html")
+.then(res => res.text())
+.then(data => {
+  document.getElementById("nav").innerHTML = data;
 
-document.addEventListener("DOMContentLoaded", () => {
+  const lang = localStorage.getItem("lang") || "en";
   document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
   document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 });
@@ -173,8 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <p class="subtitle en">Vector — Friction — Time</p>
 <p class="subtitle tr" style="display:none;">Vektör — Sürtünme — Zaman</p>
-
-<!-- NEW ENTRY -->
 
 <div class="section en">
 <p class="big">
@@ -229,8 +208,6 @@ zaten görünür hale gelir.
 </div>
 
 <hr>
-
-<!-- UPDATED SECTION -->
 
 <div class="section en">
 <p class="big">
@@ -389,7 +366,7 @@ Araştırma ve uygulama sürekli devam eder.
 </div>
 
 <div style="margin-top: 100px; font-size: 11px; opacity: 0.4; text-align: center;">
-    Market Alchemy Research & Systems • Principal: Halil İbrahim Güven
+Market Alchemy Research & Systems • Principal: Halil İbrahim Güven
 </div>
 
 </div>
