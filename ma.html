@@ -24,6 +24,17 @@ body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMa
 .subcta{display:block;margin-top:12px;padding:14px;border:1px solid #1f2430;color:#e8ecf1;text-decoration:none;opacity:0.9;text-align:left;font-size:15px;}  
 .subcta:hover{border-color:#6da8ff;opacity:1;}  
 
+/* ✅ NEW: CORE BOX (link değil) */
+.corebox{
+margin-top:12px;
+padding:14px;
+border:1px solid #1f2430;
+text-align:left;
+font-size:15px;
+font-family:monospace;
+opacity:0.85;
+}
+
 nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}  
 nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}  
 nav a.active{color:#6da8ff;opacity:1;font-weight:600;}  
@@ -113,26 +124,26 @@ Sistem stabil.<br>Aksiyon gerekmiyor.
 
 <div style="margin-top:20px;text-align:left;">
 
-<div class="subcta en" style="font-family:monospace;">
+<div class="corebox en">
 Digital R&D is conducted for productization.
 </div>
-<div class="subcta tr" style="display:none; font-family:monospace;">
+<div class="corebox tr" style="display:none;">
 Dijital AR-GE çalışmaları ürünleştirme içindir.
 </div>
 
-<div class="subcta en" style="font-family:monospace;">
+<div class="corebox en">
 One core principle is scalability.<br>
 From micro to macro.
 </div>
-<div class="subcta tr" style="display:none; font-family:monospace;">
+<div class="corebox tr" style="display:none;">
 Ürünleştirme prensiplerinden biri ölçeklendirmedir.<br>
 Mikrodan makroya.
 </div>
 
-<div class="subcta en" style="font-family:monospace;">
+<div class="corebox en">
 Productization exists only if necessary.
 </div>
-<div class="subcta tr" style="display:none; font-family:monospace;">
+<div class="corebox tr" style="display:none;">
 Ürünleştirme yalnızca gerekli olduğunda yapılır.
 </div>
 
@@ -180,7 +191,7 @@ Geçersiz kararları eler.
 
 </div>
 
-<!-- ✅ INTERFACE EKLENDİ -->
+<!-- INTERFACE -->
 
 <div style="margin-top:15px;">
 <input id="userInput" placeholder="Ask the system..." 
