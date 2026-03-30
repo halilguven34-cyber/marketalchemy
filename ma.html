@@ -16,7 +16,7 @@ body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMa
 .desc{opacity:0.7;font-size:18px;margin-bottom:10px;}  
 .framework{opacity:0.45;font-size:14px;margin-top:8px;}  
 .bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;overflow:hidden;}  
-.fill{height:100%;width:30%;background:#4da3ff;}  
+.fill{height:100%;width:0%;background:#4da3ff;}  
 .insight{margin-top:25px;font-size:15px;opacity:0.5;}  
 .bridge{margin-top:20px;font-size:14px;opacity:0.85;line-height:1.6;}  
 .sectionTitle{margin-top:40px;font-size:13px;opacity:0.5;letter-spacing:1px;}  
@@ -24,7 +24,6 @@ body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMa
 .subcta{display:block;margin-top:12px;padding:14px;border:1px solid #1f2430;color:#e8ecf1;text-decoration:none;opacity:0.9;text-align:left;font-size:15px;}  
 .subcta:hover{border-color:#6da8ff;opacity:1;}  
 
-/* ✅ NEW: CORE BOX (link değil) */
 .corebox{
 margin-top:12px;
 padding:14px;
@@ -117,8 +116,6 @@ Sistem stabil.<br>Aksiyon gerekmiyor.
 
 <div class="insight" id="insight">Nothing moves without pressure.</div>  
 
-<!-- SYSTEM CORE -->
-
 <div class="sectionTitle en">SYSTEM CORE</div>
 <div class="sectionTitle tr" style="display:none;">SİSTEM ÇEKİRDEĞİ</div>
 
@@ -148,8 +145,6 @@ Productization exists only if necessary.
 </div>
 
 </div>
-
-<!-- DESCRIPTION -->
 
 <div class="bridge en">
 Market Alchemy is a decision support engine.<br><br>
@@ -194,17 +189,15 @@ Geçersiz kararları eler.
 <!-- INTERFACE -->
 
 <div style="margin-top:15px;">
-<input id="userInput" placeholder="Ask the system..." 
+<input id="userInput" placeholder="BTC 1H" 
 style="width:100%;padding:14px;background:#0d0f14;border:1px solid #1f2430;color:#e8ecf1;font-size:14px;">
 
-<div id="aiOutput" style="margin-top:12px;opacity:0.6;font-family:monospace;">
+<div id="aiOutput" style="margin-top:12px;opacity:0.8;font-family:monospace;">
 STATE: WAIT
 </div>
 </div>
 
 </div>  
-
-<!-- MODAL -->
 
 <div class="modal" id="modal">
 <div class="modalContent">
@@ -233,30 +226,56 @@ document.getElementById("modal").style.display="none";
 }
 </script>
 
+<!-- ✅ CONNECTED ENGINE -->
+
 <script>
-const states=[
-{text:"WAIT",class:"wait",friction:25},
-{text:"PREPARE",class:"prepare",friction:60},
-{text:"ACT",class:"act",friction:95}
-];
+async function analyzeInput(){
+  const input = document.getElementById("userInput").value.trim();
+  if(!input) return;
 
-function getState(){
-const r=Math.random();
-if(r<0.65) return states[0];
-if(r<0.9) return states[1];
-return states[2];
+  const parts = input.split(" ");
+  const asset = parts[0];
+  const timeframe = parts[1] || "1H";
+
+  try{
+    const res = await fetch(`http://localhost:8000/analyze?asset=${asset}&timeframe=${timeframe}`);
+    const data = await res.json();
+
+    document.getElementById("aiOutput").innerHTML = `
+    STATE: ${data.state}<br>
+    FRICTION: ${data.friction}<br>
+    TIME COST: ${data.time_cost}<br><br>
+    → ${data.decision}
+    `;
+
+    // UI'yi de güncelle
+    document.querySelector(".status").innerText = data.state;
+
+    if(data.decision === "BLOCK"){
+      document.querySelector(".status").className="status act";
+    }else if(data.decision === "DELAY"){
+      document.querySelector(".status").className="status prepare";
+    }else{
+      document.querySelector(".status").className="status wait";
+    }
+
+    // friction bar (varsayım: 0-100 arası numeric)
+    if(!isNaN(data.friction)){
+      document.querySelector(".fill").style.width = data.friction + "%";
+    }
+
+  }catch(e){
+    document.getElementById("aiOutput").innerText = "ENGINE OFFLINE";
+  }
 }
 
-function updateState(){
-const s=getState();
-document.querySelector(".status").innerText=s.text;
-document.querySelector(".status").className="status "+s.class;
-document.querySelector(".fill").style.width=s.friction+"%";
-}
-
-updateState();
-setInterval(updateState,4000);
-</script>  
+// ENTER ile tetikleme
+document.getElementById("userInput").addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
+    analyzeInput();
+  }
+});
+</script>
 
 </body>  
 </html>
