@@ -238,7 +238,7 @@ async function analyzeInput(){
   const timeframe = parts[1] || "1H";
 
   try{
-    const res = await fetch(`http://localhost:8000/analyze?asset=${asset}&timeframe=${timeframe}`);
+    const res = await fetch(`http://127.0.0.1:8000/analyze?asset=${asset}&timeframe=${timeframe}`);
     const data = await res.json();
 
     document.getElementById("aiOutput").innerHTML = `
