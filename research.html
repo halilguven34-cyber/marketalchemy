@@ -1,125 +1,174 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Research — Market Alchemy</title>  <meta name="description" content="Structural Depth research papers: energy traps, time, markets, quantum systems and phase transitions.">  
-<meta name="keywords" content="energy traps, phase transitions, structural depth, configuration space, information theory, thermodynamics, complex systems, market alchemy">  
-<meta name="author" content="Halil Ibrahim Guven">  <script type="application/ld+json">  
-[  
-  {  
-    "@context": "https://schema.org",  
-    "@type": "ScholarlyArticle",  
-    "headline": "Energy Traps: Structural Localization of Energy",  
-    "author": {  
-      "@type": "Person",  
-      "name": "Halil Ibrahim Guven",  
-      "identifier": "0009-0008-4942-5495"  
-    },  
-    "datePublished": "2026-03-27",  
-    "url": "https://doi.org/10.5281/zenodo.19265862",  
-    "description": "A structural reinterpretation of energy localization based on Path Diversity and the Structural Depth framework."  
-  },  
-  {  
-    "@context": "https://schema.org",  
-    "@type": "ScholarlyArticle",  
-    "headline": "Structural Depth and Entropy: A Non-Contradictory Unification",  
-    "author": {"@type": "Person", "name": "Halil Ibrahim Guven"},  
-    "datePublished": "2026-03-13",  
-    "url": "https://doi.org/10.5281/zenodo.19206624"  
-  }  
-]  
-</script>  <style>  
-body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}  
-.container{max-width:760px;margin:auto;padding:80px 20px;}  
-h1{font-size:32px;margin-bottom:10px;}  
-.subtitle{opacity:0.6;margin-bottom:40px;line-height:1.6;}  
-.section{margin-top:60px;}  
-.muted{opacity:0.6;line-height:1.6;}  
-.paper{margin-top:40px;}  
-.paper-title{font-size:22px;font-weight:600;margin-bottom:8px;}  
-.paper-meta{opacity:0.6;}  
-.paper-desc{opacity:0.75;margin-top:10px;line-height:1.5;}  
-a{color:#e8ecf1;text-decoration:none;}  
-a:hover{opacity:0.75;}  
-hr{border:none;border-top:1px solid #1f2430;margin:50px 0;}  
-nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;}  
-nav::-webkit-scrollbar{display:none;}  
-nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;flex-shrink:0;}  
-nav a.active{color:#6da8ff;opacity:1;font-weight:600;}  
-.law-link{display:inline-block;margin-top:10px;padding:10px 14px;border:1px solid #6da8ff;color:#6da8ff;text-decoration:none;font-size:14px;opacity:1;}  
-.law-link:hover{background:#6da8ff;color:#0d0f14;}  
-.profile-section {margin-top:100px;padding:30px;background:#151921;border-left:2px solid #6da8ff;}  
-.profile-title {font-size:14px;text-transform:uppercase;letter-spacing:2px;color:#6da8ff;margin-bottom:15px;font-weight:600;}  
-.profile-name {font-size:20px;margin-bottom:10px;font-weight:600;}  
-.profile-bio {font-size:15px;opacity:0.7;line-height:1.6;}  
-</style>  
-</head>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Market Alchemy</title>
 
-<body>  
+<meta name="description" content="Structural Depth research papers: energy traps, time, markets, quantum systems and phase transitions.">
+<meta name="keywords" content="energy traps, phase transitions, structural depth, configuration space, information theory, thermodynamics, complex systems, market alchemy">
+<meta name="author" content="Halil Ibrahim Guven">
 
-<div id="nav"></div>  
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Energy Traps: Structural Localization of Energy",
+    "author": {
+      "@type": "Person",
+      "name": "Halil Ibrahim Guven",
+      "identifier": "0009-0008-4942-5495"
+    },
+    "datePublished": "2026-03-27",
+    "url": "https://doi.org/10.5281/zenodo.19265862"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Structural Depth and Entropy: A Non-Contradictory Unification",
+    "author": {"@type": "Person", "name": "Halil Ibrahim Guven"},
+    "datePublished": "2026-03-13",
+    "url": "https://doi.org/10.5281/zenodo.19206624"
+  }
+]
+</script>
 
-<script>  
-fetch("nav.html")  
-.then(res => res.text())  
-.then(data => {  
-  document.getElementById("nav").innerHTML = data;  
-  const lang = localStorage.getItem("lang") || "en";  
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));  
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));  
-});  
-</script>  
+<style>
+body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+.container{max-width:760px;margin:auto;padding:80px 20px;}
+h1{font-size:32px;margin-bottom:10px;}
+.subtitle{opacity:0.6;margin-bottom:40px;line-height:1.6;}
+.section{margin-top:60px;}
+.muted{opacity:0.6;line-height:1.6;}
+.paper{margin-top:40px;}
+.paper-title{font-size:22px;font-weight:600;margin-bottom:8px;}
+.paper-meta{opacity:0.6;}
+.paper-desc{opacity:0.75;margin-top:10px;line-height:1.5;}
+a{color:#e8ecf1;text-decoration:none;}
+a:hover{opacity:0.75;}
+hr{border:none;border-top:1px solid #1f2430;margin:50px 0;}
+</style>
+</head>
 
-<div class="container">  
+<body>
+<div class="container">
 
-<h1 class="en">Research</h1>  
-<h1 class="tr" style="display:none;">Araştırma</h1>  
+<h1>Research</h1>
 
-<p class="subtitle en">  
-This is the theoretical layer of Market Alchemy.<br><br>  
-Access internationally published papers here.<br><br>  
-Research reports are offered as paid access for sustainability.  
-</p>  
-
-<p class="subtitle tr" style="display:none;">  
-Burası Market Alchemy’nin teorik katmanıdır.<br><br>  
-Uluslararası yayınlanmış makalelere buradan erişebilirsin.<br><br>  
-Araştırma raporları sürdürülebilirlik için ücretli sunulmaktadır.  
-</p>  
-
-<div class="section">  
-<p class="muted en">These papers are outputs of the Market Alchemy Laboratory.</p>  
-<p class="muted tr" style="display:none;">Bu çalışmalar Market Alchemy Laboratuvarı çıktılarıdır.</p>  
-</div>  
+<p class="subtitle">
+This is the theoretical layer of Market Alchemy.<br><br>
+Access internationally published papers here.
+</p>
 
 <hr>
 
-<!-- YENİ MAKALE EN ÜST -->
+<!-- COSMOLOGY EN ÜST -->
 <div class="paper">
 <a href="https://doi.org/10.5281/zenodo.19475798" target="_blank">
 <div class="paper-title">
 Cosmology: The Universe from the Perspective of Structural Depth
 </div>
-<div class="paper-meta en">
+<div class="paper-meta">
 Structural interpretation of cosmology — April 2026
 </div>
-<div class="paper-meta tr" style="display:none;">
-Kozmolojinin yapısal yorumu — Nisan 2026
-</div>
-<div class="paper-desc en">
+<div class="paper-desc">
 The universe is modeled as a configuration space with hierarchical containment structures. Cosmic time is redefined as structural depth.
-</div>
-<div class="paper-desc tr" style="display:none;">
-Evren konfigürasyon uzayıdır ve zaman yapısal derinliktir.
 </div>
 </a>
 </div>
 
 <hr>
 
-<!-- DEVAM AYNI -->
 <div class="paper">
 <a href="https://doi.org/10.5281/zenodo.19265862" target="_blank">
 <div class="paper-title">
 Energy Traps: Structural Localization of Energy
 </div>
-...
+<div class="paper-meta">
+March 2026
+</div>
+</a>
+</div>
+
+<hr>
+
+<div class="paper">
+<a href="https://doi.org/10.5281/zenodo.19206624" target="_blank">
+<div class="paper-title">
+Structural Depth and Entropy: A Non-Contradictory Unification
+</div>
+<div class="paper-meta">
+March 2026
+</div>
+</a>
+</div>
+
+<hr>
+
+<div class="paper">
+<a href="https://doi.org/10.5281/zenodo.19154496" target="_blank">
+<div class="paper-title">
+Evolution: Biological Organization as Structural Depth Increase
+</div>
+<div class="paper-meta">
+March 2026
+</div>
+</a>
+</div>
+
+<hr>
+
+<div class="paper">
+<a href="https://doi.org/10.5281/zenodo.19141180" target="_blank">
+<div class="paper-title">
+Phase Transitions: An Interpretation as Containment Expansion
+</div>
+<div class="paper-meta">
+March 2026
+</div>
+</a>
+</div>
+
+<hr>
+
+<div class="paper">
+<a href="https://doi.org/10.5281/zenodo.19102752" target="_blank">
+<div class="paper-title">
+Structural Depth and Markets: Price Formation as Structural Fixation
+</div>
+<div class="paper-meta">
+March 2026
+</div>
+</a>
+</div>
+
+<hr>
+
+<div class="paper">
+<a href="https://doi.org/10.5281/zenodo.19071535" target="_blank">
+<div class="paper-title">
+Structural Depth Law of Time
+</div>
+<div class="paper-meta">
+March 2026
+</div>
+</a>
+</div>
+
+<hr>
+
+<div class="paper">
+<a href="https://doi.org/10.5281/zenodo.19101771" target="_blank">
+<div class="paper-title">
+Quantum Mechanics as Structural Fixation
+</div>
+<div class="paper-meta">
+March 2026
+</div>
+</a>
+</div>
+
+</div>
+</body>
+</html>
