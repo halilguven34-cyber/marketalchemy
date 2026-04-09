@@ -55,7 +55,7 @@ border:1px solid #1f2430;
 .book{
 display:flex;
 gap:16px;
-margin-top:20px;
+margin-top:30px;
 }
 
 .book img{
@@ -65,6 +65,13 @@ border-radius:6px;
 
 .book-info{
 flex:1;
+}
+
+.book-desc{
+margin-top:10px;
+font-size:14px;
+opacity:.7;
+line-height:1.5;
 }
 
 .links a{
@@ -104,7 +111,7 @@ opacity:1;
 font-weight:600;
 }
 
-/* AUTHOR SECTION */
+/* AUTHOR */
 .author-card {
     margin-top: 100px;
     padding: 30px;
@@ -156,19 +163,17 @@ fetch("nav.html")
 <div class="section">
 
 <p class="muted en">
-These works are productized within the Market Alchemy laboratory.<br>
-They are developed to provide value to the reader.<br>
-They are structural representations in different forms.<br>
-They are for everyone.<br>
-They make the structure you are in visible.
+These works are produced within the Market Alchemy laboratory.<br>
+They do not explain.<br>
+They expose structure.<br>
+Each is a different representation of the same system.
 </p>
 
 <p class="muted tr" style="display:none;">
-Bu eserler Market Alchemy laboratuvarında ürünleştirilmiştir.<br>
-Okuyucusuna fayda sağlamak amacıyla geliştirilmiştir.<br>
-Farklı formlarda yapısal temsillerdir.<br>
-Herkes içindir.<br>
-İçinde bulunulan yapıyı görünür hale getirir.
+Bu eserler Market Alchemy laboratuvarında üretilmiştir.<br>
+Açıklama sunmazlar.<br>
+Yapıyı açığa çıkarırlar.<br>
+Her biri aynı sistemin farklı temsilidir.
 </p>
 
 </div>
@@ -178,10 +183,24 @@ Herkes içindir.<br>
 <p class="big en">Published Books</p>
 <p class="big tr" style="display:none;">Yayınlanmış Kitaplar</p>
 
+<!-- LIQUIDATION -->
 <div class="book">
 <img src="liquidation-framework.jpg">
 <div class="book-info">
 <div>Liquidation — The Market Alchemy Framework</div>
+
+<div class="book-desc en">
+Any structure dissolves under load it cannot sustain.<br>
+Liquidation is not chaotic. It is structural necessity.<br>
+A phase transition is where persistence becomes impossible.
+</div>
+
+<div class="book-desc tr" style="display:none;">
+Her yapı, taşıyabileceğinden fazla yük altında çözülür.<br>
+Tasfiye kaotik değil, yapısal bir zorunluluktur.<br>
+Faz geçişi, yapının sürdürülemez hale geldiği noktadır.
+</div>
+
 <div class="links">
 <a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank">Amazon</a>
 <a href="https://play.google.com/store/books/details?id=RZK4F62ULZL" target="_blank">Google</a>
@@ -189,10 +208,24 @@ Herkes içindir.<br>
 </div>
 </div>
 
+<!-- TIME -->
 <div class="book">
 <img src="Theplaceoftime.jpg">
 <div class="book-info">
 <div>The Place of Time</div>
+
+<div class="book-desc en">
+Time is not flow. It is structural depth.<br>
+Change is not progression,<br>
+but the visibility of structure.
+</div>
+
+<div class="book-desc tr" style="display:none;">
+Zaman akış değildir, yapısal derinliktir.<br>
+Değişim ilerleme değil,<br>
+yapının görünür hale gelmesidir.
+</div>
+
 <div class="links">
 <a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Amazon</a>
 <a href="https://play.google.com/store/books/details?id=Oi_JEQAAQBAJ" target="_blank">Google</a>
@@ -200,20 +233,48 @@ Herkes içindir.<br>
 </div>
 </div>
 
+<!-- CONDENSATION -->
 <div class="book">
 <img src="Thecondinsationpoint.png">
 <div class="book-info">
 <div>The Condensation Point</div>
+
+<div class="book-desc en">
+Distributed behavior collapses into inevitability.<br>
+Not where decision happens,<br>
+but where it becomes unavoidable.
+</div>
+
+<div class="book-desc tr" style="display:none;">
+Dağınık davranış zorunlu bir yöne çöker.<br>
+Kararın alındığı yer değil,<br>
+kaçınılmaz hale geldiği noktadır.
+</div>
+
 <div class="links">
 <a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">Amazon</a>
 </div>
 </div>
 </div>
 
+<!-- TASFIYE -->
 <div class="book">
 <img src="Tasfiye.png">
 <div class="book-info">
 <div>Tasfiye: Faz Geçişi ve Sistem Entropisi</div>
+
+<div class="book-desc tr">
+Bu eser, Liquidation kitabının Türkçe versiyonudur.<br>
+Her yapı, taşıyamayacağı yük altında çözülür.<br>
+Bu süreç kaotik değil, yapısal zorunluluktur.
+</div>
+
+<div class="book-desc en" style="display:none;">
+Turkish edition of "Liquidation".<br>
+Any structure dissolves under unsustainable load.<br>
+This is not chaos, but structural necessity.
+</div>
+
 <div class="links">
 <a href="https://play.google.com/store/books/details/Halil_%C4%B0brahim_G%C3%9CVEN_Tasfiye?id=SE7GEQAAQBAJ" target="_blank">Google</a>
 </div>
@@ -228,13 +289,13 @@ Herkes içindir.<br>
 <p class="big tr" style="display:none;">Üzerine Çalışılan</p>
 
 <div class="block en">
-1. Financial Behavior Guide<br>
-2. The Price of Waiting
+1. Financial Behavior Mechanics<br>
+2. Price = record of system behavior
 </div>
 
 <div class="block tr" style="display:none;">
-1. Finansal Yatırımcı Davranış Modeli<br>
-2. Fiyat = bilgi alanının ölçülebilir projeksiyonu.
+1. Finansal Davranış Mekaniği<br>
+2. Fiyat = sistem davranışının kaydı
 </div>
 
 </div>
@@ -246,16 +307,17 @@ Herkes içindir.<br>
     <div class="author-name">Halil İbrahim Güven</div>
     
     <div class="author-text en">
-        Author and researcher focusing on systemic entropy and market structures. 
-        His work seeks to bridge the gap between financial mechanics and theoretical frameworks, 
-        making complex system behaviors accessible through structured literature. 
-        He is the founder of the <i>Market Alchemy</i> ecosystem.
+        Independent researcher working on system behavior, entropy, and market structures.<br>
+        His work treats price not as narrative,<br>
+        but as a recorded output of the system.<br><br>
+        Market Alchemy is the applied layer of this framework.
     </div>
+
     <div class="author-text tr" style="display:none;">
-        Sistemik entropi ve piyasa yapıları üzerine odaklanan yazar ve araştırmacı. 
-        Eserleri, finansal mekanikler ile teorik çerçeveler arasındaki boşluğu doldurmayı ve 
-        karmaşık sistem davranışlarını yapılandırılmış literatür aracılığıyla erişilebilir kılmayı amaçlar. 
-        <i>Market Alchemy</i> ekosisteminin kurucusudur.
+        Sistem davranışı, entropi ve piyasa yapıları üzerine çalışan bağımsız araştırmacı.<br>
+        Çalışmaları fiyatı bir anlatı değil,<br>
+        sistem çıktısı olarak ele alır.<br><br>
+        Market Alchemy bu yaklaşımın uygulama katmanıdır.
     </div>
 </div>
 
@@ -268,7 +330,7 @@ Herkes içindir.<br>
   "name": "Halil Ibrahim Guven",
   "jobTitle": "Independent Researcher",
   "url": "https://marketalchemy.io",
-  "description": "Researcher focusing on structural market dynamics, systemic liquidity, complex systems, and structural time models"
+  "description": "Researcher focusing on system behavior, structural markets, and entropy-based financial mechanics"
 }
 </script>
 
