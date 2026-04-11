@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access — Market Alchemy</title>
+
+<script>
+// dil
+if(!localStorage.getItem("lang")){
+  const userLang = navigator.language || navigator.userLanguage;
+  localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
+}
+</script>
+
+<style>
+body{
+margin:0;
+background:#0d0f14;
+color:#e8ecf1;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.container{
+max-width:600px;
+margin-top:100px;
+padding:0 20px;
+}
+
+h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.subtitle{
+opacity:0.6;
+margin-bottom:40px;
+line-height:1.6;
+}
+
+.box{
+margin-top:30px;
+padding:20px;
+border:1px solid #1f2430;
+text-align:left;
+font-size:14px;
+opacity:0.85;
+}
+
+.form{
+margin-top:40px;
+text-align:left;
+}
+
+label{
+font-size:13px;
+opacity:0.6;
+}
+
+input, select{
+width:100%;
+margin-top:8px;
+margin-bottom:20px;
+padding:12px;
+background:#0d0f14;
+border:1px solid #1f2430;
+color:#e8ecf1;
+}
+
+button{
+width:100%;
+padding:14px;
+border:1px solid #6da8ff;
+background:none;
+color:#6da8ff;
+cursor:pointer;
+}
+
+button:hover{
+background:#6da8ff;
+color:#0d0f14;
+}
+
+.note{
+margin-top:20px;
+font-size:12px;
+opacity:0.4;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="en">SYSTEM ACCESS</h1>
+<h1 class="tr" style="display:none;">SİSTEM ERİŞİMİ</h1>
+
+<p class="subtitle en">
+You are not unlocking a product.<br>
+You are requesting access to a system layer.
+</p>
+
+<p class="subtitle tr" style="display:none;">
+Bir ürün satın almıyorsun.<br>
+Bir sistem katmanına erişim talep ediyorsun.
+</p>
+
+<div class="box en">
+• Live system states<br>
+• Multi-timeframe structure<br>
+• Early system builds<br>
+• Experimental modules
+</div>
+
+<div class="box tr" style="display:none;">
+• Canlı sistem durumları<br>
+• Çoklu zaman dilimi yapısı<br>
+• Erken sistem versiyonları<br>
+• Deneysel modüller
+</div>
+
+<!-- FORM -->
+
+<div class="form">
+
+<label>Email</label>
+<input id="email" type="email" placeholder="you@example.com">
+
+<label class="en">Use case</label>
+<label class="tr" style="display:none;">Kullanım amacı</label>
+
+<select id="type">
+<option value="trader">Trader</option>
+<option value="research">Research / Academic</option>
+<option value="institutional">Institutional</option>
+<option value="developer">Developer / API</option>
+</select>
+
+<button onclick="submitForm()" class="en">Request access →</button>
+<button onclick="submitForm()" class="tr" style="display:none;">Erişim talep et →</button>
+
+</div>
+
+<div class="note en">
+Access is limited. Requests are reviewed.
+</div>
+
+<div class="note tr" style="display:none;">
+Erişim sınırlıdır. Talepler değerlendirilir.
+</div>
+
+</div>
+
+<script>
+
+// dil uygula
+const lang = localStorage.getItem("lang") || "en";
+document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+
+// fake submit (mail açar)
+function submitForm(){
+
+  const email = document.getElementById("email").value;
+  const type = document.getElementById("type").value;
+
+  if(!email){
+    alert(lang==="tr" ? "Email gerekli" : "Email required");
+    return;
+  }
+
+  const subject = "Market Alchemy Access Request";
+  const body = `Email: ${email}\nType: ${type}`;
+
+  window.location.href = `mailto:priceofwaiting@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+</script>
+
+</body>
+</html>
