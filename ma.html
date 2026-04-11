@@ -6,7 +6,6 @@
 <title>MA Engine — Market Alchemy</title>
 
 <script>
-// dil tespiti
 if(!localStorage.getItem("lang")){
   const userLang = navigator.language || navigator.userLanguage;
   localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
@@ -139,13 +138,12 @@ Canlı sinyaller, sistem durumları ve erken erişim içerir.
 
 <script>
 
-// dil uygula
+// language
 const lang = localStorage.getItem("lang") || "en";
 document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
 document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 
-
-// 🔥 seed
+// seed
 function getSeed(str){
   let hash = 0;
   for(let i=0;i<str.length;i++){
@@ -154,49 +152,60 @@ function getSeed(str){
   return hash;
 }
 
-// 🔥 canlı engine
+// 🔥 PHASE ENGINE
 function analyze(asset, tf){
 
-  const base = getSeed(asset + tf);
+  const seed = getSeed(asset + tf);
 
-  const timeFactor = Math.floor(Date.now() / 3000);
+  const time = Math.floor(Date.now() / 3000);
 
-  const dynamic = base + timeFactor;
+  // phase cycle (0-99)
+  const cycle = (seed + time) % 100;
 
-  const states = ["WAIT","PREPARE","ACT"];
+  let state, friction, phase;
 
-  const decisions_en = [
-    "NO VALID TRADE CONDITION",
-    "WAIT",
-    "ACTION ZONE"
-  ];
+  if(cycle < 50){
+    state = "WAIT";
+    friction = 20 + cycle; // düşük → orta
+    phase = "compression";
+  }
+  else if(cycle < 80){
+    state = "PREPARE";
+    friction = 50 + (cycle - 50); // orta → yüksek
+    phase = "build-up";
+  }
+  else{
+    state = "ACT";
+    friction = 80 + (cycle - 80); // yüksek → peak
+    phase = "release";
+  }
 
-  const decisions_tr = [
-    "GEÇERLİ İŞLEM KOŞULU YOK",
-    "BEKLE",
-    "AKSİYON"
-  ];
+  const decisions_en = {
+    WAIT: "NO VALID TRADE CONDITION",
+    PREPARE: "WAIT",
+    ACT: "ACTION ZONE"
+  };
 
-  const index = dynamic % states.length;
-
-  const friction = 30 + (dynamic * 17 % 60);
+  const decisions_tr = {
+    WAIT: "GEÇERLİ İŞLEM KOŞULU YOK",
+    PREPARE: "BEKLE",
+    ACT: "AKSİYON"
+  };
 
   return {
-    state: states[index],
-    friction: friction,
-    decision: lang === "tr" ? decisions_tr[index] : decisions_en[index]
+    state,
+    friction,
+    decision: lang === "tr" ? decisions_tr[state] : decisions_en[state]
   };
 }
 
-
-// current state
+// current
 let currentAsset = null;
 let currentTF = null;
 
 // input
 document.getElementById("input").addEventListener("keydown", function(e){
   if(e.key === "Enter"){
-
     const val = e.target.value.trim();
     if(!val) return;
 
@@ -232,7 +241,7 @@ function updateUI(){
   `;
 }
 
-// 🔥 canlı akış
+// live loop
 setInterval(updateUI, 3000);
 
 </script>
