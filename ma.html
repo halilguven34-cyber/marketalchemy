@@ -66,6 +66,16 @@ border:1px solid #1f2430;
 font-size:14px;
 opacity:0.8;
 }
+
+.physics{
+margin-top:20px;
+padding:16px;
+border:1px solid #1f2430;
+font-family:monospace;
+font-size:13px;
+opacity:0.75;
+text-align:left;
+}
 </style>
 </head>
 
@@ -86,10 +96,10 @@ Sistem stabil.<br>Aksiyon gerekmiyor.
 </div>
 
 <div class="sub en">
-Input any market: BTC 1H / EURUSD 4H / GOLD 1D
+Input any market: BTC 1H / BTC 4H / BTC 1D
 </div>
 <div class="sub tr" style="display:none;">
-Piyasa gir: BTC 1H / EURUSD 4H / GOLD 1D
+Piyasa gir: BTC 1H / BTC 4H / BTC 1D
 </div>
 
 <div class="bar"><div class="fill" id="bar"></div></div>
@@ -98,6 +108,14 @@ Piyasa gir: BTC 1H / EURUSD 4H / GOLD 1D
 
 <div class="output" id="output">
 STATE: WAIT
+</div>
+
+<div class="physics" id="physicsBox">
+PHASE: -<br>
+ENERGY: -<br>
+STRUCTURE: -<br>
+TIME COST: -<br>
+TIMEFRAME: -
 </div>
 
 <div class="box en">
@@ -111,11 +129,11 @@ Ne zaman işlem yapmaman gerektiğini filtreler.
 </div>
 
 <div class="note en">
-Most losses come from timing, not direction.
+Same asset. Different timeframe. Different reality.
 </div>
 
 <div class="note tr" style="display:none;">
-Zararın çoğu yön değil, zamanlamadan gelir.
+Aynı varlık. Farklı zaman dilimi. Farklı gerçeklik.
 </div>
 
 <a class="cta en" href="mailto:priceofwaiting@gmail.com">
@@ -125,14 +143,6 @@ Unlock full system →
 <a class="cta tr" href="mailto:priceofwaiting@gmail.com" style="display:none;">
 Tam erişimi aç →
 </a>
-
-<div class="note en">
-Includes live signals, system states and early access.
-</div>
-
-<div class="note tr" style="display:none;">
-Canlı sinyaller, sistem durumları ve erken erişim içerir.
-</div>
 
 </div>
 
@@ -152,33 +162,64 @@ function getSeed(str){
   return hash;
 }
 
-// 🔥 PHASE ENGINE
+// timeframe weight
+function tfWeight(tf){
+  if(!tf) return 1;
+
+  tf = tf.toUpperCase();
+
+  if(tf.includes("1M")) return 1;
+  if(tf.includes("5M")) return 2;
+  if(tf.includes("15M")) return 3;
+  if(tf.includes("1H")) return 5;
+  if(tf.includes("4H")) return 8;
+  if(tf.includes("1D")) return 13;
+  if(tf.includes("1W")) return 21;
+
+  return 5;
+}
+
+// ENGINE
 function analyze(asset, tf){
 
-  const seed = getSeed(asset + tf);
+  const seed = getSeed(asset);
+  const tfW = tfWeight(tf);
 
-  const time = Math.floor(Date.now() / 3000);
+  const time = Math.floor(Date.now() / (3000 * (22 - tfW))); 
+  // 🔥 timeframe yavaşlatır
 
-  // phase cycle (0-99)
-  const cycle = (seed + time) % 100;
+  const cycle = (seed + time + tfW * 7) % 100;
 
-  let state, friction, phase;
+  let state, friction, phase, structure, timeCost;
 
   if(cycle < 50){
     state = "WAIT";
-    friction = 20 + cycle; // düşük → orta
-    phase = "compression";
+    friction = 20 + cycle;
+    phase = "COMPRESSION";
+    timeCost = "LOW";
   }
-  else if(cycle < 80){
+  else if(cycle < 70){
     state = "PREPARE";
-    friction = 50 + (cycle - 50); // orta → yüksek
-    phase = "build-up";
+    friction = 50 + (cycle - 50);
+    phase = "BUILD-UP";
+    timeCost = "RISING";
+  }
+  else if(cycle < 85){
+    state = "PREPARE";
+    friction = 70 + (cycle - 70);
+    phase = "PRE-RELEASE";
+    timeCost = "HIGH";
   }
   else{
     state = "ACT";
-    friction = 80 + (cycle - 80); // yüksek → peak
-    phase = "release";
+    friction = 85 + (cycle - 85);
+    phase = "RELEASE";
+    timeCost = "CRITICAL";
   }
+
+  if(friction < 40) structure = "OPEN";
+  else if(friction < 70) structure = "FORMING";
+  else structure = "LOCKED";
 
   const decisions_en = {
     WAIT: "NO VALID TRADE CONDITION",
@@ -195,7 +236,11 @@ function analyze(asset, tf){
   return {
     state,
     friction,
-    decision: lang === "tr" ? decisions_tr[state] : decisions_en[state]
+    decision: lang === "tr" ? decisions_tr[state] : decisions_en[state],
+    phase,
+    structure,
+    timeCost,
+    tf
   };
 }
 
@@ -206,6 +251,7 @@ let currentTF = null;
 // input
 document.getElementById("input").addEventListener("keydown", function(e){
   if(e.key === "Enter"){
+
     const val = e.target.value.trim();
     if(!val) return;
 
@@ -239,9 +285,17 @@ function updateUI(){
   FRICTION: ${res.friction}<br><br>
   → ${res.decision}
   `;
+
+  document.getElementById("physicsBox").innerHTML = `
+  PHASE: ${res.phase}<br>
+  ENERGY: ${res.friction}<br>
+  STRUCTURE: ${res.structure}<br>
+  TIME COST: ${res.timeCost}<br>
+  TIMEFRAME: ${res.tf}
+  `;
 }
 
-// live loop
+// loop
 setInterval(updateUI, 3000);
 
 </script>
