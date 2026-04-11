@@ -74,13 +74,11 @@ opacity:0.8;
 
 <div class="container">
 
-<!-- LABEL -->
 <div class="label en">ENGINE STATE</div>
 <div class="label tr" style="display:none;">SİSTEM DURUMU</div>
 
 <div class="status wait" id="stateText">WAIT</div>
 
-<!-- DESC -->
 <div class="desc en">
 System stable.<br>No action required.
 </div>
@@ -88,7 +86,6 @@ System stable.<br>No action required.
 Sistem stabil.<br>Aksiyon gerekmiyor.
 </div>
 
-<!-- SUB -->
 <div class="sub en">
 Input any market: BTC 1H / EURUSD 4H / GOLD 1D
 </div>
@@ -104,7 +101,6 @@ Piyasa gir: BTC 1H / EURUSD 4H / GOLD 1D
 STATE: WAIT
 </div>
 
-<!-- POSITIONING -->
 <div class="box en">
 This is not a signal tool.<br>
 It filters when NOT to trade.
@@ -115,7 +111,6 @@ Bu bir sinyal sistemi değildir.<br>
 Ne zaman işlem yapmaman gerektiğini filtreler.
 </div>
 
-<!-- PSYCHO -->
 <div class="note en">
 Most losses come from timing, not direction.
 </div>
@@ -124,7 +119,6 @@ Most losses come from timing, not direction.
 Zararın çoğu yön değil, zamanlamadan gelir.
 </div>
 
-<!-- CTA -->
 <a class="cta en" href="mailto:priceofwaiting@gmail.com">
 Unlock full system →
 </a>
@@ -145,64 +139,101 @@ Canlı sinyaller, sistem durumları ve erken erişim içerir.
 
 <script>
 
-// 🔥 dil uygula
+// dil uygula
 const lang = localStorage.getItem("lang") || "en";
 document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
 document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 
 
-// 🔥 demo engine
-function analyze(asset){
-
-  asset = asset.toUpperCase();
-
-  if(asset.includes("BTC")){
-    return {state:"WAIT", friction:30, decision: lang==="tr" ? "İŞLEM YOK" : "NO TRADE"};
+// 🔥 seed
+function getSeed(str){
+  let hash = 0;
+  for(let i=0;i<str.length;i++){
+    hash += str.charCodeAt(i);
   }
+  return hash;
+}
 
-  if(asset.includes("ETH")){
-    return {state:"PREPARE", friction:60, decision: lang==="tr" ? "BEKLE" : "WAIT"};
-  }
+// 🔥 canlı engine
+function analyze(asset, tf){
 
-  if(asset.includes("GOLD") || asset.includes("XAU")){
-    return {state:"ACT", friction:85, decision: lang==="tr" ? "AKSİYON" : "ACTION ZONE"};
-  }
+  const base = getSeed(asset + tf);
 
-  if(asset.includes("EUR") || asset.includes("USD")){
-    return {state:"PREPARE", friction:55, decision: lang==="tr" ? "BEKLE" : "WAIT"};
-  }
+  const timeFactor = Math.floor(Date.now() / 3000);
 
-  return {state:"WAIT", friction:40, decision: lang==="tr" ? "SİNYAL YOK" : "NO EDGE"};
+  const dynamic = base + timeFactor;
+
+  const states = ["WAIT","PREPARE","ACT"];
+
+  const decisions_en = [
+    "NO VALID TRADE CONDITION",
+    "WAIT",
+    "ACTION ZONE"
+  ];
+
+  const decisions_tr = [
+    "GEÇERLİ İŞLEM KOŞULU YOK",
+    "BEKLE",
+    "AKSİYON"
+  ];
+
+  const index = dynamic % states.length;
+
+  const friction = 30 + (dynamic * 17 % 60);
+
+  return {
+    state: states[index],
+    friction: friction,
+    decision: lang === "tr" ? decisions_tr[index] : decisions_en[index]
+  };
 }
 
 
-// 🔥 input
+// current state
+let currentAsset = null;
+let currentTF = null;
+
+// input
 document.getElementById("input").addEventListener("keydown", function(e){
   if(e.key === "Enter"){
 
     const val = e.target.value.trim();
     if(!val) return;
 
-    const asset = val.split(" ")[0];
-    const res = analyze(asset);
+    const parts = val.split(" ");
+    currentAsset = parts[0];
+    currentTF = parts[1] || "1H";
 
-    const stateEl = document.getElementById("stateText");
-    stateEl.innerText = res.state;
-
-    stateEl.className = "status " + (
-      res.state === "ACT" ? "act" :
-      res.state === "PREPARE" ? "prepare" : "wait"
-    );
-
-    document.getElementById("bar").style.width = res.friction + "%";
-
-    document.getElementById("output").innerHTML = `
-    STATE: ${res.state}<br>
-    FRICTION: ${res.friction}<br><br>
-    → ${res.decision}
-    `;
+    updateUI();
   }
 });
+
+// UI
+function updateUI(){
+
+  if(!currentAsset) return;
+
+  const res = analyze(currentAsset, currentTF);
+
+  const stateEl = document.getElementById("stateText");
+  stateEl.innerText = res.state;
+
+  stateEl.className = "status " + (
+    res.state === "ACT" ? "act" :
+    res.state === "PREPARE" ? "prepare" : "wait"
+  );
+
+  document.getElementById("bar").style.width = res.friction + "%";
+
+  document.getElementById("output").innerHTML = `
+  STATE: ${res.state}<br>
+  FRICTION: ${res.friction}<br><br>
+  → ${res.decision}
+  `;
+}
+
+// 🔥 canlı akış
+setInterval(updateUI, 3000);
 
 </script>
 
