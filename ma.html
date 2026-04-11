@@ -76,6 +76,13 @@ font-size:13px;
 opacity:0.75;
 text-align:left;
 }
+
+/* 🔥 NEW ACCESS TEXT */
+.access-note{
+margin-top:12px;
+font-size:12px;
+opacity:0.45;
+}
 </style>
 </head>
 
@@ -136,13 +143,23 @@ Same asset. Different timeframe. Different reality.
 Aynı varlık. Farklı zaman dilimi. Farklı gerçeklik.
 </div>
 
-<a class="cta en" href="mailto:priceofwaiting@gmail.com">
-Unlock full system →
+<!-- 🔥 NEW CTA -->
+
+<a class="cta en" href="access.html">
+Access system layer →
 </a>
 
-<a class="cta tr" href="mailto:priceofwaiting@gmail.com" style="display:none;">
-Tam erişimi aç →
+<a class="cta tr" href="access.html" style="display:none;">
+Sistem katmanına eriş →
 </a>
+
+<div class="access-note en">
+Access is limited. Requests are reviewed.
+</div>
+
+<div class="access-note tr" style="display:none;">
+Erişim sınırlıdır. Talepler değerlendirilir.
+</div>
 
 </div>
 
@@ -165,9 +182,7 @@ function getSeed(str){
 // timeframe weight
 function tfWeight(tf){
   if(!tf) return 1;
-
   tf = tf.toUpperCase();
-
   if(tf.includes("1M")) return 1;
   if(tf.includes("5M")) return 2;
   if(tf.includes("15M")) return 3;
@@ -175,118 +190,71 @@ function tfWeight(tf){
   if(tf.includes("4H")) return 8;
   if(tf.includes("1D")) return 13;
   if(tf.includes("1W")) return 21;
-
   return 5;
 }
 
-// ENGINE
+// engine
 function analyze(asset, tf){
 
   const seed = getSeed(asset);
   const tfW = tfWeight(tf);
 
-  const time = Math.floor(Date.now() / (3000 * (22 - tfW))); 
-  // 🔥 timeframe yavaşlatır
-
+  const time = Math.floor(Date.now() / (3000 * (22 - tfW)));
   const cycle = (seed + time + tfW * 7) % 100;
 
   let state, friction, phase, structure, timeCost;
 
   if(cycle < 50){
-    state = "WAIT";
-    friction = 20 + cycle;
-    phase = "COMPRESSION";
-    timeCost = "LOW";
-  }
-  else if(cycle < 70){
-    state = "PREPARE";
-    friction = 50 + (cycle - 50);
-    phase = "BUILD-UP";
-    timeCost = "RISING";
-  }
-  else if(cycle < 85){
-    state = "PREPARE";
-    friction = 70 + (cycle - 70);
-    phase = "PRE-RELEASE";
-    timeCost = "HIGH";
-  }
-  else{
-    state = "ACT";
-    friction = 85 + (cycle - 85);
-    phase = "RELEASE";
-    timeCost = "CRITICAL";
+    state="WAIT"; friction=20+cycle; phase="COMPRESSION"; timeCost="LOW";
+  } else if(cycle < 70){
+    state="PREPARE"; friction=50+(cycle-50); phase="BUILD-UP"; timeCost="RISING";
+  } else if(cycle < 85){
+    state="PREPARE"; friction=70+(cycle-70); phase="PRE-RELEASE"; timeCost="HIGH";
+  } else{
+    state="ACT"; friction=85+(cycle-85); phase="RELEASE"; timeCost="CRITICAL";
   }
 
-  if(friction < 40) structure = "OPEN";
-  else if(friction < 70) structure = "FORMING";
-  else structure = "LOCKED";
+  if(friction < 40) structure="OPEN";
+  else if(friction < 70) structure="FORMING";
+  else structure="LOCKED";
 
-  const decisions_en = {
-    WAIT: "NO VALID TRADE CONDITION",
-    PREPARE: "WAIT",
-    ACT: "ACTION ZONE"
-  };
-
-  const decisions_tr = {
-    WAIT: "GEÇERLİ İŞLEM KOŞULU YOK",
-    PREPARE: "BEKLE",
-    ACT: "AKSİYON"
-  };
-
-  return {
-    state,
-    friction,
-    decision: lang === "tr" ? decisions_tr[state] : decisions_en[state],
-    phase,
-    structure,
-    timeCost,
-    tf
-  };
+  return {state, friction, phase, structure, timeCost, tf};
 }
 
-// current
-let currentAsset = null;
-let currentTF = null;
+let currentAsset=null;
+let currentTF=null;
 
-// input
 document.getElementById("input").addEventListener("keydown", function(e){
-  if(e.key === "Enter"){
-
-    const val = e.target.value.trim();
+  if(e.key==="Enter"){
+    const val=e.target.value.trim();
     if(!val) return;
-
-    const parts = val.split(" ");
-    currentAsset = parts[0];
-    currentTF = parts[1] || "1H";
-
+    const parts=val.split(" ");
+    currentAsset=parts[0];
+    currentTF=parts[1]||"1H";
     updateUI();
   }
 });
 
-// UI
 function updateUI(){
-
   if(!currentAsset) return;
+  const res=analyze(currentAsset,currentTF);
 
-  const res = analyze(currentAsset, currentTF);
+  const stateEl=document.getElementById("stateText");
+  stateEl.innerText=res.state;
 
-  const stateEl = document.getElementById("stateText");
-  stateEl.innerText = res.state;
-
-  stateEl.className = "status " + (
-    res.state === "ACT" ? "act" :
-    res.state === "PREPARE" ? "prepare" : "wait"
+  stateEl.className="status "+(
+    res.state==="ACT"?"act":
+    res.state==="PREPARE"?"prepare":"wait"
   );
 
-  document.getElementById("bar").style.width = res.friction + "%";
+  document.getElementById("bar").style.width=res.friction+"%";
 
-  document.getElementById("output").innerHTML = `
+  document.getElementById("output").innerHTML=`
   STATE: ${res.state}<br>
-  FRICTION: ${res.friction}<br><br>
-  → ${res.decision}
+  FRICTION: ${res.friction}<br>
   `;
 
-  document.getElementById("physicsBox").innerHTML = `
+  document.getElementById("physicsBox").innerHTML=`
   PHASE: ${res.phase}<br>
   ENERGY: ${res.friction}<br>
   STRUCTURE: ${res.structure}<br>
@@ -295,8 +263,7 @@ function updateUI(){
   `;
 }
 
-// loop
-setInterval(updateUI, 3000);
+setInterval(updateUI,3000);
 
 </script>
 
