@@ -4,12 +4,7 @@
 <script>
 if(!localStorage.getItem("lang")){
   const userLang = navigator.language || navigator.userLanguage;
-
-  if(userLang.toLowerCase().startsWith("tr")){
-    localStorage.setItem("lang","tr");
-  }else{
-    localStorage.setItem("lang","en");
-  }
+  localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
 }
 </script>
 
@@ -17,144 +12,44 @@ if(!localStorage.getItem("lang")){
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8NGN65VXH8');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-8NGN65VXH8');
 </script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Market Alchemy — Liquidation Mechanics</title>
-<meta name="description" content="Market Alchemy Research & Systems: Structural Depth Law of Time and System Entropy. Developed by Halil İbrahim Güven.">
-<meta name="keywords" content="Market Alchemy, Halil İbrahim Güven, System Entropy, Structural Depth Law, Pascal Model, Trading Filter, Liquidation Mechanics">
-<meta name="author" content="Halil İbrahim Güven">
+<title>Market Alchemy — Decision Timing Engine</title>
+<meta name="description" content="A decision timing system for crypto, forex and indices. Know when NOT to trade.">
 <link rel="canonical" href="https://marketalchemy.io/">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Market Alchemy Engine",
-  "operatingSystem": "Web",
-  "applicationCategory": "FinancialApplication",
-  "author": {
-    "@type": "Person",
-    "name": "Halil İbrahim Güven",
-    "jobTitle": "System Architect & Researcher",
-    "url": "https://marketalchemy.io"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Market Alchemy Research & Systems",
-    "location": {
-      "@type": "Place",
-      "address": "Türkiye"
-    }
-  }
-}
-</script>
-
 <style>
-body{
-margin:0;
-background:#0d0f14;
-color:#e8ecf1;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-}
+body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+.container{max-width:720px;margin:auto;padding:80px 20px;}
+h1{font-size:40px;margin-bottom:10px;}
+.subtitle{opacity:0.7;font-size:16px;margin-bottom:40px;}
+.section{margin-top:80px;}
+.big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}
+.muted{opacity:0.6;line-height:1.7;}
+.cta{display:block;margin-top:30px;padding:16px;border:1px solid #1f2430;text-decoration:none;color:#e8ecf1;font-size:15px;opacity:0.9;}
+.cta:hover{border-color:#6da8ff;color:#6da8ff;}
+hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
+nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}
+nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}
+nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
 
-.container{
-max-width:720px;
-margin:auto;
-padding:80px 20px;
-}
-
-h1{
-font-size:40px;
-margin-bottom:10px;
-}
-
-.subtitle{
-opacity:0.7;
-font-size:16px;
-margin-bottom:40px;
-}
-
-.section{
-margin-top:80px;
-}
-
-.big{
-font-size:26px;
-font-weight:600;
-margin-bottom:18px;
-line-height:1.4;
-}
-
-.muted{
-opacity:0.6;
-line-height:1.7;
-}
-
-.bridge{
-opacity:0.8;
-margin-bottom:20px;
-line-height:1.6;
-}
-
-.cta{
-display:block;
+.box{
 margin-top:30px;
-padding:16px;
+padding:20px;
 border:1px solid #1f2430;
-text-decoration:none;
-color:#e8ecf1;
+font-family:monospace;
 font-size:15px;
 opacity:0.9;
-cursor: pointer;
-}
-.cta:hover{
-border-color:#6da8ff;
-color:#6da8ff;
-opacity:1;
-}
-
-hr{
-border:none;
-border-top:1px solid #1f2430;
-margin:60px 0;
-}
-
-nav{
-width:100%;
-display:flex;
-gap:18px;
-padding:14px 16px;
-border-bottom:1px solid #1f2430;
-font-size:14px;
-overflow-x:auto;
-white-space:nowrap;
--webkit-overflow-scrolling:touch;
-}
-
-nav::-webkit-scrollbar{
-display:none;
-}
-
-nav a{
-color:#e8ecf1;
-text-decoration:none;
-opacity:0.7;
-flex-shrink:0;
-}
-
-nav a.active{
-color:#6da8ff;
-opacity:1;
-font-weight:600;
 }
 </style>
+
 </head>
 
 <body>
@@ -166,7 +61,6 @@ fetch("nav.html?v=" + Date.now())
 .then(res => res.text())
 .then(data => {
   document.getElementById("nav").innerHTML = data;
-
   const lang = localStorage.getItem("lang") || "en";
   document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
   document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
@@ -177,262 +71,130 @@ fetch("nav.html?v=" + Date.now())
 
 <h1>MARKET ALCHEMY</h1>
 
-<p class="subtitle en">Decision Timing System</p>
-<p class="subtitle tr" style="display:none;">Karar Zamanlama Sistemi</p>
+<p class="subtitle en">Decision Timing Engine</p>
+<p class="subtitle tr" style="display:none;">Karar Zamanlama Motoru</p>
+
+<!-- 🔥 HERO FIX -->
 
 <div class="section en">
 <p class="big">
-Avoid trades at the wrong time.
+Most traders lose because they act too early.
 </p>
 
 <p class="muted">
-Most losses do not come from wrong direction.<br>
-They come from wrong timing.<br><br>
-
-Market Alchemy filters invalid decisions<br>
-and shows when not to act.
+This system shows when NOT to trade.
 </p>
 
-<p class="muted">
-This system is implemented as an engine.
-</p>
+<div class="box" id="liveBox">
+STATE: WAIT<br>
+FRICTION: LOW<br>
+TIME COST: STABLE<br><br>
+→ NO TRADE ZONE
+</div>
 
 <a class="cta" href="ma.html">
-See how the system works →
+Check live system →
 </a>
 
 </div>
 
 <div class="section tr" style="display:none;">
 <p class="big">
-Yanlış zamanda işlem yapmayı engelle.
+Traderların çoğu yanlış olduğu için değil,<br>
+erken davrandığı için kaybeder.
 </p>
 
 <p class="muted">
-Zararın çoğu yanlış yönden değil,<br>
-yanlış zamandan gelir.<br><br>
-
-Market Alchemy geçersiz kararları eler<br>
-ve ne zaman işlem yapmaman gerektiğini gösterir.
+Bu sistem ne zaman işlem yapmaman gerektiğini gösterir.
 </p>
 
-<p class="muted">
-Bu sistem bir motor olarak uygulanır.
-</p>
+<div class="box">
+STATE: WAIT<br>
+FRICTION: DÜŞÜK<br>
+TIME COST: STABİL<br><br>
+→ İŞLEM YOK
+</div>
 
 <a class="cta" href="ma.html">
-Sistemin nasıl çalıştığını gör →
+Canlı sistemi gör →
 </a>
-
 </div>
 
 <hr>
 
-<div class="section en">
-<p class="big">
-The market is not a narrative. It is a physical system.
-</p>
-
-<p class="muted">
-We operate with mathematics and physics.<br>
-We measure energy in the market.<br><br>
-If it is measurable, it becomes visible.
-</p>
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">
-Piyasa bir anlatı değil, fiziksel bir sistemdir.
-</p>
-
-<p class="muted">
-Matematik ve fizik ile ilerleriz.<br>
-Piyasadaki enerjiyi ölçeriz.<br><br>
-Ölçülebiliyorsa, görünür.
-</p>
-</div>
-
-<hr>
+<!-- 🔥 KISA AÇIKLAMA -->
 
 <div class="section en">
 <p class="big">
-Decisions are not made.<br>
-They become visible.
-</p>
-
-<p class="bridge">
-Market Alchemy makes this visibility actionable.
+A trading timing tool for crypto, forex and indices.
 </p>
 
 <p class="muted">
-Wrong timing creates most losses.<br>
-This system reduces that risk.
-</p>
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">
-Karar alınmaz.<br>
-Görünür hale gelir.
-</p>
-
-<p class="bridge">
-Market Alchemy bu görünürlüğü aksiyona dönüştürür.
-</p>
-
-<p class="muted">
-Zararın çoğu yanlış zamandan gelir.<br>
-Bu sistem bu riski azaltır.
-</p>
-</div>
-
-<hr>
-
-<div class="section en">
-<p class="big">
-Structure decides visibility.
-</p>
-
-<p class="bridge">
-You do not see the market.<br>
-You see your position inside it.
-</p>
-
-<img src="time.diagram.jpg" style="width:100%; max-width:680px; display:block; margin:40px auto;">
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">
-Yapı görünürlüğü belirler.
-</p>
-
-<p class="bridge">
-Piyasayı görmezsin.<br>
-İçindeki konumunu görürsün.
-</p>
-
-<img src="time.diagram.jpg" style="width:100%; max-width:680px; display:block; margin:40px auto;">
-</div>
-
-<hr>
-
-<div class="section en">
-<p class="big">
-This is a decision timing system.
-</p>
-
-<p class="muted">
+It filters invalid decisions.<br>
 It reduces unnecessary trades.<br>
-It helps you wait when needed.<br>
 It makes timing visible.
 </p>
 </div>
 
 <div class="section tr" style="display:none;">
 <p class="big">
-Bu bir karar zamanlama sistemidir.
+Kripto, forex ve endeksler için zamanlama aracı.
 </p>
 
 <p class="muted">
+Geçersiz kararları eler.<br>
 Gereksiz işlemleri azaltır.<br>
-Gerektiğinde beklemeyi sağlar.<br>
-Zamanlamayı görünür hale getirir.
+Zamanlamayı görünür yapar.
 </p>
 </div>
 
 <hr>
 
-<div class="section en muted">
-Research and system development are ongoing.
-</div>
-
-<div class="section tr muted" style="display:none;">
-Araştırma ve sistem geliştirme devam etmektedir.
-</div>
-
-<hr>
+<!-- 🔥 MINIMAL MANIFESTO -->
 
 <div class="section en">
-<p class="big">LAB ACCESS</p>
-
 <p class="muted">
-Supervisor, GodMode and Ultimate systems<br>
-are in live experimental phase.<br><br>
-
-Access real-time signal behavior<br>
-and observe system evolution.
+The market is not a narrative.<br>
+It is a measurable system.
 </p>
 </div>
 
 <div class="section tr" style="display:none;">
-<p class="big">LAB ERİŞİMİ</p>
-
 <p class="muted">
-Supervisor, GodMode ve Ultimate sistemleri<br>
-canlı deneysel fazdadır.<br><br>
-
-Canlı sinyal davranışlarına erişin<br>
-ve sistem evrimini gözlemleyin.
+Piyasa bir anlatı değil,<br>
+ölçülebilir bir sistemdir.
 </p>
 </div>
 
 <hr>
-
-<div class="section en">
-<p class="big">SYSTEM DESIGN</p>
-
-<p class="muted">
-Market Alchemy builds structural systems.<br><br>
-
-Custom systems are not openly offered.<br>
-Requests are evaluated selectively.<br><br>
-
-If alignment exists,<br>
-a system may be built.
-</p>
-<a class="cta" href="mailto:priceofwaiting@gmail.com">Request Alignment</a>
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">SİSTEM TASARIMI</p>
-
-<p class="muted">
-Market Alchemy yapılar üretir.<br><br>
-
-Kişiye özel sistemler açık sunulmaz.<br>
-Talepler seçici olarak değerlendirilir.<br><br>
-
-Hizalanma oluşursa,<br>
-yapı inşa edilir.
-</p>
-<a class="cta" href="mailto:priceofwaiting@gmail.com">Hizalanma Talebi</a>
-</div>
-
-<hr>
-
-<div class="section en">
-<p class="big">ALIGNMENT & CONTACT</p>
-<p class="muted">
-For institutional inquiries or structural alignment requests:
-</p>
-<a class="cta" href="mailto:priceofwaiting@gmail.com">Email</a>
-<a class="cta" href="https://x.com/" target="_blank">X / Twitter</a>
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">HİZALANMA VE İLETİŞİM</p>
-<p class="muted">
-Kurumsal sorgular veya yapısal hizalanma talepleri için:
-</p>
-<a class="cta" href="mailto:priceofwaiting@gmail.com">E-posta</a>
-<a class="cta" href="https://x.com/" target="_blank">X / Twitter</a>
-</div>
 
 <div style="margin-top: 100px; font-size: 11px; opacity: 0.4; text-align: center;">
-Market Alchemy Research & Systems • Principal: Halil İbrahim Güven
+Market Alchemy • Halil İbrahim Güven
 </div>
 
 </div>
+
+<!-- 🔥 FAKE LIVE STATE (çok kritik) -->
+<script>
+const states = [
+["WAIT","LOW","STABLE","NO TRADE ZONE"],
+["PREPARE","RISING","INCREASING","WAIT"],
+["ACT","HIGH","CRITICAL","ACTION ZONE"]
+];
+
+let i = 0;
+
+setInterval(()=>{
+  const s = states[i];
+  document.getElementById("liveBox").innerHTML = `
+  STATE: ${s[0]}<br>
+  FRICTION: ${s[1]}<br>
+  TIME COST: ${s[2]}<br><br>
+  → ${s[3]}
+  `;
+  i = (i+1) % states.length;
+}, 2500);
+</script>
 
 </body>
 </html>
