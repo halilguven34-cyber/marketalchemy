@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MA Engine — Market Alchemy</title>
 
+<script>
+// dil tespiti
+if(!localStorage.getItem("lang")){
+  const userLang = navigator.language || navigator.userLanguage;
+  localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
+}
+</script>
+
 <style>
 body{
 margin:0;
@@ -16,55 +24,20 @@ flex-direction:column;
 align-items:center;
 text-align:center;
 }
-.container{
-max-width:720px;
-margin-top:80px;
-padding:0 16px;
-}
-.label{
-font-size:12px;
-opacity:0.4;
-margin-bottom:10px;
-}
-.status{
-font-size:64px;
-font-weight:700;
-margin-bottom:20px;
-}
+.container{max-width:720px;margin-top:80px;padding:0 16px;}
+.label{font-size:12px;opacity:0.4;margin-bottom:10px;}
+.status{font-size:64px;font-weight:700;margin-bottom:20px;}
 .wait{ color:#8a93a3; }
 .prepare{ color:#f0c36d; }
 .act{ color:#ff5c5c; }
 
-.desc{
-opacity:0.7;
-font-size:18px;
-margin-bottom:10px;
-}
+.desc{opacity:0.7;font-size:18px;margin-bottom:10px;}
+.sub{opacity:0.5;font-size:14px;margin-top:10px;}
 
-.sub{
-opacity:0.5;
-font-size:14px;
-margin-top:10px;
-}
+.bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;}
+.fill{height:100%;width:0%;background:#4da3ff;}
 
-.bar{
-width:100%;
-height:6px;
-background:#1f2430;
-margin-top:20px;
-border-radius:4px;
-}
-.fill{
-height:100%;
-width:0%;
-background:#4da3ff;
-}
-
-.output{
-margin-top:20px;
-font-family:monospace;
-opacity:0.85;
-}
+.output{margin-top:20px;font-family:monospace;opacity:0.85;}
 
 input{
 width:100%;
@@ -85,11 +58,7 @@ color:#6da8ff;
 text-decoration:none;
 }
 
-.note{
-margin-top:15px;
-font-size:13px;
-opacity:0.5;
-}
+.note{margin-top:15px;font-size:13px;opacity:0.5;}
 
 .box{
 margin-top:30px;
@@ -105,16 +74,26 @@ opacity:0.8;
 
 <div class="container">
 
-<div class="label">ENGINE STATE</div>
+<!-- LABEL -->
+<div class="label en">ENGINE STATE</div>
+<div class="label tr" style="display:none;">SİSTEM DURUMU</div>
 
 <div class="status wait" id="stateText">WAIT</div>
 
-<div class="desc">
+<!-- DESC -->
+<div class="desc en">
 System stable.<br>No action required.
 </div>
+<div class="desc tr" style="display:none;">
+Sistem stabil.<br>Aksiyon gerekmiyor.
+</div>
 
-<div class="sub">
+<!-- SUB -->
+<div class="sub en">
 Input any market: BTC 1H / EURUSD 4H / GOLD 1D
+</div>
+<div class="sub tr" style="display:none;">
+Piyasa gir: BTC 1H / EURUSD 4H / GOLD 1D
 </div>
 
 <div class="bar"><div class="fill" id="bar"></div></div>
@@ -125,67 +104,87 @@ Input any market: BTC 1H / EURUSD 4H / GOLD 1D
 STATE: WAIT
 </div>
 
-<!-- 🔥 positioning -->
-<div class="box">
+<!-- POSITIONING -->
+<div class="box en">
 This is not a signal tool.<br>
 It filters when NOT to trade.
 </div>
 
-<!-- 🔥 psychology bridge -->
-<div class="note">
+<div class="box tr" style="display:none;">
+Bu bir sinyal sistemi değildir.<br>
+Ne zaman işlem yapmaman gerektiğini filtreler.
+</div>
+
+<!-- PSYCHO -->
+<div class="note en">
 Most losses come from timing, not direction.
 </div>
 
-<!-- 🔥 CTA FIX -->
-<a class="cta" href="mailto:priceofwaiting@gmail.com">
+<div class="note tr" style="display:none;">
+Zararın çoğu yön değil, zamanlamadan gelir.
+</div>
+
+<!-- CTA -->
+<a class="cta en" href="mailto:priceofwaiting@gmail.com">
 Unlock full system →
 </a>
 
-<div class="note">
+<a class="cta tr" href="mailto:priceofwaiting@gmail.com" style="display:none;">
+Tam erişimi aç →
+</a>
+
+<div class="note en">
 Includes live signals, system states and early access.
+</div>
+
+<div class="note tr" style="display:none;">
+Canlı sinyaller, sistem durumları ve erken erişim içerir.
 </div>
 
 </div>
 
 <script>
 
-// 🔥 Demo logic (güven üretir)
-function analyze(asset, tf){
+// 🔥 dil uygula
+const lang = localStorage.getItem("lang") || "en";
+document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+
+
+// 🔥 demo engine
+function analyze(asset){
 
   asset = asset.toUpperCase();
 
   if(asset.includes("BTC")){
-    return {state:"WAIT", friction:30, decision:"NO TRADE"};
+    return {state:"WAIT", friction:30, decision: lang==="tr" ? "İŞLEM YOK" : "NO TRADE"};
   }
 
   if(asset.includes("ETH")){
-    return {state:"PREPARE", friction:60, decision:"WAIT"};
+    return {state:"PREPARE", friction:60, decision: lang==="tr" ? "BEKLE" : "WAIT"};
   }
 
   if(asset.includes("GOLD") || asset.includes("XAU")){
-    return {state:"ACT", friction:85, decision:"ACTION ZONE"};
+    return {state:"ACT", friction:85, decision: lang==="tr" ? "AKSİYON" : "ACTION ZONE"};
   }
 
   if(asset.includes("EUR") || asset.includes("USD")){
-    return {state:"PREPARE", friction:55, decision:"WAIT"};
+    return {state:"PREPARE", friction:55, decision: lang==="tr" ? "BEKLE" : "WAIT"};
   }
 
-  return {state:"WAIT", friction:40, decision:"NO EDGE"};
+  return {state:"WAIT", friction:40, decision: lang==="tr" ? "SİNYAL YOK" : "NO EDGE"};
 }
 
 
-// 🔥 Input handler
+// 🔥 input
 document.getElementById("input").addEventListener("keydown", function(e){
   if(e.key === "Enter"){
 
     const val = e.target.value.trim();
     if(!val) return;
 
-    const parts = val.split(" ");
-    const asset = parts[0];
-    const tf = parts[1] || "1H";
-
-    const res = analyze(asset, tf);
+    const asset = val.split(" ")[0];
+    const res = analyze(asset);
 
     const stateEl = document.getElementById("stateText");
     stateEl.innerText = res.state;
