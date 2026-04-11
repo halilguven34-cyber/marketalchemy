@@ -6,19 +6,98 @@
 <title>MA Engine — Market Alchemy</title>
 
 <style>
-body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;flex-direction:column;align-items:center;text-align:center;}
-.container{max-width:720px;margin-top:80px;padding:0 16px;}
-.label{font-size:12px;opacity:0.4;margin-bottom:10px;}
-.status{font-size:64px;font-weight:700;margin-bottom:20px;}
+body{
+margin:0;
+background:#0d0f14;
+color:#e8ecf1;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+.container{
+max-width:720px;
+margin-top:80px;
+padding:0 16px;
+}
+.label{
+font-size:12px;
+opacity:0.4;
+margin-bottom:10px;
+}
+.status{
+font-size:64px;
+font-weight:700;
+margin-bottom:20px;
+}
 .wait{ color:#8a93a3; }
 .prepare{ color:#f0c36d; }
 .act{ color:#ff5c5c; }
-.desc{opacity:0.7;font-size:18px;margin-bottom:10px;}
-.bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;}
-.fill{height:100%;width:0%;background:#4da3ff;}
-.output{margin-top:20px;font-family:monospace;opacity:0.85;}
-input{width:100%;padding:14px;background:#0d0f14;border:1px solid #1f2430;color:#e8ecf1;font-size:14px;margin-top:20px;}
-.cta{display:block;margin-top:30px;padding:14px;border:1px solid #6da8ff;color:#6da8ff;text-decoration:none;}
+
+.desc{
+opacity:0.7;
+font-size:18px;
+margin-bottom:10px;
+}
+
+.sub{
+opacity:0.5;
+font-size:14px;
+margin-top:10px;
+}
+
+.bar{
+width:100%;
+height:6px;
+background:#1f2430;
+margin-top:20px;
+border-radius:4px;
+}
+.fill{
+height:100%;
+width:0%;
+background:#4da3ff;
+}
+
+.output{
+margin-top:20px;
+font-family:monospace;
+opacity:0.85;
+}
+
+input{
+width:100%;
+padding:14px;
+background:#0d0f14;
+border:1px solid #1f2430;
+color:#e8ecf1;
+font-size:14px;
+margin-top:20px;
+}
+
+.cta{
+display:block;
+margin-top:30px;
+padding:14px;
+border:1px solid #6da8ff;
+color:#6da8ff;
+text-decoration:none;
+}
+
+.note{
+margin-top:15px;
+font-size:13px;
+opacity:0.5;
+}
+
+.box{
+margin-top:30px;
+padding:16px;
+border:1px solid #1f2430;
+font-size:14px;
+opacity:0.8;
+}
 </style>
 </head>
 
@@ -34,6 +113,10 @@ input{width:100%;padding:14px;background:#0d0f14;border:1px solid #1f2430;color:
 System stable.<br>No action required.
 </div>
 
+<div class="sub">
+Input any market: BTC 1H / EURUSD 4H / GOLD 1D
+</div>
+
 <div class="bar"><div class="fill" id="bar"></div></div>
 
 <input id="input" placeholder="BTC 1H / ETH 4H / GOLD 1D">
@@ -42,15 +125,31 @@ System stable.<br>No action required.
 STATE: WAIT
 </div>
 
+<!-- 🔥 positioning -->
+<div class="box">
+This is not a signal tool.<br>
+It filters when NOT to trade.
+</div>
+
+<!-- 🔥 psychology bridge -->
+<div class="note">
+Most losses come from timing, not direction.
+</div>
+
+<!-- 🔥 CTA FIX -->
 <a class="cta" href="mailto:priceofwaiting@gmail.com">
-Access full system → $19
+Unlock full system →
 </a>
+
+<div class="note">
+Includes live signals, system states and early access.
+</div>
 
 </div>
 
 <script>
 
-// 🔥 Basit ama güçlü mapping
+// 🔥 Demo logic (güven üretir)
 function analyze(asset, tf){
 
   asset = asset.toUpperCase();
@@ -67,7 +166,10 @@ function analyze(asset, tf){
     return {state:"ACT", friction:85, decision:"ACTION ZONE"};
   }
 
-  // default
+  if(asset.includes("EUR") || asset.includes("USD")){
+    return {state:"PREPARE", friction:55, decision:"WAIT"};
+  }
+
   return {state:"WAIT", friction:40, decision:"NO EDGE"};
 }
 
@@ -85,7 +187,6 @@ document.getElementById("input").addEventListener("keydown", function(e){
 
     const res = analyze(asset, tf);
 
-    // UI update
     const stateEl = document.getElementById("stateText");
     stateEl.innerText = res.state;
 
