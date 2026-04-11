@@ -1,281 +1,110 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>MA Engine — Market Alchemy</title>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MA Engine — Market Alchemy</title>
 
-<style>  
-body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;text-align:center;}  
-.container{max-width:720px;margin-top:80px;padding:0 16px;}  
-.label{font-size:12px;letter-spacing:2px;opacity:0.4;margin-bottom:10px;}  
-.status{font-size:64px;font-weight:700;margin-bottom:20px;}  
-.wait{ color:#8a93a3; }  
-.prepare{ color:#f0c36d; }  
-.act{ color:#ff5c5c; }  
-.desc{opacity:0.7;font-size:18px;margin-bottom:10px;}  
-.framework{opacity:0.45;font-size:14px;margin-top:8px;}  
-.bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;overflow:hidden;}  
-.fill{height:100%;width:0%;background:#4da3ff;}  
-.insight{margin-top:25px;font-size:15px;opacity:0.5;}  
-.bridge{margin-top:20px;font-size:14px;opacity:0.85;line-height:1.6;}  
-.sectionTitle{margin-top:40px;font-size:13px;opacity:0.5;letter-spacing:1px;}  
+<style>
+body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.container{max-width:720px;margin-top:80px;padding:0 16px;}
+.label{font-size:12px;opacity:0.4;margin-bottom:10px;}
+.status{font-size:64px;font-weight:700;margin-bottom:20px;}
+.wait{ color:#8a93a3; }
+.prepare{ color:#f0c36d; }
+.act{ color:#ff5c5c; }
+.desc{opacity:0.7;font-size:18px;margin-bottom:10px;}
+.bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;}
+.fill{height:100%;width:0%;background:#4da3ff;}
+.output{margin-top:20px;font-family:monospace;opacity:0.85;}
+input{width:100%;padding:14px;background:#0d0f14;border:1px solid #1f2430;color:#e8ecf1;font-size:14px;margin-top:20px;}
+.cta{display:block;margin-top:30px;padding:14px;border:1px solid #6da8ff;color:#6da8ff;text-decoration:none;}
+</style>
+</head>
 
-.subcta{display:block;margin-top:12px;padding:14px;border:1px solid #1f2430;color:#e8ecf1;text-decoration:none;opacity:0.9;text-align:left;font-size:15px;}  
-.subcta:hover{border-color:#6da8ff;opacity:1;}  
+<body>
 
-.corebox{
-margin-top:12px;
-padding:14px;
-border:1px solid #1f2430;
-text-align:left;
-font-size:15px;
-font-family:monospace;
-opacity:0.85;
-}
+<div class="container">
 
-nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}  
-nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}  
-nav a.active{color:#6da8ff;opacity:1;font-weight:600;}  
+<div class="label">ENGINE STATE</div>
 
-.modal{
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.6);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:999;
-}
-.modalContent{
-background:#11151c;
-border:1px solid #1f2430;
-padding:30px 20px;
-max-width:360px;
-width:90%;
-text-align:center;
-border-radius:8px;
-}
-.modalText{
-font-size:15px;
-opacity:0.85;
-line-height:1.6;
-}
-.closeBtn{
-margin-top:20px;
-padding:10px 16px;
-border:1px solid #1f2430;
-cursor:pointer;
-opacity:0.8;
-}
-.closeBtn:hover{opacity:1;border-color:#6da8ff;}
-</style>  
-</head>  
+<div class="status wait" id="stateText">WAIT</div>
 
-<body>  
-
-<div id="nav"></div>
-
-<script>
-fetch("nav.html")
-.then(res => res.text())
-.then(data => {
-  document.getElementById("nav").innerHTML = data;
-
-  if(!localStorage.getItem("lang")){
-    const userLang = navigator.language || navigator.userLanguage;
-    localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
-  }
-
-  const lang = localStorage.getItem("lang");
-
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
-});
-</script>
-
-<div class="container">  
-
-<div class="label en">ENGINE STATE</div>  
-<div class="label tr" style="display:none;">SİSTEM DURUMU</div>  
-
-<div class="status wait">WAIT</div>  
-
-<div class="desc en">
+<div class="desc">
 System stable.<br>No action required.
-<div class="framework">Vector – Friction – Time</div>
 </div>
 
-<div class="desc tr" style="display:none;">
-Sistem stabil.<br>Aksiyon gerekmiyor.
-<div class="framework">Vektör – Sürtünme – Zaman</div>
-</div>
+<div class="bar"><div class="fill" id="bar"></div></div>
 
-<div class="bar"><div class="fill"></div></div>  
+<input id="input" placeholder="BTC 1H / ETH 4H / GOLD 1D">
 
-<div class="insight" id="insight">Nothing moves without pressure.</div>  
-
-<div class="sectionTitle en">SYSTEM CORE</div>
-<div class="sectionTitle tr" style="display:none;">SİSTEM ÇEKİRDEĞİ</div>
-
-<div style="margin-top:20px;text-align:left;">
-
-<div class="corebox en">
-Digital R&D is conducted for productization.
-</div>
-<div class="corebox tr" style="display:none;">
-Dijital AR-GE çalışmaları ürünleştirme içindir.
-</div>
-
-<div class="corebox en">
-One core principle is scalability.<br>
-From micro to macro.
-</div>
-<div class="corebox tr" style="display:none;">
-Ürünleştirme prensiplerinden biri ölçeklendirmedir.<br>
-Mikrodan makroya.
-</div>
-
-<div class="corebox en">
-Productization exists only if necessary.
-</div>
-<div class="corebox tr" style="display:none;">
-Ürünleştirme yalnızca gerekli olduğunda yapılır.
-</div>
-
-</div>
-
-<div class="bridge en">
-Market Alchemy is a decision support engine.<br><br>
-It operates under pressure.<br>
-When decisions are unclear, it waits.<br>
-When structure aligns, it reveals action.<br><br>
-It does not predict.<br>
-It filters invalid decisions.
-</div>
-
-<div class="bridge tr" style="display:none;">
-Market Alchemy bir karar destek motorudur.<br><br>
-Baskı altında çalışır.<br>
-Karar görünür değilse bekler.<br>
-Yapı hizalandığında eylemi gösterir.<br><br>
-Tahmin etmez.<br>
-Geçersiz kararları eler.
-</div>
-
-<div class="sectionTitle en">ACCESS THE SYSTEM</div>
-<div class="sectionTitle tr" style="display:none;">SİSTEME ERİŞ</div>
-
-<div>
-
-<a class="subcta" href="https://guvenhalil.gumroad.com/l/eoikd" target="_blank">
-<span class="en">Research Papers</span>
-<span class="tr" style="display:none;">Araştırma Raporları</span>
-</a>
-
-<a class="subcta" href="library.html">
-<span class="en">Books</span>
-<span class="tr" style="display:none;">Kitaplar</span>
-</a>
-
-<a class="subcta" href="#" onclick="openModal()">
-<span class="en">Decision Engine</span>
-<span class="tr" style="display:none;">Karar Sistemi</span>
-</a>
-
-</div>
-
-<!-- INTERFACE -->
-
-<div style="margin-top:15px;">
-<input id="userInput" placeholder="BTC 1H" 
-style="width:100%;padding:14px;background:#0d0f14;border:1px solid #1f2430;color:#e8ecf1;font-size:14px;">
-
-<div id="aiOutput" style="margin-top:12px;opacity:0.8;font-family:monospace;">
+<div class="output" id="output">
 STATE: WAIT
 </div>
-</div>
 
-</div>  
+<a class="cta" href="mailto:priceofwaiting@gmail.com">
+Access full system → $19
+</a>
 
-<div class="modal" id="modal">
-<div class="modalContent">
-
-<div class="modalText en">
-System under development.<br><br>
-Engine is being tested in the laboratory.
-</div>
-
-<div class="modalText tr" style="display:none;">
-Sistem geliştirme aşamasında.<br><br>
-Motor laboratuvarda test ediliyor.
-</div>
-
-<div class="closeBtn" onclick="closeModal()">OK</div>
-
-</div>
 </div>
 
 <script>
-function openModal(){
-document.getElementById("modal").style.display="flex";
-}
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
-</script>
 
-<!-- ✅ CONNECTED ENGINE -->
+// 🔥 Basit ama güçlü mapping
+function analyze(asset, tf){
 
-<script>
-async function analyzeInput(){
-  const input = document.getElementById("userInput").value.trim();
-  if(!input) return;
+  asset = asset.toUpperCase();
 
-  const parts = input.split(" ");
-  const asset = parts[0];
-  const timeframe = parts[1] || "1H";
-
-  try{
-    const res = await fetch(`http://127.0.0.1:8000/analyze?asset=${asset}&timeframe=${timeframe}`);
-    const data = await res.json();
-
-    document.getElementById("aiOutput").innerHTML = `
-    STATE: ${data.state}<br>
-    FRICTION: ${data.friction}<br>
-    TIME COST: ${data.time_cost}<br><br>
-    → ${data.decision}
-    `;
-
-    // UI'yi de güncelle
-    document.querySelector(".status").innerText = data.state;
-
-    if(data.decision === "BLOCK"){
-      document.querySelector(".status").className="status act";
-    }else if(data.decision === "DELAY"){
-      document.querySelector(".status").className="status prepare";
-    }else{
-      document.querySelector(".status").className="status wait";
-    }
-
-    // friction bar (varsayım: 0-100 arası numeric)
-    if(!isNaN(data.friction)){
-      document.querySelector(".fill").style.width = data.friction + "%";
-    }
-
-  }catch(e){
-    document.getElementById("aiOutput").innerText = "ENGINE OFFLINE";
+  if(asset.includes("BTC")){
+    return {state:"WAIT", friction:30, decision:"NO TRADE"};
   }
+
+  if(asset.includes("ETH")){
+    return {state:"PREPARE", friction:60, decision:"WAIT"};
+  }
+
+  if(asset.includes("GOLD") || asset.includes("XAU")){
+    return {state:"ACT", friction:85, decision:"ACTION ZONE"};
+  }
+
+  // default
+  return {state:"WAIT", friction:40, decision:"NO EDGE"};
 }
 
-// ENTER ile tetikleme
-document.getElementById("userInput").addEventListener("keydown", function(e){
+
+// 🔥 Input handler
+document.getElementById("input").addEventListener("keydown", function(e){
   if(e.key === "Enter"){
-    analyzeInput();
+
+    const val = e.target.value.trim();
+    if(!val) return;
+
+    const parts = val.split(" ");
+    const asset = parts[0];
+    const tf = parts[1] || "1H";
+
+    const res = analyze(asset, tf);
+
+    // UI update
+    const stateEl = document.getElementById("stateText");
+    stateEl.innerText = res.state;
+
+    stateEl.className = "status " + (
+      res.state === "ACT" ? "act" :
+      res.state === "PREPARE" ? "prepare" : "wait"
+    );
+
+    document.getElementById("bar").style.width = res.friction + "%";
+
+    document.getElementById("output").innerHTML = `
+    STATE: ${res.state}<br>
+    FRICTION: ${res.friction}<br><br>
+    → ${res.decision}
+    `;
   }
 });
+
 </script>
 
-</body>  
+</body>
 </html>
