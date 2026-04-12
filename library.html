@@ -56,10 +56,13 @@ border:1px solid #1f2430;
 display:flex;
 gap:16px;
 margin-top:30px;
+align-items:flex-start; /* kritik */
 }
 
 .book img{
 width:80px;
+height:auto; /* uzamayı engeller */
+object-fit:contain; /* kritik */
 border-radius:6px;
 }
 
@@ -214,22 +217,19 @@ Yapının içinden keşfedeceksin.
 </div>
 </div>
 
-<!-- ANALYSES -->
+<!-- ANALYSES (başlık kaldırıldı) -->
 <div class="section">
 
-<p class="big en">Computed Analyses</p>
-<p class="big tr" style="display:none;">Hesaplanmış Analizler</p>
-
 <p class="muted en">
-Historical processes analyzed and computed.<br>
-They make structural transitions visible<br>
-and guide the observer through the system.
+The dates stated in the books are determined through the analysis of historical processes.<br>
+Structural transitions are made visible,<br>
+guiding the observer within the structure.
 </p>
 
 <p class="muted tr" style="display:none;">
-Tarihsel süreçler analiz edilerek hesaplanmıştır.<br>
-Yapısal geçişleri görünür kılar<br>
-ve gözlemciye sistem içinde rehberlik eder.
+Kitaplarda belirtilen tarihler, tarihsel süreçler analiz edilerek belirlenmiştir.<br>
+Yapısal geçişler görünür kılınıp,<br>
+gözlemciye yapı içinde rehberlik etmektedir.
 </p>
 
 <!-- CONDENSATION -->
