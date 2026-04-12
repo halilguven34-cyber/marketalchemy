@@ -89,6 +89,12 @@ border:1px solid #1f2430;
 background:linear-gradient(180deg,#151921 0%,#0d0f14 100%);
 }
 
+.hero img{
+width:120px;
+border-radius:6px;
+margin-bottom:15px;
+}
+
 .hero-title{
 font-size:24px;
 font-weight:600;
@@ -100,16 +106,6 @@ font-size:15px;
 opacity:.7;
 line-height:1.6;
 margin-bottom:15px;
-}
-
-.cta{
-display:inline-block;
-padding:10px 16px;
-border:1px solid #4da3ff;
-color:#4da3ff;
-text-decoration:none;
-font-size:14px;
-border-radius:4px;
 }
 
 /* NAVBAR */
@@ -198,20 +194,20 @@ document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"bl
 
 <p class="muted en">
 This is not a collection of books.<br>
-This is a system.<br><br>
-Start here ↓
+This is a system.
 </p>
 
 <p class="muted tr" style="display:none;">
 Bu bir kitap koleksiyonu değildir.<br>
-Bu bir sistemdir.<br><br>
-Buradan başla ↓
+Bu bir sistemdir.
 </p>
 
 </div>
 
 <!-- HERO -->
 <div class="hero">
+<img src="Theplaceoftime.jpg">
+
 <div class="hero-title">The Place of Time</div>
 
 <div class="hero-desc en">
@@ -224,14 +220,28 @@ Zaman akış değildir. Yapısal derinliktir.<br>
 Hiyerarşik organizasyonun matematiksel ifadesidir.
 </div>
 
-<a class="cta" href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Start Reading</a>
+<div class="links">
+<a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Amazon</a>
+</div>
 </div>
 
 <!-- ANALYSES -->
 <div class="section">
 
-<p class="big en">Analyses</p>
-<p class="big tr" style="display:none;">Analizler</p>
+<p class="big en">Computed Analyses</p>
+<p class="big tr" style="display:none;">Hesaplanmış Analizler</p>
+
+<p class="muted en">
+Historical processes analyzed and computed.<br>
+They make structural transitions visible<br>
+and guide the observer through the system.
+</p>
+
+<p class="muted tr" style="display:none;">
+Tarihsel süreçler analiz edilerek hesaplanmıştır.<br>
+Yapısal geçişleri görünür kılar<br>
+ve gözlemciye sistem içinde rehberlik eder.
+</p>
 
 <!-- CONDENSATION -->
 <div class="book">
