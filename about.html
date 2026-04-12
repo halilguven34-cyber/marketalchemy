@@ -1,54 +1,189 @@
-<a href="/about.html" style="text-decoration:none; color:inherit;">
-<div class="author-card" style="display:flex; gap:16px; align-items:flex-start; cursor:pointer;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<img src="/author.jpg" alt="Halil Ibrahim Guven" 
-style="width:64px; height:64px; border-radius:50%; object-fit:cover;">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Market Alchemy — About</title>
+
+<style>
+body{
+margin:0;
+background:#0d0f14;
+color:#e8ecf1;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+.container{
+max-width:760px;
+margin:auto;
+padding:60px 20px;
+}
+
+.block{
+padding:30px;
+border:1px solid #1f2430;
+background:linear-gradient(180deg,#151921 0%,#0d0f14 100%);
+margin-bottom:30px;
+}
+
+.header{
+font-size:13px;
+text-transform:uppercase;
+letter-spacing:2px;
+color:#6da8ff;
+margin-bottom:10px;
+}
+
+.title{
+font-size:26px;
+font-weight:600;
+margin-bottom:15px;
+}
+
+.text{
+font-size:15px;
+opacity:.7;
+line-height:1.6;
+}
+
+.author{
+display:flex;
+gap:20px;
+align-items:flex-start;
+}
+
+.author img{
+width:80px;
+height:80px;
+border-radius:50%;
+object-fit:cover;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SYSTEM -->
+<div class="block">
+
+<div class="header en">System</div>
+<div class="header tr" style="display:none;">Sistem</div>
+
+<div class="title en">
+Market Alchemy is not a model.
+</div>
+
+<div class="title tr" style="display:none;">
+Market Alchemy bir model değildir.
+</div>
+
+<div class="text en">
+It is a structural framework for reading system behavior.<br>
+Price is not interpreted — it is treated as a record of the system.<br><br>
+
+The system separates vector (energy) from friction (constraint),<br>
+and focuses on what must not be done rather than what should be done.
+</div>
+
+<div class="text tr" style="display:none;">
+Bu, sistem davranışını okumaya yönelik yapısal bir çerçevedir.<br>
+Fiyat yorumlanmaz — sistemin kaydı olarak ele alınır.<br><br>
+
+Sistem, vektör (enerji) ile sürtünmeyi (kısıt) ayrıştırır,<br>
+ne yapılması gerektiğinden çok ne yapılmaması gerektiğine odaklanır.
+</div>
+
+</div>
+
+<!-- AUTHOR -->
+<div class="block">
+
+<div class="author">
+
+<img src="/author.jpg" alt="Halil Ibrahim Guven">
 
 <div>
-<div class="author-header en">Author</div>
-<div class="author-header tr" style="display:none;">Yazar</div>
 
-<div class="author-name">Halil İbrahim Güven</div>
+<div class="header en">Author</div>
+<div class="header tr" style="display:none;">Yazar</div>
 
-<div class="author-text en">
-MBA graduate.<br>
-Holds CMB licenses.<br>
-18 years of experience as a financial (technical) analyst.<br>
-Researcher and author since 2016.<br>
-5 years experience as a bank analyst.<br><br>
+<div class="title">Halil İbrahim Güven</div>
 
-Developed the Structural Depth framework.<br>
-Focus: system behavior, entropy, and structural markets.<br>
-Market Alchemy is the applied layer.
+<div class="text en">
+MBA graduate<br>
+Holds CMB licenses<br>
+18 years in financial (technical) analysis<br>
+Researcher and author since 2016<br>
+5 years in banking
 </div>
 
-<div class="author-text tr" style="display:none;">
-MBA mezunu.<br>
-SPK lisansları sahibi.<br>
-18 yıllık finansal (teknik) analist deneyimi.<br>
-2016’dan bu yana araştırmacı yazar.<br>
-5 yıl banka analist/uzman deneyimi.<br><br>
-
-Yapısal Derinlik çerçevesinin geliştiricisidir.<br>
-Odak: sistem davranışı, entropi ve yapısal piyasalar.<br>
-Market Alchemy bu yaklaşımın uygulama katmanıdır.
-</div>
+<div class="text tr" style="display:none;">
+MBA mezunu<br>
+SPK lisansları sahibi<br>
+18 yıllık finansal (teknik) analiz deneyimi<br>
+2016’dan bu yana araştırmacı yazar<br>
+5 yıl banka deneyimi
 </div>
 
 </div>
-</a>
+
+</div>
+
+</div>
+
+<!-- FRAMEWORK -->
+<div class="block">
+
+<div class="header en">Framework</div>
+<div class="header tr" style="display:none;">Çerçeve</div>
+
+<div class="title en">
+Structural Depth
+</div>
+
+<div class="title tr" style="display:none;">
+Yapısal Derinlik
+</div>
+
+<div class="text en">
+Time is not flow.<br>
+It is structural depth.<br><br>
+
+Change is not movement.<br>
+It is the visibility of difference within structure.
+</div>
+
+<div class="text tr" style="display:none;">
+Zaman akış değildir.<br>
+Yapısal derinliktir.<br><br>
+
+Değişim hareket değildir.<br>
+Yapı içindeki farkın görünür hale gelmesidir.
+</div>
+
+</div>
+
+</div>
 
 <script>
 (function(){
-  let lang = localStorage.getItem("lang");
+let lang = localStorage.getItem("lang");
 
-  if(!lang){
-    const userLang = navigator.language || navigator.userLanguage;
-    lang = userLang && userLang.startsWith("tr") ? "tr" : "en";
-    localStorage.setItem("lang", lang);
-  }
+if(!lang){
+const userLang = navigator.language || navigator.userLanguage;
+lang = userLang && userLang.startsWith("tr") ? "tr" : "en";
+localStorage.setItem("lang", lang);
+}
 
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"block"));
+document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 })();
 </script>
+
+</body>
+</html>
