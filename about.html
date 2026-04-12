@@ -1,5 +1,5 @@
 <a href="/about.html" style="text-decoration:none; color:inherit;">
-<div class="author-card" style="display:flex; gap:16px; align-items:flex-start;">
+<div class="author-card" style="display:flex; gap:16px; align-items:flex-start; cursor:pointer;">
 
 <img src="/author.jpg" alt="Halil Ibrahim Guven" 
 style="width:64px; height:64px; border-radius:50%; object-fit:cover;">
@@ -37,3 +37,18 @@ Market Alchemy bu yaklaşımın uygulama katmanıdır.
 
 </div>
 </a>
+
+<script>
+(function(){
+  let lang = localStorage.getItem("lang");
+
+  if(!lang){
+    const userLang = navigator.language || navigator.userLanguage;
+    lang = userLang && userLang.startsWith("tr") ? "tr" : "en";
+    localStorage.setItem("lang", lang);
+  }
+
+  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+})();
+</script>
