@@ -81,6 +81,37 @@ margin-right:12px;
 font-size:14px;
 }
 
+/* HERO */
+.hero{
+margin-top:40px;
+padding:30px;
+border:1px solid #1f2430;
+background:linear-gradient(180deg,#151921 0%,#0d0f14 100%);
+}
+
+.hero-title{
+font-size:24px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.hero-desc{
+font-size:15px;
+opacity:.7;
+line-height:1.6;
+margin-bottom:15px;
+}
+
+.cta{
+display:inline-block;
+padding:10px 16px;
+border:1px solid #4da3ff;
+color:#4da3ff;
+text-decoration:none;
+font-size:14px;
+border-radius:4px;
+}
+
 /* NAVBAR */
 nav{
 width:100%;
@@ -113,27 +144,30 @@ font-weight:600;
 
 /* AUTHOR */
 .author-card {
-    margin-top: 100px;
-    padding: 30px;
-    border: 1px solid #1f2430;
-    background: linear-gradient(180deg, #151921 0%, #0d0f14 100%);
+margin-top:100px;
+padding:30px;
+border:1px solid #1f2430;
+background: linear-gradient(180deg, #151921 0%, #0d0f14 100%);
 }
+
 .author-header {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #6da8ff;
-    margin-bottom: 10px;
+font-size:13px;
+text-transform:uppercase;
+letter-spacing:2px;
+color:#6da8ff;
+margin-bottom:10px;
 }
+
 .author-name {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 15px;
+font-size:20px;
+font-weight:600;
+margin-bottom:15px;
 }
+
 .author-text {
-    font-size: 15px;
-    opacity: 0.7;
-    line-height: 1.6;
+font-size:15px;
+opacity:0.7;
+line-height:1.6;
 }
 </style>
 
@@ -147,11 +181,11 @@ font-weight:600;
 fetch("nav.html")
 .then(res => res.text())
 .then(data => {
-  document.getElementById("nav").innerHTML = data;
+document.getElementById("nav").innerHTML = data;
 
-  const lang = localStorage.getItem("lang") || "en";
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+const lang = localStorage.getItem("lang") || "en";
+document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 });
 </script>
 
@@ -163,75 +197,41 @@ fetch("nav.html")
 <div class="section">
 
 <p class="muted en">
-These works are produced within the Market Alchemy laboratory.<br>
-They do not explain.<br>
-They expose structure.<br>
-Each is a different representation of the same system.
+This is not a collection of books.<br>
+This is a system.<br><br>
+Start here ↓
 </p>
 
 <p class="muted tr" style="display:none;">
-Bu eserler Market Alchemy laboratuvarında üretilmiştir.<br>
-Açıklama sunmazlar.<br>
-Yapıyı açığa çıkarırlar.<br>
-Her biri aynı sistemin farklı temsilidir.
+Bu bir kitap koleksiyonu değildir.<br>
+Bu bir sistemdir.<br><br>
+Buradan başla ↓
 </p>
 
 </div>
 
+<!-- HERO -->
+<div class="hero">
+<div class="hero-title">The Place of Time</div>
+
+<div class="hero-desc en">
+Time is not flow. It is structural depth.<br>
+A mathematical expression of hierarchical organization.
+</div>
+
+<div class="hero-desc tr" style="display:none;">
+Zaman akış değildir. Yapısal derinliktir.<br>
+Hiyerarşik organizasyonun matematiksel ifadesidir.
+</div>
+
+<a class="cta" href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Start Reading</a>
+</div>
+
+<!-- ANALYSES -->
 <div class="section">
 
-<p class="big en">Published Books</p>
-<p class="big tr" style="display:none;">Yayınlanmış Kitaplar</p>
-
-<!-- LIQUIDATION -->
-<div class="book">
-<img src="liquidation-framework.jpg">
-<div class="book-info">
-<div>Liquidation — The Market Alchemy Framework</div>
-
-<div class="book-desc en">
-Any structure dissolves under load it cannot sustain.<br>
-Liquidation is not chaotic. It is structural necessity.<br>
-A phase transition is where persistence becomes impossible.
-</div>
-
-<div class="book-desc tr" style="display:none;">
-Her yapı, taşıyabileceğinden fazla yük altında çözülür.<br>
-Tasfiye kaotik değil, yapısal bir zorunluluktur.<br>
-Faz geçişi, yapının sürdürülemez hale geldiği noktadır.
-</div>
-
-<div class="links">
-<a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank">Amazon</a>
-<a href="https://play.google.com/store/books/details?id=RZK4F62ULZL" target="_blank">Google</a>
-</div>
-</div>
-</div>
-
-<!-- TIME -->
-<div class="book">
-<img src="Theplaceoftime.jpg">
-<div class="book-info">
-<div>The Place of Time</div>
-
-<div class="book-desc en">
-Time is not flow. It is structural depth.<br>
-Change is not progression,<br>
-but the visibility of structure.
-</div>
-
-<div class="book-desc tr" style="display:none;">
-Zaman akış değildir, yapısal derinliktir.<br>
-Değişim ilerleme değil,<br>
-yapının görünür hale gelmesidir.
-</div>
-
-<div class="links">
-<a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Amazon</a>
-<a href="https://play.google.com/store/books/details?id=Oi_JEQAAQBAJ" target="_blank">Google</a>
-</div>
-</div>
-</div>
+<p class="big en">Analyses</p>
+<p class="big tr" style="display:none;">Analizler</p>
 
 <!-- CONDENSATION -->
 <div class="book">
@@ -240,19 +240,35 @@ yapının görünür hale gelmesidir.
 <div>The Condensation Point</div>
 
 <div class="book-desc en">
-Distributed behavior collapses into inevitability.<br>
-Not where decision happens,<br>
-but where it becomes unavoidable.
+When distributed behavior collapses into inevitability.
 </div>
 
 <div class="book-desc tr" style="display:none;">
-Dağınık davranış zorunlu bir yöne çöker.<br>
-Kararın alındığı yer değil,<br>
-kaçınılmaz hale geldiği noktadır.
+Dağınık davranışın zorunluya çökmesi.
 </div>
 
 <div class="links">
 <a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">Amazon</a>
+</div>
+</div>
+</div>
+
+<!-- LIQUIDATION -->
+<div class="book">
+<img src="liquidation-framework.jpg">
+<div class="book-info">
+<div>Liquidation — The Market Alchemy Framework</div>
+
+<div class="book-desc en">
+When systems exceed what they can sustain.
+</div>
+
+<div class="book-desc tr" style="display:none;">
+Sistemlerin taşıyabileceğini aşması.
+</div>
+
+<div class="links">
+<a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank">Amazon</a>
 </div>
 </div>
 </div>
@@ -264,20 +280,13 @@ kaçınılmaz hale geldiği noktadır.
 <div>Tasfiye: Faz Geçişi ve Sistem Entropisi</div>
 
 <div class="book-desc tr">
-Bu eser, Liquidation kitabının Türkçe versiyonudur.<br>
-Her yapı, taşıyamayacağı yük altında çözülür.<br>
-Bu süreç kaotik değil, yapısal zorunluluktur.
+Liquidation kitabının Türkçe versiyonu.
 </div>
 
 <div class="book-desc en" style="display:none;">
-Turkish edition of "Liquidation".<br>
-Any structure dissolves under unsustainable load.<br>
-This is not chaos, but structural necessity.
+Turkish edition of Liquidation.
 </div>
 
-<div class="links">
-<a href="https://play.google.com/store/books/details/Halil_%C4%B0brahim_G%C3%9CVEN_Tasfiye?id=SE7GEQAAQBAJ" target="_blank">Google</a>
-</div>
 </div>
 </div>
 
@@ -301,38 +310,25 @@ This is not chaos, but structural necessity.
 </div>
 
 <div class="author-card">
-    <div class="author-header en">About the Author</div>
-    <div class="author-header tr" style="display:none;">Yazar Hakkında</div>
-    
-    <div class="author-name">Halil İbrahim Güven</div>
-    
-    <div class="author-text en">
-        Independent researcher working on system behavior, entropy, and market structures.<br>
-        His work treats price not as narrative,<br>
-        but as a recorded output of the system.<br><br>
-        Market Alchemy is the applied layer of this framework.
-    </div>
+<div class="author-header en">Author</div>
+<div class="author-header tr" style="display:none;">Yazar</div>
 
-    <div class="author-text tr" style="display:none;">
-        Sistem davranışı, entropi ve piyasa yapıları üzerine çalışan bağımsız araştırmacı.<br>
-        Çalışmaları fiyatı bir anlatı değil,<br>
-        sistem çıktısı olarak ele alır.<br><br>
-        Market Alchemy bu yaklaşımın uygulama katmanıdır.
-    </div>
+<div class="author-name">Halil İbrahim Güven</div>
+
+<div class="author-text en">
+Structural Depth framework.<br>
+Focus: system behavior, entropy, and structural markets.<br>
+Market Alchemy is the applied layer.
+</div>
+
+<div class="author-text tr" style="display:none;">
+Yapısal Derinlik çerçevesi.<br>
+Odak: sistem davranışı, entropi ve yapısal piyasalar.<br>
+Market Alchemy uygulama katmanıdır.
+</div>
 </div>
 
 </div>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Halil Ibrahim Guven",
-  "jobTitle": "Independent Researcher",
-  "url": "https://marketalchemy.io",
-  "description": "Researcher focusing on system behavior, structural markets, and entropy-based financial mechanics"
-}
-</script>
 
 </body>
 </html>
