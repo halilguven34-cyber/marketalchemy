@@ -21,7 +21,7 @@ gtag('config', 'G-8NGN65VXH8');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Market Alchemy — Financial Systems Laboratory</title>
+<title>Market Alchemy — Structural Models of Market Behavior</title>
 <meta name="description" content="Market Alchemy is a financial systems laboratory building decision engines, structural models and timing systems across markets.">
 <link rel="canonical" href="https://marketalchemy.io/">
 
@@ -39,30 +39,10 @@ hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
 nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}
 nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}
 nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
-
-.box{
-margin-top:30px;
-padding:20px;
-border:1px solid #1f2430;
-font-family:monospace;
-font-size:15px;
-opacity:0.9;
-}
-
-.diagram{
-margin-top:40px;
-text-align:center;
-}
-.diagram img{
-width:100%;
-max-width:680px;
-opacity:0.9;
-}
-.diagram-caption{
-margin-top:12px;
-font-size:13px;
-opacity:0.5;
-}
+.box{margin-top:30px;padding:20px;border:1px solid #1f2430;font-family:monospace;font-size:15px;opacity:0.9;}
+.diagram{margin-top:40px;text-align:center;}
+.diagram img{width:100%;max-width:680px;opacity:0.9;}
+.diagram-caption{margin-top:12px;font-size:13px;opacity:0.5;}
 </style>
 
 </head>
@@ -88,6 +68,20 @@ fetch("nav.html?v=" + Date.now())
 
 <p class="subtitle en">Financial Systems Laboratory</p>
 <p class="subtitle tr" style="display:none;">Finansal Sistemler Laboratuvarı</p>
+
+<p class="big">
+Markets are not random.<br>
+They release structural pressure.
+</p>
+
+<p class="muted">
+If you don’t understand compression, liquidity, and liquidation,<br>
+you are reacting — not reading.
+</p>
+
+<a class="cta" href="/lib">
+Read the framework →
+</a>
 
 <div class="section en">
 <p class="big">
@@ -141,63 +135,45 @@ WAITING IS AN ACTIVE POSITION
 Observe system →
 </a>
 
-</div>
-
-<div class="section tr" style="display:none;">
+<div class="section">
 <p class="big">
-Traderların çoğu yanlış olduğu için değil,<br>
-erken davrandığı için kaybeder.
+What this explains
 </p>
 
 <p class="muted">
-Kâr önce üretilmez.<br>
-Önce kayıp azaltılır.<br><br>
-Bu sistem bu sırayı zorunlu kılar.
+• Why low volatility leads to explosive moves<br>
+• How liquidation cascades actually form<br>
+• Why price accelerates in thin liquidity<br><br>
+This is not prediction.<br>
+This is structure.
 </p>
 
-<p class="muted">
-Bu sistem, yapı geçerli değilse işlemleri engeller.<br>
-Araştırmanın uygulama katmanıdır ve altında yatan modeli operasyonel hale getirir.<br><br>
-Durum geçişleri yapısal basıncı yansıtır, zamanlama ise bu kısıtlar altında görünür hale gelir.<br><br>
-İşlem öncesi doğrulama katmanı olarak tasarlanmış olup, karar süreçlerine entegre edilebilir.
-</p>
-
-<div class="diagram">
-
-<div class="diagram-caption en" style="display:none; font-size:16px; opacity:0.85; margin-bottom:10px;">
-System is never chaotic — the observer is insufficient
-</div>
-
-<div class="diagram-caption tr" style="font-size:16px; opacity:0.85; margin-bottom:10px;">
-Sistem hiçbir zaman kaotik değil — gözlemci yetersiz
-</div>
-
-<a href="law.html">
-<img src="time.diagram.jpg" alt="Yapısal Derinlik & Gözlemci Diyagramı">
+<a class="cta" href="/lib">
+Access research →
 </a>
-
-<div class="diagram-caption en" style="display:none;">
-Structural Depth & Observer — visibility depends on position within structure.
-</div>
-<div class="diagram-caption tr">
-Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.
-</div>
 </div>
 
-<div class="box">
-STATE: WAIT<br>
-FRICTION: DÜŞÜK<br>
-TIME COST: STABİL<br><br>
-→ GÖRÜNÜRLÜK YOK<br>
-BEKLEMEK AKTİF POZİSYONDUR
-</div>
-
-<a class="cta" href="ma.html">
-Sistemi gözlemle →
-</a>
 </div>
 
 <hr>
+
+<div class="section">
+<p class="big">
+A structural framework for reading markets
+</p>
+
+<p class="muted">
+This is not a trading system.<br>
+This is a way to see.<br><br>
+No indicators.<br>
+No signals.<br>
+Only structure.
+</p>
+
+<a class="cta" href="/lib">
+Enter library →
+</a>
+</div>
 
 <div style="margin-top: 100px; font-size: 11px; opacity: 0.4; text-align: center;">
 Market Alchemy • Halil İbrahim Güven
@@ -216,11 +192,9 @@ let i = 0;
 
 setInterval(()=>{
   const s = states[i];
-
   const lang = localStorage.getItem("lang") || "en";
 
   let extra = "";
-
   if(s[0] === "WAIT"){
     extra = lang === "tr"
       ? "<br>BEKLEMEK AKTİF POZİSYONDUR"
