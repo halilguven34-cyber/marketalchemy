@@ -22,7 +22,7 @@ gtag('config', 'G-8NGN65VXH8');
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Market Alchemy — Structural Models of Market Behavior</title>
-<meta name="description" content="Market Alchemy is a financial systems laboratory building decision engines, structural models and timing systems across markets.">
+<meta name="description" content="Understand how markets actually move: compression, liquidity, and liquidation.">
 <link rel="canonical" href="https://marketalchemy.io/">
 
 <style>
@@ -69,20 +69,70 @@ fetch("nav.html?v=" + Date.now())
 <p class="subtitle en">Financial Systems Laboratory</p>
 <p class="subtitle tr" style="display:none;">Finansal Sistemler Laboratuvarı</p>
 
-<p class="big">
+<!-- 🔴 HOOK -->
+<p class="big en">
 Markets are not random.<br>
 They release structural pressure.
 </p>
+<p class="big tr" style="display:none;">
+Piyasalar rastgele hareket etmez.<br>
+Yapısal basıncı boşaltır.
+</p>
 
-<p class="muted">
+<p class="muted en">
 If you don’t understand compression, liquidity, and liquidation,<br>
 you are reacting — not reading.
+</p>
+<p class="muted tr" style="display:none;">
+Sıkışma, likidite ve likidasyonları anlamıyorsan,<br>
+tepki veriyorsun — okumuyorsun.
 </p>
 
 <a class="cta" href="/lib">
 Read the framework →
 </a>
 
+<!-- 🔴 PROBLEM -->
+<div class="section">
+<p class="big en">Why you are losing</p>
+<p class="big tr" style="display:none;">Neden kaybediyorsun</p>
+
+<p class="muted en">
+You react to price.<br>
+But price is not the cause.<br><br>
+Markets move when pressure is released.
+</p>
+
+<p class="muted tr" style="display:none;">
+Fiyata tepki veriyorsun.<br>
+Ama fiyat sebep değil.<br><br>
+Piyasa basınç boşaldığında hareket eder.
+</p>
+</div>
+
+<!-- 🔴 VALUE -->
+<div class="section">
+<p class="big en">What this gives you</p>
+<p class="big tr" style="display:none;">Bu sana ne kazandırır</p>
+
+<p class="muted en">
+• Clarity over noise<br>
+• Recognition before expansion<br>
+• Understanding of acceleration<br><br>
+You stop guessing.<br>
+You start reading structure.
+</p>
+
+<p class="muted tr" style="display:none;">
+• Gürültüyü ayıklarsın<br>
+• Sıkışmayı erken fark edersin<br>
+• Hızlanmayı anlarsın<br><br>
+Tahmini bırakırsın.<br>
+Yapıyı okursun.
+</p>
+</div>
+
+<!-- 🔴 ORIGINAL CONTENT (korundu) -->
 <div class="section en">
 <p class="big">
 Most traders lose because they act too early.
@@ -96,78 +146,42 @@ This system enforces that order.
 
 <p class="muted">
 This system blocks trades when conditions are not structurally valid.<br>
-It is the applied layer of the research and operationalizes the underlying model.<br><br>
-State transitions reflect structural pressure, and timing visibility emerges from these constraints.<br><br>
-Designed as a pre-trade validation layer, it can operate within decision workflows before execution.
+It is the applied layer of the research and operationalizes the underlying model.
 </p>
 
 <div class="diagram">
-
-<div class="diagram-caption en" style="font-size:16px; opacity:0.85; margin-bottom:10px;">
-System is never chaotic — the observer is insufficient
-</div>
-
-<div class="diagram-caption tr" style="display:none; font-size:16px; opacity:0.85; margin-bottom:10px;">
-Sistem hiçbir zaman kaotik değil — gözlemci yetersiz
-</div>
-
 <a href="law.html">
-<img src="time.diagram.jpg" alt="Structural Depth & Observer Diagram">
+<img src="time.diagram.jpg">
 </a>
-
-<div class="diagram-caption en">
-Structural Depth & Observer — visibility depends on position within structure.
-</div>
-<div class="diagram-caption tr" style="display:none;">
-Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.
-</div>
 </div>
 
 <div class="box" id="liveBox">
 STATE: WAIT<br>
 FRICTION: LOW<br>
-TIME COST: STABLE<br><br>
-→ NO VISIBILITY<br>
-WAITING IS AN ACTIVE POSITION
+TIME COST: STABLE
 </div>
 
 <a class="cta" href="ma.html">
 Observe system →
 </a>
 
-<div class="section">
-<p class="big">
-What this explains
-</p>
-
-<p class="muted">
-• Why low volatility leads to explosive moves<br>
-• How liquidation cascades actually form<br>
-• Why price accelerates in thin liquidity<br><br>
-This is not prediction.<br>
-This is structure.
-</p>
-
-<a class="cta" href="/lib">
-Access research →
-</a>
-</div>
-
 </div>
 
 <hr>
 
+<!-- 🔴 FINAL CTA -->
 <div class="section">
-<p class="big">
-A structural framework for reading markets
+<p class="big en">A structural framework for markets</p>
+<p class="big tr" style="display:none;">Piyasalar için yapısal çerçeve</p>
+
+<p class="muted en">
+No signals. No indicators.<br>
+Only structure.
 </p>
 
-<p class="muted">
-This is not a trading system.<br>
-This is a way to see.<br><br>
-No indicators.<br>
-No signals.<br>
-Only structure.
+<p class="muted tr" style="display:none;">
+Sinyal yok. İndikatör yok.<br>
+Sadece yapı.
 </p>
 
 <a class="cta" href="/lib">
@@ -192,24 +206,9 @@ let i = 0;
 
 setInterval(()=>{
   const s = states[i];
-  const lang = localStorage.getItem("lang") || "en";
-
-  let extra = "";
-  if(s[0] === "WAIT"){
-    extra = lang === "tr"
-      ? "<br>BEKLEMEK AKTİF POZİSYONDUR"
-      : "<br>WAITING IS AN ACTIVE POSITION";
-  }
-
-  document.getElementById("liveBox").innerHTML = `
-  STATE: ${s[0]}<br>
-  FRICTION: ${s[1]}<br>
-  TIME COST: ${s[2]}<br><br>
-  → ${s[3]}${extra}
-  `;
-
+  document.getElementById("liveBox").innerHTML =
+  "STATE: "+s[0]+"<br>FRICTION: "+s[1]+"<br>TIME COST: "+s[2];
   i = (i+1) % states.length;
-
 }, 2500);
 </script>
 
