@@ -133,7 +133,8 @@ Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıd
 STATE: WAIT<br>
 FRICTION: LOW<br>
 TIME COST: STABLE<br><br>
-→ NO VALID TRADE CONDITION
+→ NO VISIBILITY<br>
+WAITING IS AN ACTIVE POSITION
 </div>
 
 <a class="cta" href="ma.html">
@@ -187,7 +188,8 @@ Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıd
 STATE: WAIT<br>
 FRICTION: DÜŞÜK<br>
 TIME COST: STABİL<br><br>
-→ GEÇERLİ İŞLEM KOŞULU YOK
+→ GÖRÜNÜRLÜK YOK<br>
+BEKLEMEK AKTİF POZİSYONDUR
 </div>
 
 <a class="cta" href="ma.html">
@@ -205,7 +207,7 @@ Market Alchemy • Halil İbrahim Güven
 
 <script>
 const states = [
-["WAIT","LOW","STABLE","NO VALID TRADE CONDITION"],
+["WAIT","LOW","STABLE","NO VISIBILITY"],
 ["PREPARE","RISING","INCREASING","WAIT"],
 ["ACT","HIGH","CRITICAL","ACTION ZONE"]
 ];
@@ -214,13 +216,26 @@ let i = 0;
 
 setInterval(()=>{
   const s = states[i];
+
+  const lang = localStorage.getItem("lang") || "en";
+
+  let extra = "";
+
+  if(s[0] === "WAIT"){
+    extra = lang === "tr"
+      ? "<br>BEKLEMEK AKTİF POZİSYONDUR"
+      : "<br>WAITING IS AN ACTIVE POSITION";
+  }
+
   document.getElementById("liveBox").innerHTML = `
   STATE: ${s[0]}<br>
   FRICTION: ${s[1]}<br>
   TIME COST: ${s[2]}<br><br>
-  → ${s[3]}
+  → ${s[3]}${extra}
   `;
+
   i = (i+1) % states.length;
+
 }, 2500);
 </script>
 
