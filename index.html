@@ -32,7 +32,6 @@ body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMa
 .container{max-width:720px;margin:auto;padding:80px 20px;}
 h1{font-size:40px;margin-bottom:10px;}
 
-/* NEW: subtle motion */
 .dynamic-headline{
 font-size:20px;
 font-weight:600;
@@ -80,6 +79,17 @@ margin-top:12px;
 font-size:13px;
 opacity:0.5;
 }
+
+/* NEW FADE-IN */
+.fade-in{
+opacity:0;
+transform:translateY(10px);
+transition:all 1s ease;
+}
+.fade-in.visible{
+opacity:0.7;
+transform:translateY(0);
+}
 </style>
 </head>
 
@@ -102,7 +112,6 @@ document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"bl
 
 <h1>MARKET ALCHEMY</h1>
 
-<!-- NEW HEADLINE -->
 <div class="dynamic-headline en">
 The system is no longer described.<br>
 It is running.
@@ -139,6 +148,15 @@ It is a structural validation layer.
 </p>
 
 <div class="diagram">
+
+<!-- NEW LINE -->
+<div class="diagram-caption fade-in en" id="priceLine" style="font-size:15px; margin-bottom:8px;">
+Price is the record of system behavior
+</div>
+
+<div class="diagram-caption fade-in tr" id="priceLineTR" style="display:none; font-size:15px; margin-bottom:8px;">
+Fiyat, sistem davranışının kaydıdır
+</div>
 
 <div class="diagram-caption en" style="font-size:16px; opacity:0.85; margin-bottom:10px;">
 System is never chaotic — the observer is insufficient
@@ -271,6 +289,19 @@ TIME COST: ${s[2]}<br><br>
 i = (i+1) % states.length;
 
 }, 2500);
+
+// FADE-IN OBSERVER
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
+});
+});
+
+document.querySelectorAll(".fade-in").forEach(el=>{
+observer.observe(el);
+});
 </script>
 
 </body>
