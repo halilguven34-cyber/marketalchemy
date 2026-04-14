@@ -1,30 +1,63 @@
-<!DOCTYPE html>  <html lang="en">  <script>    if(!localStorage.getItem("lang")){
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+if(!localStorage.getItem("lang")){
 const userLang = navigator.language || navigator.userLanguage;
 localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
 }
-</script>  <head>  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>  <script>
+</script>
+
+<head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
+<script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-8NGN65VXH8');
-</script>  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Market Alchemy — Financial Systems Laboratory</title>
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Market Alchemy — Financial Systems Laboratory</title>
+
 <meta name="description" content="Market Alchemy is a financial systems laboratory building decision engines, structural models and timing systems across markets.">
 
-<link rel="canonical" href="https://marketalchemy.io/">  <style>    
-body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}    
-.container{max-width:720px;margin:auto;padding:80px 20px;}    
-h1{font-size:40px;margin-bottom:10px;}    
-.subtitle{opacity:0.7;font-size:16px;margin-bottom:40px;}    
-.section{margin-top:80px;}    
-.big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}    
-.muted{opacity:0.6;line-height:1.7;}    
-.cta{display:block;margin-top:30px;padding:16px;border:1px solid #1f2430;text-decoration:none;color:#e8ecf1;font-size:15px;opacity:0.9;}    
-.cta:hover{border-color:#6da8ff;color:#6da8ff;}    
-hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}    
-nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}    
-nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}    
-nav a.active{color:#6da8ff;opacity:1;font-weight:600;}    .box{
+<link rel="canonical" href="https://marketalchemy.io/">
+
+<style>
+body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+.container{max-width:720px;margin:auto;padding:80px 20px;}
+h1{font-size:40px;margin-bottom:10px;}
+
+/* NEW: subtle motion */
+.dynamic-headline{
+font-size:20px;
+font-weight:600;
+opacity:0.85;
+margin-bottom:30px;
+animation:pulse 3.5s ease-in-out infinite;
+}
+@keyframes pulse{
+0%{opacity:0.6;}
+50%{opacity:1;}
+100%{opacity:0.6;}
+}
+
+.subtitle{opacity:0.7;font-size:16px;margin-bottom:40px;}
+.section{margin-top:80px;}
+.big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}
+.muted{opacity:0.6;line-height:1.7;}
+.cta{display:block;margin-top:30px;padding:16px;border:1px solid #1f2430;text-decoration:none;color:#e8ecf1;font-size:15px;opacity:0.9;}
+.cta:hover{border-color:#6da8ff;color:#6da8ff;}
+hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
+nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}
+nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}
+nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
+
+.box{
 margin-top:30px;
 padding:20px;
 border:1px solid #1f2430;
@@ -47,7 +80,14 @@ margin-top:12px;
 font-size:13px;
 opacity:0.5;
 }
-</style>  </head>  <body>  <div id="nav"></div>  <script>
+</style>
+</head>
+
+<body>
+
+<div id="nav"></div>
+
+<script>
 fetch("nav.html?v=" + Date.now())
 .then(res => res.text())
 .then(data => {
@@ -56,82 +96,158 @@ const lang = localStorage.getItem("lang") || "en";
 document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
 document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 });
-</script>  <div class="container">  <h1>MARKET ALCHEMY</h1>  <p class="subtitle en">Financial Systems Laboratory</p>
+</script>
 
-<p class="subtitle tr" style="display:none;">Finansal Sistemler Laboratuvarı</p>  <div class="section en">    
-<p class="big">    
-Most traders lose because they act too early.    
-</p>  <p class="muted">    
-Profit is not generated first.<br>    
-Loss reduction comes first.<br><br>    
-This system enforces that order.    
-</p>  <p class="muted">    
-This system blocks trades when conditions are not structurally valid.<br>    
-It is the applied layer of the research and operationalizes the underlying model.<br><br>    
-State transitions reflect structural pressure, and timing visibility emerges from these constraints.<br><br>    
-Designed as a pre-trade validation layer, it can operate within decision workflows before execution.    
-</p>  <div class="diagram">  <div class="diagram-caption en" style="font-size:16px; opacity:0.85; margin-bottom:10px;">    
-System is never chaotic — the observer is insufficient    
-</div>  <div class="diagram-caption tr" style="display:none; font-size:16px; opacity:0.85; margin-bottom:10px;">    
-Sistem hiçbir zaman kaotik değil — gözlemci yetersiz    
-</div>  <a href="law.html">    
-<img src="time.diagram.jpg" alt="Structural Depth & Observer Diagram">    
-</a>  <div class="diagram-caption en">    
-Structural Depth & Observer — visibility depends on position within structure.    
-</div>    
-<div class="diagram-caption tr" style="display:none;">    
-Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.    
-</div>    
-</div>  <div class="box" id="liveBox">    
-STATE: WAIT<br>    
-FRICTION: LOW<br>    
-TIME COST: STABLE<br><br>    
-→ NO VISIBILITY<br>    
-WAITING IS AN ACTIVE POSITION    
-</div>  <a class="cta" href="ma.html">    
-Observe system →    
-</a>  </div>  <div class="section tr" style="display:none;">    
-<p class="big">    
-Traderların çoğu yanlış olduğu için değil,<br>    
-erken davrandığı için kaybeder.    
-</p>  <p class="muted">    
-Kâr önce üretilmez.<br>    
-Önce kayıp azaltılır.<br><br>    
-Bu sistem bu sırayı zorunlu kılar.    
-</p>  <p class="muted">    
-Bu sistem, yapı geçerli değilse işlemleri engeller.<br>    
-Araştırmanın uygulama katmanıdır ve altında yatan modeli operasyonel hale getirir.<br><br>    
-Durum geçişleri yapısal basıncı yansıtır, zamanlama ise bu kısıtlar altında görünür hale gelir.<br><br>    
-İşlem öncesi doğrulama katmanı olarak tasarlanmış olup, karar süreçlerine entegre edilebilir.    
-</p>  <div class="diagram">  <div class="diagram-caption en" style="display:none; font-size:16px; opacity:0.85; margin-bottom:10px;">    
-System is never chaotic — the observer is insufficient    
-</div>  <div class="diagram-caption tr" style="font-size:16px; opacity:0.85; margin-bottom:10px;">    
-Sistem hiçbir zaman kaotik değil — gözlemci yetersiz    
-</div>  <a href="law.html">    
-<img src="time.diagram.jpg" alt="Yapısal Derinlik & Gözlemci Diyagramı">    
-</a>  <div class="diagram-caption en" style="display:none;">    
-Structural Depth & Observer — visibility depends on position within structure.    
-</div>    
-<div class="diagram-caption tr">    
-Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.    
-</div>    
-</div>  <div class="box">    
-STATE: WAIT<br>    
-FRICTION: DÜŞÜK<br>    
-TIME COST: STABİL<br><br>    
-→ GÖRÜNÜRLÜK YOK<br>    
-BEKLEMEK AKTİF POZİSYONDUR    
-</div>  <a class="cta" href="ma.html">    
-Sistemi gözlemle →    
-</a>    
-</div>  <hr>  <div style="margin-top: 100px; font-size: 11px; opacity: 0.4; text-align: center;">    
-Market Alchemy • Halil İbrahim Güven    
-</div>  </div>  <script>    
-const states = [    
-["WAIT","LOW","STABLE","NO VISIBILITY"],    
-["PREPARE","RISING","INCREASING","WAIT"],    
-["ACT","HIGH","CRITICAL","ACTION ZONE"]    
-];    let i = 0;
+<div class="container">
+
+<h1>MARKET ALCHEMY</h1>
+
+<!-- NEW HEADLINE -->
+<div class="dynamic-headline en">
+The system is no longer described.<br>
+It is running.
+</div>
+
+<div class="dynamic-headline tr" style="display:none;">
+Sistem artık tanımlanmıyor.<br>
+Çalışıyor.
+</div>
+
+<p class="subtitle en">Financial Systems Laboratory</p>
+<p class="subtitle tr" style="display:none;">Finansal Sistemler Laboratuvarı</p>
+
+<div class="section en">
+
+<p class="big">
+Structure is not predicted.<br>
+It is observed.
+</p>
+
+<p class="muted">
+Loss does not begin with price.<br>
+It begins with misalignment.<br><br>
+This system enforces structural alignment.
+</p>
+
+<p class="muted">
+Trades are blocked when structural conditions are invalid.<br>
+The system does not react — it filters.<br><br>
+State transitions reflect structural pressure.<br>
+Timing emerges only when visibility becomes possible.<br><br>
+This is not a signal engine.<br>
+It is a structural validation layer.
+</p>
+
+<div class="diagram">
+
+<div class="diagram-caption en" style="font-size:16px; opacity:0.85; margin-bottom:10px;">
+System is never chaotic — the observer is insufficient
+</div>
+
+<div class="diagram-caption tr" style="display:none; font-size:16px; opacity:0.85; margin-bottom:10px;">
+Sistem hiçbir zaman kaotik değil — gözlemci yetersiz
+</div>
+
+<a href="law.html">
+<img src="time.diagram.jpg" alt="Structural Depth & Observer Diagram">
+</a>
+
+<div class="diagram-caption en">
+Structural Depth & Observer — visibility depends on position within structure.
+</div>
+
+<div class="diagram-caption tr" style="display:none;">
+Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.
+</div>
+
+</div>
+
+<div class="box" id="liveBox">
+STATE: WAIT<br>
+FRICTION: LOW<br>
+TIME COST: STABLE<br><br>
+→ NO VISIBILITY<br>
+WAITING IS AN ACTIVE POSITION
+</div>
+
+<a class="cta" href="ma.html">
+Observe system →
+</a>
+
+</div>
+
+<div class="section tr" style="display:none;">
+
+<p class="big">
+Yapı tahmin edilmez.<br>
+Gözlemlenir.
+</p>
+
+<p class="muted">
+Kayıp fiyatta başlamaz.<br>
+Uyumsuzlukta başlar.<br><br>
+Bu sistem yapısal hizalanmayı zorunlu kılar.
+</p>
+
+<p class="muted">
+Yapı geçerli değilse işlem engellenir.<br>
+Sistem tepki vermez — filtreler.<br><br>
+Durum geçişleri yapısal basıncı yansıtır.<br>
+Zamanlama ancak görünürlük oluştuğunda ortaya çıkar.<br><br>
+Bu bir sinyal sistemi değildir.<br>
+Yapısal doğrulama katmanıdır.
+</p>
+
+<div class="diagram">
+
+<div class="diagram-caption en" style="display:none; font-size:16px; opacity:0.85; margin-bottom:10px;">
+System is never chaotic — the observer is insufficient
+</div>
+
+<div class="diagram-caption tr" style="font-size:16px; opacity:0.85; margin-bottom:10px;">
+Sistem hiçbir zaman kaotik değil — gözlemci yetersiz
+</div>
+
+<a href="law.html">
+<img src="time.diagram.jpg" alt="Yapısal Derinlik & Gözlemci Diyagramı">
+</a>
+
+<div class="diagram-caption tr">
+Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.
+</div>
+
+</div>
+
+<div class="box">
+STATE: WAIT<br>
+FRICTION: DÜŞÜK<br>
+TIME COST: STABİL<br><br>
+→ GÖRÜNÜRLÜK YOK<br>
+BEKLEMEK AKTİF POZİSYONDUR
+</div>
+
+<a class="cta" href="ma.html">
+Sistemi gözlemle →
+</a>
+
+</div>
+
+<hr>
+
+<div style="margin-top: 100px; font-size: 11px; opacity: 0.4; text-align: center;">
+Market Alchemy • Halil İbrahim Güven
+</div>
+
+</div>
+
+<script>
+const states = [
+["WAIT","LOW","STABLE","NO VISIBILITY"],
+["PREPARE","RISING","INCREASING","WAIT"],
+["ACT","HIGH","CRITICAL","ACTION ZONE"]
+];
+
+let i = 0;
 
 setInterval(()=>{
 const s = states[i];
@@ -146,11 +262,16 @@ extra = lang === "tr"
 : "<br>WAITING IS AN ACTIVE POSITION";
 }
 
-document.getElementById("liveBox").innerHTML =     STATE: ${s[0]}<br>     FRICTION: ${s[1]}<br>     TIME COST: ${s[2]}<br><br>     → ${s[3]}${extra}    ;
+document.getElementById("liveBox").innerHTML =
+`STATE: ${s[0]}<br>
+FRICTION: ${s[1]}<br>
+TIME COST: ${s[2]}<br><br>
+→ ${s[3]}${extra}`;
 
 i = (i+1) % states.length;
 
 }, 2500);
-</script>  </body>
+</script>
 
+</body>
 </html>
