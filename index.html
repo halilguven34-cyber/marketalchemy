@@ -3,13 +3,12 @@
 
 <script>
 if(!localStorage.getItem("lang")){
-const userLang = navigator.language || navigator.userLanguage;
-localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
+  const userLang = navigator.language || navigator.userLanguage;
+  localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
 }
 </script>
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,106 +16,74 @@ localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "e
 
 <style>
 body{
-margin:0;
-background:#0d0f14;
-color:#e8ecf1;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  margin:0;
+  background:#0d0f14;
+  color:#e8ecf1;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
-/* NAV */
 nav{
-width:100%;
-display:flex;
-gap:18px;
-padding:14px 16px;
-border-bottom:1px solid #1f2430;
-font-size:14px;
-overflow-x:auto;
+  width:100%;
+  display:flex;
+  gap:18px;
+  padding:14px 16px;
+  border-bottom:1px solid #1f2430;
+  font-size:14px;
 }
 nav a{
-color:#e8ecf1;
-text-decoration:none;
-opacity:0.6;
+  color:#e8ecf1;
+  text-decoration:none;
+  opacity:0.6;
 }
 nav a.active{
-opacity:1;
-color:#6da8ff;
+  opacity:1;
+  color:#6da8ff;
 }
 
-/* CENTER */
 .container{
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-min-height:90vh;
-padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:90vh;
+  padding:20px;
+  text-align:center;
 }
 
-/* DIAGRAM */
+.title{
+  font-size:28px;
+  margin-bottom:12px;
+  opacity:0.9;
+}
+
+.subtitle{
+  font-size:14px;
+  opacity:0.5;
+  margin-bottom:30px;
+}
+
 .diagram{
-position:relative;
-width:100%;
-max-width:680px;
-margin-top:10px;
+  max-width:640px;
+  width:100%;
 }
 
 .diagram img{
-width:100%;
-opacity:0.9;
+  width:100%;
+  opacity:0.9;
 }
 
-/* LAYERS */
-.layer{
-position:absolute;
-border:1px solid rgba(109,168,255,0.15);
-transition:all 0.3s ease;
-cursor:pointer;
+.caption{
+  margin-top:18px;
+  font-size:14px;
+  opacity:0.6;
 }
 
-.layer:hover,
-.layer.active{
-border:1px solid #6da8ff;
-box-shadow:0 0 25px rgba(109,168,255,0.25);
-}
-
-.layer.a1{top:42%; left:42%; width:16%; height:16%;}
-.layer.a2{top:32%; left:32%; width:36%; height:36%;}
-.layer.a3{top:20%; left:20%; width:60%; height:60%;}
-.layer.a4{top:8%; left:8%; width:84%; height:84%;}
-
-/* TEXT */
-.top-text{
-margin-bottom:12px;
-font-size:14px;
-opacity:0.5;
-}
-
-.bottom-text{
-margin-top:14px;
-font-size:14px;
-opacity:0.7;
-text-align:center;
-max-width:520px;
-}
-
-.info{
-margin-top:16px;
-font-size:13px;
-opacity:0.6;
-min-height:20px;
-text-align:center;
-max-width:500px;
-}
-
-/* PRODUCT BLOCK */
 .product{
-margin-top:30px;
-font-size:14px;
-opacity:0.55;
-text-align:center;
-max-width:520px;
-line-height:1.6;
+  margin-top:30px;
+  font-size:14px;
+  opacity:0.55;
+  max-width:480px;
+  line-height:1.6;
 }
 </style>
 </head>
@@ -126,109 +93,46 @@ line-height:1.6;
 <div id="nav"></div>
 
 <script>
-fetch("nav.html?v=" + Date.now())
+fetch("nav.html")
 .then(res => res.text())
 .then(data => {
-document.getElementById("nav").innerHTML = data;
+  document.getElementById("nav").innerHTML = data;
 
-const lang = localStorage.getItem("lang") || "en";
-document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+  const lang = localStorage.getItem("lang") || "en";
+  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 });
 </script>
 
 <div class="container">
 
-<div class="top-text en">This is the system.</div>
-<div class="top-text tr" style="display:none;">Bu sistemin kendisi.</div>
+<div class="title en">System is running.</div>
+<div class="title tr" style="display:none;">Sistem çalışıyor.</div>
+
+<div class="subtitle en">Price is the record of system behavior.</div>
+<div class="subtitle tr" style="display:none;">Fiyat, sistem davranışının kaydıdır.</div>
 
 <div class="diagram">
-
-<img src="time.diagram.jpg" alt="Structural Depth Diagram">
-
-<div class="layer a1"
-data-en="A1 — Local structure"
-data-tr="A1 — Lokal yapı"></div>
-
-<div class="layer a2"
-data-en="A2 — Structural expansion"
-data-tr="A2 — Yapısal genişleme"></div>
-
-<div class="layer a3"
-data-en="A3 — Increasing visibility"
-data-tr="A3 — Artan görünürlük"></div>
-
-<div class="layer a4"
-data-en="A4 — Global structure"
-data-tr="A4 — Global yapı"></div>
-
+  <img src="time.diagram.jpg" alt="Structural Depth Diagram">
 </div>
 
-<div class="bottom-text en">
+<div class="caption en">
 Structural depth determines visibility.
 </div>
 
-<div class="bottom-text tr" style="display:none;">
+<div class="caption tr" style="display:none;">
 Görünürlük yapısal derinlik tarafından belirlenir.
 </div>
 
-<div class="info" id="infoBox"></div>
-
 <div class="product en">
-Market Alchemy builds structural decision engines for leveraged markets.<br><br>
-
-The system does not generate signals.<br>
-It identifies when not to act.<br><br>
-
-Foreign exchange, crypto, indices, commodities.<br><br>
-
-18+ years of observation.<br>
-Continuous research in a live laboratory environment.
+Market Alchemy builds structural decision engines.
 </div>
 
 <div class="product tr" style="display:none;">
-Market Alchemy kaldıraçlı piyasalar için yapısal karar motorları üretir.<br><br>
-
-Sistem sinyal üretmez.<br>
-Ne zaman işlem yapılmaması gerektiğini belirler.<br><br>
-
-Döviz, kripto, endeks, emtia.<br><br>
-
-18+ yıllık gözlem.<br>
-Canlı laboratuvar ortamında sürekli araştırma.
+Market Alchemy yapısal karar motorları üretir.
 </div>
 
 </div>
-
-<script>
-const layers = document.querySelectorAll(".layer");
-const infoBox = document.getElementById("infoBox");
-
-layers.forEach(layer => {
-
-layer.addEventListener("mouseenter", ()=>{
-setActive(layer);
-});
-
-layer.addEventListener("click", ()=>{
-setActive(layer);
-});
-
-});
-
-function setActive(layer){
-layers.forEach(l=>l.classList.remove("active"));
-layer.classList.add("active");
-
-const lang = localStorage.getItem("lang") || "en";
-
-const text = lang === "tr"
-? layer.getAttribute("data-tr")
-: layer.getAttribute("data-en");
-
-infoBox.innerText = text;
-}
-</script>
 
 </body>
 </html>
