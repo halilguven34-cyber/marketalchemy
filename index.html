@@ -21,9 +21,9 @@ gtag('config', 'G-8NGN65VXH8');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Market Alchemy — Financial Systems Laboratory</title>
+<title>Market Alchemy — Structural Decision Engine</title>
 
-<meta name="description" content="Market Alchemy is a financial systems laboratory building decision engines, structural models and timing systems across markets.">
+<meta name="description" content="Market Alchemy is a structural decision engine for markets. It filters participation through alignment, not signals.">
 
 <link rel="canonical" href="https://marketalchemy.io/">
 
@@ -45,28 +45,29 @@ animation:pulse 3.5s ease-in-out infinite;
 100%{opacity:0.6;}
 }
 
-.subtitle{opacity:0.7;font-size:16px;margin-bottom:40px;}
-.section{margin-top:80px;}
+.subtitle{opacity:0.7;font-size:16px;margin-bottom:30px;}
+
+.product{
+font-size:15px;
+opacity:0.6;
+margin-bottom:50px;
+}
+
+.section{margin-top:60px;}
 .big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}
 .muted{opacity:0.6;line-height:1.7;}
-.cta{display:block;margin-top:30px;padding:16px;border:1px solid #1f2430;text-decoration:none;color:#e8ecf1;font-size:15px;opacity:0.9;}
+
+.cta{display:block;margin-top:20px;padding:16px;border:1px solid #1f2430;text-decoration:none;color:#e8ecf1;font-size:15px;opacity:0.9;}
 .cta:hover{border-color:#6da8ff;color:#6da8ff;}
+
 hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
+
 nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}
 nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}
 nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
 
-.box{
-margin-top:30px;
-padding:20px;
-border:1px solid #1f2430;
-font-family:monospace;
-font-size:15px;
-opacity:0.9;
-}
-
 .diagram{
-margin-top:40px;
+margin-top:30px;
 text-align:center;
 }
 .diagram img{
@@ -75,12 +76,11 @@ max-width:680px;
 opacity:0.9;
 }
 .diagram-caption{
-margin-top:12px;
-font-size:13px;
-opacity:0.5;
+margin-top:10px;
+font-size:14px;
+opacity:0.6;
 }
 
-/* NEW FADE-IN */
 .fade-in{
 opacity:0;
 transform:translateY(10px);
@@ -125,6 +125,16 @@ Sistem artık tanımlanmıyor.<br>
 <p class="subtitle en">Financial Systems Laboratory</p>
 <p class="subtitle tr" style="display:none;">Finansal Sistemler Laboratuvarı</p>
 
+<p class="product en">
+A structural decision engine for markets.<br>
+Not signals. A validation layer.
+</p>
+
+<p class="product tr" style="display:none;">
+Piyasalar için yapısal karar motoru.<br>
+Sinyal değil, doğrulama katmanı.
+</p>
+
 <div class="section en">
 
 <p class="big">
@@ -134,35 +144,20 @@ It is observed.
 
 <p class="muted">
 Loss does not begin with price.<br>
-It begins with misalignment.<br><br>
-This system enforces structural alignment.
+It begins with misalignment.
 </p>
 
 <p class="muted">
-Trades are blocked when structural conditions are invalid.<br>
-The system does not react — it filters.<br><br>
-State transitions reflect structural pressure.<br>
-Timing emerges only when visibility becomes possible.<br><br>
-This is not a signal engine.<br>
-It is a structural validation layer.
+Price is the record of system behavior.
 </p>
 
 <div class="diagram">
 
-<!-- NEW LINE -->
-<div class="diagram-caption fade-in en" id="priceLine" style="font-size:15px; margin-bottom:8px;">
-Price is the record of system behavior
-</div>
-
-<div class="diagram-caption fade-in tr" id="priceLineTR" style="display:none; font-size:15px; margin-bottom:8px;">
-Fiyat, sistem davranışının kaydıdır
-</div>
-
-<div class="diagram-caption en" style="font-size:16px; opacity:0.85; margin-bottom:10px;">
+<div class="diagram-caption en fade-in">
 System is never chaotic — the observer is insufficient
 </div>
 
-<div class="diagram-caption tr" style="display:none; font-size:16px; opacity:0.85; margin-bottom:10px;">
+<div class="diagram-caption tr fade-in" style="display:none;">
 Sistem hiçbir zaman kaotik değil — gözlemci yetersiz
 </div>
 
@@ -171,25 +166,21 @@ Sistem hiçbir zaman kaotik değil — gözlemci yetersiz
 </a>
 
 <div class="diagram-caption en">
-Structural Depth & Observer — visibility depends on position within structure.
+Visibility depends on structural position.
 </div>
 
 <div class="diagram-caption tr" style="display:none;">
-Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.
+Görünürlük yapı içindeki konuma bağlıdır.
 </div>
 
 </div>
 
-<div class="box" id="liveBox">
-STATE: WAIT<br>
-FRICTION: LOW<br>
-TIME COST: STABLE<br><br>
-→ NO VISIBILITY<br>
-WAITING IS AN ACTIVE POSITION
-</div>
+<a class="cta" href="research.html">
+→ Research
+</a>
 
 <a class="cta" href="ma.html">
-Observe system →
+→ Engine
 </a>
 
 </div>
@@ -203,26 +194,16 @@ Gözlemlenir.
 
 <p class="muted">
 Kayıp fiyatta başlamaz.<br>
-Uyumsuzlukta başlar.<br><br>
-Bu sistem yapısal hizalanmayı zorunlu kılar.
+Uyumsuzlukta başlar.
 </p>
 
 <p class="muted">
-Yapı geçerli değilse işlem engellenir.<br>
-Sistem tepki vermez — filtreler.<br><br>
-Durum geçişleri yapısal basıncı yansıtır.<br>
-Zamanlama ancak görünürlük oluştuğunda ortaya çıkar.<br><br>
-Bu bir sinyal sistemi değildir.<br>
-Yapısal doğrulama katmanıdır.
+Fiyat, sistem davranışının kaydıdır.
 </p>
 
 <div class="diagram">
 
-<div class="diagram-caption en" style="display:none; font-size:16px; opacity:0.85; margin-bottom:10px;">
-System is never chaotic — the observer is insufficient
-</div>
-
-<div class="diagram-caption tr" style="font-size:16px; opacity:0.85; margin-bottom:10px;">
+<div class="diagram-caption tr fade-in">
 Sistem hiçbir zaman kaotik değil — gözlemci yetersiz
 </div>
 
@@ -231,21 +212,17 @@ Sistem hiçbir zaman kaotik değil — gözlemci yetersiz
 </a>
 
 <div class="diagram-caption tr">
-Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.
+Görünürlük yapı içindeki konuma bağlıdır.
 </div>
 
 </div>
 
-<div class="box">
-STATE: WAIT<br>
-FRICTION: DÜŞÜK<br>
-TIME COST: STABİL<br><br>
-→ GÖRÜNÜRLÜK YOK<br>
-BEKLEMEK AKTİF POZİSYONDUR
-</div>
+<a class="cta" href="research.html">
+→ Araştırma
+</a>
 
 <a class="cta" href="ma.html">
-Sistemi gözlemle →
+→ Motor
 </a>
 
 </div>
@@ -259,38 +236,6 @@ Market Alchemy • Halil İbrahim Güven
 </div>
 
 <script>
-const states = [
-["WAIT","LOW","STABLE","NO VISIBILITY"],
-["PREPARE","RISING","INCREASING","WAIT"],
-["ACT","HIGH","CRITICAL","ACTION ZONE"]
-];
-
-let i = 0;
-
-setInterval(()=>{
-const s = states[i];
-
-const lang = localStorage.getItem("lang") || "en";
-
-let extra = "";
-
-if(s[0] === "WAIT"){
-extra = lang === "tr"
-? "<br>BEKLEMEK AKTİF POZİSYONDUR"
-: "<br>WAITING IS AN ACTIVE POSITION";
-}
-
-document.getElementById("liveBox").innerHTML =
-`STATE: ${s[0]}<br>
-FRICTION: ${s[1]}<br>
-TIME COST: ${s[2]}<br><br>
-→ ${s[3]}${extra}`;
-
-i = (i+1) % states.length;
-
-}, 2500);
-
-// FADE-IN OBSERVER
 const observer = new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
