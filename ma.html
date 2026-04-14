@@ -77,7 +77,6 @@ opacity:0.75;
 text-align:left;
 }
 
-/* 🔥 NEW ACCESS TEXT */
 .access-note{
 margin-top:12px;
 font-size:12px;
@@ -127,12 +126,12 @@ TIMEFRAME: -
 
 <div class="box en">
 This is not a signal tool.<br>
-It filters when NOT to trade.
+It filters when NOT to act.
 </div>
 
 <div class="box tr" style="display:none;">
 Bu bir sinyal sistemi değildir.<br>
-Ne zaman işlem yapmaman gerektiğini filtreler.
+Ne zaman aksiyon almaman gerektiğini filtreler.
 </div>
 
 <div class="note en">
@@ -143,34 +142,30 @@ Same asset. Different timeframe. Different reality.
 Aynı varlık. Farklı zaman dilimi. Farklı gerçeklik.
 </div>
 
-<!-- 🔥 NEW CTA -->
-
 <a class="cta en" href="access.html">
-Access system layer →
+Enter system layer →
 </a>
 
 <a class="cta tr" href="access.html" style="display:none;">
-Sistem katmanına eriş →
+Sistem katmanına gir →
 </a>
 
 <div class="access-note en">
-Access is limited. Requests are reviewed.
+Access is limited.<br>Structure defines entry.
 </div>
 
 <div class="access-note tr" style="display:none;">
-Erişim sınırlıdır. Talepler değerlendirilir.
+Erişim sınırlıdır.<br>Giriş yapıyı gerektirir.
 </div>
 
 </div>
 
 <script>
 
-// language
 const lang = localStorage.getItem("lang") || "en";
 document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
 document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 
-// seed
 function getSeed(str){
   let hash = 0;
   for(let i=0;i<str.length;i++){
@@ -179,7 +174,6 @@ function getSeed(str){
   return hash;
 }
 
-// timeframe weight
 function tfWeight(tf){
   if(!tf) return 1;
   tf = tf.toUpperCase();
@@ -193,7 +187,6 @@ function tfWeight(tf){
   return 5;
 }
 
-// engine
 function analyze(asset, tf){
 
   const seed = getSeed(asset);
