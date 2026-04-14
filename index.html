@@ -10,224 +10,118 @@ localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "e
 
 <head>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-8NGN65VXH8');
-</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Market Alchemy — Structural Decision Engine</title>
 
-<meta name="description" content="Market Alchemy is a structural decision engine for markets. It filters participation through alignment, not signals.">
-
-<link rel="canonical" href="https://marketalchemy.io/">
-
 <style>
 body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
 .container{max-width:720px;margin:auto;padding:80px 20px;}
+
 h1{font-size:40px;margin-bottom:10px;}
 
-.dynamic-headline{
-font-size:20px;
-font-weight:600;
-opacity:0.85;
-margin-bottom:30px;
-animation:pulse 3.5s ease-in-out infinite;
-}
-@keyframes pulse{
-0%{opacity:0.6;}
-50%{opacity:1;}
-100%{opacity:0.6;}
-}
-
-.subtitle{opacity:0.7;font-size:16px;margin-bottom:30px;}
-
-.product{
-font-size:15px;
-opacity:0.6;
-margin-bottom:50px;
-}
-
-.section{margin-top:60px;}
-.big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}
-.muted{opacity:0.6;line-height:1.7;}
-
-hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
-
-nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}
-nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}
-nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
-
 .diagram{
-margin-top:30px;
+margin-top:40px;
+position:relative;
 text-align:center;
 }
+
 .diagram img{
 width:100%;
 max-width:680px;
-opacity:0.9;
-}
-.diagram-caption{
-margin-top:10px;
-font-size:14px;
-opacity:0.6;
+opacity:0.85;
 }
 
-.fade-in{
-opacity:0;
-transform:translateY(10px);
-transition:all 1s ease;
+/* INTERACTIVE LAYERS */
+.layer{
+position:absolute;
+border:1px solid rgba(109,168,255,0.2);
+transition:all 0.3s ease;
+cursor:pointer;
 }
-.fade-in.visible{
+
+.layer:hover,
+.layer.active{
+border:1px solid #6da8ff;
+box-shadow:0 0 20px rgba(109,168,255,0.2);
+}
+
+/* approximate positions */
+.layer.a1{top:42%; left:42%; width:16%; height:16%;}
+.layer.a2{top:32%; left:32%; width:36%; height:36%;}
+.layer.a3{top:20%; left:20%; width:60%; height:60%;}
+.layer.a4{top:8%; left:8%; width:84%; height:84%;}
+
+/* INFO PANEL */
+.info{
+margin-top:20px;
+font-size:14px;
 opacity:0.7;
-transform:translateY(0);
+min-height:40px;
+transition:all 0.3s ease;
 }
 </style>
 </head>
 
 <body>
 
-<div id="nav"></div>
-
-<script>
-fetch("nav.html?v=" + Date.now())
-.then(res => res.text())
-.then(data => {
-document.getElementById("nav").innerHTML = data;
-const lang = localStorage.getItem("lang") || "en";
-document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
-});
-</script>
-
 <div class="container">
 
 <h1>MARKET ALCHEMY</h1>
 
-<div class="dynamic-headline en">
-The system is no longer described.<br>
-It is running.
-</div>
+<div class="diagram" id="diagram">
 
-<div class="dynamic-headline tr" style="display:none;">
-Sistem artık tanımlanmıyor.<br>
-Çalışıyor.
-</div>
+<img src="time.diagram.jpg" alt="Structural Depth Diagram">
 
-<p class="subtitle en">Financial Systems Laboratory</p>
-<p class="subtitle tr" style="display:none;">Finansal Sistemler Laboratuvarı</p>
+<div class="layer a1" data-text-en="A1 — Local structure. Maximum certainty, minimal visibility."
+data-text-tr="A1 — Lokal yapı. Maksimum kesinlik, minimum görünürlük."></div>
 
-<p class="product en">
-A structural decision engine for markets.<br>
-Not signals. A validation layer.
-</p>
+<div class="layer a2" data-text-en="A2 — Intermediate layer. Structure begins to expand."
+data-text-tr="A2 — Ara katman. Yapı genişlemeye başlar."></div>
 
-<p class="product tr" style="display:none;">
-Piyasalar için yapısal karar motoru.<br>
-Sinyal değil, doğrulama katmanı.
-</p>
+<div class="layer a3" data-text-en="A3 — Macro structure. Visibility increases, control decreases."
+data-text-tr="A3 — Makro yapı. Görünürlük artar, kontrol azalır."></div>
 
-<div class="section en">
-
-<p class="big">
-Structure is not predicted.<br>
-It is observed.
-</p>
-
-<p class="muted">
-Loss does not begin with price.<br>
-It begins with misalignment.
-</p>
-
-<p class="muted">
-Price is the record of system behavior.
-</p>
-
-<div class="diagram">
-
-<div class="diagram-caption en fade-in">
-This is the system.
-</div>
-
-<div class="diagram-caption tr fade-in" style="display:none;">
-Bu sistemin kendisi.
-</div>
-
-<a href="law.html">
-<img src="time.diagram.jpg" alt="Structural Depth & Observer Diagram">
-</a>
-
-<div class="diagram-caption en">
-Structural Depth determines visibility.
-</div>
-
-<div class="diagram-caption tr" style="display:none;">
-Görünürlük yapısal derinlik tarafından belirlenir.
-</div>
+<div class="layer a4" data-text-en="A4 — Global structure. Maximum visibility, minimal control."
+data-text-tr="A4 — Global yapı. Maksimum görünürlük, minimum kontrol."></div>
 
 </div>
 
-</div>
-
-<div class="section tr" style="display:none;">
-
-<p class="big">
-Yapı tahmin edilmez.<br>
-Gözlemlenir.
-</p>
-
-<p class="muted">
-Kayıp fiyatta başlamaz.<br>
-Uyumsuzlukta başlar.
-</p>
-
-<p class="muted">
-Fiyat, sistem davranışının kaydıdır.
-</p>
-
-<div class="diagram">
-
-<div class="diagram-caption tr fade-in">
-Bu sistemin kendisi.
-</div>
-
-<a href="law.html">
-<img src="time.diagram.jpg" alt="Yapısal Derinlik & Gözlemci Diyagramı">
-</a>
-
-<div class="diagram-caption tr">
-Görünürlük yapısal derinlik tarafından belirlenir.
-</div>
-
-</div>
-
-</div>
-
-<hr>
-
-<div style="margin-top: 100px; font-size: 11px; opacity: 0.4; text-align: center;">
-Market Alchemy • Halil İbrahim Güven
+<div class="info" id="infoBox">
+Hover or tap on the structure.
 </div>
 
 </div>
 
 <script>
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
-}
-});
+const layers = document.querySelectorAll(".layer");
+const infoBox = document.getElementById("infoBox");
+
+layers.forEach(layer => {
+
+layer.addEventListener("mouseenter", ()=>{
+setActive(layer);
 });
 
-document.querySelectorAll(".fade-in").forEach(el=>{
-observer.observe(el);
+layer.addEventListener("click", ()=>{
+setActive(layer);
 });
+
+});
+
+function setActive(layer){
+layers.forEach(l=>l.classList.remove("active"));
+layer.classList.add("active");
+
+const lang = localStorage.getItem("lang") || "en";
+
+const text = lang === "tr"
+? layer.getAttribute("data-text-tr")
+: layer.getAttribute("data-text-en");
+
+infoBox.innerText = text;
+}
 </script>
 
 </body>
