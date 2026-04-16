@@ -200,26 +200,34 @@ Ne zaman aksiyon almaman gerektiğini filtreler.
 <div class="modal">
 <div class="close" onclick="closeAccess()">✕</div>
 
-<h2>System Access</h2>
+<h2 class="en">System Access</h2>
+<h2 class="tr" style="display:none;">Sistem Erişimi</h2>
 
 <div id="step1">
-<div style="margin-bottom:10px;opacity:0.7;">Select your role</div>
+
+<div class="en" style="margin-bottom:10px;opacity:0.7;">Select your role</div>
+<div class="tr" style="display:none;margin-bottom:10px;opacity:0.7;">Rolünü seç</div>
 
 <button onclick="selectRole('Trader')">Trader</button>
 <button onclick="selectRole('Research')">Research / Academic</button>
 <button onclick="selectRole('Institution')">Institutional</button>
 <button onclick="selectRole('Developer')">Developer / API</button>
 <button onclick="selectRole('Other')">Other</button>
+
 </div>
 
 <div id="step2" style="display:none;">
-<div style="margin-bottom:10px;opacity:0.7;">Enter your email</div>
+
+<div class="en" style="margin-bottom:10px;opacity:0.7;">Enter your email</div>
+<div class="tr" style="display:none;margin-bottom:10px;opacity:0.7;">Email adresini gir</div>
 
 <input id="email" type="email" placeholder="you@example.com">
 
 <textarea id="otherText" placeholder="Briefly describe your context..." style="display:none;"></textarea>
 
-<button onclick="submitAccess()">Request access →</button>
+<button onclick="submitAccess()" class="en">Request access →</button>
+<button onclick="submitAccess()" class="tr" style="display:none;">Erişim talep et →</button>
+
 </div>
 
 </div>
@@ -270,7 +278,7 @@ return;
 window.location.href = `mailto:priceofwaiting@gmail.com?subject=Access Request&body=Role: ${selectedRole}%0AEmail: ${email}%0AContext: ${other}`;
 }
 
-// ENGINE
+// ENGINE (aynı)
 function getSeed(str){
 let hash=0;
 for(let i=0;i<str.length;i++){ hash+=str.charCodeAt(i);}
