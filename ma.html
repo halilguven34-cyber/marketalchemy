@@ -87,7 +87,7 @@ font-size:12px;
 opacity:0.45;
 }
 
-/* 🔥 OVERLAY */
+/* OVERLAY */
 .overlay{
 position:fixed;
 top:0;
@@ -109,6 +109,7 @@ background:#0d0f14;
 border:1px solid #1f2430;
 padding:24px;
 text-align:left;
+position:relative;
 }
 
 .modal h2{
@@ -116,7 +117,7 @@ margin-top:0;
 font-size:20px;
 }
 
-.modal input, .modal select{
+.modal input{
 width:100%;
 padding:12px;
 margin-top:12px;
@@ -126,7 +127,7 @@ color:#e8ecf1;
 }
 
 .modal button{
-margin-top:16px;
+margin-top:10px;
 width:100%;
 padding:12px;
 background:#6da8ff;
@@ -138,8 +139,8 @@ cursor:pointer;
 
 .close{
 position:absolute;
-top:20px;
-right:20px;
+top:15px;
+right:15px;
 font-size:20px;
 cursor:pointer;
 opacity:0.6;
@@ -196,26 +197,42 @@ Ne zaman aksiyon almaman gerektiğini filtreler.
 
 </div>
 
-<!-- 🔥 OVERLAY -->
+<!-- OVERLAY -->
 <div class="overlay" id="overlay">
 <div class="modal">
 <div class="close" onclick="closeAccess()">✕</div>
 
 <h2>System Access</h2>
 
-<input id="email" type="email" placeholder="you@example.com">
+<!-- STEP 1 -->
+<div id="step1">
 
-<select id="type">
-<option>Trader</option>
-<option>Research / Academic</option>
-<option>Institutional</option>
-<option>Developer / API</option>
-</select>
+<div style="margin-bottom:10px;opacity:0.7;">
+Select your role
+</div>
+
+<button onclick="selectRole('Trader')">Trader</button>
+<button onclick="selectRole('Research')">Research / Academic</button>
+<button onclick="selectRole('Institution')">Institutional</button>
+<button onclick="selectRole('Developer')">Developer / API</button>
+
+</div>
+
+<!-- STEP 2 -->
+<div id="step2" style="display:none;">
+
+<div style="margin-bottom:10px;opacity:0.7;">
+Enter your email
+</div>
+
+<input id="email" type="email" placeholder="you@example.com">
 
 <button onclick="submitAccess()">Request access →</button>
 
+</div>
+
 <div style="margin-top:10px;font-size:12px;opacity:0.5;">
-Access is limited. Requests are reviewed.
+Access is limited. Requests are evaluated structurally.
 </div>
 
 </div>
@@ -233,18 +250,36 @@ document.getElementById("overlay").style.display="flex";
 
 function closeAccess(){
 document.getElementById("overlay").style.display="none";
+document.getElementById("step1").style.display="block";
+document.getElementById("step2").style.display="none";
+}
+
+let selectedRole = null;
+
+function selectRole(role){
+selectedRole = role;
+document.getElementById("step1").style.display="none";
+document.getElementById("step2").style.display="block";
 }
 
 function submitAccess(){
+
 const email = document.getElementById("email").value;
-const type = document.getElementById("type").value;
 
 if(!email){
 alert("Email required");
 return;
 }
 
-window.location.href = `mailto:priceofwaiting@gmail.com?subject=Access Request&body=Email: ${email}%0AType: ${type}`;
+// 🔥 ŞU AN TEST (VERİYİ GÖR)
+console.log("ACCESS REQUEST:", {
+email: email,
+role: selectedRole
+});
+
+alert("Request received");
+
+closeAccess();
 }
 
 function getSeed(str){
