@@ -41,17 +41,7 @@ text-align:center;
 
 .output{margin-top:20px;font-family:monospace;opacity:0.85;}
 
-input{
-width:100%;
-padding:14px;
-background:#0d0f14;
-border:1px solid #1f2430;
-color:#e8ecf1;
-font-size:14px;
-margin-top:20px;
-}
-
-textarea{
+input, textarea{
 width:100%;
 padding:12px;
 margin-top:10px;
@@ -59,7 +49,6 @@ background:#0d0f14;
 border:1px solid #1f2430;
 color:#e8ecf1;
 font-size:13px;
-resize:none;
 }
 
 .cta{
@@ -68,7 +57,6 @@ margin-top:30px;
 padding:14px;
 border:1px solid #6da8ff;
 color:#6da8ff;
-text-decoration:none;
 cursor:pointer;
 }
 
@@ -98,6 +86,7 @@ font-size:12px;
 opacity:0.45;
 }
 
+/* overlay */
 .overlay{
 position:fixed;
 top:0;
@@ -105,7 +94,6 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.75);
-backdrop-filter:blur(6px);
 display:none;
 justify-content:center;
 align-items:center;
@@ -118,30 +106,24 @@ max-width:420px;
 background:#0d0f14;
 border:1px solid #1f2430;
 padding:24px;
-text-align:left;
 position:relative;
 }
 
-.modal h2{margin-top:0;font-size:20px;}
-
 .modal button{
-margin-top:10px;
 width:100%;
+margin-top:10px;
 padding:12px;
 background:#6da8ff;
 border:none;
 color:#000;
 font-weight:600;
-cursor:pointer;
 }
 
 .close{
 position:absolute;
 top:15px;
 right:15px;
-font-size:20px;
 cursor:pointer;
-opacity:0.6;
 }
 </style>
 </head>
@@ -168,34 +150,20 @@ opacity:0.6;
 <div class="output" id="output">STATE: WAIT</div>
 
 <div class="physics" id="physicsBox">
-PHASE: -<br>
-ENERGY: -<br>
-STRUCTURE: -<br>
-TIME COST: -<br>
-TIMEFRAME: -
+PHASE: -<br>ENERGY: -<br>STRUCTURE: -<br>TIME COST: -<br>TIMEFRAME: -
 </div>
 
-<div class="box en">
-This is not a signal tool.<br>
-It filters when NOT to act.
-</div>
-
-<div class="box tr" style="display:none;">
-Bu bir sinyal sistemi değildir.<br>
-Ne zaman aksiyon almaman gerektiğini filtreler.
-</div>
+<div class="box en">This is not a signal tool.<br>It filters when NOT to act.</div>
+<div class="box tr" style="display:none;">Bu bir sinyal sistemi değildir.<br>Ne zaman aksiyon almaman gerektiğini filtreler.</div>
 
 <div class="note en">Same asset. Different timeframe. Different reality.</div>
 <div class="note tr" style="display:none;">Aynı varlık. Farklı zaman dilimi. Farklı gerçeklik.</div>
 
 <div class="cta" onclick="openAccess()">Enter system layer →</div>
 
-<div class="access-note en">Access is limited.<br>Structure defines entry.</div>
-<div class="access-note tr" style="display:none;">Erişim sınırlıdır.<br>Giriş yapıyı gerektirir.</div>
-
 </div>
 
-<!-- OVERLAY -->
+<!-- overlay -->
 <div class="overlay" id="overlay">
 <div class="modal">
 <div class="close" onclick="closeAccess()">✕</div>
@@ -203,30 +171,41 @@ Ne zaman aksiyon almaman gerektiğini filtreler.
 <h2 class="en">System Access</h2>
 <h2 class="tr" style="display:none;">Sistem Erişimi</h2>
 
+<!-- STEP 1 -->
 <div id="step1">
 
-<div class="en" style="margin-bottom:10px;opacity:0.7;">Select your role</div>
-<div class="tr" style="display:none;margin-bottom:10px;opacity:0.7;">Rolünü seç</div>
+<div class="en">Select your role</div>
+<div class="tr" style="display:none;">Rolünü seç</div>
 
+<div class="en">
 <button onclick="selectRole('Trader')">Trader</button>
 <button onclick="selectRole('Research')">Research / Academic</button>
 <button onclick="selectRole('Institution')">Institutional</button>
 <button onclick="selectRole('Developer')">Developer / API</button>
 <button onclick="selectRole('Other')">Other</button>
+</div>
+
+<div class="tr" style="display:none;">
+<button onclick="selectRole('Trader')">Trader</button>
+<button onclick="selectRole('Research')">Araştırma / Akademik</button>
+<button onclick="selectRole('Institution')">Kurumsal</button>
+<button onclick="selectRole('Developer')">Geliştirici / API</button>
+<button onclick="selectRole('Other')">Diğer</button>
+</div>
 
 </div>
 
+<!-- STEP 2 -->
 <div id="step2" style="display:none;">
 
-<div class="en" style="margin-bottom:10px;opacity:0.7;">Enter your email</div>
-<div class="tr" style="display:none;margin-bottom:10px;opacity:0.7;">Email adresini gir</div>
+<div class="en">Enter your email</div>
+<div class="tr" style="display:none;">Email gir</div>
 
 <input id="email" type="email" placeholder="you@example.com">
 
-<textarea id="otherText" placeholder="Briefly describe your context..." style="display:none;"></textarea>
+<textarea id="otherText" placeholder="Context..." style="display:none;"></textarea>
 
-<button onclick="submitAccess()" class="en">Request access →</button>
-<button onclick="submitAccess()" class="tr" style="display:none;">Erişim talep et →</button>
+<button onclick="submitAccess()">Request access →</button>
 
 </div>
 
@@ -236,131 +215,50 @@ Ne zaman aksiyon almaman gerektiğini filtreler.
 <script>
 
 const lang = localStorage.getItem("lang") || "en";
-document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+document.querySelectorAll(".en").forEach(e=>e.style.display=(lang==="en"?"block":"none"));
+document.querySelectorAll(".tr").forEach(e=>e.style.display=(lang==="tr"?"block":"none"));
 
-function openAccess(){
-document.getElementById("overlay").style.display="flex";
-}
-
+function openAccess(){document.getElementById("overlay").style.display="flex";}
 function closeAccess(){
 document.getElementById("overlay").style.display="none";
 document.getElementById("step1").style.display="block";
 document.getElementById("step2").style.display="none";
-document.getElementById("otherText").style.display="none";
 }
 
 let selectedRole=null;
 
 function selectRole(role){
 selectedRole=role;
-
-if(role==="Other"){
-document.getElementById("otherText").style.display="block";
-} else {
-document.getElementById("otherText").style.display="none";
-}
-
+if(role==="Other"){document.getElementById("otherText").style.display="block";}
 document.getElementById("step1").style.display="none";
 document.getElementById("step2").style.display="block";
 }
 
 function submitAccess(){
-
 const email=document.getElementById("email").value;
-const other=document.getElementById("otherText").value || "-";
+const other=document.getElementById("otherText").value||"-";
+if(!email){alert("Email required");return;}
 
-if(!email){
-alert("Email required");
-return;
+window.location.href =
+`mailto:priceofwaiting@gmail.com?subject=Access Request&body=Role: ${selectedRole}%0AEmail: ${email}%0AContext: ${other}`;
 }
 
-window.location.href = `mailto:priceofwaiting@gmail.com?subject=Access Request&body=Role: ${selectedRole}%0AEmail: ${email}%0AContext: ${other}`;
-}
+// engine
+function getSeed(str){let h=0;for(let i=0;i<str.length;i++){h+=str.charCodeAt(i);}return h;}
 
-// ENGINE (aynı)
-function getSeed(str){
-let hash=0;
-for(let i=0;i<str.length;i++){ hash+=str.charCodeAt(i);}
-return hash;
-}
-
-function tfWeight(tf){
-if(!tf) return 1;
-tf=tf.toUpperCase();
-if(tf.includes("1M")) return 1;
-if(tf.includes("5M")) return 2;
-if(tf.includes("15M")) return 3;
-if(tf.includes("1H")) return 5;
-if(tf.includes("4H")) return 8;
-if(tf.includes("1D")) return 13;
-if(tf.includes("1W")) return 21;
-return 5;
-}
-
-function analyze(asset, tf){
+function analyze(asset){
 const seed=getSeed(asset);
-const tfW=tfWeight(tf);
-const time=Math.floor(Date.now()/(3000*(22-tfW)));
-const cycle=(seed+time+tfW*7)%100;
+const cycle=(seed+Date.now()/3000)%100;
+let state="WAIT",friction=cycle;
 
-let state, friction, phase, structure, timeCost;
+if(cycle>70) state="PREPARE";
+if(cycle>85) state="ACT";
 
-if(cycle<50){ state="WAIT"; friction=20+cycle; phase="COMPRESSION"; timeCost="LOW"; }
-else if(cycle<70){ state="PREPARE"; friction=50+(cycle-50); phase="BUILD-UP"; timeCost="RISING"; }
-else if(cycle<85){ state="PREPARE"; friction=70+(cycle-70); phase="PRE-RELEASE"; timeCost="HIGH"; }
-else{ state="ACT"; friction=85+(cycle-85); phase="RELEASE"; timeCost="CRITICAL"; }
-
-if(friction<40) structure="OPEN";
-else if(friction<70) structure="FORMING";
-else structure="LOCKED";
-
-return {state, friction, phase, structure, timeCost, tf};
+document.getElementById("stateText").innerText=state;
+document.getElementById("bar").style.width=friction+"%";
 }
 
-let currentAsset=null;
-let currentTF=null;
-
-document.getElementById("input").addEventListener("keydown", function(e){
-if(e.key==="Enter"){
-const val=e.target.value.trim();
-if(!val) return;
-const parts=val.split(" ");
-currentAsset=parts[0];
-currentTF=parts[1]||"1H";
-updateUI();
-}
-});
-
-function updateUI(){
-if(!currentAsset) return;
-const res=analyze(currentAsset,currentTF);
-
-const stateEl=document.getElementById("stateText");
-stateEl.innerText=res.state;
-
-stateEl.className="status "+(
-res.state==="ACT"?"act":
-res.state==="PREPARE"?"prepare":"wait"
-);
-
-document.getElementById("bar").style.width=res.friction+"%";
-
-document.getElementById("output").innerHTML=`
-STATE: ${res.state}<br>
-FRICTION: ${res.friction}<br>
-`;
-
-document.getElementById("physicsBox").innerHTML=`
-PHASE: ${res.phase}<br>
-ENERGY: ${res.friction}<br>
-STRUCTURE: ${res.structure}<br>
-TIME COST: ${res.timeCost}<br>
-TIMEFRAME: ${res.tf}
-`;
-}
-
-setInterval(updateUI,3000);
+setInterval(()=>analyze("BTC"),3000);
 
 </script>
 
