@@ -51,6 +51,17 @@ font-size:14px;
 margin-top:20px;
 }
 
+textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#0d0f14;
+border:1px solid #1f2430;
+color:#e8ecf1;
+font-size:13px;
+resize:none;
+}
+
 .cta{
 display:block;
 margin-top:30px;
@@ -87,7 +98,6 @@ font-size:12px;
 opacity:0.45;
 }
 
-/* OVERLAY */
 .overlay{
 position:fixed;
 top:0;
@@ -112,19 +122,7 @@ text-align:left;
 position:relative;
 }
 
-.modal h2{
-margin-top:0;
-font-size:20px;
-}
-
-.modal input{
-width:100%;
-padding:12px;
-margin-top:12px;
-background:#0d0f14;
-border:1px solid #1f2430;
-color:#e8ecf1;
-}
+.modal h2{margin-top:0;font-size:20px;}
 
 .modal button{
 margin-top:10px;
@@ -204,35 +202,24 @@ Ne zaman aksiyon almaman gerektiğini filtreler.
 
 <h2>System Access</h2>
 
-<!-- STEP 1 -->
 <div id="step1">
-
-<div style="margin-bottom:10px;opacity:0.7;">
-Select your role
-</div>
+<div style="margin-bottom:10px;opacity:0.7;">Select your role</div>
 
 <button onclick="selectRole('Trader')">Trader</button>
 <button onclick="selectRole('Research')">Research / Academic</button>
 <button onclick="selectRole('Institution')">Institutional</button>
 <button onclick="selectRole('Developer')">Developer / API</button>
-
+<button onclick="selectRole('Other')">Other</button>
 </div>
 
-<!-- STEP 2 -->
 <div id="step2" style="display:none;">
-
-<div style="margin-bottom:10px;opacity:0.7;">
-Enter your email
-</div>
+<div style="margin-bottom:10px;opacity:0.7;">Enter your email</div>
 
 <input id="email" type="email" placeholder="you@example.com">
 
+<textarea id="otherText" placeholder="Briefly describe your context..." style="display:none;"></textarea>
+
 <button onclick="submitAccess()">Request access →</button>
-
-</div>
-
-<div style="margin-top:10px;font-size:12px;opacity:0.5;">
-Access is limited. Requests are evaluated structurally.
 </div>
 
 </div>
@@ -252,36 +239,38 @@ function closeAccess(){
 document.getElementById("overlay").style.display="none";
 document.getElementById("step1").style.display="block";
 document.getElementById("step2").style.display="none";
+document.getElementById("otherText").style.display="none";
 }
 
-let selectedRole = null;
+let selectedRole=null;
 
 function selectRole(role){
-selectedRole = role;
+selectedRole=role;
+
+if(role==="Other"){
+document.getElementById("otherText").style.display="block";
+} else {
+document.getElementById("otherText").style.display="none";
+}
+
 document.getElementById("step1").style.display="none";
 document.getElementById("step2").style.display="block";
 }
 
 function submitAccess(){
 
-const email = document.getElementById("email").value;
+const email=document.getElementById("email").value;
+const other=document.getElementById("otherText").value || "-";
 
 if(!email){
 alert("Email required");
 return;
 }
 
-// 🔥 ŞU AN TEST (VERİYİ GÖR)
-console.log("ACCESS REQUEST:", {
-email: email,
-role: selectedRole
-});
-
-alert("Request received");
-
-closeAccess();
+window.location.href = `mailto:priceofwaiting@gmail.com?subject=Access Request&body=Role: ${selectedRole}%0AEmail: ${email}%0AContext: ${other}`;
 }
 
+// ENGINE
 function getSeed(str){
 let hash=0;
 for(let i=0;i<str.length;i++){ hash+=str.charCodeAt(i);}
@@ -309,15 +298,10 @@ const cycle=(seed+time+tfW*7)%100;
 
 let state, friction, phase, structure, timeCost;
 
-if(cycle<50){
-state="WAIT"; friction=20+cycle; phase="COMPRESSION"; timeCost="LOW";
-}else if(cycle<70){
-state="PREPARE"; friction=50+(cycle-50); phase="BUILD-UP"; timeCost="RISING";
-}else if(cycle<85){
-state="PREPARE"; friction=70+(cycle-70); phase="PRE-RELEASE"; timeCost="HIGH";
-}else{
-state="ACT"; friction=85+(cycle-85); phase="RELEASE"; timeCost="CRITICAL";
-}
+if(cycle<50){ state="WAIT"; friction=20+cycle; phase="COMPRESSION"; timeCost="LOW"; }
+else if(cycle<70){ state="PREPARE"; friction=50+(cycle-50); phase="BUILD-UP"; timeCost="RISING"; }
+else if(cycle<85){ state="PREPARE"; friction=70+(cycle-70); phase="PRE-RELEASE"; timeCost="HIGH"; }
+else{ state="ACT"; friction=85+(cycle-85); phase="RELEASE"; timeCost="CRITICAL"; }
 
 if(friction<40) structure="OPEN";
 else if(friction<70) structure="FORMING";
