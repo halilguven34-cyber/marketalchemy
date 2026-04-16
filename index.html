@@ -21,9 +21,9 @@ gtag('config', 'G-8NGN65VXH8');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Market Alchemy — Financial Systems Laboratory</title>
+<title>Market Alchemy — Structural Decision Systems</title>
 
-<meta name="description" content="Market Alchemy is a financial systems laboratory building decision engines, structural models and timing systems across markets.">
+<meta name="description" content="Market Alchemy is a structural decision system based on Structural Depth. Markets are where structure becomes visible.">
 
 <link rel="canonical" href="https://marketalchemy.io/">
 
@@ -50,33 +50,55 @@ animation:pulse 3.5s ease-in-out infinite;
 .big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}
 .muted{opacity:0.6;line-height:1.7;}
 hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
+
 nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}
 nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}
 nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
 
-.diagram{
+.diagram{margin-top:40px;text-align:center;}
+.diagram img{width:100%;max-width:680px;opacity:0.9;}
+.diagram-caption{margin-top:12px;font-size:13px;opacity:0.5;}
+
+.fade-in{opacity:0;transform:translateY(10px);transition:all 1s ease;}
+.fade-in.visible{opacity:0.7;transform:translateY(0);}
+
+/* NEW — STRUCTURAL LAYER */
+.structural-block{
 margin-top:40px;
-text-align:center;
-}
-.diagram img{
-width:100%;
-max-width:680px;
-opacity:0.9;
-}
-.diagram-caption{
-margin-top:12px;
-font-size:13px;
-opacity:0.5;
+padding:20px;
+border:1px solid #1f2430;
+background:#11151c;
 }
 
-.fade-in{
-opacity:0;
-transform:translateY(10px);
-transition:all 1s ease;
+.structural-title{
+font-size:12px;
+letter-spacing:2px;
+color:#6da8ff;
+margin-bottom:15px;
 }
-.fade-in.visible{
-opacity:0.7;
-transform:translateY(0);
+
+.structural-text{
+font-size:14px;
+opacity:.8;
+line-height:1.6;
+}
+
+/* CTA */
+.ma-cta{
+margin-top:40px;
+text-align:left;
+}
+
+.ma-cta p{
+font-size:13px;
+opacity:.5;
+margin-bottom:10px;
+}
+
+.ma-cta a{
+color:#6da8ff;
+text-decoration:none;
+font-size:14px;
 }
 </style>
 </head>
@@ -99,27 +121,27 @@ document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"bl
 <div class="container">
 
 <h1 class="en">
-Financial Decision Support Systems
+Structural Decision Systems
 </h1>
 
 <h1 class="tr" style="display:none;">
-Finansal Karar Destek Sistemleri
+Yapısal Karar Sistemleri
 </h1>
 
 <div class="muted en" style="margin-bottom:20px;">
-Fintech software company building structural decision engines for markets.
+Markets are where structure becomes visible.
 </div>
 
 <div class="muted tr" style="display:none; margin-bottom:20px;">
-Piyasalar için yapısal karar motorları geliştiren bir fintek yazılım şirketi.
+Piyasalar yapının görünür olduğu yerlerdir.
 </div>
 
 <div class="subtitle en">
-Market Alchemy
+Market Alchemy — Applied Structural Depth
 </div>
 
 <div class="subtitle tr" style="display:none;">
-Market Alchemy
+Market Alchemy — Yapısal Derinlik Uygulaması
 </div>
 
 <div class="dynamic-headline en">
@@ -130,6 +152,33 @@ It is running.
 <div class="dynamic-headline tr" style="display:none;">
 Sistem artık tanımlanmıyor.<br>
 Çalışıyor.
+</div>
+
+<!-- STRUCTURAL DEPTH BLOCK -->
+<div class="structural-block">
+
+<div class="structural-title">STRUCTURAL DEPTH</div>
+
+<div class="structural-text en">
+Price is not predictive.<br>
+It is the record of system behavior.<br><br>
+
+Structure is not theoretical.<br>
+It becomes observable through markets.<br><br>
+
+Market Alchemy is the applied layer.
+</div>
+
+<div class="structural-text tr" style="display:none;">
+Fiyat tahmin aracı değildir.<br>
+Sistem davranışının kaydıdır.<br><br>
+
+Yapı teorik değildir.<br>
+Piyasalar üzerinden görünür hale gelir.<br><br>
+
+Market Alchemy bu yapının uygulama katmanıdır.
+</div>
+
 </div>
 
 <div class="section en">
@@ -186,6 +235,12 @@ Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıd
 
 </div>
 
+<!-- CTA -->
+<div class="ma-cta">
+<p>System is closed. Access is limited.</p>
+<a href="#">Request Access →</a>
+</div>
+
 </div>
 
 <div class="section tr" style="display:none;">
@@ -224,6 +279,11 @@ Sistem hiçbir zaman kaotik değil — gözlemci yetersiz
 Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.
 </div>
 
+</div>
+
+<div class="ma-cta">
+<p>Sistem kapalı. Erişim sınırlı.</p>
+<a href="#">Erişim Talep Et →</a>
 </div>
 
 </div>
