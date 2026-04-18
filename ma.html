@@ -153,7 +153,7 @@ opacity:0.6;
 <div class="label en">ENGINE STATE</div>
 <div class="label tr" style="display:none;">SİSTEM DURUMU</div>
 
-<div class="status wait" id="stateText">WAIT</div>
+<div class="status wait" id="stateText">MONITOR</div>
 
 <div class="desc en">System stable.<br>No action required.</div>
 <div class="desc tr" style="display:none;">Sistem stabil.<br>Aksiyon gerekmiyor.</div>
@@ -165,7 +165,7 @@ opacity:0.6;
 
 <input id="input" placeholder="BTC 1H / ETH 4H / GOLD 1D">
 
-<div class="output" id="output">STATE: WAIT</div>
+<div class="output" id="output">STATE: MONITOR</div>
 
 <div class="physics" id="physicsBox">
 PHASE: -<br>
@@ -306,7 +306,7 @@ const cycle=(seed+time+tfW*7)%100;
 
 let state, friction, phase, structure, timeCost;
 
-if(cycle<50){ state="WAIT"; friction=20+cycle; phase="COMPRESSION"; timeCost="LOW"; }
+if(cycle<50){ state="MONITOR"; friction=20+cycle; phase="COMPRESSION"; timeCost="LOW"; }
 else if(cycle<70){ state="PREPARE"; friction=50+(cycle-50); phase="BUILD-UP"; timeCost="RISING"; }
 else if(cycle<85){ state="PREPARE"; friction=70+(cycle-70); phase="PRE-RELEASE"; timeCost="HIGH"; }
 else{ state="ACT"; friction=85+(cycle-85); phase="RELEASE"; timeCost="CRITICAL"; }
@@ -349,6 +349,7 @@ document.getElementById("bar").style.width=res.friction+"%";
 document.getElementById("output").innerHTML=`
 STATE: ${res.state}<br>
 FRICTION: ${res.friction}<br>
+→ ACTION: OBSERVE
 `;
 
 document.getElementById("physicsBox").innerHTML=`
