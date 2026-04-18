@@ -122,12 +122,16 @@ text-decoration:none;
 font-size:14px;  
 }  
   
-/* HERO (eklenen tek stil) */  
 .ma-hero{margin-top:40px;display:flex;flex-direction:column;gap:10px;}  
 .ma-line{font-size:18px;line-height:1.5;opacity:0.9;}  
 .ma-core{margin-top:20px;font-size:22px;font-weight:600;color:#6da8ff;}  
 .ma-cta-hero{margin-top:20px;}  
 .ma-cta-hero a{color:#6da8ff;text-decoration:none;font-size:15px;}  
+
+/* YENİ BLOK */
+.ma-logic{margin-top:30px;font-size:15px;line-height:1.7;opacity:.85;}
+.ma-logic .spacer{height:16px;}
+.ma-logic .arrow{opacity:.7;}
 </style>  </head>  <body>  <div id="nav"></div>  <script>  
 fetch("nav.html?v=" + Date.now())  
 .then(res => res.text())  
@@ -138,20 +142,105 @@ document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"bl
 document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));  
 });  
 </script>  <div class="container">  <h1 class="en">Structural Decision Systems</h1>  
-<h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>  <div class="muted en" style="margin-bottom:20px;">  
+<h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>  
+
+<div class="muted en" style="margin-bottom:20px;">  
 Markets are where structure becomes visible.  
 </div>  
 <div class="muted tr" style="display:none; margin-bottom:20px;">  
 Piyasalar yapının görünür olduğu yerlerdir.  
-</div>  <div class="subtitle en">Market Alchemy — Applied Structural Depth</div>  
-<div class="subtitle tr" style="display:none;">Market Alchemy — Yapısal Derinlik Uygulaması</div>  <div class="dynamic-headline en">  
+</div>  
+
+<div class="subtitle en">Market Alchemy — Applied Structural Depth</div>  
+<div class="subtitle tr" style="display:none;">Market Alchemy — Yapısal Derinlik Uygulaması</div>  
+
+<div class="dynamic-headline en">  
 The system is no longer described.<br>  
 It is running.  
 </div>  
 <div class="dynamic-headline tr" style="display:none;">  
 Sistem artık tanımlanmıyor.<br>  
 Çalışıyor.  
-</div>  <!-- HERO (eklenen tek blok) -->  <div class="ma-hero en">  
+</div>  
+
+<!-- EKLENEN BLOK -->
+<div class="ma-logic en">
+This site:
+A forced decision structure emerging under pressure.
+
+<div class="spacer"></div>
+
+More naked:
+It is not a choice.
+It is necessity.
+
+<div class="spacer"></div>
+
+Deeper:
+Instinct →
+pressure →
+closure of alternatives →
+single direction →
+decision
+
+<div class="spacer"></div>
+
+Physical / mathematical:
+Constraint ↑ → Ω ↓ → direction becomes deterministic
+
+<div class="spacer"></div>
+
+Market equivalent:
+Compression →
+fake moves get eliminated →
+non-reverted direction remains
+
+<div class="spacer"></div>
+
+MA is not making a decision.
+It is when nothing else is possible.
+</div>
+
+<div class="ma-logic tr" style="display:none;">
+Bu site:
+Beşer için, basınç altında seçeneklerin yok olmasıyla ortaya çıkan zorunlu karar yapısıdır.
+
+<div class="spacer"></div>
+
+Daha çıplak hali:
+Seçim değildir.
+Zorunluluktur.
+
+<div class="spacer"></div>
+
+Bir kat daha derin:
+Yaşama içgüdüsü →
+basınç →
+alternatiflerin kapanması →
+tek yön →
+karar
+
+<div class="spacer"></div>
+
+Fizik / matematik karşılığı:
+Constraint ↑ → Ω ↓ → yön deterministikleşir
+
+<div class="spacer"></div>
+
+Piyasa karşılığı:
+Sıkışma →
+sahte hareketler elenir →
+geri alınmayan yön kalır
+
+<div class="spacer"></div>
+
+MA, kararın verilmesi değil,
+başka hiçbir şeyin mümkün olmamasıdır.
+</div>
+<!-- EKLENEN BLOK SON -->
+
+<!-- HERO devam -->
+<div class="ma-hero en">  
   <div class="ma-line">You are not deciding.</div>  
   <div class="ma-line">You are being forced.</div>  
   <div class="ma-line muted" style="margin-top:18px;">  
@@ -171,7 +260,9 @@ Sistem artık tanımlanmıyor.<br>
   <div class="ma-cta-hero">  
     <a href="engine.html">Observe the system →</a>  
   </div>  
-</div>  <div class="ma-hero tr" style="display:none;">  
+</div>  
+
+<div class="ma-hero tr" style="display:none;">  
   <div class="ma-line">Karar vermiyorsun.</div>  
   <div class="ma-line">Zorlanıyorsun.</div>  
   <div class="ma-line muted" style="margin-top:18px;">  
@@ -191,127 +282,4 @@ Sistem artık tanımlanmıyor.<br>
   <div class="ma-cta-hero">  
     <a href="engine.html">Sistemi gözlemle →</a>  
   </div>  
-</div>  
-<!-- HERO SON -->  <!-- ORİJİNAL BLOK (DEĞİŞMEDİ) -->  <div class="en" style="margin-top:20px; opacity:0.7; font-size:14px;">  
-This is a layered system.<br><br>  
-Books, research papers, and applied reports are available.<br>  
-Financial decision-support systems are under development.<br><br>  
-Custom software requests are accepted.  
-</div>  <div class="tr" style="display:none; margin-top:20px; opacity:0.7; font-size:14px;">  
-Bu site katmanlı bir sistemdir.<br><br>  
-Kitaplar, akademik makaleler ve araştırma raporları sunulmaktadır.<br>  
-Finansal karar destek sistemleri geliştirilmektedir.<br><br>  
-Özel yazılım talepleri kabul edilmektedir.  
-</div>  <div class="structural-block">  
-<div class="structural-title">STRUCTURAL DEPTH</div>  
-<div class="structural-text en">  
-Price is not predictive.<br>  
-It is the record of system behavior.<br><br>  
-Structure is not theoretical.<br>  
-It becomes observable through markets.<br><br>  
-Market Alchemy is the applied layer.  
-</div>  
-<div class="structural-text tr" style="display:none;">  
-Fiyat tahmin aracı değildir.<br>  
-Sistem davranışının kaydıdır.<br><br>  
-Yapı teorik değildir.<br>  
-Piyasalar üzerinden görünür hale gelir.<br><br>  
-Market Alchemy bu yapının uygulama katmanıdır.  
-</div>  
-</div>  <div class="section en">  
-<p class="big">  
-Structure is not predicted.<br>  
-It is observed.  
-</p>  
-<p class="muted">  
-Loss does not begin with price.<br>  
-It begins with misalignment.<br><br>  
-This system enforces structural alignment.  
-</p>  
-<p class="muted">  
-Trades are blocked when structural conditions are invalid.<br>  
-The system does not react — it filters.<br><br>  
-State transitions reflect structural pressure.<br>  
-Timing emerges only when visibility becomes possible.<br><br>  
-This is not a signal engine.<br>  
-It is a structural validation layer.  
-</p>  <div class="diagram">  
-<div class="diagram-caption fade-in en" style="font-size:15px; margin-bottom:8px;">  
-Price is the record of system behavior  
-</div>  
-<div class="diagram-caption fade-in tr" style="display:none; font-size:15px; margin-bottom:8px;">  
-Fiyat, sistem davranışının kaydıdır  
-</div>  <div class="diagram-caption en" style="font-size:16px; opacity:0.85; margin-bottom:10px;">  
-System is never chaotic — the observer is insufficient  
-</div>  
-<div class="diagram-caption tr" style="display:none; font-size:16px; opacity:0.85; margin-bottom:10px;">  
-Sistem hiçbir zaman kaotik değil — gözlemci yetersiz  
-</div>  <a href="law.html">  
-<img src="time.diagram.jpg" alt="Structural Depth & Observer Diagram">  
-</a>  <div class="diagram-caption en">  
-Structural Depth & Observer — visibility depends on position within structure.  
-</div>  
-<div class="diagram-caption tr" style="display:none;">  
-Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.  
-</div>  
-</div>  <div class="depth-map">  
-<div class="depth-title en">STRUCTURAL DEPTH MAP</div>  
-<div class="depth-title tr" style="display:none;">YAPISAL DERİNLİK HARİTASI</div>  <div class="depth-row"><a href="research.html">Research</a><span>Depth</span></div>  
-<div class="depth-row"><a href="library.html">Library</a><span>Depth</span></div>  
-<div class="depth-row"><a href="lab.html">Lab</a><span>Transitional</span></div>  
-<div class="depth-row"><a href="engine.html">Engine</a><span>Surface</span></div>  
-</div>  <div class="ma-cta">  
-<p class="en">System is active. Access is selective.</p>  
-<p class="tr" style="display:none;">Sistem aktif. Erişim seçicidir.</p>  
-<a href="research.html">Request Access →</a>  
-</div>  
-</div>  <div class="section tr" style="display:none;">  
-<p class="big">  
-Yapı tahmin edilmez.<br>  
-Gözlemlenir.  
-</p>  
-<p class="muted">  
-Kayıp fiyatta başlamaz.<br>  
-Uyumsuzlukta başlar.<br><br>  
-Bu sistem yapısal hizalanmayı zorunlu kılar.  
-</p>  
-<p class="muted">  
-Yapı geçerli değilse işlem engellenir.<br>  
-Sistem tepki vermez — filtreler.<br><br>  
-Durum geçişleri yapısal basıncı yansıtır.<br>  
-Zamanlama ancak görünürlük oluştuğunda ortaya çıkar.<br><br>  
-Bu bir sinyal sistemi değildir.<br>  
-Yapısal doğrulama katmanıdır.  
-</p>  <div class="diagram">  
-<div class="diagram-caption tr" style="font-size:16px; opacity:0.85; margin-bottom:10px;">  
-Sistem hiçbir zaman kaotik değil — gözlemci yetersiz  
-</div>  <a href="law.html">  
-<img src="time.diagram.jpg" alt="Yapısal Derinlik & Gözlemci Diyagramı">  
-</a>  <div class="diagram-caption tr">  
-Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.  
-</div>  
-</div>  <div class="depth-map">  
-<div class="depth-title tr">YAPISAL DERİNLİK HARİTASI</div>  <div class="depth-row"><a href="research.html">Research</a><span>Derinlik</span></div>  
-<div class="depth-row"><a href="library.html">Library</a><span>Derinlik</span></div>  
-<div class="depth-row"><a href="lab.html">Lab</a><span>Geçiş</span></div>  
-<div class="depth-row"><a href="engine.html">Engine</a><span>Yüzey</span></div>  
-</div>  <div class="ma-cta">  
-<p class="tr">Sistem aktif. Erişim seçicidir.</p>  
-<a href="research.html">Erişim Talep Et →</a>  
-</div>  
-</div>  <hr>  <div style="margin-top: 100px; font-size: 11px; opacity: 0.4; text-align: center;">  
-Market Alchemy • Halil İbrahim Güven  
-</div>  </div>  <script>  
-const observer = new IntersectionObserver(entries=>{  
-entries.forEach(entry=>{  
-if(entry.isIntersecting){  
-entry.target.classList.add("visible");  
-}  
-});  
-});  
-  
-document.querySelectorAll(".fade-in").forEach(el=>{  
-observer.observe(el);  
-});  
-</script>  </body>  
-</html>
+</div>
