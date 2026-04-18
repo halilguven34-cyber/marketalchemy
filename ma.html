@@ -1,248 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Engine — Market Alchemy</title>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>MA Engine — Market Alchemy</title>  <script>  
+if(!localStorage.getItem("lang")){  
+  const userLang = navigator.language || navigator.userLanguage;  
+  localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");  
+}  
+</script>  <style>  
+body{  
+margin:0;  
+background:#0d0f14;  
+color:#e8ecf1;  
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;  
+display:flex;  
+flex-direction:column;  
+align-items:center;  
+text-align:center;  
+}  
+  
+.container{max-width:720px;margin-top:80px;padding:0 16px;}  
+  
+.label{font-size:12px;opacity:0.4;margin-bottom:10px;}  
+.status{font-size:64px;font-weight:700;margin-bottom:20px;}  
+  
+.wait{ color:#8a93a3; }  
+.prepare{ color:#f0c36d; }  
+.act{ color:#ff5c5c; }  
+  
+.desc{opacity:0.7;font-size:18px;margin-bottom:10px;}  
+.sub{opacity:0.5;font-size:14px;margin-top:10px;}  
+  
+.bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;}  
+.fill{height:100%;width:0%;background:#4da3ff;}  
+  
+.output{margin-top:20px;font-family:monospace;opacity:0.85;}  
+  
+input, textarea{  
+width:100%;  
+padding:12px;  
+margin-top:10px;  
+background:#0d0f14;  
+border:1px solid #1f2430;  
+color:#e8ecf1;  
+font-size:13px;  
+}  
+  
+.cta{  
+display:block;  
+margin-top:30px;  
+padding:14px;  
+border:1px solid #6da8ff;  
+color:#6da8ff;  
+cursor:pointer;  
+}  
+  
+.note{margin-top:15px;font-size:13px;opacity:0.5;}  
+  
+.box{  
+margin-top:30px;  
+padding:16px;  
+border:1px solid #1f2430;  
+font-size:14px;  
+opacity:0.8;  
+}  
+  
+.physics{  
+margin-top:20px;  
+padding:16px;  
+border:1px solid #1f2430;  
+font-family:monospace;  
+font-size:13px;  
+opacity:0.75;  
+text-align:left;  
+}  
+  
+.access-note{  
+margin-top:12px;  
+font-size:12px;  
+opacity:0.45;  
+}  
+  
+/* overlay */  
+.overlay{  
+position:fixed;  
+top:0;  
+left:0;  
+width:100%;  
+height:100%;  
+background:rgba(0,0,0,0.75);  
+display:none;  
+justify-content:center;  
+align-items:center;  
+z-index:1000;  
+}  
+  
+.modal{  
+width:90%;  
+max-width:420px;  
+background:#0d0f14;  
+border:1px solid #1f2430;  
+padding:24px;  
+position:relative;  
+}  
+  
+.modal button{  
+width:100%;  
+margin-top:10px;  
+padding:12px;  
+background:#6da8ff;  
+border:none;  
+color:#000;  
+font-weight:600;  
+}  
+  
+.close{  
+position:absolute;  
+top:15px;  
+right:15px;  
+cursor:pointer;  
+}  
+</style>  </head>  <body>  <div class="container">  <div class="label en">ENGINE STATE</div>  
+<div class="label tr" style="display:none;">SİSTEM DURUMU</div>  <div class="status wait" id="stateText">WAIT</div>  <div class="desc en">System stable.<br>No action required.</div>  
+<div class="desc tr" style="display:none;">Sistem stabil.<br>Aksiyon gerekmiyor.</div>  <div class="sub en">Input any market: BTC 1H / BTC 4H / BTC 1D</div>  
+<div class="sub tr" style="display:none;">Piyasa gir: BTC 1H / BTC 4H / BTC 1D</div>  <div class="bar"><div class="fill" id="bar"></div></div>  <input id="input" placeholder="BTC 1H / ETH 4H / GOLD 1D">  <div class="output" id="output">STATE: WAIT</div>  <div class="physics" id="physicsBox">  
+PHASE: -<br>ENERGY: -<br>STRUCTURE: -<br>TIME COST: -<br>TIMEFRAME: -  
+</div>  <div class="box en">This is not a signal tool.<br>It filters when NOT to act.</div>  
+<div class="box tr" style="display:none;">Bu bir sinyal sistemi değildir.<br>Ne zaman aksiyon almaman gerektiğini filtreler.</div>  <div class="note en">Same asset. Different timeframe. Different reality.</div>  
+<div class="note tr" style="display:none;">Aynı varlık. Farklı zaman dilimi. Farklı gerçeklik.</div>  <div class="cta" onclick="openAccess()">Enter system layer →</div>  </div>  <!-- overlay -->  <div class="overlay" id="overlay">  
+<div class="modal">  
+<div class="close" onclick="closeAccess()">✕</div>  <h2 class="en">System Access</h2>  
+<h2 class="tr" style="display:none;">Sistem Erişimi</h2>  <!-- STEP 1 -->  <div id="step1">  <div class="en">Select your role</div>  
+<div class="tr" style="display:none;">Rolünü seç</div>  <div class="en">  
+<button onclick="selectRole('Trader')">Trader</button>  
+<button onclick="selectRole('Research')">Research / Academic</button>  
+<button onclick="selectRole('Institution')">Institutional</button>  
+<button onclick="selectRole('Developer')">Developer / API</button>  
+<button onclick="selectRole('Other')">Other</button>  
+</div>  <div class="tr" style="display:none;">  
+<button onclick="selectRole('Trader')">Trader</button>  
+<button onclick="selectRole('Research')">Araştırma / Akademik</button>  
+<button onclick="selectRole('Institution')">Kurumsal</button>  
+<button onclick="selectRole('Developer')">Geliştirici / API</button>  
+<button onclick="selectRole('Other')">Diğer</button>  
+</div>  </div>  <!-- STEP 2 -->  <div id="step2" style="display:none;">  <div class="en">Enter your email</div>  
+<div class="tr" style="display:none;">Email gir</div>  <input id="email" type="email" placeholder="you@example.com">  <textarea id="otherText" placeholder="Context..." style="display:none;"></textarea>  <button onclick="submitAccess()">Request access →</button>
 
-<script>
-if(!localStorage.getItem("lang")){
-  const userLang = navigator.language || navigator.userLanguage;
-  localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
-}
-</script>
-
-<style>
-body{
-margin:0;
-background:#0d0f14;
-color:#e8ecf1;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-display:flex;
-flex-direction:column;
-align-items:center;
-text-align:center;
-}
-
-.container{max-width:720px;margin-top:80px;padding:0 16px;}
-
-.label{font-size:12px;opacity:0.4;margin-bottom:10px;}
-.status{font-size:64px;font-weight:700;margin-bottom:20px;}
-
-.wait{ color:#8a93a3; }
-.prepare{ color:#f0c36d; }
-.act{ color:#ff5c5c; }
-
-.desc{opacity:0.7;font-size:18px;margin-bottom:10px;}
-.sub{opacity:0.5;font-size:14px;margin-top:10px;}
-
-.bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;}
-.fill{height:100%;width:0%;background:#4da3ff;}
-
-.output{margin-top:20px;font-family:monospace;opacity:0.85;}
-
-input, textarea{
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#0d0f14;
-border:1px solid #1f2430;
-color:#e8ecf1;
-font-size:13px;
-}
-
-.cta{
-display:block;
-margin-top:30px;
-padding:14px;
-border:1px solid #6da8ff;
-color:#6da8ff;
-cursor:pointer;
-}
-
-.note{margin-top:15px;font-size:13px;opacity:0.5;}
-
-.box{
-margin-top:30px;
-padding:16px;
-border:1px solid #1f2430;
-font-size:14px;
-opacity:0.8;
-}
-
-.physics{
-margin-top:20px;
-padding:16px;
-border:1px solid #1f2430;
-font-family:monospace;
-font-size:13px;
-opacity:0.75;
-text-align:left;
-}
-
-.overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.75);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:1000;
-}
-
-.modal{
-width:90%;
-max-width:420px;
-background:#0d0f14;
-border:1px solid #1f2430;
-padding:24px;
-position:relative;
-}
-
-.modal button{
-width:100%;
-margin-top:10px;
-padding:12px;
-background:#6da8ff;
-border:none;
-color:#000;
-font-weight:600;
-}
-
-.close{
-position:absolute;
-top:15px;
-right:15px;
-cursor:pointer;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="label en">ENGINE STATE</div>
-<div class="label tr" style="display:none;">SİSTEM DURUMU</div>
-
-<div class="status wait" id="stateText">PRESSURE</div>
-
-<div class="desc en" id="descEn">Pressure is building.</div>
-<div class="desc tr" id="descTr" style="display:none;">Basınç birikiyor.</div>
-
-<div class="sub en">Input any market: BTC 1H / BTC 4H / BTC 1D</div>
-<div class="sub tr" style="display:none;">Piyasa gir: BTC 1H / BTC 4H / BTC 1D</div>
-
-<div class="bar"><div class="fill" id="bar"></div></div>
-
-<input id="input" placeholder="BTC 1H / ETH 4H / GOLD 1D">
-
-<div class="output" id="output">STATE: WAIT</div>
-
-<div class="physics">
-PHASE: -<br>ENERGY: -<br>STRUCTURE: -<br>TIME COST: -<br>TIMEFRAME: -
-</div>
-
-<div class="box en">This is not a signal tool.<br>It filters when NOT to act.</div>
-<div class="box tr" style="display:none;">Bu bir sinyal sistemi değildir.<br>Ne zaman aksiyon almaman gerektiğini filtreler.</div>
-
-<div class="note en">Same asset. Different timeframe. Different reality.</div>
-<div class="note tr" style="display:none;">Aynı varlık. Farklı zaman dilimi. Farklı gerçeklik.</div>
-
-<div class="cta" onclick="openAccess()">Enter system layer →</div>
-
-</div>
-
-<div class="overlay" id="overlay">
-<div class="modal">
-<div class="close" onclick="closeAccess()">✕</div>
-
-<h2 class="en">System Access</h2>
-<h2 class="tr" style="display:none;">Sistem Erişimi</h2>
-
-<div id="step1">
-
-<div class="en">Select your role</div>
-<div class="tr" style="display:none;">Rolünü seç</div>
-
-<div class="en">
-<button onclick="selectRole('Trader')">Trader</button>
-<button onclick="selectRole('Research')">Research / Academic</button>
-<button onclick="selectRole('Institution')">Institutional</button>
-<button onclick="selectRole('Developer')">Developer / API</button>
-<button onclick="selectRole('Other')">Other</button>
-</div>
-
-<div class="tr" style="display:none;">
-<button onclick="selectRole('Trader')">Trader</button>
-<button onclick="selectRole('Research')">Araştırma / Akademik</button>
-<button onclick="selectRole('Institution')">Kurumsal</button>
-<button onclick="selectRole('Developer')">Geliştirici / API</button>
-<button onclick="selectRole('Other')">Diğer</button>
-</div>
-
-</div>
-
-<div id="step2" style="display:none;">
-<input id="email" type="email" placeholder="you@example.com">
-<textarea id="otherText" placeholder="Context..." style="display:none;"></textarea>
-<button onclick="submitAccess()">Request access →</button>
-</div>
-
-</div>
-</div>
-
-<script>
-
-const lang = localStorage.getItem("lang") || "en";
-document.querySelectorAll(".en").forEach(e=>e.style.display=(lang==="en"?"block":"none"));
-document.querySelectorAll(".tr").forEach(e=>e.style.display=(lang==="tr"?"block":"none"));
-
-function openAccess(){document.getElementById("overlay").style.display="flex";}
-function closeAccess(){
-document.getElementById("overlay").style.display="none";
-document.getElementById("step1").style.display="block";
-document.getElementById("step2").style.display="none";
-}
-
-function getSeed(str){let h=0;for(let i=0;i<str.length;i++){h+=str.charCodeAt(i);}return h;}
-
-function analyze(asset){
-const seed=getSeed(asset);
-const cycle=(seed+Date.now()/3000)%100;
-
-let state="WAIT";
-if(cycle>70) state="PREPARE";
-if(cycle>85) state="ACT";
-
-let label="PRESSURE";
-let descEn="Pressure is building.";
-let descTr="Basınç birikiyor.";
-
-if(state==="PREPARE"){
-label="ALIGNMENT";
-descEn="Structure is aligning.";
-descTr="Yapı hizalanıyor.";
-}
-
-if(state==="ACT"){
-label="RELEASE";
-descEn="Conditions are valid.";
-descTr="Koşullar geçerli.";
-}
-
-document.getElementById("stateText").innerText=label;
-document.getElementById("descEn").innerText=descEn;
-document.getElementById("descTr").innerText=descTr;
-document.getElementById("bar").style.width=cycle+"%";
-}
-
-setInterval(()=>analyze("BTC"),3000);
-
-</script>
-
-</body>
+</div>  </div>  
+</div>  <script>  
+  
+const lang = localStorage.getItem("lang") || "en";  
+document.querySelectorAll(".en").forEach(e=>e.style.display=(lang==="en"?"block":"none"));  
+document.querySelectorAll(".tr").forEach(e=>e.style.display=(lang==="tr"?"block":"none"));  
+  
+function openAccess(){document.getElementById("overlay").style.display="flex";}  
+function closeAccess(){  
+document.getElementById("overlay").style.display="none";  
+document.getElementById("step1").style.display="block";  
+document.getElementById("step2").style.display="none";  
+}  
+  
+let selectedRole=null;  
+  
+function selectRole(role){  
+selectedRole=role;  
+if(role==="Other"){document.getElementById("otherText").style.display="block";}  
+document.getElementById("step1").style.display="none";  
+document.getElementById("step2").style.display="block";  
+}  
+  
+function submitAccess(){  
+const email=document.getElementById("email").value;  
+const other=document.getElementById("otherText").value||"-";  
+if(!email){alert("Email required");return;}  
+  
+window.location.href =  
+`mailto:priceofwaiting@gmail.com?subject=Access Request&body=Role: ${selectedRole}%0AEmail: ${email}%0AContext: ${other}`;  
+}  
+  
+// engine  
+function getSeed(str){let h=0;for(let i=0;i<str.length;i++){h+=str.charCodeAt(i);}return h;}  
+  
+function analyze(asset){  
+const seed=getSeed(asset);  
+const cycle=(seed+Date.now()/3000)%100;  
+let state="WAIT",friction=cycle;  
+  
+if(cycle>70) state="PREPARE";  
+if(cycle>85) state="ACT";  
+  
+document.getElementById("stateText").innerText=state;  
+document.getElementById("bar").style.width=friction+"%";  
+}  
+  
+setInterval(()=>analyze("BTC"),3000);  
+  
+</script>  </body>  
 </html>
