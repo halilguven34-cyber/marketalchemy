@@ -135,10 +135,10 @@ cursor:pointer;
 <div class="label en">ENGINE STATE</div>
 <div class="label tr" style="display:none;">SİSTEM DURUMU</div>
 
-<div class="status wait" id="stateText">WAIT</div>
+<div class="status wait" id="stateText">ACCUMULATING</div>
 
-<div class="desc en">System stable.<br>No action required.</div>
-<div class="desc tr" style="display:none;">Sistem stabil.<br>Aksiyon gerekmiyor.</div>
+<div class="desc en">Structural pressure is building.<br>No valid move yet.</div>
+<div class="desc tr" style="display:none;">Yapısal basınç birikiyor.<br>Henüz geçerli bir hareket yok.</div>
 
 <div class="sub en">Input any market: BTC 1H / BTC 4H / BTC 1D</div>
 <div class="sub tr" style="display:none;">Piyasa gir: BTC 1H / BTC 4H / BTC 1D</div>
@@ -171,7 +171,6 @@ PHASE: -<br>ENERGY: -<br>STRUCTURE: -<br>TIME COST: -<br>TIMEFRAME: -
 <h2 class="en">System Access</h2>
 <h2 class="tr" style="display:none;">Sistem Erişimi</h2>
 
-<!-- STEP 1 -->
 <div id="step1">
 
 <div class="en">Select your role</div>
@@ -195,7 +194,6 @@ PHASE: -<br>ENERGY: -<br>STRUCTURE: -<br>TIME COST: -<br>TIMEFRAME: -
 
 </div>
 
-<!-- STEP 2 -->
 <div id="step2" style="display:none;">
 
 <div class="en">Enter your email</div>
@@ -243,7 +241,6 @@ window.location.href =
 `mailto:priceofwaiting@gmail.com?subject=Access Request&body=Role: ${selectedRole}%0AEmail: ${email}%0AContext: ${other}`;
 }
 
-// engine
 function getSeed(str){let h=0;for(let i=0;i<str.length;i++){h+=str.charCodeAt(i);}return h;}
 
 function analyze(asset){
@@ -254,7 +251,12 @@ let state="WAIT",friction=cycle;
 if(cycle>70) state="PREPARE";
 if(cycle>85) state="ACT";
 
-document.getElementById("stateText").innerText=state;
+/* SADECE GÖRÜNÜR LABEL */
+let visibleState = "ACCUMULATING";
+if(state==="PREPARE") visibleState="ALIGNING";
+if(state==="ACT") visibleState="EXECUTION";
+
+document.getElementById("stateText").innerText=visibleState;
 document.getElementById("bar").style.width=friction+"%";
 }
 
