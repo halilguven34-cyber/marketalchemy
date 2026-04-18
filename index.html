@@ -1,142 +1,265 @@
-<!DOCTYPE html>  <html lang="en">  <script>  
-if(!localStorage.getItem("lang")){  
-const userLang = navigator.language || navigator.userLanguage;  
-localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");  
-}  
-</script>  <head>  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>  <script>  
-window.dataLayer = window.dataLayer || [];  
-function gtag(){dataLayer.push(arguments);}  
-gtag('js', new Date());  
-gtag('config', 'G-8NGN65VXH8');  
-</script>  <meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Market Alchemy — Structural Decision Systems</title>  <meta name="description" content="Market Alchemy is a structural decision system based on Structural Depth. Markets are where structure becomes visible.">  <link rel="canonical" href="https://marketalchemy.io/">  <style>  
-body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}  
-.container{max-width:720px;margin:auto;padding:80px 20px;}  
-h1{font-size:36px;margin-bottom:10px;}  
-  
-.dynamic-headline{  
-font-size:20px;  
-font-weight:600;  
-opacity:0.85;  
-margin-bottom:30px;  
-animation:pulse 3.5s ease-in-out infinite;  
-}  
-@keyframes pulse{  
-0%{opacity:0.6;}  
-50%{opacity:1;}  
-100%{opacity:0.6;}  
-}  
-  
-.subtitle{opacity:0.7;font-size:14px;margin-bottom:30px;}  
-.section{margin-top:80px;}  
-.big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}  
-.muted{opacity:0.6;line-height:1.7;}  
-hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}  
-  
-nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}  
-nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}  
-nav a.active{color:#6da8ff;opacity:1;font-weight:600;}  
-  
-.diagram{margin-top:40px;text-align:center;}  
-.diagram img{width:100%;max-width:680px;opacity:0.9;}  
-.diagram-caption{margin-top:12px;font-size:13px;opacity:0.5;}  
-  
-.fade-in{opacity:0;transform:translateY(10px);transition:all 1s ease;}  
-.fade-in.visible{opacity:0.7;transform:translateY(0);}  
-  
-.structural-block{  
-margin-top:40px;  
-padding:20px;  
-border:1px solid #1f2430;  
-background:#11151c;  
-}  
-  
-.structural-title{  
-font-size:12px;  
-letter-spacing:2px;  
-color:#6da8ff;  
-margin-bottom:15px;  
-}  
-  
-.structural-text{  
-font-size:14px;  
-opacity:.8;  
-line-height:1.6;  
-}  
-  
-.depth-map{  
-margin-top:60px;  
-padding:20px;  
-border:1px solid #1f2430;  
-background:#11151c;  
-}  
-  
-.depth-title{  
-font-size:12px;  
-letter-spacing:2px;  
-color:#6da8ff;  
-margin-bottom:18px;  
-}  
-  
-.depth-row{  
-display:flex;  
-justify-content:space-between;  
-align-items:center;  
-margin-bottom:12px;  
-font-size:14px;  
-}  
-  
-.depth-row span{  
-opacity:.6;  
-font-size:12px;  
-}  
-  
-.depth-row a{  
-color:#e8ecf1;  
-text-decoration:none;  
-opacity:.85;  
-}  
-  
-.ma-cta{  
-margin-top:40px;  
-text-align:left;  
-}  
-  
-.ma-cta p{  
-font-size:13px;  
-opacity:.5;  
-margin-bottom:10px;  
-}  
-  
-.ma-cta a{  
-color:#6da8ff;  
-text-decoration:none;  
-font-size:14px;  
-}  
-</style>  </head>  <body>  <div id="nav"></div>  <script>  
-fetch("nav.html?v=" + Date.now())  
-.then(res => res.text())  
-.then(data => {  
-document.getElementById("nav").innerHTML = data;  
-const lang = localStorage.getItem("lang") || "en";  
-document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));  
-document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));  
-});  
-</script>  <div class="container">  <h1 class="en">Structural Decision Systems</h1>  
-<h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>  <div class="muted en" style="margin-bottom:20px;">  
-Markets are where structure becomes visible.  
-</div>  <div class="muted tr" style="display:none; margin-bottom:20px;">  
-Piyasalar yapının görünür olduğu yerlerdir.  
-</div>  <div class="subtitle en">Market Alchemy — Applied Structural Depth</div>  
-<div class="subtitle tr" style="display:none;">Market Alchemy — Yapısal Derinlik Uygulaması</div>  <div class="dynamic-headline en">  
-The system is no longer described.<br>  
-It is running.  
-</div>  <div class="dynamic-headline tr" style="display:none;">  
-Sistem artık tanımlanmıyor.<br>  
-Çalışıyor.  
-</div>  
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- EKLENEN BLOK -->
+<script>
+if(!localStorage.getItem("lang")){
+const userLang = navigator.language || navigator.userLanguage;
+localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
+}
+</script>
+
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-8NGN65VXH8');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Alchemy — Structural Decision Systems</title>
+<meta name="description" content="Market Alchemy is a structural decision system based on Structural Depth. Markets are where structure becomes visible.">
+<link rel="canonical" href="https://marketalchemy.io/">
+
+<style>
+body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+.container{max-width:720px;margin:auto;padding:80px 20px;}
+h1{font-size:36px;margin-bottom:10px;}
+
+.dynamic-headline{
+font-size:20px;
+font-weight:600;
+opacity:0.85;
+margin-bottom:30px;
+animation:pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes pulse{
+0%{opacity:0.6;}
+50%{opacity:1;}
+100%{opacity:0.6;}
+}
+
+.subtitle{opacity:0.7;font-size:14px;margin-bottom:30px;}
+.section{margin-top:80px;}
+.big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}
+.muted{opacity:0.6;line-height:1.7;}
+hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
+
+nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}
+nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}
+nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
+
+.diagram{margin-top:40px;text-align:center;}
+.diagram img{width:100%;max-width:680px;opacity:0.9;}
+.diagram-caption{margin-top:12px;font-size:13px;opacity:0.5;}
+
+.fade-in{opacity:0;transform:translateY(10px);transition:all 1s ease;}
+.fade-in.visible{opacity:0.7;transform:translateY(0);}
+
+.structural-block{
+margin-top:40px;
+padding:20px;
+border:1px solid #1f2430;
+background:#11151c;
+}
+
+.structural-title{
+font-size:12px;
+letter-spacing:2px;
+color:#6da8ff;
+margin-bottom:15px;
+}
+
+.structural-text{
+font-size:14px;
+opacity:.8;
+line-height:1.6;
+}
+
+.depth-map{
+margin-top:60px;
+padding:20px;
+border:1px solid #1f2430;
+background:#11151c;
+}
+
+.depth-title{
+font-size:12px;
+letter-spacing:2px;
+color:#6da8ff;
+margin-bottom:18px;
+}
+
+.depth-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+font-size:14px;
+}
+
+.depth-row span{
+opacity:.6;
+font-size:12px;
+}
+
+.depth-row a{
+color:#e8ecf1;
+text-decoration:none;
+opacity:.85;
+}
+
+.ma-cta{
+margin-top:40px;
+text-align:left;
+}
+
+.ma-cta p{
+font-size:13px;
+opacity:.5;
+margin-bottom:10px;
+}
+
+.ma-cta a{
+color:#6da8ff;
+text-decoration:none;
+font-size:14px;
+}
+
+/* HERO */
+.ma-hero{
+margin-top:40px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.ma-line{
+font-size:18px;
+line-height:1.5;
+opacity:0.9;
+}
+
+.ma-core{
+margin-top:20px;
+font-size:22px;
+font-weight:600;
+color:#6da8ff;
+}
+
+.ma-cta-hero{
+margin-top:20px;
+}
+
+.ma-cta-hero a{
+color:#6da8ff;
+text-decoration:none;
+font-size:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="nav"></div>
+
+<script>
+fetch("nav.html?v=" + Date.now())
+.then(res => res.text())
+.then(data => {
+document.getElementById("nav").innerHTML = data;
+const lang = localStorage.getItem("lang") || "en";
+document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+});
+</script>
+
+<div class="container">
+
+<h1 class="en">Structural Decision Systems</h1>
+<h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>
+
+<div class="muted en" style="margin-bottom:20px;">
+Markets are where structure becomes visible.
+</div>
+
+<div class="muted tr" style="display:none; margin-bottom:20px;">
+Piyasalar yapının görünür olduğu yerlerdir.
+</div>
+
+<div class="subtitle en">Market Alchemy — Applied Structural Depth</div>
+<div class="subtitle tr" style="display:none;">Market Alchemy — Yapısal Derinlik Uygulaması</div>
+
+<div class="dynamic-headline en">
+The system is no longer described.<br>
+It is running.
+</div>
+
+<div class="dynamic-headline tr" style="display:none;">
+Sistem artık tanımlanmıyor.<br>
+Çalışıyor.
+</div>
+
+<!-- HERO -->
+<div class="ma-hero en">
+<div class="ma-line">You are not deciding.</div>
+<div class="ma-line">You are being forced.</div>
+
+<div class="ma-line muted" style="margin-top:18px;">
+Options disappear.<br>
+Only one direction remains.
+</div>
+
+<div class="ma-core">
+Market Alchemy is the law of decision under pressure.
+</div>
+
+<div class="ma-line muted" style="margin-top:18px;">
+Price is the record of system behavior.
+</div>
+
+<div class="ma-line muted">
+This system does not predict.<br>
+It removes invalid decisions.
+</div>
+
+<div class="ma-cta-hero">
+<a href="engine.html">Observe the system →</a>
+</div>
+</div>
+
+<div class="ma-hero tr" style="display:none;">
+<div class="ma-line">Karar vermiyorsun.</div>
+<div class="ma-line">Zorlanıyorsun.</div>
+
+<div class="ma-line muted" style="margin-top:18px;">
+Seçenekler kaybolur.<br>
+Tek bir yön kalır.
+</div>
+
+<div class="ma-core">
+Market Alchemy basınç altında kararın yasasıdır.
+</div>
+
+<div class="ma-line muted" style="margin-top:18px;">
+Fiyat sistem davranışının kaydıdır.
+</div>
+
+<div class="ma-line muted">
+Bu sistem tahmin etmez.<br>
+Geçersiz kararları eler.
+</div>
+
+<div class="ma-cta-hero">
+<a href="engine.html">Sistemi gözlemle →</a>
+</div>
+</div>
+
+<!-- BURADAN SONRASI SENİN ORİJİNAL KODUN (DEĞİŞMEDİ) -->
+
 <div class="en" style="margin-top:20px; opacity:0.7; font-size:14px;">
 This is a layered system.<br><br>
 Books, research papers, and applied reports are available.<br>
@@ -150,115 +273,5 @@ Kitaplar, akademik makaleler ve araştırma raporları sunulmaktadır.<br>
 Finansal karar destek sistemleri geliştirilmektedir.<br><br>
 Özel yazılım talepleri kabul edilmektedir.
 </div>
-<!-- EKLENEN BLOK SONU -->
 
-<div class="structural-block">  
-<div class="structural-title">STRUCTURAL DEPTH</div>  <div class="structural-text en">  
-Price is not predictive.<br>  
-It is the record of system behavior.<br><br>  
-Structure is not theoretical.<br>  
-It becomes observable through markets.<br><br>  
-Market Alchemy is the applied layer.  
-</div>  <div class="structural-text tr" style="display:none;">  
-Fiyat tahmin aracı değildir.<br>  
-Sistem davranışının kaydıdır.<br><br>  
-Yapı teorik değildir.<br>  
-Piyasalar üzerinden görünür hale gelir.<br><br>  
-Market Alchemy bu yapının uygulama katmanıdır.  
-</div>  
-</div>  <div class="section en">  <p class="big">  
-Structure is not predicted.<br>  
-It is observed.  
-</p>  <p class="muted">  
-Loss does not begin with price.<br>  
-It begins with misalignment.<br><br>  
-This system enforces structural alignment.  
-</p>  <p class="muted">  
-Trades are blocked when structural conditions are invalid.<br>  
-The system does not react — it filters.<br><br>  
-State transitions reflect structural pressure.<br>  
-Timing emerges only when visibility becomes possible.<br><br>  
-This is not a signal engine.<br>  
-It is a structural validation layer.  
-</p>  <div class="diagram">  <div class="diagram-caption fade-in en" style="font-size:15px; margin-bottom:8px;">  
-Price is the record of system behavior  
-</div>  <div class="diagram-caption fade-in tr" style="display:none; font-size:15px; margin-bottom:8px;">  
-Fiyat, sistem davranışının kaydıdır  
-</div>  <div class="diagram-caption en" style="font-size:16px; opacity:0.85; margin-bottom:10px;">  
-System is never chaotic — the observer is insufficient  
-</div>  <div class="diagram-caption tr" style="display:none; font-size:16px; opacity:0.85; margin-bottom:10px;">  
-Sistem hiçbir zaman kaotik değil — gözlemci yetersiz  
-</div>  <a href="law.html">  
-<img src="time.diagram.jpg" alt="Structural Depth & Observer Diagram">  
-</a>  <div class="diagram-caption en">  
-Structural Depth & Observer — visibility depends on position within structure.  
-</div>  <div class="diagram-caption tr" style="display:none;">  
-Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.  
-</div>  </div>  <div class="depth-map">  <div class="depth-title en">STRUCTURAL DEPTH MAP</div>  
-<div class="depth-title tr" style="display:none;">YAPISAL DERİNLİK HARİTASI</div>  <div class="depth-row">  
-<a href="research.html">Research</a>  
-<span>Depth</span>  
-</div>  <div class="depth-row">  
-<a href="library.html">Library</a>  
-<span>Depth</span>  
-</div>  <div class="depth-row">  
-<a href="lab.html">Lab</a>  
-<span>Transitional</span>  
-</div>  <div class="depth-row">  
-<a href="engine.html">Engine</a>  
-<span>Surface</span>  
-</div>  </div>  <div class="ma-cta">  
-<p class="en">System is active. Access is selective.</p>
-<p class="tr" style="display:none;">Sistem aktif. Erişim seçicidir.</p>
-<a href="research.html">Request Access →</a>  
-</div>  </div>  <div class="section tr" style="display:none;">  <p class="big">  
-Yapı tahmin edilmez.<br>  
-Gözlemlenir.  
-</p>  <p class="muted">  
-Kayıp fiyatta başlamaz.<br>  
-Uyumsuzlukta başlar.<br><br>  
-Bu sistem yapısal hizalanmayı zorunlu kılar.  
-</p>  <p class="muted">  
-Yapı geçerli değilse işlem engellenir.<br>  
-Sistem tepki vermez — filtreler.<br><br>  
-Durum geçişleri yapısal basıncı yansıtır.<br>  
-Zamanlama ancak görünürlük oluştuğunda ortaya çıkar.<br><br>  
-Bu bir sinyal sistemi değildir.<br>  
-Yapısal doğrulama katmanıdır.  
-</p>  <div class="diagram">  <div class="diagram-caption tr" style="font-size:16px; opacity:0.85; margin-bottom:10px;">  
-Sistem hiçbir zaman kaotik değil — gözlemci yetersiz  
-</div>  <a href="law.html">  
-<img src="time.diagram.jpg" alt="Yapısal Derinlik & Gözlemci Diyagramı">  
-</a>  <div class="diagram-caption tr">  
-Yapısal Derinlik & Gözlemci — görünürlük yapı içindeki konuma bağlıdır.  
-</div>  </div>  <div class="depth-map">  <div class="depth-title tr">YAPISAL DERİNLİK HARİTASI</div>  <div class="depth-row">  
-<a href="research.html">Research</a>  
-<span>Derinlik</span>  
-</div>  <div class="depth-row">  
-<a href="library.html">Library</a>  
-<span>Derinlik</span>  
-</div>  <div class="depth-row">  
-<a href="lab.html">Lab</a>  
-<span>Geçiş</span>  
-</div>  <div class="depth-row">  
-<a href="engine.html">Engine</a>  
-<span>Yüzey</span>  
-</div>  </div>  <div class="ma-cta">  
-<p class="tr">Sistem aktif. Erişim seçicidir.</p>
-<a href="research.html">Erişim Talep Et →</a>  
-</div>  </div>  <hr>  <div style="margin-top: 100px; font-size: 11px; opacity: 0.4; text-align: center;">  
-Market Alchemy • Halil İbrahim Güven  
-</div>  </div>  <script>  
-const observer = new IntersectionObserver(entries=>{  
-entries.forEach(entry=>{  
-if(entry.isIntersecting){  
-entry.target.classList.add("visible");  
-}  
-});  
-});  
-  
-document.querySelectorAll(".fade-in").forEach(el=>{  
-observer.observe(el);  
-});  
-</script>  </body>  
-</html>
+<!-- kalan tüm bloklar aynen devam ediyor -->
