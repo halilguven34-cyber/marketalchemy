@@ -80,13 +80,6 @@ opacity:0.75;
 text-align:left;
 }
 
-.access-note{
-margin-top:12px;
-font-size:12px;
-opacity:0.45;
-}
-
-/* overlay */
 .overlay{
 position:fixed;
 top:0;
@@ -135,10 +128,10 @@ cursor:pointer;
 <div class="label en">ENGINE STATE</div>
 <div class="label tr" style="display:none;">SİSTEM DURUMU</div>
 
-<div class="status wait" id="stateText">ACCUMULATING</div>
+<div class="status wait" id="stateText">PRESSURE</div>
 
-<div class="desc en">Structural pressure is building.<br>No valid move yet.</div>
-<div class="desc tr" style="display:none;">Yapısal basınç birikiyor.<br>Henüz geçerli bir hareket yok.</div>
+<div class="desc en" id="descEn">Pressure is building.</div>
+<div class="desc tr" id="descTr" style="display:none;">Basınç birikiyor.</div>
 
 <div class="sub en">Input any market: BTC 1H / BTC 4H / BTC 1D</div>
 <div class="sub tr" style="display:none;">Piyasa gir: BTC 1H / BTC 4H / BTC 1D</div>
@@ -149,7 +142,7 @@ cursor:pointer;
 
 <div class="output" id="output">STATE: WAIT</div>
 
-<div class="physics" id="physicsBox">
+<div class="physics">
 PHASE: -<br>ENERGY: -<br>STRUCTURE: -<br>TIME COST: -<br>TIMEFRAME: -
 </div>
 
@@ -163,7 +156,6 @@ PHASE: -<br>ENERGY: -<br>STRUCTURE: -<br>TIME COST: -<br>TIMEFRAME: -
 
 </div>
 
-<!-- overlay -->
 <div class="overlay" id="overlay">
 <div class="modal">
 <div class="close" onclick="closeAccess()">✕</div>
@@ -195,16 +187,9 @@ PHASE: -<br>ENERGY: -<br>STRUCTURE: -<br>TIME COST: -<br>TIMEFRAME: -
 </div>
 
 <div id="step2" style="display:none;">
-
-<div class="en">Enter your email</div>
-<div class="tr" style="display:none;">Email gir</div>
-
 <input id="email" type="email" placeholder="you@example.com">
-
 <textarea id="otherText" placeholder="Context..." style="display:none;"></textarea>
-
 <button onclick="submitAccess()">Request access →</button>
-
 </div>
 
 </div>
@@ -223,41 +208,36 @@ document.getElementById("step1").style.display="block";
 document.getElementById("step2").style.display="none";
 }
 
-let selectedRole=null;
-
-function selectRole(role){
-selectedRole=role;
-if(role==="Other"){document.getElementById("otherText").style.display="block";}
-document.getElementById("step1").style.display="none";
-document.getElementById("step2").style.display="block";
-}
-
-function submitAccess(){
-const email=document.getElementById("email").value;
-const other=document.getElementById("otherText").value||"-";
-if(!email){alert("Email required");return;}
-
-window.location.href =
-`mailto:priceofwaiting@gmail.com?subject=Access Request&body=Role: ${selectedRole}%0AEmail: ${email}%0AContext: ${other}`;
-}
-
 function getSeed(str){let h=0;for(let i=0;i<str.length;i++){h+=str.charCodeAt(i);}return h;}
 
 function analyze(asset){
 const seed=getSeed(asset);
 const cycle=(seed+Date.now()/3000)%100;
-let state="WAIT",friction=cycle;
 
+let state="WAIT";
 if(cycle>70) state="PREPARE";
 if(cycle>85) state="ACT";
 
-/* SADECE GÖRÜNÜR LABEL */
-let visibleState = "ACCUMULATING";
-if(state==="PREPARE") visibleState="ALIGNING";
-if(state==="ACT") visibleState="EXECUTION";
+let label="PRESSURE";
+let descEn="Pressure is building.";
+let descTr="Basınç birikiyor.";
 
-document.getElementById("stateText").innerText=visibleState;
-document.getElementById("bar").style.width=friction+"%";
+if(state==="PREPARE"){
+label="ALIGNMENT";
+descEn="Structure is aligning.";
+descTr="Yapı hizalanıyor.";
+}
+
+if(state==="ACT"){
+label="RELEASE";
+descEn="Conditions are valid.";
+descTr="Koşullar geçerli.";
+}
+
+document.getElementById("stateText").innerText=label;
+document.getElementById("descEn").innerText=descEn;
+document.getElementById("descTr").innerText=descTr;
+document.getElementById("bar").style.width=cycle+"%";
 }
 
 setInterval(()=>analyze("BTC"),3000);
