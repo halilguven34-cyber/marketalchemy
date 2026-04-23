@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Market Alchemy — Library</title>
-
 <style>
 body{
 margin:0;
@@ -202,9 +199,7 @@ opacity:.5;
 line-height:1.4;
 }
 </style>
-
 </head>
-
 <body>
 
 <div id="nav"></div>
@@ -214,7 +209,6 @@ fetch("nav.html")
 .then(res => res.text())
 .then(data => {
 document.getElementById("nav").innerHTML = data;
-
 const lang = localStorage.getItem("lang") || "en";
 document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
 document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
@@ -224,152 +218,127 @@ document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"bl
 <div class="container">
 
 <div class="section">
-<p class="big en">Time is not what you think.</p>
-<p class="big tr" style="display:none;">Zaman, zannettiğin şey değil.</p>
+    <p class="big en">Time is not what you think.</p>
+    <p class="big tr" style="display:none;">Zaman, zannettiğin şey değil.</p>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-<img src="Theplaceoftime.jpg">
+    <img src="Theplaceoftime.jpg">
+    <div class="hero-title en">The Place of Time</div>
+    <div class="hero-title tr" style="display:none;">Zamanın Yeri</div>
+    <div class="book-meta">LAYER I — LAW</div>
 
-<div class="hero-title">The Place of Time</div>
-<div class="book-meta">LAYER I — LAW</div>
+    <div class="hero-desc en">
+        <b>Axiom:</b> Time is not a flow; it is the visibility of structural depth differentiation. The arrow of time is defined by hierarchical containment.
+    </div>
+    <div class="hero-desc tr" style="display:none;">
+        <b>Aksiyom:</b> Zaman ölçülen bir akış değildir; yapının derinlik farkının görünürlüğüdür. Zamanın oku, hiyerarşik içerme (containment) ile belirlenir.
+    </div>
 
-<div class="hero-desc en">
-You will discover what time is from within structure.
+    <div class="struct-signal">
+        Ω: undefined<br>
+        Θ: absolute
+    </div>
+
+    <div class="links">
+        <a href="https://play.google.com/store/books/details?id=qK05EQAAQBAJ" target="_blank">TR — Google Play</a>
+        <a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">EN — Amazon</a>
+    </div>
+
+    <div style="margin-top:15px;">
+      <a href="research.html" style="color:#6da8ff; font-size:14px;" class="en">Continue to research →</a>
+      <a href="research.html" style="color:#6da8ff; font-size:14px; display:none;" class="tr">Araştırmaya devam et →</a>
+    </div>
 </div>
 
-<div class="hero-desc tr" style="display:none;">
-Zamanın ne olduğunu<br>
-Yapının içinden keşfedeceksin.
-</div>
-
-<div class="struct-signal">
-Ω: undefined<br>
-Θ: absolute
-</div>
-
-<div class="links">
-<a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">Amazon</a>
-</div>
-
-<!-- CEREMONIAL TRANSITION -->
-<div style="margin-top:15px;">
-  <a href="research.html" style="color:#6da8ff; font-size:14px;">
-    Continue to research →
-  </a>
-</div>
-
-</div>
-
-<!-- SYSTEM STRUCTURE -->
 <div class="system-block">
-
-<div class="system-title">SYSTEM STRUCTURE</div>
-
-<div class="system-layer">
-<span>LAYER I — LAW</span>
-<p>Price is the record of system behavior.</p>
-</div>
-
-<div class="system-layer">
-<span>LAYER II — EXTRACTION</span>
-<p>Direction is extracted, not predicted.</p>
-</div>
-
-<div class="system-layer">
-<span>LAYER III — ENGINE</span>
-<p>Decisions emerge from structural states.</p>
-</div>
-
+    <div class="system-title">SYSTEM STRUCTURE</div>
+    <div class="system-layer">
+        <span>LAYER I — LAW</span>
+        <p class="en">Price is the record of system behavior.</p>
+        <p class="tr" style="display:none;">Fiyat, sistem davranışının kaydıdır.</p>
+    </div>
+    <div class="system-layer">
+        <span>LAYER II — EXTRACTION</span>
+        <p class="en">Direction is extracted, not predicted.</p>
+        <p class="tr" style="display:none;">Yön türetilir, tahmin edilmez.</p>
+    </div>
+    <div class="system-layer">
+        <span>LAYER III — ENGINE</span>
+        <p class="en">Decisions emerge from structural states.</p>
+        <p class="tr" style="display:none;">Kararlar yapısal durumlardan doğar.</p>
+    </div>
 </div>
 
 <div class="section">
+    <p class="muted en">
+        The dates stated in the books are determined through the analysis of historical processes.<br>
+        Structural transitions are made visible,<br>
+        guiding the observer within the structure.
+    </p>
+    <p class="muted tr" style="display:none;">
+        Kitaplarda belirtilen tarihler, tarihsel süreçler analiz edilerek belirlenmiştir.<br>
+        Yapısal geçişler görünür kılınıp,<br>
+        gözlemciye yapı içinde rehberlik etmektedir.
+    </p>
 
-<p class="muted en">
-The dates stated in the books are determined through the analysis of historical processes.<br>
-Structural transitions are made visible,<br>
-guiding the observer within the structure.
-</p>
+    <div class="book">
+        <img src="Thecondinsationpoint.png">
+        <div class="book-info">
+            <div class="en" style="font-weight:600;">The Condensation Point</div>
+            <div class="tr" style="display:none; font-weight:600;">Yoğunlaşma Noktası</div>
+            <div class="book-meta">LAYER II — EXTRACTION</div>
+            <div class="book-desc en">
+                The critical threshold where the system transitions from disorder to organization. Structural analysis of phase transitions and behavioral condensation.
+            </div>
+            <div class="book-desc tr" style="display:none;">
+                Sistemin dağınıklıktan organizasyona geçtiği kritik eşik. Faz geçişleri ve davranışsal yoğunlaşmanın yapısal analizi.
+            </div>
+            <div class="struct-signal">Ω: observable | Θ: emerging</div>
+            <div class="links">
+                <a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">EN — Amazon</a>
+                <span style="font-size:12px; opacity:0.5;" class="tr">TR — Yakında Google Play'de</span>
+            </div>
+        </div>
+    </div>
 
-<p class="muted tr" style="display:none;">
-Kitaplarda belirtilen tarihler, tarihsel süreçler analiz edilerek belirlenmiştir.<br>
-Yapısal geçişler görünür kılınıp,<br>
-gözlemciye yapı içinde rehberlik etmektedir.
-</p>
-
-<!-- CONDENSATION -->
-<div class="book">
-<img src="Thecondinsationpoint.png">
-<div class="book-info">
-<div>The Condensation Point</div>
-<div class="book-meta">LAYER II — EXTRACTION</div>
-
-<div class="struct-signal">
-Ω: observable<br>
-Θ: emerging
-</div>
-
-<div class="links">
-<a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">Amazon</a>
-</div>
-</div>
-</div>
-
-<!-- LIQUIDATION -->
-<div class="book">
-<img src="liquidation-framework.jpg">
-<div class="book-info">
-<div>Liquidation — The Market Alchemy Framework</div>
-<div class="book-meta">LAYER III — ENGINE</div>
-
-<div class="struct-signal">
-Ω: suppressed<br>
-Θ: operational
-</div>
-
-<div class="links">
-<a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank">Amazon</a>
-</div>
-</div>
-</div>
-
-<!-- TASFIYE -->
-<div class="book">
-<img src="Tasfiye.png">
-<div class="book-info">
-<div>Tasfiye: Faz Geçişi ve Sistem Entropisi</div>
-<div class="book-meta">LAYER III — ENGINE</div>
-
-<div class="struct-signal">
-Ω: constrained<br>
-Θ: increasing
-</div>
-</div>
-</div>
-
+    <div class="book">
+        <img src="Tasfiye.png">
+        <div class="book-info">
+            <div class="en" style="font-weight:600;">Liquidation — The Market Alchemy Framework</div>
+            <div class="tr" style="display:none; font-weight:600;">Tasfiye: Faz Geçişi ve Sistem Entropisi</div>
+            <div class="book-meta">LAYER III — ENGINE</div>
+            <div class="book-desc en">
+                The mathematical engine of structural states. Liquidity mechanics and the operational walk on an acyclic graph.
+            </div>
+            <div class="book-desc tr" style="display:none;">
+                Sistemin kendi üzerindeki baskıyı kaldırma ve yeniden organize olma süreci. Entropik yükün tahliye mekanizması.
+            </div>
+            <div class="struct-signal">Ω: suppressed | Θ: increasing</div>
+            <div class="links">
+                <a href="https://play.google.com/store/books/details?id=Y-E6EQAAQBAJ" target="_blank">TR — Google Play</a>
+                <a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank">EN — Amazon</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="author-card" onclick="window.location.href='about.html'">
-<div class="author-header en">Author</div>
-<div class="author-header tr" style="display:none;">Yazar</div>
-
-<div class="author-name">Halil İbrahim Güven</div>
-
-<div class="author-text en">
-Structural Depth framework.<br>
-Focus: system behavior, entropy, and structural markets.<br>
-Market Alchemy is the applied layer.
-</div>
-
-<div class="author-text tr" style="display:none;">
-Yapısal Derinlik çerçevesi.<br>
-Odak: sistem davranışı, entropi ve yapısal piyasalar.<br>
-Market Alchemy uygulama katmanıdır.
-</div>
+    <div class="author-header en">Author</div>
+    <div class="author-header tr" style="display:none;">Yazar</div>
+    <div class="author-name">Halil İbrahim Güven</div>
+    <div class="author-text en">
+        Structural Depth framework.<br>
+        Focus: system behavior, entropy, and structural markets.<br>
+        Market Alchemy is the applied layer.
+    </div>
+    <div class="author-text tr" style="display:none;">
+        Yapısal Derinlik çerçevesi.<br>
+        Odak: sistem davranışı, entropi ve yapısal piyasalar.<br>
+        Market Alchemy uygulama katmanıdır.
+    </div>
 </div>
 
 </div>
-
 </body>
 </html>
