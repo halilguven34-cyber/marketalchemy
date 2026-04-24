@@ -23,24 +23,17 @@ flex-direction:column;
 align-items:center;
 text-align:center;
 }
-
 .container{max-width:720px;margin-top:80px;padding:0 16px;}
-
 .label{font-size:12px;opacity:0.4;margin-bottom:10px;}
 .status{font-size:64px;font-weight:700;margin-bottom:20px;}
-
 .wait{ color:#8a93a3; }
 .prepare{ color:#f0c36d; }
 .act{ color:#ff5c5c; }
-
 .desc{opacity:0.7;font-size:18px;margin-bottom:10px;}
 .sub{opacity:0.5;font-size:14px;margin-top:10px;}
-
 .bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;}
 .fill{height:100%;width:0%;background:#4da3ff;}
-
 .output{margin-top:20px;font-family:monospace;opacity:0.85;}
-
 input{
 width:100%;
 padding:14px;
@@ -50,7 +43,6 @@ color:#e8ecf1;
 font-size:14px;
 margin-top:20px;
 }
-
 textarea{
 width:100%;
 padding:12px;
@@ -61,7 +53,6 @@ color:#e8ecf1;
 font-size:13px;
 resize:none;
 }
-
 .cta{
 display:block;
 margin-top:30px;
@@ -71,9 +62,7 @@ color:#6da8ff;
 text-decoration:none;
 cursor:pointer;
 }
-
 .note{margin-top:15px;font-size:13px;opacity:0.5;}
-
 .box{
 margin-top:30px;
 padding:16px;
@@ -81,7 +70,6 @@ border:1px solid #1f2430;
 font-size:14px;
 opacity:0.8;
 }
-
 .physics{
 margin-top:20px;
 padding:16px;
@@ -90,58 +78,6 @@ font-family:monospace;
 font-size:13px;
 opacity:0.75;
 text-align:left;
-}
-
-.access-note{
-margin-top:12px;
-font-size:12px;
-opacity:0.45;
-}
-
-.overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.75);
-backdrop-filter:blur(6px);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:1000;
-}
-
-.modal{
-width:90%;
-max-width:420px;
-background:#0d0f14;
-border:1px solid #1f2430;
-padding:24px;
-text-align:left;
-position:relative;
-}
-
-.modal h2{margin-top:0;font-size:20px;}
-
-.modal button{
-margin-top:10px;
-width:100%;
-padding:12px;
-background:#6da8ff;
-border:none;
-color:#000;
-font-weight:600;
-cursor:pointer;
-}
-
-.close{
-position:absolute;
-top:15px;
-right:15px;
-font-size:20px;
-cursor:pointer;
-opacity:0.6;
 }
 </style>
 </head>
@@ -159,11 +95,11 @@ opacity:0.6;
 <div class="desc tr" style="display:none;">Sistem stabil.<br>Aksiyon gerekmiyor.</div>
 
 <div class="sub en">Input any market: BTC 1H / ETH 4H / BTC 1D</div>
-<div class="sub tr" style="display:none;">Piyasa gir: BTC 1H / ETH 4H / BTC 1D</div>
+<div class="sub tr" style="display:none;">Piyasa gir</div>
 
 <div class="bar"><div class="fill" id="bar"></div></div>
 
-<input id="input" placeholder="BTC 1H / ETH 4H / BTC 1D">
+<input id="input" placeholder="BTC 1H">
 
 <div class="output" id="output">STATE: MONITOR</div>
 
@@ -175,92 +111,15 @@ TIME COST: -<br>
 TIMEFRAME: -
 </div>
 
-<div class="box en">
-This is not a signal tool.<br>
-It filters when NOT to act.
-</div>
-
-<div class="box tr" style="display:none;">
-Bu bir sinyal sistemi değildir.<br>
-Ne zaman aksiyon almaman gerektiğini filtreler.
-</div>
-
-<div class="note en">Same asset. Different timeframe. Different reality.</div>
-<div class="note tr" style="display:none;">Aynı varlık. Farklı zaman dilimi. Farklı gerçeklik.</div>
-
-<div class="cta" onclick="openAccess()">Enter system layer →</div>
-
-<div class="access-note en">Access is limited.<br>Structure defines entry.</div>
-<div class="access-note tr" style="display:none;">Erişim sınırlıdır.<br>Giriş yapıyı gerektirir.</div>
-
-</div>
-
-<!-- OVERLAY -->
-<div class="overlay" id="overlay">
-<div class="modal">
-<div class="close" onclick="closeAccess()">✕</div>
-
-<h2 class="en">System Access</h2>
-<h2 class="tr" style="display:none;">Sistem Erişimi</h2>
-
-<div id="step1">
-<div class="en" style="margin-bottom:10px;opacity:0.7;">Select your role</div>
-<div class="tr" style="display:none;margin-bottom:10px;opacity:0.7;">Rolünü seç</div>
-
-<button onclick="selectRole('Trader')">Trader</button>
-<button onclick="selectRole('Research')">Research / Academic</button>
-<button onclick="selectRole('Institution')">Institutional</button>
-<button onclick="selectRole('Developer')">Developer / API</button>
-<button onclick="selectRole('Other')">Other</button>
-</div>
-
-<div id="step2" style="display:none;">
-<div class="en" style="margin-bottom:10px;opacity:0.7;">Enter your email</div>
-<div class="tr" style="display:none;margin-bottom:10px;opacity:0.7;">Email adresini gir</div>
-
-<input id="email" type="email" placeholder="you@example.com">
-<textarea id="otherText" placeholder="Briefly describe your context..." style="display:none;"></textarea>
-
-<button onclick="submitAccess()" class="en">Request access →</button>
-<button onclick="submitAccess()" class="tr" style="display:none;">Erişim talep et →</button>
-</div>
-</div>
 </div>
 
 <script>
 
-// LANGUAGE
-const lang = localStorage.getItem("lang") || "en";
-document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+// ===== MEMORY =====
+let memory = {}; // per symbol
 
-// ACCESS UI
-function openAccess(){ document.getElementById("overlay").style.display="flex"; }
-function closeAccess(){
-document.getElementById("overlay").style.display="none";
-document.getElementById("step1").style.display="block";
-document.getElementById("step2").style.display="none";
-document.getElementById("otherText").style.display="none";
-}
-
-let selectedRole=null;
-function selectRole(role){
-selectedRole=role;
-document.getElementById("otherText").style.display = (role==="Other"?"block":"none");
-document.getElementById("step1").style.display="none";
-document.getElementById("step2").style.display="block";
-}
-
-function submitAccess(){
-const email=document.getElementById("email").value;
-const other=document.getElementById("otherText").value || "-";
-if(!email){ alert("Email required"); return; }
-window.location.href = `mailto:priceofwaiting@gmail.com?subject=Access Request&body=Role: ${selectedRole}%0AEmail: ${email}%0AContext: ${other}`;
-}
-
-// ENGINE
-
-async function fetchKlines(symbol, interval="1h", limit=120){
+// ===== DATA =====
+async function fetchKlines(symbol, interval="1h", limit=500){
 const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;
 const res = await fetch(url);
 const data = await res.json();
@@ -268,31 +127,31 @@ return data.map(c => parseFloat(c[4]));
 }
 
 function mapTF(tf){
-tf = tf.toUpperCase();
-if(tf==="1M") return "1m";
-if(tf==="5M") return "5m";
-if(tf==="15M") return "15m";
+tf=tf.toUpperCase();
 if(tf==="1H") return "1h";
 if(tf==="4H") return "4h";
 if(tf==="1D") return "1d";
-if(tf==="1W") return "1w";
 return "1h";
 }
 
+// ===== CORE ENGINE =====
 async function analyze(asset, tf){
-
-try{
 
 const symbol = asset.toUpperCase()+"USDT";
 const interval = mapTF(tf);
 
-const price = await fetchKlines(symbol, interval, 120);
+// dynamic lookback
+const lookback = tf==="1H" ? 300 : tf==="4H" ? 400 : 500;
 
+const price = await fetchKlines(symbol, interval, lookback);
+
+// dP
 let dP=[];
 for(let i=1;i<price.length;i++){
 dP.push(price[i]-price[i-1]);
 }
 
+// Md / Mc
 let Md=0, Mc=0;
 for(let i=0;i<dP.length;i++){
 if(dP[i]>0) Md+=dP[i];
@@ -300,19 +159,41 @@ else Mc+=Math.abs(dP[i]);
 }
 
 const total = Md+Mc+1e-9;
-const theta_obs = Md/total;
-const R = Mc/total;
 
+// ===== IMPROVED Θ =====
+
+// persistence (trend continuity)
+let persistence=0;
+for(let i=1;i<dP.length;i++){
+if(Math.sign(dP[i])===Math.sign(dP[i-1])) persistence++;
+}
+persistence /= dP.length;
+
+// base ratio
+const ratio = Md/total;
+
+// volatility compression
 let mean = price.reduce((a,b)=>a+b,0)/price.length;
 let variance = price.reduce((a,b)=>a+(b-mean)**2,0)/price.length;
 let sigma = Math.sqrt(variance);
 
-let prevTheta = theta_obs * 0.95;
-let dTheta = theta_obs - prevTheta;
+// normalized sigma
+let sigmaNorm = Math.min(sigma/100,1);
 
+// FINAL Θ
+const theta = (ratio*0.5 + persistence*0.3 + (1-sigmaNorm)*0.2);
+
+// R
+const R = Mc/total;
+
+// dTheta
+let prevTheta = memory[symbol]?.lastTheta || theta;
+let dTheta = theta - prevTheta;
+
+// ===== COST =====
 let dominant = Md > Mc ? 1 : -1;
-
 let num=0, den=0;
+
 for(let i=0;i<dP.length;i++){
 let w = Math.abs(dP[i]) * sigma;
 den += w;
@@ -322,24 +203,35 @@ num += w;
 }
 
 const Cs = num/(den+1e-9);
-const As = theta_obs * price.length;
 
-let B = 0;
-if(Cs > 0.6 || (As > 50 && Cs > 0.2)) B=1;
+// ===== REAL MEMORY (A_s) =====
+if(!memory[symbol]){
+memory[symbol]={As:0,lastTheta:theta};
+}
 
+memory[symbol].As += theta;
+memory[symbol].lastTheta = theta;
+
+const As = memory[symbol].As;
+
+// ===== BREAK =====
+let B=0;
+if(Cs>0.6 || (As>200 && Cs>0.25)) B=1;
+
+// ===== STATE =====
 let state, phase, structure, timeCost;
 
-if(sigma < 10){
+if(sigmaNorm < 0.3){
 state="MONITOR";
 phase="COMPRESSION";
 timeCost="LOW";
 }
-else if(dTheta > 0 && R < 0.4){
+else if(dTheta>0 && R<0.4){
 state="PREPARE";
 phase="BUILD-UP";
 timeCost="RISING";
 }
-else if(R < 0.2 && dTheta > 0 && B===0){
+else if(R<0.2 && dTheta>0 && B===0){
 state="ACT";
 phase="TREND";
 timeCost="HIGH";
@@ -350,8 +242,9 @@ phase="DIFFUSION";
 timeCost="LOW";
 }
 
-if(R > 0.5) structure="OPEN";
-else if(R > 0.2) structure="FORMING";
+// structure
+if(R>0.5) structure="OPEN";
+else if(R>0.2) structure="FORMING";
 else structure="LOCKED";
 
 return {
@@ -363,22 +256,9 @@ timeCost,
 tf
 };
 
-}catch(e){
-
-return {
-state:"MONITOR",
-friction:0,
-phase:"NO DATA",
-structure:"-",
-timeCost:"-",
-tf
-};
-
-}
 }
 
-// UI
-
+// ===== UI =====
 let currentAsset=null;
 let currentTF=null;
 
@@ -411,7 +291,6 @@ document.getElementById("bar").style.width=res.friction+"%";
 document.getElementById("output").innerHTML=`
 STATE: ${res.state}<br>
 FRICTION: ${res.friction}<br>
-→ ACTION: OBSERVE
 `;
 
 document.getElementById("physicsBox").innerHTML=`
@@ -423,7 +302,7 @@ TIMEFRAME: ${res.tf}
 `;
 }
 
-setInterval(updateUI, 5000);
+setInterval(updateUI, 6000);
 
 </script>
 
