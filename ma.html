@@ -158,12 +158,12 @@ opacity:0.6;
 <div class="desc en">System stable.<br>No action required.</div>
 <div class="desc tr" style="display:none;">Sistem stabil.<br>Aksiyon gerekmiyor.</div>
 
-<div class="sub en">Input any market: BTC 1H / BTC 4H / BTC 1D</div>
-<div class="sub tr" style="display:none;">Piyasa gir: BTC 1H / BTC 4H / BTC 1D</div>
+<div class="sub en">Input any market: BTC 1H / ETH 4H / BTC 1D</div>
+<div class="sub tr" style="display:none;">Piyasa gir: BTC 1H / ETH 4H / BTC 1D</div>
 
 <div class="bar"><div class="fill" id="bar"></div></div>
 
-<input id="input" placeholder="BTC 1H / ETH 4H / GOLD 1D">
+<input id="input" placeholder="BTC 1H / ETH 4H / BTC 1D">
 
 <div class="output" id="output">STATE: MONITOR</div>
 
@@ -204,7 +204,6 @@ Ne zaman aksiyon almaman gerektiğini filtreler.
 <h2 class="tr" style="display:none;">Sistem Erişimi</h2>
 
 <div id="step1">
-
 <div class="en" style="margin-bottom:10px;opacity:0.7;">Select your role</div>
 <div class="tr" style="display:none;margin-bottom:10px;opacity:0.7;">Rolünü seç</div>
 
@@ -213,36 +212,30 @@ Ne zaman aksiyon almaman gerektiğini filtreler.
 <button onclick="selectRole('Institution')">Institutional</button>
 <button onclick="selectRole('Developer')">Developer / API</button>
 <button onclick="selectRole('Other')">Other</button>
-
 </div>
 
 <div id="step2" style="display:none;">
-
 <div class="en" style="margin-bottom:10px;opacity:0.7;">Enter your email</div>
 <div class="tr" style="display:none;margin-bottom:10px;opacity:0.7;">Email adresini gir</div>
 
 <input id="email" type="email" placeholder="you@example.com">
-
 <textarea id="otherText" placeholder="Briefly describe your context..." style="display:none;"></textarea>
 
 <button onclick="submitAccess()" class="en">Request access →</button>
 <button onclick="submitAccess()" class="tr" style="display:none;">Erişim talep et →</button>
-
 </div>
-
 </div>
 </div>
 
 <script>
 
+// LANGUAGE
 const lang = localStorage.getItem("lang") || "en";
 document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
 document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 
-function openAccess(){
-document.getElementById("overlay").style.display="flex";
-}
-
+// ACCESS UI
+function openAccess(){ document.getElementById("overlay").style.display="flex"; }
 function closeAccess(){
 document.getElementById("overlay").style.display="none";
 document.getElementById("step1").style.display="block";
@@ -251,72 +244,140 @@ document.getElementById("otherText").style.display="none";
 }
 
 let selectedRole=null;
-
 function selectRole(role){
 selectedRole=role;
-
-if(role==="Other"){
-document.getElementById("otherText").style.display="block";
-} else {
-document.getElementById("otherText").style.display="none";
-}
-
+document.getElementById("otherText").style.display = (role==="Other"?"block":"none");
 document.getElementById("step1").style.display="none";
 document.getElementById("step2").style.display="block";
 }
 
 function submitAccess(){
-
 const email=document.getElementById("email").value;
 const other=document.getElementById("otherText").value || "-";
-
-if(!email){
-alert("Email required");
-return;
-}
-
+if(!email){ alert("Email required"); return; }
 window.location.href = `mailto:priceofwaiting@gmail.com?subject=Access Request&body=Role: ${selectedRole}%0AEmail: ${email}%0AContext: ${other}`;
 }
 
-// ENGINE (aynı)
-function getSeed(str){
-let hash=0;
-for(let i=0;i<str.length;i++){ hash+=str.charCodeAt(i);}
-return hash;
+// ENGINE
+
+async function fetchKlines(symbol, interval="1h", limit=120){
+const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;
+const res = await fetch(url);
+const data = await res.json();
+return data.map(c => parseFloat(c[4]));
 }
 
-function tfWeight(tf){
-if(!tf) return 1;
-tf=tf.toUpperCase();
-if(tf.includes("1M")) return 1;
-if(tf.includes("5M")) return 2;
-if(tf.includes("15M")) return 3;
-if(tf.includes("1H")) return 5;
-if(tf.includes("4H")) return 8;
-if(tf.includes("1D")) return 13;
-if(tf.includes("1W")) return 21;
-return 5;
+function mapTF(tf){
+tf = tf.toUpperCase();
+if(tf==="1M") return "1m";
+if(tf==="5M") return "5m";
+if(tf==="15M") return "15m";
+if(tf==="1H") return "1h";
+if(tf==="4H") return "4h";
+if(tf==="1D") return "1d";
+if(tf==="1W") return "1w";
+return "1h";
 }
 
-function analyze(asset, tf){
-const seed=getSeed(asset);
-const tfW=tfWeight(tf);
-const time=Math.floor(Date.now()/(3000*(22-tfW)));
-const cycle=(seed+time+tfW*7)%100;
+async function analyze(asset, tf){
 
-let state, friction, phase, structure, timeCost;
+try{
 
-if(cycle<50){ state="MONITOR"; friction=20+cycle; phase="COMPRESSION"; timeCost="LOW"; }
-else if(cycle<70){ state="PREPARE"; friction=50+(cycle-50); phase="BUILD-UP"; timeCost="RISING"; }
-else if(cycle<85){ state="PREPARE"; friction=70+(cycle-70); phase="PRE-RELEASE"; timeCost="HIGH"; }
-else{ state="ACT"; friction=85+(cycle-85); phase="RELEASE"; timeCost="CRITICAL"; }
+const symbol = asset.toUpperCase()+"USDT";
+const interval = mapTF(tf);
 
-if(friction<40) structure="OPEN";
-else if(friction<70) structure="FORMING";
+const price = await fetchKlines(symbol, interval, 120);
+
+let dP=[];
+for(let i=1;i<price.length;i++){
+dP.push(price[i]-price[i-1]);
+}
+
+let Md=0, Mc=0;
+for(let i=0;i<dP.length;i++){
+if(dP[i]>0) Md+=dP[i];
+else Mc+=Math.abs(dP[i]);
+}
+
+const total = Md+Mc+1e-9;
+const theta_obs = Md/total;
+const R = Mc/total;
+
+let mean = price.reduce((a,b)=>a+b,0)/price.length;
+let variance = price.reduce((a,b)=>a+(b-mean)**2,0)/price.length;
+let sigma = Math.sqrt(variance);
+
+let prevTheta = theta_obs * 0.95;
+let dTheta = theta_obs - prevTheta;
+
+let dominant = Md > Mc ? 1 : -1;
+
+let num=0, den=0;
+for(let i=0;i<dP.length;i++){
+let w = Math.abs(dP[i]) * sigma;
+den += w;
+if(Math.sign(dP[i]) !== dominant){
+num += w;
+}
+}
+
+const Cs = num/(den+1e-9);
+const As = theta_obs * price.length;
+
+let B = 0;
+if(Cs > 0.6 || (As > 50 && Cs > 0.2)) B=1;
+
+let state, phase, structure, timeCost;
+
+if(sigma < 10){
+state="MONITOR";
+phase="COMPRESSION";
+timeCost="LOW";
+}
+else if(dTheta > 0 && R < 0.4){
+state="PREPARE";
+phase="BUILD-UP";
+timeCost="RISING";
+}
+else if(R < 0.2 && dTheta > 0 && B===0){
+state="ACT";
+phase="TREND";
+timeCost="HIGH";
+}
+else{
+state="MONITOR";
+phase="DIFFUSION";
+timeCost="LOW";
+}
+
+if(R > 0.5) structure="OPEN";
+else if(R > 0.2) structure="FORMING";
 else structure="LOCKED";
 
-return {state, friction, phase, structure, timeCost, tf};
+return {
+state,
+friction: Math.round(Cs*100),
+phase,
+structure,
+timeCost,
+tf
+};
+
+}catch(e){
+
+return {
+state:"MONITOR",
+friction:0,
+phase:"NO DATA",
+structure:"-",
+timeCost:"-",
+tf
+};
+
 }
+}
+
+// UI
 
 let currentAsset=null;
 let currentTF=null;
@@ -332,9 +393,10 @@ updateUI();
 }
 });
 
-function updateUI(){
+async function updateUI(){
 if(!currentAsset) return;
-const res=analyze(currentAsset,currentTF);
+
+const res = await analyze(currentAsset,currentTF);
 
 const stateEl=document.getElementById("stateText");
 stateEl.innerText=res.state;
@@ -361,7 +423,7 @@ TIMEFRAME: ${res.tf}
 `;
 }
 
-setInterval(updateUI,3000);
+setInterval(updateUI, 5000);
 
 </script>
 
