@@ -5,13 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MA Engine — Market Alchemy</title>
 
-<script>
-if(!localStorage.getItem("lang")){
-  const userLang = navigator.language || navigator.userLanguage;
-  localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
-}
-</script>
-
 <style>
 body{
 margin:0;
@@ -29,8 +22,6 @@ text-align:center;
 .wait{ color:#8a93a3; }
 .prepare{ color:#f0c36d; }
 .act{ color:#ff5c5c; }
-.desc{opacity:0.7;font-size:18px;margin-bottom:10px;}
-.sub{opacity:0.5;font-size:14px;margin-top:10px;}
 .bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;}
 .fill{height:100%;width:0%;background:#4da3ff;}
 .output{margin-top:20px;font-family:monospace;opacity:0.85;}
@@ -43,40 +34,21 @@ color:#e8ecf1;
 font-size:14px;
 margin-top:20px;
 }
-textarea{
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#0d0f14;
-border:1px solid #1f2430;
-color:#e8ecf1;
-font-size:13px;
-resize:none;
-}
-.cta{
-display:block;
-margin-top:30px;
-padding:14px;
-border:1px solid #6da8ff;
-color:#6da8ff;
-text-decoration:none;
-cursor:pointer;
-}
-.note{margin-top:15px;font-size:13px;opacity:0.5;}
-.box{
-margin-top:30px;
-padding:16px;
-border:1px solid #1f2430;
-font-size:14px;
-opacity:0.8;
-}
 .physics{
 margin-top:20px;
 padding:16px;
 border:1px solid #1f2430;
 font-family:monospace;
 font-size:13px;
-opacity:0.75;
+opacity:0.8;
+text-align:left;
+}
+.multi{
+margin-top:20px;
+padding:16px;
+border:1px solid #1f2430;
+font-family:monospace;
+font-size:13px;
 text-align:left;
 }
 </style>
@@ -86,20 +58,12 @@ text-align:left;
 
 <div class="container">
 
-<div class="label en">ENGINE STATE</div>
-<div class="label tr" style="display:none;">SİSTEM DURUMU</div>
-
+<div class="label">ENGINE STATE</div>
 <div class="status wait" id="stateText">MONITOR</div>
-
-<div class="desc en">System stable.<br>No action required.</div>
-<div class="desc tr" style="display:none;">Sistem stabil.<br>Aksiyon gerekmiyor.</div>
-
-<div class="sub en">Input any market: BTC 1H / ETH 4H / BTC 1D</div>
-<div class="sub tr" style="display:none;">Piyasa gir</div>
 
 <div class="bar"><div class="fill" id="bar"></div></div>
 
-<input id="input" placeholder="BTC 1H">
+<input id="input" placeholder="BTC 15M">
 
 <div class="output" id="output">STATE: MONITOR</div>
 
@@ -111,12 +75,20 @@ TIME COST: -<br>
 TIMEFRAME: -
 </div>
 
+<!-- 🔴 EKLENEN MULTI PANEL -->
+<div class="multi" id="multiBox">
+15M: -<br>
+30M: -<br>
+1H: -<br>
+4H: -
+</div>
+
 </div>
 
 <script>
 
 // ===== MEMORY =====
-let memory = {}; // per symbol
+let memory = {};
 
 // ===== DATA =====
 async function fetchKlines(symbol, interval="1h", limit=500){
@@ -126,22 +98,27 @@ const data = await res.json();
 return data.map(c => parseFloat(c[4]));
 }
 
+// ===== TF MAP =====
 function mapTF(tf){
 tf=tf.toUpperCase();
+if(tf==="15M") return "15m";
+if(tf==="30M") return "30m";
 if(tf==="1H") return "1h";
 if(tf==="4H") return "4h";
 if(tf==="1D") return "1d";
 return "1h";
 }
 
-// ===== CORE ENGINE =====
+// ===== ENGINE (AYNEN) =====
 async function analyze(asset, tf){
 
 const symbol = asset.toUpperCase()+"USDT";
 const interval = mapTF(tf);
 
-// dynamic lookback
-const lookback = tf==="1H" ? 300 : tf==="4H" ? 400 : 500;
+const lookback = tf==="15M" ? 250 :
+                 tf==="30M" ? 300 :
+                 tf==="1H" ? 350 :
+                 tf==="4H" ? 450 : 500;
 
 const price = await fetchKlines(symbol, interval, lookback);
 
@@ -160,37 +137,27 @@ else Mc+=Math.abs(dP[i]);
 
 const total = Md+Mc+1e-9;
 
-// ===== IMPROVED Θ =====
-
-// persistence (trend continuity)
+// persistence
 let persistence=0;
 for(let i=1;i<dP.length;i++){
 if(Math.sign(dP[i])===Math.sign(dP[i-1])) persistence++;
 }
 persistence /= dP.length;
 
-// base ratio
-const ratio = Md/total;
-
-// volatility compression
+// volatility
 let mean = price.reduce((a,b)=>a+b,0)/price.length;
 let variance = price.reduce((a,b)=>a+(b-mean)**2,0)/price.length;
 let sigma = Math.sqrt(variance);
-
-// normalized sigma
 let sigmaNorm = Math.min(sigma/100,1);
 
-// FINAL Θ
-const theta = (ratio*0.5 + persistence*0.3 + (1-sigmaNorm)*0.2);
-
-// R
+// Θ
+const theta = (Md/total)*0.5 + persistence*0.3 + (1-sigmaNorm)*0.2;
 const R = Mc/total;
 
-// dTheta
 let prevTheta = memory[symbol]?.lastTheta || theta;
 let dTheta = theta - prevTheta;
 
-// ===== COST =====
+// COST
 let dominant = Md > Mc ? 1 : -1;
 let num=0, den=0;
 
@@ -204,7 +171,7 @@ num += w;
 
 const Cs = num/(den+1e-9);
 
-// ===== REAL MEMORY (A_s) =====
+// MEMORY
 if(!memory[symbol]){
 memory[symbol]={As:0,lastTheta:theta};
 }
@@ -214,11 +181,11 @@ memory[symbol].lastTheta = theta;
 
 const As = memory[symbol].As;
 
-// ===== BREAK =====
+// BREAK
 let B=0;
 if(Cs>0.6 || (As>200 && Cs>0.25)) B=1;
 
-// ===== STATE =====
+// STATE
 let state, phase, structure, timeCost;
 
 if(sigmaNorm < 0.3){
@@ -268,7 +235,7 @@ const val=e.target.value.trim();
 if(!val) return;
 const parts=val.split(" ");
 currentAsset=parts[0];
-currentTF=parts[1]||"1H";
+currentTF=parts[1]||"15M";
 updateUI();
 }
 });
@@ -276,6 +243,7 @@ updateUI();
 async function updateUI(){
 if(!currentAsset) return;
 
+// MAIN
 const res = await analyze(currentAsset,currentTF);
 
 const stateEl=document.getElementById("stateText");
@@ -290,7 +258,7 @@ document.getElementById("bar").style.width=res.friction+"%";
 
 document.getElementById("output").innerHTML=`
 STATE: ${res.state}<br>
-FRICTION: ${res.friction}<br>
+FRICTION: ${res.friction}
 `;
 
 document.getElementById("physicsBox").innerHTML=`
@@ -300,6 +268,20 @@ STRUCTURE: ${res.structure}<br>
 TIME COST: ${res.timeCost}<br>
 TIMEFRAME: ${res.tf}
 `;
+
+// 🔴 MULTI (EKLENEN)
+const tf15 = await analyze(currentAsset,"15M");
+const tf30 = await analyze(currentAsset,"30M");
+const tf1h = await analyze(currentAsset,"1H");
+const tf4h = await analyze(currentAsset,"4H");
+
+document.getElementById("multiBox").innerHTML = `
+15M: ${tf15.state} (${tf15.friction})<br>
+30M: ${tf30.state} (${tf30.friction})<br>
+1H: ${tf1h.state} (${tf1h.friction})<br>
+4H: ${tf4h.state} (${tf4h.friction})
+`;
+
 }
 
 setInterval(updateUI, 6000);
