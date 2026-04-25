@@ -120,28 +120,29 @@ font-size:14px;
 .ma-cta-hero{margin-top:20px;}
 .ma-cta-hero a{color:#6da8ff;text-decoration:none;font-size:15px;}
 
-/* EKLENEN VE MOBİL UYUMLU MATRİS */
 .ma-logic{margin-top:30px;font-size:15px;line-height:1.7;opacity:.85;}
 .ma-logic .spacer{height:16px;}
 
+/* TABLO HİZALAMA VE KAYMA ÖNLEYİCİ */
 .matrix-wrapper{
   margin-top:40px;
-  overflow-x:auto; /* Mobilde yatay kaydırma sağlar */
+  overflow-x:auto; /* Sadece tablonun kaymasını sağlar, sayfa sabit kalır */
   border: 1px solid #1f2430;
   border-radius: 4px;
   background: #0d0f14;
+  -webkit-overflow-scrolling: touch;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  font-size:12px; /* Biraz daha küçültüldü sütun sığması için */
+  font-size:12px;
   text-align:left;
-  min-width: 700px; /* Sütunların birbirine girmesini engeller */
+  min-width: 780px; /* Sütunların birbirine girmesini fiziksel olarak engeller */
 }
 
 th{
-  padding:10px;
+  padding:12px 10px;
   background: #11151c;
   border-bottom:1px solid #6da8ff;
   color:#6da8ff;
@@ -152,9 +153,10 @@ th{
 }
 
 td{
-  padding:10px;
+  padding:12px 10px;
   border-bottom:1px solid #1f2430;
   line-height:1.4;
+  white-space: nowrap; /* Metinlerin alt satıra kırılmasını engeller, hiza korur */
 }
 
 .phase-col{
@@ -162,9 +164,10 @@ td{
   font-weight:600;
   font-family: monospace;
   background: #11151c;
-  position: sticky; /* Mobilde ilk sütun sabit kalabilir */
+  position: sticky; /* Mobilde ilk sütun solda çakılı kalır */
   left: 0;
-  min-width: 100px;
+  z-index: 5;
+  border-right: 1px solid #1f2430;
 }
 
 </style>  </head>  <body>  <div id="nav"></div>  <script>
@@ -211,7 +214,7 @@ Sistem artık tanımlanmıyor.<br>
     <table>
         <thead>
             <tr>
-                <th class="en phase-col">PHASE</th><th class="tr phase-col" style="display:none;">FAZ</th>
+                <th class="phase-col">PHASE / FAZ</th>
                 <th class="en">AI AGENT</th><th class="tr" style="display:none;">AI AJAN</th>
                 <th class="en">INDIVIDUAL</th><th class="tr" style="display:none;">BİREY</th>
                 <th class="en">STATE</th><th class="tr" style="display:none;">DEVLET</th>
