@@ -120,16 +120,51 @@ font-size:14px;
 .ma-cta-hero{margin-top:20px;}
 .ma-cta-hero a{color:#6da8ff;text-decoration:none;font-size:15px;}
 
-/* EKLENEN */
+/* EKLENEN VE MOBİL UYUMLU MATRİS */
 .ma-logic{margin-top:30px;font-size:15px;line-height:1.7;opacity:.85;}
 .ma-logic .spacer{height:16px;}
 
-/* MATRIX TABLE */
-.matrix-container{margin-top:40px;overflow-x:auto;}
-table{width:100%;border-collapse:collapse;font-size:13px;text-align:left;opacity:0.85;}
-th{padding:12px;border-bottom:1px solid #6da8ff;color:#6da8ff;font-weight:600;letter-spacing:1px;font-size:11px;}
-td{padding:12px;border-bottom:1px solid #1f2430;line-height:1.4;}
-.phase-col{color:#6da8ff;font-weight:600;font-family:monospace;}
+.matrix-wrapper{
+  margin-top:40px;
+  overflow-x:auto; /* Mobilde yatay kaydırma sağlar */
+  border: 1px solid #1f2430;
+  border-radius: 4px;
+  background: #0d0f14;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+  text-align:left;
+  min-width: 600px; /* Sütunların birbirine girmesini engeller */
+}
+
+th{
+  padding:12px;
+  background: #11151c;
+  border-bottom:1px solid #6da8ff;
+  color:#6da8ff;
+  font-weight:600;
+  letter-spacing:1px;
+  font-size:11px;
+  text-transform: uppercase;
+}
+
+td{
+  padding:12px;
+  border-bottom:1px solid #1f2430;
+  line-height:1.4;
+}
+
+.phase-col{
+  color:#6da8ff;
+  font-weight:600;
+  font-family: monospace;
+  background: #11151c;
+  position: sticky; /* Mobilde ilk sütun sabit kalabilir */
+  left: 0;
+}
 
 </style>  </head>  <body>  <div id="nav"></div>  <script>
 fetch("nav.html?v=" + Date.now())
@@ -171,7 +206,7 @@ Sistem artık tanımlanmıyor.<br>
 Çalışıyor.      
 </div>
 
-<div class="matrix-container fade-in">
+<div class="matrix-wrapper fade-in">
     <table>
         <thead>
             <tr>
