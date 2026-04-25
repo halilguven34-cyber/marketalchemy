@@ -124,6 +124,13 @@ font-size:14px;
 .ma-logic{margin-top:30px;font-size:15px;line-height:1.7;opacity:.85;}
 .ma-logic .spacer{height:16px;}
 
+/* MATRIX TABLE */
+.matrix-container{margin-top:40px;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13px;text-align:left;opacity:0.85;}
+th{padding:12px;border-bottom:1px solid #6da8ff;color:#6da8ff;font-weight:600;letter-spacing:1px;font-size:11px;}
+td{padding:12px;border-bottom:1px solid #1f2430;line-height:1.4;}
+.phase-col{color:#6da8ff;font-weight:600;font-family:monospace;}
+
 </style>  </head>  <body>  <div id="nav"></div>  <script>
 fetch("nav.html?v=" + Date.now())
 .then(res => res.text())
@@ -133,22 +140,62 @@ const lang = localStorage.getItem("lang") || "en";
 document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
 document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 });
-</script>  <div class="container">  <h1 class="en">Structural Decision Systems</h1>
+</script>  <div class="container">
 
-<h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>  <div class="muted en" style="margin-bottom:20px;">      
+<div class="en" style="border-left: 2px solid #6da8ff; padding-left: 20px; margin-bottom: 40px; font-style: italic; opacity: 0.9;">
+"This system is a universal decision architecture; valid for everything from an AI agent's resource management to a state's liquidation decisions during a crisis."
+</div>
+<div class="tr" style="display:none; border-left: 2px solid #6da8ff; padding-left: 20px; margin-bottom: 40px; font-style: italic; opacity: 0.9;">
+"Bu sistem; bir AI ajanın kaynak yönetiminden, bir devletin kriz anındaki tasfiye (liquidation) kararlarına kadar her alanda geçerli olan evrensel bir karar mimarisidir."
+</div>
+
+<h1 class="en">Structural Decision Systems</h1>
+<h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>
+
+<div class="muted en" style="margin-bottom:20px;">      
 Markets are where structure becomes visible.      
 </div>      
 <div class="muted tr" style="display:none; margin-bottom:20px;">      
 Piyasalar yapının görünür olduğu yerlerdir.      
-</div>  <div class="subtitle en">Market Alchemy — Applied Structural Depth</div>      
-<div class="subtitle tr" style="display:none;">Market Alchemy — Yapısal Derinlik Uygulaması</div>  <div class="dynamic-headline en">      
+</div>
+
+<div class="subtitle en">Market Alchemy — Applied Structural Depth</div>      
+<div class="subtitle tr" style="display:none;">Market Alchemy — Yapısal Derinlik Uygulaması</div>
+
+<div class="dynamic-headline en">      
 The system is no longer described.<br>      
 It is running.      
 </div>      
 <div class="dynamic-headline tr" style="display:none;">      
 Sistem artık tanımlanmıyor.<br>      
 Çalışıyor.      
-</div>    <!-- EKLENEN BLOK -->  <div class="ma-logic en">    
+</div>
+
+<div class="matrix-container fade-in">
+    <table>
+        <thead>
+            <tr>
+                <th class="en">PHASE</th><th class="tr" style="display:none;">FAZ</th>
+                <th class="en">AI AGENT</th><th class="tr" style="display:none;">AI AJAN</th>
+                <th class="en">STATE</th><th class="tr" style="display:none;">DEVLET</th>
+                <th class="en">MARKET</th><th class="tr" style="display:none;">PİYASA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td class="phase-col">AXIOM</td><td class="en">Core Priorities</td><td class="tr" style="display:none;">Temel Öncelikler</td><td class="en">Constitution</td><td class="tr" style="display:none;">Anayasal Varlık</td><td class="en">Structure</td><td class="tr" style="display:none;">Yapısal Zemin</td></tr>
+            <tr><td class="phase-col">COLLAPSE</td><td class="en">Process Spiral</td><td class="tr" style="display:none;">İşlem Sarmalı</td><td class="en">Social Crisis</td><td class="tr" style="display:none;">Sosyal Kriz</td><td class="en">Volatility</td><td class="tr" style="display:none;">Oynaklık</td></tr>
+            <tr><td class="phase-col">OBSERVER</td><td class="en">Log Analysis</td><td class="tr" style="display:none;">Log Analizi</td><td class="en">Intelligence</td><td class="tr" style="display:none;">İstihbarat</td><td class="en">Data Feed</td><td class="tr" style="display:none;">Veri Akışı</td></tr>
+            <tr><td class="phase-col">DECISION</td><td class="en">Kill Signal</td><td class="tr" style="display:none;">Durdurma Sinyali</td><td class="en">Emergency Rule</td><td class="tr" style="display:none;">OHAL Kararı</td><td class="en">Vector Selection</td><td class="tr" style="display:none;">Vektör Seçimi</td></tr>
+            <tr><td class="phase-col">EXECUTION</td><td class="en">Memory Flush</td><td class="tr" style="display:none;">RAM Tahliyesi</td><td class="en">Mobilization</td><td class="tr" style="display:none;">Mobilizasyon</td><td class="en">Order Trigger</td><td class="tr" style="display:none;">İşlem Tetikleme</td></tr>
+            <tr><td class="phase-col">LIQUIDATION</td><td class="en">Resource Purge</td><td class="tr" style="display:none;">Kaynak Temizliği</td><td class="en">Asset Sale</td><td class="tr" style="display:none;">Varlık Satışı</td><td class="en">Energy Release</td><td class="tr" style="display:none;">Enerji Boşalımı</td></tr>
+            <tr><td class="phase-col">WAITING</td><td class="en">Cool-down</td><td class="tr" style="display:none;">Soğuma Fazı</td><td class="en">Stagnation</td><td class="tr" style="display:none;">Bekleme</td><td class="en">Condensation</td><td class="tr" style="display:none;">Yoğunlaşma</td></tr>
+            <tr><td class="phase-col">VECTOR</td><td class="en">New Route</td><td class="tr" style="display:none;">Yeni Rota</td><td class="en">New Program</td><td class="tr" style="display:none;">Yeni Program</td><td class="en">Net Direction</td><td class="tr" style="display:none;">Net Yön</td></tr>
+            <tr><td class="phase-col">FIELD</td><td class="en">Stable State</td><td class="tr" style="display:none;">Kararlı Durum</td><td class="en">Status Quo</td><td class="tr" style="display:none;">Yeni Statüko</td><td class="en">New Balance</td><td class="tr" style="display:none;">Yeni Denge</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="ma-logic en">    
 This site:    
 A forced decision structure emerging under pressure.  <div class="spacer"></div>  More naked:  
 It is not a choice.  
@@ -177,7 +224,8 @@ Sıkışma →
 sahte hareketler elenir →  
 geri alınmayan yön kalır  <div class="spacer"></div>  MA, kararın verilmesi değil,  
 başka hiçbir şeyin mümkün olmamasıdır.  </div>    
-<!-- EKLENEN BLOK SON -->  <!-- HERO (orijinal) -->  <div class="ma-hero en">      
+
+<div class="ma-hero en">      
   <div class="ma-line">You are not deciding.</div>      
   <div class="ma-line">You are being forced.</div>      
   <div class="ma-line muted" style="margin-top:18px;">      
@@ -218,7 +266,8 @@ başka hiçbir şeyin mümkün olmamasıdır.  </div>
     <a href="ma.html">Sistemi gözlemle →</a>      
   </div>      
 </div>      
-<!-- HERO SON -->  <!-- ORİJİNAL BLOKLARIN TAMAMI DEVAM -->  <div class="en" style="margin-top:20px; opacity:0.7; font-size:14px;">      
+
+<div class="en" style="margin-top:20px; opacity:0.7; font-size:14px;">      
 This is a layered system.<br><br>      
 Books, research papers, and applied reports are available.<br>      
 Financial decision-support systems are under development.<br><br>      
