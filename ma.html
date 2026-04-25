@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Engine — Market Alchemy</title>
+<title>MA Engine v2 — Structural Field System</title>
 
 <style>
 body{
@@ -12,45 +12,77 @@ background:#0d0f14;
 color:#e8ecf1;
 font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 display:flex;
-flex-direction:column;
-align-items:center;
-text-align:center;
+justify-content:center;
 }
-.container{max-width:720px;margin-top:80px;padding:0 16px;}
-.label{font-size:12px;opacity:0.4;margin-bottom:10px;}
-.status{font-size:64px;font-weight:700;margin-bottom:20px;}
-.wait{ color:#8a93a3; }
-.prepare{ color:#f0c36d; }
-.act{ color:#ff5c5c; }
-.bar{width:100%;height:6px;background:#1f2430;margin-top:20px;border-radius:4px;}
-.fill{height:100%;width:0%;background:#4da3ff;}
-.output{margin-top:20px;font-family:monospace;opacity:0.85;}
+
+.container{
+max-width:780px;
+width:100%;
+padding:60px 16px;
+}
+
+.title{
+font-size:22px;
+opacity:0.7;
+margin-bottom:20px;
+}
+
+.state{
+font-size:52px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.field{
+border:1px solid #1f2430;
+padding:16px;
+margin-top:20px;
+font-family:monospace;
+font-size:13px;
+opacity:0.85;
+}
+
 input{
 width:100%;
 padding:14px;
+margin-top:20px;
 background:#0d0f14;
 border:1px solid #1f2430;
 color:#e8ecf1;
 font-size:14px;
-margin-top:20px;
 }
-.physics{
+
+.bar{
+width:100%;
+height:6px;
+background:#1f2430;
 margin-top:20px;
-padding:16px;
-border:1px solid #1f2430;
+border-radius:4px;
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+width:0%;
+background:#4da3ff;
+}
+
+.coupling{
+margin-top:20px;
 font-family:monospace;
-font-size:13px;
-opacity:0.8;
-text-align:left;
+font-size:14px;
+opacity:0.85;
 }
-.multi{
-margin-top:20px;
-padding:16px;
-border:1px solid #1f2430;
-font-family:monospace;
-font-size:13px;
-text-align:left;
+
+.small{
+font-size:12px;
+opacity:0.5;
+margin-top:10px;
 }
+
+.comp{color:#f0c36d;}
+.trans{color:#8a93a3;}
+.dis{color:#ff5c5c;}
 </style>
 </head>
 
@@ -58,233 +90,140 @@ text-align:left;
 
 <div class="container">
 
-<div class="label">ENGINE STATE</div>
-<div class="status wait" id="stateText">MONITOR</div>
+<div class="title">STRUCTURAL FIELD ENGINE v2</div>
 
-<div class="bar"><div class="fill" id="bar"></div></div>
+<div class="state trans" id="state">FIELD IDLE</div>
 
-<input id="input" placeholder="BTC 15M">
+<div class="bar"><div class="fill" id="fill"></div></div>
 
-<div class="output" id="output">STATE: MONITOR</div>
+<input id="input" placeholder="BTC">
 
-<div class="physics" id="physicsBox">
-PHASE: -<br>
-ENERGY: -<br>
-STRUCTURE: -<br>
-TIME COST: -<br>
-TIMEFRAME: -
+<div class="coupling" id="coupling">COUPLING: -</div>
+
+<div class="field" id="field">
+Θ15M: -<br>
+Θ30M: -<br>
+Θ1H: -<br>
+Θ4H: -<br><br>
+ΔΘ: -<br>
+FIELD GRADIENT: -
 </div>
 
-<!-- 🔴 EKLENEN MULTI PANEL -->
-<div class="multi" id="multiBox">
-15M: -<br>
-30M: -<br>
-1H: -<br>
-4H: -
+<div class="small">
+System: cross-timeframe structural coupling engine<br>
+State emerges from field coherence, not signal
 </div>
 
 </div>
 
 <script>
 
-// ===== MEMORY =====
-let memory = {};
+let cache={};
 
-// ===== DATA =====
-async function fetchKlines(symbol, interval="1h", limit=500){
-const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;
-const res = await fetch(url);
-const data = await res.json();
-return data.map(c => parseFloat(c[4]));
+async function fetchPrice(symbol, interval="1h", limit=200){
+const url=`https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;
+const r=await fetch(url);
+const d=await r.json();
+return d.map(x=>parseFloat(x[4]));
 }
 
-// ===== TF MAP =====
-function mapTF(tf){
-tf=tf.toUpperCase();
-if(tf==="15M") return "15m";
-if(tf==="30M") return "30m";
-if(tf==="1H") return "1h";
-if(tf==="4H") return "4h";
-if(tf==="1D") return "1d";
-return "1h";
-}
-
-// ===== ENGINE (AYNEN) =====
-async function analyze(asset, tf){
-
-const symbol = asset.toUpperCase()+"USDT";
-const interval = mapTF(tf);
-
-const lookback = tf==="15M" ? 250 :
-                 tf==="30M" ? 300 :
-                 tf==="1H" ? 350 :
-                 tf==="4H" ? 450 : 500;
-
-const price = await fetchKlines(symbol, interval, lookback);
-
-// dP
+function computeTheta(price){
 let dP=[];
 for(let i=1;i<price.length;i++){
 dP.push(price[i]-price[i-1]);
 }
 
-// Md / Mc
-let Md=0, Mc=0;
-for(let i=0;i<dP.length;i++){
-if(dP[i]>0) Md+=dP[i];
-else Mc+=Math.abs(dP[i]);
+let Md=0,Mc=0;
+for(let v of dP){
+if(v>0)Md+=v;
+else Mc+=Math.abs(v);
 }
 
-const total = Md+Mc+1e-9;
+let total=Md+Mc+1e-9;
 
-// persistence
 let persistence=0;
 for(let i=1;i<dP.length;i++){
-if(Math.sign(dP[i])===Math.sign(dP[i-1])) persistence++;
+if(Math.sign(dP[i])===Math.sign(dP[i-1]))persistence++;
 }
-persistence /= dP.length;
+persistence/=dP.length;
 
-// volatility
-let mean = price.reduce((a,b)=>a+b,0)/price.length;
-let variance = price.reduce((a,b)=>a+(b-mean)**2,0)/price.length;
-let sigma = Math.sqrt(variance);
-let sigmaNorm = Math.min(sigma/100,1);
+let mean=price.reduce((a,b)=>a+b)/price.length;
+let varr=price.reduce((a,b)=>a+(b-mean)**2,0)/price.length;
+let sigma=Math.sqrt(varr);
+let sigmaN=Math.min(sigma/100,1);
 
-// Θ
-const theta = (Md/total)*0.5 + persistence*0.3 + (1-sigmaNorm)*0.2;
-const R = Mc/total;
-
-let prevTheta = memory[symbol]?.lastTheta || theta;
-let dTheta = theta - prevTheta;
-
-// COST
-let dominant = Md > Mc ? 1 : -1;
-let num=0, den=0;
-
-for(let i=0;i<dP.length;i++){
-let w = Math.abs(dP[i]) * sigma;
-den += w;
-if(Math.sign(dP[i]) !== dominant){
-num += w;
-}
+return (Md/total)*0.5 + persistence*0.3 + (1-sigmaN)*0.2;
 }
 
-const Cs = num/(den+1e-9);
-
-// MEMORY
-if(!memory[symbol]){
-memory[symbol]={As:0,lastTheta:theta};
+function alignment(a,b,c,d){
+let arr=[a,b,c,d];
+let avg=arr.reduce((x,y)=>x+y)/4;
+let dev=arr.reduce((s,x)=>s+Math.abs(x-avg),0)/4;
+return 1-dev;
 }
 
-memory[symbol].As += theta;
-memory[symbol].lastTheta = theta;
+async function analyze(symbol){
 
-const As = memory[symbol].As;
+symbol=symbol.toUpperCase()+"USDT";
 
-// BREAK
-let B=0;
-if(Cs>0.6 || (As>200 && Cs>0.25)) B=1;
+let p15=await fetchPrice(symbol,"15m",120);
+let p30=await fetchPrice(symbol,"30m",150);
+let p1h=await fetchPrice(symbol,"1h",180);
+let p4h=await fetchPrice(symbol,"4h",220);
 
-// STATE
-let state, phase, structure, timeCost;
+let t15=computeTheta(p15);
+let t30=computeTheta(p30);
+let t1h=computeTheta(p1h);
+let t4h=computeTheta(p4h);
 
-if(sigmaNorm < 0.3){
-state="MONITOR";
-phase="COMPRESSION";
-timeCost="LOW";
+let C=alignment(t15,t30,t1h,t4h);
+
+let deltaTheta=t4h - t15;
+
+let fieldGradient=Math.abs(deltaTheta)*C;
+
+let state="FIELD IDLE";
+
+if(C>0.7 && fieldGradient>0.2){
+state="COMPRESSION FIELD";
 }
-else if(dTheta>0 && R<0.4){
-state="PREPARE";
-phase="BUILD-UP";
-timeCost="RISING";
-}
-else if(R<0.2 && dTheta>0 && B===0){
-state="ACT";
-phase="TREND";
-timeCost="HIGH";
+else if(C<0.4){
+state="DISORDER FIELD";
 }
 else{
-state="MONITOR";
-phase="DIFFUSION";
-timeCost="LOW";
+state="TRANSITION FIELD";
 }
 
-// structure
-if(R>0.5) structure="OPEN";
-else if(R>0.2) structure="FORMING";
-else structure="LOCKED";
-
-return {
-state,
-friction: Math.round(Cs*100),
-phase,
-structure,
-timeCost,
-tf
+return{
+t15,t30,t1h,t4h,C,deltaTheta,fieldGradient,state
 };
-
 }
 
-// ===== UI =====
-let currentAsset=null;
-let currentTF=null;
-
-document.getElementById("input").addEventListener("keydown", function(e){
+document.getElementById("input").addEventListener("keydown",async e=>{
 if(e.key==="Enter"){
-const val=e.target.value.trim();
-if(!val) return;
-const parts=val.split(" ");
-currentAsset=parts[0];
-currentTF=parts[1]||"15M";
-updateUI();
+let val=e.target.value.trim();
+if(!val)return;
+
+let res=await analyze(val);
+
+document.getElementById("state").innerText=res.state;
+
+document.getElementById("fill").style.width=(res.C*100)+"%";
+
+document.getElementById("coupling").innerText=
+"COUPLING INDEX: "+res.C.toFixed(3);
+
+document.getElementById("field").innerHTML=`
+Θ15M: ${res.t15.toFixed(3)}<br>
+Θ30M: ${res.t30.toFixed(3)}<br>
+Θ1H: ${res.t1h.toFixed(3)}<br>
+Θ4H: ${res.t4h.toFixed(3)}<br><br>
+ΔΘ: ${res.deltaTheta.toFixed(3)}<br>
+FIELD GRADIENT: ${res.fieldGradient.toFixed(3)}
+`;
+
 }
 });
-
-async function updateUI(){
-if(!currentAsset) return;
-
-// MAIN
-const res = await analyze(currentAsset,currentTF);
-
-const stateEl=document.getElementById("stateText");
-stateEl.innerText=res.state;
-
-stateEl.className="status "+(
-res.state==="ACT"?"act":
-res.state==="PREPARE"?"prepare":"wait"
-);
-
-document.getElementById("bar").style.width=res.friction+"%";
-
-document.getElementById("output").innerHTML=`
-STATE: ${res.state}<br>
-FRICTION: ${res.friction}
-`;
-
-document.getElementById("physicsBox").innerHTML=`
-PHASE: ${res.phase}<br>
-ENERGY: ${res.friction}<br>
-STRUCTURE: ${res.structure}<br>
-TIME COST: ${res.timeCost}<br>
-TIMEFRAME: ${res.tf}
-`;
-
-// 🔴 MULTI (EKLENEN)
-const tf15 = await analyze(currentAsset,"15M");
-const tf30 = await analyze(currentAsset,"30M");
-const tf1h = await analyze(currentAsset,"1H");
-const tf4h = await analyze(currentAsset,"4H");
-
-document.getElementById("multiBox").innerHTML = `
-15M: ${tf15.state} (${tf15.friction})<br>
-30M: ${tf30.state} (${tf30.friction})<br>
-1H: ${tf1h.state} (${tf1h.friction})<br>
-4H: ${tf4h.state} (${tf4h.friction})
-`;
-
-}
-
-setInterval(updateUI, 6000);
 
 </script>
 
