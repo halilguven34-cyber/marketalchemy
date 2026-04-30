@@ -1,259 +1,210 @@
+HTML
 <!DOCTYPE html>
 <html lang="en">
+<script>
+    if(!localStorage.getItem("lang")){
+        const userLang = navigator.language || navigator.userLanguage;
+        localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
+    }
+</script>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Market Alchemy — Structural Decision Systems</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8NGN65VXH8');
+    </script>
 
-<meta name="description" content="Market Alchemy describes probabilistic structural decision behavior under constraint. Markets reveal how structure distributes outcomes.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Alchemy — Structural Decision Systems</title>
+    <meta name="description" content="Market Alchemy is a structural decision system based on Structural Depth. Markets are where structure becomes visible.">
+    <link rel="canonical" href="https://marketalchemy.io/">
 
-<link rel="canonical" href="https://marketalchemy.io/">
+    <style>
+        body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+        .container{max-width:720px;margin:auto;padding:80px 20px;}
+        h1{font-size:36px;margin-bottom:10px;}
 
-<style>
-body{
-margin:0;
-background:#0d0f14;
-color:#e8ecf1;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-}
+        .dynamic-headline{font-size:20px;font-weight:600;opacity:0.85;margin-bottom:30px;animation:pulse 3.5s ease-in-out infinite;}
+        @keyframes pulse{0%{opacity:0.6;}50%{opacity:1;}100%{opacity:0.6;}}
 
-.container{
-max-width:720px;
-margin:auto;
-padding:80px 20px;
-}
+        .subtitle{opacity:0.7;font-size:14px;margin-bottom:30px;}
+        .section{margin-top:80px;}
+        .big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}
+        .muted{opacity:0.6;line-height:1.7;}
+        hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
 
-h1{font-size:36px;margin-bottom:10px;}
+        nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}
+        nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}
+        nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
 
-.subtitle{opacity:0.7;font-size:14px;margin-bottom:30px;}
+        .diagram{margin-top:40px;text-align:center;}
+        .diagram img{width:100%;max-width:680px;opacity:0.9;}
+        .diagram-caption{margin-top:12px;font-size:13px;opacity:0.5;}
 
-.dynamic-headline{
-font-size:20px;
-font-weight:600;
-opacity:0.8;
-margin-bottom:30px;
-}
+        .fade-in{opacity:0;transform:translateY(10px);transition:all 1s ease;}
+        .fade-in.visible{opacity:0.7;transform:translateY(0);}
 
-.section{margin-top:70px;}
+        .structural-block{margin-top:40px;padding:20px;border:1px solid #1f2430;background:#11151c;}
+        .structural-title{font-size:12px;letter-spacing:2px;color:#6da8ff;margin-bottom:15px;}
+        .structural-text{font-size:14px;opacity:.8;line-height:1.6;}
 
-.big{font-size:26px;font-weight:600;margin-bottom:16px;line-height:1.4;}
+        .depth-map{margin-top:60px;padding:20px;border:1px solid #1f2430;background:#11151c;}
+        .depth-title{font-size:12px;letter-spacing:2px;color:#6da8ff;margin-bottom:18px;}
+        .depth-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:14px;}
+        .depth-row span{opacity:.6;font-size:12px;}
+        .depth-row a{color:#e8ecf1;text-decoration:none;opacity:.85;}
 
-.muted{opacity:0.65;line-height:1.7;}
+        .ma-hero{margin-top:40px;display:flex;flex-direction:column;gap:10px;}
+        .ma-line{font-size:18px;line-height:1.5;opacity:0.9;}
+        .ma-core{margin-top:20px;font-size:22px;font-weight:600;color:#6da8ff;}
+        .ma-cta-hero{margin-top:20px;}
+        .ma-cta-hero a{color:#6da8ff;text-decoration:none;font-size:15px;}
 
-hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
+        .ma-logic{margin-top:30px;font-size:15px;line-height:1.7;opacity:.85;}
+        .ma-logic .spacer{height:16px;}
 
-.depth-map{
-margin-top:60px;
-padding:20px;
-border:1px solid #1f2430;
-background:#11151c;
-}
-
-.depth-row{
-display:flex;
-justify-content:space-between;
-margin-bottom:12px;
-font-size:14px;
-}
-
-.depth-row a{color:#e8ecf1;text-decoration:none;opacity:0.85;}
-.depth-row span{opacity:0.5;font-size:12px;}
-
-.protocol{
-margin-top:90px;
-padding-top:50px;
-border-top:1px solid #1f2430;
-}
-
-.protocol-item{
-padding:12px 0;
-border-bottom:1px solid #1f2430;
-}
-
-.protocol-num{
-color:#6da8ff;
-font-size:12px;
-font-family:monospace;
-}
-
-.protocol-title{font-weight:600;margin-top:6px;}
-.protocol-desc{opacity:0.55;font-size:13px;margin-top:4px;}
-</style>
-
+        .protocol-section{margin-top:100px;padding-top:60px;border-top:1px solid #1f2430;}
+        .protocol-list{list-style:none;padding:0;margin-top:20px;}
+        .protocol-item{padding:12px 0;border-bottom:1px solid #1f2430;display:flex;flex-direction:column;}
+        .protocol-num{color:#6da8ff;font-family:monospace;font-weight:700;font-size:12px;margin-bottom:4px;}
+        .protocol-name{font-weight:600;font-size:17px;}
+        .protocol-desc{opacity:0.5;font-size:13px;margin-top:4px;}
+        .protocol-meta{font-size:13px;opacity:0.6;line-height:1.6;margin-top:15px;}
+        .protocol-label{font-size:11px;color:#6da8ff;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:10px;}
+    </style>
 </head>
 
 <body>
 
+<div id="nav"></div>
+
+<script>
+fetch("nav.html?v=" + Date.now())
+.then(res => res.text())
+.then(data => {
+    document.getElementById("nav").innerHTML = data;
+    const lang = localStorage.getItem("lang") || "en";
+    document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
+    document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+});
+</script>
+
 <div class="container">
 
-<h1>Market Alchemy</h1>
+<h1 class="en">Structural Decision Systems</h1>
+<h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>
 
-<div class="subtitle">
-Probabilistic Structural Decision System
+<div class="muted en">Markets are where structure becomes visible.</div>
+<div class="muted tr" style="display:none;">Piyasalar yapının görünür olduğu yerlerdir.</div>
+
+<div class="subtitle en">Market Alchemy — Applied Structural Depth</div>
+<div class="subtitle tr" style="display:none;">Market Alchemy — Yapısal Derinlik Uygulaması</div>
+
+<div class="dynamic-headline en">The system is no longer described.<br>It is running.</div>
+<div class="dynamic-headline tr" style="display:none;">Sistem artık tanımlanmıyor.<br>Çalışıyor.</div>
+
+<div class="ma-logic en">
+This site:
+A forced decision structure under pressure.
+<div class="spacer"></div>
+It is not choice. It is necessity.
+<div class="spacer"></div>
+Instinct → pressure → collapse of alternatives → single direction → decision
+<div class="spacer"></div>
+Constraint ↑ → Ω ↓ → determinism emerges
+<div class="spacer"></div>
+Compression → invalid paths removed → remaining direction
+<div class="spacer"></div>
+It is not decision-making.
+It is elimination of impossibility.
 </div>
 
-<div class="dynamic-headline">
-Structure does not decide.<br>
-It redistributes probability.
+<div class="ma-logic tr" style="display:none;">
+Bu site:
+Basınç altında zorunlu karar yapısıdır.
+<div class="spacer"></div>
+Seçim değildir. Zorunluluktur.
+<div class="spacer"></div>
+İçgüdü → basınç → alternatiflerin çöküşü → tek yön → karar
+<div class="spacer"></div>
+Constraint ↑ → Ω ↓ → deterministikleşme
+<div class="spacer"></div>
+Sıkışma → geçersiz yollar elenir → kalan yön
+<div class="spacer"></div>
+Karar üretimi değil, imkânsızlığın elenmesidir.
 </div>
 
-<div class="section">
-<p class="big">
-Market Alchemy describes how outcomes emerge under constraint.
-</p>
+<div class="ma-hero en">
+<div class="ma-line">You are not deciding.</div>
+<div class="ma-line">You are being forced.</div>
+<div class="ma-core">Market Alchemy is decision under pressure.</div>
 
-<p class="muted">
-It is not a deterministic system.<br>
-It is a probability-shaping structure where certain paths become more likely as constraints increase.
-</p>
-
-<p class="muted">
-When constraints are low, systems explore many trajectories.<br>
-When constraints increase, the distribution of outcomes narrows.
-</p>
+<div class="diagram" style="margin-top:30px;">
+    <img src="time.diagram.jpg" alt="Structural Diagram">
+    <div class="diagram-caption">Compression → Probability Shift → Vector Emergence</div>
 </div>
 
-<hr>
-
-<div class="section">
-<p class="big">Core Principle</p>
-
-<p class="muted">
-Systems under pressure do not select a single outcome.<br>
-They shift probability mass across possible futures.
-</p>
-
-<p class="muted">
-As structural constraint increases:<br>
-- some paths lose probability<br>
-- others gain dominance<br>
-- one trajectory may become statistically dominant (not guaranteed)
-</p>
+<div class="ma-cta-hero"><a href="ma.html">Observe the system →</a></div>
 </div>
 
-<hr>
+<div class="ma-hero tr" style="display:none;">
+<div class="ma-line">Karar vermiyorsun.</div>
+<div class="ma-line">Zorlanıyorsun.</div>
+<div class="ma-core">Market Alchemy basınç altında karardır.</div>
 
-<div class="section">
-<p class="big">Structural Compression</p>
-
-<p class="muted">
-Compression reduces accessible state space (Ω reduction).
-It does not remove alternatives, but suppresses their probability.
-</p>
-
-<p class="muted">
-What appears as “decision” is often a statistical convergence effect.
-</p>
+<div class="diagram" style="margin-top:30px;">
+    <img src="time.diagram.jpg" alt="Yapısal Diyagram">
+    <div class="diagram-caption">Sıkışma → Olasılık Kayması → Vektör Oluşumu</div>
 </div>
 
-<hr>
-
-<div class="section">
-<p class="big">Containment (Structural Depth)</p>
-
-<p class="muted">
-Containment defines probability boundaries, not absolute outcomes.
-It shapes what becomes likely, not what becomes possible.
-</p>
-
-<p class="muted">
-Structural depth increases when probability distribution becomes more constrained.
-</p>
+<div class="ma-cta-hero"><a href="ma.html">Sistemi gözlemle →</a></div>
 </div>
-
-<hr>
-
-<div class="section">
-<p class="big">Market Behavior</p>
-
-<p class="muted">
-Markets do not execute deterministic paths.<br>
-They continuously reallocate probability under liquidity and constraint pressure.
-</p>
-
-<p class="muted">
-Price is the observable trace of this redistribution process.
-</p>
-</div>
-
-<hr>
-
-<div class="section">
-<p class="big">Vector Formation</p>
-
-<p class="muted">
-A vector is not a guaranteed direction.<br>
-It is a direction with increasing probability persistence after structural filtering.
-</p>
-
-<p class="muted">
-Non-reversion indicates probability dominance, not certainty.
-</p>
-</div>
-
-<hr>
 
 <div class="depth-map">
-
-<div class="big" style="margin-bottom:18px;">Structural Map</div>
-
-<div class="depth-row">
-<a href="#">Research</a><span>depth</span>
+<div class="depth-title">STRUCTURAL DEPTH MAP</div>
+<div class="depth-row"><a href="research.html">Research</a><span>Depth</span></div>
+<div class="depth-row"><a href="library.html">Library</a><span>Depth</span></div>
+<div class="depth-row"><a href="lab.html">Lab</a><span>Transition</span></div>
+<div class="depth-row"><a href="ma.html">Engine</a><span>Surface</span></div>
 </div>
 
-<div class="depth-row">
-<a href="#">Lab</a><span>transition</span>
+<div class="protocol-section">
+<div class="protocol-label">STRUCTURAL PROTOCOL</div>
+
+<div class="protocol-list">
+<div class="protocol-item"><span class="protocol-num">01</span><span class="protocol-name">Axiom</span></div>
+<div class="protocol-item"><span class="protocol-num">02</span><span class="protocol-name">Collapse</span></div>
+<div class="protocol-item"><span class="protocol-num">03</span><span class="protocol-name">Observer</span></div>
+<div class="protocol-item"><span class="protocol-num">04</span><span class="protocol-name">Decision</span></div>
+<div class="protocol-item"><span class="protocol-num">05</span><span class="protocol-name">Execution</span></div>
+<div class="protocol-item"><span class="protocol-num">06</span><span class="protocol-name">Vector</span></div>
 </div>
 
-<div class="depth-row">
-<a href="#">Engine</a><span>application</span>
-</div>
-
-</div>
-
-<div class="protocol">
-
-<div class="big">Structural Process</div>
-
-<div class="protocol-item">
-<div class="protocol-num">01</div>
-<div class="protocol-title">State Initialization</div>
-<div class="protocol-desc">System begins in high-entropy configuration space.</div>
-</div>
-
-<div class="protocol-item">
-<div class="protocol-num">02</div>
-<div class="protocol-title">Constraint Emergence</div>
-<div class="protocol-desc">External/internal pressure reduces accessible paths.</div>
-</div>
-
-<div class="protocol-item">
-<div class="protocol-num">03</div>
-<div class="protocol-title">Probability Compression</div>
-<div class="protocol-desc">Some trajectories become statistically suppressed.</div>
-</div>
-
-<div class="protocol-item">
-<div class="protocol-num">04</div>
-<div class="protocol-title">Convergence Zone</div>
-<div class="protocol-desc">Distribution narrows toward dominant outcomes.</div>
-</div>
-
-<div class="protocol-item">
-<div class="protocol-num">05</div>
-<div class="protocol-title">Observed Vector</div>
-<div class="protocol-desc">Most persistent direction emerges as market behavior.</div>
-</div>
-
+<div class="protocol-meta">“This is not a cycle. It is structural deepening.”</div>
 </div>
 
 <hr>
 
 <div style="font-size:11px;opacity:0.4;text-align:center;">
-Market Alchemy — Structural Probability System
+Market Alchemy • Halil İbrahim Güven
 </div>
 
 </div>
+
+<script>
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+});
+document.querySelectorAll(".fade-in").forEach(el=>observer.observe(el));
+</script>
 
 </body>
 </html>
