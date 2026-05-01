@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Engine v2 — Structural Field System</title>
+<title>MA Engine v2 — Adaptive Structural Field System</title>
 
 <style>
 body{
@@ -33,6 +33,21 @@ font-weight:700;
 margin-bottom:10px;
 }
 
+.bar{
+width:100%;
+height:6px;
+background:#1f2430;
+margin-top:20px;
+border-radius:4px;
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+width:0%;
+background:#4da3ff;
+}
+
 .field{
 border:1px solid #1f2430;
 padding:16px;
@@ -52,28 +67,6 @@ color:#e8ecf1;
 font-size:14px;
 }
 
-.bar{
-width:100%;
-height:6px;
-background:#1f2430;
-margin-top:20px;
-border-radius:4px;
-overflow:hidden;
-}
-
-.fill{
-height:100%;
-width:0%;
-background:#4da3ff;
-}
-
-.coupling{
-margin-top:20px;
-font-family:monospace;
-font-size:14px;
-opacity:0.85;
-}
-
 .small{
 font-size:12px;
 opacity:0.5;
@@ -90,7 +83,7 @@ margin-top:10px;
 
 <div class="container">
 
-<div class="title">STRUCTURAL FIELD ENGINE v2</div>
+<div class="title">ADAPTIVE STRUCTURAL FIELD ENGINE v2</div>
 
 <div class="state trans" id="state">FIELD IDLE</div>
 
@@ -98,27 +91,33 @@ margin-top:10px;
 
 <input id="input" placeholder="BTC">
 
-<div class="coupling" id="coupling">COUPLING: -</div>
-
 <div class="field" id="field">
 Θ15M: -<br>
 Θ30M: -<br>
 Θ1H: -<br>
 Θ4H: -<br><br>
-ΔΘ: -<br>
-FIELD GRADIENT: -
+COUPLING INDEX: -<br>
+STRUCTURAL GRADIENT: -<br>
+ADAPTIVE WEIGHT DRIFT: -
 </div>
 
 <div class="small">
-System: cross-timeframe structural coupling engine<br>
-State emerges from field coherence, not signal
+System: adaptive multi-timeframe structural decision engine<br>
+State = emergent from weighted structural coherence
 </div>
 
 </div>
 
 <script>
 
-let cache={};
+let weights = {
+w15: 0.25,
+w30: 0.25,
+w1h: 0.25,
+w4h: 0.25
+};
+
+let learningRate = 0.02;
 
 async function fetchPrice(symbol, interval="1h", limit=200){
 const url=`https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;
@@ -127,19 +126,19 @@ const d=await r.json();
 return d.map(x=>parseFloat(x[4]));
 }
 
-function computeTheta(price){
+function theta(price){
 let dP=[];
 for(let i=1;i<price.length;i++){
 dP.push(price[i]-price[i-1]);
 }
 
-let Md=0,Mc=0;
+let pos=0,neg=0;
 for(let v of dP){
-if(v>0)Md+=v;
-else Mc+=Math.abs(v);
+if(v>0)pos+=v;
+else neg+=Math.abs(v);
 }
 
-let total=Md+Mc+1e-9;
+let total=pos+neg+1e-9;
 
 let persistence=0;
 for(let i=1;i<dP.length;i++){
@@ -147,19 +146,32 @@ if(Math.sign(dP[i])===Math.sign(dP[i-1]))persistence++;
 }
 persistence/=dP.length;
 
-let mean=price.reduce((a,b)=>a+b)/price.length;
-let varr=price.reduce((a,b)=>a+(b-mean)**2,0)/price.length;
-let sigma=Math.sqrt(varr);
-let sigmaN=Math.min(sigma/100,1);
-
-return (Md/total)*0.5 + persistence*0.3 + (1-sigmaN)*0.2;
+return (pos/total)*0.5 + persistence*0.5;
 }
 
-function alignment(a,b,c,d){
-let arr=[a,b,c,d];
-let avg=arr.reduce((x,y)=>x+y)/4;
-let dev=arr.reduce((s,x)=>s+Math.abs(x-avg),0)/4;
-return 1-dev;
+function weightedCoupling(t15,t30,t1h,t4h){
+return t15*weights.w15 +
+       t30*weights.w30 +
+       t1h*weights.w1h +
+       t4h*weights.w4h;
+}
+
+function updateWeights(t15,t30,t1h,t4h,feedback){
+
+// simple adaptive drift (V2 core learning idea)
+
+weights.w15 += learningRate * feedback * t15;
+weights.w30 += learningRate * feedback * t30;
+weights.w1h += learningRate * feedback * t1h;
+weights.w4h += learningRate * feedback * t4h;
+
+// normalize
+let sum = weights.w15+weights.w30+weights.w1h+weights.w4h;
+
+weights.w15/=sum;
+weights.w30/=sum;
+weights.w1h/=sum;
+weights.w4h/=sum;
 }
 
 async function analyze(symbol){
@@ -171,32 +183,31 @@ let p30=await fetchPrice(symbol,"30m",150);
 let p1h=await fetchPrice(symbol,"1h",180);
 let p4h=await fetchPrice(symbol,"4h",220);
 
-let t15=computeTheta(p15);
-let t30=computeTheta(p30);
-let t1h=computeTheta(p1h);
-let t4h=computeTheta(p4h);
+let t15=theta(p15);
+let t30=theta(p30);
+let t1h=theta(p1h);
+let t4h=theta(p4h);
 
-let C=alignment(t15,t30,t1h,t4h);
+let C=weightedCoupling(t15,t30,t1h,t4h);
 
-let deltaTheta=t4h - t15;
+// structural gradient
+let grad = Math.abs(t4h - t15);
 
-let fieldGradient=Math.abs(deltaTheta)*C;
+// pseudo feedback (placeholder for V2 learning signal)
+let feedback = C > 0.6 ? 1 : -1;
 
-let state="FIELD IDLE";
+updateWeights(t15,t30,t1h,t4h,feedback);
 
-if(C>0.7 && fieldGradient>0.2){
+let state="TRANSITION FIELD";
+
+if(C>0.75 && grad>0.2){
 state="COMPRESSION FIELD";
 }
 else if(C<0.4){
 state="DISORDER FIELD";
 }
-else{
-state="TRANSITION FIELD";
-}
 
-return{
-t15,t30,t1h,t4h,C,deltaTheta,fieldGradient,state
-};
+return {t15,t30,t1h,t4h,C,grad,state,weights};
 }
 
 document.getElementById("input").addEventListener("keydown",async e=>{
@@ -210,16 +221,18 @@ document.getElementById("state").innerText=res.state;
 
 document.getElementById("fill").style.width=(res.C*100)+"%";
 
-document.getElementById("coupling").innerText=
-"COUPLING INDEX: "+res.C.toFixed(3);
-
 document.getElementById("field").innerHTML=`
 Θ15M: ${res.t15.toFixed(3)}<br>
 Θ30M: ${res.t30.toFixed(3)}<br>
 Θ1H: ${res.t1h.toFixed(3)}<br>
 Θ4H: ${res.t4h.toFixed(3)}<br><br>
-ΔΘ: ${res.deltaTheta.toFixed(3)}<br>
-FIELD GRADIENT: ${res.fieldGradient.toFixed(3)}
+COUPLING INDEX: ${res.C.toFixed(3)}<br>
+STRUCTURAL GRADIENT: ${res.grad.toFixed(3)}<br><br>
+WEIGHTS:<br>
+w15: ${res.weights.w15.toFixed(3)}<br>
+w30: ${res.weights.w30.toFixed(3)}<br>
+w1h: ${res.weights.w1h.toFixed(3)}<br>
+w4h: ${res.weights.w4h.toFixed(3)}
 `;
 
 }
