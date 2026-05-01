@@ -1,93 +1,213 @@
-HTML
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+
 <script>
     if(!localStorage.getItem("lang")){
         const userLang = navigator.language || navigator.userLanguage;
-        localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
+        localStorage.setItem(
+            "lang",
+            userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
+        );
     }
 </script>
 
-<head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-8NGN65VXH8');
-    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8NGN65VXH8');
+</script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Alchemy — Structural Decision Systems</title>
-    <meta name="description" content="Market Alchemy is a structural decision system based on Structural Depth. Markets are where structure becomes visible.">
-    <link rel="canonical" href="https://marketalchemy.io/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
-        .container{max-width:720px;margin:auto;padding:80px 20px;}
-        h1{font-size:36px;margin-bottom:10px;}
+<title>Market Alchemy — Structural Decision Systems</title>
 
-        .dynamic-headline{font-size:20px;font-weight:600;opacity:0.85;margin-bottom:30px;animation:pulse 3.5s ease-in-out infinite;}
-        @keyframes pulse{0%{opacity:0.6;}50%{opacity:1;}100%{opacity:0.6;}}
+<meta name="description" content="Market Alchemy is a structural decision system based on Structural Depth. Markets are where structure becomes visible.">
+<link rel="canonical" href="https://marketalchemy.io/">
 
-        .subtitle{opacity:0.7;font-size:14px;margin-bottom:30px;}
-        .section{margin-top:80px;}
-        .big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}
-        .muted{opacity:0.6;line-height:1.7;}
-        hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
+<style>
+    body{
+        margin:0;
+        background:#0d0f14;
+        color:#e8ecf1;
+        font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    }
 
-        nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;}
-        nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;}
-        nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
+    /* NAV FIXED LAYOUT STABILITY */
+    #nav{
+        position:sticky;
+        top:0;
+        z-index:1000;
+        background:#0d0f14;
+        min-height:48px;
+    }
 
-        .diagram{margin-top:40px;text-align:center;}
-        .diagram img{width:100%;max-width:680px;opacity:0.9;}
-        .diagram-caption{margin-top:12px;font-size:13px;opacity:0.5;}
+    .container{
+        max-width:720px;
+        margin:auto;
+        padding:80px 20px;
+    }
 
-        .fade-in{opacity:0;transform:translateY(10px);transition:all 1s ease;}
-        .fade-in.visible{opacity:0.7;transform:translateY(0);}
+    h1{font-size:36px;margin-bottom:10px;}
 
-        .structural-block{margin-top:40px;padding:20px;border:1px solid #1f2430;background:#11151c;}
-        .structural-title{font-size:12px;letter-spacing:2px;color:#6da8ff;margin-bottom:15px;}
-        .structural-text{font-size:14px;opacity:.8;line-height:1.6;}
+    .dynamic-headline{
+        font-size:20px;
+        font-weight:600;
+        opacity:0.85;
+        margin-bottom:30px;
+        animation:pulse 3.5s ease-in-out infinite;
+    }
 
-        .depth-map{margin-top:60px;padding:20px;border:1px solid #1f2430;background:#11151c;}
-        .depth-title{font-size:12px;letter-spacing:2px;color:#6da8ff;margin-bottom:18px;}
-        .depth-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:14px;}
-        .depth-row span{opacity:.6;font-size:12px;}
-        .depth-row a{color:#e8ecf1;text-decoration:none;opacity:.85;}
+    @keyframes pulse{
+        0%{opacity:0.6;}
+        50%{opacity:1;}
+        100%{opacity:0.6;}
+    }
 
-        .ma-hero{margin-top:40px;display:flex;flex-direction:column;gap:10px;}
-        .ma-line{font-size:18px;line-height:1.5;opacity:0.9;}
-        .ma-core{margin-top:20px;font-size:22px;font-weight:600;color:#6da8ff;}
-        .ma-cta-hero{margin-top:20px;}
-        .ma-cta-hero a{color:#6da8ff;text-decoration:none;font-size:15px;}
+    .subtitle{opacity:0.7;font-size:14px;margin-bottom:30px;}
 
-        .ma-logic{margin-top:30px;font-size:15px;line-height:1.7;opacity:.85;}
-        .ma-logic .spacer{height:16px;}
+    .section{margin-top:80px;}
 
-        .protocol-section{margin-top:100px;padding-top:60px;border-top:1px solid #1f2430;}
-        .protocol-list{list-style:none;padding:0;margin-top:20px;}
-        .protocol-item{padding:12px 0;border-bottom:1px solid #1f2430;display:flex;flex-direction:column;}
-        .protocol-num{color:#6da8ff;font-family:monospace;font-weight:700;font-size:12px;margin-bottom:4px;}
-        .protocol-name{font-weight:600;font-size:17px;}
-        .protocol-desc{opacity:0.5;font-size:13px;margin-top:4px;}
-        .protocol-meta{font-size:13px;opacity:0.6;line-height:1.6;margin-top:15px;}
-        .protocol-label{font-size:11px;color:#6da8ff;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:10px;}
-    </style>
+    .big{font-size:28px;font-weight:600;margin-bottom:18px;line-height:1.4;}
+
+    .muted{opacity:0.6;line-height:1.7;}
+
+    hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}
+
+    nav{
+        width:100%;
+        display:flex;
+        gap:18px;
+        padding:14px 16px;
+        border-bottom:1px solid #1f2430;
+        font-size:14px;
+        overflow-x:auto;
+    }
+
+    nav a{
+        color:#e8ecf1;
+        text-decoration:none;
+        opacity:0.7;
+    }
+
+    nav a.active{
+        color:#6da8ff;
+        opacity:1;
+        font-weight:600;
+    }
+
+    .diagram{margin-top:40px;text-align:center;}
+
+    .diagram img{width:100%;max-width:680px;opacity:0.9;}
+
+    .diagram-caption{margin-top:12px;font-size:13px;opacity:0.5;}
+
+    .ma-hero{margin-top:40px;display:flex;flex-direction:column;gap:10px;}
+
+    .ma-line{font-size:18px;line-height:1.5;opacity:0.9;}
+
+    .ma-core{margin-top:20px;font-size:22px;font-weight:600;color:#6da8ff;}
+
+    .ma-cta-hero{margin-top:20px;}
+
+    .ma-cta-hero a{color:#6da8ff;text-decoration:none;font-size:15px;}
+
+    .ma-logic{margin-top:30px;font-size:15px;line-height:1.7;opacity:.85;}
+
+    .spacer{height:16px;}
+
+    .depth-map{
+        margin-top:60px;
+        padding:20px;
+        border:1px solid #1f2430;
+        background:#11151c;
+    }
+
+    .depth-title{
+        font-size:12px;
+        letter-spacing:2px;
+        color:#6da8ff;
+        margin-bottom:18px;
+    }
+
+    .depth-row{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:12px;
+        font-size:14px;
+    }
+
+    .depth-row span{opacity:.6;font-size:12px;}
+
+    .depth-row a{
+        color:#e8ecf1;
+        text-decoration:none;
+        opacity:.85;
+    }
+
+    .protocol-section{
+        margin-top:100px;
+        padding-top:60px;
+        border-top:1px solid #1f2430;
+    }
+
+    .protocol-list{list-style:none;padding:0;margin-top:20px;}
+
+    .protocol-item{
+        padding:12px 0;
+        border-bottom:1px solid #1f2430;
+        display:flex;
+        flex-direction:column;
+    }
+
+    .protocol-num{
+        color:#6da8ff;
+        font-family:monospace;
+        font-weight:700;
+        font-size:12px;
+        margin-bottom:4px;
+    }
+
+    .protocol-name{font-weight:600;font-size:17px;}
+
+    .protocol-meta{
+        font-size:13px;
+        opacity:0.6;
+        line-height:1.6;
+        margin-top:15px;
+    }
+
+    .protocol-label{
+        font-size:11px;
+        color:#6da8ff;
+        letter-spacing:2px;
+        text-transform:uppercase;
+        font-weight:700;
+        margin-bottom:10px;
+    }
+</style>
+
 </head>
 
 <body>
 
-<div id="nav"></div>
+<div id="nav" style="opacity:0;"></div>
 
 <script>
 fetch("nav.html?v=" + Date.now())
 .then(res => res.text())
 .then(data => {
-    document.getElementById("nav").innerHTML = data;
+    const nav = document.getElementById("nav");
+    nav.innerHTML = data;
+    nav.style.opacity = "1";
+
     const lang = localStorage.getItem("lang") || "en";
+
     document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
     document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
 });
@@ -104,8 +224,13 @@ fetch("nav.html?v=" + Date.now())
 <div class="subtitle en">Market Alchemy — Applied Structural Depth</div>
 <div class="subtitle tr" style="display:none;">Market Alchemy — Yapısal Derinlik Uygulaması</div>
 
-<div class="dynamic-headline en">The system is no longer described.<br>It is running.</div>
-<div class="dynamic-headline tr" style="display:none;">Sistem artık tanımlanmıyor.<br>Çalışıyor.</div>
+<div class="dynamic-headline en">
+The system is no longer described.<br>It is running.
+</div>
+
+<div class="dynamic-headline tr" style="display:none;">
+Sistem artık tanımlanmıyor.<br>Çalışıyor.
+</div>
 
 <div class="ma-logic en">
 This site:
@@ -143,7 +268,7 @@ Karar üretimi değil, imkânsızlığın elenmesidir.
 <div class="ma-line">You are being forced.</div>
 <div class="ma-core">Market Alchemy is decision under pressure.</div>
 
-<div class="diagram" style="margin-top:30px;">
+<div class="diagram">
     <img src="time.diagram.jpg" alt="Structural Diagram">
     <div class="diagram-caption">Compression → Probability Shift → Vector Emergence</div>
 </div>
@@ -156,7 +281,7 @@ Karar üretimi değil, imkânsızlığın elenmesidir.
 <div class="ma-line">Zorlanıyorsun.</div>
 <div class="ma-core">Market Alchemy basınç altında karardır.</div>
 
-<div class="diagram" style="margin-top:30px;">
+<div class="diagram">
     <img src="time.diagram.jpg" alt="Yapısal Diyagram">
     <div class="diagram-caption">Sıkışma → Olasılık Kayması → Vektör Oluşumu</div>
 </div>
@@ -194,17 +319,6 @@ Market Alchemy • Halil İbrahim Güven
 </div>
 
 </div>
-
-<script>
-const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("visible");
-        }
-    });
-});
-document.querySelectorAll(".fade-in").forEach(el=>observer.observe(el));
-</script>
 
 </body>
 </html>
