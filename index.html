@@ -11,7 +11,7 @@ if(!localStorage.getItem("lang")){
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Market Alchemy — Decision Physics Engine</title>
+<title>Market Alchemy — Structural Law</title>
 
 <style>
 :root{
@@ -31,17 +31,17 @@ body{
     overflow-x: hidden;
 }
 
-/* ---------------- BACKGROUND FIELD (CANVAS) ---------------- */
+/* ---------------- BACKGROUND FIELD ---------------- */
 canvas#field{
     position:fixed;
     top:0; left:0;
     width:100%; height:100%;
     z-index:0;
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0.35;
 }
 
-/* ---------------- CONTENT CONTAINER ---------------- */
+/* ---------------- CONTAINER ---------------- */
 .container{
     position: relative;
     max-width:720px;
@@ -51,7 +51,6 @@ canvas#field{
 }
 
 /* HEADER */
-header{ margin-bottom: 60px; }
 h1{
     font-size:24px; margin:0; font-weight: 600;
     border-left:2px solid var(--accent); padding-left:15px;
@@ -62,15 +61,14 @@ h1{
     margin-top:10px; padding-left: 17px;
 }
 
-/* ENGINE CORE BLOCK */
+/* CORE BLOCK */
 .engine{
     margin:60px 0;
     padding:40px;
     border:1px solid var(--border);
-    background: rgba(17, 21, 28, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(17, 21, 28, 0.85);
+    backdrop-filter: blur(12px);
     position: relative;
-    overflow: hidden;
 }
 
 .engine::before {
@@ -79,14 +77,14 @@ h1{
 }
 
 .engine-title{ font-size:10px; letter-spacing:3px; color:var(--accent); margin-bottom:30px; font-weight: bold; }
-.engine-line{ font-size:15px; opacity:0.9; margin-bottom: 20px; }
+.engine-line{ font-size:15px; margin-bottom: 20px; }
 .engine-line span{ color:var(--accent); font-weight: bold; }
 
 .flow{ margin-top:40px; font-size:14px; color:var(--muted); }
 .flow div{ margin-bottom: 12px; }
 .flow div::before{ content:"→ "; color:var(--accent); }
 
-/* CTA */
+/* CTA - Yönlendirme: ma.html */
 .cta{
     margin-top:40px; display:inline-block; color:var(--accent);
     text-decoration:none; font-size:13px; letter-spacing: 1px;
@@ -96,7 +94,7 @@ h1{
 }
 .cta:hover { background: var(--accent); color: var(--bg); box-shadow: 0 0 20px rgba(109, 168, 255, 0.2); }
 
-/* DEPTH MAP */
+/* DEPTH MAP (Law Layer Güncellemesi) */
 .depth{ margin-top:80px; border-top:1px solid var(--border); }
 .depth a{
     display:flex; justify-content: space-between; align-items: center;
@@ -109,7 +107,7 @@ h1{
 /* PROTOCOL GRID */
 .protocol{
     margin-top:100px; display:grid; grid-template-columns:repeat(3,1fr);
-    border:1px solid var(--border); opacity: 0.4; background: rgba(13, 15, 20, 0.8);
+    border:1px solid var(--border); opacity: 0.4;
 }
 .protocol div{ padding:15px; font-size:11px; border:1px solid var(--border); text-align: center; }
 .protocol b{ color:var(--accent); display:block; margin-bottom:5px; font-size:9px; }
@@ -151,13 +149,13 @@ h1{
         <div>Sonuç seçim değil, kalandır</div>
     </div>
 
-    <a class="cta" href="law.html">Enter Engine →</a>
+    <a class="cta" href="ma.html">Enter Engine →</a>
 </section>
 
 <nav class="depth">
     <a href="research.html">Research Layer <span>01 — Constraints</span></a>
     <a href="lab.html">Lab Layer <span>02 — Observation</span></a>
-    <a href="law.html">Engine Layer <span>03 — Vector (Law)</span></a>
+    <a href="ma.html">Law Layer <span>03 — Vector (Law)</span></a>
 </nav>
 
 <footer class="protocol">
@@ -173,56 +171,44 @@ h1{
 </div>
 
 <script>
-/* ---------------- LANGUAGE LOGIC ---------------- */
+/* DİL MANTIĞI */
 const lang = localStorage.getItem("lang") || "en";
 if(lang === "tr") {
     document.querySelectorAll(".en").forEach(e => e.style.display = "none");
     document.querySelectorAll(".tr").forEach(e => e.style.display = "block");
 }
 
-/* ---------------- FIELD PHYSICS (CANVAS) ---------------- */
+/* ARKA PLAN ALAN FİZİĞİ */
 const c = document.getElementById("field");
 const ctx = c.getContext("2d");
 let t = 0;
 let distortion = 0;
 
-function resize(){
-    c.width = window.innerWidth;
-    c.height = window.innerHeight;
-}
+function resize(){ c.width = window.innerWidth; c.height = window.innerHeight; }
 resize();
 window.addEventListener("resize", resize);
 
 function draw(){
     ctx.clearRect(0,0,c.width,c.height);
     ctx.beginPath();
-    ctx.lineWidth = 1;
-
     for(let x=0; x<c.width; x+=2){
         let base = Math.sin(x*0.008 + t) * 50 + Math.cos(x*0.003 + t*0.7) * 30;
         let field = base * (1 + distortion);
         let y = c.height/2 + field;
         if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
     }
-
     ctx.strokeStyle = "#6da8ff";
     ctx.globalAlpha = 0.2;
     ctx.stroke();
-
     t += 0.015;
-    distortion *= 0.98; // Friction
+    distortion *= 0.98;
     requestAnimationFrame(draw);
 }
 draw();
 
-/* Natural Input Coupling */
 window.addEventListener("mousemove", (e)=>{
     let norm = e.clientX / window.innerWidth;
     distortion += Math.abs(norm - 0.5) * 0.05;
-});
-
-window.addEventListener("scroll", ()=>{
-    distortion += 0.05;
 });
 </script>
 
