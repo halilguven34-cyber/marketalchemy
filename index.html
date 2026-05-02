@@ -1,155 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-        if(!localStorage.getItem("lang")){
-            const userLang = navigator.language || navigator.userLanguage;
-            localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
-        }
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-8NGN65VXH8');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Alchemy — Structural Decision Systems</title>
-    <style>
-        :root { --accent: #6da8ff; --bg: #0d0f14; --surface: #11151c; --border: #1f2430; }
-        body { margin: 0; background: var(--bg); color: #e8ecf1; font-family: 'JetBrains Mono', monospace, -apple-system; overflow-x: hidden; }
-        #nav { position: sticky; top: 0; z-index: 1000; background: var(--bg); min-height: 48px; border-bottom: 1px solid var(--border); }
-        .container { max-width: 720px; margin: auto; padding: 60px 20px; }
-        
-        /* Typography */
-        h1 { font-size: 24px; letter-spacing: -0.5px; border-left: 3px solid var(--accent); padding-left: 15px; margin-bottom: 5px; }
-        .muted { opacity: 0.5; font-size: 13px; margin-bottom: 40px; }
-        
-        /* DECISION PHYSICS ENGINE (The Core) */
-        .engine-section { margin: 80px 0; display: flex; flex-direction: column; align-items: center; }
-        .engine-visual { position: relative; width: 300px; height: 300px; display: flex; justify-content: center; align-items: center; cursor: crosshair; }
-        
-        .huni-layer {
-            position: absolute;
-            border: 1px solid rgba(109, 168, 255, 0.15);
-            border-radius: 50%;
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-            width: calc(30px * var(--layer));
-            height: calc(30px * var(--layer));
-        }
 
-        .engine-visual:hover .huni-layer {
-            width: calc(12px * var(--layer));
-            height: calc(12px * var(--layer));
-            border-color: var(--accent);
-            box-shadow: 0 0 10px rgba(109, 168, 255, 0.2);
-        }
+<script>
+if(!localStorage.getItem("lang")){
+    const userLang = navigator.language || navigator.userLanguage;
+    localStorage.setItem(
+        "lang",
+        userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
+    );
+}
+</script>
 
-        .vector-line {
-            position: absolute;
-            width: 2px;
-            height: 0;
-            background: linear-gradient(to top, transparent, #fff, var(--accent));
-            transform: rotate(0deg);
-            transition: height 0.3s ease-out;
-            z-index: 10;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .engine-visual:active .vector-line { height: 350px; }
-        .engine-status { margin-top: 40px; font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; }
+<title>Market Alchemy — Decision Physics Engine</title>
 
-        /* Logic & Depth */
-        .ma-logic { font-size: 15px; line-height: 1.8; opacity: 0.8; margin: 40px 0; border-top: 1px solid var(--border); padding-top: 40px; }
-        .ma-logic div::before { content: ":: "; color: var(--accent); }
-        
-        .depth-map { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
-        .depth-card { padding: 20px; background: var(--surface); text-decoration: none; color: inherit; transition: 0.3s; }
-        .depth-card:hover { background: #161b25; }
-        .depth-card span { display: block; font-size: 10px; color: var(--accent); margin-bottom: 4px; }
+<style>
+:root{
+    --bg:#0d0f14;
+    --fg:#e8ecf1;
+    --muted:rgba(232,236,241,0.6);
+    --accent:#6da8ff;
+    --border:#1f2430;
+}
 
-        /* Protocol Grid (Debug Layer) */
-        .protocol-grid { margin-top: 100px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); opacity: 0.3; transition: 0.5s; }
-        .protocol-grid:hover { opacity: 0.8; }
-        .protocol-cell { background: var(--bg); padding: 15px; font-size: 10px; text-align: center; }
-        .protocol-num { display: block; font-weight: bold; color: var(--accent); margin-bottom: 2px; }
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family: 'JetBrains Mono', monospace, -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+}
 
-        .spacer { height: 20px; }
-    </style>
+.container{
+    max-width:720px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+/* HEADER */
+h1{
+    font-size:24px;
+    margin:0;
+    font-weight: 600;
+    border-left:2px solid var(--accent);
+    padding-left:15px;
+    letter-spacing: -0.5px;
+}
+
+.sub{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:10px;
+    padding-left: 17px;
+}
+
+/* ENGINE CORE (OPERATIONAL BLOCK) */
+.engine{
+    margin:60px 0;
+    padding:40px;
+    border:1px solid var(--border);
+    background: linear-gradient(145deg, #11151c 0%, #0d0f14 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.engine::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.engine-title{
+    font-size:10px;
+    letter-spacing:3px;
+    color:var(--accent);
+    margin-bottom:30px;
+    font-weight: bold;
+}
+
+.engine-line{
+    font-size:15px;
+    color:var(--fg);
+    opacity:0.9;
+    margin-bottom: 20px;
+}
+
+.engine-line span{
+    color:var(--accent);
+    font-weight: bold;
+}
+
+/* FLOW (PROCESS STEPS) */
+.flow{
+    margin-top:40px;
+    font-size:14px;
+    color:var(--muted);
+}
+
+.flow div{
+    margin-bottom: 12px;
+}
+
+.flow div::before{
+    content:"→ ";
+    color:var(--accent);
+}
+
+/* CTA */
+.cta{
+    margin-top:40px;
+    display:inline-block;
+    color:var(--accent);
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing: 1px;
+    border: 1px solid var(--accent);
+    padding: 12px 24px;
+    transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cta:hover {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 20px rgba(109, 168, 255, 0.2);
+}
+
+/* DEPTH MAP (STRUCTURE) */
+.depth{
+    margin-top:80px;
+    border-top:1px solid var(--border);
+}
+
+.depth a{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    color:var(--fg);
+    text-decoration:none;
+    border-bottom: 1px solid var(--border);
+    transition: 0.2s;
+}
+
+.depth a:hover {
+    padding-left: 10px;
+    background: rgba(109, 168, 255, 0.02);
+}
+
+.depth a span{
+    color:var(--accent);
+    font-size:10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* PROTOCOL GRID (DEBUG LAYER) */
+.protocol{
+    margin-top:100px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:1px solid var(--border);
+    opacity: 0.4;
+}
+
+.protocol div{
+    padding:15px;
+    font-size:11px;
+    border:1px solid var(--border);
+    text-align: center;
+}
+
+.protocol b{
+    color:var(--accent);
+    display:block;
+    margin-bottom:5px;
+    font-size:9px;
+}
+
+@media (max-width: 600px) {
+    .protocol { grid-template-columns: 1fr; }
+}
+</style>
+
 </head>
+
 <body>
-    <div id="nav"></div>
-    <script>
-        fetch("nav.html?v=" + Date.now()).then(res => res.text()).then(data => {
-            const nav = document.getElementById("nav");
-            nav.innerHTML = data;
-            const lang = localStorage.getItem("lang") || "en";
-            document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-            document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
-        });
-    </script>
 
-    <div class="container">
-        <header>
-            <h1 class="en">Structural Decision Systems</h1>
-            <h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>
-            <div class="muted">Market Alchemy — $t \propto \Delta \Theta$</div>
-        </header>
+<div class="container">
 
-        <div class="engine-section">
-            <div class="engine-visual">
-                <div class="huni-layer" style="--layer:9"></div>
-                <div class="huni-layer" style="--layer:8"></div>
-                <div class="huni-layer" style="--layer:7"></div>
-                <div class="huni-layer" style="--layer:6"></div>
-                <div class="huni-layer" style="--layer:5"></div>
-                <div class="huni-layer" style="--layer:4"></div>
-                <div class="huni-layer" style="--layer:3"></div>
-                <div class="huni-layer" style="--layer:2"></div>
-                <div class="huni-layer" style="--layer:1"></div>
-                <div class="vector-line"></div>
-            </div>
-            <div class="engine-status en">Awaiting Structural Pressure...</div>
-            <div class="engine-status tr" style="display:none;">Yapısal Basınç Bekleniyor...</div>
-        </div>
+<header>
+    <h1 class="en">Decision Physics Engine</h1>
+    <h1 class="tr" style="display:none;">Karar Fizik Motoru</h1>
 
-        <div class="ma-logic en">
-            <div>Decision is not choice. It is necessity.</div>
-            <div class="spacer"></div>
-            <div>Constraint ↑ → Determinism emerges.</div>
-            <div class="spacer"></div>
-            <div>The impossibility is being eliminated.</div>
-        </div>
-        <div class="ma-logic tr" style="display:none;">
-            <div>Karar seçim değildir. Zorunluluktur.</div>
-            <div class="spacer"></div>
-            <div>Kısıt ↑ → Determinizm ortaya çıkar.</div>
-            <div class="spacer"></div>
-            <div>İmkânsızlık eleniyor.</div>
-        </div>
+    <div class="sub en">Choice is eliminated. Structure remains.</div>
+    <div class="sub tr" style="display:none;">Seçim elenir. Yapı kalır.</div>
+</header>
 
-        <div class="depth-map">
-            <a href="research.html" class="depth-card"><span>Phase 01-03</span><strong>RESEARCH</strong></a>
-            <a href="lab.html" class="depth-card"><span>Phase 04-06</span><strong>LAB</strong></a>
-        </div>
+<section class="engine">
+    <div class="engine-title">CONSTRAINT COLLAPSE CORE</div>
 
-        <div class="protocol-grid">
-            <div class="protocol-cell"><span class="protocol-num">01</span> Axiom</div>
-            <div class="protocol-cell"><span class="protocol-num">02</span> Collapse</div>
-            <div class="protocol-cell"><span class="protocol-num">03</span> Observer</div>
-            <div class="protocol-cell"><span class="protocol-num">04</span> Decision</div>
-            <div class="protocol-cell"><span class="protocol-num">05</span> Execution</div>
-            <div class="protocol-cell"><span class="protocol-num">06</span> Vector</div>
-            <div class="protocol-cell"><span class="protocol-num">07</span> Liquidation</div>
-            <div class="protocol-cell"><span class="protocol-num">08</span> Waiting</div>
-            <div class="protocol-cell"><span class="protocol-num">09</span> Field</div>
-        </div>
-
-        <hr style="border:none; border-top:1px solid var(--border); margin:60px 0;">
-        <div style="font-size:10px; opacity:0.4; text-align:center; letter-spacing:1px;">
-            MARKET ALCHEMY • HALIL IBRAHIM GUVEN • 2026
-        </div>
+    <div class="engine-line en">
+        Input State → Constraint Field → Invalid Paths Removal → <span>Single Vector</span>
     </div>
+
+    <div class="engine-line tr" style="display:none;">
+        Girdi → Kısıt Alanı → Geçersiz yolların elenmesi → <span>Tek vektör</span>
+    </div>
+
+    <div class="flow en">
+        <div>System does not evaluate options</div>
+        <div>System eliminates impossibilities</div>
+        <div>Result is not choice — it is residue</div>
+    </div>
+
+    <div class="flow tr" style="display:none;">
+        <div>Sistem seçenekleri değerlendirmez</div>
+        <div>Sistem imkânsızları eler</div>
+        <div>Sonuç seçim değil, kalandır</div>
+    </div>
+
+    <a class="cta" href="engine.html">Enter Engine →</a>
+</section>
+
+<nav class="depth">
+    <a href="research.html">
+        Research Layer
+        <span>01 — Constraints</span>
+    </a>
+
+    <a href="lab.html">
+        Lab Layer
+        <span>02 — Observation</span>
+    </a>
+
+    <a href="engine.html">
+        Engine Layer
+        <span>03 — Vector</span>
+    </a>
+</nav>
+
+<footer class="protocol">
+    <div><b>01</b>Axiom</div>
+    <div><b>02</b>Collapse</div>
+    <div><b>03</b>Observer</div>
+
+    <div><b>04</b>Decision</div>
+    <div><b>05</b>Execution</div>
+    <div><b>06</b>Vector</div>
+
+    <div><b>07</b>Liquidation</div>
+    <div><b>08</b>Waiting</div>
+    <div><b>09</b>Field</div>
+</footer>
+
+<div style="margin-top:60px; font-size:10px; opacity:0.3; text-align:center;">
+    MA — PHASE TRANSITION SYSTEM
+</div>
+
+</div>
+
+<script>
+    const lang = localStorage.getItem("lang") || "en";
+    if(lang === "tr") {
+        document.querySelectorAll(".en").forEach(e => e.style.display = "none");
+        document.querySelectorAll(".tr").forEach(e => e.style.display = "block");
+    }
+</script>
+
 </body>
 </html>
