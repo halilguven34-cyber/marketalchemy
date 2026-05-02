@@ -2,187 +2,80 @@
 <html lang="en">
 <head>
 
-<script>
-if(!localStorage.getItem("lang")){
-    const userLang = navigator.language || navigator.userLanguage;
-    localStorage.setItem(
-        "lang",
-        userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
-    );
-}
-</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Market Alchemy — Decision Physics Engine</title>
+<title>Market Alchemy</title>
 
 <style>
 :root{
     --bg:#0d0f14;
     --fg:#e8ecf1;
-    --muted:rgba(232,236,241,0.6);
     --accent:#6da8ff;
-    --border:#1f2430;
 }
 
 body{
     margin:0;
     background:var(--bg);
-    color:var(--fg);
-    font-family: 'JetBrains Mono', monospace, -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.5;
+    overflow:hidden;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.container{
-    max-width:720px;
-    margin:auto;
-    padding:80px 20px;
+/* ---------------- SINGLE FIELD SURFACE ---------------- */
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
 }
 
-/* HEADER */
-h1{
-    font-size:24px;
-    margin:0;
-    font-weight: 600;
-    border-left:2px solid var(--accent);
-    padding-left:15px;
-    letter-spacing: -0.5px;
-}
-
-.sub{
-    font-size:13px;
-    color:var(--muted);
-    margin-top:10px;
-    padding-left: 17px;
-}
-
-/* ENGINE CORE */
-.engine{
-    margin:60px 0;
-    padding:40px;
-    border:1px solid var(--border);
-    background: linear-gradient(145deg, #11151c 0%, #0d0f14 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.engine::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-}
-
-.engine-title{
-    font-size:10px;
-    letter-spacing:3px;
-    color:var(--accent);
-    margin-bottom:30px;
-    font-weight: bold;
-}
-
-.engine-line{
-    font-size:15px;
-    color:var(--fg);
-    opacity:0.9;
-    margin-bottom: 20px;
-}
-
-.engine-line span{
-    color:var(--accent);
-    font-weight: bold;
-}
-
-/* FLOW */
-.flow{
-    margin-top:40px;
-    font-size:14px;
-    color:var(--muted);
-}
-
-.flow div{
-    margin-bottom: 12px;
-}
-
-.flow div::before{
-    content:"→ ";
-    color:var(--accent);
-}
-
-/* CTA */
-.cta{
-    margin-top:40px;
-    display:inline-block;
-    color:var(--accent);
-    text-decoration:none;
-    font-size:13px;
-    letter-spacing: 1px;
-    border: 1px solid var(--accent);
-    padding: 12px 24px;
-    transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.cta:hover {
-    background: var(--accent);
-    color: var(--bg);
-    box-shadow: 0 0 20px rgba(109, 168, 255, 0.2);
-}
-
-/* DEPTH MAP */
-.depth{
-    margin-top:80px;
-    border-top:1px solid var(--border);
-}
-
-.depth a{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    color:var(--fg);
-    text-decoration:none;
-    border-bottom: 1px solid var(--border);
-    transition: 0.2s;
-}
-
-.depth a:hover {
-    padding-left: 10px;
-    background: rgba(109, 168, 255, 0.02);
-}
-
-.depth a span{
-    color:var(--accent);
-    font-size:10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-/* PROTOCOL GRID */
-.protocol{
-    margin-top:100px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    border:1px solid var(--border);
-    opacity: 0.4;
-}
-
-.protocol div{
-    padding:15px;
+/* ---------------- MINIMAL ANCHOR ---------------- */
+.label{
+    position:fixed;
+    top:30px;
+    left:30px;
     font-size:11px;
-    border:1px solid var(--border);
-    text-align: center;
+    letter-spacing:2px;
+    color:rgba(232,236,241,0.5);
+    z-index:2;
 }
 
-.protocol b{
+/* ---------------- ACTION POINT ---------------- */
+.action{
+    position:fixed;
+    bottom:30px;
+    left:30px;
+    font-size:11px;
+    letter-spacing:1px;
     color:var(--accent);
-    display:block;
-    margin-bottom:5px;
-    font-size:9px;
+    z-index:2;
+    cursor:pointer;
+    user-select:none;
 }
 
-@media (max-width: 600px) {
-    .protocol { grid-template-columns: 1fr; }
+/* ---------------- STATE IMPRESSION (NO DATA LABELS) ---------------- */
+.stateHint{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:14px;
+    color:rgba(232,236,241,0.25);
+    letter-spacing:1px;
+    z-index:2;
+    text-align:center;
+    pointer-events:none;
+}
+
+/* fade pulse */
+@keyframes pulse{
+    0%,100%{opacity:0.2;}
+    50%{opacity:0.6;}
+}
+.stateHint{
+    animation:pulse 4s ease-in-out infinite;
 }
 </style>
 
@@ -190,85 +83,83 @@ h1{
 
 <body>
 
-<div class="container">
+<canvas id="field"></canvas>
 
-<header>
-    <h1 class="en">Decision Physics Engine</h1>
-    <h1 class="tr" style="display:none;">Karar Fizik Motoru</h1>
+<div class="label">MARKET ALCHEMY / FIELD</div>
 
-    <div class="sub en">Choice is eliminated. Structure remains.</div>
-    <div class="sub tr" style="display:none;">Seçim elenir. Yapı kalır.</div>
-</header>
-
-<section class="engine">
-    <div class="engine-title">CONSTRAINT COLLAPSE CORE</div>
-
-    <div class="engine-line en">
-        Input State → Constraint Field → Invalid Paths Removal → <span>Single Vector</span>
-    </div>
-
-    <div class="engine-line tr" style="display:none;">
-        Girdi → Kısıt Alanı → Geçersiz yolların elenmesi → <span>Tek vektör</span>
-    </div>
-
-    <div class="flow en">
-        <div>System does not evaluate options</div>
-        <div>System eliminates impossibilities</div>
-        <div>Result is not choice — it is residue</div>
-    </div>
-
-    <div class="flow tr" style="display:none;">
-        <div>Sistem seçenekleri değerlendirmez</div>
-        <div>Sistem imkânsızları eler</div>
-        <div>Sonuç seçim değil, kalandır</div>
-    </div>
-
-    <a class="cta" href="ma.html">Enter Engine →</a>
-</section>
-
-<nav class="depth">
-    <a href="research.html">
-        Research Layer
-        <span>01 — Constraints</span>
-    </a>
-
-    <a href="lab.html">
-        Lab Layer
-        <span>02 — Observation</span>
-    </a>
-
-    <a href="ma.html">
-        Engine Layer
-        <span>03 — Vector</span>
-    </a>
-</nav>
-
-<footer class="protocol">
-    <div><b>01</b>Axiom</div>
-    <div><b>02</b>Collapse</div>
-    <div><b>03</b>Observer</div>
-
-    <div><b>04</b>Decision</div>
-    <div><b>05</b>Execution</div>
-    <div><b>06</b>Vector</div>
-
-    <div><b>07</b>Liquidation</div>
-    <div><b>08</b>Waiting</div>
-    <div><b>09</b>Field</div>
-</footer>
-
-<div style="margin-top:60px; font-size:10px; opacity:0.3; text-align:center;">
-    MA — PHASE TRANSITION SYSTEM
+<div class="stateHint">
+    constraint field active
 </div>
 
+<div class="action" onclick="inject()">
+    perturb field →
 </div>
 
 <script>
-    const lang = localStorage.getItem("lang") || "en";
-    if(lang === "tr") {
-        document.querySelectorAll(".en").forEach(e => e.style.display = "none");
-        document.querySelectorAll(".tr").forEach(e => e.style.display = "block");
+
+const c = document.getElementById("field");
+const ctx = c.getContext("2d");
+
+function resize(){
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+/* ---------------- FIELD STATE ---------------- */
+let t = 0;
+let distortion = 0;
+
+/* ---------------- FIELD DRAW ---------------- */
+function draw(){
+
+    ctx.clearRect(0,0,c.width,c.height);
+
+    ctx.beginPath();
+
+    for(let x=0;x<c.width;x++){
+
+        let base =
+            Math.sin(x*0.008 + t) * 40 +
+            Math.cos(x*0.003 + t*0.7) * 25;
+
+        let field = base * (1 + distortion);
+
+        let y = c.height/2 + field;
+
+        ctx.lineTo(x,y);
     }
+
+    ctx.strokeStyle = "#6da8ff";
+    ctx.globalAlpha = 0.35;
+    ctx.stroke();
+
+    t += 0.01;
+
+    // slow relaxation (field friction)
+    distortion *= 0.98;
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+/* ---------------- INTERACTION = FIELD PERTURBATION ---------------- */
+function inject(){
+    distortion += 0.6;
+}
+
+/* ---------------- NATURAL INPUT COUPLING ---------------- */
+window.addEventListener("mousemove", (e)=>{
+    let norm = e.clientX / window.innerWidth;
+    distortion += (norm - 0.5) * 0.02;
+});
+
+window.addEventListener("scroll", ()=>{
+    distortion += 0.03;
+});
+
 </script>
 
 </body>
