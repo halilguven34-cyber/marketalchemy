@@ -1,116 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <script>
 if(!localStorage.getItem("lang")){
     const userLang = navigator.language || navigator.userLanguage;
-    localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
+    localStorage.setItem(
+        "lang",
+        userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
+    );
 }
 </script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Market Alchemy — Decision Physics</title>
+
+<title>Market Alchemy — Decision Physics Engine</title>
+
 <style>
 :root{
-    --bg:#050608; --fg:#e8ecf1; --muted:rgba(232,236,241,0.5); --border:#161920;
-    --c1:#6da8ff; --c2:#4fd1c5; --c3:#9f7aea; --c4:#f6ad55; --c5:#68d391;
-    --c6:#ed8936; --c7:#f56565; --c8:#4299e1; --c9:#a0aec0;
+    --bg:#0d0f14;
+    --fg:#e8ecf1;
+    --muted:rgba(232,236,241,0.6);
+    --accent:#6da8ff;
+    --border:#1f2430;
 }
-body{ margin:0; background:var(--bg); color:var(--fg); font-family: 'JetBrains Mono', monospace; line-height:1.5; }
-.container{ max-width:900px; margin:auto; padding:60px 20px; }
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family: 'JetBrains Mono', monospace, -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+}
+
+.container{
+    max-width:720px;
+    margin:auto;
+    padding:80px 20px;
+}
 
 /* HEADER */
-header{ margin-bottom: 60px; }
-h1{ font-size:28px; margin:0; border-left:3px solid var(--c1); padding-left:15px; letter-spacing:-1px; }
-.sub{ font-size:14px; color:var(--muted); margin-top:10px; }
-
-/* UNIVERSAL DECISION NETWORK (Görseldeki Ağ Yapısı) */
-.network-container {
-    position: relative;
-    margin: 80px 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 40px;
-    background: radial-gradient(circle at center, #0d1117 0%, transparent 100%);
-    border: 1px solid var(--border);
+h1{
+    font-size:24px;
+    margin:0;
+    font-weight: 600;
+    border-left:2px solid var(--accent);
+    padding-left:15px;
+    letter-spacing: -0.5px;
 }
 
-.node {
+.sub{
+    font-size:13px;
+    color:var(--muted);
+    margin-top:10px;
+    padding-left: 17px;
+}
+
+/* ENGINE CORE */
+.engine{
+    margin:60px 0;
+    padding:40px;
+    border:1px solid var(--border);
+    background: linear-gradient(145deg, #11151c 0%, #0d0f14 100%);
     position: relative;
-    padding: 20px;
-    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.engine::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.engine-title{
+    font-size:10px;
+    letter-spacing:3px;
+    color:var(--accent);
+    margin-bottom:30px;
+    font-weight: bold;
+}
+
+.engine-line{
+    font-size:15px;
+    color:var(--fg);
+    opacity:0.9;
+    margin-bottom: 20px;
+}
+
+.engine-line span{
+    color:var(--accent);
+    font-weight: bold;
+}
+
+/* FLOW */
+.flow{
+    margin-top:40px;
+    font-size:14px;
+    color:var(--muted);
+}
+
+.flow div{
+    margin-bottom: 12px;
+}
+
+.flow div::before{
+    content:"→ ";
+    color:var(--accent);
+}
+
+/* CTA */
+.cta{
+    margin-top:40px;
+    display:inline-block;
+    color:var(--accent);
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing: 1px;
+    border: 1px solid var(--accent);
+    padding: 12px 24px;
+    transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cta:hover {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 20px rgba(109, 168, 255, 0.2);
+}
+
+/* DEPTH MAP */
+.depth{
+    margin-top:80px;
+    border-top:1px solid var(--border);
+}
+
+.depth a{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    color:var(--fg);
+    text-decoration:none;
+    border-bottom: 1px solid var(--border);
+    transition: 0.2s;
+}
+
+.depth a:hover {
+    padding-left: 10px;
+    background: rgba(109, 168, 255, 0.02);
+}
+
+.depth a span{
+    color:var(--accent);
+    font-size:10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* PROTOCOL GRID */
+.protocol{
+    margin-top:100px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:1px solid var(--border);
+    opacity: 0.4;
+}
+
+.protocol div{
+    padding:15px;
+    font-size:11px;
+    border:1px solid var(--border);
     text-align: center;
-    transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    z-index: 2;
 }
 
-.node:hover { border-color: var(--color); box-shadow: 0 0 20px var(--color-off); transform: translateY(-5px); }
-
-.node span { display: block; font-size: 10px; color: var(--color); font-weight: bold; margin-bottom: 5px; }
-.node strong { display: block; font-size: 13px; letter-spacing: 1px; }
-
-/* Connection Lines (Simulated with pseudo-elements for clean code) */
-.network-container::before {
-    content: ""; position: absolute; top: 10%; left: 10%; right: 10%; bottom: 10%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
-    opacity: 0.2; pointer-events: none;
+.protocol b{
+    color:var(--accent);
+    display:block;
+    margin-bottom:5px;
+    font-size:9px;
 }
 
-/* ENGINE CORE BLOCK */
-.engine-callout {
-    margin: 60px 0;
-    padding: 30px;
-    border-left: 2px solid var(--c1);
-    background: rgba(109, 168, 255, 0.03);
+@media (max-width: 600px) {
+    .protocol { grid-template-columns: 1fr; }
 }
-.cta {
-    display: inline-block; margin-top: 25px; color: var(--c1); text-decoration: none;
-    font-size: 13px; border: 1px solid var(--c1); padding: 10px 20px; transition: 0.3s;
-}
-.cta:hover { background: var(--c1); color: var(--bg); }
-
-/* FOOTER MAP */
-.depth-nav { display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1px solid var(--border); margin-top: 80px; }
-.depth-nav a { padding: 30px 10px; text-decoration: none; color: inherit; border-right: 1px solid var(--border); text-align: center; }
-.depth-nav a:last-child { border-right: none; }
-.depth-nav a span { display: block; font-size: 10px; color: var(--c1); margin-bottom: 5px; }
 </style>
+
 </head>
+
 <body>
 
 <div class="container">
-    <header>
-        <h1 class="en">Structural Decision Systems</h1>
-        <h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>
-        <div class="sub">Market Alchemy — Where structure becomes visible.</div>
-    </header>
 
-    <div class="network-container">
-        <div class="node" style="--color: var(--c1); --color-off: rgba(109,168,255,0.2);"><span>01</span><strong>AXIOM</strong></div>
-        <div class="node" style="--color: var(--c2); --color-off: rgba(79,209,197,0.2);"><span>02</span><strong>COLLAPSE</strong></div>
-        <div class="node" style="--color: var(--c3); --color-off: rgba(159,122,234,0.2);"><span>03</span><strong>OBSERVER</strong></div>
-        
-        <div class="node" style="--color: var(--c4); --color-off: rgba(246,173,85,0.2);"><span>04</span><strong>DECISION</strong></div>
-        <div class="node" style="--color: var(--c5); --color-off: rgba(104,211,145,0.2);"><span>05</span><strong>EXECUTION</strong></div>
-        <div class="node" style="--color: var(--c6); --color-off: rgba(237,137,54,0.2);"><span>06</span><strong>VECTOR</strong></div>
-        
-        <div class="node" style="--color: var(--c7); --color-off: rgba(245,101,101,0.2);"><span>07</span><strong>LIQUIDATION</strong></div>
-        <div class="node" style="--color: var(--c8); --color-off: rgba(66,153,225,0.2);"><span>08</span><strong>WAITING</strong></div>
-        <div class="node" style="--color: var(--c9); --color-off: rgba(160,174,192,0.2);"><span>09</span><strong>FIELD</strong></div>
+<header>
+    <h1 class="en">Decision Physics Engine</h1>
+    <h1 class="tr" style="display:none;">Karar Fizik Motoru</h1>
+
+    <div class="sub en">Choice is eliminated. Structure remains.</div>
+    <div class="sub tr" style="display:none;">Seçim elenir. Yapı kalır.</div>
+</header>
+
+<section class="engine">
+    <div class="engine-title">CONSTRAINT COLLAPSE CORE</div>
+
+    <div class="engine-line en">
+        Input State → Constraint Field → Invalid Paths Removal → <span>Single Vector</span>
     </div>
 
-    <section class="engine-callout">
-        <div class="en">System does not evaluate options. It eliminates impossibility.</div>
-        <div class="tr" style="display:none;">Sistem seçenekleri değerlendirmez. İmkânsızlıkları eler.</div>
-        <a href="law.html" class="cta">ENTER THE LAW FIELD →</a>
-    </section>
+    <div class="engine-line tr" style="display:none;">
+        Girdi → Kısıt Alanı → Geçersiz yolların elenmesi → <span>Tek vektör</span>
+    </div>
 
-    <nav class="depth-nav">
-        <a href="research.html"><span>PHASE 01</span>RESEARCH</a>
-        <a href="lab.html"><span>PHASE 02</span>LAB</a>
-        <a href="law.html"><span>PHASE 03</span>ENGINE (LAW)</a>
-    </nav>
+    <div class="flow en">
+        <div>System does not evaluate options</div>
+        <div>System eliminates impossibilities</div>
+        <div>Result is not choice — it is residue</div>
+    </div>
+
+    <div class="flow tr" style="display:none;">
+        <div>Sistem seçenekleri değerlendirmez</div>
+        <div>Sistem imkânsızları eler</div>
+        <div>Sonuç seçim değil, kalandır</div>
+    </div>
+
+    <a class="cta" href="ma.html">Enter Engine →</a>
+</section>
+
+<nav class="depth">
+    <a href="research.html">
+        Research Layer
+        <span>01 — Constraints</span>
+    </a>
+
+    <a href="lab.html">
+        Lab Layer
+        <span>02 — Observation</span>
+    </a>
+
+    <a href="ma.html">
+        Engine Layer
+        <span>03 — Vector</span>
+    </a>
+</nav>
+
+<footer class="protocol">
+    <div><b>01</b>Axiom</div>
+    <div><b>02</b>Collapse</div>
+    <div><b>03</b>Observer</div>
+
+    <div><b>04</b>Decision</div>
+    <div><b>05</b>Execution</div>
+    <div><b>06</b>Vector</div>
+
+    <div><b>07</b>Liquidation</div>
+    <div><b>08</b>Waiting</div>
+    <div><b>09</b>Field</div>
+</footer>
+
+<div style="margin-top:60px; font-size:10px; opacity:0.3; text-align:center;">
+    MA — PHASE TRANSITION SYSTEM
+</div>
+
 </div>
 
 <script>
@@ -120,5 +270,6 @@ h1{ font-size:28px; margin:0; border-left:3px solid var(--c1); padding-left:15px
         document.querySelectorAll(".tr").forEach(e => e.style.display = "block");
     }
 </script>
+
 </body>
 </html>
