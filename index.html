@@ -1,127 +1,307 @@
-<style>
-body{
-    margin:0;
-    background:radial-gradient(circle at 50% 30%, #151922 0%, #0d0f14 60%);
-    color:#e8ecf1;
-    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-    overflow-x:hidden;
-}
-
-.container{
-    max-width:760px;
-    margin:auto;
-    padding:120px 20px;
-    text-align:center;
-}
-
-h1{
-    font-size:42px;
-    letter-spacing:0.5px;
-    margin-bottom:20px;
-}
-
-.dynamic-headline{
-    font-size:22px;
-    font-weight:600;
-    opacity:0.9;
-    margin-bottom:40px;
-    animation:pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse{
-    0%{opacity:0.5; transform:scale(0.995);}
-    50%{opacity:1; transform:scale(1);}
-    100%{opacity:0.5; transform:scale(0.995);}
-}
-
-.ma-logic{
-    margin-top:40px;
-    font-size:15px;
-    line-height:1.8;
-    opacity:.65;
-    max-width:520px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.ma-line{
-    font-size:20px;
-    margin-top:60px;
-    opacity:0.9;
-}
-
-.ma-line:nth-child(2){
-    opacity:0.5;
-}
-
-.ma-cta-hero{
-    margin-top:80px;
-}
-
-.ma-cta-hero a{
-    color:#6da8ff;
-    text-decoration:none;
-    font-size:16px;
-    border-bottom:1px solid rgba(109,168,255,0.3);
-    padding-bottom:4px;
-    transition:all .2s ease;
-}
-
-.ma-cta-hero a:hover{
-    opacity:1;
-    border-color:#6da8ff;
-}
-
-.noise-layer{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    background:radial-gradient(circle, transparent 60%, rgba(0,0,0,0.3));
-    pointer-events:none;
-}
-</style>
-
-<div class="noise-layer"></div>
-
-<div class="container">
-
-<h1 class="en">Structural Decision Systems</h1>
-<h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>
-
-<div class="dynamic-headline en">
-The system is no longer described.<br>It is running.
-</div>
-
-<div class="dynamic-headline tr" style="display:none;">
-Sistem artık tanımlanmıyor.<br>Çalışıyor.
-</div>
-
-<div class="ma-logic en">
-Constraint increases → alternatives collapse.<br>
-Noise disappears.<br>
-Only structure remains.
-</div>
-
-<div class="ma-logic tr" style="display:none;">
-Kısıt artar → alternatifler çöker.<br>
-Gürültü kaybolur.<br>
-Yalnızca yapı kalır.
-</div>
-
-<div class="ma-line en">You are not deciding.</div>
-<div class="ma-line en">You are being forced.</div>
-
-<div class="ma-line tr" style="display:none;">Karar vermiyorsun.</div>
-<div class="ma-line tr" style="display:none;">Zorlanıyorsun.</div>
-
-<div class="ma-cta-hero en">
-<a href="research.html">Enter System →</a>
-</div>
-
-<div class="ma-cta-hero tr" style="display:none;">
-<a href="research.html">Sisteme gir →</a>
-</div>
-
-</div>
+<!DOCTYPE html>  <html lang="en">  <head>  <script>  
+    if(!localStorage.getItem("lang")){  
+        const userLang = navigator.language || navigator.userLanguage;  
+        localStorage.setItem(  
+            "lang",  
+            userLang.toLowerCase().startsWith("tr") ? "tr" : "en"  
+        );  
+    }  
+</script>  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>  <script>  
+    window.dataLayer = window.dataLayer || [];  
+    function gtag(){dataLayer.push(arguments);}  
+    gtag('js', new Date());  
+    gtag('config', 'G-8NGN65VXH8');  
+</script>  <meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Market Alchemy — Structural Decision Systems</title>  <meta name="description" content="Market Alchemy is a structural decision system based on Structural Depth. Markets are where structure becomes visible.">  
+<link rel="canonical" href="https://marketalchemy.io/">  <style>  
+    body{  
+        margin:0;  
+        background:#0d0f14;  
+        color:#e8ecf1;  
+        font-family:-apple-system,BlinkMacSystemFont,sans-serif;  
+    }  
+  
+    #nav{  
+        position:sticky;  
+        top:0;  
+        z-index:1000;  
+        background:#0d0f14;  
+        min-height:48px;  
+    }  
+  
+    .container{  
+        max-width:720px;  
+        margin:auto;  
+        padding:80px 20px;  
+    }  
+  
+    h1{font-size:36px;margin-bottom:10px;}  
+  
+    .dynamic-headline{  
+        font-size:20px;  
+        font-weight:600;  
+        opacity:0.85;  
+        margin-bottom:30px;  
+        animation:pulse 3.5s ease-in-out infinite;  
+    }  
+  
+    @keyframes pulse{  
+        0%{opacity:0.6;}  
+        50%{opacity:1;}  
+        100%{opacity:0.6;}  
+    }  
+  
+    .subtitle{opacity:0.7;font-size:14px;margin-bottom:30px;}  
+  
+    .muted{opacity:0.6;line-height:1.7;}  
+  
+    hr{border:none;border-top:1px solid #1f2430;margin:60px 0;}  
+  
+    nav{  
+        width:100%;  
+        display:flex;  
+        gap:18px;  
+        padding:14px 16px;  
+        border-bottom:1px solid #1f2430;  
+        font-size:14px;  
+        overflow-x:auto;  
+    }  
+  
+    nav a{  
+        color:#e8ecf1;  
+        text-decoration:none;  
+        opacity:0.7;  
+    }  
+  
+    nav a.active{  
+        color:#6da8ff;  
+        opacity:1;  
+        font-weight:600;  
+    }  
+  
+    .diagram{margin-top:40px;text-align:center;}  
+  
+    .diagram img{  
+        width:100%;  
+        max-width:680px;  
+        opacity:0.9;  
+        cursor:pointer;  
+    }  
+  
+    .diagram-caption{  
+        margin-top:12px;  
+        font-size:13px;  
+        opacity:0.5;  
+    }  
+  
+    .ma-hero{  
+        margin-top:40px;  
+        display:flex;  
+        flex-direction:column;  
+        gap:10px;  
+    }  
+  
+    .ma-line{  
+        font-size:18px;  
+        line-height:1.5;  
+        opacity:0.9;  
+    }  
+  
+    .ma-cta-hero{margin-top:20px;}  
+  
+    .ma-cta-hero a{  
+        color:#6da8ff;  
+        text-decoration:none;  
+        font-size:15px;  
+    }  
+  
+    .ma-logic{  
+        margin-top:30px;  
+        font-size:15px;  
+        line-height:1.7;  
+        opacity:.85;  
+    }  
+  
+    .spacer{height:16px;}  
+  
+    .depth-map{  
+        margin-top:60px;  
+        padding:20px;  
+        border:1px solid #1f2430;  
+        background:#11151c;  
+    }  
+  
+    .depth-title{  
+        font-size:12px;  
+        letter-spacing:2px;  
+        color:#6da8ff;  
+        margin-bottom:18px;  
+    }  
+  
+    .depth-row{  
+        display:flex;  
+        justify-content:space-between;  
+        align-items:center;  
+        margin-bottom:12px;  
+        font-size:14px;  
+    }  
+  
+    .depth-row span{opacity:.6;font-size:12px;}  
+  
+    .depth-row a{  
+        color:#e8ecf1;  
+        text-decoration:none;  
+        opacity:.85;  
+    }  
+  
+    .protocol-section{  
+        margin-top:100px;  
+        padding-top:60px;  
+        border-top:1px solid #1f2430;  
+    }  
+  
+    .protocol-list{list-style:none;padding:0;margin-top:20px;}  
+  
+    .protocol-item{  
+        padding:12px 0;  
+        border-bottom:1px solid #1f2430;  
+        display:flex;  
+        flex-direction:column;  
+    }  
+  
+    .protocol-num{  
+        color:#6da8ff;  
+        font-family:monospace;  
+        font-weight:700;  
+        font-size:12px;  
+        margin-bottom:4px;  
+    }  
+  
+    .protocol-name{font-weight:600;font-size:17px;}  
+  
+    .protocol-meta{  
+        font-size:13px;  
+        opacity:0.6;  
+        line-height:1.6;  
+        margin-top:15px;  
+    }  
+  
+    .protocol-label{  
+        font-size:11px;  
+        color:#6da8ff;  
+        letter-spacing:2px;  
+        text-transform:uppercase;  
+        font-weight:700;  
+        margin-bottom:10px;  
+    }  
+</style>  </head>  <body>  <div id="nav" style="opacity:0;"></div>  <script>  
+fetch("nav.html?v=" + Date.now())  
+.then(res => res.text())  
+.then(data => {  
+    const nav = document.getElementById("nav");  
+    nav.innerHTML = data;  
+    nav.style.opacity = "1";  
+  
+    const lang = localStorage.getItem("lang") || "en";  
+  
+    document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));  
+    document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));  
+});  
+</script>  <div class="container">  <h1 class="en">Structural Decision Systems</h1>  
+<h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>  <div class="muted en">Markets are where structure becomes visible.</div>  
+<div class="muted tr" style="display:none;">Piyasalar yapının görünür olduğu yerlerdir.</div>  <div class="subtitle en">Market Alchemy — Applied Structural Depth</div>  
+<div class="subtitle tr" style="display:none;">Market Alchemy — Yapısal Derinlik Uygulaması</div>  <div class="dynamic-headline en">  
+The system is no longer described.<br>It is running.  
+</div>  <div class="dynamic-headline tr" style="display:none;">  
+Sistem artık tanımlanmıyor.<br>Çalışıyor.  
+</div>  <div class="ma-logic en">  
+This site:  
+A forced decision structure under pressure.  
+<div class="spacer"></div>  
+It is not choice. It is necessity.  
+<div class="spacer"></div>  
+Instinct → pressure → collapse of alternatives → single direction → decision  
+<div class="spacer"></div>  
+Constraint ↑ → Ω ↓ → determinism emerges  
+<div class="spacer"></div>  
+Compression → invalid paths removed → remaining direction  
+<div class="spacer"></div>  
+It is not decision-making.  
+It is elimination of impossibility.  
+</div>  <div class="ma-logic tr" style="display:none;">  
+Bu site:  
+Basınç altında zorunlu karar yapısıdır.  
+<div class="spacer"></div>  
+Seçim değildir. Zorunluluktur.  
+<div class="spacer"></div>  
+İçgüdü → basınç → alternatiflerin çöküşü → tek yön → karar  
+<div class="spacer"></div>  
+Constraint ↑ → Ω ↓ → deterministikleşme  
+<div class="spacer"></div>  
+Sıkışma → geçersiz yollar elenir → kalan yön  
+<div class="spacer"></div>  
+Karar üretimi değil, imkânsızlığın elenmesidir.  
+</div>  <div class="ma-hero en">  
+<div class="ma-line">You are not deciding.</div>  
+<div class="ma-line">You are being forced.</div>  <div class="diagram">  
+    <a href="law.html">  
+        <img src="time.diagram.jpg" alt="Structural Diagram">  
+    </a>  
+    <div class="diagram-caption">Compression → Probability Shift → Vector Emergence</div>  
+</div>  <div class="ma-cta-hero"><a href="ma.html">Observe the system →</a></div>  
+</div>  <div class="ma-hero tr" style="display:none;">  
+<div class="ma-line">Karar vermiyorsun.</div>  
+<div class="ma-line">Zorlanıyorsun.</div>  <div class="diagram">  
+    <a href="law.html">  
+        <img src="time.diagram.jpg" alt="Yapısal Diyagram">  
+    </a>  
+    <div class="diagram-caption">Sıkışma → Olasılık Kayması → Vektör Oluşumu</div>  
+</div>  <div class="ma-cta-hero"><a href="ma.html">Sistemi gözlemle →</a></div>  
+</div>  <div class="depth-map">  
+<div class="depth-title">STRUCTURAL DEPTH MAP</div>  
+<div class="depth-row"><a href="research.html">Research</a><span>Depth</span></div>  
+<div class="depth-row"><a href="library.html">Library</a><span>Depth</span></div>  
+<div class="depth-row"><a href="lab.html">Lab</a><span>Transition</span></div>  
+<div class="depth-row"><a href="ma.html">Engine</a><span>Surface</span></div>  
+</div>  <div class="protocol-section">  
+<div class="protocol-label">STRUCTURAL PROTOCOL</div>  <div class="protocol-list">  <div class="protocol-item">  
+<span class="protocol-num">01</span>  
+<span class="protocol-name en">Axiom</span>  
+<span class="protocol-name tr" style="display:none;">Aksiyom</span>  
+</div>  <div class="protocol-item">  
+<span class="protocol-num">02</span>  
+<span class="protocol-name en">Collapse</span>  
+<span class="protocol-name tr" style="display:none;">Çöküş</span>  
+</div>  <div class="protocol-item">  
+<span class="protocol-num">03</span>  
+<span class="protocol-name en">Observer</span>  
+<span class="protocol-name tr" style="display:none;">Gözlemci</span>  
+</div>  <div class="protocol-item">  
+<span class="protocol-num">04</span>  
+<span class="protocol-name en">Decision</span>  
+<span class="protocol-name tr" style="display:none;">Karar</span>  
+</div>  <div class="protocol-item">  
+<span class="protocol-num">05</span>  
+<span class="protocol-name en">Execution</span>  
+<span class="protocol-name tr" style="display:none;">İcra</span>  
+</div>  <div class="protocol-item">  
+<span class="protocol-num">06</span>  
+<span class="protocol-name en">Vector</span>  
+<span class="protocol-name tr" style="display:none;">Vektör</span>  
+</div>  <!-- ADDED BACK (MISSING ONES) -->  <div class="protocol-item">  
+<span class="protocol-num">07</span>  
+<span class="protocol-name en">Liquidation</span>  
+<span class="protocol-name tr" style="display:none;">Tasfiye</span>  
+</div>  <div class="protocol-item">  
+<span class="protocol-num">08</span>  
+<span class="protocol-name en">Waiting</span>  
+<span class="protocol-name tr" style="display:none;">Bekleme</span>  
+</div>  <div class="protocol-item">  
+<span class="protocol-num">09</span>  
+<span class="protocol-name en">Field</span>  
+<span class="protocol-name tr" style="display:none;">Alan</span>  
+</div>  </div>  <div class="protocol-meta">“This is not a cycle. It is structural deepening.”</div>  
+</div>  <hr>  <div style="font-size:11px;opacity:0.4;text-align:center;">  
+Market Alchemy • Halil İbrahim Güven  
+</div>  </div>  </body>  
+</html>
