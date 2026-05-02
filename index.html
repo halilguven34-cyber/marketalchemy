@@ -7,7 +7,6 @@ if(!localStorage.getItem("lang")){
     localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
 }
 </script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Alchemy — Structural Law</title>
@@ -25,18 +24,14 @@ body{
     margin:0;
     background:var(--bg);
     color:var(--fg);
-    font-family: 'JetBrains Mono', monospace, -apple-system, sans-serif;
-    line-height: 1.5;
+    font-family: 'JetBrains Mono', monospace;
     overflow-x: hidden;
 }
 
 canvas#field{
     position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    z-index:0;
-    pointer-events: none;
-    opacity: 0.35;
+    top:0; left:0; width:100%; height:100%;
+    z-index:0; pointer-events: none; opacity: 0.35;
 }
 
 .container{
@@ -44,182 +39,141 @@ canvas#field{
     max-width:720px;
     margin:auto;
     padding:80px 20px;
-    z-index: 1;
+    z-index: 2;
 }
 
-h1{
-    font-size:24px; margin:0; font-weight: 600;
-    border-left:2px solid var(--accent); padding-left:15px;
-    letter-spacing: -0.5px;
-}
-.sub{
-    font-size:13px; color:var(--muted);
-    margin-top:10px; padding-left: 17px;
-}
+/* --- ENGINE & DEPTH (Önceki Yapı) --- */
+h1{ font-size:24px; border-left:2px solid var(--accent); padding-left:15px; margin:0; }
+.sub{ font-size:13px; color:var(--muted); margin:10px 0 60px 17px; }
 
 .engine{
-    margin:60px 0;
-    padding:40px;
-    border:1px solid var(--border);
-    background: rgba(17, 21, 28, 0.85);
-    backdrop-filter: blur(12px);
-    position: relative;
+    padding:40px; border:1px solid var(--border);
+    background: rgba(17, 21, 28, 0.85); backdrop-filter: blur(12px);
+    margin-bottom: 60px;
 }
-
-.engine::before {
-    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-}
-
-.engine-title{ font-size:10px; letter-spacing:3px; color:var(--accent); margin-bottom:30px; font-weight: bold; }
-.engine-line{ font-size:15px; margin-bottom: 20px; }
-.engine-line span{ color:var(--accent); font-weight: bold; }
-
-.flow{ margin-top:40px; font-size:14px; color:var(--muted); }
-.flow div{ margin-bottom: 12px; }
-.flow div::before{ content:"→ "; color:var(--accent); }
-
 .cta{
-    margin-top:40px; display:inline-block; color:var(--accent);
-    text-decoration:none; font-size:13px; letter-spacing: 1px;
-    border: 1px solid var(--accent); padding: 12px 24px;
-    transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    background: rgba(13, 15, 20, 0.6);
+    margin-top:30px; display:inline-block; color:var(--accent);
+    text-decoration:none; font-size:13px; border: 1px solid var(--accent);
+    padding: 12px 24px; transition: 0.3s;
 }
-.cta:hover { background: var(--accent); color: var(--bg); box-shadow: 0 0 20px rgba(109, 168, 255, 0.2); }
+.cta:hover{ background:var(--accent); color:var(--bg); }
 
-.depth{ margin-top:80px; border-top:1px solid var(--border); }
+.depth{ border-top:1px solid var(--border); margin-top:40px; }
 .depth a{
-    display:flex; justify-content: space-between; align-items: center;
-    padding: 20px 0; color:var(--fg); text-decoration:none;
-    border-bottom: 1px solid var(--border); transition: 0.2s;
+    display:flex; justify-content: space-between; padding: 20px 0;
+    color:var(--fg); text-decoration:none; border-bottom: 1px solid var(--border);
 }
-.depth a:hover { padding-left: 10px; background: rgba(109, 168, 255, 0.05); }
-.depth a span{ color:var(--accent); font-size:10px; letter-spacing: 1px; text-transform: uppercase; }
 
-/* ---------------- NETWORK DESIGN (GÖRSEL ODAKLI) ---------------- */
-.network-section {
+/* ---------------- NETWORK SECTION (Görseldeki 3x3 Yapı) ---------------- */
+.network-wrap {
     margin-top: 100px;
     position: relative;
-    padding: 40px 0;
+    height: 450px; /* Görseldeki derinlik için yükseklik şart */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.network-svg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
 }
 
 .network-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 60px;
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
 .node {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: center;
 }
 
-.node-box {
-    width: 100%;
-    padding: 15px 5px;
-    border: 1px solid var(--border);
-    background: rgba(13, 15, 20, 0.9);
-    transition: 0.3s;
-    position: relative;
-}
-
-.node-box b {
-    display: block;
-    font-size: 9px;
+.node-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
     color: var(--accent);
-    margin-bottom: 5px;
-    opacity: 0.7;
+    box-shadow: 0 0 15px rgba(109, 168, 255, 0.2);
+    transition: 0.4s;
+    margin-bottom: 8px;
 }
 
-.node-box span {
-    font-size: 11px;
+.node-label {
+    font-size: 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    color: var(--muted);
 }
 
-.node:hover .node-box {
-    border-color: var(--accent);
-    box-shadow: 0 0 15px rgba(109, 168, 255, 0.15);
-    transform: translateY(-2px);
-}
-
-/* Hatlar için arka plan */
-.network-svg {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.15;
+.node:hover .node-circle {
+    background: var(--accent);
+    color: var(--bg);
+    transform: scale(1.2);
+    box-shadow: 0 0 30px var(--accent);
 }
 
 @media (max-width: 600px) {
-    .network-grid { grid-template-columns: 1fr; gap: 15px; }
+    .network-grid { gap: 30px; }
+    .network-wrap { height: 350px; }
+    .node-circle { width: 40px; height: 40px; }
 }
 </style>
 </head>
 
 <body>
-
 <canvas id="field"></canvas>
 
 <div class="container">
+    <header>
+        <h1 class="en">Decision Physics Engine</h1>
+        <h1 class="tr" style="display:none;">Karar Fizik Motoru</h1>
+        <div class="sub">Structure remains.</div>
+    </header>
 
-<header>
-    <h1 class="en">Decision Physics Engine</h1>
-    <h1 class="tr" style="display:none;">Karar Fizik Motoru</h1>
-    <div class="sub en">Choice is eliminated. Structure remains.</div>
-    <div class="sub tr" style="display:none;">Seçim elenir. Yapı kalır.</div>
-</header>
+    <section class="engine">
+        <a class="cta" href="ma.html">Enter Engine →</a>
+    </section>
 
-<section class="engine">
-    <div class="engine-title">CONSTRAINT COLLAPSE CORE</div>
-    <div class="engine-line en">Input State → Constraint Field → Invalid Paths Removal → <span>Single Vector</span></div>
-    <div class="engine-line tr" style="display:none;">Girdi → Kısıt Alanı → Geçersiz Yolların Elenmesi → <span>Tek Vektör</span></div>
+    <nav class="depth">
+        <a href="research.html">Research Layer <span>01</span></a>
+        <a href="lab.html">Lab Layer <span>02</span></a>
+        <a href="law.html">Law Layer <span>03</span></a>
+    </nav>
 
-    <div class="flow en">
-        <div>System does not evaluate options</div>
-        <div>System eliminates impossibilities</div>
-        <div>Result is not choice — it is residue</div>
+    <div class="network-wrap">
+        <svg class="network-svg" id="netSvg"></svg>
+        <div class="network-grid">
+            <div class="node"><div class="node-circle">01</div><div class="node-label">Axiom</div></div>
+            <div class="node"><div class="node-circle">02</div><div class="node-label">Collapse</div></div>
+            <div class="node"><div class="node-circle">03</div><div class="node-label">Observer</div></div>
+            <div class="node"><div class="node-circle">04</div><div class="node-label">Decision</div></div>
+            <div class="node"><div class="node-circle">05</div><div class="node-label">Execution</div></div>
+            <div class="node"><div class="node-circle">06</div><div class="node-label">Vector</div></div>
+            <div class="node"><div class="node-circle">07</div><div class="node-label">Liquidation</div></div>
+            <div class="node"><div class="node-circle">08</div><div class="node-label">Waiting</div></div>
+            <div class="node"><div class="node-circle">09</div><div class="node-label">Field</div></div>
+        </div>
     </div>
-    <div class="flow tr" style="display:none;">
-        <div>Sistem seçenekleri değerlendirmez</div>
-        <div>Sistem imkânsızları eler</div>
-        <div>Sonuç seçim değil, kalandır</div>
+
+    <div style="text-align:center; opacity:0.3; font-size:10px; margin-top:40px; letter-spacing:3px;">
+        MA — STRUCTURAL DEPTH LAW
     </div>
-
-    <a class="cta" href="ma.html">Enter Engine →</a>
-</section>
-
-<nav class="depth">
-    <a href="research.html">Research Layer <span>01 — Constraints</span></a>
-    <a href="lab.html">Lab Layer <span>02 — Observation</span></a>
-    <a href="law.html">Law Layer <span>03 — Vector (Law)</span></a>
-</nav>
-
-<div class="network-section">
-    <svg class="network-svg" id="netSvg"></svg>
-    <div class="network-grid">
-        <div class="node"><div class="node-box"><b>01</b><span>Axiom</span></div></div>
-        <div class="node"><div class="node-box"><b>02</b><span>Collapse</span></div></div>
-        <div class="node"><div class="node-box"><b>03</b><span>Observer</span></div></div>
-        <div class="node"><div class="node-box"><b>04</b><span>Decision</span></div></div>
-        <div class="node"><div class="node-box"><b>05</b><span>Execution</span></div></div>
-        <div class="node"><div class="node-box"><b>06</b><span>Vector</span></div></div>
-        <div class="node"><div class="node-box"><b>07</b><span>Liquidation</span></div></div>
-        <div class="node"><div class="node-box"><b>08</b><span>Waiting</span></div></div>
-        <div class="node"><div class="node-box"><b>09</b><span>Field</span></div></div>
-    </div>
-</div>
-
-<div style="margin-top:60px; font-size:10px; opacity:0.3; text-align:center; letter-spacing: 2px;">
-    MA — PHASE TRANSITION SYSTEM
-</div>
-
 </div>
 
 <script>
@@ -230,54 +184,51 @@ if(lang === "tr") {
     document.querySelectorAll(".tr").forEach(e => e.style.display = "block");
 }
 
-/* FIELD CANVAS */
+/* BACKGROUND FIELD */
 const c = document.getElementById("field");
 const ctx = c.getContext("2d");
-let t = 0; let distortion = 0;
-function resize(){ c.width = window.innerWidth; c.height = window.innerHeight; }
-resize(); window.addEventListener("resize", resize);
-
+let t = 0;
 function draw(){
+    c.width = window.innerWidth; c.height = window.innerHeight;
     ctx.clearRect(0,0,c.width,c.height);
     ctx.beginPath();
-    for(let x=0; x<c.width; x+=2){
-        let base = Math.sin(x*0.008 + t) * 50 + Math.cos(x*0.003 + t*0.7) * 30;
-        let y = c.height/2 + base * (1 + distortion);
+    for(let x=0; x<c.width; x+=5){
+        let y = c.height/2 + Math.sin(x*0.01 + t)*40;
         if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
     }
     ctx.strokeStyle = "#6da8ff"; ctx.globalAlpha = 0.2; ctx.stroke();
-    t += 0.015; distortion *= 0.98;
-    requestAnimationFrame(draw);
+    t += 0.02; requestAnimationFrame(draw);
 }
 draw();
-window.addEventListener("mousemove", (e)=>{ distortion += 0.02; });
 
-/* NETWORK LINES (SVG) */
-function drawLines() {
+/* NETWORK CONNECTIONS (Görseldeki Çizgiler) */
+function connectNodes() {
     const svg = document.getElementById('netSvg');
-    const nodes = document.querySelectorAll('.node-box');
-    const container = document.querySelector('.network-section').getBoundingClientRect();
+    const nodes = document.querySelectorAll('.node-circle');
+    const wrap = document.querySelector('.network-wrap').getBoundingClientRect();
     svg.innerHTML = '';
-    
+
     nodes.forEach((n1, i) => {
         nodes.forEach((n2, j) => {
-            if (i < j && (j - i === 1 || j - i === 3)) { // Komşu ve alt düğümleri bağla
+            // Sadece yatay, dikey ve çapraz komşuları bağla (Karmaşayı önlemek için)
+            if (i < j && (j-i === 1 || j-i === 3 || j-i === 4 || j-i === 2)) {
                 const r1 = n1.getBoundingClientRect();
                 const r2 = n2.getBoundingClientRect();
+                
                 const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                line.setAttribute("x1", (r1.left + r1.width/2) - container.left);
-                line.setAttribute("y1", (r1.top + r1.height/2) - container.top);
-                line.setAttribute("x2", (r2.left + r2.width/2) - container.left);
-                line.setAttribute("y2", (r2.top + r2.height/2) - container.top);
-                line.setAttribute("stroke", "#6da8ff");
+                line.setAttribute("x1", (r1.left + r1.width/2) - wrap.left);
+                line.setAttribute("y1", (r1.top + r1.height/2) - wrap.top);
+                line.setAttribute("x2", (r2.left + r2.width/2) - wrap.left);
+                line.setAttribute("y2", (r2.top + r2.height/2) - wrap.top);
+                line.setAttribute("stroke", "rgba(109, 168, 255, 0.15)");
+                line.setAttribute("stroke-width", "1");
                 svg.appendChild(line);
             }
         });
     });
 }
-window.addEventListener('load', drawLines);
-window.addEventListener('resize', drawLines);
+window.addEventListener('load', connectNodes);
+window.addEventListener('resize', connectNodes);
 </script>
-
 </body>
 </html>
