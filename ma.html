@@ -46,6 +46,7 @@ overflow:hidden;
 height:100%;
 width:0%;
 background:#4da3ff;
+transition: width 0.3s ease;
 }
 
 .box{
@@ -55,6 +56,7 @@ margin-top:20px;
 font-family:monospace;
 font-size:13px;
 opacity:0.85;
+white-space:pre-line;
 }
 
 input{
@@ -74,9 +76,9 @@ margin-top:10px;
 }
 
 .wait{color:#8a93a3;}
-.act{color:#4da3ff;}
-.warn{color:#f0c36d;}
-.bad{color:#ff5c5c;}
+.trend{color:#4da3ff;}
+.compression{color:#f0c36d;}
+.shift{color:#ff5c5c;}
 </style>
 </head>
 
@@ -93,10 +95,13 @@ margin-top:10px;
 <input id="input" placeholder="BTC">
 
 <div class="box" id="box">
-velocity: -<br>
-acceleration: -<br>
-friction: -<br>
-pressure: -<br><br>
+v: -  
+a: -  
+f: -  
+omega: -  
+theta: -  
+dominance: -  
+
 decision: -
 </div>
 
@@ -110,44 +115,59 @@ Frontend = pure visualization layer
 <script>
 
 async function analyze(symbol){
-
 symbol = symbol.toUpperCase();
-
 const res = await fetch(`http://127.0.0.1:8000/analyze?asset=${symbol}&timeframe=1h`);
 return await res.json();
 }
 
+function setStateUI(state){
+const el = document.getElementById("state");
+el.innerText = state;
+
+el.className = "state";
+
+if(state === "TREND") el.classList.add("trend");
+else if(state === "COMPRESSION") el.classList.add("compression");
+else if(state === "STRUCTURAL_SHIFT") el.classList.add("shift");
+else el.classList.add("wait");
+}
+
 document.getElementById("input").addEventListener("keydown", async (e) => {
 
-if(e.key === "Enter"){
+if(e.key !== "Enter") return;
 
 let val = e.target.value.trim();
 if(!val) return;
 
 let res = await analyze(val);
 
-if(res.error){
+if(!res){
 document.getElementById("state").innerText = "ERROR";
 return;
 }
 
 // STATE
-document.getElementById("state").innerText = res.state;
+setStateUI(res.state || "UNKNOWN");
 
-// PROGRESS BAR (mapped from pressure as proxy)
-let intensity = Math.min(Math.abs(res.pressure) / 5, 1);
+// SHIFT SCORE → BAR (risk field)
+let intensity = Math.min(Math.abs(res.shift_score || 0), 1);
 document.getElementById("fill").style.width = (intensity * 100) + "%";
 
+// FEATURES SAFE
+const f = res.features || {};
+
 // BOX
-document.getElementById("box").innerHTML = `
-velocity: ${res.velocity}<br>
-acceleration: ${res.acceleration}<br>
-friction: ${res.friction}<br>
-pressure: ${res.pressure}<br><br>
-decision: ${res.decision}
+document.getElementById("box").innerText = `
+v: ${f.v ?? 0}
+a: ${f.a ?? 0}
+f: ${f.f ?? 0}
+omega: ${f.omega ?? 0}
+theta: ${f.theta ?? 0}
+dominance: ${f.dominance ?? 0.5}
+
+decision: ${res.decision ?? "NONE"}
 `;
 
-}
 });
 
 </script>
