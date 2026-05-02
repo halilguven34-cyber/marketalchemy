@@ -84,7 +84,7 @@ h1{
 .flow div{ margin-bottom: 12px; }
 .flow div::before{ content:"→ "; color:var(--accent); }
 
-/* CTA - Yönlendirme: ma.html */
+/* CTA - OPERASYONEL MERKEZ */
 .cta{
     margin-top:40px; display:inline-block; color:var(--accent);
     text-decoration:none; font-size:13px; letter-spacing: 1px;
@@ -94,7 +94,7 @@ h1{
 }
 .cta:hover { background: var(--accent); color: var(--bg); box-shadow: 0 0 20px rgba(109, 168, 255, 0.2); }
 
-/* DEPTH MAP (Law Layer Güncellemesi) */
+/* DEPTH MAP - AYRI YÖNLENDİRMELER */
 .depth{ margin-top:80px; border-top:1px solid var(--border); }
 .depth a{
     display:flex; justify-content: space-between; align-items: center;
@@ -155,7 +155,7 @@ h1{
 <nav class="depth">
     <a href="research.html">Research Layer <span>01 — Constraints</span></a>
     <a href="lab.html">Lab Layer <span>02 — Observation</span></a>
-    <a href="ma.html">Law Layer <span>03 — Vector (Law)</span></a>
+    <a href="law.html">Law Layer <span>03 — Vector (Law)</span></a>
 </nav>
 
 <footer class="protocol">
@@ -171,14 +171,12 @@ h1{
 </div>
 
 <script>
-/* DİL MANTIĞI */
 const lang = localStorage.getItem("lang") || "en";
 if(lang === "tr") {
     document.querySelectorAll(".en").forEach(e => e.style.display = "none");
     document.querySelectorAll(".tr").forEach(e => e.style.display = "block");
 }
 
-/* ARKA PLAN ALAN FİZİĞİ */
 const c = document.getElementById("field");
 const ctx = c.getContext("2d");
 let t = 0;
