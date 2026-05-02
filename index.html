@@ -1,13 +1,94 @@
+<style>
+body{
+    margin:0;
+    background:radial-gradient(circle at 50% 30%, #151922 0%, #0d0f14 60%);
+    color:#e8ecf1;
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    overflow-x:hidden;
+}
+
+.container{
+    max-width:760px;
+    margin:auto;
+    padding:120px 20px;
+    text-align:center;
+}
+
+h1{
+    font-size:42px;
+    letter-spacing:0.5px;
+    margin-bottom:20px;
+}
+
+.dynamic-headline{
+    font-size:22px;
+    font-weight:600;
+    opacity:0.9;
+    margin-bottom:40px;
+    animation:pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    0%{opacity:0.5; transform:scale(0.995);}
+    50%{opacity:1; transform:scale(1);}
+    100%{opacity:0.5; transform:scale(0.995);}
+}
+
+.ma-logic{
+    margin-top:40px;
+    font-size:15px;
+    line-height:1.8;
+    opacity:.65;
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.ma-line{
+    font-size:20px;
+    margin-top:60px;
+    opacity:0.9;
+}
+
+.ma-line:nth-child(2){
+    opacity:0.5;
+}
+
+.ma-cta-hero{
+    margin-top:80px;
+}
+
+.ma-cta-hero a{
+    color:#6da8ff;
+    text-decoration:none;
+    font-size:16px;
+    border-bottom:1px solid rgba(109,168,255,0.3);
+    padding-bottom:4px;
+    transition:all .2s ease;
+}
+
+.ma-cta-hero a:hover{
+    opacity:1;
+    border-color:#6da8ff;
+}
+
+.noise-layer{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background:radial-gradient(circle, transparent 60%, rgba(0,0,0,0.3));
+    pointer-events:none;
+}
+</style>
+
+<div class="noise-layer"></div>
+
 <div class="container">
 
 <h1 class="en">Structural Decision Systems</h1>
 <h1 class="tr" style="display:none;">Yapısal Karar Sistemleri</h1>
-
-<div class="muted en">Markets are where structure becomes visible.</div>
-<div class="muted tr" style="display:none;">Piyasalar yapının görünür olduğu yerlerdir.</div>
-
-<div class="subtitle en">Market Alchemy — Applied Structural Depth</div>
-<div class="subtitle tr" style="display:none;">Market Alchemy — Yapısal Derinlik Uygulaması</div>
 
 <div class="dynamic-headline en">
 The system is no longer described.<br>It is running.
@@ -18,47 +99,29 @@ Sistem artık tanımlanmıyor.<br>Çalışıyor.
 </div>
 
 <div class="ma-logic en">
-This is not a website.
-<div class="spacer"></div>
-This is a forced decision structure.
-<div class="spacer"></div>
-Constraint increases → alternatives collapse.
-<div class="spacer"></div>
-Only one direction remains.
+Constraint increases → alternatives collapse.<br>
+Noise disappears.<br>
+Only structure remains.
 </div>
 
 <div class="ma-logic tr" style="display:none;">
-Bu bir web sitesi değil.
-<div class="spacer"></div>
-Bu zorlanmış bir karar yapısıdır.
-<div class="spacer"></div>
-Kısıt artar → alternatifler çöker.
-<div class="spacer"></div>
-Tek yön kalır.
+Kısıt artar → alternatifler çöker.<br>
+Gürültü kaybolur.<br>
+Yalnızca yapı kalır.
 </div>
 
-<div class="ma-hero en">
-<div class="ma-line">You are not deciding.</div>
-<div class="ma-line">You are being forced.</div>
+<div class="ma-line en">You are not deciding.</div>
+<div class="ma-line en">You are being forced.</div>
 
-<div class="ma-cta-hero">
+<div class="ma-line tr" style="display:none;">Karar vermiyorsun.</div>
+<div class="ma-line tr" style="display:none;">Zorlanıyorsun.</div>
+
+<div class="ma-cta-hero en">
 <a href="research.html">Enter System →</a>
 </div>
-</div>
 
-<div class="ma-hero tr" style="display:none;">
-<div class="ma-line">Karar vermiyorsun.</div>
-<div class="ma-line">Zorlanıyorsun.</div>
-
-<div class="ma-cta-hero">
+<div class="ma-cta-hero tr" style="display:none;">
 <a href="research.html">Sisteme gir →</a>
-</div>
-</div>
-
-<hr>
-
-<div style="font-size:11px;opacity:0.4;text-align:center;">
-Market Alchemy • Halil İbrahim Güven
 </div>
 
 </div>
