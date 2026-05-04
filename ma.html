@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Structure — Market Alchemy</title>
+<title>MA Engine — Structural Visibility Terminal</title>
 
 <style>
 body{
@@ -11,249 +11,232 @@ margin:0;
 background:#0d0f14;
 color:#e8ecf1;
 font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+display:flex;
+justify-content:center;
 }
 
 .container{
-max-width:760px;
-margin:auto;
-padding:80px 20px;
-}
-
-h1{
-font-size:40px;
-letter-spacing:1px;
-margin-bottom:20px;
-}
-
-.section{
-margin-top:40px;
-}
-
-.muted{
-opacity:0.6;
-line-height:1.6;
-}
-
-.big{
-font-size:20px;
-font-weight:600;
-margin-bottom:16px;
-opacity:0.85;
-}
-
-hr{
-border:none;
-border-top:1px solid #1f2430;
-margin:50px 0;
-}
-
-/* NAVBAR */
-nav{
+max-width:820px;
 width:100%;
-display:flex;
-gap:18px;
-padding:14px 16px;
-border-bottom:1px solid #1f2430;
-font-size:14px;
-overflow-x:auto;
-white-space:nowrap;
--webkit-overflow-scrolling:touch;
+padding:60px 18px;
 }
 
-nav::-webkit-scrollbar{
-display:none;
+.title{
+font-size:13px;
+opacity:0.4;
+margin-bottom:25px;
+letter-spacing:1px;
 }
 
-nav a{
+.state{
+font-size:54px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.sub{
+font-size:12px;
+opacity:0.5;
+margin-bottom:25px;
+}
+
+.bar{
+width:100%;
+height:6px;
+background:#1f2430;
+border-radius:4px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.fill{
+height:100%;
+width:0%;
+transition: width 0.25s ease;
+}
+
+.vector{ background:#6effa3; }
+.shift{ background:#ff5c5c; }
+.theta{ background:#4da3ff; }
+
+input{
+width:100%;
+padding:14px;
+margin-top:25px;
+background:#0d0f14;
+border:1px solid #1f2430;
 color:#e8ecf1;
-text-decoration:none;
-opacity:0.7;
-flex-shrink:0;
+font-size:14px;
+outline:none;
 }
 
-nav a.active{
-color:#6da8ff;
-opacity:1;
-font-weight:600;
+.box{
+border:1px solid #1f2430;
+padding:16px;
+margin-top:20px;
+font-family:monospace;
+font-size:12px;
+opacity:0.85;
+white-space:pre-line;
 }
+
+.meta{
+margin-top:20px;
+border:1px solid #1f2430;
+padding:16px;
+font-size:12px;
+opacity:0.75;
+white-space:pre-line;
+}
+
+.tag{
+font-size:11px;
+opacity:0.4;
+margin-top:5px;
+}
+
+.trend{color:#4da3ff;}
+.compression{color:#f0c36d;}
+.shiftText{color:#ff5c5c;}
+.wait{color:#8a93a3;}
 </style>
 </head>
 
 <body>
 
-<div id="nav"></div>
-
-<script>
-fetch("nav.html")
-.then(res => res.text())
-.then(data => {
-  document.getElementById("nav").innerHTML = data;
-
-  const lang = localStorage.getItem("lang") || "en";
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
-});
-</script>
-
 <div class="container">
 
-<h1 class="en">MA STRUCTURE</h1>
-<h1 class="tr" style="display:none;">MA YAPISI</h1>
-
-<div class="section en">
-<p class="big">
-Market Alchemy is a structural visibility framework under entropy.
-</p>
-
-<p class="muted">
-It is not a strategy.<br>
-It is not a law.<br>
-It is where structural behavior becomes observable.
-</p>
-
-<p class="muted">
-When systems cannot expand,<br>
-they transition in depth.
-</p>
-
-<p class="muted">
-It does not describe markets.<br>
-It reveals their structure.
-</p>
+<div class="title">
+MA SYSTEM — STRUCTURAL VISIBILITY LAYER
 </div>
 
-<div class="section tr" style="display:none;">
-<p class="big">
-Market Alchemy, entropi altında yapısal görünürlük çerçevesidir.
-</p>
+<div class="state wait" id="state">WAITING STRUCTURE INPUT</div>
 
-<p class="muted">
-Bir strateji değildir.<br>
-Bir yasa değildir.<br>
-Sistem davranışının görünür hale geldiği yapıdır.
-</p>
-
-<p class="muted">
-Sistemler genişleyemediğinde<br>
-derinlikte faz değiştirir.
-</p>
-
-<p class="muted">
-Piyasaları açıklamaz.<br>
-Onların yapısını görünür kılar.
-</p>
+<div class="sub" id="sub">
+price = system behavior trace | structure = observable field
 </div>
 
-<hr>
+<div class="tag">VECTOR (irreversible movement field)</div>
+<div class="bar"><div class="fill vector" id="vector_fill"></div></div>
 
-<div class="section en">
-<p class="big">Structural Principles</p>
+<div class="tag">SHIFT INTENSITY (regime transition pressure)</div>
+<div class="bar"><div class="fill shift" id="shift_fill"></div></div>
 
-Energy accumulates under constraint.<br>
-Friction shapes movement.<br>
-Release occurs through transition.
+<div class="tag">THETA FLOW (structural depth gradient)</div>
+<div class="bar"><div class="fill theta" id="theta_fill"></div></div>
+
+<input id="input" placeholder="BTC, ETH, SOL...">
+
+<div class="box" id="box">
+v: -  
+a: -  
+f: -  
+omega: -  
+theta: -  
+theta_velocity: -  
+dominance: -  
+
+decision: -
+system_action: -
 </div>
 
-<div class="section tr" style="display:none;">
-<p class="big">Yapısal İlkeler</p>
-
-Enerji kısıt altında birikir.<br>
-Sürtünme hareketi şekillendirir.<br>
-Boşalma geçiş ile gerçekleşir.
-</div>
-
-<hr>
-
-<div class="section en">
-Time is irreversible within structure.<br>
-Delay has structural cost.<br>
-Observation is also a form of action.
-<br><br>
-When structural pressure exceeds containment,<br>
-systems transition.
-<br><br>
-Outside structure, time is not defined as a measurable system variable.
-</div>
-
-<div class="section tr" style="display:none;">
-Zaman yapı içinde geri döndürülemezdir.<br>
-Gecikmenin yapısal bir maliyeti vardır.<br>
-Gözlem de bir eylem biçimidir.
-<br><br>
-Yapısal basınç sınırı aştığında<br>
-sistem faz değiştirir.
-<br><br>
-Yapı dışında zaman ölçülebilir bir değişken değildir.
-</div>
-
-<hr>
-
-<div class="section en">
-Markets are one domain where structural visibility becomes observable.
-<br><br>
-Markets do not define structure.<br>
-They reflect it.
-</div>
-
-<div class="section tr" style="display:none;">
-Piyasalar yapısal görünürlüğün gözlemlendiği alanlardan biridir.
-<br><br>
-Piyasalar yapıyı tanımlamaz.<br>
-Onu yansıtır.
-</div>
-
-<hr>
-
-<div class="section en muted">
-Vector – Friction – Time<br>
-Structural Visibility Layer
-<br><br>
-The framework continues to evolve.
-</div>
-
-<div class="section tr muted" style="display:none;">
-Vektör – Sürtünme – Zaman<br>
-Yapısal Görünürlük Katmanı
-<br><br>
-Çerçeve gelişmeye devam ediyor.
-</div>
-
-<hr>
-
-<div class="section" style="text-align:center;">
-
-<p class="muted en"
-onclick="location.href='alignment.html'"
-style="cursor:default;">
-Understanding structure is one layer.<br>
-Observing it in markets is another.
-</p>
-
-<p class="muted tr" style="display:none;">
-Yapıyı anlamak bir katmandır.<br>
-Piyasada gözlemlemek başka bir katmandır.
-</p>
-
+<div class="meta" id="meta">
+structure: -
+interpretation: -
 </div>
 
 </div>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Halil Ibrahim Guven",
-  "jobTitle": "Independent Researcher",
-  "url": "https://marketalchemy.io",
-  "description": "Researcher focusing on structural market dynamics, systems behavior, entropy-based transitions, and structural visibility models.",
-  "knowsAbout": [
-    "Financial Markets",
-    "Systems Theory",
-    "Structural Dynamics",
-    "Complex Systems"
-  ],
-  "publishingPrinciples": "https://marketalchemy.io/structure.html"
+<script>
+
+async function analyze(symbol){
+symbol = symbol.toUpperCase();
+const res = await fetch(`http://127.0.0.1:8000/analyze?asset=${symbol}&timeframe=1h`);
+return await res.json();
 }
+
+function setStateUI(state){
+const el = document.getElementById("state");
+el.className = "state";
+
+if(state === "TREND") el.classList.add("trend");
+else if(state === "COMPRESSION") el.classList.add("compression");
+else if(state === "STRUCTURAL_SHIFT") el.classList.add("shiftText");
+else el.classList.add("wait");
+
+el.innerText = state;
+}
+
+document.getElementById("input").addEventListener("keydown", async (e) => {
+
+if(e.key !== "Enter") return;
+
+let val = e.target.value.trim();
+if(!val) return;
+
+let res = await analyze(val);
+
+if(!res){
+document.getElementById("state").innerText = "ERROR";
+return;
+}
+
+setStateUI(res.state || "UNKNOWN");
+
+// VECTOR
+let vector = Math.abs(res.features?.vector || 0);
+document.getElementById("vector_fill").style.width = (vector * 100) + "%";
+
+// SHIFT
+let shift = Math.min(res.shift_score || 0, 1);
+document.getElementById("shift_fill").style.width = (shift * 100) + "%";
+
+// THETA FLOW
+let theta_v = Math.abs(res.features?.theta_velocity || 0);
+document.getElementById("theta_fill").style.width = (theta_v * 100) + "%";
+
+// FEATURES
+const f = res.features || {};
+
+document.getElementById("box").innerText = `
+v: ${f.v ?? 0}
+a: ${f.a ?? 0}
+f: ${f.f ?? 0}
+omega: ${f.omega ?? 0}
+theta: ${f.theta ?? 0}
+theta_velocity: ${f.theta_velocity ?? 0}
+dominance: ${f.dominance ?? 0.5}
+
+decision: ${res.decision ?? "-"}
+system_action: ${res.decision ?? "-"}
+`;
+
+// META LAYER (structural language)
+let meta = "";
+
+if(res.state === "STRUCTURAL_SHIFT"){
+meta = "structural transition detected (regime boundary active)";
+}
+else if(res.state === "TREND" && f.theta_velocity > 0){
+meta = "structure is reinforcing directional persistence";
+}
+else if(res.state === "COMPRESSION"){
+meta = "energy accumulation phase (structure tightening)";
+}
+else{
+meta = "no dominant structural regime";
+}
+
+document.getElementById("meta").innerText = `
+structure: ${res.state}
+interpretation: ${meta}
+`;
+
+document.getElementById("sub").innerText =
+`vector=${vector.toFixed(4)} | shift=${shift.toFixed(3)} | theta_flow=${theta_v.toFixed(3)}`;
+
+});
+
 </script>
 
 </body>
