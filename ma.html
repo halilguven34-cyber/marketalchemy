@@ -150,55 +150,56 @@ interpretation: -
 <script>
 
 async function analyze(symbol){
-symbol = symbol.toUpperCase();
-const res = await fetch(`http://127.0.0.1:8000/analyze?asset=${symbol}&timeframe=1h`);
-return await res.json();
+    symbol = symbol.toUpperCase();
+    // CERRAHİ DOKUNUŞ: 127.0.0.1 yerine göreli URL kullanılarak dış erişim senkronize edildi.
+    const res = await fetch(`/analyze?asset=${symbol}&timeframe=1h`);
+    return await res.json();
 }
 
 function setStateUI(state){
-const el = document.getElementById("state");
-el.className = "state";
+    const el = document.getElementById("state");
+    el.className = "state";
 
-if(state === "TREND") el.classList.add("trend");
-else if(state === "COMPRESSION") el.classList.add("compression");
-else if(state === "STRUCTURAL_SHIFT") el.classList.add("shiftText");
-else el.classList.add("wait");
+    if(state === "TREND") el.classList.add("trend");
+    else if(state === "COMPRESSION") el.classList.add("compression");
+    else if(state === "STRUCTURAL_SHIFT") el.classList.add("shiftText");
+    else el.classList.add("wait");
 
-el.innerText = state;
+    el.innerText = state;
 }
 
 document.getElementById("input").addEventListener("keydown", async (e) => {
 
-if(e.key !== "Enter") return;
+    if(e.key !== "Enter") return;
 
-let val = e.target.value.trim();
-if(!val) return;
+    let val = e.target.value.trim();
+    if(!val) return;
 
-let res = await analyze(val);
+    let res = await analyze(val);
 
-if(!res){
-document.getElementById("state").innerText = "ERROR";
-return;
-}
+    if(!res){
+        document.getElementById("state").innerText = "ERROR";
+        return;
+    }
 
-setStateUI(res.state || "UNKNOWN");
+    setStateUI(res.state || "UNKNOWN");
 
-// VECTOR
-let vector = Math.abs(res.features?.vector || 0);
-document.getElementById("vector_fill").style.width = (vector * 100) + "%";
+    // VECTOR
+    let vector = Math.abs(res.features?.vector || 0);
+    document.getElementById("vector_fill").style.width = (vector * 100) + "%";
 
-// SHIFT
-let shift = Math.min(res.shift_score || 0, 1);
-document.getElementById("shift_fill").style.width = (shift * 100) + "%";
+    // SHIFT
+    let shift = Math.min(res.shift_score || 0, 1);
+    document.getElementById("shift_fill").style.width = (shift * 100) + "%";
 
-// THETA FLOW
-let theta_v = Math.abs(res.features?.theta_velocity || 0);
-document.getElementById("theta_fill").style.width = (theta_v * 100) + "%";
+    // THETA FLOW
+    let theta_v = Math.abs(res.features?.theta_velocity || 0);
+    document.getElementById("theta_fill").style.width = (theta_v * 100) + "%";
 
-// FEATURES
-const f = res.features || {};
+    // FEATURES
+    const f = res.features || {};
 
-document.getElementById("box").innerText = `
+    document.getElementById("box").innerText = `
 v: ${f.v ?? 0}
 a: ${f.a ?? 0}
 f: ${f.f ?? 0}
@@ -211,29 +212,29 @@ decision: ${res.decision ?? "-"}
 system_action: ${res.decision ?? "-"}
 `;
 
-// META LAYER (structural language)
-let meta = "";
+    // META LAYER (structural language)
+    let meta = "";
 
-if(res.state === "STRUCTURAL_SHIFT"){
-meta = "structural transition detected (regime boundary active)";
-}
-else if(res.state === "TREND" && f.theta_velocity > 0){
-meta = "structure is reinforcing directional persistence";
-}
-else if(res.state === "COMPRESSION"){
-meta = "energy accumulation phase (structure tightening)";
-}
-else{
-meta = "no dominant structural regime";
-}
+    if(res.state === "STRUCTURAL_SHIFT"){
+        meta = "structural transition detected (regime boundary active)";
+    }
+    else if(res.state === "TREND" && f.theta_velocity > 0){
+        meta = "structure is reinforcing directional persistence";
+    }
+    else if(res.state === "COMPRESSION"){
+        meta = "energy accumulation phase (structure tightening)";
+    }
+    else{
+        meta = "no dominant structural regime";
+    }
 
-document.getElementById("meta").innerText = `
+    document.getElementById("meta").innerText = `
 structure: ${res.state}
 interpretation: ${meta}
 `;
 
-document.getElementById("sub").innerText =
-`vector=${vector.toFixed(4)} | shift=${shift.toFixed(3)} | theta_flow=${theta_v.toFixed(3)}`;
+    document.getElementById("sub").innerText =
+    `vector=${vector.toFixed(4)} | shift=${shift.toFixed(3)} | theta_flow=${theta_v.toFixed(3)}`;
 
 });
 
