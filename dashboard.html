@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MA Dashboard</title>
+<title>KOBI Dashboard</title>
 
 <style>
 body{
@@ -13,76 +13,62 @@ font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 .container{
-max-width:1000px;
+max-width:900px;
 margin:auto;
-padding:80px 20px;
+padding:60px 20px;
 }
 
 .title{
-font-size:34px;
+font-size:28px;
 font-weight:600;
 margin-bottom:10px;
 }
 
 .subtitle{
 opacity:0.6;
-margin-bottom:50px;
-line-height:1.6;
+margin-bottom:40px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
+.status{
+padding:20px;
+border:1px solid #1f2430;
+margin-bottom:40px;
+background:#10141c;
 }
 
-.card{
-padding:24px;
-border:1px solid #1a1f2a;
-background:linear-gradient(145deg,#0f131a,#0b0e13);
-transition:0.3s;
-position:relative;
-overflow:hidden;
+.status strong{
+font-size:20px;
 }
 
-.card:hover{
-border-color:#6da8ff;
-box-shadow:0 0 20px rgba(109,168,255,0.08);
+.section{
+margin-top:30px;
 }
 
-.label{
-font-size:12px;
-opacity:0.5;
-margin-bottom:12px;
-letter-spacing:1px;
+.section-title{
+font-size:16px;
+margin-bottom:10px;
+opacity:0.7;
 }
 
-.value{
-font-size:22px;
-margin-bottom:6px;
+.box{
+border:1px solid #1f2430;
+padding:16px;
+margin-top:10px;
+background:#0f131a;
 }
 
-.desc{
-font-size:13px;
-opacity:0.5;
-}
-
-.glow{
-position:absolute;
-width:200px;
-height:200px;
-background:radial-gradient(circle, rgba(109,168,255,0.15), transparent);
-top:-50px;
-right:-50px;
+.offer{
+display:flex;
+justify-content:space-between;
 }
 
 .footer{
-margin-top:60px;
+margin-top:50px;
 font-size:12px;
 opacity:0.4;
-text-align:center;
 }
 </style>
+
 </head>
 
 <body>
@@ -90,48 +76,77 @@ text-align:center;
 <div class="container">
 
 <div class="title">
-Financial Stress Becomes Visible Before It Appears
+Your Financial Position
 </div>
 
 <div class="subtitle">
-Real-time structural analysis of business cash flow behavior.<br>
-No accounting lag. No delayed signals.
+Based on your recent cash flow behavior
 </div>
 
-<div class="grid">
+<!-- STATUS -->
 
-<div class="card">
-<div class="glow"></div>
-<div class="label">CASH FLOW STABILITY</div>
-<div class="value">Decreasing</div>
-<div class="desc">Outflows exceeding inflows</div>
+<div class="status">
+Credit Access: <strong>LIMITED</strong><br><br>
+Estimated Capacity: <strong>$25,000</strong>
 </div>
 
-<div class="card">
-<div class="glow"></div>
-<div class="label">LIQUIDITY PRESSURE</div>
-<div class="value">Rising</div>
-<div class="desc">Buffer capacity shrinking</div>
+<!-- OFFERS -->
+
+<div class="section">
+<div class="section-title">Available Offers</div>
+
+<div class="box offer">
+<span>Bank A</span>
+<span>$25,000 · conditional</span>
 </div>
 
-<div class="card">
-<div class="glow"></div>
-<div class="label">STRUCTURAL PHASE</div>
-<div class="value">Compression</div>
-<div class="desc">Pre-breakdown accumulation</div>
+<div class="box offer">
+<span>Lender B</span>
+<span>$15,000 · high cost</span>
 </div>
 
-<div class="card">
-<div class="glow"></div>
-<div class="label">DRIFT</div>
-<div class="value">Downward</div>
-<div class="desc">Directional imbalance forming</div>
+</div>
+
+<!-- LIMITS -->
+
+<div class="section">
+<div class="section-title">What is limiting access?</div>
+
+<div class="box">
+Cash flow instability detected
+</div>
+
+<div class="box">
+Liquidity buffer is low
+</div>
+
+<div class="box">
+Recent outflow spikes
+</div>
+
+</div>
+
+<!-- IMPROVEMENTS -->
+
+<div class="section">
+<div class="section-title">What improves access?</div>
+
+<div class="box">
+Stabilize weekly cash flow
+</div>
+
+<div class="box">
+Reduce short-term expenses
+</div>
+
+<div class="box">
+Increase reserve buffer
 </div>
 
 </div>
 
 <div class="footer">
-Structure is visible · Decisions are not required
+Updated from real transaction behavior · no accounting delay
 </div>
 
 </div>
