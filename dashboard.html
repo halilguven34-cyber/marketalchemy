@@ -3,79 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <title>MA Dashboard</title>
+
 <style>
 body{
 margin:0;
 background:#0d0f14;
 color:#e8ecf1;
-font-family:monospace;
-padding:40px;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
-.box{
-padding:20px;
+.container{
+max-width:900px;
+margin:auto;
+padding:60px 20px;
+}
+
+.header{
+font-size:18px;
+opacity:0.6;
+margin-bottom:40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.card{
 border:1px solid #1f2430;
-margin-top:20px;
+padding:20px;
 }
 
-.title{
+.label{
+font-size:12px;
+opacity:0.5;
+margin-bottom:10px;
+}
+
+.value{
 font-size:20px;
-margin-bottom:20px;
-color:#6da8ff;
+margin-bottom:6px;
+}
+
+.sub{
+font-size:12px;
+opacity:0.5;
+}
+
+.footer{
+margin-top:60px;
+font-size:12px;
+opacity:0.4;
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="title" id="title"></div>
+<div class="container">
 
-<div class="box" id="content"></div>
+<div class="header" id="title"></div>
+
+<div class="grid" id="grid"></div>
+
+<div class="footer">
+structure visible · no decision layer
+</div>
+
+</div>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const project = params.get("project");
+
+const project = new URLSearchParams(location.search).get("project");
 
 const title = document.getElementById("title");
-const content = document.getElementById("content");
+const grid = document.getElementById("grid");
+
+function render(data){
+  grid.innerHTML = data.map(d => `
+    <div class="card">
+      <div class="label">${d.label}</div>
+      <div class="value">${d.value}</div>
+      <div class="sub">${d.sub}</div>
+    </div>
+  `).join("");
+}
 
 if(project === "kobi"){
-    title.innerText = "KOBI STRUCTURAL ENGINE";
+  title.innerText = "KOBI · structural field";
 
-    content.innerHTML = `
-    velocity: unstable<br>
-    volatility: medium<br>
-    compression: detected<br><br>
-    state: ANALYSIS MODE
-    `;
+  render([
+    {label:"velocity", value:"unstable", sub:"flow imbalance"},
+    {label:"volatility", value:"rising", sub:"variance expansion"},
+    {label:"compression", value:"detected", sub:"phase buildup"},
+    {label:"drift", value:"downward", sub:"liquidity pressure"}
+  ]);
 }
 
 else if(project === "credit"){
-    title.innerText = "CREDIT FIELD MAP";
+  title.innerText = "CREDIT · field map";
 
-    content.innerHTML = `
-    risk field: active<br>
-    liquidity stress: rising<br>
-    structural drift: present<br><br>
-    state: MONITORING MODE
-    `;
+  render([
+    {label:"stress", value:"active", sub:"liquidity tension"},
+    {label:"flow", value:"restricted", sub:"capital movement"},
+    {label:"shift", value:"forming", sub:"structural change"},
+    {label:"continuity", value:"uncertain", sub:"break risk"}
+  ]);
 }
 
 else if(project === "market"){
-    title.innerText = "MARKET STRUCTURE VIEW";
+  title.innerText = "MARKET · structure";
 
-    content.innerHTML = `
-    compression zones: multiple<br>
-    liquidity flow: asymmetric<br>
-    regime shifts: forming<br><br>
-    state: OBSERVATION MODE
-    `;
+  render([
+    {label:"compression", value:"multi-zone", sub:"pre-expansion"},
+    {label:"flow", value:"asymmetric", sub:"imbalance"},
+    {label:"volatility", value:"contracting", sub:"energy build"},
+    {label:"state", value:"transition", sub:"phase shift"}
+  ]);
 }
 
 else{
-    title.innerText = "UNKNOWN PROJECT";
-    content.innerHTML = "No state found.";
+  title.innerText = "no state";
 }
+
 </script>
 
 </body>
