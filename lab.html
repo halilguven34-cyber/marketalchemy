@@ -86,29 +86,6 @@ border:none;
 border-top:1px solid #1f2430;
 margin:50px 0;
 }
-
-nav{
-width:100%;
-display:flex;
-gap:18px;
-padding:14px 16px;
-border-bottom:1px solid #1f2430;
-font-size:14px;
-overflow-x:auto;
-white-space:nowrap;
-}
-
-nav a{
-color:#e8ecf1;
-text-decoration:none;
-opacity:0.7;
-}
-
-nav a.active{
-color:#6da8ff;
-opacity:1;
-font-weight:600;
-}
 </style>
 </head>
 
@@ -163,26 +140,26 @@ state: PREPARE
 <div class="box api-box">GODMODE <span class="status-tag">ACTIVE</span></div>
 <div class="box api-box">ULTIMATE <span class="status-tag">TESTING</span></div>
 <div class="box api-box">SUPERVISOR <span class="status-tag">SHADOW</span></div>
+
 </div>
 
 <hr>
-
-<!-- PROJECT ROUTING LAYER -->
 
 <div class="section">
 <p class="big">Projects</p>
 
 <div class="box" onclick="openProject('kobi')">
-KOBI STRUCTURAL ENGINE → DASHBOARD
+KOBI STRUCTURAL ENGINE → START ANALYSIS
 </div>
 
 <div class="box" onclick="openProject('credit')">
-CREDIT FIELD MAP → DASHBOARD
+CREDIT FIELD MAP → START ANALYSIS
 </div>
 
 <div class="box" onclick="openProject('market')">
-MARKET STRUCTURE VIEW → DASHBOARD
+MARKET STRUCTURE VIEW → START ANALYSIS
 </div>
+
 </div>
 
 <hr>
@@ -200,13 +177,19 @@ ALIGNMENT DEFINES PARTICIPATION
 </div>
 
 <a class="cta" href="access.html">Enter alignment →</a>
+
 </div>
 
 </div>
 
 <script>
 function openProject(name){
-    window.location.href = "dashboard.html?project=" + name;
+
+    // CRITICAL: project context is preserved
+    localStorage.setItem("selectedProject", name);
+
+    // correct flow: LAB → INTAKE
+    window.location.href = "intake.html";
 }
 </script>
 
