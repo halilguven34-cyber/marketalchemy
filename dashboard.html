@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>KOBI Dashboard</title>
+<title>Business Intake — Market Alchemy</title>
 
 <style>
 body{
@@ -13,14 +13,13 @@ font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 .container{
-max-width:900px;
+max-width:600px;
 margin:auto;
-padding:60px 20px;
+padding:80px 20px;
 }
 
 .title{
 font-size:28px;
-font-weight:600;
 margin-bottom:10px;
 }
 
@@ -29,41 +28,46 @@ opacity:0.6;
 margin-bottom:40px;
 }
 
-.status{
-padding:20px;
-border:1px solid #1f2430;
-margin-bottom:40px;
-background:#10141c;
+.field{
+margin-bottom:20px;
 }
 
-.status strong{
-font-size:20px;
+.label{
+font-size:13px;
+opacity:0.6;
+margin-bottom:6px;
 }
 
-.section{
-margin-top:30px;
-}
-
-.section-title{
-font-size:16px;
-margin-bottom:10px;
-opacity:0.7;
-}
-
-.box{
-border:1px solid #1f2430;
-padding:16px;
-margin-top:10px;
+input, select{
+width:100%;
+padding:12px;
 background:#0f131a;
+border:1px solid #1f2430;
+color:#e8ecf1;
 }
 
-.offer{
-display:flex;
-justify-content:space-between;
+input:focus, select:focus{
+outline:none;
+border-color:#6da8ff;
+}
+
+.cta{
+margin-top:30px;
+padding:14px;
+width:100%;
+background:#6da8ff;
+color:#0b0e13;
+border:none;
+cursor:pointer;
+font-weight:600;
+}
+
+.cta:hover{
+opacity:0.9;
 }
 
 .footer{
-margin-top:50px;
+margin-top:30px;
 font-size:12px;
 opacity:0.4;
 }
@@ -76,80 +80,70 @@ opacity:0.4;
 <div class="container">
 
 <div class="title">
-Your Financial Position
+Tell us about your business
 </div>
 
 <div class="subtitle">
-Based on your recent cash flow behavior
+We use this to understand your financial structure — not just your balance.
 </div>
 
-<!-- STATUS -->
+<form>
 
-<div class="status">
-Credit Access: <strong>LIMITED</strong><br><br>
-Estimated Capacity: <strong>$25,000</strong>
+<div class="field">
+<div class="label">Company Name</div>
+<input type="text" placeholder="ABC Ltd.">
 </div>
 
-<!-- OFFERS -->
-
-<div class="section">
-<div class="section-title">Available Offers</div>
-
-<div class="box offer">
-<span>Bank A</span>
-<span>$25,000 · conditional</span>
+<div class="field">
+<div class="label">Founded Year</div>
+<input type="number" placeholder="2018">
 </div>
 
-<div class="box offer">
-<span>Lender B</span>
-<span>$15,000 · high cost</span>
+<div class="field">
+<div class="label">Monthly Revenue ($)</div>
+<input type="number" placeholder="50000">
 </div>
 
+<div class="field">
+<div class="label">Credit Request ($)</div>
+<input type="number" placeholder="20000">
 </div>
 
-<!-- LIMITS -->
-
-<div class="section">
-<div class="section-title">What is limiting access?</div>
-
-<div class="box">
-Cash flow instability detected
+<div class="field">
+<div class="label">Number of Banks You Work With</div>
+<select>
+<option>1</option>
+<option>2</option>
+<option>3+</option>
+</select>
 </div>
 
-<div class="box">
-Liquidity buffer is low
+<div class="field">
+<div class="label">Do you experience cash flow gaps?</div>
+<select>
+<option>No</option>
+<option>Sometimes</option>
+<option>Frequently</option>
+</select>
 </div>
 
-<div class="box">
-Recent outflow spikes
-</div>
+<button class="cta" type="button" onclick="goNext()">
+Analyze My Position →
+</button>
 
-</div>
-
-<!-- IMPROVEMENTS -->
-
-<div class="section">
-<div class="section-title">What improves access?</div>
-
-<div class="box">
-Stabilize weekly cash flow
-</div>
-
-<div class="box">
-Reduce short-term expenses
-</div>
-
-<div class="box">
-Increase reserve buffer
-</div>
-
-</div>
+</form>
 
 <div class="footer">
-Updated from real transaction behavior · no accounting delay
+Takes less than 60 seconds · No documents required
 </div>
 
 </div>
+
+<script>
+function goNext(){
+  window.location.href = "dashboard.html";
+}
+</script>
 
 </body>
 </html>
