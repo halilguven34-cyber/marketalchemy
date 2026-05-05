@@ -46,19 +46,24 @@ border:1px solid #1f2430;
 font-family:monospace;
 font-size:14px;
 opacity:0.85;
+cursor:pointer;
+}
+
+.box:hover{
+border-color:#6da8ff;
 }
 
 .api-box {
-    border-left: 2px solid #6da8ff;
-    background: #151921;
+border-left: 2px solid #6da8ff;
+background: #151921;
 }
+
 .status-tag {
-    font-size: 11px;
-    padding: 2px 6px;
-    border: 1px solid #6da8ff;
-    color: #6da8ff;
-    margin-left: 10px;
-    vertical-align: middle;
+font-size: 11px;
+padding: 2px 6px;
+border: 1px solid #6da8ff;
+color: #6da8ff;
+margin-left: 10px;
 }
 
 .cta{
@@ -72,8 +77,8 @@ cursor: pointer;
 }
 
 .cta:hover {
-    background:#6da8ff;
-    color:#0d0f14;
+background:#6da8ff;
+color:#0d0f14;
 }
 
 hr{
@@ -91,18 +96,12 @@ border-bottom:1px solid #1f2430;
 font-size:14px;
 overflow-x:auto;
 white-space:nowrap;
--webkit-overflow-scrolling:touch;
-}
-
-nav::-webkit-scrollbar{
-display:none;
 }
 
 nav a{
 color:#e8ecf1;
 text-decoration:none;
 opacity:0.7;
-flex-shrink:0;
 }
 
 nav a.active{
@@ -115,164 +114,101 @@ font-weight:600;
 
 <body>
 
-<div id="nav"></div>
-
-<script>
-fetch("nav.html")
-.then(res => res.text())
-.then(data => {
-  document.getElementById("nav").innerHTML = data;
-
-  const lang = localStorage.getItem("lang") || "en";
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
-});
-</script>
-
 <div class="container">
 
-<h1 class="en">Lab</h1>
-<h1 class="tr" style="display:none;">Laboratuvar</h1>
+<h1>Lab</h1>
 
 <div class="section">
-<p class="big en">This system does not finish.</p>
-<p class="big tr" style="display:none;">Bu sistem tamamlanmaz.</p>
+<p class="big">This system does not finish.</p>
 
-<p class="muted en">
+<p class="muted">
 Markets are not static.<br>
-Neither is the structure behind them.<br><br>
-
 This is where models evolve under real conditions.<br><br>
 
-Built on years of observation, this layer tracks:<br>
-• Liquidity displacement and forced positioning<br>
-• Compression phases before expansion<br>
-• Structural pressure accumulation and release<br>
-• Phase transitions across markets<br><br>
-
-Every component is tested against live environments.<br>
-Nothing here is theoretical without exposure to reality.
-</p>
-
-<p class="muted tr" style="display:none;">
-Piyasalar statik değildir.<br>
-Arkasındaki yapı da değildir.<br><br>
-
-Burası modellerin gerçek koşullarda evrildiği yerdir.<br><br>
-
-Yıllara dayanan gözlemler üzerine kurulu bu katman şunları izler:<br>
-• Likidite yer değiştirmeleri ve zorunlu pozisyonlanma<br>
-• Genişleme öncesi sıkışma fazları<br>
-• Yapısal basınç birikimi ve boşalımı<br>
-• Piyasalar arası faz geçişleri<br><br>
-
-Her bileşen canlı piyasa koşullarında test edilir.<br>
-Burada hiçbir şey gerçeklikten izole değildir.
+Liquidity, compression, and structural shifts are observed as state changes — not predictions.
 </p>
 </div>
 
 <hr>
 
 <div class="section">
-<p class="big en">System Snapshot</p>
-<p class="big tr" style="display:none;">Sistem Kesiti</p>
+<p class="big">System Snapshot</p>
 
 <div class="box">
-    <span class="en">vector: unstable</span><span class="tr" style="display:none;">vektör: dengesiz</span><br>
-    <span class="en">friction: increasing</span><span class="tr" style="display:none;">sürtünme: artıyor</span><br>
-    <span class="en">compression: detected</span><span class="tr" style="display:none;">sıkışma: tespit edildi</span><br>
-    <span class="en">bias: directional</span><span class="tr" style="display:none;">eğilim: yönsel</span><br><br>
-
-    <span class="en">state: PREPARE</span><span class="tr" style="display:none;">durum: HAZIRLIK</span>
+vector: unstable<br>
+friction: increasing<br>
+compression: detected<br>
+bias: directional<br><br>
+state: PREPARE
 </div>
 </div>
 
 <hr>
 
 <div class="section">
-<p class="big en">Live Systems</p>
-<p class="big tr" style="display:none;">Canlı Sistemler</p>
+<p class="big">Live Systems</p>
 
-<div class="box">CRYPTO MARKETS<br>compression tracking<br>liquidation detection<br>multi-asset monitoring</div>
-<div class="box">FOREX<br>phase transition tracking<br>volatility compression<br>directional bias mapping</div>
-<div class="box">COMMODITIES & GOLD<br>energy release zones<br>structural pressure analysis<br>macro-driven flows</div>
-<div class="box">EQUITY INDICES<br>liquidity mapping<br>systemic stress signals<br>trend exhaustion zones</div>
-
+<div class="box">CRYPTO MARKETS</div>
+<div class="box">FOREX</div>
+<div class="box">COMMODITIES & GOLD</div>
+<div class="box">EQUITY INDICES</div>
 </div>
 
 <hr>
 
 <div class="section">
-<p class="big en">Engine Core & Bot Hierarchy</p>
-<p class="big tr" style="display:none;">Motor Çekirdeği ve Bot Hiyerarşisi</p>
+<p class="big">Engine Core</p>
 
 <div class="box api-box">PASCAL <span class="status-tag">ACTIVE</span></div>
 <div class="box api-box">GODMODE <span class="status-tag">ACTIVE</span></div>
 <div class="box api-box">ULTIMATE <span class="status-tag">TESTING</span></div>
-<div class="box api-box">SUPERVISOR <span class="status-tag">SHADOWING</span></div>
+<div class="box api-box">SUPERVISOR <span class="status-tag">SHADOW</span></div>
+</div>
 
+<hr>
+
+<!-- PROJECT ROUTING LAYER -->
+
+<div class="section">
+<p class="big">Projects</p>
+
+<div class="box" onclick="openProject('kobi')">
+KOBI STRUCTURAL ENGINE → DASHBOARD
+</div>
+
+<div class="box" onclick="openProject('credit')">
+CREDIT FIELD MAP → DASHBOARD
+</div>
+
+<div class="box" onclick="openProject('market')">
+MARKET STRUCTURE VIEW → DASHBOARD
+</div>
 </div>
 
 <hr>
 
 <div class="section">
-<p class="big en">System Connectivity</p>
-<p class="big tr" style="display:none;">Sistem Bağlanabilirliği</p>
-
-<div class="box">
-API ENDPOINT: pending<br>
-FORMAT: JSON Stream<br>
-LATENCY: optimized<br>
-ACCESS: restricted_v1
-</div>
-
-</div>
-
-<hr>
-
-<!-- MA BLOCK -->
-
-<div class="section en">
-<p class="big">STRUCTURAL CONTINUITY</p>
+<p class="big">Structural Continuity</p>
 
 <div class="box">
 STATE: ACTIVE<br>
 FRICTION: VARIABLE<br>
 TIME COST: ACCUMULATING<br><br>
 
-→ STRUCTURE CONTINUES<br>
-
-CONTRIBUTION IS NOT REQUIRED<br>
+STRUCTURE CONTINUES<br>
 ALIGNMENT DEFINES PARTICIPATION
 </div>
 
-<a class="cta" href="access.html">
-Enter alignment →
-</a>
-
-</div>
-
-<div class="section tr" style="display:none;">
-<p class="big">YAPISAL SÜREKLİLİK</p>
-
-<div class="box">
-STATE: AKTİF<br>
-FRICTION: DEĞİŞKEN<br>
-TIME COST: BİRİKİYOR<br><br>
-
-→ YAPI DEVAM EDİYOR<br>
-
-KATKI ZORUNLU DEĞİLDİR<br>
-KATILIM HİZALANMA İLE BELİRLENİR
-</div>
-
-<a class="cta" href="access.html">
-Hizalanmaya gir →
-</a>
-
+<a class="cta" href="access.html">Enter alignment →</a>
 </div>
 
 </div>
+
+<script>
+function openProject(name){
+    window.location.href = "dashboard.html?project=" + name;
+}
+</script>
 
 </body>
 </html>
