@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MA Dashboard</title>
+
+<style>
+body{
+margin:0;
+background:#0b0e13;
+color:#e8ecf1;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:70px 20px;
+}
+
+.header{
+font-size:26px;
+font-weight:600;
+margin-bottom:8px;
+}
+
+.sub{
+opacity:0.6;
+margin-bottom:40px;
+line-height:1.5;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:16px;
+}
+
+.card{
+border:1px solid #1f2430;
+padding:18px;
+background:#0f131a;
+}
+
+.label{
+font-size:12px;
+opacity:0.5;
+margin-bottom:10px;
+}
+
+.value{
+font-size:20px;
+margin-bottom:6px;
+}
+
+.desc{
+font-size:13px;
+opacity:0.5;
+line-height:1.4;
+}
+
+.section{
+margin-top:40px;
+}
+
+.section-title{
+font-size:14px;
+opacity:0.6;
+margin-bottom:12px;
+}
+
+.tag{
+display:inline-block;
+padding:4px 8px;
+font-size:11px;
+border:1px solid #6da8ff;
+color:#6da8ff;
+margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header" id="companyName">
+Your Financial Structure
+</div>
+
+<div class="sub">
+Structural visibility layer — no decisions, only observable state.
+</div>
+
+<!-- CORE STATE -->
+
+<div class="grid">
+
+<div class="card">
+<div class="label">CASH FLOW STATE</div>
+<div class="value" id="cashflow">—</div>
+<div class="desc">behavior of inflow vs outflow</div>
+</div>
+
+<div class="card">
+<div class="label">LIQUIDITY PRESSURE</div>
+<div class="value" id="pressure">—</div>
+<div class="desc">buffer stress intensity</div>
+</div>
+
+<div class="card">
+<div class="label">STRUCTURAL PHASE</div>
+<div class="value" id="phase">—</div>
+<div class="desc">system regime state</div>
+</div>
+
+<div class="card">
+<div class="label">DRIFT</div>
+<div class="value" id="drift">—</div>
+<div class="desc">directional imbalance</div>
+</div>
+
+</div>
+
+<!-- CREDIT ZONE -->
+
+<div class="section">
+
+<div class="section-title">CREDIT ACCESS</div>
+
+<div class="card">
+<div class="value" id="creditStatus">—</div>
+<div class="desc">current access level based on structural signals</div>
+<div class="tag">STRUCTURE-BASED</div>
+</div>
+
+</div>
+
+<!-- EXPLANATION LAYER -->
+
+<div class="section">
+
+<div class="section-title">WHAT LIMITS ACCESS</div>
+
+<div class="card" id="limits">
+Loading structural constraints...
+</div>
+
+</div>
+
+<div class="section">
+
+<div class="section-title">WHAT IMPROVES ACCESS</div>
+
+<div class="card" id="actions">
+Loading improvement paths...
+</div>
+
+</div>
+
+</div>
+
+<script>
+// INPUT'TAN VERİ AL (intake.html'den gelecek)
+const data = JSON.parse(localStorage.getItem("kobiData"));
+
+// fallback
+if(!data){
+  document.getElementById("companyName").innerText = "No Data Found";
+}else{
+
+  document.getElementById("companyName").innerText =
+    data.company + " · Structural View";
+
+  // SIMPLE STRUCTURAL LOGIC (fake but consistent)
+
+  const cashflow = data.cashflow === "Frequently" ? "Decreasing" : "Stable";
+  const pressure = data.cashflow === "Frequently" ? "High" : "Moderate";
+  const phase = data.cashflow === "Frequently" ? "Compression" : "Neutral";
+  const drift = data.cashflow === "Frequently" ? "Downward" : "Stable";
+
+  document.getElementById("cashflow").innerText = cashflow;
+  document.getElementById("pressure").innerText = pressure;
+  document.getElementById("phase").innerText = phase;
+  document.getElementById("drift").innerText = drift;
+
+  // CREDIT STATE
+
+  const credit =
+    data.cashflow === "Frequently"
+    ? "LIMITED ACCESS"
+    : "PARTIAL ACCESS";
+
+  document.getElementById("creditStatus").innerText = credit;
+
+  // EXPLANATION
+
+  document.getElementById("limits").innerHTML = `
+    Cash flow instability detected<br>
+    Banking fragmentation: ${data.banks} institutions<br>
+    Liquidity inconsistency signals present
+  `;
+
+  document.getElementById("actions").innerHTML = `
+    Stabilize weekly cash inflow<br>
+    Reduce short-term outflow spikes<br>
+    Improve reserve buffer consistency
+  `;
+}
+</script>
+
+</body>
+</html>
