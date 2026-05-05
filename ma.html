@@ -152,7 +152,8 @@ interpretation: -
 async function analyze(symbol){
     symbol = symbol.toUpperCase();
     // CERRAHİ DOKUNUŞ: 127.0.0.1 yerine göreli URL kullanılarak dış erişim senkronize edildi.
-    const res = await fetch(`/analyze?asset=${symbol}&timeframe=1h`);
+    const res = await fetch(`https://history-frequently-allowance-passive.trycloudflare.com/analyze?asset=${symbol}&timeframe=1h`);
+
     return await res.json();
 }
 
