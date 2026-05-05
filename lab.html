@@ -21,7 +21,7 @@ padding:80px 20px;
 
 h1{
 font-size:32px;
-margin-bottom:20px;
+margin-bottom:10px;
 }
 
 .section{
@@ -37,6 +37,7 @@ margin-bottom:12px;
 .muted{
 opacity:0.6;
 line-height:1.6;
+margin-top:10px;
 }
 
 .box{
@@ -93,7 +94,11 @@ margin:50px 0;
 
 <div class="container">
 
-<h1>Lab</h1>
+<h1>Structural Financial Intelligence Lab</h1>
+
+<p class="muted">
+Observing financial behavior at structural level — not surface metrics.
+</p>
 
 <div class="section">
 <p class="big">This system does not finish.</p>
@@ -184,11 +189,7 @@ ALIGNMENT DEFINES PARTICIPATION
 
 <script>
 function openProject(name){
-
-    // CRITICAL: project context is preserved
     localStorage.setItem("selectedProject", name);
-
-    // correct flow: LAB → INTAKE
     window.location.href = "intake.html";
 }
 </script>
