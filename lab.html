@@ -48,11 +48,12 @@ font-family:monospace;
 font-size:14px;
 opacity:0.85;
 cursor:pointer;
-transition: border-color 0.2s;
+transition: border-color 0.2s, background 0.2s;
 }
 
 .box:hover{
 border-color:#6da8ff;
+background: rgba(109, 168, 255, 0.05);
 }
 
 .api-box {
@@ -79,25 +80,15 @@ cursor: default;
 display: none;
 }
 
-.cta{
-display:inline-block;
-margin-top:20px;
-padding:12px 20px;
-border:1px solid #6da8ff;
-color:#6da8ff;
-text-decoration:none;
-cursor: pointer;
-}
-
-.cta:hover {
-background:#6da8ff;
-color:#0d0f14;
-}
-
 hr{
 border:none;
 border-top:1px solid #1f2430;
 margin:50px 0;
+}
+
+/* Tıklanabilir süreklilik kutusu için özel vurgu */
+#continuity-data {
+border-left: 2px solid #6da8ff;
 }
 </style>
 </head>
@@ -195,15 +186,8 @@ MARKET STRUCTURE VIEW → START ANALYSIS
 <div class="section">
 <p class="big" id="continuity-title">Structural Continuity</p>
 
-<div class="box" id="continuity-data">
-STATE: ACTIVE<br>
-FRICTION: VARIABLE<br>
-TIME COST: ACCUMULATING<br><br>
-STRUCTURE CONTINUES<br>
-ALIGNMENT DEFINES PARTICIPATION
+<div class="box" id="continuity-data" onclick="window.location.href='access.html'">
 </div>
-
-<a class="cta" href="access.html" id="cta-btn">Enter alignment →</a>
 
 </div>
 
@@ -235,8 +219,7 @@ const translations = {
         projCredit: "KREDİ ALAN HARİTASI → ANALİZİ BAŞLAT",
         projMarket: "PİYASA YAPISI GÖRÜNÜMÜ → ANALİZİ BAŞLAT",
         continuityTitle: "Yapısal Süreklilik",
-        continuityData: "DURUM: AKTİF<br>SÜRTÜNME: DEĞİŞKEN<br>ZAMAN MALİYETİ: BİRİKİYOR<br><br>YAPI DEVAM EDİYOR<br>HİZALANMA KATILIMI BELİRLER",
-        ctaBtn: "Hizalanmaya gir →"
+        continuityData: "DURUM: AKTİF<br>SÜRTÜNME: DEĞİŞKEN<br>ZAMAN MALİYETİ: BİRİKİYOR<br><br>YAPI DEVAM EDİYOR<br>HİZALANMA KATILIMI BELİRLER<br><br>→ HİZALANMAYA GİR"
     },
     en: {
         title: "Structural Financial Intelligence Lab",
@@ -262,8 +245,7 @@ const translations = {
         projCredit: "CREDIT FIELD MAP → START ANALYSIS",
         projMarket: "MARKET STRUCTURE VIEW → START ANALYSIS",
         continuityTitle: "Structural Continuity",
-        continuityData: "STATE: ACTIVE<br>FRICTION: VARIABLE<br>TIME COST: ACCUMULATING<br><br>STRUCTURE CONTINUES<br>ALIGNMENT DEFINES PARTICIPATION",
-        ctaBtn: "Enter alignment →"
+        continuityData: "STATE: ACTIVE<br>FRICTION: VARIABLE<br>TIME COST: ACCUMULATING<br><br>STRUCTURE CONTINUES<br>ALIGNMENT DEFINES PARTICIPATION<br><br>→ ENTER ALIGNMENT"
     }
 };
 
@@ -296,7 +278,6 @@ function applyLanguage() {
     document.getElementById('proj-market').innerText = t.projMarket;
     document.getElementById('continuity-title').innerText = t.continuityTitle;
     document.getElementById('continuity-data').innerHTML = t.continuityData;
-    document.getElementById('cta-btn').innerText = t.ctaBtn;
 }
 
 function toggleMeta(id) {
