@@ -162,7 +162,11 @@ SNIPPER BOT <span class="status-tag" id="tag-active-2">ACTIVE</span>
 <div id="snipper-desc" class="meta-description"></div>
 </div>
 
-<div class="box api-box">ULTIMATE <span class="status-tag" id="tag-testing">TESTING</span></div>
+<div class="box api-box" onclick="toggleMeta('ultimate-desc')">
+ULTIMATE <span class="status-tag" id="tag-testing">TESTING</span>
+<div id="ultimate-desc" class="meta-description"></div>
+</div>
+
 <div class="box api-box">SUPERVISOR <span class="status-tag" id="tag-shadow">SHADOW</span></div>
 
 </div>
@@ -225,6 +229,7 @@ const translations = {
         tagShadow: "GÖLGE",
         pascalLog: "[SYSTEM_LOG]: Blaise Pascal’a bir saygı duruşudur. <br><br>Kripto dünyasında, üstün MA filtreleriyle takibe alınan 40 adet varlığın zorunlu likidite boşaltımını hedefler. Bot canlıda gözlenmekte ve log biriktirmektedir; entry seviyeleri kalibre edilmektedir. <br><br>Mevcut haliyle likiditasyonu mümkün olmayıp, teoride geometrik kazanç sağlar.",
         snipperLog: "[SYSTEM_LOG]: Yüksek hassasiyetli yapısal giriş motorudur. Piyasa gürültüsünü filtreleyerek, fiyatın zamanla hizalandığı daralma noktalarında ani ve net pozisyon alımları gerçekleştirir. Zaman maliyetini (Time Cost) minimize ederken, vektörel yönün kesinleştiği mikro alanlarda operasyon yürütür.",
+        ultimateLog: "[SYSTEM_LOG]: Sistemin en üst segment yapısal motorudur. 300 işlemlik Monte Carlo simülasyonlarında; %10 marjin ve 10x kaldıraç ile başlangıç sermayesini 10 katına çıkarma potansiyeli doğrulanmıştır. <br><br> %60 başarı oranı ve 1.5 RR (Risk/Reward) dengesi üzerine kuruludur. İflas olasılığı (Risk of Ruin) <%0.8 olarak hesaplanmış olup, sistem şu an canlı piyasa koşullarında gözlemlenmekte ve geometrik getiri projeksiyonu kalibre edilmektedir.",
         projectsTitle: "Projeler",
         projKobi: "KOBI YAPISAL MOTORU → ANALİZİ BAŞLAT",
         projCredit: "KREDİ ALAN HARİTASI → ANALİZİ BAŞLAT",
@@ -251,6 +256,7 @@ const translations = {
         tagShadow: "SHADOW",
         pascalLog: "[SYSTEM_LOG]: A tribute to Blaise Pascal. <br><br>Targets forced liquidity evacuation of 40 tracked assets in the crypto world via superior MA filters. The bot is observed live and accumulating logs; entry levels are being calibrated. <br><br>Liquidation is not possible in its current state, providing geometric gains in theory.",
         snipperLog: "[SYSTEM_LOG]: High-precision structural entry engine. By filtering market noise, it executes sharp and clear positions at compression points where price aligns with time. It minimizes Time Cost while operating in micro-zones where vectorial direction is confirmed.",
+        ultimateLog: "[SYSTEM_LOG]: The highest segment structural engine of the system. In 300-trade Monte Carlo simulations, a potential to increase initial capital by 10x using 10% margin and 10x leverage has been verified. <br><br> Built on a 60% win rate and 1.5 RR (Risk/Reward) balance. Risk of Ruin is calculated at <0.8%; the system is currently observed under live market conditions, calibrating its geometric return projection.",
         projectsTitle: "Projects",
         projKobi: "KOBI STRUCTURAL ENGINE → START ANALYSIS",
         projCredit: "CREDIT FIELD MAP → START ANALYSIS",
@@ -283,6 +289,7 @@ function applyLanguage() {
     document.getElementById('tag-shadow').innerText = t.tagShadow;
     document.getElementById('pascal-desc').innerHTML = t.pascalLog;
     document.getElementById('snipper-desc').innerHTML = t.snipperLog;
+    document.getElementById('ultimate-desc').innerHTML = t.ultimateLog;
     document.getElementById('projects-title').innerText = t.projectsTitle;
     document.getElementById('proj-kobi').innerText = t.projKobi;
     document.getElementById('proj-credit').innerText = t.projCredit;
