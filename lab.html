@@ -47,13 +47,21 @@ border:1px solid #1f2430;
 font-family:monospace;
 font-size:14px;
 opacity:0.85;
-cursor:pointer;
 transition: border-color 0.2s, background 0.2s;
 }
 
-.box:hover{
+.clickable{
+cursor:pointer;
+}
+
+.clickable:hover{
 border-color:#6da8ff;
 background: rgba(109, 168, 255, 0.05);
+}
+
+.info-box{
+cursor: default;
+border-style: dashed; /* Aktif olmadığını belirtmek için hafif görsel fark */
 }
 
 .api-box {
@@ -69,6 +77,14 @@ color: #6da8ff;
 margin-left: 10px;
 }
 
+.meta-info {
+display: block;
+margin-top: 8px;
+color: #888;
+font-size: 12px;
+font-style: italic;
+}
+
 .meta-description {
 font-size: 13px;
 color: #888;
@@ -76,7 +92,6 @@ margin-top: 15px;
 padding-top: 15px;
 border-top: 1px solid #1f2430;
 line-height: 1.6;
-cursor: default;
 display: none;
 }
 
@@ -86,7 +101,6 @@ border-top:1px solid #1f2430;
 margin:50px 0;
 }
 
-/* Tıklanabilir süreklilik kutusu için özel vurgu */
 #continuity-data {
 border-left: 2px solid #6da8ff;
 }
@@ -99,13 +113,10 @@ border-left: 2px solid #6da8ff;
 
 <h1 id="title">Structural Financial Intelligence Lab</h1>
 
-<p class="muted" id="subtitle">
-Observing financial behavior at structural level — not surface metrics.
-</p>
+<p class="muted" id="subtitle">Observing financial behavior at structural level — not surface metrics.</p>
 
 <div class="section">
 <p class="big" id="system-not-finish">This system does not finish.</p>
-
 <p class="muted" id="system-desc">
 Markets are not static.<br>
 This is where models evolve under real conditions.<br><br>
@@ -117,7 +128,6 @@ Liquidity, compression, and structural shifts are observed as state changes — 
 
 <div class="section">
 <p class="big" id="snap-title">System Snapshot</p>
-
 <div class="box" id="snap-data">
 vector: unstable<br>
 friction: increasing<br>
@@ -131,7 +141,6 @@ state: PREPARE
 
 <div class="section">
 <p class="big" id="live-systems">Live Systems</p>
-
 <div class="box" id="crypto-m">CRYPTO MARKETS</div>
 <div class="box" id="forex-m">FOREX</div>
 <div class="box" id="comm-m">COMMODITIES & GOLD</div>
@@ -143,23 +152,22 @@ state: PREPARE
 <div class="section">
 <p class="big" id="engine-core">Engine Core</p>
 
-<div class="box api-box" onclick="toggleMeta('pascal-desc')">
+<div class="box api-box clickable" onclick="toggleMeta('pascal-desc')">
 PASCAL <span class="status-tag" id="tag-active-1">ACTIVE</span>
 <div id="pascal-desc" class="meta-description"></div>
 </div>
 
-<div class="box api-box" onclick="toggleMeta('snipper-desc')">
+<div class="box api-box clickable" onclick="toggleMeta('snipper-desc')">
 SNIPPER BOT <span class="status-tag" id="tag-active-2">ACTIVE</span>
 <div id="snipper-desc" class="meta-description"></div>
 </div>
 
-<div class="box api-box" onclick="toggleMeta('ultimate-desc')">
+<div class="box api-box clickable" onclick="toggleMeta('ultimate-desc')">
 ULTIMATE <span class="status-tag" id="tag-testing">TESTING</span>
 <div id="ultimate-desc" class="meta-description"></div>
 </div>
 
 <div class="box api-box">SUPERVISOR <span class="status-tag" id="tag-shadow">SHADOW</span></div>
-
 </div>
 
 <hr>
@@ -167,28 +175,21 @@ ULTIMATE <span class="status-tag" id="tag-testing">TESTING</span>
 <div class="section">
 <p class="big" id="projects-title">Projects</p>
 
-<div class="box" onclick="openProject('kobi')" id="proj-kobi">
-KOBI STRUCTURAL ENGINE → START ANALYSIS
-</div>
+<div class="box clickable" onclick="openProject('kobi')" id="proj-kobi">
+    </div>
 
-<div class="box" onclick="openProject('credit')" id="proj-credit">
-CREDIT FIELD MAP → START ANALYSIS
-</div>
+<div class="box info-box" id="proj-radar">
+    </div>
 
-<div class="box" onclick="openProject('market')" id="proj-market">
-MARKET STRUCTURE VIEW → START ANALYSIS
-</div>
-
+<div class="box info-box" id="proj-bank">
+    </div>
 </div>
 
 <hr>
 
 <div class="section">
 <p class="big" id="continuity-title">Structural Continuity</p>
-
-<div class="box" id="continuity-data" onclick="window.location.href='access.html'">
-</div>
-
+<div class="box clickable" id="continuity-data" onclick="window.location.href='access.html'"></div>
 </div>
 
 </div>
@@ -211,13 +212,13 @@ const translations = {
         tagActive: "AKTİF",
         tagTesting: "TEST EDİLİYOR",
         tagShadow: "GÖLGE",
-        pascalLog: "[SYSTEM_LOG]: Blaise Pascal’a bir saygı duruşudur. <br><br>Kripto dünyasında, üstün MA filtreleriyle takibe alınan 40 adet varlığın zorunlu likidite boşaltımını hedefler. Bot canlıda gözlenmekte ve log biriktirmektedir; entry seviyeleri kalibre edilmektedir. <br><br>Mevcut haliyle likiditasyonu mümkün olmayıp, teoride geometrik kazanç sağlar.",
-        snipperLog: "[SYSTEM_LOG]: Yüksek hassasiyetli yapısal giriş motorudur. Piyasa gürültüsünü filtreleyerek, fiyatın zamanla hizalandığı daralma noktalarında ani ve net pozisyon alımları gerçekleştirir. Zaman maliyetini (Time Cost) minimize ederken, vektörel yönün kesinleştiği mikro alanlarda operasyon yürütür.",
-        ultimateLog: "[SYSTEM_LOG]: Sistemin en üst segment yapısal motorudur. 300 işlemlik Monte Carlo simülasyonlarında; %10 marjin ve 10x kaldıraç ile başlangıç sermayesini 10 katına çıkarma potansiyeli doğrulanmıştır. <br><br> %60 başarı oranı ve 1.5 RR (Risk/Reward) dengesi üzerine kuruludur. İflas olasılığı (Risk of Ruin) <%0.8 olarak hesaplanmış olup, sistem şu an canlı piyasa koşullarında gözlemlenmekte ve geometrik getiri projeksiyonu kalibre edilmektedir.",
+        pascalLog: "[SYSTEM_LOG]: Blaise Pascal’a bir saygı duruşudur. <br><br>Kripto dünyasında 40 adet varlığın likidite boşaltımını hedefler. Giriş seviyeleri kalibre edilmektedir.",
+        snipperLog: "[SYSTEM_LOG]: Yüksek hassasiyetli yapısal giriş motorudur. Piyasa gürültüsünü filtreler, mikro alanlarda operasyon yürütür.",
+        ultimateLog: "[SYSTEM_LOG]: Monte Carlo simülasyonlarında 300 işlemde 10 kat artış potansiyeli doğrulanmıştır. İflas olasılığı <%0.8'dir. Canlı gözlemdedir.",
         projectsTitle: "Projeler",
-        projKobi: "KOBI YAPISAL MOTORU → ANALİZİ BAŞLAT",
-        projCredit: "KREDİ ALAN HARİTASI → ANALİZİ BAŞLAT",
-        projMarket: "PİYASA YAPISI GÖRÜNÜMÜ → ANALİZİ BAŞLAT",
+        projKobi: "KOBİ DERECELENDİRME ÖĞRENME MOTORU <br><span class='meta-info'>Yapısal skorlama modelleri ve SME finansal veri akış analizi.</span>",
+        projRadar: "BORSAYA KOTA OLAN FİRMA RADARI <br><span class='meta-info'>Halka açık şirketlerin bilanço ve piyasa davranışı korelasyon motoru.</span>",
+        projBank: "BANKA TİCARİ KREDİ TEKLİFLERİ <br><span class='meta-info'>Kredi alan haritalama ve finansal teklif optimizasyon katmanı.</span>",
         continuityTitle: "Yapısal Süreklilik",
         continuityData: "DURUM: AKTİF<br>SÜRTÜNME: DEĞİŞKEN<br>ZAMAN MALİYETİ: BİRİKİYOR<br><br>YAPI DEVAM EDİYOR<br>HİZALANMA KATILIMI BELİRLER<br><br>→ HİZALANMAYA GİR"
     },
@@ -225,7 +226,7 @@ const translations = {
         title: "Structural Financial Intelligence Lab",
         subtitle: "Observing financial behavior at structural level — not surface metrics.",
         systemNotFinish: "This system does not finish.",
-        systemDesc: "Markets are not static.<br>This is where models evolve under real conditions.<br><br>Liquidity, compression, and structural shifts are observed as state changes — not predictions.",
+        systemDesc: "Markets are not static.<br>Models evolve under real conditions.<br><br>State changes — not predictions.",
         snapTitle: "System Snapshot",
         snapData: "vector: unstable<br>friction: increasing<br>compression: detected<br>bias: directional<br><br>state: PREPARE",
         liveSystems: "Live Systems",
@@ -237,13 +238,13 @@ const translations = {
         tagActive: "ACTIVE",
         tagTesting: "TESTING",
         tagShadow: "SHADOW",
-        pascalLog: "[SYSTEM_LOG]: A tribute to Blaise Pascal. <br><br>Targets forced liquidity evacuation of 40 tracked assets in the crypto world via superior MA filters. The bot is observed live and accumulating logs; entry levels are being calibrated. <br><br>Liquidation is not possible in its current state, providing geometric gains in theory.",
-        snipperLog: "[SYSTEM_LOG]: High-precision structural entry engine. By filtering market noise, it executes sharp and clear positions at compression points where price aligns with time. It minimizes Time Cost while operating in micro-zones where vectorial direction is confirmed.",
-        ultimateLog: "[SYSTEM_LOG]: The highest segment structural engine of the system. In 300-trade Monte Carlo simulations, a potential to increase initial capital by 10x using 10% margin and 10x leverage has been verified. <br><br> Built on a 60% win rate and 1.5 RR (Risk/Reward) balance. Risk of Ruin is calculated at <0.8%; the system is currently observed under live market conditions, calibrating its geometric return projection.",
+        pascalLog: "[SYSTEM_LOG]: A tribute to Blaise Pascal. Calibration in progress for 40 crypto assets.",
+        snipperLog: "[SYSTEM_LOG]: High-precision entry engine. Filters noise, operates in micro-zones.",
+        ultimateLog: "[SYSTEM_LOG]: 10x potential verified via 300-trade Monte Carlo. Risk of Ruin <0.8%. Live observation.",
         projectsTitle: "Projects",
-        projKobi: "KOBI STRUCTURAL ENGINE → START ANALYSIS",
-        projCredit: "CREDIT FIELD MAP → START ANALYSIS",
-        projMarket: "MARKET STRUCTURE VIEW → START ANALYSIS",
+        projKobi: "SME RATING LEARNING ENGINE <br><span class='meta-info'>Structural scoring models and SME financial data flow analysis.</span>",
+        projRadar: "LISTED COMPANY RADAR <br><span class='meta-info'>Correlation engine for public company balance sheets and market behavior.</span>",
+        projBank: "BANK COMMERCIAL LOAN OFFERS <br><span class='meta-info'>Credit field mapping and financial offer optimization layer.</span>",
         continuityTitle: "Structural Continuity",
         continuityData: "STATE: ACTIVE<br>FRICTION: VARIABLE<br>TIME COST: ACCUMULATING<br><br>STRUCTURE CONTINUES<br>ALIGNMENT DEFINES PARTICIPATION<br><br>→ ENTER ALIGNMENT"
     }
@@ -273,9 +274,9 @@ function applyLanguage() {
     document.getElementById('snipper-desc').innerHTML = t.snipperLog;
     document.getElementById('ultimate-desc').innerHTML = t.ultimateLog;
     document.getElementById('projects-title').innerText = t.projectsTitle;
-    document.getElementById('proj-kobi').innerText = t.projKobi;
-    document.getElementById('proj-credit').innerText = t.projCredit;
-    document.getElementById('proj-market').innerText = t.projMarket;
+    document.getElementById('proj-kobi').innerHTML = t.projKobi;
+    document.getElementById('proj-radar').innerHTML = t.projRadar;
+    document.getElementById('proj-bank').innerHTML = t.projBank;
     document.getElementById('continuity-title').innerText = t.continuityTitle;
     document.getElementById('continuity-data').innerHTML = t.continuityData;
 }
