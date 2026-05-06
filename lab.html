@@ -154,10 +154,14 @@ state: PREPARE
 
 <div class="box api-box" onclick="toggleMeta('pascal-desc')">
 PASCAL <span class="status-tag" id="tag-active-1">ACTIVE</span>
-<div id="pascal-desc" class="meta-description">
+<div id="pascal-desc" class="meta-description"></div>
 </div>
+
+<div class="box api-box" onclick="toggleMeta('snipper-desc')">
+SNIPPER BOT <span class="status-tag" id="tag-active-2">ACTIVE</span>
+<div id="snipper-desc" class="meta-description"></div>
 </div>
-<div class="box api-box">GODMODE <span class="status-tag" id="tag-active-2">ACTIVE</span></div>
+
 <div class="box api-box">ULTIMATE <span class="status-tag" id="tag-testing">TESTING</span></div>
 <div class="box api-box">SUPERVISOR <span class="status-tag" id="tag-shadow">SHADOW</span></div>
 
@@ -220,6 +224,7 @@ const translations = {
         tagTesting: "TEST EDİLİYOR",
         tagShadow: "GÖLGE",
         pascalLog: "[SYSTEM_LOG]: Blaise Pascal’a bir saygı duruşudur. <br><br>Kripto dünyasında, üstün MA filtreleriyle takibe alınan 40 adet varlığın zorunlu likidite boşaltımını hedefler. Bot canlıda gözlenmekte ve log biriktirmektedir; entry seviyeleri kalibre edilmektedir. <br><br>Mevcut haliyle likiditasyonu mümkün olmayıp, teoride geometrik kazanç sağlar.",
+        snipperLog: "[SYSTEM_LOG]: Yüksek hassasiyetli yapısal giriş motorudur. Piyasa gürültüsünü filtreleyerek, fiyatın zamanla hizalandığı daralma noktalarında ani ve net pozisyon alımları gerçekleştirir. Zaman maliyetini (Time Cost) minimize ederken, vektörel yönün kesinleştiği mikro alanlarda operasyon yürütür.",
         projectsTitle: "Projeler",
         projKobi: "KOBI YAPISAL MOTORU → ANALİZİ BAŞLAT",
         projCredit: "KREDİ ALAN HARİTASI → ANALİZİ BAŞLAT",
@@ -245,6 +250,7 @@ const translations = {
         tagTesting: "TESTING",
         tagShadow: "SHADOW",
         pascalLog: "[SYSTEM_LOG]: A tribute to Blaise Pascal. <br><br>Targets forced liquidity evacuation of 40 tracked assets in the crypto world via superior MA filters. The bot is observed live and accumulating logs; entry levels are being calibrated. <br><br>Liquidation is not possible in its current state, providing geometric gains in theory.",
+        snipperLog: "[SYSTEM_LOG]: High-precision structural entry engine. By filtering market noise, it executes sharp and clear positions at compression points where price aligns with time. It minimizes Time Cost while operating in micro-zones where vectorial direction is confirmed.",
         projectsTitle: "Projects",
         projKobi: "KOBI STRUCTURAL ENGINE → START ANALYSIS",
         projCredit: "CREDIT FIELD MAP → START ANALYSIS",
@@ -276,6 +282,7 @@ function applyLanguage() {
     document.getElementById('tag-testing').innerText = t.tagTesting;
     document.getElementById('tag-shadow').innerText = t.tagShadow;
     document.getElementById('pascal-desc').innerHTML = t.pascalLog;
+    document.getElementById('snipper-desc').innerHTML = t.snipperLog;
     document.getElementById('projects-title').innerText = t.projectsTitle;
     document.getElementById('proj-kobi').innerText = t.projKobi;
     document.getElementById('proj-credit').innerText = t.projCredit;
