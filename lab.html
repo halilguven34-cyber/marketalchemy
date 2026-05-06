@@ -48,6 +48,7 @@ font-family:monospace;
 font-size:14px;
 opacity:0.85;
 cursor:pointer;
+transition: border-color 0.2s;
 }
 
 .box:hover{
@@ -65,6 +66,17 @@ padding: 2px 6px;
 border: 1px solid #6da8ff;
 color: #6da8ff;
 margin-left: 10px;
+}
+
+.meta-description {
+font-size: 13px;
+color: #888;
+margin-top: 15px;
+padding-top: 15px;
+border-top: 1px solid #1f2430;
+line-height: 1.6;
+cursor: default;
+display: none;
 }
 
 .cta{
@@ -141,7 +153,15 @@ state: PREPARE
 <div class="section">
 <p class="big">Engine Core</p>
 
-<div class="box api-box">PASCAL <span class="status-tag">ACTIVE</span></div>
+<div class="box api-box" onclick="toggleMeta('pascal-desc')">
+PASCAL <span class="status-tag">ACTIVE</span>
+<div id="pascal-desc" class="meta-description">
+[SYSTEM_LOG]: Blaise Pascal’a bir saygı duruşudur. <br><br>
+Kripto dünyasında, üstün MA filtreleriyle takibe alınan 40 adet varlığın zorunlu likidite boşaltımını hedefler. 
+Bot canlıda gözlenmekte ve log biriktirmektedir; entry seviyeleri kalibre edilmektedir. <br><br>
+Mevcut haliyle likiditasyonu mümkün olmayıp, teoride geometrik kazanç sağlar.
+</div>
+</div>
 <div class="box api-box">GODMODE <span class="status-tag">ACTIVE</span></div>
 <div class="box api-box">ULTIMATE <span class="status-tag">TESTING</span></div>
 <div class="box api-box">SUPERVISOR <span class="status-tag">SHADOW</span></div>
@@ -188,6 +208,15 @@ ALIGNMENT DEFINES PARTICIPATION
 </div>
 
 <script>
+function toggleMeta(id) {
+    const desc = document.getElementById(id);
+    if (desc.style.display === "block") {
+        desc.style.display = "none";
+    } else {
+        desc.style.display = "block";
+    }
+}
+
 function openProject(name){
     localStorage.setItem("selectedProject", name);
     window.location.href = "intake.html";
