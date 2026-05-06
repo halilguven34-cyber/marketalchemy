@@ -106,19 +106,18 @@ margin:50px 0;
 
 <div class="container">
 
-<h1>Structural Financial Intelligence Lab</h1>
+<h1 id="title">Structural Financial Intelligence Lab</h1>
 
-<p class="muted">
+<p class="muted" id="subtitle">
 Observing financial behavior at structural level — not surface metrics.
 </p>
 
 <div class="section">
-<p class="big">This system does not finish.</p>
+<p class="big" id="system-not-finish">This system does not finish.</p>
 
-<p class="muted">
+<p class="muted" id="system-desc">
 Markets are not static.<br>
 This is where models evolve under real conditions.<br><br>
-
 Liquidity, compression, and structural shifts are observed as state changes — not predictions.
 </p>
 </div>
@@ -126,9 +125,9 @@ Liquidity, compression, and structural shifts are observed as state changes — 
 <hr>
 
 <div class="section">
-<p class="big">System Snapshot</p>
+<p class="big" id="snap-title">System Snapshot</p>
 
-<div class="box">
+<div class="box" id="snap-data">
 vector: unstable<br>
 friction: increasing<br>
 compression: detected<br>
@@ -140,48 +139,44 @@ state: PREPARE
 <hr>
 
 <div class="section">
-<p class="big">Live Systems</p>
+<p class="big" id="live-systems">Live Systems</p>
 
-<div class="box">CRYPTO MARKETS</div>
-<div class="box">FOREX</div>
-<div class="box">COMMODITIES & GOLD</div>
-<div class="box">EQUITY INDICES</div>
+<div class="box" id="crypto-m">CRYPTO MARKETS</div>
+<div class="box" id="forex-m">FOREX</div>
+<div class="box" id="comm-m">COMMODITIES & GOLD</div>
+<div class="box" id="equity-m">EQUITY INDICES</div>
 </div>
 
 <hr>
 
 <div class="section">
-<p class="big">Engine Core</p>
+<p class="big" id="engine-core">Engine Core</p>
 
 <div class="box api-box" onclick="toggleMeta('pascal-desc')">
-PASCAL <span class="status-tag">ACTIVE</span>
+PASCAL <span class="status-tag" id="tag-active-1">ACTIVE</span>
 <div id="pascal-desc" class="meta-description">
-[SYSTEM_LOG]: Blaise Pascal’a bir saygı duruşudur. <br><br>
-Kripto dünyasında, üstün MA filtreleriyle takibe alınan 40 adet varlığın zorunlu likidite boşaltımını hedefler. 
-Bot canlıda gözlenmekte ve log biriktirmektedir; entry seviyeleri kalibre edilmektedir. <br><br>
-Mevcut haliyle likiditasyonu mümkün olmayıp, teoride geometrik kazanç sağlar.
 </div>
 </div>
-<div class="box api-box">GODMODE <span class="status-tag">ACTIVE</span></div>
-<div class="box api-box">ULTIMATE <span class="status-tag">TESTING</span></div>
-<div class="box api-box">SUPERVISOR <span class="status-tag">SHADOW</span></div>
+<div class="box api-box">GODMODE <span class="status-tag" id="tag-active-2">ACTIVE</span></div>
+<div class="box api-box">ULTIMATE <span class="status-tag" id="tag-testing">TESTING</span></div>
+<div class="box api-box">SUPERVISOR <span class="status-tag" id="tag-shadow">SHADOW</span></div>
 
 </div>
 
 <hr>
 
 <div class="section">
-<p class="big">Projects</p>
+<p class="big" id="projects-title">Projects</p>
 
-<div class="box" onclick="openProject('kobi')">
+<div class="box" onclick="openProject('kobi')" id="proj-kobi">
 KOBI STRUCTURAL ENGINE → START ANALYSIS
 </div>
 
-<div class="box" onclick="openProject('credit')">
+<div class="box" onclick="openProject('credit')" id="proj-credit">
 CREDIT FIELD MAP → START ANALYSIS
 </div>
 
-<div class="box" onclick="openProject('market')">
+<div class="box" onclick="openProject('market')" id="proj-market">
 MARKET STRUCTURE VIEW → START ANALYSIS
 </div>
 
@@ -190,37 +185,117 @@ MARKET STRUCTURE VIEW → START ANALYSIS
 <hr>
 
 <div class="section">
-<p class="big">Structural Continuity</p>
+<p class="big" id="continuity-title">Structural Continuity</p>
 
-<div class="box">
+<div class="box" id="continuity-data">
 STATE: ACTIVE<br>
 FRICTION: VARIABLE<br>
 TIME COST: ACCUMULATING<br><br>
-
 STRUCTURE CONTINUES<br>
 ALIGNMENT DEFINES PARTICIPATION
 </div>
 
-<a class="cta" href="access.html">Enter alignment →</a>
+<a class="cta" href="access.html" id="cta-btn">Enter alignment →</a>
 
 </div>
 
 </div>
 
 <script>
+const translations = {
+    tr: {
+        title: "Yapısal Finansal Zeka Laboratuvarı",
+        subtitle: "Finansal davranışı yapısal düzeyde gözlemlemek — yüzeysel metriklerle değil.",
+        systemNotFinish: "Bu sistem bitmez.",
+        systemDesc: "Piyasalar statik değildir.<br>Modellerin gerçek koşullar altında evrildiği yer burasıdır.<br><br>Likidite, sıkışma ve yapısal kaymalar tahmin olarak değil, durum değişiklikleri olarak gözlemlenir.",
+        snapTitle: "Sistem Özeti",
+        snapData: "vektör: kararsız<br>sürtünme: artıyor<br>sıkışma: tespit edildi<br>yanlılık: yönsel<br><br>durum: HAZIRLAN",
+        liveSystems: "Canlı Sistemler",
+        cryptoM: "KRİPTO PİYASALARI",
+        forexM: "FOREX",
+        commM: "EMTİA VE ALTIN",
+        equityM: "HİSSE ENDEKSLERİ",
+        engineCore: "Motor Çekirdeği",
+        tagActive: "AKTİF",
+        tagTesting: "TEST EDİLİYOR",
+        tagShadow: "GÖLGE",
+        pascalLog: "[SYSTEM_LOG]: Blaise Pascal’a bir saygı duruşudur. <br><br>Kripto dünyasında, üstün MA filtreleriyle takibe alınan 40 adet varlığın zorunlu likidite boşaltımını hedefler. Bot canlıda gözlenmekte ve log biriktirmektedir; entry seviyeleri kalibre edilmektedir. <br><br>Mevcut haliyle likiditasyonu mümkün olmayıp, teoride geometrik kazanç sağlar.",
+        projectsTitle: "Projeler",
+        projKobi: "KOBI YAPISAL MOTORU → ANALİZİ BAŞLAT",
+        projCredit: "KREDİ ALAN HARİTASI → ANALİZİ BAŞLAT",
+        projMarket: "PİYASA YAPISI GÖRÜNÜMÜ → ANALİZİ BAŞLAT",
+        continuityTitle: "Yapısal Süreklilik",
+        continuityData: "DURUM: AKTİF<br>SÜRTÜNME: DEĞİŞKEN<br>ZAMAN MALİYETİ: BİRİKİYOR<br><br>YAPI DEVAM EDİYOR<br>HİZALANMA KATILIMI BELİRLER",
+        ctaBtn: "Hizalanmaya gir →"
+    },
+    en: {
+        title: "Structural Financial Intelligence Lab",
+        subtitle: "Observing financial behavior at structural level — not surface metrics.",
+        systemNotFinish: "This system does not finish.",
+        systemDesc: "Markets are not static.<br>This is where models evolve under real conditions.<br><br>Liquidity, compression, and structural shifts are observed as state changes — not predictions.",
+        snapTitle: "System Snapshot",
+        snapData: "vector: unstable<br>friction: increasing<br>compression: detected<br>bias: directional<br><br>state: PREPARE",
+        liveSystems: "Live Systems",
+        cryptoM: "CRYPTO MARKETS",
+        forexM: "FOREX",
+        commM: "COMMODITIES & GOLD",
+        equityM: "EQUITY INDICES",
+        engineCore: "Engine Core",
+        tagActive: "ACTIVE",
+        tagTesting: "TESTING",
+        tagShadow: "SHADOW",
+        pascalLog: "[SYSTEM_LOG]: A tribute to Blaise Pascal. <br><br>Targets forced liquidity evacuation of 40 tracked assets in the crypto world via superior MA filters. The bot is observed live and accumulating logs; entry levels are being calibrated. <br><br>Liquidation is not possible in its current state, providing geometric gains in theory.",
+        projectsTitle: "Projects",
+        projKobi: "KOBI STRUCTURAL ENGINE → START ANALYSIS",
+        projCredit: "CREDIT FIELD MAP → START ANALYSIS",
+        projMarket: "MARKET STRUCTURE VIEW → START ANALYSIS",
+        continuityTitle: "Structural Continuity",
+        continuityData: "STATE: ACTIVE<br>FRICTION: VARIABLE<br>TIME COST: ACCUMULATING<br><br>STRUCTURE CONTINUES<br>ALIGNMENT DEFINES PARTICIPATION",
+        ctaBtn: "Enter alignment →"
+    }
+};
+
+function applyLanguage() {
+    const lang = navigator.language.startsWith('tr') ? 'tr' : 'en';
+    const t = translations[lang];
+
+    document.getElementById('title').innerText = t.title;
+    document.getElementById('subtitle').innerText = t.subtitle;
+    document.getElementById('system-not-finish').innerText = t.systemNotFinish;
+    document.getElementById('system-desc').innerHTML = t.systemDesc;
+    document.getElementById('snap-title').innerText = t.snapTitle;
+    document.getElementById('snap-data').innerHTML = t.snapData;
+    document.getElementById('live-systems').innerText = t.liveSystems;
+    document.getElementById('crypto-m').innerText = t.cryptoM;
+    document.getElementById('forex-m').innerText = t.forexM;
+    document.getElementById('comm-m').innerText = t.commM;
+    document.getElementById('equity-m').innerText = t.equityM;
+    document.getElementById('engine-core').innerText = t.engineCore;
+    document.getElementById('tag-active-1').innerText = t.tagActive;
+    document.getElementById('tag-active-2').innerText = t.tagActive;
+    document.getElementById('tag-testing').innerText = t.tagTesting;
+    document.getElementById('tag-shadow').innerText = t.tagShadow;
+    document.getElementById('pascal-desc').innerHTML = t.pascalLog;
+    document.getElementById('projects-title').innerText = t.projectsTitle;
+    document.getElementById('proj-kobi').innerText = t.projKobi;
+    document.getElementById('proj-credit').innerText = t.projCredit;
+    document.getElementById('proj-market').innerText = t.projMarket;
+    document.getElementById('continuity-title').innerText = t.continuityTitle;
+    document.getElementById('continuity-data').innerHTML = t.continuityData;
+    document.getElementById('cta-btn').innerText = t.ctaBtn;
+}
+
 function toggleMeta(id) {
     const desc = document.getElementById(id);
-    if (desc.style.display === "block") {
-        desc.style.display = "none";
-    } else {
-        desc.style.display = "block";
-    }
+    desc.style.display = (desc.style.display === "block") ? "none" : "block";
 }
 
 function openProject(name){
     localStorage.setItem("selectedProject", name);
     window.location.href = "intake.html";
 }
+
+window.onload = applyLanguage;
 </script>
 
 </body>
