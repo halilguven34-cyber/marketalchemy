@@ -152,7 +152,13 @@ interpretation: -
 async function analyze(symbol){
     symbol = symbol.toUpperCase();
     // CERRAHİ DOKUNUŞ: 127.0.0.1 yerine göreli URL kullanılarak dış erişim senkronize edildi.
-    const res = await fetch(`https://machine-descriptions-nurse-indexes.trycloudflare.com`);
+    const res = await fetch(`https://api.marketalchemy.io/analyze`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ symbol })
+});
 
     return await res.json();
 }
