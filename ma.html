@@ -40,6 +40,8 @@ flex-direction:column;
 gap:22px;
 }
 
+/* HEADER */
+
 .header{
 display:flex;
 justify-content:space-between;
@@ -47,6 +49,13 @@ align-items:center;
 opacity:0.45;
 font-size:12px;
 letter-spacing:1px;
+}
+
+.header-sub{
+font-size:11px;
+opacity:0.55;
+margin-top:6px;
+letter-spacing:0.5px;
 }
 
 .live-dot{
@@ -57,6 +66,8 @@ background:var(--green);
 box-shadow:0 0 12px var(--green);
 }
 
+/* INPUT LAYER */
+
 .input-layer{
 background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
 border:1px solid var(--border);
@@ -65,6 +76,13 @@ padding:28px;
 display:flex;
 flex-direction:column;
 gap:14px;
+}
+
+.scope-line{
+font-size:11px;
+letter-spacing:0.8px;
+opacity:0.6;
+margin-bottom:4px;
 }
 
 .input-label{
@@ -96,6 +114,18 @@ color:var(--text);
 font-size:16px;
 outline:none;
 }
+
+input::placeholder{
+color:#5d6675;
+}
+
+.discovery-hint{
+font-size:11px;
+opacity:0.45;
+margin-top:2px;
+}
+
+/* CORE */
 
 .core{
 display:grid;
@@ -147,6 +177,8 @@ font-size:34px;
 font-weight:700;
 }
 
+/* METRICS */
+
 .metrics-panel{
 display:flex;
 flex-direction:column;
@@ -184,11 +216,17 @@ border-radius:999px;
 overflow:hidden;
 }
 
-.fill{height:100%;width:0%;transition:0.35s;}
+.fill{
+height:100%;
+width:0%;
+transition:0.35s;
+}
 
 .vector{background:linear-gradient(90deg,#2eff89,var(--green));}
 .shift{background:linear-gradient(90deg,#ff7a7a,var(--red));}
 .theta{background:linear-gradient(90deg,#76bbff,var(--blue));}
+
+/* TELEMETRY */
 
 .telemetry{
 display:grid;
@@ -243,6 +281,8 @@ line-height:1.7;
 opacity:0.78;
 }
 
+/* STATES */
+
 .trend{color:var(--blue);}
 .compression{color:var(--yellow);}
 .shiftText{color:var(--red);}
@@ -262,12 +302,34 @@ opacity:0.78;
 <div class="live-dot"></div>
 </div>
 
+<div class="header-sub">
+Real-time structural decision layer for crypto market-wide assets
+</div>
+
 <div class="input-layer">
-<div class="input-label">Observer Input Layer</div>
+
+<div class="scope-line">
+Structural engine for 500+ tradable crypto assets
+</div>
+
+<div class="input-label">
+Observer Input Layer
+</div>
+
 <div class="input-wrapper">
 <div class="input-symbol">∴</div>
-<input id="input" placeholder="Enter structure... BTC, ETH, SOL">
+
+<input
+id="input"
+placeholder="Enter market structure (500+ assets supported)"
+/>
+
 </div>
+
+<div class="discovery-hint">
+Try: BTC, SOL, or any Binance-listed asset
+</div>
+
 </div>
 
 <div class="core">
@@ -324,6 +386,7 @@ price = observable trace of system behavior | vector = preserved movement
 <div class="panel-title">Deep Telemetry</div>
 
 <div class="grid">
+
 <div class="item"><div class="item-label">Velocity</div><div class="item-value" id="v">-</div></div>
 <div class="item"><div class="item-label">Acceleration</div><div class="item-value" id="a">-</div></div>
 <div class="item"><div class="item-label">Friction</div><div class="item-value" id="f">-</div></div>
@@ -332,6 +395,7 @@ price = observable trace of system behavior | vector = preserved movement
 <div class="item"><div class="item-label">Theta Velocity</div><div class="item-value" id="theta_velocity">-</div></div>
 <div class="item"><div class="item-label">Dominance</div><div class="item-value" id="dominance">-</div></div>
 <div class="item"><div class="item-label">System Action</div><div class="item-value" id="system_action">-</div></div>
+
 </div>
 
 </div>
