@@ -1,6 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<script>
+if(!localStorage.getItem("lang")){
+    const userLang = navigator.language || navigator.userLanguage;
+    localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
+}
+
+const LANG = localStorage.getItem("lang") || "en";
+document.documentElement.lang = LANG;
+
+const TEXT = {
+
+en:{
+
+header:"MARKET ALCHEMY — STRUCTURAL VISIBILITY TERMINAL",
+
+placeholder:"Enter asset...",
+
+structural_state:"Structural State",
+
+waiting:"WAITING",
+transition:"TRANSITION",
+trend:"TREND",
+compression:"COMPRESSION",
+error:"ERROR",
+unknown:"UNKNOWN",
+
+sub_default:"price = observable trace | vector = preserved movement",
+
+vector_field:"Vector Field",
+shift_intensity:"Shift Intensity",
+theta_flow:"Theta Flow",
+
+deep_telemetry:"Deep Telemetry",
+structural_interpretation:"Structural Interpretation",
+
+velocity:"Velocity",
+acceleration:"Acceleration",
+friction:"Friction",
+omega:"Omega",
+theta:"Theta",
+theta_velocity:"Theta Velocity",
+dominance:"Dominance",
+system_action:"System Action",
+
+no_regime:"No dominant structural regime detected.",
+
+transition_meta:"Previous structure losing persistence. Exit pressure active while pre-entry conditions form.",
+trend_meta:"Structure reinforcing directional persistence.",
+compression_meta:"Energy accumulation phase.",
+default_meta:"No dominant structural regime.",
+
+enter:"ENTER",
+exit:"EXIT"
+
+},
+
+tr:{
+
+header:"MARKET ALCHEMY — YAPISAL GÖRÜNÜRLÜK TERMİNALİ",
+
+placeholder:"Varlık gir...",
+
+structural_state:"Yapısal Durum",
+
+waiting:"BEKLEME",
+transition:"GEÇİŞ",
+trend:"TREND",
+compression:"SIKIŞMA",
+error:"HATA",
+unknown:"BİLİNMİYOR",
+
+sub_default:"fiyat = gözlemlenebilir iz | vektör = korunmuş hareket",
+
+vector_field:"Vektör Alanı",
+shift_intensity:"Kayma Yoğunluğu",
+theta_flow:"Theta Akışı",
+
+deep_telemetry:"Derin Telemetri",
+structural_interpretation:"Yapısal Yorum",
+
+velocity:"Hız",
+acceleration:"İvme",
+friction:"Sürtünme",
+omega:"Omega",
+theta:"Theta",
+theta_velocity:"Theta Hızı",
+dominance:"Baskınlık",
+system_action:"Sistem Aksiyonu",
+
+no_regime:"Baskın yapısal rejim tespit edilmedi.",
+
+transition_meta:"Önceki yapı kalıcılığını kaybediyor. Ön giriş koşulları oluşurken çıkış baskısı aktif.",
+trend_meta:"Yapı yönsel kalıcılığı güçlendiriyor.",
+compression_meta:"Enerji birikim fazı.",
+default_meta:"Baskın yapısal rejim yok.",
+
+enter:"GİR",
+exit:"ÇIK"
+
+}
+
+};
+
+const T = TEXT[LANG];
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MA Engine — Structural Visibility Terminal</title>
@@ -268,7 +375,7 @@ opacity:0.78;
 <!-- HEADER -->
 
 <div class="header">
-<div>MARKET ALCHEMY — STRUCTURAL VISIBILITY TERMINAL</div>
+<div id="header_text"></div>
 <div class="live-dot"></div>
 </div>
 
@@ -278,7 +385,7 @@ opacity:0.78;
 
 <div class="input-wrapper">
 <div class="input-symbol">∴</div>
-<input id="input" placeholder="Enter asset...">
+<input id="input">
 </div>
 
 </div>
@@ -289,13 +396,11 @@ opacity:0.78;
 
 <div class="decision-panel">
 
-<div class="system-tag">Structural State</div>
+<div class="system-tag" id="structural_state_label"></div>
 
-<div class="state wait" id="state">WAITING</div>
+<div class="state wait" id="state"></div>
 
-<div class="sub" id="sub">
-price = observable trace | vector = preserved movement
-</div>
+<div class="sub" id="sub"></div>
 
 <div class="decision-box">
 <div class="decision-value wait" id="decision_value">-</div>
@@ -309,7 +414,7 @@ price = observable trace | vector = preserved movement
 
 <div class="metric-card">
 <div class="metric-head">
-<div class="metric-title">Vector Field</div>
+<div class="metric-title" id="vector_field_label"></div>
 <div class="metric-value" id="vector_value">0.000</div>
 </div>
 <div class="bar"><div class="fill vector" id="vector_fill"></div></div>
@@ -317,7 +422,7 @@ price = observable trace | vector = preserved movement
 
 <div class="metric-card">
 <div class="metric-head">
-<div class="metric-title">Shift Intensity</div>
+<div class="metric-title" id="shift_intensity_label"></div>
 <div class="metric-value" id="shift_value">0.000</div>
 </div>
 <div class="bar"><div class="fill shift" id="shift_fill"></div></div>
@@ -325,7 +430,7 @@ price = observable trace | vector = preserved movement
 
 <div class="metric-card">
 <div class="metric-head">
-<div class="metric-title">Theta Flow</div>
+<div class="metric-title" id="theta_flow_label"></div>
 <div class="metric-value" id="theta_value">0.000</div>
 </div>
 <div class="bar"><div class="fill theta" id="theta_fill"></div></div>
@@ -341,26 +446,26 @@ price = observable trace | vector = preserved movement
 
 <div class="panel">
 
-<div class="panel-title">Deep Telemetry</div>
+<div class="panel-title" id="deep_telemetry_label"></div>
 
 <div class="grid">
 
-<div class="item"><div class="item-label">Velocity</div><div class="item-value" id="v">-</div></div>
-<div class="item"><div class="item-label">Acceleration</div><div class="item-value" id="a">-</div></div>
-<div class="item"><div class="item-label">Friction</div><div class="item-value" id="f">-</div></div>
-<div class="item"><div class="item-label">Omega</div><div class="item-value" id="omega">-</div></div>
-<div class="item"><div class="item-label">Theta</div><div class="item-value" id="theta">-</div></div>
-<div class="item"><div class="item-label">Theta Velocity</div><div class="item-value" id="theta_velocity">-</div></div>
-<div class="item"><div class="item-label">Dominance</div><div class="item-value" id="dominance">-</div></div>
-<div class="item"><div class="item-label">System Action</div><div class="item-value" id="system_action">-</div></div>
+<div class="item"><div class="item-label" id="velocity_label"></div><div class="item-value" id="v">-</div></div>
+<div class="item"><div class="item-label" id="acceleration_label"></div><div class="item-value" id="a">-</div></div>
+<div class="item"><div class="item-label" id="friction_label"></div><div class="item-value" id="f">-</div></div>
+<div class="item"><div class="item-label" id="omega_label"></div><div class="item-value" id="omega">-</div></div>
+<div class="item"><div class="item-label" id="theta_label"></div><div class="item-value" id="theta">-</div></div>
+<div class="item"><div class="item-label" id="theta_velocity_label"></div><div class="item-value" id="theta_velocity">-</div></div>
+<div class="item"><div class="item-label" id="dominance_label"></div><div class="item-value" id="dominance">-</div></div>
+<div class="item"><div class="item-label" id="system_action_label"></div><div class="item-value" id="system_action">-</div></div>
 
 </div>
 
 </div>
 
 <div class="panel">
-<div class="panel-title">Structural Interpretation</div>
-<div class="meta" id="meta">No dominant structural regime detected.</div>
+<div class="panel-title" id="structural_interpretation_label"></div>
+<div class="meta" id="meta"></div>
 </div>
 
 </div>
@@ -368,6 +473,32 @@ price = observable trace | vector = preserved movement
 </div>
 
 <script>
+
+document.getElementById("header_text").innerText = T.header;
+document.getElementById("input").placeholder = T.placeholder;
+
+document.getElementById("structural_state_label").innerText = T.structural_state;
+
+document.getElementById("state").innerText = T.waiting;
+document.getElementById("sub").innerText = T.sub_default;
+
+document.getElementById("vector_field_label").innerText = T.vector_field;
+document.getElementById("shift_intensity_label").innerText = T.shift_intensity;
+document.getElementById("theta_flow_label").innerText = T.theta_flow;
+
+document.getElementById("deep_telemetry_label").innerText = T.deep_telemetry;
+document.getElementById("structural_interpretation_label").innerText = T.structural_interpretation;
+
+document.getElementById("velocity_label").innerText = T.velocity;
+document.getElementById("acceleration_label").innerText = T.acceleration;
+document.getElementById("friction_label").innerText = T.friction;
+document.getElementById("omega_label").innerText = T.omega;
+document.getElementById("theta_label").innerText = T.theta;
+document.getElementById("theta_velocity_label").innerText = T.theta_velocity;
+document.getElementById("dominance_label").innerText = T.dominance;
+document.getElementById("system_action_label").innerText = T.system_action;
+
+document.getElementById("meta").innerText = T.no_regime;
 
 async function analyze(symbol){
 symbol = symbol.toUpperCase();
@@ -380,7 +511,27 @@ if(state === "STRUCTURAL_SHIFT") return "TRANSITION";
 return state;
 }
 
+function localizedState(state){
+
+if(state === "TREND") return T.trend;
+if(state === "COMPRESSION") return T.compression;
+if(state === "TRANSITION") return T.transition;
+if(state === "WAITING") return T.waiting;
+if(state === "ERROR") return T.error;
+
+return T.unknown;
+}
+
+function localizedDecision(decision){
+
+if(decision === "ENTER") return T.enter;
+if(decision === "EXIT") return T.exit;
+
+return "-";
+}
+
 function setStateUI(state){
+
 const el = document.getElementById("state");
 el.className = "state";
 
@@ -389,10 +540,11 @@ else if(state === "COMPRESSION") el.classList.add("compression");
 else if(state === "TRANSITION") el.classList.add("shiftText");
 else el.classList.add("wait");
 
-el.innerText = state;
+el.innerText = localizedState(state);
 }
 
 function setDecisionUI(decision){
+
 const el = document.getElementById("decision_value");
 el.className = "decision-value";
 
@@ -400,22 +552,25 @@ if(decision === "ENTER") el.classList.add("enter");
 else if(decision === "EXIT") el.classList.add("exit");
 else el.classList.add("wait");
 
-el.innerText = decision || "-";
+el.innerText = localizedDecision(decision);
 }
 
 document.getElementById("input").addEventListener("keydown", async (e)=>{
+
 if(e.key !== "Enter") return;
 
 let val = e.target.value.trim();
 if(!val) return;
 
 let res = await analyze(val);
+
 if(!res){
-document.getElementById("state").innerText = "ERROR";
+document.getElementById("state").innerText = T.error;
 return;
 }
 
 const state = normalizeState(res.state || "UNKNOWN");
+
 setStateUI(state);
 setDecisionUI(res.decision || "-");
 
@@ -440,21 +595,23 @@ document.getElementById("omega").innerText = f.omega ?? 0;
 document.getElementById("theta").innerText = f.theta ?? 0;
 document.getElementById("theta_velocity").innerText = f.theta_velocity ?? 0;
 document.getElementById("dominance").innerText = f.dominance ?? 0.5;
-document.getElementById("system_action").innerText = res.decision ?? "-";
+
+document.getElementById("system_action").innerText =
+localizedDecision(res.decision ?? "-");
 
 let meta = "";
 
 if(state === "TRANSITION"){
-meta = "Previous structure losing persistence. Exit pressure active while pre-entry conditions form.";
+meta = T.transition_meta;
 }
 else if(state === "TREND" && f.theta_velocity > 0){
-meta = "Structure reinforcing directional persistence.";
+meta = T.trend_meta;
 }
 else if(state === "COMPRESSION"){
-meta = "Energy accumulation phase.";
+meta = T.compression_meta;
 }
 else{
-meta = "No dominant structural regime.";
+meta = T.default_meta;
 }
 
 document.getElementById("meta").innerText = meta;
