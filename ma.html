@@ -12,7 +12,6 @@
 --panel:#121722;
 --border:#1f2430;
 --text:#e8ecf1;
---muted:#7f8794;
 
 --green:#6effa3;
 --red:#ff5c5c;
@@ -51,13 +50,6 @@ font-size:12px;
 letter-spacing:1px;
 }
 
-.header-sub{
-font-size:11px;
-opacity:0.55;
-margin-top:6px;
-letter-spacing:0.5px;
-}
-
 .live-dot{
 width:8px;
 height:8px;
@@ -66,30 +58,13 @@ background:var(--green);
 box-shadow:0 0 12px var(--green);
 }
 
-/* INPUT LAYER */
+/* INPUT */
 
 .input-layer{
 background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
 border:1px solid var(--border);
 border-radius:18px;
 padding:28px;
-display:flex;
-flex-direction:column;
-gap:14px;
-}
-
-.scope-line{
-font-size:11px;
-letter-spacing:0.8px;
-opacity:0.6;
-margin-bottom:4px;
-}
-
-.input-label{
-font-size:11px;
-letter-spacing:1px;
-text-transform:uppercase;
-opacity:0.5;
 }
 
 .input-wrapper{
@@ -101,7 +76,7 @@ gap:14px;
 .input-symbol{
 font-size:26px;
 font-weight:700;
-opacity:0.3;
+opacity:0.25;
 }
 
 input{
@@ -117,12 +92,6 @@ outline:none;
 
 input::placeholder{
 color:#5d6675;
-}
-
-.discovery-hint{
-font-size:11px;
-opacity:0.45;
-margin-top:2px;
 }
 
 /* CORE */
@@ -144,7 +113,6 @@ border-radius:22px;
 padding:34px;
 min-height:320px;
 position:relative;
-overflow:hidden;
 }
 
 .system-tag{
@@ -286,7 +254,7 @@ opacity:0.78;
 .trend{color:var(--blue);}
 .compression{color:var(--yellow);}
 .shiftText{color:var(--red);}
-.wait{color:#8a93a3;}
+.wait{color:#8a93a4;}
 .enter{color:var(--green);}
 .exit{color:var(--red);}
 
@@ -297,40 +265,25 @@ opacity:0.78;
 
 <div class="container">
 
+<!-- HEADER -->
+
 <div class="header">
 <div>MARKET ALCHEMY — STRUCTURAL VISIBILITY TERMINAL</div>
 <div class="live-dot"></div>
 </div>
 
-<div class="header-sub">
-Real-time structural decision layer for crypto market-wide assets
-</div>
+<!-- INPUT -->
 
 <div class="input-layer">
 
-<div class="scope-line">
-Structural engine for 500+ tradable crypto assets
-</div>
-
-<div class="input-label">
-Observer Input Layer
-</div>
-
 <div class="input-wrapper">
 <div class="input-symbol">∴</div>
-
-<input
-id="input"
-placeholder="Enter market structure (500+ assets supported)"
-/>
-
-</div>
-
-<div class="discovery-hint">
-Try: BTC, SOL, or any Binance-listed asset
+<input id="input" placeholder="Enter structure...">
 </div>
 
 </div>
+
+<!-- CORE -->
 
 <div class="core">
 
@@ -341,7 +294,7 @@ Try: BTC, SOL, or any Binance-listed asset
 <div class="state wait" id="state">WAITING</div>
 
 <div class="sub" id="sub">
-price = observable trace of system behavior | vector = preserved movement
+price = observable trace | vector = preserved movement
 </div>
 
 <div class="decision-box">
@@ -349,6 +302,8 @@ price = observable trace of system behavior | vector = preserved movement
 </div>
 
 </div>
+
+<!-- METRICS -->
 
 <div class="metrics-panel">
 
@@ -380,9 +335,12 @@ price = observable trace of system behavior | vector = preserved movement
 
 </div>
 
+<!-- TELEMETRY -->
+
 <div class="telemetry">
 
 <div class="panel">
+
 <div class="panel-title">Deep Telemetry</div>
 
 <div class="grid">
