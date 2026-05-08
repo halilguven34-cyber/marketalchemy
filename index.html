@@ -7,6 +7,9 @@ if(!localStorage.getItem("lang")){
     const userLang = navigator.language || navigator.userLanguage;
     localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
 }
+
+const activeLang = localStorage.getItem("lang") || "en";
+document.documentElement.lang = activeLang;
 </script>
 
 <meta charset="UTF-8">
@@ -69,7 +72,10 @@ h1{
 }
 
 .engine::before {
-    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
     background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
@@ -253,28 +259,98 @@ h1{
         <div>Sonuç seçim değil, kalandır</div>
     </div>
 
-    <a class="cta" href="ma.html">ENTER SYSTEM →</a>
+    <a class="cta en" href="ma.html">ENTER SYSTEM →</a>
+    <a class="cta tr" href="ma.html" style="display:none;">SİSTEME GİR →</a>
 
 </section>
 
 <nav class="depth">
-    <a href="research.html">Research Layer <span>01 — Constraints</span></a>
-    <a href="lab.html">Lab Layer <span>02 — Observation</span></a>
-    <a href="law.html">Law Layer <span>03 — Vector (Law)</span></a>
+
+    <a class="en" href="research.html">
+        Research Layer <span>01 — Constraints</span>
+    </a>
+
+    <a class="tr" href="research.html" style="display:none;">
+        Araştırma Katmanı <span>01 — Kısıtlar</span>
+    </a>
+
+    <a class="en" href="lab.html">
+        Lab Layer <span>02 — Observation</span>
+    </a>
+
+    <a class="tr" href="lab.html" style="display:none;">
+        Laboratuvar Katmanı <span>02 — Gözlem</span>
+    </a>
+
+    <a class="en" href="law.html">
+        Law Layer <span>03 — Vector (Law)</span>
+    </a>
+
+    <a class="tr" href="law.html" style="display:none;">
+        Yasa Katmanı <span>03 — Vektör (Yasa)</span>
+    </a>
+
 </nav>
 
 <div class="network-wrap">
     <svg class="network-svg" id="netSvg"></svg>
+
     <div class="network-grid">
-        <div class="node"><div class="node-circle">01</div><div class="node-label">Axiom</div></div>
-        <div class="node"><div class="node-circle">02</div><div class="node-label">Collapse</div></div>
-        <div class="node"><div class="node-circle">03</div><div class="node-label">Observer</div></div>
-        <div class="node"><div class="node-circle">04</div><div class="node-label">Decision</div></div>
-        <div class="node"><div class="node-circle">05</div><div class="node-label">Execution</div></div>
-        <div class="node"><div class="node-circle">06</div><div class="node-label">Vector</div></div>
-        <div class="node"><div class="node-circle">07</div><div class="node-label">Liquidation</div></div>
-        <div class="node"><div class="node-circle">08</div><div class="node-label">Waiting</div></div>
-        <div class="node"><div class="node-circle">09</div><div class="node-label">Field</div></div>
+
+        <div class="node">
+            <div class="node-circle">01</div>
+            <div class="node-label en">Axiom</div>
+            <div class="node-label tr" style="display:none;">Aksiyom</div>
+        </div>
+
+        <div class="node">
+            <div class="node-circle">02</div>
+            <div class="node-label en">Collapse</div>
+            <div class="node-label tr" style="display:none;">Çöküş</div>
+        </div>
+
+        <div class="node">
+            <div class="node-circle">03</div>
+            <div class="node-label en">Observer</div>
+            <div class="node-label tr" style="display:none;">Gözlemci</div>
+        </div>
+
+        <div class="node">
+            <div class="node-circle">04</div>
+            <div class="node-label en">Decision</div>
+            <div class="node-label tr" style="display:none;">Karar</div>
+        </div>
+
+        <div class="node">
+            <div class="node-circle">05</div>
+            <div class="node-label en">Execution</div>
+            <div class="node-label tr" style="display:none;">Uygulama</div>
+        </div>
+
+        <div class="node">
+            <div class="node-circle">06</div>
+            <div class="node-label en">Vector</div>
+            <div class="node-label tr" style="display:none;">Vektör</div>
+        </div>
+
+        <div class="node">
+            <div class="node-circle">07</div>
+            <div class="node-label en">Liquidation</div>
+            <div class="node-label tr" style="display:none;">Likidasyon</div>
+        </div>
+
+        <div class="node">
+            <div class="node-circle">08</div>
+            <div class="node-label en">Waiting</div>
+            <div class="node-label tr" style="display:none;">Bekleme</div>
+        </div>
+
+        <div class="node">
+            <div class="node-circle">09</div>
+            <div class="node-label en">Field</div>
+            <div class="node-label tr" style="display:none;">Alan</div>
+        </div>
+
     </div>
 </div>
 
@@ -286,41 +362,27 @@ h1{
 
 <script>
 const lang = localStorage.getItem("lang") || "en";
-if(lang === "tr") {
-    document.querySelectorAll(".en").forEach(e => e.style.display = "none");
-    document.querySelectorAll(".tr").forEach(e => e.style.display = "block");
+
+if(lang === "tr"){
+
+    document.querySelectorAll(".en").forEach(e=>{
+        e.style.display = "none";
+    });
+
+    document.querySelectorAll(".tr").forEach(e=>{
+
+        if(e.classList.contains("node-label")){
+            e.style.display = "block";
+        }
+        else if(e.tagName === "A"){
+            e.style.display = "flex";
+        }
+        else{
+            e.style.display = "block";
+        }
+
+    });
 }
-
-const c = document.getElementById("field");
-const ctx = c.getContext("2d");
-let t = 0;
-let distortion = 0;
-
-function resize(){ c.width = window.innerWidth; c.height = window.innerHeight; }
-resize();
-window.addEventListener("resize", resize);
-
-function draw(){
-    ctx.clearRect(0,0,c.width,c.height);
-    ctx.beginPath();
-    for(let x=0; x<c.width; x+=2){
-        let base = Math.sin(x*0.008 + t) * 50 + Math.cos(x*0.003 + t*0.7) * 30;
-        let y = c.height/2 + base * (1 + distortion);
-        if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
-    }
-    ctx.strokeStyle = "#6da8ff";
-    ctx.globalAlpha = 0.2;
-    ctx.stroke();
-    t += 0.015;
-    distortion *= 0.98;
-    requestAnimationFrame(draw);
-}
-draw();
-
-window.addEventListener("mousemove", (e)=>{
-    let norm = e.clientX / window.innerWidth;
-    distortion += Math.abs(norm - 0.5) * 0.05;
-});
 </script>
 
 </body>
