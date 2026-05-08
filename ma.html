@@ -20,9 +20,7 @@
 --yellow:#f0c36d;
 }
 
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
 margin:0;
@@ -42,8 +40,6 @@ flex-direction:column;
 gap:22px;
 }
 
-/* HEADER */
-
 .header{
 display:flex;
 justify-content:space-between;
@@ -51,7 +47,6 @@ align-items:center;
 opacity:0.45;
 font-size:12px;
 letter-spacing:1px;
-padding:0 2px;
 }
 
 .live-dot{
@@ -62,15 +57,8 @@ background:var(--green);
 box-shadow:0 0 12px var(--green);
 }
 
-/* INPUT LAYER */
-
 .input-layer{
-background:linear-gradient(
-180deg,
-rgba(255,255,255,0.02),
-rgba(255,255,255,0.01)
-);
-
+background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
 border:1px solid var(--border);
 border-radius:18px;
 padding:28px;
@@ -107,19 +95,7 @@ padding:18px;
 color:var(--text);
 font-size:16px;
 outline:none;
-transition:0.2s ease;
 }
-
-input:focus{
-border-color:#3a455d;
-box-shadow:0 0 0 1px #3a455d;
-}
-
-input::placeholder{
-color:#5d6675;
-}
-
-/* DECISION CORE */
 
 .core{
 display:grid;
@@ -128,9 +104,7 @@ gap:22px;
 }
 
 @media(max-width:900px){
-.core{
-grid-template-columns:1fr;
-}
+.core{grid-template-columns:1fr;}
 }
 
 .decision-panel{
@@ -138,30 +112,13 @@ background:var(--panel);
 border:1px solid var(--border);
 border-radius:22px;
 padding:34px;
-display:flex;
-flex-direction:column;
-justify-content:center;
 min-height:320px;
 position:relative;
 overflow:hidden;
 }
 
-.decision-panel::before{
-content:"";
-position:absolute;
-top:-120px;
-right:-120px;
-width:240px;
-height:240px;
-border-radius:50%;
-background:rgba(255,255,255,0.03);
-filter:blur(10px);
-}
-
 .system-tag{
 font-size:11px;
-letter-spacing:1px;
-text-transform:uppercase;
 opacity:0.4;
 margin-bottom:18px;
 }
@@ -169,16 +126,12 @@ margin-bottom:18px;
 .state{
 font-size:64px;
 font-weight:800;
-line-height:1;
 margin-bottom:14px;
-word-break:break-word;
 }
 
 .sub{
 font-size:13px;
-line-height:1.6;
 opacity:0.65;
-max-width:520px;
 }
 
 .decision-box{
@@ -189,20 +142,10 @@ border-radius:14px;
 background:#0d1118;
 }
 
-.decision-label{
-font-size:10px;
-letter-spacing:1px;
-opacity:0.45;
-margin-bottom:8px;
-text-transform:uppercase;
-}
-
 .decision-value{
 font-size:34px;
 font-weight:700;
 }
-
-/* METRICS */
 
 .metrics-panel{
 display:flex;
@@ -220,14 +163,11 @@ padding:20px;
 .metric-head{
 display:flex;
 justify-content:space-between;
-align-items:center;
 margin-bottom:14px;
 }
 
 .metric-title{
 font-size:11px;
-letter-spacing:1px;
-text-transform:uppercase;
 opacity:0.55;
 }
 
@@ -244,18 +184,11 @@ border-radius:999px;
 overflow:hidden;
 }
 
-.fill{
-height:100%;
-width:0%;
-transition: width 0.35s ease;
-border-radius:999px;
-}
+.fill{height:100%;width:0%;transition:0.35s;}
 
-.vector{ background:linear-gradient(90deg,#2eff89,var(--green)); }
-.shift{ background:linear-gradient(90deg,#ff7a7a,var(--red)); }
-.theta{ background:linear-gradient(90deg,#76bbff,var(--blue)); }
-
-/* TELEMETRY */
+.vector{background:linear-gradient(90deg,#2eff89,var(--green));}
+.shift{background:linear-gradient(90deg,#ff7a7a,var(--red));}
+.theta{background:linear-gradient(90deg,#76bbff,var(--blue));}
 
 .telemetry{
 display:grid;
@@ -264,9 +197,7 @@ gap:22px;
 }
 
 @media(max-width:900px){
-.telemetry{
-grid-template-columns:1fr;
-}
+.telemetry{grid-template-columns:1fr;}
 }
 
 .panel{
@@ -278,8 +209,6 @@ padding:22px;
 
 .panel-title{
 font-size:11px;
-letter-spacing:1px;
-text-transform:uppercase;
 opacity:0.45;
 margin-bottom:18px;
 }
@@ -299,10 +228,8 @@ background:#0d1118;
 
 .item-label{
 font-size:10px;
-letter-spacing:1px;
 opacity:0.45;
 margin-bottom:8px;
-text-transform:uppercase;
 }
 
 .item-value{
@@ -316,31 +243,12 @@ line-height:1.7;
 opacity:0.78;
 }
 
-/* STATE COLORS */
-
-.trend{
-color:var(--blue);
-}
-
-.compression{
-color:var(--yellow);
-}
-
-.shiftText{
-color:var(--red);
-}
-
-.wait{
-color:#8a93a3;
-}
-
-.enter{
-color:var(--green);
-}
-
-.exit{
-color:var(--red);
-}
+.trend{color:var(--blue);}
+.compression{color:var(--yellow);}
+.shiftText{color:var(--red);}
+.wait{color:#8a93a3;}
+.enter{color:var(--green);}
+.exit{color:var(--red);}
 
 </style>
 </head>
@@ -349,193 +257,88 @@ color:var(--red);
 
 <div class="container">
 
-<!-- HEADER -->
-
 <div class="header">
 <div>MARKET ALCHEMY — STRUCTURAL VISIBILITY TERMINAL</div>
 <div class="live-dot"></div>
 </div>
 
-<!-- INPUT -->
-
 <div class="input-layer">
-
-<div class="input-label">
-Observer Input Layer
-</div>
-
+<div class="input-label">Observer Input Layer</div>
 <div class="input-wrapper">
 <div class="input-symbol">∴</div>
-
-<input
-id="input"
-placeholder="Enter structure... BTC, ETH, SOL"
-/>
-
+<input id="input" placeholder="Enter structure... BTC, ETH, SOL">
 </div>
-
 </div>
-
-<!-- CORE -->
 
 <div class="core">
 
 <div class="decision-panel">
 
-<div class="system-tag">
-Structural State
-</div>
+<div class="system-tag">Structural State</div>
 
-<div class="state wait" id="state">
-WAITING
-</div>
+<div class="state wait" id="state">WAITING</div>
 
 <div class="sub" id="sub">
 price = observable trace of system behavior | vector = preserved movement
 </div>
 
 <div class="decision-box">
-
-<div class="decision-label">
-System Decision
-</div>
-
-<div class="decision-value wait" id="decision_value">
--
+<div class="decision-value wait" id="decision_value">-</div>
 </div>
 
 </div>
-
-</div>
-
-<!-- METRICS -->
 
 <div class="metrics-panel">
 
 <div class="metric-card">
-
 <div class="metric-head">
-<div class="metric-title">
-Vector Field
+<div class="metric-title">Vector Field</div>
+<div class="metric-value" id="vector_value">0.000</div>
 </div>
-
-<div class="metric-value" id="vector_value">
-0.000
-</div>
-</div>
-
-<div class="bar">
-<div class="fill vector" id="vector_fill"></div>
-</div>
-
+<div class="bar"><div class="fill vector" id="vector_fill"></div></div>
 </div>
 
 <div class="metric-card">
-
 <div class="metric-head">
-<div class="metric-title">
-Shift Intensity
+<div class="metric-title">Shift Intensity</div>
+<div class="metric-value" id="shift_value">0.000</div>
 </div>
-
-<div class="metric-value" id="shift_value">
-0.000
-</div>
-</div>
-
-<div class="bar">
-<div class="fill shift" id="shift_fill"></div>
-</div>
-
+<div class="bar"><div class="fill shift" id="shift_fill"></div></div>
 </div>
 
 <div class="metric-card">
-
 <div class="metric-head">
-<div class="metric-title">
-Theta Flow
+<div class="metric-title">Theta Flow</div>
+<div class="metric-value" id="theta_value">0.000</div>
 </div>
-
-<div class="metric-value" id="theta_value">
-0.000
-</div>
-</div>
-
-<div class="bar">
-<div class="fill theta" id="theta_fill"></div>
+<div class="bar"><div class="fill theta" id="theta_fill"></div></div>
 </div>
 
 </div>
 
 </div>
-
-</div>
-
-<!-- TELEMETRY -->
 
 <div class="telemetry">
 
 <div class="panel">
-
-<div class="panel-title">
-Deep Telemetry
-</div>
+<div class="panel-title">Deep Telemetry</div>
 
 <div class="grid">
-
-<div class="item">
-<div class="item-label">Velocity</div>
-<div class="item-value" id="v">-</div>
-</div>
-
-<div class="item">
-<div class="item-label">Acceleration</div>
-<div class="item-value" id="a">-</div>
-</div>
-
-<div class="item">
-<div class="item-label">Friction</div>
-<div class="item-value" id="f">-</div>
-</div>
-
-<div class="item">
-<div class="item-label">Omega</div>
-<div class="item-value" id="omega">-</div>
-</div>
-
-<div class="item">
-<div class="item-label">Theta</div>
-<div class="item-value" id="theta">-</div>
-</div>
-
-<div class="item">
-<div class="item-label">Theta Velocity</div>
-<div class="item-value" id="theta_velocity">-</div>
-</div>
-
-<div class="item">
-<div class="item-label">Dominance</div>
-<div class="item-value" id="dominance">-</div>
-</div>
-
-<div class="item">
-<div class="item-label">System Action</div>
-<div class="item-value" id="system_action">-</div>
-</div>
-
+<div class="item"><div class="item-label">Velocity</div><div class="item-value" id="v">-</div></div>
+<div class="item"><div class="item-label">Acceleration</div><div class="item-value" id="a">-</div></div>
+<div class="item"><div class="item-label">Friction</div><div class="item-value" id="f">-</div></div>
+<div class="item"><div class="item-label">Omega</div><div class="item-value" id="omega">-</div></div>
+<div class="item"><div class="item-label">Theta</div><div class="item-value" id="theta">-</div></div>
+<div class="item"><div class="item-label">Theta Velocity</div><div class="item-value" id="theta_velocity">-</div></div>
+<div class="item"><div class="item-label">Dominance</div><div class="item-value" id="dominance">-</div></div>
+<div class="item"><div class="item-label">System Action</div><div class="item-value" id="system_action">-</div></div>
 </div>
 
 </div>
 
 <div class="panel">
-
-<div class="panel-title">
-Structural Interpretation
-</div>
-
-<div class="meta" id="meta">
-No dominant structural regime detected.
-</div>
-
+<div class="panel-title">Structural Interpretation</div>
+<div class="meta" id="meta">No dominant structural regime detected.</div>
 </div>
 
 </div>
@@ -545,114 +348,66 @@ No dominant structural regime detected.
 <script>
 
 async function analyze(symbol){
-
 symbol = symbol.toUpperCase();
-
-const res = await fetch(
-`https://api.marketalchemy.io/analyze?asset=${symbol}&timeframe=1h`
-);
-
+const res = await fetch(`https://api.marketalchemy.io/analyze?asset=${symbol}&timeframe=1h`);
 return await res.json();
+}
 
+function normalizeState(state){
+if(state === "STRUCTURAL_SHIFT") return "TRANSITION";
+return state;
 }
 
 function setStateUI(state){
-
 const el = document.getElementById("state");
-
 el.className = "state";
 
-if(state === "TREND"){
-el.classList.add("trend");
-}
-else if(state === "COMPRESSION"){
-el.classList.add("compression");
-}
-else if(state === "STRUCTURAL_SHIFT"){
-el.classList.add("shiftText");
-}
-else{
-el.classList.add("wait");
-}
+if(state === "TREND") el.classList.add("trend");
+else if(state === "COMPRESSION") el.classList.add("compression");
+else if(state === "TRANSITION") el.classList.add("shiftText");
+else el.classList.add("wait");
 
 el.innerText = state;
-
 }
 
 function setDecisionUI(decision){
-
 const el = document.getElementById("decision_value");
-
 el.className = "decision-value";
 
-if(decision === "ENTER"){
-el.classList.add("enter");
-}
-else if(decision === "EXIT"){
-el.classList.add("exit");
-}
-else{
-el.classList.add("wait");
-}
+if(decision === "ENTER") el.classList.add("enter");
+else if(decision === "EXIT") el.classList.add("exit");
+else el.classList.add("wait");
 
 el.innerText = decision || "-";
-
 }
 
-document.getElementById("input")
-.addEventListener("keydown", async (e) => {
-
+document.getElementById("input").addEventListener("keydown", async (e)=>{
 if(e.key !== "Enter") return;
 
 let val = e.target.value.trim();
-
 if(!val) return;
 
 let res = await analyze(val);
-
 if(!res){
-
 document.getElementById("state").innerText = "ERROR";
-
 return;
-
 }
 
-setStateUI(res.state || "UNKNOWN");
-
+const state = normalizeState(res.state || "UNKNOWN");
+setStateUI(state);
 setDecisionUI(res.decision || "-");
 
-/* VECTOR */
-
 let vector = Math.abs(res.features?.vector || 0);
-
-document.getElementById("vector_fill")
-.style.width = (vector * 100) + "%";
-
-document.getElementById("vector_value")
-.innerText = vector.toFixed(3);
-
-/* SHIFT */
-
 let shift = Math.min(res.shift_score || 0, 1);
-
-document.getElementById("shift_fill")
-.style.width = (shift * 100) + "%";
-
-document.getElementById("shift_value")
-.innerText = shift.toFixed(3);
-
-/* THETA */
-
 let theta_v = Math.abs(res.features?.theta_velocity || 0);
 
-document.getElementById("theta_fill")
-.style.width = (theta_v * 100) + "%";
+document.getElementById("vector_fill").style.width = vector*100 + "%";
+document.getElementById("shift_fill").style.width = shift*100 + "%";
+document.getElementById("theta_fill").style.width = theta_v*100 + "%";
 
-document.getElementById("theta_value")
-.innerText = theta_v.toFixed(3);
-
-/* FEATURES */
+document.getElementById("vector_value").innerText = vector.toFixed(3);
+document.getElementById("shift_value").innerText = shift.toFixed(3);
+document.getElementById("theta_value").innerText = theta_v.toFixed(3);
 
 const f = res.features || {};
 
@@ -665,27 +420,25 @@ document.getElementById("theta_velocity").innerText = f.theta_velocity ?? 0;
 document.getElementById("dominance").innerText = f.dominance ?? 0.5;
 document.getElementById("system_action").innerText = res.decision ?? "-";
 
-/* META */
-
 let meta = "";
 
-if(res.state === "STRUCTURAL_SHIFT"){
-meta = "Structural transition detected. Regime boundary is active and directional preservation is unstable.";
+if(state === "TRANSITION"){
+meta = "Previous structure losing persistence. Exit pressure active while pre-entry conditions form.";
 }
-else if(res.state === "TREND" && f.theta_velocity > 0){
-meta = "Structure is reinforcing directional persistence. Preserved vector continuation probability increasing.";
+else if(state === "TREND" && f.theta_velocity > 0){
+meta = "Structure reinforcing directional persistence.";
 }
-else if(res.state === "COMPRESSION"){
-meta = "Energy accumulation phase detected. Structural tension is tightening before directional release.";
+else if(state === "COMPRESSION"){
+meta = "Energy accumulation phase.";
 }
 else{
-meta = "No dominant structural regime currently observable.";
+meta = "No dominant structural regime.";
 }
 
 document.getElementById("meta").innerText = meta;
 
 document.getElementById("sub").innerText =
-`vector=${vector.toFixed(4)} | shift=${shift.toFixed(3)} | theta_flow=${theta_v.toFixed(3)}`;
+`vector=${vector.toFixed(4)} | shift=${shift.toFixed(3)} | theta=${theta_v.toFixed(3)}`;
 
 });
 
