@@ -54,7 +54,24 @@ compression_meta:"Energy accumulation phase.",
 default_meta:"No dominant structural regime.",
 
 enter:"ENTER",
-exit:"EXIT"
+exit:"EXIT",
+
+engine_core:"Operator Systems",
+
+pascal_title:"PASCAL",
+pascal_desc:"Structural liquidity engine calibrated for crypto futures transition states.",
+
+snipper_title:"SNIPPER",
+snipper_desc:"Micro-structure execution layer designed for high precision directional entries.",
+
+ultimate_title:"ULTIMATE",
+ultimate_desc:"Experimental persistence engine operating on multi-layer structural continuity.",
+
+active:"ACTIVE",
+testing:"TESTING",
+shadow:"SHADOW",
+
+access:"REQUEST ACCESS"
 
 },
 
@@ -99,7 +116,24 @@ compression_meta:"Enerji birikim fazı.",
 default_meta:"Baskın yapısal rejim yok.",
 
 enter:"GİR",
-exit:"ÇIK"
+exit:"ÇIK",
+
+engine_core:"Operatör Sistemleri",
+
+pascal_title:"PASCAL",
+pascal_desc:"Kripto vadeli piyasalarda geçiş durumlarına odaklanan yapısal likidite motoru.",
+
+snipper_title:"SNIPPER",
+snipper_desc:"Yüksek hassasiyetli yönsel girişler için tasarlanmış mikro-yapı yürütme katmanı.",
+
+ultimate_title:"ULTIMATE",
+ultimate_desc:"Çok katmanlı yapısal süreklilik üzerinde çalışan deneysel persistence motoru.",
+
+active:"AKTİF",
+testing:"TEST",
+shadow:"GÖLGE",
+
+access:"ERİŞİM TALEP ET"
 
 }
 
@@ -365,6 +399,88 @@ opacity:0.78;
 .enter{color:var(--green);}
 .exit{color:var(--red);}
 
+/* ENGINE SYSTEMS */
+
+.engine-wrapper{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:18px;
+}
+
+@media(max-width:900px){
+.engine-wrapper{
+grid-template-columns:1fr;
+}
+}
+
+.engine-card{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:18px;
+padding:22px;
+position:relative;
+overflow:hidden;
+}
+
+.engine-card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:2px;
+background:linear-gradient(90deg,transparent,var(--blue),transparent);
+opacity:0.7;
+}
+
+.engine-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:16px;
+}
+
+.engine-name{
+font-size:15px;
+font-weight:700;
+letter-spacing:1px;
+}
+
+.engine-status{
+font-size:10px;
+padding:4px 8px;
+border:1px solid var(--border);
+border-radius:999px;
+opacity:0.8;
+}
+
+.engine-desc{
+font-size:13px;
+line-height:1.7;
+opacity:0.72;
+margin-bottom:24px;
+min-height:95px;
+}
+
+.engine-button{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:12px 16px;
+border:1px solid var(--border);
+border-radius:12px;
+font-size:12px;
+text-decoration:none;
+color:var(--text);
+transition:0.25s;
+background:#0d1118;
+}
+
+.engine-button:hover{
+border-color:var(--blue);
+background:rgba(77,163,255,0.08);
+}
+
 </style>
 </head>
 
@@ -440,6 +556,57 @@ opacity:0.78;
 
 </div>
 
+<!-- ENGINE SYSTEMS -->
+
+<div class="panel">
+
+<div class="panel-title" id="engine_core_label"></div>
+
+<div class="engine-wrapper">
+
+<div class="engine-card">
+
+<div class="engine-top">
+<div class="engine-name" id="pascal_title"></div>
+<div class="engine-status" id="pascal_status"></div>
+</div>
+
+<div class="engine-desc" id="pascal_desc"></div>
+
+<a class="engine-button" href="access.html" id="pascal_access"></a>
+
+</div>
+
+<div class="engine-card">
+
+<div class="engine-top">
+<div class="engine-name" id="snipper_title"></div>
+<div class="engine-status" id="snipper_status"></div>
+</div>
+
+<div class="engine-desc" id="snipper_desc"></div>
+
+<a class="engine-button" href="access.html" id="snipper_access"></a>
+
+</div>
+
+<div class="engine-card">
+
+<div class="engine-top">
+<div class="engine-name" id="ultimate_title"></div>
+<div class="engine-status" id="ultimate_status"></div>
+</div>
+
+<div class="engine-desc" id="ultimate_desc"></div>
+
+<a class="engine-button" href="access.html" id="ultimate_access"></a>
+
+</div>
+
+</div>
+
+</div>
+
 <!-- TELEMETRY -->
 
 <div class="telemetry">
@@ -499,6 +666,25 @@ document.getElementById("dominance_label").innerText = T.dominance;
 document.getElementById("system_action_label").innerText = T.system_action;
 
 document.getElementById("meta").innerText = T.no_regime;
+
+/* ENGINE */
+
+document.getElementById("engine_core_label").innerText = T.engine_core;
+
+document.getElementById("pascal_title").innerText = T.pascal_title;
+document.getElementById("pascal_desc").innerText = T.pascal_desc;
+document.getElementById("pascal_status").innerText = T.active;
+document.getElementById("pascal_access").innerText = T.access;
+
+document.getElementById("snipper_title").innerText = T.snipper_title;
+document.getElementById("snipper_desc").innerText = T.snipper_desc;
+document.getElementById("snipper_status").innerText = T.active;
+document.getElementById("snipper_access").innerText = T.access;
+
+document.getElementById("ultimate_title").innerText = T.ultimate_title;
+document.getElementById("ultimate_desc").innerText = T.ultimate_desc;
+document.getElementById("ultimate_status").innerText = T.testing;
+document.getElementById("ultimate_access").innerText = T.access;
 
 async function analyze(symbol){
 symbol = symbol.toUpperCase();
