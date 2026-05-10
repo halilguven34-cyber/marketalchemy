@@ -688,9 +688,14 @@ document.getElementById("ultimate_access").innerText = T.access;
 
 async function analyze(symbol){
 symbol = symbol.toUpperCase();
-const res = await fetch(`https://api.marketalchemy.io/analyze?asset=${symbol}&timeframe=1h`);
-return await res.json();
-}
+const res = await fetch(`https://api.marketalchemy.io/analyze?asset=${symbol}&timeframe=1h`, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+});
+
 
 function normalizeState(state){
 if(state === "STRUCTURAL_SHIFT") return "TRANSITION";
