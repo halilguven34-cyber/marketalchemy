@@ -488,14 +488,10 @@ background:rgba(77,163,255,0.08);
 
 <div class="container">
 
-<!-- HEADER -->
-
 <div class="header">
 <div id="header_text"></div>
 <div class="live-dot"></div>
 </div>
-
-<!-- INPUT -->
 
 <div class="input-layer">
 
@@ -505,8 +501,6 @@ background:rgba(77,163,255,0.08);
 </div>
 
 </div>
-
-<!-- CORE -->
 
 <div class="core">
 
@@ -523,8 +517,6 @@ background:rgba(77,163,255,0.08);
 </div>
 
 </div>
-
-<!-- METRICS -->
 
 <div class="metrics-panel">
 
@@ -555,8 +547,6 @@ background:rgba(77,163,255,0.08);
 </div>
 
 </div>
-
-<!-- ENGINE SYSTEMS -->
 
 <div class="panel">
 
@@ -606,8 +596,6 @@ background:rgba(77,163,255,0.08);
 </div>
 
 </div>
-
-<!-- TELEMETRY -->
 
 <div class="telemetry">
 
@@ -687,14 +675,23 @@ document.getElementById("ultimate_status").innerText = T.testing;
 document.getElementById("ultimate_access").innerText = T.access;
 
 async function analyze(symbol){
-symbol = symbol.toUpperCase();
-const res = await fetch(`https://api.marketalchemy.io/analyze?asset=${symbol}&timeframe=1h`, {
-    method: 'GET',
-    mode: 'cors',
-    headers: {
-        'Content-Type': 'application/json'
+    try {
+        symbol = symbol.toUpperCase();
+        const res = await fetch(`https://api.marketalchemy.io/analyze?asset=${symbol}&timeframe=1h`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        if(!res.ok) return null;
+        return await res.json();
+    } catch(e) {
+        console.error(e);
+        return null;
     }
-});
+}
 
 function normalizeState(state){
 if(state === "STRUCTURAL_SHIFT") return "TRANSITION";
