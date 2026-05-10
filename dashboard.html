@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MA Dashboard</title>
+<title>MA Credit Visibility Terminal</title>
 
 <style>
 body{
@@ -13,60 +13,108 @@ font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 .container{
-max-width:900px;
+max-width:1280px;
 margin:auto;
-padding:70px 20px;
+padding:60px 20px;
 }
 
 .header{
-font-size:26px;
+font-size:28px;
 font-weight:600;
 margin-bottom:8px;
 }
 
 .sub{
-opacity:0.6;
+opacity:0.55;
 margin-bottom:40px;
 line-height:1.5;
+max-width:900px;
 }
 
-.grid{
+.top-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:16px;
+margin-bottom:40px;
 }
 
 .card{
 border:1px solid #1f2430;
-padding:18px;
 background:#0f131a;
+padding:18px;
 }
 
 .label{
-font-size:12px;
+font-size:11px;
+letter-spacing:0.08em;
 opacity:0.5;
 margin-bottom:10px;
 }
 
 .value{
-font-size:20px;
+font-size:22px;
 margin-bottom:6px;
 }
 
 .desc{
 font-size:13px;
 opacity:0.5;
-line-height:1.4;
+line-height:1.5;
 }
 
 .section{
-margin-top:40px;
+margin-top:42px;
 }
 
 .section-title{
-font-size:14px;
+font-size:13px;
 opacity:0.6;
-margin-bottom:12px;
+margin-bottom:14px;
+letter-spacing:0.06em;
+}
+
+.table-wrap{
+overflow-x:auto;
+border:1px solid #1f2430;
+background:#0f131a;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:1000px;
+}
+
+th{
+text-align:left;
+font-size:12px;
+font-weight:500;
+opacity:0.5;
+padding:16px;
+border-bottom:1px solid #1f2430;
+background:#10151d;
+}
+
+td{
+padding:16px;
+border-bottom:1px solid #171c26;
+font-size:14px;
+}
+
+tr:hover{
+background:#111722;
+}
+
+.good{
+color:#6effa3;
+}
+
+.mid{
+color:#ffd36e;
+}
+
+.low{
+color:#ff8c8c;
 }
 
 .tag{
@@ -77,6 +125,45 @@ border:1px solid #6da8ff;
 color:#6da8ff;
 margin-top:10px;
 }
+
+.fetch-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:16px;
+}
+
+.fetch-line{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid #1a202b;
+font-size:13px;
+}
+
+.fetch-line:last-child{
+border-bottom:none;
+}
+
+.status-ok{
+color:#6effa3;
+}
+
+.status-warn{
+color:#ffd36e;
+}
+
+.market-state{
+line-height:1.8;
+font-size:14px;
+opacity:0.8;
+}
+
+.footer{
+margin-top:50px;
+font-size:12px;
+opacity:0.35;
+text-align:center;
+}
 </style>
 </head>
 
@@ -85,128 +172,317 @@ margin-top:10px;
 <div class="container">
 
 <div class="header" id="companyName">
-Your Financial Structure
+Credit Visibility Terminal
 </div>
 
 <div class="sub">
-Structural visibility layer — no decisions, only observable state.
+UAE SME credit visibility layer — normalized access state across routed banking infrastructure. No automated decisions, no recommendations.
 </div>
 
-<!-- CORE STATE -->
+<!-- REQUEST STATE -->
 
-<div class="grid">
-
-<div class="card">
-<div class="label">CASH FLOW STATE</div>
-<div class="value" id="cashflow">—</div>
-<div class="desc">behavior of inflow vs outflow</div>
-</div>
+<div class="top-grid">
 
 <div class="card">
-<div class="label">LIQUIDITY PRESSURE</div>
-<div class="value" id="pressure">—</div>
-<div class="desc">buffer stress intensity</div>
+<div class="label">REQUEST AMOUNT</div>
+<div class="value" id="loanAmount">—</div>
+<div class="desc">requested financing size</div>
 </div>
 
 <div class="card">
-<div class="label">STRUCTURAL PHASE</div>
-<div class="value" id="phase">—</div>
-<div class="desc">system regime state</div>
+<div class="label">TENOR</div>
+<div class="value" id="tenor">—</div>
+<div class="desc">requested duration</div>
 </div>
 
 <div class="card">
-<div class="label">DRIFT</div>
-<div class="value" id="drift">—</div>
-<div class="desc">directional imbalance</div>
+<div class="label">PURPOSE</div>
+<div class="value" id="purpose">—</div>
+<div class="desc">capital deployment intent</div>
+</div>
+
+<div class="card">
+<div class="label">ROUTED BANKS</div>
+<div class="value" id="routedBanks">—</div>
+<div class="desc">banks selected by routing layer</div>
 </div>
 
 </div>
 
-<!-- CREDIT ZONE -->
+<!-- BANK MATRIX -->
 
 <div class="section">
 
-<div class="section-title">CREDIT ACCESS</div>
+<div class="section-title">
+BANK ACCESS MATRIX
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>BANK</th>
+<th>ELIGIBILITY</th>
+<th>RATE BAND</th>
+<th>TENOR</th>
+<th>CONFIDENCE</th>
+<th>SOURCE</th>
+<th>STATE</th>
+</tr>
+</thead>
+
+<tbody id="bankTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- FETCH STATE -->
+
+<div class="section">
+
+<div class="section-title">
+FETCH STATE
+</div>
+
+<div class="fetch-grid">
 
 <div class="card">
-<div class="value" id="creditStatus">—</div>
-<div class="desc">current access level based on structural signals</div>
-<div class="tag">STRUCTURE-BASED</div>
+
+<div class="fetch-line">
+<span>Mashreq API</span>
+<span class="status-ok">READY</span>
+</div>
+
+<div class="fetch-line">
+<span>Emirates NBD API</span>
+<span class="status-ok">READY</span>
+</div>
+
+<div class="fetch-line">
+<span>RAKBANK FORM</span>
+<span class="status-ok">READY</span>
+</div>
+
+<div class="fetch-line">
+<span>CBD JS ENGINE</span>
+<span class="status-warn">NORMALIZED</span>
 </div>
 
 </div>
 
-<!-- EXPLANATION LAYER -->
+<div class="card">
+
+<div class="fetch-line">
+<span>Routing Layer</span>
+<span class="status-ok">ACTIVE</span>
+</div>
+
+<div class="fetch-line">
+<span>Conflict Resolution</span>
+<span class="status-ok">COMPLETE</span>
+</div>
+
+<div class="fetch-line">
+<span>Snapshot State</span>
+<span class="status-ok">SYNCED</span>
+</div>
+
+<div class="fetch-line">
+<span>Last UAE Snapshot</span>
+<span class="status-ok" id="snapshotTime">—</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MARKET STATE -->
 
 <div class="section">
 
-<div class="section-title">WHAT LIMITS ACCESS</div>
+<div class="section-title">
+MARKET STATE
+</div>
 
-<div class="card" id="limits">
-Loading structural constraints...
+<div class="card market-state">
+
+<div>
+USD SME liquidity:
+<span class="good">Stable</span>
+</div>
+
+<div>
+Conventional lending appetite:
+<span class="good">Moderate–High</span>
+</div>
+
+<div>
+Islamic financing spread:
+<span class="mid">Widening</span>
+</div>
+
+<div>
+Mid-market credit pressure:
+<span class="mid">Elevated</span>
+</div>
+
+<div class="tag">
+VISIBILITY LAYER
 </div>
 
 </div>
 
-<div class="section">
-
-<div class="section-title">WHAT IMPROVES ACCESS</div>
-
-<div class="card" id="actions">
-Loading improvement paths...
 </div>
 
+<div class="footer">
+Market Alchemy · UAE SME Credit Visibility Engine
 </div>
 
 </div>
 
 <script>
-// INPUT'TAN VERİ AL (intake.html'den gelecek)
-const data = JSON.parse(localStorage.getItem("kobiData"));
 
-// fallback
-if(!data){
-  document.getElementById("companyName").innerText = "No Data Found";
-}else{
+// MOCK INPUT DATA
+const data = JSON.parse(localStorage.getItem("kobiData")) || {
+  company:"ALPHA METAL LLC",
+  amount:"100000",
+  currency:"USD",
+  tenor:"360 Days",
+  purpose:"Fixed Asset Acquisition"
+};
 
-  document.getElementById("companyName").innerText =
-    data.company + " · Structural View";
+// HEADER
+document.getElementById("companyName").innerText =
+  data.company + " · Credit Visibility";
 
-  // SIMPLE STRUCTURAL LOGIC (fake but consistent)
+// REQUEST STATE
+document.getElementById("loanAmount").innerText =
+  `${Number(data.amount).toLocaleString()} ${data.currency || "USD"}`;
 
-  const cashflow = data.cashflow === "Frequently" ? "Decreasing" : "Stable";
-  const pressure = data.cashflow === "Frequently" ? "High" : "Moderate";
-  const phase = data.cashflow === "Frequently" ? "Compression" : "Neutral";
-  const drift = data.cashflow === "Frequently" ? "Downward" : "Stable";
+document.getElementById("tenor").innerText =
+  data.tenor || "360 Days";
 
-  document.getElementById("cashflow").innerText = cashflow;
-  document.getElementById("pressure").innerText = pressure;
-  document.getElementById("phase").innerText = phase;
-  document.getElementById("drift").innerText = drift;
+document.getElementById("purpose").innerText =
+  data.purpose || "General SME";
 
-  // CREDIT STATE
 
-  const credit =
-    data.cashflow === "Frequently"
-    ? "LIMITED ACCESS"
-    : "PARTIAL ACCESS";
+// ROUTED BANKS
+const routedBanks = [
 
-  document.getElementById("creditStatus").innerText = credit;
+{
+bank:"Mashreq Bank",
+eligibility:"HIGH",
+rate:"6.8% – 7.2%",
+tenor:"360D",
+confidence:"0.89",
+source:"API",
+state:"ROUTED"
+},
 
-  // EXPLANATION
+{
+bank:"Emirates NBD",
+eligibility:"HIGH",
+rate:"7.0% – 7.3%",
+tenor:"360D",
+confidence:"0.92",
+source:"API",
+state:"ROUTED"
+},
 
-  document.getElementById("limits").innerHTML = `
-    Cash flow instability detected<br>
-    Banking fragmentation: ${data.banks} institutions<br>
-    Liquidity inconsistency signals present
-  `;
+{
+bank:"Abu Dhabi Commercial Bank",
+eligibility:"HIGH",
+rate:"7.1%",
+tenor:"360D",
+confidence:"0.87",
+source:"WORKFLOW",
+state:"ROUTED"
+},
 
-  document.getElementById("actions").innerHTML = `
-    Stabilize weekly cash inflow<br>
-    Reduce short-term outflow spikes<br>
-    Improve reserve buffer consistency
-  `;
+{
+bank:"RAKBANK",
+eligibility:"MEDIUM",
+rate:"7.5% – 7.8%",
+tenor:"360D",
+confidence:"0.76",
+source:"FORM",
+state:"NORMALIZED"
+},
+
+{
+bank:"Commercial Bank of Dubai",
+eligibility:"MEDIUM",
+rate:"7.4%",
+tenor:"360D",
+confidence:"0.73",
+source:"JS",
+state:"NORMALIZED"
+},
+
+{
+bank:"Wio Bank",
+eligibility:"HIGH",
+rate:"6.9%",
+tenor:"360D",
+confidence:"0.66",
+source:"API",
+state:"ROUTED"
 }
+
+];
+
+document.getElementById("routedBanks").innerText =
+  routedBanks.length;
+
+
+// TABLE
+const table = document.getElementById("bankTable");
+
+routedBanks.forEach(bank => {
+
+let eligibilityClass = "mid";
+
+if(bank.eligibility === "HIGH"){
+eligibilityClass = "good";
+}
+
+if(bank.eligibility === "LOW"){
+eligibilityClass = "low";
+}
+
+table.innerHTML += `
+<tr>
+<td>${bank.bank}</td>
+<td class="${eligibilityClass}">${bank.eligibility}</td>
+<td>${bank.rate}</td>
+<td>${bank.tenor}</td>
+<td>${bank.confidence}</td>
+<td>${bank.source}</td>
+<td>${bank.state}</td>
+</tr>
+`;
+
+});
+
+
+// SNAPSHOT TIME
+const now = new Date();
+
+document.getElementById("snapshotTime").innerText =
+  now.toLocaleTimeString([], {
+    hour:'2-digit',
+    minute:'2-digit'
+  });
+
 </script>
 
 </body>
