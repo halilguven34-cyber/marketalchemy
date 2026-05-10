@@ -4,13 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MA Engine — Structural Visibility Terminal</title>
+
 <script>
 if(!localStorage.getItem("lang")){
     const userLang = navigator.language || navigator.userLanguage;
     localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
 }
 const LANG = localStorage.getItem("lang") || "en";
-document.documentElement.lang = LANG;
+
+const API_BASE = "https://salvador-theaters-correspondence-newspapers.trycloudflare.com";
 
 const TEXT = {
     en:{
@@ -31,7 +33,7 @@ const TEXT = {
         pascal_title:"PASCAL", pascal_desc:"Structural liquidity engine calibrated for crypto futures transition states.",
         snipper_title:"SNIPPER", snipper_desc:"Micro-structure execution layer designed for high precision directional entries.",
         ultimate_title:"ULTIMATE", ultimate_desc:"Experimental persistence engine operating on multi-layer structural continuity.",
-        active:"ACTIVE", testing:"TESTING", shadow:"SHADOW", access:"REQUEST ACCESS"
+        access:"REQUEST ACCESS"
     },
     tr:{
         header:"MARKET ALCHEMY — YAPISAL GÖRÜNÜRLÜK TERMİNALİ",
@@ -51,11 +53,12 @@ const TEXT = {
         pascal_title:"PASCAL", pascal_desc:"Kripto vadeli piyasalarda geçiş durumlarına odaklanan yapısal likidite motoru.",
         snipper_title:"SNIPPER", snipper_desc:"Yüksek hassasiyetli yönsel girişler için tasarlanmış mikro-yapı yürütme katmanı.",
         ultimate_title:"ULTIMATE", ultimate_desc:"Çok katmanlı yapısal süreklilik üzerinde çalışan deneysel persistence motoru.",
-        active:"AKTİF", testing:"TEST", shadow:"GÖLGE", access:"ERİŞİM TALEP ET"
+        access:"ERİŞİM TALEP ET"
     }
 };
 const T = TEXT[LANG];
 </script>
+
 <style>
 :root{--bg:#0d0f14;--panel:#121722;--border:#1f2430;--text:#e8ecf1;--green:#6effa3;--red:#ff5c5c;--blue:#4da3ff;--yellow:#f0c36d;}
 *{box-sizing:border-box;}
@@ -69,13 +72,12 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,B
 input{flex:1;background:#0b0e13;border:1px solid var(--border);border-radius:14px;padding:18px;color:var(--text);font-size:16px;outline:none;}
 .core{display:grid;grid-template-columns:1.15fr 0.85fr;gap:22px;}
 @media(max-width:900px){.core{grid-template-columns:1fr;}}
-.decision-panel{background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:34px;min-height:320px;position:relative;}
+.decision-panel{background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:34px;min-height:320px;}
 .state{font-size:64px;font-weight:800;margin-bottom:14px;}
 .decision-box{margin-top:34px;padding:18px;border:1px solid var(--border);border-radius:14px;background:#0d1118;}
 .decision-value{font-size:34px;font-weight:700;}
 .metrics-panel{display:flex;flex-direction:column;gap:18px;}
 .metric-card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:20px;}
-.metric-head{display:flex;justify-content:space-between;margin-bottom:14px;}
 .bar{width:100%;height:10px;background:#1a2030;border-radius:999px;overflow:hidden;}
 .fill{height:100%;width:0%;transition:0.35s;}
 .vector{background:linear-gradient(90deg,#2eff89,var(--green));}
@@ -88,127 +90,135 @@ input{flex:1;background:#0b0e13;border:1px solid var(--border);border-radius:14p
 .item{padding:12px;border:1px solid rgba(255,255,255,0.04);border-radius:12px;background:#0d1118;}
 .item-label{font-size:10px;opacity:0.45;margin-bottom:8px;}
 .item-value{font-size:16px;font-family:monospace;}
-.trend{color:var(--blue);}
-.compression{color:var(--yellow);}
-.shiftText{color:var(--red);}
-.wait{color:#8a93a4;}
-.enter{color:var(--green);}
-.exit{color:var(--red);}
-.engine-wrapper{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;}
-@media(max-width:900px){.engine-wrapper{grid-template-columns:1fr;}}
-.engine-card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;position:relative;}
-.engine-name{font-size:15px;font-weight:700;}
-.engine-button{display:inline-flex;padding:12px 16px;border:1px solid var(--border);border-radius:12px;font-size:12px;text-decoration:none;color:var(--text);background:#0d1118;}
 </style>
 </head>
+
 <body>
 <div class="container">
-    <div class="header"><div id="header_text"></div><div class="live-dot"></div></div>
-    <div class="input-layer"><div class="input-wrapper"><div class="input-symbol">∴</div><input id="input"></div></div>
+
+    <div class="header">
+        <div id="header_text"></div>
+        <div class="live-dot"></div>
+    </div>
+
+    <div class="input-layer">
+        <div class="input-wrapper">
+            <div class="input-symbol">∴</div>
+            <input id="input" placeholder="">
+        </div>
+    </div>
+
     <div class="core">
+
         <div class="decision-panel">
-            <div class="system-tag" id="structural_state_label"></div>
-            <div class="state wait" id="state"></div>
+            <div id="structural_state_label"></div>
+            <div class="state" id="state"></div>
             <div id="sub" style="font-size:13px; opacity:0.65;"></div>
-            <div class="decision-box"><div class="decision-value wait" id="decision_value">-</div></div>
+
+            <div class="decision-box">
+                <div class="decision-value" id="decision_value">-</div>
+            </div>
         </div>
+
         <div class="metrics-panel">
-            <div class="metric-card"><div class="metric-head"><div id="vector_field_label" style="font-size:11px; opacity:0.55;"></div><div id="vector_value" style="font-size:14px; font-weight:700;">0.000</div></div><div class="bar"><div class="fill vector" id="vector_fill"></div></div></div>
-            <div class="metric-card"><div class="metric-head"><div id="shift_intensity_label" style="font-size:11px; opacity:0.55;"></div><div id="shift_value" style="font-size:14px; font-weight:700;">0.000</div></div><div class="bar"><div class="fill shift" id="shift_fill"></div></div></div>
-            <div class="metric-card"><div class="metric-head"><div id="theta_flow_label" style="font-size:11px; opacity:0.55;"></div><div id="theta_value" style="font-size:14px; font-weight:700;">0.000</div></div><div class="bar"><div class="fill theta" id="theta_fill"></div></div></div>
+
+            <div class="metric-card">
+                <div class="metric-head">
+                    <div id="vector_field_label"></div>
+                    <div id="vector_value">0</div>
+                </div>
+                <div class="bar"><div class="fill vector" id="vector_fill"></div></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-head">
+                    <div id="shift_intensity_label"></div>
+                    <div id="shift_value">0</div>
+                </div>
+                <div class="bar"><div class="fill shift" id="shift_fill"></div></div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-head">
+                    <div id="theta_flow_label"></div>
+                    <div id="theta_value">0</div>
+                </div>
+                <div class="bar"><div class="fill theta" id="theta_fill"></div></div>
+            </div>
+
         </div>
     </div>
-    <div class="panel">
-        <div id="engine_core_label" style="font-size:11px; opacity:0.45; margin-bottom:18px;"></div>
-        <div class="engine-wrapper">
-            <div class="engine-card"><div class="engine-name" id="pascal_title"></div><div id="pascal_desc" style="font-size:13px; opacity:0.7; margin:10px 0;"></div><a class="engine-button" id="pascal_access"></a></div>
-            <div class="engine-card"><div class="engine-name" id="snipper_title"></div><div id="snipper_desc" style="font-size:13px; opacity:0.7; margin:10px 0;"></div><a class="engine-button" id="snipper_access"></a></div>
-            <div class="engine-card"><div class="engine-name" id="ultimate_title"></div><div id="ultimate_desc" style="font-size:13px; opacity:0.7; margin:10px 0;"></div><a class="engine-button" id="ultimate_access"></a></div>
-        </div>
-    </div>
+
     <div class="telemetry">
-        <div class="panel"><div id="deep_telemetry_label" style="font-size:11px; opacity:0.45; margin-bottom:18px;"></div><div class="grid" id="telemetry_grid"></div></div>
-        <div class="panel"><div id="structural_interpretation_label" style="font-size:11px; opacity:0.45; margin-bottom:18px;"></div><div id="meta" style="font-size:13px; line-height:1.7; opacity:0.78;"></div></div>
+        <div class="panel">
+            <div id="deep_telemetry_label"></div>
+            <div class="grid" id="telemetry_grid"></div>
+        </div>
+
+        <div class="panel">
+            <div id="structural_interpretation_label"></div>
+            <div id="meta"></div>
+        </div>
     </div>
+
 </div>
 
 <script>
-// UI Init
+// init text
 document.getElementById("header_text").innerText = T.header;
 document.getElementById("input").placeholder = T.placeholder;
 document.getElementById("structural_state_label").innerText = T.structural_state;
-document.getElementById("state").innerText = T.waiting;
 document.getElementById("vector_field_label").innerText = T.vector_field;
 document.getElementById("shift_intensity_label").innerText = T.shift_intensity;
 document.getElementById("theta_flow_label").innerText = T.theta_flow;
 document.getElementById("deep_telemetry_label").innerText = T.deep_telemetry;
 document.getElementById("structural_interpretation_label").innerText = T.structural_interpretation;
-document.getElementById("engine_core_label").innerText = T.engine_core;
-document.getElementById("pascal_title").innerText = T.pascal_title; document.getElementById("pascal_desc").innerText = T.pascal_desc; document.getElementById("pascal_access").innerText = T.access;
-document.getElementById("snipper_title").innerText = T.snipper_title; document.getElementById("snipper_desc").innerText = T.snipper_desc; document.getElementById("snipper_access").innerText = T.access;
-document.getElementById("ultimate_title").innerText = T.ultimate_title; document.getElementById("ultimate_desc").innerText = T.ultimate_desc; document.getElementById("ultimate_access").innerText = T.access;
-document.getElementById("meta").innerText = T.no_regime;
 
-const labels = ["v", "a", "f", "omega", "theta", "theta_velocity", "dominance", "system_action"];
+const labels = ["velocity","acceleration","friction","omega","theta","theta_velocity","dominance","system_action"];
 const grid = document.getElementById("telemetry_grid");
-labels.forEach(l => {
-    grid.innerHTML += `<div class="item"><div class="item-label">${T[l] || l.toUpperCase()}</div><div class="item-value" id="val_${l}">-</div></div>`;
+
+labels.forEach(l=>{
+    grid.innerHTML += `<div class="item"><div class="item-label">${T[l] || l}</div><div class="item-value" id="val_${l}">-</div></div>`;
 });
 
-// Logic
-async function analyze(symbol) {
-    try {
-        const res = await fetch(`https://api.marketalchemy.io/analyze?asset=${symbol.toUpperCase()}&timeframe=1h`);
-        if (!res.ok) return null;
+async function analyze(symbol){
+    try{
+        const res = await fetch(`${API_BASE}/analyze?asset=${symbol.toUpperCase()}&timeframe=1h`);
+        if(!res.ok) return null;
         return await res.json();
-    } catch (e) { return null; }
+    }catch(e){ return null; }
 }
 
-document.getElementById("input").addEventListener("keydown", async (e) => {
-    if (e.key !== "Enter") return;
+document.getElementById("input").addEventListener("keydown", async (e)=>{
+    if(e.key!=="Enter") return;
+
     const val = e.target.value.trim();
-    if (!val) return;
-
     const res = await analyze(val);
-    if (!res) { document.getElementById("state").innerText = T.error; return; }
 
-    // State & Decision
-    const state = res.state === "STRUCTURAL_SHIFT" ? "TRANSITION" : res.state;
-    const stateEl = document.getElementById("state");
-    stateEl.className = "state " + (state === "TREND" ? "trend" : state === "COMPRESSION" ? "compression" : state === "TRANSITION" ? "shiftText" : "wait");
-    stateEl.innerText = T[state.toLowerCase()] || state;
+    if(!res){
+        document.getElementById("state").innerText = "ERROR";
+        return;
+    }
 
-    const decEl = document.getElementById("decision_value");
-    decEl.className = "decision-value " + (res.decision === "ENTER" ? "enter" : res.decision === "EXIT" ? "exit" : "wait");
-    decEl.innerText = res.decision;
+    document.getElementById("state").innerText = res.state;
+    document.getElementById("decision_value").innerText = res.decision;
 
-    // Metrics
-    const v = Math.abs(res.features.vector || 0);
-    const s = Math.min(res.shift_score || 0, 1);
-    const t = Math.abs(res.features.theta_velocity || 0);
-    
-    document.getElementById("vector_fill").style.width = (v * 100) + "%";
-    document.getElementById("shift_fill").style.width = (s * 100) + "%";
-    document.getElementById("theta_fill").style.width = (t * 100) + "%";
+    const v = res.features?.vector || 0;
+    const s = res.shift_score || 0;
+    const t = res.features?.theta_velocity || 0;
+
+    document.getElementById("vector_fill").style.width = (v*100)+"%";
+    document.getElementById("shift_fill").style.width = (s*100)+"%";
+    document.getElementById("theta_fill").style.width = (t*100)+"%";
+
     document.getElementById("vector_value").innerText = v.toFixed(3);
     document.getElementById("shift_value").innerText = s.toFixed(3);
     document.getElementById("theta_value").innerText = t.toFixed(3);
 
-    // Telemetry
-    Object.keys(res.features).forEach(k => {
-        const el = document.getElementById("val_" + k);
-        if (el) el.innerText = typeof res.features[k] === "number" ? res.features[k].toFixed(4) : res.features[k];
-    });
-    document.getElementById("val_system_action").innerText = res.decision;
-
-    // Meta
-    let meta = T.default_meta;
-    if (state === "TRANSITION") meta = T.transition_meta;
-    else if (state === "TREND") meta = T.trend_meta;
-    else if (state === "COMPRESSION") meta = T.compression_meta;
-    document.getElementById("meta").innerText = meta;
-    document.getElementById("sub").innerText = `vector=${v.toFixed(4)} | shift=${s.toFixed(3)} | theta=${t.toFixed(3)}`;
+    document.getElementById("sub").innerText =
+        `vector=${v.toFixed(3)} | shift=${s.toFixed(3)} | theta=${t.toFixed(3)}`;
 });
 </script>
+
 </body>
 </html>
