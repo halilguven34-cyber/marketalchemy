@@ -696,7 +696,6 @@ const res = await fetch(`https://api.marketalchemy.io/analyze?asset=${symbol}&ti
     }
 });
 
-
 function normalizeState(state){
 if(state === "STRUCTURAL_SHIFT") return "TRANSITION";
 return state;
