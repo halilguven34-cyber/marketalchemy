@@ -1,814 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MA Engine — Structural Visibility Terminal</title>
 <script>
 if(!localStorage.getItem("lang")){
     const userLang = navigator.language || navigator.userLanguage;
     localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
 }
-
 const LANG = localStorage.getItem("lang") || "en";
 document.documentElement.lang = LANG;
 
 const TEXT = {
-
-en:{
-
-header:"MARKET ALCHEMY — STRUCTURAL VISIBILITY TERMINAL",
-
-placeholder:"Enter asset...",
-
-structural_state:"Structural State",
-
-waiting:"WAITING",
-transition:"TRANSITION",
-trend:"TREND",
-compression:"COMPRESSION",
-error:"ERROR",
-unknown:"UNKNOWN",
-
-sub_default:"price = observable trace | vector = preserved movement",
-
-vector_field:"Vector Field",
-shift_intensity:"Shift Intensity",
-theta_flow:"Theta Flow",
-
-deep_telemetry:"Deep Telemetry",
-structural_interpretation:"Structural Interpretation",
-
-velocity:"Velocity",
-acceleration:"Acceleration",
-friction:"Friction",
-omega:"Omega",
-theta:"Theta",
-theta_velocity:"Theta Velocity",
-dominance:"Dominance",
-system_action:"System Action",
-
-no_regime:"No dominant structural regime detected.",
-
-transition_meta:"Previous structure losing persistence. Exit pressure active while pre-entry conditions form.",
-trend_meta:"Structure reinforcing directional persistence.",
-compression_meta:"Energy accumulation phase.",
-default_meta:"No dominant structural regime.",
-
-enter:"ENTER",
-exit:"EXIT",
-
-engine_core:"Operator Systems",
-
-pascal_title:"PASCAL",
-pascal_desc:"Structural liquidity engine calibrated for crypto futures transition states.",
-
-snipper_title:"SNIPPER",
-snipper_desc:"Micro-structure execution layer designed for high precision directional entries.",
-
-ultimate_title:"ULTIMATE",
-ultimate_desc:"Experimental persistence engine operating on multi-layer structural continuity.",
-
-active:"ACTIVE",
-testing:"TESTING",
-shadow:"SHADOW",
-
-access:"REQUEST ACCESS"
-
-},
-
-tr:{
-
-header:"MARKET ALCHEMY — YAPISAL GÖRÜNÜRLÜK TERMİNALİ",
-
-placeholder:"Varlık gir...",
-
-structural_state:"Yapısal Durum",
-
-waiting:"BEKLEME",
-transition:"GEÇİŞ",
-trend:"TREND",
-compression:"SIKIŞMA",
-error:"HATA",
-unknown:"BİLİNMİYOR",
-
-sub_default:"fiyat = gözlemlenebilir iz | vektör = korunmuş hareket",
-
-vector_field:"Vektör Alanı",
-shift_intensity:"Kayma Yoğunluğu",
-theta_flow:"Theta Akışı",
-
-deep_telemetry:"Derin Telemetri",
-structural_interpretation:"Yapısal Yorum",
-
-velocity:"Hız",
-acceleration:"İvme",
-friction:"Sürtünme",
-omega:"Omega",
-theta:"Theta",
-theta_velocity:"Theta Hızı",
-dominance:"Baskınlık",
-system_action:"Sistem Aksiyonu",
-
-no_regime:"Baskın yapısal rejim tespit edilmedi.",
-
-transition_meta:"Önceki yapı kalıcılığını kaybediyor. Ön giriş koşulları oluşurken çıkış baskısı aktif.",
-trend_meta:"Yapı yönsel kalıcılığı güçlendiriyor.",
-compression_meta:"Enerji birikim fazı.",
-default_meta:"Baskın yapısal rejim yok.",
-
-enter:"GİR",
-exit:"ÇIK",
-
-engine_core:"Operatör Sistemleri",
-
-pascal_title:"PASCAL",
-pascal_desc:"Kripto vadeli piyasalarda geçiş durumlarına odaklanan yapısal likidite motoru.",
-
-snipper_title:"SNIPPER",
-snipper_desc:"Yüksek hassasiyetli yönsel girişler için tasarlanmış mikro-yapı yürütme katmanı.",
-
-ultimate_title:"ULTIMATE",
-ultimate_desc:"Çok katmanlı yapısal süreklilik üzerinde çalışan deneysel persistence motoru.",
-
-active:"AKTİF",
-testing:"TEST",
-shadow:"GÖLGE",
-
-access:"ERİŞİM TALEP ET"
-
-}
-
+    en:{
+        header:"MARKET ALCHEMY — STRUCTURAL VISIBILITY TERMINAL",
+        placeholder:"Enter asset...",
+        structural_state:"Structural State",
+        waiting:"WAITING", transition:"TRANSITION", trend:"TREND", compression:"COMPRESSION", error:"ERROR", unknown:"UNKNOWN",
+        sub_default:"price = observable trace | vector = preserved movement",
+        vector_field:"Vector Field", shift_intensity:"Shift Intensity", theta_flow:"Theta Flow",
+        deep_telemetry:"Deep Telemetry", structural_interpretation:"Structural Interpretation",
+        velocity:"Velocity", acceleration:"Acceleration", friction:"Friction", omega:"Omega", theta:"Theta", theta_velocity:"Theta Velocity", dominance:"Dominance", system_action:"System Action",
+        no_regime:"No dominant structural regime detected.",
+        transition_meta:"Previous structure losing persistence. Exit pressure active while pre-entry conditions form.",
+        trend_meta:"Structure reinforcing directional persistence.",
+        compression_meta:"Energy accumulation phase.",
+        default_meta:"No dominant structural regime.",
+        enter:"ENTER", exit:"EXIT", engine_core:"Operator Systems",
+        pascal_title:"PASCAL", pascal_desc:"Structural liquidity engine calibrated for crypto futures transition states.",
+        snipper_title:"SNIPPER", snipper_desc:"Micro-structure execution layer designed for high precision directional entries.",
+        ultimate_title:"ULTIMATE", ultimate_desc:"Experimental persistence engine operating on multi-layer structural continuity.",
+        active:"ACTIVE", testing:"TESTING", shadow:"SHADOW", access:"REQUEST ACCESS"
+    },
+    tr:{
+        header:"MARKET ALCHEMY — YAPISAL GÖRÜNÜRLÜK TERMİNALİ",
+        placeholder:"Varlık gir...",
+        structural_state:"Yapısal Durum",
+        waiting:"BEKLEME", transition:"GEÇİŞ", trend:"TREND", compression:"SIKIŞMA", error:"HATA", unknown:"BİLİNMİYOR",
+        sub_default:"fiyat = gözlemlenebilir iz | vektör = korunmuş hareket",
+        vector_field:"Vektör Alanı", shift_intensity:"Kayma Yoğunluğu", theta_flow:"Theta Akışı",
+        deep_telemetry:"Derin Telemetri", structural_interpretation:"Yapısal Yorum",
+        velocity:"Hız", acceleration:"İvme", friction:"Sürtünme", omega:"Omega", theta:"Theta", theta_velocity:"Theta Hızı", dominance:"Baskınlık", system_action:"Sistem Aksiyonu",
+        no_regime:"Baskın yapısal rejim tespit edilmedi.",
+        transition_meta:"Önceki yapı kalıcılığını kaybediyor. Ön giriş koşulları oluşurken çıkış baskısı aktif.",
+        trend_meta:"Yapı yönsel kalıcılığı güçlendiriyor.",
+        compression_meta:"Enerji birikim fazı.",
+        default_meta:"Baskın yapısal rejim yok.",
+        enter:"GİR", exit:"ÇIK", engine_core:"Operatör Sistemleri",
+        pascal_title:"PASCAL", pascal_desc:"Kripto vadeli piyasalarda geçiş durumlarına odaklanan yapısal likidite motoru.",
+        snipper_title:"SNIPPER", snipper_desc:"Yüksek hassasiyetli yönsel girişler için tasarlanmış mikro-yapı yürütme katmanı.",
+        ultimate_title:"ULTIMATE", ultimate_desc:"Çok katmanlı yapısal süreklilik üzerinde çalışan deneysel persistence motoru.",
+        active:"AKTİF", testing:"TEST", shadow:"GÖLGE", access:"ERİŞİM TALEP ET"
+    }
 };
-
 const T = TEXT[LANG];
 </script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Engine — Structural Visibility Terminal</title>
-
 <style>
-
-:root{
---bg:#0d0f14;
---panel:#121722;
---border:#1f2430;
---text:#e8ecf1;
-
---green:#6effa3;
---red:#ff5c5c;
---blue:#4da3ff;
---yellow:#f0c36d;
-}
-
+:root{--bg:#0d0f14;--panel:#121722;--border:#1f2430;--text:#e8ecf1;--green:#6effa3;--red:#ff5c5c;--blue:#4da3ff;--yellow:#f0c36d;}
 *{box-sizing:border-box;}
-
-body{
-margin:0;
-background:var(--bg);
-color:var(--text);
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-display:flex;
-justify-content:center;
-padding:30px 16px;
-}
-
-.container{
-width:100%;
-max-width:1100px;
-display:flex;
-flex-direction:column;
-gap:22px;
-}
-
-/* HEADER */
-
-.header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-opacity:0.45;
-font-size:12px;
-letter-spacing:1px;
-}
-
-.live-dot{
-width:8px;
-height:8px;
-border-radius:50%;
-background:var(--green);
-box-shadow:0 0 12px var(--green);
-}
-
-/* INPUT */
-
-.input-layer{
-background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
-border:1px solid var(--border);
-border-radius:18px;
-padding:28px;
-}
-
-.input-wrapper{
-display:flex;
-align-items:center;
-gap:14px;
-}
-
-.input-symbol{
-font-size:26px;
-font-weight:700;
-opacity:0.25;
-}
-
-input{
-flex:1;
-background:#0b0e13;
-border:1px solid var(--border);
-border-radius:14px;
-padding:18px;
-color:var(--text);
-font-size:16px;
-outline:none;
-}
-
-input::placeholder{
-color:#5d6675;
-}
-
-/* CORE */
-
-.core{
-display:grid;
-grid-template-columns:1.15fr 0.85fr;
-gap:22px;
-}
-
-@media(max-width:900px){
-.core{grid-template-columns:1fr;}
-}
-
-.decision-panel{
-background:var(--panel);
-border:1px solid var(--border);
-border-radius:22px;
-padding:34px;
-min-height:320px;
-position:relative;
-}
-
-.system-tag{
-font-size:11px;
-opacity:0.4;
-margin-bottom:18px;
-}
-
-.state{
-font-size:64px;
-font-weight:800;
-margin-bottom:14px;
-}
-
-.sub{
-font-size:13px;
-opacity:0.65;
-}
-
-.decision-box{
-margin-top:34px;
-padding:18px;
-border:1px solid var(--border);
-border-radius:14px;
-background:#0d1118;
-}
-
-.decision-value{
-font-size:34px;
-font-weight:700;
-}
-
-/* METRICS */
-
-.metrics-panel{
-display:flex;
-flex-direction:column;
-gap:18px;
-}
-
-.metric-card{
-background:var(--panel);
-border:1px solid var(--border);
-border-radius:18px;
-padding:20px;
-}
-
-.metric-head{
-display:flex;
-justify-content:space-between;
-margin-bottom:14px;
-}
-
-.metric-title{
-font-size:11px;
-opacity:0.55;
-}
-
-.metric-value{
-font-size:14px;
-font-weight:700;
-}
-
-.bar{
-width:100%;
-height:10px;
-background:#1a2030;
-border-radius:999px;
-overflow:hidden;
-}
-
-.fill{
-height:100%;
-width:0%;
-transition:0.35s;
-}
-
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;justify-content:center;padding:30px 16px;}
+.container{width:100%;max-width:1100px;display:flex;flex-direction:column;gap:22px;}
+.header{display:flex;justify-content:space-between;align-items:center;opacity:0.45;font-size:12px;letter-spacing:1px;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);}
+.input-layer{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid var(--border);border-radius:18px;padding:28px;}
+.input-wrapper{display:flex;align-items:center;gap:14px;}
+.input-symbol{font-size:26px;font-weight:700;opacity:0.25;}
+input{flex:1;background:#0b0e13;border:1px solid var(--border);border-radius:14px;padding:18px;color:var(--text);font-size:16px;outline:none;}
+.core{display:grid;grid-template-columns:1.15fr 0.85fr;gap:22px;}
+@media(max-width:900px){.core{grid-template-columns:1fr;}}
+.decision-panel{background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:34px;min-height:320px;position:relative;}
+.state{font-size:64px;font-weight:800;margin-bottom:14px;}
+.decision-box{margin-top:34px;padding:18px;border:1px solid var(--border);border-radius:14px;background:#0d1118;}
+.decision-value{font-size:34px;font-weight:700;}
+.metrics-panel{display:flex;flex-direction:column;gap:18px;}
+.metric-card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:20px;}
+.metric-head{display:flex;justify-content:space-between;margin-bottom:14px;}
+.bar{width:100%;height:10px;background:#1a2030;border-radius:999px;overflow:hidden;}
+.fill{height:100%;width:0%;transition:0.35s;}
 .vector{background:linear-gradient(90deg,#2eff89,var(--green));}
 .shift{background:linear-gradient(90deg,#ff7a7a,var(--red));}
 .theta{background:linear-gradient(90deg,#76bbff,var(--blue));}
-
-/* TELEMETRY */
-
-.telemetry{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:22px;
-}
-
-@media(max-width:900px){
-.telemetry{grid-template-columns:1fr;}
-}
-
-.panel{
-background:var(--panel);
-border:1px solid var(--border);
-border-radius:18px;
-padding:22px;
-}
-
-.panel-title{
-font-size:11px;
-opacity:0.45;
-margin-bottom:18px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-}
-
-.item{
-padding:12px;
-border:1px solid rgba(255,255,255,0.04);
-border-radius:12px;
-background:#0d1118;
-}
-
-.item-label{
-font-size:10px;
-opacity:0.45;
-margin-bottom:8px;
-}
-
-.item-value{
-font-size:16px;
-font-family:monospace;
-}
-
-.meta{
-font-size:13px;
-line-height:1.7;
-opacity:0.78;
-}
-
-/* STATES */
-
+.telemetry{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+@media(max-width:900px){.telemetry{grid-template-columns:1fr;}}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.item{padding:12px;border:1px solid rgba(255,255,255,0.04);border-radius:12px;background:#0d1118;}
+.item-label{font-size:10px;opacity:0.45;margin-bottom:8px;}
+.item-value{font-size:16px;font-family:monospace;}
 .trend{color:var(--blue);}
 .compression{color:var(--yellow);}
 .shiftText{color:var(--red);}
 .wait{color:#8a93a4;}
 .enter{color:var(--green);}
 .exit{color:var(--red);}
-
-/* ENGINE SYSTEMS */
-
-.engine-wrapper{
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:18px;
-}
-
-@media(max-width:900px){
-.engine-wrapper{
-grid-template-columns:1fr;
-}
-}
-
-.engine-card{
-background:var(--panel);
-border:1px solid var(--border);
-border-radius:18px;
-padding:22px;
-position:relative;
-overflow:hidden;
-}
-
-.engine-card::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:2px;
-background:linear-gradient(90deg,transparent,var(--blue),transparent);
-opacity:0.7;
-}
-
-.engine-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:16px;
-}
-
-.engine-name{
-font-size:15px;
-font-weight:700;
-letter-spacing:1px;
-}
-
-.engine-status{
-font-size:10px;
-padding:4px 8px;
-border:1px solid var(--border);
-border-radius:999px;
-opacity:0.8;
-}
-
-.engine-desc{
-font-size:13px;
-line-height:1.7;
-opacity:0.72;
-margin-bottom:24px;
-min-height:95px;
-}
-
-.engine-button{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:12px 16px;
-border:1px solid var(--border);
-border-radius:12px;
-font-size:12px;
-text-decoration:none;
-color:var(--text);
-transition:0.25s;
-background:#0d1118;
-}
-
-.engine-button:hover{
-border-color:var(--blue);
-background:rgba(77,163,255,0.08);
-}
-
+.engine-wrapper{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;}
+@media(max-width:900px){.engine-wrapper{grid-template-columns:1fr;}}
+.engine-card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;position:relative;}
+.engine-name{font-size:15px;font-weight:700;}
+.engine-button{display:inline-flex;padding:12px 16px;border:1px solid var(--border);border-radius:12px;font-size:12px;text-decoration:none;color:var(--text);background:#0d1118;}
 </style>
 </head>
-
 <body>
-
 <div class="container">
-
-<div class="header">
-<div id="header_text"></div>
-<div class="live-dot"></div>
-</div>
-
-<div class="input-layer">
-
-<div class="input-wrapper">
-<div class="input-symbol">∴</div>
-<input id="input">
-</div>
-
-</div>
-
-<div class="core">
-
-<div class="decision-panel">
-
-<div class="system-tag" id="structural_state_label"></div>
-
-<div class="state wait" id="state"></div>
-
-<div class="sub" id="sub"></div>
-
-<div class="decision-box">
-<div class="decision-value wait" id="decision_value">-</div>
-</div>
-
-</div>
-
-<div class="metrics-panel">
-
-<div class="metric-card">
-<div class="metric-head">
-<div class="metric-title" id="vector_field_label"></div>
-<div class="metric-value" id="vector_value">0.000</div>
-</div>
-<div class="bar"><div class="fill vector" id="vector_fill"></div></div>
-</div>
-
-<div class="metric-card">
-<div class="metric-head">
-<div class="metric-title" id="shift_intensity_label"></div>
-<div class="metric-value" id="shift_value">0.000</div>
-</div>
-<div class="bar"><div class="fill shift" id="shift_fill"></div></div>
-</div>
-
-<div class="metric-card">
-<div class="metric-head">
-<div class="metric-title" id="theta_flow_label"></div>
-<div class="metric-value" id="theta_value">0.000</div>
-</div>
-<div class="bar"><div class="fill theta" id="theta_fill"></div></div>
-</div>
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<div class="panel-title" id="engine_core_label"></div>
-
-<div class="engine-wrapper">
-
-<div class="engine-card">
-
-<div class="engine-top">
-<div class="engine-name" id="pascal_title"></div>
-<div class="engine-status" id="pascal_status"></div>
-</div>
-
-<div class="engine-desc" id="pascal_desc"></div>
-
-<a class="engine-button" href="access.html" id="pascal_access"></a>
-
-</div>
-
-<div class="engine-card">
-
-<div class="engine-top">
-<div class="engine-name" id="snipper_title"></div>
-<div class="engine-status" id="snipper_status"></div>
-</div>
-
-<div class="engine-desc" id="snipper_desc"></div>
-
-<a class="engine-button" href="access.html" id="snipper_access"></a>
-
-</div>
-
-<div class="engine-card">
-
-<div class="engine-top">
-<div class="engine-name" id="ultimate_title"></div>
-<div class="engine-status" id="ultimate_status"></div>
-</div>
-
-<div class="engine-desc" id="ultimate_desc"></div>
-
-<a class="engine-button" href="access.html" id="ultimate_access"></a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="telemetry">
-
-<div class="panel">
-
-<div class="panel-title" id="deep_telemetry_label"></div>
-
-<div class="grid">
-
-<div class="item"><div class="item-label" id="velocity_label"></div><div class="item-value" id="v">-</div></div>
-<div class="item"><div class="item-label" id="acceleration_label"></div><div class="item-value" id="a">-</div></div>
-<div class="item"><div class="item-label" id="friction_label"></div><div class="item-value" id="f">-</div></div>
-<div class="item"><div class="item-label" id="omega_label"></div><div class="item-value" id="omega">-</div></div>
-<div class="item"><div class="item-label" id="theta_label"></div><div class="item-value" id="theta">-</div></div>
-<div class="item"><div class="item-label" id="theta_velocity_label"></div><div class="item-value" id="theta_velocity">-</div></div>
-<div class="item"><div class="item-label" id="dominance_label"></div><div class="item-value" id="dominance">-</div></div>
-<div class="item"><div class="item-label" id="system_action_label"></div><div class="item-value" id="system_action">-</div></div>
-
-</div>
-
-</div>
-
-<div class="panel">
-<div class="panel-title" id="structural_interpretation_label"></div>
-<div class="meta" id="meta"></div>
-</div>
-
-</div>
-
+    <div class="header"><div id="header_text"></div><div class="live-dot"></div></div>
+    <div class="input-layer"><div class="input-wrapper"><div class="input-symbol">∴</div><input id="input"></div></div>
+    <div class="core">
+        <div class="decision-panel">
+            <div class="system-tag" id="structural_state_label"></div>
+            <div class="state wait" id="state"></div>
+            <div id="sub" style="font-size:13px; opacity:0.65;"></div>
+            <div class="decision-box"><div class="decision-value wait" id="decision_value">-</div></div>
+        </div>
+        <div class="metrics-panel">
+            <div class="metric-card"><div class="metric-head"><div id="vector_field_label" style="font-size:11px; opacity:0.55;"></div><div id="vector_value" style="font-size:14px; font-weight:700;">0.000</div></div><div class="bar"><div class="fill vector" id="vector_fill"></div></div></div>
+            <div class="metric-card"><div class="metric-head"><div id="shift_intensity_label" style="font-size:11px; opacity:0.55;"></div><div id="shift_value" style="font-size:14px; font-weight:700;">0.000</div></div><div class="bar"><div class="fill shift" id="shift_fill"></div></div></div>
+            <div class="metric-card"><div class="metric-head"><div id="theta_flow_label" style="font-size:11px; opacity:0.55;"></div><div id="theta_value" style="font-size:14px; font-weight:700;">0.000</div></div><div class="bar"><div class="fill theta" id="theta_fill"></div></div></div>
+        </div>
+    </div>
+    <div class="panel">
+        <div id="engine_core_label" style="font-size:11px; opacity:0.45; margin-bottom:18px;"></div>
+        <div class="engine-wrapper">
+            <div class="engine-card"><div class="engine-name" id="pascal_title"></div><div id="pascal_desc" style="font-size:13px; opacity:0.7; margin:10px 0;"></div><a class="engine-button" id="pascal_access"></a></div>
+            <div class="engine-card"><div class="engine-name" id="snipper_title"></div><div id="snipper_desc" style="font-size:13px; opacity:0.7; margin:10px 0;"></div><a class="engine-button" id="snipper_access"></a></div>
+            <div class="engine-card"><div class="engine-name" id="ultimate_title"></div><div id="ultimate_desc" style="font-size:13px; opacity:0.7; margin:10px 0;"></div><a class="engine-button" id="ultimate_access"></a></div>
+        </div>
+    </div>
+    <div class="telemetry">
+        <div class="panel"><div id="deep_telemetry_label" style="font-size:11px; opacity:0.45; margin-bottom:18px;"></div><div class="grid" id="telemetry_grid"></div></div>
+        <div class="panel"><div id="structural_interpretation_label" style="font-size:11px; opacity:0.45; margin-bottom:18px;"></div><div id="meta" style="font-size:13px; line-height:1.7; opacity:0.78;"></div></div>
+    </div>
 </div>
 
 <script>
-
+// UI Init
 document.getElementById("header_text").innerText = T.header;
 document.getElementById("input").placeholder = T.placeholder;
-
 document.getElementById("structural_state_label").innerText = T.structural_state;
-
 document.getElementById("state").innerText = T.waiting;
-document.getElementById("sub").innerText = T.sub_default;
-
 document.getElementById("vector_field_label").innerText = T.vector_field;
 document.getElementById("shift_intensity_label").innerText = T.shift_intensity;
 document.getElementById("theta_flow_label").innerText = T.theta_flow;
-
 document.getElementById("deep_telemetry_label").innerText = T.deep_telemetry;
 document.getElementById("structural_interpretation_label").innerText = T.structural_interpretation;
-
-document.getElementById("velocity_label").innerText = T.velocity;
-document.getElementById("acceleration_label").innerText = T.acceleration;
-document.getElementById("friction_label").innerText = T.friction;
-document.getElementById("omega_label").innerText = T.omega;
-document.getElementById("theta_label").innerText = T.theta;
-document.getElementById("theta_velocity_label").innerText = T.theta_velocity;
-document.getElementById("dominance_label").innerText = T.dominance;
-document.getElementById("system_action_label").innerText = T.system_action;
-
+document.getElementById("engine_core_label").innerText = T.engine_core;
+document.getElementById("pascal_title").innerText = T.pascal_title; document.getElementById("pascal_desc").innerText = T.pascal_desc; document.getElementById("pascal_access").innerText = T.access;
+document.getElementById("snipper_title").innerText = T.snipper_title; document.getElementById("snipper_desc").innerText = T.snipper_desc; document.getElementById("snipper_access").innerText = T.access;
+document.getElementById("ultimate_title").innerText = T.ultimate_title; document.getElementById("ultimate_desc").innerText = T.ultimate_desc; document.getElementById("ultimate_access").innerText = T.access;
 document.getElementById("meta").innerText = T.no_regime;
 
-/* ENGINE */
-
-document.getElementById("engine_core_label").innerText = T.engine_core;
-
-document.getElementById("pascal_title").innerText = T.pascal_title;
-document.getElementById("pascal_desc").innerText = T.pascal_desc;
-document.getElementById("pascal_status").innerText = T.active;
-document.getElementById("pascal_access").innerText = T.access;
-
-document.getElementById("snipper_title").innerText = T.snipper_title;
-document.getElementById("snipper_desc").innerText = T.snipper_desc;
-document.getElementById("snipper_status").innerText = T.active;
-document.getElementById("snipper_access").innerText = T.access;
-
-document.getElementById("ultimate_title").innerText = T.ultimate_title;
-document.getElementById("ultimate_desc").innerText = T.ultimate_desc;
-document.getElementById("ultimate_status").innerText = T.testing;
-document.getElementById("ultimate_access").innerText = T.access;
-
-async function analyze(symbol){
-    try {
-        symbol = symbol.toUpperCase();
-        const res = await fetch(`https://api.marketalchemy.io/analyze?asset=${symbol}&timeframe=1h`, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        });
-        if(!res.ok) return null;
-        return await res.json();
-    } catch(e) {
-        console.error(e);
-        return null;
-    }
-}
-
-function normalizeState(state){
-if(state === "STRUCTURAL_SHIFT") return "TRANSITION";
-return state;
-}
-
-function localizedState(state){
-
-if(state === "TREND") return T.trend;
-if(state === "COMPRESSION") return T.compression;
-if(state === "TRANSITION") return T.transition;
-if(state === "WAITING") return T.waiting;
-if(state === "ERROR") return T.error;
-
-return T.unknown;
-}
-
-function localizedDecision(decision){
-
-if(decision === "ENTER") return T.enter;
-if(decision === "EXIT") return T.exit;
-
-return "-";
-}
-
-function setStateUI(state){
-
-const el = document.getElementById("state");
-el.className = "state";
-
-if(state === "TREND") el.classList.add("trend");
-else if(state === "COMPRESSION") el.classList.add("compression");
-else if(state === "TRANSITION") el.classList.add("shiftText");
-else el.classList.add("wait");
-
-el.innerText = localizedState(state);
-}
-
-function setDecisionUI(decision){
-
-const el = document.getElementById("decision_value");
-el.className = "decision-value";
-
-if(decision === "ENTER") el.classList.add("enter");
-else if(decision === "EXIT") el.classList.add("exit");
-else el.classList.add("wait");
-
-el.innerText = localizedDecision(decision);
-}
-
-document.getElementById("input").addEventListener("keydown", async (e)=>{
-
-if(e.key !== "Enter") return;
-
-let val = e.target.value.trim();
-if(!val) return;
-
-let res = await analyze(val);
-
-if(!res){
-document.getElementById("state").innerText = T.error;
-return;
-}
-
-const state = normalizeState(res.state || "UNKNOWN");
-
-setStateUI(state);
-setDecisionUI(res.decision || "-");
-
-let vector = Math.abs(res.features?.vector || 0);
-let shift = Math.min(res.shift_score || 0, 1);
-let theta_v = Math.abs(res.features?.theta_velocity || 0);
-
-document.getElementById("vector_fill").style.width = vector*100 + "%";
-document.getElementById("shift_fill").style.width = shift*100 + "%";
-document.getElementById("theta_fill").style.width = theta_v*100 + "%";
-
-document.getElementById("vector_value").innerText = vector.toFixed(3);
-document.getElementById("shift_value").innerText = shift.toFixed(3);
-document.getElementById("theta_value").innerText = theta_v.toFixed(3);
-
-const f = res.features || {};
-
-document.getElementById("v").innerText = f.v ?? 0;
-document.getElementById("a").innerText = f.a ?? 0;
-document.getElementById("f").innerText = f.f ?? 0;
-document.getElementById("omega").innerText = f.omega ?? 0;
-document.getElementById("theta").innerText = f.theta ?? 0;
-document.getElementById("theta_velocity").innerText = f.theta_velocity ?? 0;
-document.getElementById("dominance").innerText = f.dominance ?? 0.5;
-
-document.getElementById("system_action").innerText =
-localizedDecision(res.decision ?? "-");
-
-let meta = "";
-
-if(state === "TRANSITION"){
-meta = T.transition_meta;
-}
-else if(state === "TREND" && f.theta_velocity > 0){
-meta = T.trend_meta;
-}
-else if(state === "COMPRESSION"){
-meta = T.compression_meta;
-}
-else{
-meta = T.default_meta;
-}
-
-document.getElementById("meta").innerText = meta;
-
-document.getElementById("sub").innerText =
-`vector=${vector.toFixed(4)} | shift=${shift.toFixed(3)} | theta=${theta_v.toFixed(3)}`;
-
+const labels = ["v", "a", "f", "omega", "theta", "theta_velocity", "dominance", "system_action"];
+const grid = document.getElementById("telemetry_grid");
+labels.forEach(l => {
+    grid.innerHTML += `<div class="item"><div class="item-label">${T[l] || l.toUpperCase()}</div><div class="item-value" id="val_${l}">-</div></div>`;
 });
 
-</script>
+// Logic
+async function analyze(symbol) {
+    try {
+        const res = await fetch(`https://api.marketalchemy.io/analyze?asset=${symbol.toUpperCase()}&timeframe=1h`);
+        if (!res.ok) return null;
+        return await res.json();
+    } catch (e) { return null; }
+}
 
+document.getElementById("input").addEventListener("keydown", async (e) => {
+    if (e.key !== "Enter") return;
+    const val = e.target.value.trim();
+    if (!val) return;
+
+    const res = await analyze(val);
+    if (!res) { document.getElementById("state").innerText = T.error; return; }
+
+    // State & Decision
+    const state = res.state === "STRUCTURAL_SHIFT" ? "TRANSITION" : res.state;
+    const stateEl = document.getElementById("state");
+    stateEl.className = "state " + (state === "TREND" ? "trend" : state === "COMPRESSION" ? "compression" : state === "TRANSITION" ? "shiftText" : "wait");
+    stateEl.innerText = T[state.toLowerCase()] || state;
+
+    const decEl = document.getElementById("decision_value");
+    decEl.className = "decision-value " + (res.decision === "ENTER" ? "enter" : res.decision === "EXIT" ? "exit" : "wait");
+    decEl.innerText = res.decision;
+
+    // Metrics
+    const v = Math.abs(res.features.vector || 0);
+    const s = Math.min(res.shift_score || 0, 1);
+    const t = Math.abs(res.features.theta_velocity || 0);
+    
+    document.getElementById("vector_fill").style.width = (v * 100) + "%";
+    document.getElementById("shift_fill").style.width = (s * 100) + "%";
+    document.getElementById("theta_fill").style.width = (t * 100) + "%";
+    document.getElementById("vector_value").innerText = v.toFixed(3);
+    document.getElementById("shift_value").innerText = s.toFixed(3);
+    document.getElementById("theta_value").innerText = t.toFixed(3);
+
+    // Telemetry
+    Object.keys(res.features).forEach(k => {
+        const el = document.getElementById("val_" + k);
+        if (el) el.innerText = typeof res.features[k] === "number" ? res.features[k].toFixed(4) : res.features[k];
+    });
+    document.getElementById("val_system_action").innerText = res.decision;
+
+    // Meta
+    let meta = T.default_meta;
+    if (state === "TRANSITION") meta = T.transition_meta;
+    else if (state === "TREND") meta = T.trend_meta;
+    else if (state === "COMPRESSION") meta = T.compression_meta;
+    document.getElementById("meta").innerText = meta;
+    document.getElementById("sub").innerText = `vector=${v.toFixed(4)} | shift=${s.toFixed(3)} | theta=${t.toFixed(3)}`;
+});
+</script>
 </body>
 </html>
