@@ -1,342 +1,209 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA Engine v2 — Structural Intelligence Terminal</title>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>MA Engine — Structural Visibility Terminal</title>  <script>  
+if(!localStorage.getItem("lang")){  
+    const userLang = navigator.language || navigator.userLanguage;  
+    localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");  
+}  
+const LANG = localStorage.getItem("lang") || "en";  
+  
+const API_BASE = "";  
+  
+const TEXT = {  
+    en:{  
+        header:"MARKET ALCHEMY — STRUCTURAL VISIBILITY TERMINAL",  
+        placeholder:"Enter asset...",  
+        structural_state:"Structural State",  
+        waiting:"WAITING", transition:"TRANSITION", trend:"TREND", compression:"COMPRESSION", error:"ERROR", unknown:"UNKNOWN",  
+        sub_default:"price = observable trace | vector = preserved movement",  
+        vector_field:"Vector Field", shift_intensity:"Shift Intensity", theta_flow:"Theta Flow",  
+        deep_telemetry:"Deep Telemetry", structural_interpretation:"Structural Interpretation",  
+        velocity:"Velocity", acceleration:"Acceleration", friction:"Friction", omega:"Omega", theta:"Theta", theta_velocity:"Theta Velocity", dominance:"Dominance", system_action:"System Action",  
+        no_regime:"No dominant structural regime detected.",  
+        transition_meta:"Previous structure losing persistence. Exit pressure active while pre-entry conditions form.",  
+        trend_meta:"Structure reinforcing directional persistence.",  
+        compression_meta:"Energy accumulation phase.",  
+        default_meta:"No dominant structural regime.",  
+        enter:"ENTER", exit:"EXIT", engine_core:"Operator Systems",  
+        pascal_title:"PASCAL", pascal_desc:"Structural liquidity engine calibrated for crypto futures transition states.",  
+        snipper_title:"SNIPPER", snipper_desc:"Micro-structure execution layer designed for high precision directional entries.",  
+        ultimate_title:"ULTIMATE", ultimate_desc:"Experimental persistence engine operating on multi-layer structural continuity.",  
+        access:"REQUEST ACCESS"  
+    },  
+    tr:{  
+        header:"MARKET ALCHEMY — YAPISAL GÖRÜNÜRLÜK TERMİNALİ",  
+        placeholder:"Varlık gir...",  
+        structural_state:"Yapısal Durum",  
+        waiting:"BEKLEME", transition:"GEÇİŞ", trend:"TREND", compression:"SIKIŞMA", error:"HATA", unknown:"BİLİNMİYOR",  
+        sub_default:"fiyat = gözlemlenebilir iz | vektör = korunmuş hareket",  
+        vector_field:"Vektör Alanı", shift_intensity:"Kayma Yoğunluğu", theta_flow:"Theta Akışı",  
+        deep_telemetry:"Derin Telemetri", structural_interpretation:"Yapısal Yorum",  
+        velocity:"Hız", acceleration:"İvme", friction:"Sürtünme", omega:"Omega", theta:"Theta", theta_velocity:"Theta Hızı", dominance:"Baskınlık", system_action:"Sistem Aksiyonu",  
+        no_regime:"Baskın yapısal rejim tespit edilmedi.",  
+        transition_meta:"Önceki yapı kalıcılığını kaybediyor. Ön giriş koşulları oluşurken çıkış baskısı aktif.",  
+        trend_meta:"Yapı yönsel kalıcılığı güçlendiriyor.",  
+        compression_meta:"Enerji birikim fazı.",  
+        default_meta:"Baskın yapısal rejim yok.",  
+        enter:"GİR", exit:"ÇIK", engine_core:"Operatör Sistemleri",  
+        pascal_title:"PASCAL", pascal_desc:"Kripto vadeli piyasalarda geçiş durumlarına odaklanan yapısal likidite motoru.",  
+        snipper_title:"SNIPPER", snipper_desc:"Yüksek hassasiyetli yönsel girişler için tasarlanmış mikro-yapı yürütme katmanı.",  
+        ultimate_title:"ULTIMATE", ultimate_desc:"Çok katmanlı yapısal süreklilik üzerinde çalışan deneysel persistence motoru.",  
+        access:"ERİŞİM TALEP ET"  
+    }  
+};  
+const T = TEXT[LANG];  
+</script>  <style>  
+:root{--bg:#0d0f14;--panel:#121722;--border:#1f2430;--text:#e8ecf1;--green:#6effa3;--red:#ff5c5c;--blue:#4da3ff;--yellow:#f0c36d;}  
+*{box-sizing:border-box;}  
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;justify-content:center;padding:30px 16px;}  
+.container{width:100%;max-width:1100px;display:flex;flex-direction:column;gap:22px;}  
+.header{display:flex;justify-content:space-between;align-items:center;opacity:0.45;font-size:12px;letter-spacing:1px;}  
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);}  
+.input-layer{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid var(--border);border-radius:18px;padding:28px;}  
+.input-wrapper{display:flex;align-items:center;gap:14px;}  
+.input-symbol{font-size:26px;font-weight:700;opacity:0.25;}  
+input{flex:1;background:#0b0e13;border:1px solid var(--border);border-radius:14px;padding:18px;color:var(--text);font-size:16px;outline:none;}  
+.core{display:grid;grid-template-columns:1.15fr 0.85fr;gap:22px;}  
+@media(max-width:900px){.core{grid-template-columns:1fr;}}  
+.decision-panel{background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:34px;min-height:320px;}  
+.state{font-size:64px;font-weight:800;margin-bottom:14px;}  
+.decision-box{margin-top:34px;padding:18px;border:1px solid var(--border);border-radius:14px;background:#0d1118;}  
+.decision-value{font-size:34px;font-weight:700;}  
+.metrics-panel{display:flex;flex-direction:column;gap:18px;}  
+.metric-card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:20px;}  
+.bar{width:100%;height:10px;background:#1a2030;border-radius:999px;overflow:hidden;}  
+.fill{height:100%;width:0%;transition:0.35s;}  
+.vector{background:linear-gradient(90deg,#2eff89,var(--green));}  
+.shift{background:linear-gradient(90deg,#ff7a7a,var(--red));}  
+.theta{background:linear-gradient(90deg,#76bbff,var(--blue));}  
+.telemetry{display:grid;grid-template-columns:1fr 1fr;gap:22px;}  
+@media(max-width:900px){.telemetry{grid-template-columns:1fr;}}  
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;}  
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}  
+.item{padding:12px;border:1px solid rgba(255,255,255,0.04);border-radius:12px;background:#0d1118;}  
+.item-label{font-size:10px;opacity:0.45;margin-bottom:8px;}  
+.item-value{font-size:16px;font-family:monospace;}  
+</style>  </head>  <body>  
+<div class="container">  <div class="header">  
+    <div id="header_text"></div>  
+    <div class="live-dot"></div>  
+</div>  
 
-<style>
-:root{
---bg:#0d0f14;
---panel:#121722;
---border:#1f2430;
---text:#e8ecf1;
---green:#6effa3;
---red:#ff5c5c;
---blue:#4da3ff;
---yellow:#f0c36d;
-}
+<div class="input-layer">  
+    <div class="input-wrapper">  
+        <div class="input-symbol">∴</div>  
+        <input id="input" placeholder="">  
+    </div>  
+</div>  
 
-*{
-box-sizing:border-box;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-}
+<div class="core">  
 
-body{
-margin:0;
-background:var(--bg);
-color:var(--text);
-display:flex;
-justify-content:center;
-padding:26px;
-}
+    <div class="decision-panel">  
+        <div id="structural_state_label"></div>  
+        <div class="state" id="state"></div>  
+        <div id="sub" style="font-size:13px; opacity:0.65;"></div>  
 
-.container{
-width:100%;
-max-width:1280px;
-display:flex;
-flex-direction:column;
-gap:16px;
-}
+        <div class="decision-box">  
+            <div class="decision-value" id="decision_value">-</div>  
+        </div>  
+    </div>  
 
-/* HEADER */
-.header{
-display:flex;
-justify-content:space-between;
-font-size:12px;
-opacity:0.55;
-letter-spacing:1px;
-}
+    <div class="metrics-panel">  
 
-/* GLOBAL FIELD */
-.global{
-background:var(--panel);
-border:1px solid var(--border);
-border-radius:18px;
-padding:18px;
-display:grid;
-grid-template-columns:2fr 1fr 1fr 1fr;
-gap:12px;
-}
+        <div class="metric-card">  
+            <div class="metric-head">  
+                <div id="vector_field_label"></div>  
+                <div id="vector_value">0</div>  
+            </div>  
+            <div class="bar"><div class="fill vector" id="vector_fill"></div></div>  
+        </div>  
 
-.box{
-background:#0d1118;
-border:1px solid rgba(255,255,255,0.05);
-border-radius:12px;
-padding:12px;
-}
+        <div class="metric-card">  
+            <div class="metric-head">  
+                <div id="shift_intensity_label"></div>  
+                <div id="shift_value">0</div>  
+            </div>  
+            <div class="bar"><div class="fill shift" id="shift_fill"></div></div>  
+        </div>  
 
-.title{
-font-size:10px;
-opacity:0.5;
-}
+        <div class="metric-card">  
+            <div class="metric-head">  
+                <div id="theta_flow_label"></div>  
+                <div id="theta_value">0</div>  
+            </div>  
+            <div class="bar"><div class="fill theta" id="theta_fill"></div></div>  
+        </div>  
 
-.value{
-font-size:18px;
-font-weight:700;
-margin-top:6px;
-}
+    </div>  
+</div>  
 
-/* SURVIVOR FIELD */
-.survivors{
-background:var(--panel);
-border:1px solid var(--border);
-border-radius:18px;
-padding:18px;
-}
+<div class="telemetry">  
+    <div class="panel">  
+        <div id="deep_telemetry_label"></div>  
+        <div class="grid" id="telemetry_grid"></div>  
+    </div>  
 
-.grid{
-display:grid;
-grid-template-columns:repeat(10,1fr);
-gap:8px;
-margin-top:10px;
-}
-
-.asset{
-padding:8px;
-border-radius:10px;
-background:#0d1118;
-border:1px solid rgba(255,255,255,0.04);
-font-size:11px;
-}
-
-.asset strong{
-display:block;
-font-size:12px;
-margin-bottom:4px;
-}
-
-/* CORE */
-.core{
-display:grid;
-grid-template-columns:1.2fr 0.8fr;
-gap:16px;
-}
-
-.panel{
-background:var(--panel);
-border:1px solid var(--border);
-border-radius:18px;
-padding:18px;
-}
-
-/* INPUT */
-input{
-width:100%;
-padding:14px;
-border-radius:12px;
-border:1px solid var(--border);
-background:#0b0e13;
-color:var(--text);
-outline:none;
-}
-
-/* STATE */
-.state{
-font-size:56px;
-font-weight:800;
-margin-top:12px;
-}
-
-.sub{
-font-size:12px;
-opacity:0.6;
-margin-top:8px;
-font-family:monospace;
-}
-
-/* LOCAL METRICS */
-.metrics{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:12px;
-}
-
-.metric{
-background:#0d1118;
-padding:10px;
-border-radius:10px;
-border:1px solid rgba(255,255,255,0.05);
-font-size:12px;
-}
-
-.metric span{
-opacity:0.5;
-font-size:10px;
-display:block;
-}
-
-/* AUDIT */
-.audit{
-margin-top:12px;
-font-size:11px;
-opacity:0.55;
-font-family:monospace;
-}
-</style>
-</head>
-
-<body>
-<div class="container">
-
-<!-- HEADER -->
-<div class="header">
-<div>MARKET ALCHEMY v2 — STRUCTURAL INTELLIGENCE TERMINAL</div>
-<div>LIVE • 500 UNIVERSE ACTIVE</div>
+    <div class="panel">  
+        <div id="structural_interpretation_label"></div>  
+        <div id="meta"></div>  
+    </div>  
 </div>
 
-<!-- GLOBAL FIELD -->
-<div class="global">
-
-<div class="box">
-<div class="title">MARKET STATE</div>
-<div class="value" id="state_global">-</div>
-</div>
-
-<div class="box">
-<div class="title">ENTROPY</div>
-<div class="value" id="entropy">-</div>
-</div>
-
-<div class="box">
-<div class="title">STRUCTURAL PRESSURE</div>
-<div class="value" id="pressure">-</div>
-</div>
-
-<div class="box">
-<div class="title">ACTIVE UNIVERSE</div>
-<div class="value">500</div>
-</div>
-
-</div>
-
-<!-- SURVIVORS -->
-<div class="survivors">
-<div style="font-size:11px;opacity:0.6;">
-STRUCTURAL SURVIVORS — LIVE FILTER (STATE == VALID STRUCTURE)
-</div>
-
-<div class="grid" id="survivors"></div>
-</div>
-
-<!-- CORE -->
-<div class="core">
-
-<!-- LENS -->
-<div class="panel">
-<div style="font-size:11px;opacity:0.6;">FOCUS LENS (LOCAL PROJECTION ONLY)</div>
-
-<br>
-
-<input id="input" placeholder="Enter asset...">
-
-<div class="state" id="state">WAITING</div>
-
-<div class="sub" id="sub">system idle</div>
-
-<div class="metrics">
-
-<div class="metric"><span>VECTOR</span><div id="v">-</div></div>
-<div class="metric"><span>SHIFT</span><div id="s">-</div></div>
-<div class="metric"><span>THETA</span><div id="t">-</div></div>
-<div class="metric"><span>DENSITY</span><div id="d">-</div></div>
-
-</div>
-
-<div class="audit" id="audit">
-no local computation yet
-</div>
-
-</div>
-
-<!-- GLOBAL TRACE -->
-<div class="panel">
-<div style="font-size:11px;opacity:0.6;">SYSTEM TRACE</div>
-
-<br>
-
-<div class="audit">
-500-asset universe is continuously evaluated.<br>
-Only structural persistence nodes are exposed.<br><br>
-
-state engine: ACTIVE<br>
-mode: COMPRESSION-AWARE FILTERING<br>
-update cycle: 5s<br>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-async function fetchGlobal(){
-try{
-const r = await fetch("/global_state");
-return await r.json();
-}catch(e){return null;}
-}
-
-async function refresh(){
-const g = await fetchGlobal();
-if(!g) return;
-
-document.getElementById("state_global").innerText = g.state;
-document.getElementById("entropy").innerText = g.entropy?.toFixed(3);
-document.getElementById("pressure").innerText = g.pressure;
-
-const s = document.getElementById("survivors");
-s.innerHTML = "";
-
-(g.survivors || []).slice(0,20).forEach(x=>{
-s.innerHTML += `
-<div class="asset">
-<strong>${x.symbol}</strong>
-θ ${x.theta?.toFixed(2)}<br>
-${x.state}
-</div>`;
-});
-}
-
-setInterval(refresh, 5000);
-refresh();
-
-/* LOCAL LENS */
-async function analyze(a){
-try{
-const r = await fetch(`/analyze?asset=${a.toUpperCase()}`);
-return await r.json();
-}catch(e){return null;}
-}
-
-document.getElementById("input").addEventListener("keydown", async (e)=>{
-if(e.key !== "Enter") return;
-
-const r = await analyze(e.target.value);
-
-if(!r){
-document.getElementById("state").innerText = "ERROR";
-return;
-}
-
-document.getElementById("state").innerText = r.state;
-
-document.getElementById("v").innerText = r.features?.vector;
-document.getElementById("s").innerText = r.shift_score;
-document.getElementById("t").innerText = r.features?.theta_velocity;
-document.getElementById("d").innerText = r.features?.density;
-
-document.getElementById("sub").innerText =
-`vector=${r.features?.vector} | shift=${r.shift_score} | theta=${r.features?.theta_velocity}`;
-
-document.getElementById("audit").innerText =
-`local projection bound to global state layer`;
-});
-
-</script>
-
-</body>
+</div>  <script>  
+document.getElementById("header_text").innerText = T.header;  
+document.getElementById("input").placeholder = T.placeholder;  
+document.getElementById("structural_state_label").innerText = T.structural_state;  
+document.getElementById("vector_field_label").innerText = T.vector_field;  
+document.getElementById("shift_intensity_label").innerText = T.shift_intensity;  
+document.getElementById("theta_flow_label").innerText = T.theta_flow;  
+document.getElementById("deep_telemetry_label").innerText = T.deep_telemetry;  
+document.getElementById("structural_interpretation_label").innerText = T.structural_interpretation;  
+  
+const labels = ["velocity","acceleration","friction","omega","theta","theta_velocity","dominance","system_action"];  
+const grid = document.getElementById("telemetry_grid");  
+  
+labels.forEach(l=>{  
+    grid.innerHTML += `<div class="item"><div class="item-label">${T[l] || l}</div><div class="item-value" id="val_${l}">-</div></div>`;  
+});  
+  
+async function analyze(symbol){  
+    try{  
+        const res = await fetch(`${API_BASE}/analyze?asset=${symbol.toUpperCase()}&timeframe=1h`);  
+        if(!res.ok) return null;  
+        return await res.json();  
+    }catch(e){ return null; }  
+}  
+  
+document.getElementById("input").addEventListener("keydown", async (e)=>{  
+    if(e.key!=="Enter") return;  
+  
+    const val = e.target.value.trim();  
+    const res = await analyze(val);  
+  
+    if(!res){  
+        document.getElementById("state").innerText = "ERROR";  
+        return;  
+    }  
+  
+    document.getElementById("state").innerText = res.state;  
+    document.getElementById("decision_value").innerText = res.decision;  
+  
+    const v = res.features?.vector || 0;  
+    const s = res.shift_score || 0;  
+    const t = res.features?.theta_velocity || 0;  
+  
+    document.getElementById("vector_fill").style.width = (v*100)+"%";  
+    document.getElementById("shift_fill").style.width = (s*100)+"%";  
+    document.getElementById("theta_fill").style.width = (t*100)+"%";  
+  
+    document.getElementById("vector_value").innerText = v.toFixed(3);  
+    document.getElementById("shift_value").innerText = s.toFixed(3);  
+    document.getElementById("theta_value").innerText = t.toFixed(3);  
+  
+    document.getElementById("sub").innerText =  
+        `vector=${v.toFixed(3)} | shift=${s.toFixed(3)} | theta=${t.toFixed(3)}`;  
+});  
+</script>  </body>  
 </html>
