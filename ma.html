@@ -1,561 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MARKET ALCHEMY — CONSTRAINT FIELD TERMINAL</title>
-
-<script>
-if(!localStorage.getItem("lang")){
-    const userLang = navigator.language || navigator.userLanguage;
-    localStorage.setItem(
-        "lang",
-        userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
-    );
-}
-
-const LANG = localStorage.getItem("lang") || "en";
-const API_BASE = "";
-
-const TEXT = {
-    en:{
-        header:"MARKET ALCHEMY — CONSTRAINT FIELD TERMINAL",
-        placeholder:"Enter asset...",
-        manifold_status:"Manifold Status",
-        accepted:"ACCEPTED",
-        rejected:"REJECTED",
-        unknown:"UNKNOWN",
-
-        sub_default:"price = observable trace | residue = preserved structure",
-
-        vector_field:"Vector Field",
-        structural_depth:"Structural Depth",
-        instability:"Instability (Omega)",
-
-        deep_telemetry:"Deep Telemetry",
-        structural_interpretation:"Structural Interpretation",
-
-        v_field:"Vector Field",
-        depth:"Depth",
-        omega:"Omega",
-        ts:"Timestamp",
-
-        accepted_meta:"Constraint manifold preserved. Residual structure visible.",
-        rejected_meta:"Measurement rejected by constraint field.",
-        default_meta:"Awaiting structural measurement."
-    },
-
-    tr:{
-        header:"MARKET ALCHEMY — CONSTRAINT FIELD TERMINAL",
-        placeholder:"Varlık gir...",
-
-        manifold_status:"Manifold Durumu",
-        accepted:"KABUL",
-        rejected:"RED",
-        unknown:"BİLİNMİYOR",
-
-        sub_default:"fiyat = gözlemlenebilir iz | residue = korunmuş yapı",
-
-        vector_field:"Vektör Alanı",
-        structural_depth:"Yapısal Derinlik",
-        instability:"Kararsızlık (Omega)",
-
-        deep_telemetry:"Derin Telemetri",
-        structural_interpretation:"Yapısal Yorum",
-
-        v_field:"Vektör Alanı",
-        depth:"Derinlik",
-        omega:"Omega",
-        ts:"Zaman",
-
-        accepted_meta:"Constraint manifold korundu. Residual yapı görünür.",
-        rejected_meta:"Ölçüm constraint field tarafından reddedildi.",
-        default_meta:"Yapısal ölçüm bekleniyor."
-    }
-};
-
-const T = TEXT[LANG];
-</script>
-
-<style>
-:root{
-    --bg:#0d0f14;
-    --panel:#121722;
-    --border:#1f2430;
-    --text:#e8ecf1;
-    --green:#6effa3;
-    --red:#ff5c5c;
-    --blue:#4da3ff;
-    --yellow:#f0c36d;
-}
-
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-    display:flex;
-    justify-content:center;
-    padding:30px 16px;
-}
-
-.container{
-    width:100%;
-    max-width:1100px;
-    display:flex;
-    flex-direction:column;
-    gap:22px;
-}
-
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    opacity:0.45;
-    font-size:12px;
-    letter-spacing:1px;
-}
-
-.live-dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:var(--green);
-    box-shadow:0 0 12px var(--green);
-}
-
-.input-layer{
-    background:linear-gradient(
-        180deg,
-        rgba(255,255,255,0.02),
-        rgba(255,255,255,0.01)
-    );
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:28px;
-}
-
-.input-wrapper{
-    display:flex;
-    align-items:center;
-    gap:14px;
-}
-
-.input-symbol{
-    font-size:26px;
-    font-weight:700;
-    opacity:0.25;
-}
-
-input{
-    flex:1;
-    background:#0b0e13;
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:18px;
-    color:var(--text);
-    font-size:16px;
-    outline:none;
-}
-
-.core{
-    display:grid;
-    grid-template-columns:1.15fr 0.85fr;
-    gap:22px;
-}
-
-@media(max-width:900px){
-    .core{
-        grid-template-columns:1fr;
-    }
-}
-
-.status-panel{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:34px;
-    min-height:320px;
-}
-
-.state{
-    font-size:64px;
-    font-weight:800;
-    margin-bottom:14px;
-}
-
-.manifold-box{
-    margin-top:34px;
-    padding:18px;
-    border:1px solid var(--border);
-    border-radius:14px;
-    background:#0d1118;
-}
-
-.manifold-title{
-    font-size:12px;
-    opacity:0.6;
-    margin-bottom:10px;
-}
-
-.manifold-value{
-    font-size:30px;
-    font-weight:700;
-}
-
-.metrics-panel{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-}
-
-.metric-card{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:20px;
-}
-
-.metric-head{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:12px;
-    font-size:14px;
-}
-
-.bar{
-    width:100%;
-    height:10px;
-    background:#1a2030;
-    border-radius:999px;
-    overflow:hidden;
-}
-
-.fill{
-    height:100%;
-    width:0%;
-    transition:0.35s;
-}
-
-.vector{
-    background:linear-gradient(90deg,#2eff89,var(--green));
-}
-
-.depth{
-    background:linear-gradient(90deg,#76bbff,var(--blue));
-}
-
-.instability{
-    background:linear-gradient(90deg,#ff7a7a,var(--red));
-}
-
-.telemetry{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:22px;
-}
-
-@media(max-width:900px){
-    .telemetry{
-        grid-template-columns:1fr;
-    }
-}
-
-.panel{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:22px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-}
-
-.item{
-    padding:12px;
-    border:1px solid rgba(255,255,255,0.04);
-    border-radius:12px;
-    background:#0d1118;
-}
-
-.item-label{
-    font-size:10px;
-    opacity:0.45;
-    margin-bottom:8px;
-}
-
-.item-value{
-    font-size:16px;
-    font-family:monospace;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-    <div class="header">
-        <div id="header_text"></div>
-        <div class="live-dot"></div>
-    </div>
-
-    <div class="input-layer">
-        <div class="input-wrapper">
-            <div class="input-symbol">∴</div>
-            <input id="input" placeholder="">
-        </div>
-    </div>
-
-    <div class="core">
-
-        <div class="status-panel">
-
-            <div id="manifold_status_label"></div>
-
-            <div class="state" id="status">
-                UNKNOWN
-            </div>
-
-            <div id="sub" style="font-size:13px; opacity:0.65;">
-            </div>
-
-            <div class="manifold-box">
-
-                <div class="manifold-title">
-                    MANIFOLD OUTPUT
-                </div>
-
-                <div class="manifold-value" id="manifold_value">
-                    -
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="metrics-panel">
-
-            <div class="metric-card">
-
-                <div class="metric-head">
-                    <div id="vector_field_label"></div>
-                    <div id="vector_value">0</div>
-                </div>
-
-                <div class="bar">
-                    <div class="fill vector" id="vector_fill"></div>
-                </div>
-
-            </div>
-
-            <div class="metric-card">
-
-                <div class="metric-head">
-                    <div id="depth_label"></div>
-                    <div id="depth_value">0</div>
-                </div>
-
-                <div class="bar">
-                    <div class="fill depth" id="depth_fill"></div>
-                </div>
-
-            </div>
-
-            <div class="metric-card">
-
-                <div class="metric-head">
-                    <div id="instability_label"></div>
-                    <div id="instability_value">0</div>
-                </div>
-
-                <div class="bar">
-                    <div class="fill instability" id="instability_fill"></div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="telemetry">
-
-        <div class="panel">
-
-            <div id="deep_telemetry_label"></div>
-
-            <div class="grid" id="telemetry_grid"></div>
-
-        </div>
-
-        <div class="panel">
-
-            <div id="structural_interpretation_label"></div>
-
-            <div id="meta" style="margin-top:18px; opacity:0.75; line-height:1.6;"></div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<script>
-document.getElementById("header_text").innerText = T.header;
-document.getElementById("input").placeholder = T.placeholder;
-
-document.getElementById("manifold_status_label").innerText =
-    T.manifold_status;
-
-document.getElementById("vector_field_label").innerText =
-    T.vector_field;
-
-document.getElementById("depth_label").innerText =
-    T.structural_depth;
-
-document.getElementById("instability_label").innerText =
-    T.instability;
-
-document.getElementById("deep_telemetry_label").innerText =
-    T.deep_telemetry;
-
-document.getElementById("structural_interpretation_label").innerText =
-    T.structural_interpretation;
-
-document.getElementById("sub").innerText =
-    T.sub_default;
-
-document.getElementById("meta").innerText =
-    T.default_meta;
-
-const labels = ["v_field","depth","omega","ts"];
-const grid = document.getElementById("telemetry_grid");
-
-labels.forEach(l=>{
-    grid.innerHTML += `
-        <div class="item">
-            <div class="item-label">${T[l] || l}</div>
-            <div class="item-value" id="val_${l}">-</div>
-        </div>
-    `;
-});
-
-async function analyze(symbol){
-
-    try{
-
-        const res = await fetch(
-            `${API_BASE}/residue?asset=${symbol.toUpperCase()}&timeframe=1h`
-        );
-
-        if(!res.ok) return null;
-
-        return await res.json();
-
-    }catch(e){
-
-        return null;
-
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+import requests
+import numpy as np
+import time
+import os
+
+app = FastAPI()
+
+# ================= CORS =================
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ================= DATA =================
+def get_klines(symbol="BTCUSDT", interval="1h", limit=150):
+    url = f"https://api.binance.com/api/v3/klines?symbol={symbol}&interval={interval}&limit={limit}"
+    try:
+        data = requests.get(url, timeout=5).json()
+        if isinstance(data, dict): return None
+        return np.array([float(x[4]) for x in data])
+    except:
+        return None
+
+# ================= CORE SIGNATURES (GEOMETRIC) =================
+def signature_theta(closes):
+    if closes is None or len(closes) < 50: return 0.0
+    log_p = np.log(closes)
+    x = np.arange(20)
+    slopes = []
+    for i in range(20, len(log_p)):
+        slopes.append(np.polyfit(x, log_p[i-20:i], 1)[0])
+    
+    slopes = np.array(slopes)
+    compression = np.std(slopes[-10:])
+    stability = np.mean(np.sign(slopes[-10:]))
+    return float(np.tanh(abs(stability) / (compression + 1e-6)))
+
+def omega(closes):
+    if closes is None or len(closes) < 31: return 0.0
+    r = np.diff(closes) / closes[:-1]
+    return float(np.std(r[-30:]) - np.std(r[-5:]))
+
+def vector_field(closes, theta):
+    if closes is None or len(closes) < 30: return 0.0
+    base, current = closes[-30], closes[-1]
+    move = (current - base) / base
+    peak = np.max(closes[-30:])
+    drawdown = (peak - current) / peak if peak != 0 else 0
+    return float(move * (1 - drawdown) * (1 + (theta - 0.5)))
+
+# ================= ENDPOINT (PURE MEASUREMENT) =================
+@app.get("/measurement")
+def measurement(asset: str, timeframe: str = "1h"):
+    symbol = asset.upper() + "USDT"
+    closes = get_klines(symbol, timeframe)
+    
+    if closes is None:
+        return {"error": "data_access_failed", "ts": time.time()}
+
+    theta = signature_theta(closes)
+    
+    return {
+        "theta": theta,                      # Node 01
+        "omega": omega(closes),               # Node 02
+        "vector": vector_field(closes, theta),# Node 06
+        "theta_velocity": float(theta - signature_theta(closes[:-10])),
+        "ts": time.time()                    # Node 03
     }
 
-}
-
-document.getElementById("input").addEventListener("keydown", async (e)=>{
-
-    if(e.key !== "Enter") return;
-
-    const val = e.target.value.trim();
-
-    if(!val) return;
-
-    const res = await analyze(val);
-
-    if(!res){
-
-        document.getElementById("status").innerText = "ERROR";
-
-        return;
-
-    }
-
-    const accepted = res.status === "accepted";
-
-    document.getElementById("status").innerText =
-        accepted ? T.accepted : T.rejected;
-
-    document.getElementById("manifold_value").innerText =
-        accepted ? "RESIDUAL EMISSION" : "BLOCKED";
-
-    if(!accepted){
-
-        document.getElementById("vector_fill").style.width = "0%";
-        document.getElementById("depth_fill").style.width = "0%";
-        document.getElementById("instability_fill").style.width = "0%";
-
-        document.getElementById("vector_value").innerText = "0";
-        document.getElementById("depth_value").innerText = "0";
-        document.getElementById("instability_value").innerText = "0";
-
-        document.getElementById("meta").innerText =
-            T.rejected_meta;
-
-        return;
-    }
-
-    const m = res.manifold || {};
-
-    const v = m.v_field || 0;
-    const d = m.depth || 0;
-    const o = m.omega || 0;
-    const ts = m.ts || 0;
-
-    document.getElementById("vector_fill").style.width =
-        Math.min(Math.abs(v) * 100, 100) + "%";
-
-    document.getElementById("depth_fill").style.width =
-        Math.min(d * 100, 100) + "%";
-
-    document.getElementById("instability_fill").style.width =
-        Math.min(o * 1000, 100) + "%";
-
-    document.getElementById("vector_value").innerText =
-        v.toFixed(5);
-
-    document.getElementById("depth_value").innerText =
-        d.toFixed(5);
-
-    document.getElementById("instability_value").innerText =
-        o.toFixed(5);
-
-    document.getElementById("sub").innerText =
-        `v=${v.toFixed(5)} | depth=${d.toFixed(5)} | omega=${o.toFixed(5)}`;
-
-    document.getElementById("meta").innerText =
-        T.accepted_meta;
-
-    document.getElementById("val_v_field").innerText =
-        v.toFixed(6);
-
-    document.getElementById("val_depth").innerText =
-        d.toFixed(6);
-
-    document.getElementById("val_omega").innerText =
-        o.toFixed(6);
-
-    document.getElementById("val_ts").innerText =
-        new Date(ts * 1000).toLocaleString();
-
-});
-</script>
-
-</body>
-</html>
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
