@@ -1,78 +1,133 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-import requests
-import numpy as np
-import time
-import os
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MA Terminal — Manifold Visibility</title>
+    <style>
+        :root{--bg:#080a0d;--panel:#0d1118;--border:#1f2430;--text:#e8ecf1;--green:#6effa3;--red:#ff5c5c;--blue:#4da3ff;--yellow:#f0c36d;--accent:#4da3ff;}
+        *{box-sizing:border-box; font-family: 'Courier New', monospace;}
+        body{margin:0;background:var(--bg);color:var(--text);display:flex;justify-content:center;padding:20px;}
+        .container{width:100%;max-width:1000px;display:flex;flex-direction:column;gap:15px;}
+        .header{display:flex;justify-content:space-between;font-size:11px;opacity:0.5;letter-spacing:1px;border-bottom:1px solid var(--border);padding-bottom:10px;}
+        
+        .input-layer{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;}
+        input{width:100%;background:black;border:1px solid var(--border);border-radius:8px;padding:15px;color:var(--text);font-size:18px;outline:none;text-transform:uppercase;}
+        
+        .main-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:15px;}
+        .panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:25px;}
+        
+        .state-display{margin-bottom:20px;}
+        .label{font-size:10px;opacity:0.4;text-transform:uppercase;margin-bottom:5px;}
+        .value-large{font-size:48px;font-weight:bold;letter-spacing:-1px;}
+        
+        .metric-row{margin-bottom:15px;}
+        .bar-bg{width:100%;height:6px;background:rgba(255,255,255,0.05);border-radius:3px;margin-top:8px;overflow:hidden;}
+        .bar-fill{height:100%;width:0%;transition:0.5s cubic-bezier(0.16, 1, 0.3, 1);}
+        
+        .grid-telemetry{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .tele-item{background:rgba(0,0,0,0.2);padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);}
+        .tele-val{font-size:16px;color:var(--accent);}
 
-app = FastAPI()
+        #live_indicator{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px;}
+        .active{background:var(--green);box-shadow:0 0 10px var(--green);}
+    </style>
+</head>
+<body>
 
-# ================= CORS =================
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+<div class="container">
+    <div class="header">
+        <div>MA_ENGINE_V4 // TOPOLOGICAL_SOLVER</div>
+        <div><span id="live_indicator" class="active"></span> STATUS: NOMINAL</div>
+    </div>
 
-# ================= DATA =================
-def get_klines(symbol="BTCUSDT", interval="1h", limit=150):
-    url = f"https://api.binance.com/api/v3/klines?symbol={symbol}&interval={interval}&limit={limit}"
-    try:
-        data = requests.get(url, timeout=5).json()
-        if isinstance(data, dict): return None
-        return np.array([float(x[4]) for x in data])
-    except:
-        return None
+    <div class="input-layer">
+        <input id="symbol_input" placeholder="ASSET (E.G. BTC)" autocomplete="off">
+    </div>
 
-# ================= CORE SIGNATURES (GEOMETRIC) =================
-def signature_theta(closes):
-    if closes is None or len(closes) < 50: return 0.0
-    log_p = np.log(closes)
-    x = np.arange(20)
-    slopes = []
-    for i in range(20, len(log_p)):
-        slopes.append(np.polyfit(x, log_p[i-20:i], 1)[0])
-    
-    slopes = np.array(slopes)
-    compression = np.std(slopes[-10:])
-    stability = np.mean(np.sign(slopes[-10:]))
-    return float(np.tanh(abs(stability) / (compression + 1e-6)))
+    <div class="main-grid">
+        <div class="panel">
+            <div class="label">Manifold Singularity State</div>
+            <div id="state_text" class="value-large">UNRESOLVED</div>
+            <div id="sub_status" style="font-size:12px;opacity:0.5;margin-top:10px;">Awaiting structural fixation...</div>
+        </div>
 
-def omega(closes):
-    if closes is None or len(closes) < 31: return 0.0
-    r = np.diff(closes) / closes[:-1]
-    return float(np.std(r[-30:]) - np.std(r[-5:]))
+        <div class="panel">
+            <div class="metric-row">
+                <div class="label">Vector Field Persistence</div>
+                <div id="v_val">0.000</div>
+                <div class="bar-bg"><div id="v_bar" class="bar-fill" style="background:var(--green)"></div></div>
+            </div>
+            <div class="metric-row">
+                <div class="label">Structural Depth (Theta)</div>
+                <div id="t_val">0.000</div>
+                <div class="bar-bg"><div id="t_bar" class="bar-fill" style="background:var(--blue)"></div></div>
+            </div>
+            <div class="metric-row">
+                <div class="label">Path Diversity (Omega)</div>
+                <div id="o_val">0.000</div>
+                <div class="bar-bg"><div id="o_bar" class="bar-fill" style="background:var(--yellow)"></div></div>
+            </div>
+        </div>
+    </div>
 
-def vector_field(closes, theta):
-    if closes is None or len(closes) < 30: return 0.0
-    base, current = closes[-30], closes[-1]
-    move = (current - base) / base
-    peak = np.max(closes[-30:])
-    drawdown = (peak - current) / peak if peak != 0 else 0
-    return float(move * (1 - drawdown) * (1 + (theta - 0.5)))
+    <div class="grid-telemetry">
+        <div class="tele-item"><div class="label">Theta Velocity</div><div id="tele_tv" class="tele-val">-</div></div>
+        <div class="tele-item"><div class="label">Observer Time (TS)</div><div id="tele_ts" class="tele-val">-</div></div>
+    </div>
+</div>
 
-# ================= ENDPOINT (PURE MEASUREMENT) =================
-@app.get("/measurement")
-def measurement(asset: str, timeframe: str = "1h"):
-    symbol = asset.upper() + "USDT"
-    closes = get_klines(symbol, timeframe)
-    
-    if closes is None:
-        return {"error": "data_access_failed", "ts": time.time()}
+<script>
+    const API_BASE = "http://localhost:8000";
 
-    theta = signature_theta(closes)
-    
-    return {
-        "theta": theta,                      # Node 01
-        "omega": omega(closes),               # Node 02
-        "vector": vector_field(closes, theta),# Node 06
-        "theta_velocity": float(theta - signature_theta(closes[:-10])),
-        "ts": time.time()                    # Node 03
+    async function streamMeasurement() {
+        const symbol = document.getElementById("symbol_input").value.trim();
+        if(!symbol) return;
+
+        try {
+            const response = await fetch(`${API_BASE}/measurement?asset=${symbol}`);
+            const data = await response.json();
+            if(data.error) return;
+
+            // DOM Updates
+            document.getElementById("v_val").innerText = data.vector.toFixed(5);
+            document.getElementById("t_val").innerText = data.theta.toFixed(4);
+            document.getElementById("o_val").innerText = data.omega.toFixed(6);
+            document.getElementById("tele_tv").innerText = data.theta_velocity.toFixed(5);
+            document.getElementById("tele_ts").innerText = new Date(data.ts * 1000).toLocaleTimeString();
+
+            // Bars
+            document.getElementById("v_bar").style.width = Math.min(Math.abs(data.vector) * 1000, 100) + "%";
+            document.getElementById("t_bar").style.width = (data.theta * 100) + "%";
+            document.getElementById("o_bar").style.width = Math.min(data.omega * 5000, 100) + "%";
+
+            // Manifold Resolution Logic (Geometric only)
+            const stateText = document.getElementById("state_text");
+            const subStatus = document.getElementById("sub_status");
+
+            if (data.theta > 0.8 && data.omega < 0.004) {
+                stateText.innerText = "SINGULARITY";
+                stateText.style.color = "var(--green)";
+                subStatus.innerText = "Manifold resolved. Residue vector active.";
+            } else if (Math.abs(data.theta_velocity) > 0.08) {
+                stateText.innerText = "BIFURCATION";
+                stateText.style.color = "var(--blue)";
+                subStatus.innerText = "Phase transition detected. Structure unstable.";
+            } else {
+                stateText.innerText = "UNRESOLVED";
+                stateText.style.color = "var(--text)";
+                subStatus.innerText = "Insufficient depth. High diversity (Omega).";
+            }
+
+        } catch (e) {
+            console.error("Link broken:", e);
+        }
     }
 
-if __name__ == "__main__":
-    import uvicorn
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    document.getElementById("symbol_input").addEventListener("keydown", (e) => {
+        if(e.key === "Enter") setInterval(streamMeasurement, 2000);
+    });
+</script>
+
+</body>
+</html>
