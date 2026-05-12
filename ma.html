@@ -1,209 +1,561 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>MA Engine — Structural Visibility Terminal</title>  <script>  
-if(!localStorage.getItem("lang")){  
-    const userLang = navigator.language || navigator.userLanguage;  
-    localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");  
-}  
-const LANG = localStorage.getItem("lang") || "en";  
-  
-const API_BASE = "";  
-  
-const TEXT = {  
-    en:{  
-        header:"MARKET ALCHEMY — STRUCTURAL VISIBILITY TERMINAL",  
-        placeholder:"Enter asset...",  
-        structural_state:"Structural State",  
-        waiting:"WAITING", transition:"TRANSITION", trend:"TREND", compression:"COMPRESSION", error:"ERROR", unknown:"UNKNOWN",  
-        sub_default:"price = observable trace | vector = preserved movement",  
-        vector_field:"Vector Field", shift_intensity:"Shift Intensity", theta_flow:"Theta Flow",  
-        deep_telemetry:"Deep Telemetry", structural_interpretation:"Structural Interpretation",  
-        velocity:"Velocity", acceleration:"Acceleration", friction:"Friction", omega:"Omega", theta:"Theta", theta_velocity:"Theta Velocity", dominance:"Dominance", system_action:"System Action",  
-        no_regime:"No dominant structural regime detected.",  
-        transition_meta:"Previous structure losing persistence. Exit pressure active while pre-entry conditions form.",  
-        trend_meta:"Structure reinforcing directional persistence.",  
-        compression_meta:"Energy accumulation phase.",  
-        default_meta:"No dominant structural regime.",  
-        enter:"ENTER", exit:"EXIT", engine_core:"Operator Systems",  
-        pascal_title:"PASCAL", pascal_desc:"Structural liquidity engine calibrated for crypto futures transition states.",  
-        snipper_title:"SNIPPER", snipper_desc:"Micro-structure execution layer designed for high precision directional entries.",  
-        ultimate_title:"ULTIMATE", ultimate_desc:"Experimental persistence engine operating on multi-layer structural continuity.",  
-        access:"REQUEST ACCESS"  
-    },  
-    tr:{  
-        header:"MARKET ALCHEMY — YAPISAL GÖRÜNÜRLÜK TERMİNALİ",  
-        placeholder:"Varlık gir...",  
-        structural_state:"Yapısal Durum",  
-        waiting:"BEKLEME", transition:"GEÇİŞ", trend:"TREND", compression:"SIKIŞMA", error:"HATA", unknown:"BİLİNMİYOR",  
-        sub_default:"fiyat = gözlemlenebilir iz | vektör = korunmuş hareket",  
-        vector_field:"Vektör Alanı", shift_intensity:"Kayma Yoğunluğu", theta_flow:"Theta Akışı",  
-        deep_telemetry:"Derin Telemetri", structural_interpretation:"Yapısal Yorum",  
-        velocity:"Hız", acceleration:"İvme", friction:"Sürtünme", omega:"Omega", theta:"Theta", theta_velocity:"Theta Hızı", dominance:"Baskınlık", system_action:"Sistem Aksiyonu",  
-        no_regime:"Baskın yapısal rejim tespit edilmedi.",  
-        transition_meta:"Önceki yapı kalıcılığını kaybediyor. Ön giriş koşulları oluşurken çıkış baskısı aktif.",  
-        trend_meta:"Yapı yönsel kalıcılığı güçlendiriyor.",  
-        compression_meta:"Enerji birikim fazı.",  
-        default_meta:"Baskın yapısal rejim yok.",  
-        enter:"GİR", exit:"ÇIK", engine_core:"Operatör Sistemleri",  
-        pascal_title:"PASCAL", pascal_desc:"Kripto vadeli piyasalarda geçiş durumlarına odaklanan yapısal likidite motoru.",  
-        snipper_title:"SNIPPER", snipper_desc:"Yüksek hassasiyetli yönsel girişler için tasarlanmış mikro-yapı yürütme katmanı.",  
-        ultimate_title:"ULTIMATE", ultimate_desc:"Çok katmanlı yapısal süreklilik üzerinde çalışan deneysel persistence motoru.",  
-        access:"ERİŞİM TALEP ET"  
-    }  
-};  
-const T = TEXT[LANG];  
-</script>  <style>  
-:root{--bg:#0d0f14;--panel:#121722;--border:#1f2430;--text:#e8ecf1;--green:#6effa3;--red:#ff5c5c;--blue:#4da3ff;--yellow:#f0c36d;}  
-*{box-sizing:border-box;}  
-body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;justify-content:center;padding:30px 16px;}  
-.container{width:100%;max-width:1100px;display:flex;flex-direction:column;gap:22px;}  
-.header{display:flex;justify-content:space-between;align-items:center;opacity:0.45;font-size:12px;letter-spacing:1px;}  
-.live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);}  
-.input-layer{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid var(--border);border-radius:18px;padding:28px;}  
-.input-wrapper{display:flex;align-items:center;gap:14px;}  
-.input-symbol{font-size:26px;font-weight:700;opacity:0.25;}  
-input{flex:1;background:#0b0e13;border:1px solid var(--border);border-radius:14px;padding:18px;color:var(--text);font-size:16px;outline:none;}  
-.core{display:grid;grid-template-columns:1.15fr 0.85fr;gap:22px;}  
-@media(max-width:900px){.core{grid-template-columns:1fr;}}  
-.decision-panel{background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:34px;min-height:320px;}  
-.state{font-size:64px;font-weight:800;margin-bottom:14px;}  
-.decision-box{margin-top:34px;padding:18px;border:1px solid var(--border);border-radius:14px;background:#0d1118;}  
-.decision-value{font-size:34px;font-weight:700;}  
-.metrics-panel{display:flex;flex-direction:column;gap:18px;}  
-.metric-card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:20px;}  
-.bar{width:100%;height:10px;background:#1a2030;border-radius:999px;overflow:hidden;}  
-.fill{height:100%;width:0%;transition:0.35s;}  
-.vector{background:linear-gradient(90deg,#2eff89,var(--green));}  
-.shift{background:linear-gradient(90deg,#ff7a7a,var(--red));}  
-.theta{background:linear-gradient(90deg,#76bbff,var(--blue));}  
-.telemetry{display:grid;grid-template-columns:1fr 1fr;gap:22px;}  
-@media(max-width:900px){.telemetry{grid-template-columns:1fr;}}  
-.panel{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;}  
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}  
-.item{padding:12px;border:1px solid rgba(255,255,255,0.04);border-radius:12px;background:#0d1118;}  
-.item-label{font-size:10px;opacity:0.45;margin-bottom:8px;}  
-.item-value{font-size:16px;font-family:monospace;}  
-</style>  </head>  <body>  
-<div class="container">  <div class="header">  
-    <div id="header_text"></div>  
-    <div class="live-dot"></div>  
-</div>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="input-layer">  
-    <div class="input-wrapper">  
-        <div class="input-symbol">∴</div>  
-        <input id="input" placeholder="">  
-    </div>  
-</div>  
+<title>MARKET ALCHEMY — CONSTRAINT FIELD TERMINAL</title>
 
-<div class="core">  
+<script>
+if(!localStorage.getItem("lang")){
+    const userLang = navigator.language || navigator.userLanguage;
+    localStorage.setItem(
+        "lang",
+        userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
+    );
+}
 
-    <div class="decision-panel">  
-        <div id="structural_state_label"></div>  
-        <div class="state" id="state"></div>  
-        <div id="sub" style="font-size:13px; opacity:0.65;"></div>  
+const LANG = localStorage.getItem("lang") || "en";
+const API_BASE = "";
 
-        <div class="decision-box">  
-            <div class="decision-value" id="decision_value">-</div>  
-        </div>  
-    </div>  
+const TEXT = {
+    en:{
+        header:"MARKET ALCHEMY — CONSTRAINT FIELD TERMINAL",
+        placeholder:"Enter asset...",
+        manifold_status:"Manifold Status",
+        accepted:"ACCEPTED",
+        rejected:"REJECTED",
+        unknown:"UNKNOWN",
 
-    <div class="metrics-panel">  
+        sub_default:"price = observable trace | residue = preserved structure",
 
-        <div class="metric-card">  
-            <div class="metric-head">  
-                <div id="vector_field_label"></div>  
-                <div id="vector_value">0</div>  
-            </div>  
-            <div class="bar"><div class="fill vector" id="vector_fill"></div></div>  
-        </div>  
+        vector_field:"Vector Field",
+        structural_depth:"Structural Depth",
+        instability:"Instability (Omega)",
 
-        <div class="metric-card">  
-            <div class="metric-head">  
-                <div id="shift_intensity_label"></div>  
-                <div id="shift_value">0</div>  
-            </div>  
-            <div class="bar"><div class="fill shift" id="shift_fill"></div></div>  
-        </div>  
+        deep_telemetry:"Deep Telemetry",
+        structural_interpretation:"Structural Interpretation",
 
-        <div class="metric-card">  
-            <div class="metric-head">  
-                <div id="theta_flow_label"></div>  
-                <div id="theta_value">0</div>  
-            </div>  
-            <div class="bar"><div class="fill theta" id="theta_fill"></div></div>  
-        </div>  
+        v_field:"Vector Field",
+        depth:"Depth",
+        omega:"Omega",
+        ts:"Timestamp",
 
-    </div>  
-</div>  
+        accepted_meta:"Constraint manifold preserved. Residual structure visible.",
+        rejected_meta:"Measurement rejected by constraint field.",
+        default_meta:"Awaiting structural measurement."
+    },
 
-<div class="telemetry">  
-    <div class="panel">  
-        <div id="deep_telemetry_label"></div>  
-        <div class="grid" id="telemetry_grid"></div>  
-    </div>  
+    tr:{
+        header:"MARKET ALCHEMY — CONSTRAINT FIELD TERMINAL",
+        placeholder:"Varlık gir...",
 
-    <div class="panel">  
-        <div id="structural_interpretation_label"></div>  
-        <div id="meta"></div>  
-    </div>  
+        manifold_status:"Manifold Durumu",
+        accepted:"KABUL",
+        rejected:"RED",
+        unknown:"BİLİNMİYOR",
+
+        sub_default:"fiyat = gözlemlenebilir iz | residue = korunmuş yapı",
+
+        vector_field:"Vektör Alanı",
+        structural_depth:"Yapısal Derinlik",
+        instability:"Kararsızlık (Omega)",
+
+        deep_telemetry:"Derin Telemetri",
+        structural_interpretation:"Yapısal Yorum",
+
+        v_field:"Vektör Alanı",
+        depth:"Derinlik",
+        omega:"Omega",
+        ts:"Zaman",
+
+        accepted_meta:"Constraint manifold korundu. Residual yapı görünür.",
+        rejected_meta:"Ölçüm constraint field tarafından reddedildi.",
+        default_meta:"Yapısal ölçüm bekleniyor."
+    }
+};
+
+const T = TEXT[LANG];
+</script>
+
+<style>
+:root{
+    --bg:#0d0f14;
+    --panel:#121722;
+    --border:#1f2430;
+    --text:#e8ecf1;
+    --green:#6effa3;
+    --red:#ff5c5c;
+    --blue:#4da3ff;
+    --yellow:#f0c36d;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    display:flex;
+    justify-content:center;
+    padding:30px 16px;
+}
+
+.container{
+    width:100%;
+    max-width:1100px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    opacity:0.45;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+.live-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 12px var(--green);
+}
+
+.input-layer{
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.01)
+    );
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:28px;
+}
+
+.input-wrapper{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.input-symbol{
+    font-size:26px;
+    font-weight:700;
+    opacity:0.25;
+}
+
+input{
+    flex:1;
+    background:#0b0e13;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:18px;
+    color:var(--text);
+    font-size:16px;
+    outline:none;
+}
+
+.core{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:22px;
+}
+
+@media(max-width:900px){
+    .core{
+        grid-template-columns:1fr;
+    }
+}
+
+.status-panel{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:34px;
+    min-height:320px;
+}
+
+.state{
+    font-size:64px;
+    font-weight:800;
+    margin-bottom:14px;
+}
+
+.manifold-box{
+    margin-top:34px;
+    padding:18px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:#0d1118;
+}
+
+.manifold-title{
+    font-size:12px;
+    opacity:0.6;
+    margin-bottom:10px;
+}
+
+.manifold-value{
+    font-size:30px;
+    font-weight:700;
+}
+
+.metrics-panel{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.metric-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:20px;
+}
+
+.metric-head{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:12px;
+    font-size:14px;
+}
+
+.bar{
+    width:100%;
+    height:10px;
+    background:#1a2030;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    width:0%;
+    transition:0.35s;
+}
+
+.vector{
+    background:linear-gradient(90deg,#2eff89,var(--green));
+}
+
+.depth{
+    background:linear-gradient(90deg,#76bbff,var(--blue));
+}
+
+.instability{
+    background:linear-gradient(90deg,#ff7a7a,var(--red));
+}
+
+.telemetry{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+@media(max-width:900px){
+    .telemetry{
+        grid-template-columns:1fr;
+    }
+}
+
+.panel{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:22px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.item{
+    padding:12px;
+    border:1px solid rgba(255,255,255,0.04);
+    border-radius:12px;
+    background:#0d1118;
+}
+
+.item-label{
+    font-size:10px;
+    opacity:0.45;
+    margin-bottom:8px;
+}
+
+.item-value{
+    font-size:16px;
+    font-family:monospace;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div id="header_text"></div>
+        <div class="live-dot"></div>
+    </div>
+
+    <div class="input-layer">
+        <div class="input-wrapper">
+            <div class="input-symbol">∴</div>
+            <input id="input" placeholder="">
+        </div>
+    </div>
+
+    <div class="core">
+
+        <div class="status-panel">
+
+            <div id="manifold_status_label"></div>
+
+            <div class="state" id="status">
+                UNKNOWN
+            </div>
+
+            <div id="sub" style="font-size:13px; opacity:0.65;">
+            </div>
+
+            <div class="manifold-box">
+
+                <div class="manifold-title">
+                    MANIFOLD OUTPUT
+                </div>
+
+                <div class="manifold-value" id="manifold_value">
+                    -
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="metrics-panel">
+
+            <div class="metric-card">
+
+                <div class="metric-head">
+                    <div id="vector_field_label"></div>
+                    <div id="vector_value">0</div>
+                </div>
+
+                <div class="bar">
+                    <div class="fill vector" id="vector_fill"></div>
+                </div>
+
+            </div>
+
+            <div class="metric-card">
+
+                <div class="metric-head">
+                    <div id="depth_label"></div>
+                    <div id="depth_value">0</div>
+                </div>
+
+                <div class="bar">
+                    <div class="fill depth" id="depth_fill"></div>
+                </div>
+
+            </div>
+
+            <div class="metric-card">
+
+                <div class="metric-head">
+                    <div id="instability_label"></div>
+                    <div id="instability_value">0</div>
+                </div>
+
+                <div class="bar">
+                    <div class="fill instability" id="instability_fill"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="telemetry">
+
+        <div class="panel">
+
+            <div id="deep_telemetry_label"></div>
+
+            <div class="grid" id="telemetry_grid"></div>
+
+        </div>
+
+        <div class="panel">
+
+            <div id="structural_interpretation_label"></div>
+
+            <div id="meta" style="margin-top:18px; opacity:0.75; line-height:1.6;"></div>
+
+        </div>
+
+    </div>
+
 </div>
 
-</div>  <script>  
-document.getElementById("header_text").innerText = T.header;  
-document.getElementById("input").placeholder = T.placeholder;  
-document.getElementById("structural_state_label").innerText = T.structural_state;  
-document.getElementById("vector_field_label").innerText = T.vector_field;  
-document.getElementById("shift_intensity_label").innerText = T.shift_intensity;  
-document.getElementById("theta_flow_label").innerText = T.theta_flow;  
-document.getElementById("deep_telemetry_label").innerText = T.deep_telemetry;  
-document.getElementById("structural_interpretation_label").innerText = T.structural_interpretation;  
-  
-const labels = ["velocity","acceleration","friction","omega","theta","theta_velocity","dominance","system_action"];  
-const grid = document.getElementById("telemetry_grid");  
-  
-labels.forEach(l=>{  
-    grid.innerHTML += `<div class="item"><div class="item-label">${T[l] || l}</div><div class="item-value" id="val_${l}">-</div></div>`;  
-});  
-  
-async function analyze(symbol){  
-    try{  
-        const res = await fetch(`${API_BASE}/analyze?asset=${symbol.toUpperCase()}&timeframe=1h`);  
-        if(!res.ok) return null;  
-        return await res.json();  
-    }catch(e){ return null; }  
-}  
-  
-document.getElementById("input").addEventListener("keydown", async (e)=>{  
-    if(e.key!=="Enter") return;  
-  
-    const val = e.target.value.trim();  
-    const res = await analyze(val);  
-  
-    if(!res){  
-        document.getElementById("state").innerText = "ERROR";  
-        return;  
-    }  
-  
-    document.getElementById("state").innerText = res.state;  
-    document.getElementById("decision_value").innerText = res.decision;  
-  
-    const v = res.features?.vector || 0;  
-    const s = res.shift_score || 0;  
-    const t = res.features?.theta_velocity || 0;  
-  
-    document.getElementById("vector_fill").style.width = (v*100)+"%";  
-    document.getElementById("shift_fill").style.width = (s*100)+"%";  
-    document.getElementById("theta_fill").style.width = (t*100)+"%";  
-  
-    document.getElementById("vector_value").innerText = v.toFixed(3);  
-    document.getElementById("shift_value").innerText = s.toFixed(3);  
-    document.getElementById("theta_value").innerText = t.toFixed(3);  
-  
-    document.getElementById("sub").innerText =  
-        `vector=${v.toFixed(3)} | shift=${s.toFixed(3)} | theta=${t.toFixed(3)}`;  
-});  
-</script>  </body>  
+<script>
+document.getElementById("header_text").innerText = T.header;
+document.getElementById("input").placeholder = T.placeholder;
+
+document.getElementById("manifold_status_label").innerText =
+    T.manifold_status;
+
+document.getElementById("vector_field_label").innerText =
+    T.vector_field;
+
+document.getElementById("depth_label").innerText =
+    T.structural_depth;
+
+document.getElementById("instability_label").innerText =
+    T.instability;
+
+document.getElementById("deep_telemetry_label").innerText =
+    T.deep_telemetry;
+
+document.getElementById("structural_interpretation_label").innerText =
+    T.structural_interpretation;
+
+document.getElementById("sub").innerText =
+    T.sub_default;
+
+document.getElementById("meta").innerText =
+    T.default_meta;
+
+const labels = ["v_field","depth","omega","ts"];
+const grid = document.getElementById("telemetry_grid");
+
+labels.forEach(l=>{
+    grid.innerHTML += `
+        <div class="item">
+            <div class="item-label">${T[l] || l}</div>
+            <div class="item-value" id="val_${l}">-</div>
+        </div>
+    `;
+});
+
+async function analyze(symbol){
+
+    try{
+
+        const res = await fetch(
+            `${API_BASE}/residue?asset=${symbol.toUpperCase()}&timeframe=1h`
+        );
+
+        if(!res.ok) return null;
+
+        return await res.json();
+
+    }catch(e){
+
+        return null;
+
+    }
+
+}
+
+document.getElementById("input").addEventListener("keydown", async (e)=>{
+
+    if(e.key !== "Enter") return;
+
+    const val = e.target.value.trim();
+
+    if(!val) return;
+
+    const res = await analyze(val);
+
+    if(!res){
+
+        document.getElementById("status").innerText = "ERROR";
+
+        return;
+
+    }
+
+    const accepted = res.status === "accepted";
+
+    document.getElementById("status").innerText =
+        accepted ? T.accepted : T.rejected;
+
+    document.getElementById("manifold_value").innerText =
+        accepted ? "RESIDUAL EMISSION" : "BLOCKED";
+
+    if(!accepted){
+
+        document.getElementById("vector_fill").style.width = "0%";
+        document.getElementById("depth_fill").style.width = "0%";
+        document.getElementById("instability_fill").style.width = "0%";
+
+        document.getElementById("vector_value").innerText = "0";
+        document.getElementById("depth_value").innerText = "0";
+        document.getElementById("instability_value").innerText = "0";
+
+        document.getElementById("meta").innerText =
+            T.rejected_meta;
+
+        return;
+    }
+
+    const m = res.manifold || {};
+
+    const v = m.v_field || 0;
+    const d = m.depth || 0;
+    const o = m.omega || 0;
+    const ts = m.ts || 0;
+
+    document.getElementById("vector_fill").style.width =
+        Math.min(Math.abs(v) * 100, 100) + "%";
+
+    document.getElementById("depth_fill").style.width =
+        Math.min(d * 100, 100) + "%";
+
+    document.getElementById("instability_fill").style.width =
+        Math.min(o * 1000, 100) + "%";
+
+    document.getElementById("vector_value").innerText =
+        v.toFixed(5);
+
+    document.getElementById("depth_value").innerText =
+        d.toFixed(5);
+
+    document.getElementById("instability_value").innerText =
+        o.toFixed(5);
+
+    document.getElementById("sub").innerText =
+        `v=${v.toFixed(5)} | depth=${d.toFixed(5)} | omega=${o.toFixed(5)}`;
+
+    document.getElementById("meta").innerText =
+        T.accepted_meta;
+
+    document.getElementById("val_v_field").innerText =
+        v.toFixed(6);
+
+    document.getElementById("val_depth").innerText =
+        d.toFixed(6);
+
+    document.getElementById("val_omega").innerText =
+        o.toFixed(6);
+
+    document.getElementById("val_ts").innerText =
+        new Date(ts * 1000).toLocaleString();
+
+});
+</script>
+
+</body>
 </html>
