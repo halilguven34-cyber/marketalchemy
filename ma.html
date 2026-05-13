@@ -1,895 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>MARKET ALCHEMY — GLOBAL OBSERVER</title>
-
 <script>
-
 if(!localStorage.getItem("lang")){
-
     const userLang = navigator.language || navigator.userLanguage;
-
-    localStorage.setItem(
-        "lang",
-        userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
-    );
+    localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
 }
-
 const LANG = localStorage.getItem("lang") || "en";
-
 const TEXT = {
-
     en:{
-
         header:"MARKET ALCHEMY — GLOBAL OBSERVER",
-
         live:"LIVE",
-
-        placeholder:"Inspect asset...",
-
+        placeholder:"Direct Query...",
         pulse:"GLOBAL PULSE",
-
         table:"SINGULARITY TABLE",
-
         current:"CURRENT STRUCTURAL STATE",
-
-        top:"TOP SINGULARITY",
-
+        top:"DOMINANT SINGULARITY",
         emergent:"EMERGENT",
-
-        diffuse:"DIFFUSE",
-
-        no_data:"NO DATA",
-
+        stable_void:"STABLE VOID",
+        no_data:"SCANNING FIELD",
         vector:"VECTOR",
-
         theta:"THETA",
-
         omega:"OMEGA",
-
         active:"residual manifold active",
-
-        no_regime:"low structural coherence"
+        no_regime:"scanning for structural coherence"
     },
-
     tr:{
-
         header:"MARKET ALCHEMY — GLOBAL OBSERVER",
-
         live:"CANLI",
-
-        placeholder:"Varlık incele...",
-
+        placeholder:"Doğrudan Sorgu...",
         pulse:"GLOBAL PULSE",
-
         table:"TEKİLLİK TABLOSU",
-
         current:"GÜNCEL YAPISAL DURUM",
-
-        top:"ANA TEKİLLİK",
-
+        top:"BASKIN TEKİLLİK",
         emergent:"BELİRİŞ",
-
-        diffuse:"DAĞINIK",
-
-        no_data:"VERİ YOK",
-
+        stable_void:"STABLE VOID",
+        no_data:"ALAN TARANIYOR",
         vector:"VEKTÖR",
-
         theta:"THETA",
-
         omega:"OMEGA",
-
         active:"rezidüel manifold aktif",
-
-        no_regime:"düşük yapısal tutarlılık"
+        no_regime:"yapısal tutarlılık taranıyor"
     }
 };
-
 const T = TEXT[LANG];
-
 const API_BASE = "";
-
 </script>
-
 <style>
-
 :root{
-
     --bg:#0b0e13;
     --panel:#121722;
     --border:#1f2430;
     --text:#e8ecf1;
     --soft:#7d8596;
-
     --green:#65ffb0;
     --yellow:#ffd166;
     --red:#ff6b6b;
 }
-
-*{
-    box-sizing:border-box;
-}
-
+*{ box-sizing:border-box; }
 body{
-
     margin:0;
     background:var(--bg);
     color:var(--text);
-
     font-family:system-ui;
-
     display:flex;
     justify-content:center;
-
     padding:24px 14px;
 }
-
-.container{
-
-    width:100%;
-    max-width:1100px;
-
-    display:flex;
-    flex-direction:column;
-
-    gap:18px;
-}
-
-.header{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    font-size:12px;
-
-    letter-spacing:1px;
-
-    opacity:0.75;
-}
-
-.live{
-
-    display:flex;
-    align-items:center;
-
-    gap:8px;
-}
-
-.dot{
-
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:var(--green);
-
-    box-shadow:0 0 12px var(--green);
-}
-
-.panel{
-
-    background:var(--panel);
-
-    border:1px solid var(--border);
-
-    border-radius:18px;
-
-    padding:20px;
-}
-
-.section-title{
-
-    font-size:11px;
-
-    opacity:0.5;
-
-    letter-spacing:1px;
-
-    margin-bottom:14px;
-}
-
-.hero{
-
-    display:flex;
-    flex-direction:column;
-
-    gap:10px;
-}
-
-.hero-state{
-
-    font-size:42px;
-    font-weight:800;
-}
-
-.hero-sub{
-
-    font-size:13px;
-
-    opacity:0.55;
-}
-
-.top-card{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    gap:14px;
-
-    flex-wrap:wrap;
-}
-
-.top-symbol{
-
-    font-size:30px;
-    font-weight:700;
-}
-
-.top-metrics{
-
-    display:flex;
-    gap:12px;
-
-    flex-wrap:wrap;
-}
-
-.metric-pill{
-
-    background:#0d1118;
-
-    border:1px solid var(--border);
-
-    border-radius:12px;
-
-    padding:10px 14px;
-
-    font-family:monospace;
-
-    font-size:13px;
-}
-
-#pulse_list{
-
-    display:flex;
-    flex-wrap:wrap;
-
-    gap:8px;
-}
-
-.pulse_item{
-
-    background:#0d1118;
-
-    border:1px solid var(--border);
-
-    border-radius:10px;
-
-    padding:7px 10px;
-
-    font-size:11px;
-
-    font-family:monospace;
-
-    opacity:0.85;
-}
-
-#table{
-
-    display:flex;
-    flex-direction:column;
-
-    gap:2px;
-}
-
-.table_row{
-
-    display:grid;
-
-    grid-template-columns:
-    1fr 1fr 1fr 1fr;
-
-    gap:10px;
-
-    padding:12px 0;
-
-    border-bottom:1px solid var(--border);
-
-    font-size:12px;
-
-    font-family:monospace;
-}
-
-input{
-
-    width:100%;
-
-    background:#0d1118;
-
-    border:1px solid var(--border);
-
-    border-radius:14px;
-
-    color:var(--text);
-
-    padding:16px;
-
-    outline:none;
-
-    font-size:15px;
-}
-
-.metrics{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr 1fr;
-
-    gap:14px;
-}
-
-.card{
-
-    background:#0d1118;
-
-    border:1px solid var(--border);
-
-    border-radius:14px;
-
-    padding:18px;
-}
-
-.label{
-
-    font-size:10px;
-
-    letter-spacing:1px;
-
-    opacity:0.5;
-
-    margin-bottom:8px;
-}
-
-.value{
-
-    font-size:24px;
-
-    font-family:monospace;
-}
-
-#interp{
-
-    font-size:13px;
-
-    opacity:0.75;
-}
-
-.emergent{
-    color:var(--green);
-}
-
-.diffuse{
-    color:var(--red);
-}
-
-.neutral{
-    color:var(--yellow);
-}
-
+.container{ width:100%; max-width:1100px; display:flex; flex-direction:column; gap:18px; }
+.header{ display:flex; justify-content:space-between; align-items:center; font-size:12px; letter-spacing:1px; opacity:0.75; }
+.live{ display:flex; align-items:center; gap:8px; }
+.dot{ width:8px; height:8px; border-radius:50%; background:var(--green); box-shadow:0 0 12px var(--green); }
+.panel{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:20px; }
+.section-title{ font-size:11px; opacity:0.5; letter-spacing:1px; margin-bottom:14px; }
+.hero{ display:flex; flex-direction:column; gap:10px; }
+.hero-state{ font-size:42px; font-weight:800; }
+.hero-sub{ font-size:13px; opacity:0.55; }
+.top-card{ display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; }
+.top-symbol{ font-size:30px; font-weight:700; }
+.top-metrics{ display:flex; gap:12px; flex-wrap:wrap; }
+.metric-pill{ background:#0d1118; border:1px solid var(--border); border-radius:12px; padding:10px 14px; font-family:monospace; font-size:13px; }
+#pulse_list{ display:flex; flex-wrap:wrap; gap:8px; }
+.pulse_item{ background:#0d1118; border:1px solid var(--border); border-radius:10px; padding:7px 10px; font-size:11px; font-family:monospace; opacity:0.85; }
+#table{ display:flex; flex-direction:column; gap:2px; }
+.table_row{ display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:10px; padding:12px 0; border-bottom:1px solid var(--border); font-size:12px; font-family:monospace; }
+input{ width:100%; background:#0d1118; border:1px solid var(--border); border-radius:14px; color:var(--text); padding:16px; outline:none; font-size:15px; }
+.metrics{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+.card{ background:#0d1118; border:1px solid var(--border); border-radius:14px; padding:18px; }
+.label{ font-size:10px; letter-spacing:1px; opacity:0.5; margin-bottom:8px; }
+.value{ font-size:24px; font-family:monospace; }
+#interp{ font-size:13px; opacity:0.75; }
+.emergent{ color:var(--green); }
+.diffuse{ color:var(--soft); }
+.neutral{ color:var(--yellow); }
 @media(max-width:720px){
-
-    .metrics{
-        grid-template-columns:1fr;
-    }
-
-    .table_row{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .hero-state{
-        font-size:32px;
-    }
-
-    .top-symbol{
-        font-size:24px;
-    }
+    .metrics{ grid-template-columns:1fr; }
+    .table_row{ grid-template-columns:1fr 1fr; }
+    .hero-state{ font-size:32px; }
+    .top-symbol{ font-size:24px; }
 }
-
 </style>
-
 </head>
-
 <body>
-
 <div class="container">
-
-    <!-- ================= HEADER ================= -->
-
     <div class="header">
-
         <div id="header"></div>
-
         <div class="live">
-
             <div class="dot"></div>
-
             <div id="live_text"></div>
-
         </div>
-
     </div>
 
-    <!-- ================= CURRENT STATE ================= -->
-
     <div class="panel">
-
         <div class="section-title" id="current_title"></div>
-
         <div class="hero">
-
-            <div
-                class="hero-state neutral"
-                id="global_state"
-            >
-                SCANNING
-            </div>
-
-            <div
-                class="hero-sub"
-                id="global_reason"
-            >
-                structural observer active
-            </div>
-
+            <div class="hero-state neutral" id="global_state">BOOTING...</div>
+            <div class="hero-sub" id="global_reason">establishing structural lattice</div>
         </div>
-
     </div>
 
-    <!-- ================= TOP SINGULARITY ================= -->
-
     <div class="panel">
-
         <div class="section-title" id="top_title"></div>
-
         <div class="top-card">
-
-            <div
-                class="top-symbol"
-                id="top_symbol"
-            >
-                ---
-            </div>
-
+            <div class="top-symbol" id="top_symbol">---</div>
             <div class="top-metrics">
-
-                <div class="metric-pill">
-                    θ
-                    <span id="top_theta">0</span>
-                </div>
-
-                <div class="metric-pill">
-                    ω
-                    <span id="top_omega">0</span>
-                </div>
-
-                <div class="metric-pill">
-                    V
-                    <span id="top_vector">0</span>
-                </div>
-
+                <div class="metric-pill">θ <span id="top_theta">0.000</span></div>
+                <div class="metric-pill">ω <span id="top_omega">0.000</span></div>
+                <div class="metric-pill">V <span id="top_vector">0.000</span></div>
             </div>
-
         </div>
-
     </div>
 
-    <!-- ================= GLOBAL PULSE ================= -->
+    <div class="panel"><div class="section-title" id="pulse_title"></div><div id="pulse_list"></div></div>
+    <div class="panel"><div class="section-title" id="table_title"></div><div id="table"></div></div>
+    <div class="panel"><input id="input" placeholder=""></div>
 
     <div class="panel">
-
-        <div
-            class="section-title"
-            id="pulse_title"
-        ></div>
-
-        <div id="pulse_list"></div>
-
+        <div class="hero-state neutral" id="status">OBSERVING</div>
+        <div class="hero-sub" id="reason">awaiting input or emergence</div>
     </div>
-
-    <!-- ================= TABLE ================= -->
-
-    <div class="panel">
-
-        <div
-            class="section-title"
-            id="table_title"
-        ></div>
-
-        <div id="table"></div>
-
-    </div>
-
-    <!-- ================= SEARCH ================= -->
-
-    <div class="panel">
-
-        <input
-            id="input"
-            placeholder=""
-        >
-
-    </div>
-
-    <!-- ================= RESULT ================= -->
-
-    <div class="panel">
-
-        <div
-            class="hero-state neutral"
-            id="status"
-        >
-            -
-        </div>
-
-        <div
-            class="hero-sub"
-            id="reason"
-        >
-            -
-        </div>
-
-    </div>
-
-    <!-- ================= METRICS ================= -->
 
     <div class="metrics">
-
-        <div class="card">
-
-            <div
-                class="label"
-                id="v_label"
-            ></div>
-
-            <div
-                class="value"
-                id="v"
-            >
-                0
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <div
-                class="label"
-                id="t_label"
-            ></div>
-
-            <div
-                class="value"
-                id="t"
-            >
-                0
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <div
-                class="label"
-                id="o_label"
-            ></div>
-
-            <div
-                class="value"
-                id="o"
-            >
-                0
-            </div>
-
-        </div>
-
+        <div class="card"><div class="label" id="v_label"></div><div class="value" id="v">0.000</div></div>
+        <div class="card"><div class="label" id="t_label"></div><div class="value" id="t">0.000</div></div>
+        <div class="card"><div class="label" id="o_label"></div><div class="value" id="o">0.000</div></div>
     </div>
-
-    <!-- ================= INTERPRET ================= -->
-
-    <div class="panel">
-
-        <div id="interp">-</div>
-
-    </div>
-
+    <div class="panel"><div id="interp">System is alive and scanning...</div></div>
 </div>
 
 <script>
-
-/* ================= INIT ================= */
-
+/* ================= UI SETUP ================= */
 document.getElementById("header").innerText = T.header;
-
 document.getElementById("live_text").innerText = T.live;
-
 document.getElementById("pulse_title").innerText = T.pulse;
-
 document.getElementById("table_title").innerText = T.table;
-
 document.getElementById("current_title").innerText = T.current;
-
 document.getElementById("top_title").innerText = T.top;
-
 document.getElementById("input").placeholder = T.placeholder;
-
 document.getElementById("v_label").innerText = T.vector;
-
 document.getElementById("t_label").innerText = T.theta;
-
 document.getElementById("o_label").innerText = T.omega;
 
-/* ================= FETCH ================= */
+/* ================= STATE LOGIC ================= */
+function updateMainResult(data) {
+    const stateEl = document.getElementById("status");
+    const reasonEl = document.getElementById("reason");
+    const interpEl = document.getElementById("interp");
 
-async function fetchData(symbol){
-
-    try{
-
-        const res = await fetch(
-            `${API_BASE}/residue?asset=${symbol.toUpperCase()}&timeframe=1h`
-        );
-
-        if(!res.ok) return null;
-
-        return await res.json();
-
-    }catch(e){
-
-        return null;
+    if (!data || data.status === "rejected") {
+        stateEl.innerText = T.stable_void;
+        stateEl.className = "hero-state diffuse";
+        reasonEl.innerText = data?.reason || T.no_regime;
+        interpEl.innerText = T.no_regime;
+        ["v","t","o"].forEach(id => document.getElementById(id).innerText = "0.000");
+    } else {
+        stateEl.innerText = T.emergent;
+        stateEl.className = "hero-state emergent";
+        reasonEl.innerText = "residual_manifold_active";
+        interpEl.innerText = T.active;
+        const m = data.manifold;
+        document.getElementById("v").innerText = Number(m.v_field).toFixed(5);
+        document.getElementById("t").innerText = Number(m.depth).toFixed(5);
+        document.getElementById("o").innerText = Number(m.omega).toFixed(5);
     }
 }
 
-/* ================= GLOBAL ================= */
-
-async function loadGlobal(){
-
-    try{
-
-        const res = await fetch(
-            `${API_BASE}/global-status`
-        );
-
-        if(!res.ok) return;
-
+async function loadGlobal() {
+    try {
+        const res = await fetch(`${API_BASE}/global-status`);
+        if (!res.ok) return;
         const data = await res.json();
+        if (!data.pulse || data.pulse.length === 0) return;
 
-        const pulse = data.pulse || [];
+        // Render Pulse List
+        const pList = document.getElementById("pulse_list");
+        pList.innerHTML = "";
+        data.pulse.slice(0,12).forEach(p => {
+            pList.innerHTML += `<div class="pulse_item">${p.symbol} · θ ${Number(p.theta).toFixed(2)}</div>`;
+        });
 
-        const table = data.table || [];
+        // Render Table
+        const tableEl = document.getElementById("table");
+        tableEl.innerHTML = "";
+        data.table.slice(0,8).forEach(t => {
+            tableEl.innerHTML += `<div class="table_row"><span>${t.symbol}</span><span>θ ${Number(t.theta).toFixed(3)}</span><span>ω ${Number(t.omega).toFixed(3)}</span><span>${t.state}</span></div>`;
+        });
 
-        renderPulse(pulse);
+        // Render Top Card
+        const top = data.table[0];
+        document.getElementById("top_symbol").innerText = top.symbol;
+        document.getElementById("top_theta").innerText = Number(top.theta).toFixed(3);
+        document.getElementById("top_omega").innerText = Number(top.omega).toFixed(3);
+        document.getElementById("top_vector").innerText = Number(top.vector || 0).toFixed(3);
 
-        renderTable(table);
+        // Render Global State
+        const gState = document.getElementById("global_state");
+        const gReason = document.getElementById("global_reason");
+        if(top.theta > 0.6) {
+            gState.innerText = T.emergent; gState.className = "hero-state emergent";
+            gReason.innerText = "high structural coherence detected";
+        } else {
+            gState.innerText = T.stable_void; gState.className = "hero-state diffuse";
+            gReason.innerText = T.no_regime;
+        }
 
-        renderTop(table);
-
-        renderState(table);
-
-    }catch(e){
-
-        console.log(e);
-    }
+        // AUTO-LOAD: If search is empty, show the top singularity's metrics
+        if(document.getElementById("input").value === "") {
+            updateMainResult({ status: "accepted", manifold: { v_field: top.vector || 0, depth: top.theta, omega: top.omega } });
+        }
+    } catch(e) { console.warn("Observer syncing..."); }
 }
 
-function renderPulse(pulse){
-
-    const el =
-    document.getElementById("pulse_list");
-
-    el.innerHTML = "";
-
-    pulse.slice(0,12).forEach(p => {
-
-        el.innerHTML += `
-            <div class="pulse_item">
-                ${p.symbol}
-                ·
-                θ ${Number(p.theta).toFixed(2)}
-            </div>
-        `;
-    });
-}
-
-function renderTable(table){
-
-    const el =
-    document.getElementById("table");
-
-    el.innerHTML = "";
-
-    table.slice(0,8).forEach(t => {
-
-        el.innerHTML += `
-            <div class="table_row">
-
-                <span>${t.symbol}</span>
-
-                <span>
-                    θ ${Number(t.theta).toFixed(3)}
-                </span>
-
-                <span>
-                    ω ${Number(t.omega).toFixed(3)}
-                </span>
-
-                <span>
-                    ${t.state}
-                </span>
-
-            </div>
-        `;
-    });
-}
-
-function renderTop(table){
-
-    if(!table.length) return;
-
-    const top = table[0];
-
-    document.getElementById("top_symbol").innerText =
-        top.symbol || "---";
-
-    document.getElementById("top_theta").innerText =
-        Number(top.theta || 0).toFixed(3);
-
-    document.getElementById("top_omega").innerText =
-        Number(top.omega || 0).toFixed(3);
-
-    document.getElementById("top_vector").innerText =
-        Number(top.vector || 0).toFixed(3);
-}
-
-function renderState(table){
-
-    const state =
-    document.getElementById("global_state");
-
-    const reason =
-    document.getElementById("global_reason");
-
-    if(!table.length){
-
-        state.innerText = T.diffuse;
-
-        state.className =
-            "hero-state diffuse";
-
-        reason.innerText =
-            T.no_regime;
-
-        return;
-    }
-
-    const top = table[0];
-
-    if(Number(top.theta) > 0.7){
-
-        state.innerText =
-            T.emergent;
-
-        state.className =
-            "hero-state emergent";
-
-        reason.innerText =
-            "high structural coherence";
-
-    }else{
-
-        state.innerText =
-            T.diffuse;
-
-        state.className =
-            "hero-state diffuse";
-
-        reason.innerText =
-            T.no_regime;
-    }
-}
-
-/* ================= INPUT ================= */
-
-document.getElementById("input")
-.addEventListener("keydown", async (e)=>{
-
+/* ================= INPUT HANDLE ================= */
+document.getElementById("input").addEventListener("keydown", async (e) => {
     if(e.key !== "Enter") return;
-
-    const val = e.target.value.trim();
-
+    const val = e.target.value.trim().toUpperCase();
     if(!val) return;
-
-    const res = await fetchData(val);
-
-    if(!res){
-
-        document.getElementById("status").innerText =
-            T.no_data;
-
-        document.getElementById("reason").innerText =
-            "-";
-
-        return;
-    }
-
-    if(res.status === "rejected"){
-
-        document.getElementById("status").innerText =
-            T.diffuse;
-
-        document.getElementById("status").className =
-            "hero-state diffuse";
-
-        document.getElementById("reason").innerText =
-            res.reason || "constraint";
-
-        document.getElementById("v").innerText = "0";
-
-        document.getElementById("t").innerText = "0";
-
-        document.getElementById("o").innerText = "0";
-
-        document.getElementById("interp").innerText =
-            T.no_regime;
-
-        return;
-    }
-
-    if(res.status === "accepted"){
-
-        const m = res.manifold;
-
-        const v = m.v_field || 0;
-
-        const t = m.depth || 0;
-
-        const o = m.omega || 0;
-
-        document.getElementById("status").innerText =
-            T.emergent;
-
-        document.getElementById("status").className =
-            "hero-state emergent";
-
-        document.getElementById("reason").innerText =
-            "residual_emission";
-
-        document.getElementById("v").innerText =
-            Number(v).toFixed(5);
-
-        document.getElementById("t").innerText =
-            Number(t).toFixed(5);
-
-        document.getElementById("o").innerText =
-            Number(o).toFixed(5);
-
-        document.getElementById("interp").innerText =
-            T.active;
-    }
+    try {
+        const res = await fetch(`${API_BASE}/residue?asset=${val}`);
+        const data = await res.json();
+        updateMainResult(data);
+    } catch(e) { updateMainResult(null); }
 });
 
 /* ================= LOOP ================= */
-
 setInterval(loadGlobal, 5000);
-
 loadGlobal();
-
 </script>
-
 </body>
 </html>
