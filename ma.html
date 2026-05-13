@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MARKET ALCHEMY — OBSERVER</title>
+
+<title>MARKET ALCHEMY — GLOBAL OBSERVER</title>
 
 <script>
+
 if(!localStorage.getItem("lang")){
+
     const userLang = navigator.language || navigator.userLanguage;
 
     localStorage.setItem(
@@ -20,59 +24,91 @@ const LANG = localStorage.getItem("lang") || "en";
 const TEXT = {
 
     en:{
+
         header:"MARKET ALCHEMY — GLOBAL OBSERVER",
-        placeholder:"Inspect asset...",
+
         live:"LIVE",
 
-        accepted:"STRUCTURE DETECTED",
-        rejected:"NO STRUCTURE",
+        placeholder:"Inspect asset...",
+
+        pulse:"GLOBAL PULSE",
+
+        table:"SINGULARITY TABLE",
+
+        current:"CURRENT STRUCTURAL STATE",
+
+        top:"TOP SINGULARITY",
+
+        emergent:"EMERGENT",
+
+        diffuse:"DIFFUSE",
+
         no_data:"NO DATA",
 
         vector:"VECTOR",
+
         theta:"THETA",
+
         omega:"OMEGA",
 
-        pulse:"GLOBAL PULSE",
-        table:"SINGULARITY TABLE",
+        active:"residual manifold active",
 
-        no_regime:"no dominant structure",
-        active:"residual manifold active"
+        no_regime:"low structural coherence"
     },
 
     tr:{
+
         header:"MARKET ALCHEMY — GLOBAL OBSERVER",
-        placeholder:"Varlık incele...",
+
         live:"CANLI",
 
-        accepted:"YAPI TESPİT EDİLDİ",
-        rejected:"YAPI YOK",
+        placeholder:"Varlık incele...",
+
+        pulse:"GLOBAL PULSE",
+
+        table:"TEKİLLİK TABLOSU",
+
+        current:"GÜNCEL YAPISAL DURUM",
+
+        top:"ANA TEKİLLİK",
+
+        emergent:"BELİRİŞ",
+
+        diffuse:"DAĞINIK",
+
         no_data:"VERİ YOK",
 
         vector:"VEKTÖR",
+
         theta:"THETA",
+
         omega:"OMEGA",
 
-        pulse:"GLOBAL PULSE",
-        table:"TEKİLLİK TABLOSU",
+        active:"rezidüel manifold aktif",
 
-        no_regime:"baskın yapı yok",
-        active:"rezidüel manifold aktif"
+        no_regime:"düşük yapısal tutarlılık"
     }
 };
 
 const T = TEXT[LANG];
+
 const API_BASE = "";
+
 </script>
 
 <style>
 
 :root{
-    --bg:#0d0f14;
+
+    --bg:#0b0e13;
     --panel:#121722;
     --border:#1f2430;
     --text:#e8ecf1;
     --soft:#7d8596;
+
     --green:#65ffb0;
+    --yellow:#ffd166;
+    --red:#ff6b6b;
 }
 
 *{
@@ -80,138 +116,274 @@ const API_BASE = "";
 }
 
 body{
+
     margin:0;
     background:var(--bg);
     color:var(--text);
+
     font-family:system-ui;
+
     display:flex;
     justify-content:center;
-    padding:28px 14px;
+
+    padding:24px 14px;
 }
 
 .container{
+
     width:100%;
-    max-width:1000px;
+    max-width:1100px;
+
     display:flex;
     flex-direction:column;
+
     gap:18px;
 }
 
 .header{
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     font-size:12px;
+
     letter-spacing:1px;
-    opacity:0.7;
+
+    opacity:0.75;
 }
 
 .live{
+
     display:flex;
     align-items:center;
+
     gap:8px;
 }
 
 .dot{
+
     width:8px;
     height:8px;
+
     border-radius:50%;
+
     background:var(--green);
-    box-shadow:0 0 10px var(--green);
+
+    box-shadow:0 0 12px var(--green);
 }
 
 .panel{
+
     background:var(--panel);
+
     border:1px solid var(--border);
+
     border-radius:18px;
+
     padding:20px;
 }
 
 .section-title{
+
     font-size:11px;
+
     opacity:0.5;
-    margin-bottom:14px;
+
     letter-spacing:1px;
+
+    margin-bottom:14px;
+}
+
+.hero{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.hero-state{
+
+    font-size:42px;
+    font-weight:800;
+}
+
+.hero-sub{
+
+    font-size:13px;
+
+    opacity:0.55;
+}
+
+.top-card{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+}
+
+.top-symbol{
+
+    font-size:30px;
+    font-weight:700;
+}
+
+.top-metrics{
+
+    display:flex;
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.metric-pill{
+
+    background:#0d1118;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:10px 14px;
+
+    font-family:monospace;
+
+    font-size:13px;
 }
 
 #pulse_list{
+
     display:flex;
     flex-wrap:wrap;
+
     gap:8px;
 }
 
 .pulse_item{
-    padding:7px 10px;
-    border:1px solid var(--border);
-    border-radius:10px;
-    font-size:11px;
-    opacity:0.85;
+
     background:#0d1118;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    padding:7px 10px;
+
+    font-size:11px;
+
     font-family:monospace;
+
+    opacity:0.85;
+}
+
+#table{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:2px;
 }
 
 .table_row{
+
     display:grid;
-    grid-template-columns:1fr 1fr 1fr 1fr;
-    padding:10px 0;
+
+    grid-template-columns:
+    1fr 1fr 1fr 1fr;
+
+    gap:10px;
+
+    padding:12px 0;
+
     border-bottom:1px solid var(--border);
+
     font-size:12px;
+
     font-family:monospace;
 }
 
 input{
+
     width:100%;
-    background:#0b0e13;
+
+    background:#0d1118;
+
     border:1px solid var(--border);
+
+    border-radius:14px;
+
     color:var(--text);
-    border-radius:12px;
+
     padding:16px;
+
     outline:none;
+
     font-size:15px;
 }
 
-.state{
-    font-size:34px;
-    font-weight:700;
-    margin-bottom:8px;
-}
-
-.small{
-    font-size:12px;
-    opacity:0.5;
-}
-
 .metrics{
+
     display:grid;
+
     grid-template-columns:1fr 1fr 1fr;
+
     gap:14px;
 }
 
 .card{
+
     background:#0d1118;
+
     border:1px solid var(--border);
+
     border-radius:14px;
-    padding:16px;
+
+    padding:18px;
 }
 
 .label{
+
     font-size:10px;
-    opacity:0.5;
-    margin-bottom:8px;
+
     letter-spacing:1px;
+
+    opacity:0.5;
+
+    margin-bottom:8px;
 }
 
 .value{
-    font-size:22px;
+
+    font-size:24px;
+
     font-family:monospace;
 }
 
 #interp{
+
     font-size:13px;
+
     opacity:0.75;
 }
 
-@media(max-width:700px){
+.emergent{
+    color:var(--green);
+}
+
+.diffuse{
+    color:var(--red);
+}
+
+.neutral{
+    color:var(--yellow);
+}
+
+@media(max-width:720px){
 
     .metrics{
         grid-template-columns:1fr;
@@ -219,24 +391,101 @@ input{
 
     .table_row{
         grid-template-columns:1fr 1fr;
-        gap:6px;
+    }
+
+    .hero-state{
+        font-size:32px;
+    }
+
+    .top-symbol{
+        font-size:24px;
     }
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
+    <!-- ================= HEADER ================= -->
+
     <div class="header">
 
         <div id="header"></div>
 
         <div class="live">
+
             <div class="dot"></div>
+
             <div id="live_text"></div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= CURRENT STATE ================= -->
+
+    <div class="panel">
+
+        <div class="section-title" id="current_title"></div>
+
+        <div class="hero">
+
+            <div
+                class="hero-state neutral"
+                id="global_state"
+            >
+                SCANNING
+            </div>
+
+            <div
+                class="hero-sub"
+                id="global_reason"
+            >
+                structural observer active
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= TOP SINGULARITY ================= -->
+
+    <div class="panel">
+
+        <div class="section-title" id="top_title"></div>
+
+        <div class="top-card">
+
+            <div
+                class="top-symbol"
+                id="top_symbol"
+            >
+                ---
+            </div>
+
+            <div class="top-metrics">
+
+                <div class="metric-pill">
+                    θ
+                    <span id="top_theta">0</span>
+                </div>
+
+                <div class="metric-pill">
+                    ω
+                    <span id="top_omega">0</span>
+                </div>
+
+                <div class="metric-pill">
+                    V
+                    <span id="top_vector">0</span>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
@@ -245,7 +494,10 @@ input{
 
     <div class="panel">
 
-        <div class="section-title" id="pulse_title"></div>
+        <div
+            class="section-title"
+            id="pulse_title"
+        ></div>
 
         <div id="pulse_list"></div>
 
@@ -255,13 +507,16 @@ input{
 
     <div class="panel">
 
-        <div class="section-title" id="table_title"></div>
+        <div
+            class="section-title"
+            id="table_title"
+        ></div>
 
         <div id="table"></div>
 
     </div>
 
-    <!-- ================= INPUT ================= -->
+    <!-- ================= SEARCH ================= -->
 
     <div class="panel">
 
@@ -276,9 +531,19 @@ input{
 
     <div class="panel">
 
-        <div class="state" id="status">-</div>
+        <div
+            class="hero-state neutral"
+            id="status"
+        >
+            -
+        </div>
 
-        <div class="small" id="reason">-</div>
+        <div
+            class="hero-sub"
+            id="reason"
+        >
+            -
+        </div>
 
     </div>
 
@@ -288,31 +553,55 @@ input{
 
         <div class="card">
 
-            <div class="label" id="v_label"></div>
+            <div
+                class="label"
+                id="v_label"
+            ></div>
 
-            <div class="value" id="v">0</div>
+            <div
+                class="value"
+                id="v"
+            >
+                0
+            </div>
 
         </div>
 
         <div class="card">
 
-            <div class="label" id="t_label"></div>
+            <div
+                class="label"
+                id="t_label"
+            ></div>
 
-            <div class="value" id="t">0</div>
+            <div
+                class="value"
+                id="t"
+            >
+                0
+            </div>
 
         </div>
 
         <div class="card">
 
-            <div class="label" id="o_label"></div>
+            <div
+                class="label"
+                id="o_label"
+            ></div>
 
-            <div class="value" id="o">0</div>
+            <div
+                class="value"
+                id="o"
+            >
+                0
+            </div>
 
         </div>
 
     </div>
 
-    <!-- ================= INTERPRETATION ================= -->
+    <!-- ================= INTERPRET ================= -->
 
     <div class="panel">
 
@@ -327,15 +616,23 @@ input{
 /* ================= INIT ================= */
 
 document.getElementById("header").innerText = T.header;
+
 document.getElementById("live_text").innerText = T.live;
 
 document.getElementById("pulse_title").innerText = T.pulse;
+
 document.getElementById("table_title").innerText = T.table;
+
+document.getElementById("current_title").innerText = T.current;
+
+document.getElementById("top_title").innerText = T.top;
 
 document.getElementById("input").placeholder = T.placeholder;
 
 document.getElementById("v_label").innerText = T.vector;
+
 document.getElementById("t_label").innerText = T.theta;
+
 document.getElementById("o_label").innerText = T.omega;
 
 /* ================= FETCH ================= */
@@ -364,15 +661,25 @@ async function loadGlobal(){
 
     try{
 
-        const res = await fetch(`${API_BASE}/global-status`);
+        const res = await fetch(
+            `${API_BASE}/global-status`
+        );
 
         if(!res.ok) return;
 
         const data = await res.json();
 
-        renderPulse(data.pulse || []);
+        const pulse = data.pulse || [];
 
-        renderTable(data.table || []);
+        const table = data.table || [];
+
+        renderPulse(pulse);
+
+        renderTable(table);
+
+        renderTop(table);
+
+        renderState(table);
 
     }catch(e){
 
@@ -382,7 +689,8 @@ async function loadGlobal(){
 
 function renderPulse(pulse){
 
-    const el = document.getElementById("pulse_list");
+    const el =
+    document.getElementById("pulse_list");
 
     el.innerHTML = "";
 
@@ -400,7 +708,8 @@ function renderPulse(pulse){
 
 function renderTable(table){
 
-    const el = document.getElementById("table");
+    const el =
+    document.getElementById("table");
 
     el.innerHTML = "";
 
@@ -408,18 +717,96 @@ function renderTable(table){
 
         el.innerHTML += `
             <div class="table_row">
+
                 <span>${t.symbol}</span>
-                <span>θ ${Number(t.theta).toFixed(3)}</span>
-                <span>ω ${Number(t.omega).toFixed(3)}</span>
-                <span>${t.state}</span>
+
+                <span>
+                    θ ${Number(t.theta).toFixed(3)}
+                </span>
+
+                <span>
+                    ω ${Number(t.omega).toFixed(3)}
+                </span>
+
+                <span>
+                    ${t.state}
+                </span>
+
             </div>
         `;
     });
 }
 
-/* ================= DEEP DIVE ================= */
+function renderTop(table){
 
-document.getElementById("input").addEventListener("keydown", async (e)=>{
+    if(!table.length) return;
+
+    const top = table[0];
+
+    document.getElementById("top_symbol").innerText =
+        top.symbol || "---";
+
+    document.getElementById("top_theta").innerText =
+        Number(top.theta || 0).toFixed(3);
+
+    document.getElementById("top_omega").innerText =
+        Number(top.omega || 0).toFixed(3);
+
+    document.getElementById("top_vector").innerText =
+        Number(top.vector || 0).toFixed(3);
+}
+
+function renderState(table){
+
+    const state =
+    document.getElementById("global_state");
+
+    const reason =
+    document.getElementById("global_reason");
+
+    if(!table.length){
+
+        state.innerText = T.diffuse;
+
+        state.className =
+            "hero-state diffuse";
+
+        reason.innerText =
+            T.no_regime;
+
+        return;
+    }
+
+    const top = table[0];
+
+    if(Number(top.theta) > 0.7){
+
+        state.innerText =
+            T.emergent;
+
+        state.className =
+            "hero-state emergent";
+
+        reason.innerText =
+            "high structural coherence";
+
+    }else{
+
+        state.innerText =
+            T.diffuse;
+
+        state.className =
+            "hero-state diffuse";
+
+        reason.innerText =
+            T.no_regime;
+    }
+}
+
+/* ================= INPUT ================= */
+
+document.getElementById("input")
+.addEventListener("keydown", async (e)=>{
 
     if(e.key !== "Enter") return;
 
@@ -431,21 +818,30 @@ document.getElementById("input").addEventListener("keydown", async (e)=>{
 
     if(!res){
 
-        document.getElementById("status").innerText = T.no_data;
-        document.getElementById("reason").innerText = "-";
+        document.getElementById("status").innerText =
+            T.no_data;
+
+        document.getElementById("reason").innerText =
+            "-";
 
         return;
     }
 
     if(res.status === "rejected"){
 
-        document.getElementById("status").innerText = T.rejected;
+        document.getElementById("status").innerText =
+            T.diffuse;
+
+        document.getElementById("status").className =
+            "hero-state diffuse";
 
         document.getElementById("reason").innerText =
             res.reason || "constraint";
 
         document.getElementById("v").innerText = "0";
+
         document.getElementById("t").innerText = "0";
+
         document.getElementById("o").innerText = "0";
 
         document.getElementById("interp").innerText =
@@ -459,11 +855,16 @@ document.getElementById("input").addEventListener("keydown", async (e)=>{
         const m = res.manifold;
 
         const v = m.v_field || 0;
+
         const t = m.depth || 0;
+
         const o = m.omega || 0;
 
         document.getElementById("status").innerText =
-            T.accepted;
+            T.emergent;
+
+        document.getElementById("status").className =
+            "hero-state emergent";
 
         document.getElementById("reason").innerText =
             "residual_emission";
