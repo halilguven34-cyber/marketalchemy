@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MA SYSTEM — STRUCTURAL VISIBILITY LAYER (DEBUG)</title>
+<title>MARKET ALCHEMY — OBSERVER</title>
 
 <script>
 if(!localStorage.getItem("lang")){
     const userLang = navigator.language || navigator.userLanguage;
+
     localStorage.setItem(
         "lang",
         userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
@@ -17,35 +18,45 @@ if(!localStorage.getItem("lang")){
 const LANG = localStorage.getItem("lang") || "en";
 
 const TEXT = {
+
     en:{
-        header:"MA SYSTEM — STRUCTURAL VISIBILITY LAYER (DEBUG MODE)",
-        placeholder:"Enter asset...",
-        unknown:"UNKNOWN",
-        accepted:"ACCEPTED",
-        rejected:"REJECTED",
+        header:"MARKET ALCHEMY — GLOBAL OBSERVER",
+        placeholder:"Inspect asset...",
+        live:"LIVE",
+
+        accepted:"STRUCTURE DETECTED",
+        rejected:"NO STRUCTURE",
         no_data:"NO DATA",
 
-        vector:"VECTOR (irreversible movement field)",
-        shift:"SHIFT INTENSITY (instability)",
-        theta:"THETA FLOW (structural depth)",
+        vector:"VECTOR",
+        theta:"THETA",
+        omega:"OMEGA",
 
-        interpretation:"STRUCTURAL INTERPRETATION",
-        no_regime:"no dominant structural regime"
+        pulse:"GLOBAL PULSE",
+        table:"SINGULARITY TABLE",
+
+        no_regime:"no dominant structure",
+        active:"residual manifold active"
     },
+
     tr:{
-        header:"MA SYSTEM — YAPISAL GÖRÜNÜRLÜK KATMANI (DEBUG MOD)",
-        placeholder:"Varlık gir...",
-        unknown:"BİLİNMİYOR",
-        accepted:"KABUL",
-        rejected:"RED",
+        header:"MARKET ALCHEMY — GLOBAL OBSERVER",
+        placeholder:"Varlık incele...",
+        live:"CANLI",
+
+        accepted:"YAPI TESPİT EDİLDİ",
+        rejected:"YAPI YOK",
         no_data:"VERİ YOK",
 
-        vector:"VEKTÖR ALANI",
-        shift:"KAYMA YOĞUNLUĞU",
-        theta:"THETA AKIŞI",
+        vector:"VEKTÖR",
+        theta:"THETA",
+        omega:"OMEGA",
 
-        interpretation:"YAPISAL YORUM",
-        no_regime:"baskın yapısal rejim yok"
+        pulse:"GLOBAL PULSE",
+        table:"TEKİLLİK TABLOSU",
+
+        no_regime:"baskın yapı yok",
+        active:"rezidüel manifold aktif"
     }
 };
 
@@ -54,14 +65,28 @@ const API_BASE = "";
 </script>
 
 <style>
+
+:root{
+    --bg:#0d0f14;
+    --panel:#121722;
+    --border:#1f2430;
+    --text:#e8ecf1;
+    --soft:#7d8596;
+    --green:#65ffb0;
+}
+
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
-    background:#0d0f14;
-    color:#e8ecf1;
+    background:var(--bg);
+    color:var(--text);
     font-family:system-ui;
     display:flex;
     justify-content:center;
-    padding:30px 14px;
+    padding:28px 14px;
 }
 
 .container{
@@ -73,27 +98,87 @@ body{
 }
 
 .header{
-    opacity:0.6;
-    font-size:12px;
     display:flex;
     justify-content:space-between;
+    align-items:center;
+    font-size:12px;
+    letter-spacing:1px;
+    opacity:0.7;
+}
+
+.live{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 10px var(--green);
 }
 
 .panel{
-    background:#121722;
-    border:1px solid #1f2430;
+    background:var(--panel);
+    border:1px solid var(--border);
     border-radius:18px;
-    padding:22px;
+    padding:20px;
+}
+
+.section-title{
+    font-size:11px;
+    opacity:0.5;
+    margin-bottom:14px;
+    letter-spacing:1px;
+}
+
+#pulse_list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.pulse_item{
+    padding:7px 10px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    font-size:11px;
+    opacity:0.85;
+    background:#0d1118;
+    font-family:monospace;
+}
+
+.table_row{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    padding:10px 0;
+    border-bottom:1px solid var(--border);
+    font-size:12px;
+    font-family:monospace;
+}
+
+input{
+    width:100%;
+    background:#0b0e13;
+    border:1px solid var(--border);
+    color:var(--text);
+    border-radius:12px;
+    padding:16px;
+    outline:none;
+    font-size:15px;
 }
 
 .state{
-    font-size:52px;
-    font-weight:800;
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:8px;
 }
 
 .small{
-    opacity:0.6;
-    font-size:13px;
+    font-size:12px;
+    opacity:0.5;
 }
 
 .metrics{
@@ -104,43 +189,40 @@ body{
 
 .card{
     background:#0d1118;
-    border:1px solid #1f2430;
-    padding:14px;
+    border:1px solid var(--border);
     border-radius:14px;
+    padding:16px;
 }
 
 .label{
-    font-size:11px;
+    font-size:10px;
     opacity:0.5;
+    margin-bottom:8px;
+    letter-spacing:1px;
 }
 
 .value{
-    font-size:18px;
+    font-size:22px;
     font-family:monospace;
 }
 
-/* ================= NEW OBSERVER LAYER ================= */
-#pulse_list{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
+#interp{
+    font-size:13px;
+    opacity:0.75;
 }
 
-.pulse_item{
-    font-size:11px;
-    padding:6px 10px;
-    border:1px solid #1f2430;
-    border-radius:10px;
-    opacity:0.8;
+@media(max-width:700px){
+
+    .metrics{
+        grid-template-columns:1fr;
+    }
+
+    .table_row{
+        grid-template-columns:1fr 1fr;
+        gap:6px;
+    }
 }
 
-.table_row{
-    display:flex;
-    justify-content:space-between;
-    padding:8px 0;
-    border-bottom:1px solid #1f2430;
-    font-size:12px;
-}
 </style>
 </head>
 
@@ -149,116 +231,168 @@ body{
 <div class="container">
 
     <div class="header">
+
         <div id="header"></div>
-        <div>LIVE</div>
+
+        <div class="live">
+            <div class="dot"></div>
+            <div id="live_text"></div>
+        </div>
+
     </div>
 
     <!-- ================= GLOBAL PULSE ================= -->
+
     <div class="panel">
-        <div style="font-size:12px; opacity:0.6; margin-bottom:8px;">
-            GLOBAL STRUCTURAL PULSE
-        </div>
+
+        <div class="section-title" id="pulse_title"></div>
+
         <div id="pulse_list"></div>
+
     </div>
 
-    <!-- ================= SINGULARITY TABLE ================= -->
+    <!-- ================= TABLE ================= -->
+
     <div class="panel">
-        <div style="font-size:12px; opacity:0.6; margin-bottom:10px;">
-            SINGULARITY TABLE
-        </div>
+
+        <div class="section-title" id="table_title"></div>
+
         <div id="table"></div>
+
     </div>
 
-    <div class="panel">
-        <input id="input" placeholder="" style="
-            width:100%;
-            padding:14px;
-            background:#0b0e13;
-            border:1px solid #1f2430;
-            color:#e8ecf1;
-            border-radius:12px;
-        ">
-    </div>
+    <!-- ================= INPUT ================= -->
 
     <div class="panel">
+
+        <input
+            id="input"
+            placeholder=""
+        >
+
+    </div>
+
+    <!-- ================= RESULT ================= -->
+
+    <div class="panel">
+
         <div class="state" id="status">-</div>
+
         <div class="small" id="reason">-</div>
+
     </div>
+
+    <!-- ================= METRICS ================= -->
 
     <div class="metrics">
 
         <div class="card">
+
             <div class="label" id="v_label"></div>
+
             <div class="value" id="v">0</div>
+
         </div>
 
         <div class="card">
+
             <div class="label" id="t_label"></div>
+
             <div class="value" id="t">0</div>
+
         </div>
 
         <div class="card">
+
             <div class="label" id="o_label"></div>
+
             <div class="value" id="o">0</div>
+
         </div>
 
     </div>
 
+    <!-- ================= INTERPRETATION ================= -->
+
     <div class="panel">
-        <div id="interp"></div>
+
+        <div id="interp">-</div>
+
     </div>
 
 </div>
 
 <script>
 
+/* ================= INIT ================= */
+
 document.getElementById("header").innerText = T.header;
+document.getElementById("live_text").innerText = T.live;
+
+document.getElementById("pulse_title").innerText = T.pulse;
+document.getElementById("table_title").innerText = T.table;
+
 document.getElementById("input").placeholder = T.placeholder;
 
 document.getElementById("v_label").innerText = T.vector;
 document.getElementById("t_label").innerText = T.theta;
-document.getElementById("o_label").innerText = T.shift;
+document.getElementById("o_label").innerText = T.omega;
 
-/* ================= CORE FETCH ================= */
+/* ================= FETCH ================= */
+
 async function fetchData(symbol){
 
     try{
+
         const res = await fetch(
             `${API_BASE}/residue?asset=${symbol.toUpperCase()}&timeframe=1h`
         );
+
         if(!res.ok) return null;
+
         return await res.json();
+
     }catch(e){
+
         return null;
     }
 }
 
-/* ================= GLOBAL OBSERVER ================= */
+/* ================= GLOBAL ================= */
+
 async function loadGlobal(){
 
     try{
+
         const res = await fetch(`${API_BASE}/global-status`);
+
         if(!res.ok) return;
 
         const data = await res.json();
 
         renderPulse(data.pulse || []);
+
         renderTable(data.table || []);
 
     }catch(e){
-        console.log("global error", e);
+
+        console.log(e);
     }
 }
 
 function renderPulse(pulse){
 
     const el = document.getElementById("pulse_list");
+
     el.innerHTML = "";
 
     pulse.slice(0,12).forEach(p => {
+
         el.innerHTML += `
             <div class="pulse_item">
-                ${p.symbol} | θ:${Number(p.theta).toFixed(2)}
+                ${p.symbol}
+                ·
+                θ ${Number(p.theta).toFixed(2)}
             </div>
         `;
     });
@@ -267,44 +401,56 @@ function renderPulse(pulse){
 function renderTable(table){
 
     const el = document.getElementById("table");
+
     el.innerHTML = "";
 
     table.slice(0,8).forEach(t => {
+
         el.innerHTML += `
             <div class="table_row">
                 <span>${t.symbol}</span>
-                <span>θ:${Number(t.theta).toFixed(3)}</span>
-                <span>ω:${Number(t.omega).toFixed(3)}</span>
+                <span>θ ${Number(t.theta).toFixed(3)}</span>
+                <span>ω ${Number(t.omega).toFixed(3)}</span>
                 <span>${t.state}</span>
             </div>
         `;
     });
 }
 
-/* ================= MAIN INPUT ================= */
+/* ================= DEEP DIVE ================= */
+
 document.getElementById("input").addEventListener("keydown", async (e)=>{
 
     if(e.key !== "Enter") return;
 
     const val = e.target.value.trim();
+
+    if(!val) return;
+
     const res = await fetchData(val);
 
     if(!res){
+
         document.getElementById("status").innerText = T.no_data;
         document.getElementById("reason").innerText = "-";
+
         return;
     }
 
     if(res.status === "rejected"){
 
         document.getElementById("status").innerText = T.rejected;
-        document.getElementById("reason").innerText = res.reason || "constraint";
 
-        document.getElementById("v").innerText = 0;
-        document.getElementById("t").innerText = 0;
-        document.getElementById("o").innerText = 0;
+        document.getElementById("reason").innerText =
+            res.reason || "constraint";
 
-        document.getElementById("interp").innerText = T.no_regime;
+        document.getElementById("v").innerText = "0";
+        document.getElementById("t").innerText = "0";
+        document.getElementById("o").innerText = "0";
+
+        document.getElementById("interp").innerText =
+            T.no_regime;
+
         return;
     }
 
@@ -316,20 +462,30 @@ document.getElementById("input").addEventListener("keydown", async (e)=>{
         const t = m.depth || 0;
         const o = m.omega || 0;
 
-        document.getElementById("status").innerText = T.accepted;
-        document.getElementById("reason").innerText = "residual_emission";
+        document.getElementById("status").innerText =
+            T.accepted;
 
-        document.getElementById("v").innerText = v.toFixed(5);
-        document.getElementById("t").innerText = t.toFixed(5);
-        document.getElementById("o").innerText = o.toFixed(5);
+        document.getElementById("reason").innerText =
+            "residual_emission";
+
+        document.getElementById("v").innerText =
+            Number(v).toFixed(5);
+
+        document.getElementById("t").innerText =
+            Number(t).toFixed(5);
+
+        document.getElementById("o").innerText =
+            Number(o).toFixed(5);
 
         document.getElementById("interp").innerText =
-            "residual manifold active";
+            T.active;
     }
 });
 
 /* ================= LOOP ================= */
+
 setInterval(loadGlobal, 5000);
+
 loadGlobal();
 
 </script>
