@@ -118,6 +118,29 @@ body{
     font-size:18px;
     font-family:monospace;
 }
+
+/* ================= NEW OBSERVER LAYER ================= */
+#pulse_list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.pulse_item{
+    font-size:11px;
+    padding:6px 10px;
+    border:1px solid #1f2430;
+    border-radius:10px;
+    opacity:0.8;
+}
+
+.table_row{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
+    border-bottom:1px solid #1f2430;
+    font-size:12px;
+}
 </style>
 </head>
 
@@ -128,6 +151,22 @@ body{
     <div class="header">
         <div id="header"></div>
         <div>LIVE</div>
+    </div>
+
+    <!-- ================= GLOBAL PULSE ================= -->
+    <div class="panel">
+        <div style="font-size:12px; opacity:0.6; margin-bottom:8px;">
+            GLOBAL STRUCTURAL PULSE
+        </div>
+        <div id="pulse_list"></div>
+    </div>
+
+    <!-- ================= SINGULARITY TABLE ================= -->
+    <div class="panel">
+        <div style="font-size:12px; opacity:0.6; margin-bottom:10px;">
+            SINGULARITY TABLE
+        </div>
+        <div id="table"></div>
     </div>
 
     <div class="panel">
@@ -180,23 +219,69 @@ document.getElementById("v_label").innerText = T.vector;
 document.getElementById("t_label").innerText = T.theta;
 document.getElementById("o_label").innerText = T.shift;
 
+/* ================= CORE FETCH ================= */
 async function fetchData(symbol){
 
     try{
-
         const res = await fetch(
             `${API_BASE}/residue?asset=${symbol.toUpperCase()}&timeframe=1h`
         );
-
         if(!res.ok) return null;
-
         return await res.json();
-
     }catch(e){
         return null;
     }
 }
 
+/* ================= GLOBAL OBSERVER ================= */
+async function loadGlobal(){
+
+    try{
+        const res = await fetch(`${API_BASE}/global-status`);
+        if(!res.ok) return;
+
+        const data = await res.json();
+
+        renderPulse(data.pulse || []);
+        renderTable(data.table || []);
+
+    }catch(e){
+        console.log("global error", e);
+    }
+}
+
+function renderPulse(pulse){
+
+    const el = document.getElementById("pulse_list");
+    el.innerHTML = "";
+
+    pulse.slice(0,12).forEach(p => {
+        el.innerHTML += `
+            <div class="pulse_item">
+                ${p.symbol} | θ:${Number(p.theta).toFixed(2)}
+            </div>
+        `;
+    });
+}
+
+function renderTable(table){
+
+    const el = document.getElementById("table");
+    el.innerHTML = "";
+
+    table.slice(0,8).forEach(t => {
+        el.innerHTML += `
+            <div class="table_row">
+                <span>${t.symbol}</span>
+                <span>θ:${Number(t.theta).toFixed(3)}</span>
+                <span>ω:${Number(t.omega).toFixed(3)}</span>
+                <span>${t.state}</span>
+            </div>
+        `;
+    });
+}
+
+/* ================= MAIN INPUT ================= */
 document.getElementById("input").addEventListener("keydown", async (e)=>{
 
     if(e.key !== "Enter") return;
@@ -205,7 +290,6 @@ document.getElementById("input").addEventListener("keydown", async (e)=>{
     const res = await fetchData(val);
 
     if(!res){
-
         document.getElementById("status").innerText = T.no_data;
         document.getElementById("reason").innerText = "-";
         return;
@@ -220,9 +304,7 @@ document.getElementById("input").addEventListener("keydown", async (e)=>{
         document.getElementById("t").innerText = 0;
         document.getElementById("o").innerText = 0;
 
-        document.getElementById("interp").innerText =
-            T.no_regime;
-
+        document.getElementById("interp").innerText = T.no_regime;
         return;
     }
 
@@ -243,11 +325,12 @@ document.getElementById("input").addEventListener("keydown", async (e)=>{
 
         document.getElementById("interp").innerText =
             "residual manifold active";
-
-        return;
     }
-
 });
+
+/* ================= LOOP ================= */
+setInterval(loadGlobal, 5000);
+loadGlobal();
 
 </script>
 
