@@ -1,288 +1,253 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MARKET ALCHEMY — GLOBAL OBSERVER</title>
-<script>
-/* ================= CONFIGURATION & LOCALIZATION ================= */
-if(!localStorage.getItem("lang")){
-    const userLang = navigator.language || navigator.userLanguage;
-    localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
-}
-const LANG = localStorage.getItem("lang") || "en";
-const TEXT = {
-    en:{
-        header:"MARKET ALCHEMY — GLOBAL OBSERVER",
-        live:"LIVE",
-        placeholder:"Direct Query...",
-        pulse:"GLOBAL PULSE",
-        table:"SINGULARITY TABLE",
-        current:"CURRENT STRUCTURAL STATE",
-        top:"DOMINANT SINGULARITY",
-        emergent:"EMERGENT",
-        stable_void:"STABLE VOID",
-        no_data:"SCANNING FIELD",
-        vector:"VECTOR",
-        theta:"THETA",
-        omega:"OMEGA",
-        active:"residual manifold active",
-        no_regime:"scanning for structural coherence"
-    },
-    tr:{
-        header:"MARKET ALCHEMY — GLOBAL OBSERVER",
-        live:"CANLI",
-        placeholder:"Doğrudan Sorgu...",
-        pulse:"GLOBAL PULSE",
-        table:"TEKİLLİK TABLOSU",
-        current:"GÜNCEL YAPISAL DURUM",
-        top:"BASKIN TEKİLLİK",
-        emergent:"BELİRİŞ",
-        stable_void:"STABLE VOID",
-        no_data:"ALAN TARANIYOR",
-        vector:"VEKTÖR",
-        theta:"THETA",
-        omega:"OMEGA",
-        active:"rezidüel manifold aktif",
-        no_regime:"yapısal tutarlılık taranıyor"
-    }
-};
-const T = TEXT[LANG];
-
-/* CRITICAL: Pointing to your Termux via Cloudflare Tunnel */
-const API_BASE = "https://api.marketalchemy.io"; 
-</script>
-<style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Market Alchemy — Observer v2</title><style>
 :root{
-    --bg:#0b0e13;
-    --panel:#121722;
-    --border:#1f2430;
-    --text:#e8ecf1;
-    --soft:#7d8596;
-    --green:#65ffb0;
-    --yellow:#ffd166;
-    --red:#ff6b6b;
+  --bg:#0b0e13;
+  --panel:#111722;
+  --panel2:#0e131c;
+  --border:#1c2430;
+  --text:#e8ecf1;
+  --muted:#7d8596;
+  --accent:#65ffb0;
+  --warn:#ffd166;
+  --danger:#ff6b6b;
 }
-*{ box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
+
+*{box-sizing:border-box}
 body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    display:flex;
-    justify-content:center;
-    padding:16px;
-    line-height: 1.5;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
 }
-.container{ width:100%; max-width:800px; display:flex; flex-direction:column; gap:16px; }
-.header{ display:flex; justify-content:space-between; align-items:center; font-size:11px; letter-spacing:1px; opacity:0.6; padding:0 4px; }
-.live{ display:flex; align-items:center; gap:6px; }
-.dot{ width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 10px var(--green); }
 
-.panel{ background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px; transition: transform 0.2s ease; }
-.section-title{ font-size:10px; opacity:0.4; letter-spacing:1.5px; margin-bottom:12px; text-transform: uppercase; }
-
-.hero{ display:flex; flex-direction:column; gap:6px; }
-.hero-state{ font-size:36px; font-weight:800; letter-spacing: -0.5px; }
-.hero-sub{ font-size:12px; opacity:0.5; font-family: monospace; }
-
-.top-card{ display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
-.top-symbol{ font-size:26px; font-weight:700; color: var(--text); }
-.top-metrics{ display:flex; gap:8px; flex-wrap:wrap; }
-.metric-pill{ background:#0d1118; border:1px solid var(--border); border-radius:10px; padding:8px 12px; font-family:monospace; font-size:12px; color: var(--soft); }
-.metric-pill span { color: var(--text); font-weight: bold; }
-
-#pulse_list{ display:flex; flex-wrap:wrap; gap:6px; }
-.pulse_item{ background:#0d1118; border:1px solid var(--border); border-radius:8px; padding:6px 10px; font-size:10.5px; font-family:monospace; opacity:0.8; }
-
-#table{ display:flex; flex-direction:column; gap:1px; }
-.table_row{ display:grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap:8px; padding:10px 4px; border-bottom:1px solid rgba(255,255,255,0.03); font-size:11px; font-family:monospace; }
-
-input{ width:100%; background:#0d1118; border:1px solid var(--border); border-radius:12px; color:var(--text); padding:14px; outline:none; font-size:14px; transition: border 0.3s; }
-input:focus { border-color: var(--soft); }
-
-.metrics{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
-.card{ background:#0d1118; border:1px solid var(--border); border-radius:12px; padding:16px; }
-.label{ font-size:9px; letter-spacing:1px; opacity:0.4; margin-bottom:6px; text-transform: uppercase; }
-.value{ font-size:20px; font-family:monospace; font-weight: bold; }
-
-#interp{ font-size:12px; opacity:0.6; font-style: italic; }
-.emergent{ color:var(--green); }
-.diffuse{ color:var(--soft); }
-.neutral{ color:var(--yellow); }
-
-@media(max-width:600px){
-    .metrics{ grid-template-columns:1fr; gap:8px; }
-    .table_row{ grid-template-columns: 1fr 1fr 1fr; }
-    .table_row span:last-child { display: none; } /* Hide state label on small mobile */
-    .hero-state{ font-size:28px; }
+/* GRID LAYOUT */
+.container{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:14px;
+  padding:16px;
+  max-width:1200px;
+  margin:0 auto;
 }
-</style>
-</head>
-<body>
-<div class="container">
-    <!-- Header -->
-    <div class="header">
-        <div id="header"></div>
-        <div class="live">
-            <div class="dot"></div>
-            <div id="live_text"></div>
-        </div>
-    </div>
 
-    <!-- Current State -->
-    <div class="panel">
-        <div class="section-title" id="current_title"></div>
-        <div class="hero">
-            <div class="hero-state neutral" id="global_state">BOOTING...</div>
-            <div class="hero-sub" id="global_reason">establishing structural lattice</div>
-        </div>
-    </div>
+.header{
+  grid-column:1/4;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12px;
+  opacity:.7;
+}
 
-    <!-- Dominant Singularity -->
-    <div class="panel">
-        <div class="section-title" id="top_title"></div>
-        <div class="top-card">
-            <div class="top-symbol" id="top_symbol">---</div>
-            <div class="top-metrics">
-                <div class="metric-pill">θ <span id="top_theta">0.000</span></div>
-                <div class="metric-pill">ω <span id="top_omega">0.000</span></div>
-                <div class="metric-pill">V <span id="top_vector">0.000</span></div>
-            </div>
-        </div>
-    </div>
+.live{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 10px var(--accent);
+}
 
-    <!-- Lists -->
-    <div class="panel"><div class="section-title" id="pulse_title"></div><div id="pulse_list"></div></div>
-    <div class="panel"><div class="section-title" id="table_title"></div><div id="table"></div></div>
-    
-    <!-- Input Section -->
-    <div class="panel"><input id="input" autocomplete="off" spellcheck="false"></div>
+/* MAIN STATE (CENTER OF ATTENTION) */
+.hero{
+  grid-column:1/3;
+  background:linear-gradient(180deg,var(--panel),var(--panel2));
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+}
 
-    <!-- Residue Result -->
-    <div class="panel">
-        <div class="hero-state neutral" id="status">OBSERVING</div>
-        <div class="hero-sub" id="reason">awaiting input or emergence</div>
-    </div>
+.hero h1{
+  font-size:44px;
+  margin:0;
+  letter-spacing:-1px;
+}
 
-    <!-- Metrics Grid -->
+.hero .sub{
+  margin-top:6px;
+  color:var(--muted);
+  font-family:monospace;
+}
+
+/* TOP STATE CARD */
+.top{
+  grid-column:3/4;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+}
+
+.top-symbol{
+  font-size:28px;
+  font-weight:700;
+}
+
+.metrics{
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-family:monospace;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.metrics span{color:var(--text)}
+
+/* STATE ROW */
+.row{
+  grid-column:1/4;
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  gap:10px;
+}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px;
+}
+
+.card-title{
+  font-size:10px;
+  letter-spacing:1px;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+
+.value{
+  font-family:monospace;
+  font-size:18px;
+}
+
+/* TABLE */
+.table{
+  grid-column:1/4;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.table-row{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding:10px 12px;
+  font-family:monospace;
+  font-size:12px;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+
+.table-row:last-child{border-bottom:none}
+
+.strong{color:var(--accent)}
+.weak{color:var(--muted)}
+
+/* INPUT */
+.input{
+  grid-column:1/4;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--panel2);
+  color:var(--text);
+  outline:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .container{grid-template-columns:1fr}
+  .hero,.top,.row,.table,.input{grid-column:1/2}
+  .row{grid-template-columns:1fr 1fr}
+}
+</style></head><body><div class="container">  <div class="header">
+    <div>MARKET ALCHEMY — OBSERVER</div>
+    <div class="live"><div class="dot"></div>LIVE</div>
+  </div>  <!-- PRIMARY STATE -->  <div class="hero">
+    <h1 id="global_state">BOOTING</h1>
+    <div class="sub" id="global_reason">initializing structural field</div>
+  </div>  <!-- TOP ASSET -->  <div class="top">
+    <div class="top-symbol" id="top_symbol">---</div>
     <div class="metrics">
-        <div class="card"><div class="label" id="v_label"></div><div class="value" id="v">0.000</div></div>
-        <div class="card"><div class="label" id="t_label"></div><div class="value" id="t">0.000</div></div>
-        <div class="card"><div class="label" id="o_label"></div><div class="value" id="o">0.000</div></div>
+      <div>θ <span id="top_theta">0.00</span></div>
+      <div>ω <span id="top_omega">0.00</span></div>
+      <div>V <span id="top_vector">0.00</span></div>
     </div>
-    
-    <!-- Bottom Interpretation -->
-    <div class="panel" style="padding:14px;"><div id="interp">System is alive and scanning...</div></div>
-</div>
+  </div>  <!-- STATE CARDS -->  <div class="row">
+    <div class="card">
+      <div class="card-title">VECTOR</div>
+      <div class="value" id="v">0.000</div>
+    </div>
+    <div class="card">
+      <div class="card-title">THETA</div>
+      <div class="value" id="t">0.000</div>
+    </div>
+    <div class="card">
+      <div class="card-title">OMEGA</div>
+      <div class="value" id="o">0.000</div>
+    </div>
+    <div class="card">
+      <div class="card-title">STATUS</div>
+      <div class="value" id="status">OBSERVE</div>
+    </div>
+  </div>  <!-- TABLE -->  <div class="table" id="table"></div>  <!-- INPUT -->  <div class="input">
+    <input id="input" placeholder="query structural state..." />
+  </div></div><script>
+function render(data){
 
-<script>
-/* ================= UI SETUP ================= */
-document.getElementById("header").innerText = T.header;
-document.getElementById("live_text").innerText = T.live;
-document.getElementById("pulse_title").innerText = T.pulse;
-document.getElementById("table_title").innerText = T.table;
-document.getElementById("current_title").innerText = T.current;
-document.getElementById("top_title").innerText = T.top;
-document.getElementById("input").placeholder = T.placeholder;
-document.getElementById("v_label").innerText = T.vector;
-document.getElementById("t_label").innerText = T.theta;
-document.getElementById("o_label").innerText = T.omega;
+  if(!data){return}
 
-/* ================= STATE LOGIC ================= */
-function updateMainResult(data) {
-    const stateEl = document.getElementById("status");
-    const reasonEl = document.getElementById("reason");
-    const interpEl = document.getElementById("interp");
+  const top = data.table?.[0]
 
-    if (!data || data.status === "rejected") {
-        stateEl.innerText = T.stable_void;
-        stateEl.className = "hero-state diffuse";
-        reasonEl.innerText = data?.reason || T.no_regime;
-        interpEl.innerText = T.no_regime;
-        ["v","t","o"].forEach(id => document.getElementById(id).innerText = "0.000");
-    } else {
-        stateEl.innerText = T.emergent;
-        stateEl.className = "hero-state emergent";
-        reasonEl.innerText = "residual_manifold_active";
-        interpEl.innerText = T.active;
-        const m = data.manifold;
-        document.getElementById("v").innerText = Number(m.v_field || 0).toFixed(5);
-        document.getElementById("t").innerText = Number(m.depth || 0).toFixed(5);
-        document.getElementById("o").innerText = Number(m.omega || 0).toFixed(5);
-    }
+  document.getElementById("top_symbol").innerText = top?.symbol || "---"
+  document.getElementById("top_theta").innerText = (top?.theta||0).toFixed(3)
+  document.getElementById("top_omega").innerText = (top?.omega||0).toFixed(3)
+  document.getElementById("top_vector").innerText = (top?.vector||0).toFixed(3)
+
+  document.getElementById("global_state").innerText = top?.state || "VOID"
+  document.getElementById("global_reason").innerText = "structural field active"
+
+  document.getElementById("v").innerText = (top?.vector||0).toFixed(4)
+  document.getElementById("t").innerText = (top?.theta||0).toFixed(4)
+  document.getElementById("o").innerText = (top?.omega||0).toFixed(4)
+
+  const table = document.getElementById("table")
+  table.innerHTML = ""
+
+  data.table?.slice(0,8).forEach(x=>{
+    table.innerHTML += `
+      <div class='table-row'>
+        <div>${x.symbol}</div>
+        <div>θ ${x.theta.toFixed(2)}</div>
+        <div>ω ${x.omega.toFixed(2)}</div>
+        <div class='${x.theta>0.5?"strong":"weak"}'>${x.state}</div>
+      </div>
+    `
+  })
 }
 
-async function loadGlobal() {
-    try {
-        const res = await fetch(`${API_BASE}/global-status`);
-        if (!res.ok) throw new Error("Backend offline");
-        const data = await res.json();
-        if (!data.pulse || data.pulse.length === 0) return;
-
-        // Render Pulse List
-        const pList = document.getElementById("pulse_list");
-        pList.innerHTML = "";
-        data.pulse.slice(0,12).forEach(p => {
-            pList.innerHTML += `<div class="pulse_item">${p.symbol} · θ ${Number(p.theta).toFixed(2)}</div>`;
-        });
-
-        // Render Table
-        const tableEl = document.getElementById("table");
-        tableEl.innerHTML = "";
-        data.table.slice(0,8).forEach(t => {
-            tableEl.innerHTML += `
-                <div class="table_row">
-                    <span style="font-weight:bold">${t.symbol}</span>
-                    <span>θ ${Number(t.theta).toFixed(3)}</span>
-                    <span>ω ${Number(t.omega).toFixed(3)}</span>
-                    <span class="${t.theta > 0.5 ? 'emergent' : ''}">${t.state}</span>
-                </div>`;
-        });
-
-        // Render Top Card
-        const top = data.table[0];
-        document.getElementById("top_symbol").innerText = top.symbol;
-        document.getElementById("top_theta").innerText = Number(top.theta).toFixed(3);
-        document.getElementById("top_omega").innerText = Number(top.omega).toFixed(3);
-        document.getElementById("top_vector").innerText = Number(top.vector || 0).toFixed(3);
-
-        // Render Global State
-        const gState = document.getElementById("global_state");
-        const gReason = document.getElementById("global_reason");
-        if(top.theta > 0.5) {
-            gState.innerText = T.emergent; gState.className = "hero-state emergent";
-            gReason.innerText = "high structural coherence detected";
-        } else {
-            gState.innerText = T.stable_void; gState.className = "hero-state diffuse";
-            gReason.innerText = T.no_regime;
-        }
-
-        // AUTO-LOAD: Sync primary metrics if search is empty
-        if(document.getElementById("input").value === "") {
-            updateMainResult({ status: "accepted", manifold: { v_field: top.vector || 0, depth: top.theta, omega: top.omega } });
-        }
-    } catch(e) { 
-        console.warn("Syncing with Market Alchemy Engine...");
-        document.getElementById("global_state").innerText = "SYNCING...";
-    }
+async function load(){
+  try{
+    const r = await fetch("/global-status")
+    const d = await r.json()
+    render(d)
+  }catch(e){
+    console.log("offline")
+  }
 }
 
-/* ================= INPUT HANDLE ================= */
-document.getElementById("input").addEventListener("keydown", async (e) => {
-    if(e.key !== "Enter") return;
-    const val = e.target.value.trim().toUpperCase();
-    if(!val) return;
-    try {
-        const res = await fetch(`${API_BASE}/residue?asset=${val}`);
-        const data = await res.json();
-        updateMainResult(data);
-    } catch(e) { updateMainResult(null); }
-});
-
-/* ================= LOOP ================= */
-setInterval(loadGlobal, 5000);
-loadGlobal();
-</script>
-</body>
+setInterval(load,4000)
+load()
+</script></body>
 </html>
