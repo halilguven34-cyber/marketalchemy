@@ -30,8 +30,8 @@ body{
     background:var(--bg);
     color:var(--fg);
     font-family: 'JetBrains Mono', monospace, -apple-system, sans-serif;
-    line-height: 1.5;
-    overflow-x: hidden;
+    line-height:1.5;
+    overflow-x:hidden;
 }
 
 canvas#field{
@@ -43,7 +43,7 @@ canvas#field{
     opacity:0.35;
 }
 
-/* ───────────────── NAVBAR FIX ───────────────── */
+/* NAV */
 nav.topbar{
     position:fixed;
     top:0;
@@ -51,7 +51,7 @@ nav.topbar{
     width:100%;
     z-index:9999;
     background:rgba(13,15,20,0.92);
-    backdrop-filter: blur(12px);
+    backdrop-filter:blur(12px);
     border-bottom:1px solid var(--border);
 }
 
@@ -79,7 +79,7 @@ nav.topbar a:hover{
     color:var(--accent);
 }
 
-/* ───────────────── CONTAINER ───────────────── */
+/* CONTAINER */
 .container{
     position:relative;
     max-width:720px;
@@ -110,16 +110,6 @@ h1{
     border:1px solid var(--border);
     background:rgba(17,21,28,0.85);
     backdrop-filter:blur(12px);
-    position:relative;
-}
-
-.engine::before{
-    content:"";
-    position:absolute;
-    top:0; left:0;
-    width:100%;
-    height:2px;
-    background:linear-gradient(90deg,transparent,var(--accent),transparent);
 }
 
 .engine-title{
@@ -138,21 +128,6 @@ h1{
 .engine-line span{
     color:var(--accent);
     font-weight:bold;
-}
-
-.flow{
-    margin-top:40px;
-    font-size:14px;
-    color:var(--muted);
-}
-
-.flow div{
-    margin-bottom:12px;
-}
-
-.flow div::before{
-    content:"→ ";
-    color:var(--accent);
 }
 
 /* CTA */
@@ -200,48 +175,6 @@ h1{
     color:var(--accent);
     font-size:10px;
 }
-
-/* NETWORK */
-.network-wrap{
-    margin-top:100px;
-    position:relative;
-    padding:40px 0;
-}
-
-.network-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:40px;
-}
-
-.node{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-.node-circle{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    border:1px solid var(--accent);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--accent);
-    font-size:10px;
-}
-
-.node-label{
-    font-size:10px;
-    color:var(--muted);
-    text-transform:uppercase;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-    .network-grid{gap:20px;}
-}
 </style>
 </head>
 
@@ -249,7 +182,7 @@ h1{
 
 <canvas id="field"></canvas>
 
-<!-- FIXED NAVIGATION (VISIBLE ALWAYS) -->
+<!-- NAVIGATION -->
 <nav class="topbar">
     <div class="wrap">
         <a href="#">MA</a>
@@ -266,8 +199,12 @@ h1{
     <h1 class="en">Decision Physics Engine</h1>
     <h1 class="tr" style="display:none;">Karar Fizik Motoru</h1>
 
-    <div class="sub en">Structural decision system operating on financial market dynamics</div>
-    <div class="sub tr" style="display:none;">Finansal piyasa dinamikleri üzerinde çalışan yapısal karar sistemi</div>
+    <div class="sub en">
+        Structural decision system operating on financial market dynamics
+    </div>
+    <div class="sub tr" style="display:none;">
+        Finansal piyasa dinamikleri üzerinde çalışan yapısal karar sistemi
+    </div>
 </header>
 
 <section class="engine">
@@ -302,9 +239,15 @@ MA — STRUCTURAL DEPTH LAW
 
 <script>
 const lang = localStorage.getItem("lang") || "en";
+
+document.querySelectorAll(".en, .tr").forEach(e => {
+    e.style.display = "none";
+});
+
 if(lang === "tr"){
-    document.querySelectorAll(".en").forEach(e=>e.style.display="none");
-    document.querySelectorAll(".tr").forEach(e=>e.style.display="block");
+    document.querySelectorAll(".tr").forEach(e => e.style.display = "block");
+}else{
+    document.querySelectorAll(".en").forEach(e => e.style.display = "block");
 }
 </script>
 
