@@ -39,44 +39,87 @@ canvas#field{
     top:0; left:0;
     width:100%; height:100%;
     z-index:0;
-    pointer-events: none;
-    opacity: 0.35;
+    pointer-events:none;
+    opacity:0.35;
 }
 
+/* ───────────────── NAVBAR FIX ───────────────── */
+nav.topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+    background:rgba(13,15,20,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom:1px solid var(--border);
+}
+
+nav.topbar .wrap{
+    max-width:900px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+}
+
+nav.topbar a{
+    color:var(--fg);
+    text-decoration:none;
+    font-size:12px;
+    letter-spacing:1px;
+    padding:6px 10px;
+    border:1px solid transparent;
+    transition:0.2s;
+}
+
+nav.topbar a:hover{
+    border:1px solid var(--accent);
+    color:var(--accent);
+}
+
+/* ───────────────── CONTAINER ───────────────── */
 .container{
-    position: relative;
+    position:relative;
     max-width:720px;
     margin:auto;
-    padding:80px 20px;
-    z-index: 1;
+    padding:120px 20px 80px;
+    z-index:1;
 }
 
 h1{
-    font-size:24px; margin:0; font-weight: 600;
-    border-left:2px solid var(--accent); padding-left:15px;
-    letter-spacing: -0.5px;
+    font-size:24px;
+    margin:0;
+    font-weight:600;
+    border-left:2px solid var(--accent);
+    padding-left:15px;
 }
 
 .sub{
-    font-size:13px; color:var(--muted);
-    margin-top:10px; padding-left: 17px;
+    font-size:13px;
+    color:var(--muted);
+    margin-top:10px;
+    padding-left:17px;
 }
 
+/* ENGINE */
 .engine{
     margin:60px 0;
     padding:40px;
     border:1px solid var(--border);
-    background: rgba(17, 21, 28, 0.85);
-    backdrop-filter: blur(12px);
-    position: relative;
+    background:rgba(17,21,28,0.85);
+    backdrop-filter:blur(12px);
+    position:relative;
 }
 
-.engine::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+.engine::before{
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
 }
 
 .engine-title{
@@ -84,17 +127,17 @@ h1{
     letter-spacing:3px;
     color:var(--accent);
     margin-bottom:30px;
-    font-weight: bold;
+    font-weight:bold;
 }
 
 .engine-line{
     font-size:15px;
-    margin-bottom: 20px;
+    margin-bottom:20px;
 }
 
 .engine-line span{
     color:var(--accent);
-    font-weight: bold;
+    font-weight:bold;
 }
 
 .flow{
@@ -104,7 +147,7 @@ h1{
 }
 
 .flow div{
-    margin-bottom: 12px;
+    margin-bottom:12px;
 }
 
 .flow div::before{
@@ -112,25 +155,26 @@ h1{
     color:var(--accent);
 }
 
+/* CTA */
 .cta{
     margin-top:40px;
     display:inline-block;
     color:var(--accent);
     text-decoration:none;
     font-size:13px;
-    letter-spacing: 1px;
-    border: 1px solid var(--accent);
-    padding: 12px 24px;
-    transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    background: rgba(13, 15, 20, 0.6);
+    letter-spacing:1px;
+    border:1px solid var(--accent);
+    padding:12px 24px;
+    transition:0.3s;
+    background:rgba(13,15,20,0.6);
 }
 
-.cta:hover {
-    background: var(--accent);
-    color: var(--bg);
-    box-shadow: 0 0 20px rgba(109, 168, 255, 0.2);
+.cta:hover{
+    background:var(--accent);
+    color:var(--bg);
 }
 
+/* NAV DEPTH */
 .depth{
     margin-top:80px;
     border-top:1px solid var(--border);
@@ -138,80 +182,65 @@ h1{
 
 .depth a{
     display:flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
     color:var(--fg);
     text-decoration:none;
-    border-bottom: 1px solid var(--border);
-    transition: 0.2s;
+    border-bottom:1px solid var(--border);
+    transition:0.2s;
 }
 
-.depth a:hover {
-    padding-left: 10px;
-    background: rgba(109, 168, 255, 0.05);
+.depth a:hover{
+    padding-left:10px;
+    background:rgba(109,168,255,0.05);
 }
 
 .depth a span{
     color:var(--accent);
     font-size:10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
 }
 
-.network-wrap {
-    margin-top: 100px;
-    position: relative;
-    padding: 40px 0;
+/* NETWORK */
+.network-wrap{
+    margin-top:100px;
+    position:relative;
+    padding:40px 0;
 }
 
-.network-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    position: relative;
-    z-index: 2;
+.network-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
 }
 
-.node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.node{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
-.node-circle {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 1px solid var(--accent);
-    background: var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: bold;
-    color: var(--accent);
-    box-shadow: 0 0 15px rgba(109, 168, 255, 0.1);
-    margin-bottom: 10px;
+.node-circle{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:1px solid var(--accent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--accent);
+    font-size:10px;
 }
 
-.node-label {
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
+.node-label{
+    font-size:10px;
+    color:var(--muted);
+    text-transform:uppercase;
 }
 
-.network-svg {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.2;
-}
-
-@media (max-width: 600px) {
-    .network-grid { gap: 20px; }
+/* MOBILE */
+@media(max-width:600px){
+    .network-grid{gap:20px;}
 }
 </style>
 </head>
@@ -220,25 +249,31 @@ h1{
 
 <canvas id="field"></canvas>
 
+<!-- FIXED NAVIGATION (VISIBLE ALWAYS) -->
+<nav class="topbar">
+    <div class="wrap">
+        <a href="#">MA</a>
+        <a href="research.html">Research</a>
+        <a href="lab.html">Lab</a>
+        <a href="law.html">Law</a>
+        <a href="ma.html">Engine</a>
+    </div>
+</nav>
+
 <div class="container">
 
 <header>
     <h1 class="en">Decision Physics Engine</h1>
     <h1 class="tr" style="display:none;">Karar Fizik Motoru</h1>
 
-    <div class="sub en">
-        Structural decision system operating on financial market dynamics
-    </div>
-
-    <div class="sub tr" style="display:none;">
-        Finansal piyasa dinamikleri üzerinde çalışan yapısal karar sistemi
-    </div>
+    <div class="sub en">Structural decision system operating on financial market dynamics</div>
+    <div class="sub tr" style="display:none;">Finansal piyasa dinamikleri üzerinde çalışan yapısal karar sistemi</div>
 </header>
 
 <section class="engine">
 
     <div class="engine-title en">CONSTRAINT COLLAPSE CORE</div>
-<div class="engine-title tr" style="display:none;">KISIT ÇÖKÜŞ ÇEKİRDEĞİ</div>
+    <div class="engine-title tr" style="display:none;">KISIT ÇÖKÜŞ ÇEKİRDEĞİ</div>
 
     <div class="engine-line en">
         Input State → Constraint Field → Invalid Paths Removal → <span>Single Vector</span>
@@ -248,141 +283,28 @@ h1{
         Girdi → Kısıt Alanı → Geçersiz Yolların Elenmesi → <span>Tek Vektör</span>
     </div>
 
-    <div class="flow en">
-        <div>System does not evaluate options</div>
-        <div>System eliminates impossibilities</div>
-        <div>Result is not choice — it is residue</div>
-    </div>
-
-    <div class="flow tr" style="display:none;">
-        <div>Sistem seçenekleri değerlendirmez</div>
-        <div>Sistem imkânsızları eler</div>
-        <div>Sonuç seçim değil, kalandır</div>
-    </div>
-
     <a class="cta en" href="ma.html">ENTER SYSTEM →</a>
     <a class="cta tr" href="ma.html" style="display:none;">SİSTEME GİR →</a>
 
 </section>
 
 <nav class="depth">
-
-    <a class="en" href="research.html">
-        Research Layer <span>01 — Constraints</span>
-    </a>
-
-    <a class="tr" href="research.html" style="display:none;">
-        Araştırma Katmanı <span>01 — Kısıtlar</span>
-    </a>
-
-    <a class="en" href="lab.html">
-        Lab Layer <span>02 — Observation</span>
-    </a>
-
-    <a class="tr" href="lab.html" style="display:none;">
-        Laboratuvar Katmanı <span>02 — Gözlem</span>
-    </a>
-
-    <a class="en" href="law.html">
-        Law Layer <span>03 — Vector (Law)</span>
-    </a>
-
-    <a class="tr" href="law.html" style="display:none;">
-        Yasa Katmanı <span>03 — Vektör (Yasa)</span>
-    </a>
-
+    <a href="research.html">Research Layer <span>01 — Constraints</span></a>
+    <a href="lab.html">Lab Layer <span>02 — Observation</span></a>
+    <a href="law.html">Law Layer <span>03 — Vector</span></a>
 </nav>
 
-<div class="network-wrap">
-    <svg class="network-svg" id="netSvg"></svg>
-
-    <div class="network-grid">
-
-        <div class="node">
-            <div class="node-circle">01</div>
-            <div class="node-label en">Axiom</div>
-            <div class="node-label tr" style="display:none;">Aksiyom</div>
-        </div>
-
-        <div class="node">
-            <div class="node-circle">02</div>
-            <div class="node-label en">Collapse</div>
-            <div class="node-label tr" style="display:none;">Çöküş</div>
-        </div>
-
-        <div class="node">
-            <div class="node-circle">03</div>
-            <div class="node-label en">Observer</div>
-            <div class="node-label tr" style="display:none;">Gözlemci</div>
-        </div>
-
-        <div class="node">
-            <div class="node-circle">04</div>
-            <div class="node-label en">Decision</div>
-            <div class="node-label tr" style="display:none;">Karar</div>
-        </div>
-
-        <div class="node">
-            <div class="node-circle">05</div>
-            <div class="node-label en">Execution</div>
-            <div class="node-label tr" style="display:none;">Uygulama</div>
-        </div>
-
-        <div class="node">
-            <div class="node-circle">06</div>
-            <div class="node-label en">Vector</div>
-            <div class="node-label tr" style="display:none;">Vektör</div>
-        </div>
-
-        <div class="node">
-            <div class="node-circle">07</div>
-            <div class="node-label en">Liquidation</div>
-            <div class="node-label tr" style="display:none;">Likidasyon</div>
-        </div>
-
-        <div class="node">
-            <div class="node-circle">08</div>
-            <div class="node-label en">Waiting</div>
-            <div class="node-label tr" style="display:none;">Bekleme</div>
-        </div>
-
-        <div class="node">
-            <div class="node-circle">09</div>
-            <div class="node-label en">Field</div>
-            <div class="node-label tr" style="display:none;">Alan</div>
-        </div>
-
-    </div>
-</div>
-
-<div style="margin-top:60px; font-size:10px; opacity:0.3; text-align:center; letter-spacing: 2px;">
-    MA — STRUCTURAL DEPTH LAW
+<div style="margin-top:60px;font-size:10px;opacity:0.3;text-align:center;">
+MA — STRUCTURAL DEPTH LAW
 </div>
 
 </div>
 
 <script>
 const lang = localStorage.getItem("lang") || "en";
-
 if(lang === "tr"){
-
-    document.querySelectorAll(".en").forEach(e=>{
-        e.style.display = "none";
-    });
-
-    document.querySelectorAll(".tr").forEach(e=>{
-
-        if(e.classList.contains("node-label")){
-            e.style.display = "block";
-        }
-        else if(e.tagName === "A"){
-            e.style.display = "flex";
-        }
-        else{
-            e.style.display = "block";
-        }
-
-    });
+    document.querySelectorAll(".en").forEach(e=>e.style.display="none");
+    document.querySelectorAll(".tr").forEach(e=>e.style.display="block");
 }
 </script>
 
