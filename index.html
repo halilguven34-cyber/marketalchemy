@@ -30,20 +30,11 @@ body{
     background:var(--bg);
     color:var(--fg);
     font-family: 'JetBrains Mono', monospace, -apple-system, sans-serif;
-    line-height:1.5;
-    overflow-x:hidden;
+    line-height: 1.5;
+    overflow-x: hidden;
 }
 
-canvas#field{
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    z-index:0;
-    pointer-events:none;
-    opacity:0.35;
-}
-
-/* NAV */
+/* ───────────────── NAVBAR (VISIBLE ALWAYS) ───────────────── */
 nav.topbar{
     position:fixed;
     top:0;
@@ -51,7 +42,7 @@ nav.topbar{
     width:100%;
     z-index:9999;
     background:rgba(13,15,20,0.92);
-    backdrop-filter:blur(12px);
+    backdrop-filter: blur(12px);
     border-bottom:1px solid var(--border);
 }
 
@@ -61,7 +52,7 @@ nav.topbar .wrap{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:12px 20px;
+    padding:10px 16px;
 }
 
 nav.topbar a{
@@ -79,12 +70,20 @@ nav.topbar a:hover{
     color:var(--accent);
 }
 
-/* CONTAINER */
+canvas#field{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    z-index:0;
+    pointer-events:none;
+    opacity:0.35;
+}
+
 .container{
     position:relative;
     max-width:720px;
     margin:auto;
-    padding:120px 20px 80px;
+    padding:110px 20px 80px;
     z-index:1;
 }
 
@@ -110,6 +109,16 @@ h1{
     border:1px solid var(--border);
     background:rgba(17,21,28,0.85);
     backdrop-filter:blur(12px);
+    position:relative;
+}
+
+.engine::before{
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
 }
 
 .engine-title{
@@ -128,6 +137,21 @@ h1{
 .engine-line span{
     color:var(--accent);
     font-weight:bold;
+}
+
+.flow{
+    margin-top:40px;
+    font-size:14px;
+    color:var(--muted);
+}
+
+.flow div{
+    margin-bottom:12px;
+}
+
+.flow div::before{
+    content:"→ ";
+    color:var(--accent);
 }
 
 /* CTA */
@@ -149,7 +173,7 @@ h1{
     color:var(--bg);
 }
 
-/* NAV DEPTH */
+/* DEPTH NAV */
 .depth{
     margin-top:80px;
     border-top:1px solid var(--border);
@@ -175,23 +199,37 @@ h1{
     color:var(--accent);
     font-size:10px;
 }
+
+/* MOBILE */
+@media(max-width:600px){
+    .network-grid{gap:20px;}
+}
 </style>
 </head>
 
 <body>
 
-<canvas id="field"></canvas>
-
-<!-- NAVIGATION -->
+<!-- FIXED NAVIGATION -->
 <nav class="topbar">
     <div class="wrap">
-        <a href="#">MA</a>
-        <a href="research.html">Research</a>
-        <a href="lab.html">Lab</a>
-        <a href="law.html">Law</a>
-        <a href="ma.html">Engine</a>
+        <a href="index.html" class="en">MA</a>
+        <a href="index.html" class="tr">MA</a>
+
+        <a href="research.html" class="en">Research</a>
+        <a href="research.html" class="tr" style="display:none;">Araştırma</a>
+
+        <a href="lab.html" class="en">Lab</a>
+        <a href="lab.html" class="tr" style="display:none;">Laboratuvar</a>
+
+        <a href="law.html" class="en">Law</a>
+        <a href="law.html" class="tr" style="display:none;">Yasa</a>
+
+        <a href="ma.html" class="en">Engine</a>
+        <a href="ma.html" class="tr" style="display:none;">Motor</a>
     </div>
 </nav>
+
+<canvas id="field"></canvas>
 
 <div class="container">
 
@@ -199,12 +237,8 @@ h1{
     <h1 class="en">Decision Physics Engine</h1>
     <h1 class="tr" style="display:none;">Karar Fizik Motoru</h1>
 
-    <div class="sub en">
-        Structural decision system operating on financial market dynamics
-    </div>
-    <div class="sub tr" style="display:none;">
-        Finansal piyasa dinamikleri üzerinde çalışan yapısal karar sistemi
-    </div>
+    <div class="sub en">Structural decision system operating on financial market dynamics</div>
+    <div class="sub tr" style="display:none;">Finansal piyasa dinamikleri üzerinde çalışan yapısal karar sistemi</div>
 </header>
 
 <section class="engine">
@@ -220,34 +254,36 @@ h1{
         Girdi → Kısıt Alanı → Geçersiz Yolların Elenmesi → <span>Tek Vektör</span>
     </div>
 
+    <div class="flow en">
+        <div>System does not evaluate options</div>
+        <div>System eliminates impossibilities</div>
+        <div>Result is not choice — it is residue</div>
+    </div>
+
+    <div class="flow tr" style="display:none;">
+        <div>Sistem seçenekleri değerlendirmez</div>
+        <div>Sistem imkânsızları eler</div>
+        <div>Sonuç seçim değil, kalandır</div>
+    </div>
+
     <a class="cta en" href="ma.html">ENTER SYSTEM →</a>
     <a class="cta tr" href="ma.html" style="display:none;">SİSTEME GİR →</a>
 
 </section>
 
 <nav class="depth">
-    <a href="research.html">Research Layer <span>01 — Constraints</span></a>
-    <a href="lab.html">Lab Layer <span>02 — Observation</span></a>
-    <a href="law.html">Law Layer <span>03 — Vector</span></a>
+    <a href="research.html"><span>01 — Constraints</span><span class="en">Research Layer</span><span class="tr" style="display:none;">Araştırma</span></a>
+    <a href="lab.html"><span>02 — Observation</span><span class="en">Lab Layer</span><span class="tr" style="display:none;">Laboratuvar</span></a>
+    <a href="law.html"><span>03 — Vector</span><span class="en">Law Layer</span><span class="tr" style="display:none;">Yasa</span></a>
 </nav>
-
-<div style="margin-top:60px;font-size:10px;opacity:0.3;text-align:center;">
-MA — STRUCTURAL DEPTH LAW
-</div>
 
 </div>
 
 <script>
 const lang = localStorage.getItem("lang") || "en";
-
-document.querySelectorAll(".en, .tr").forEach(e => {
-    e.style.display = "none";
-});
-
 if(lang === "tr"){
-    document.querySelectorAll(".tr").forEach(e => e.style.display = "block");
-}else{
-    document.querySelectorAll(".en").forEach(e => e.style.display = "block");
+    document.querySelectorAll(".en").forEach(e=>e.style.display="none");
+    document.querySelectorAll(".tr").forEach(e=>e.style.display=(e.tagName==="A"?"flex":"block"));
 }
 </script>
 
