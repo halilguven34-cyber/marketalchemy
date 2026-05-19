@@ -5,15 +5,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reality as a Constraint-Invariant Structure</title>
+<title>Reality as Constraint-Invariant Structure — Market Alchemy</title>
 
-<meta name="description" content="A projection-based reformulation of observed existence where reality is defined as an invariant structure across admissible observational projections.">
+<meta name="description" content="Reality as a constraint-invariant structure emerging from projection diversity. Market Alchemy models markets, time, and systems through structural decision physics.">
 
-<meta name="keywords" content="constraint invariant structure, structural reality, projection theory, epistemology, systems theory, market alchemy">
+<meta name="keywords" content="Market Alchemy, structural depth, reality, projection theory, invariant structure, decision physics, financial systems, constraint dynamics">
 
 <meta name="graph-node" content="index">
-<meta name="node-type" content="ontology-root">
-<meta name="system-layer" content="reality">
+<meta name="node-type" content="decision-engine">
+<meta name="system-layer" content="surface">
+
+<script>
+if(!localStorage.getItem("lang")){
+    const userLang = navigator.language || navigator.userLanguage;
+    localStorage.setItem(
+        "lang",
+        userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
+    );
+}
+</script>
 
 <style>
 :root{
@@ -32,7 +42,8 @@ body{
     line-height:1.7;
 }
 
-/* NAV */
+/* NAVIGATION */
+
 nav{
     position:fixed;
     top:0;
@@ -45,19 +56,20 @@ nav{
 }
 
 nav .wrap{
-    max-width:900px;
+    max-width:950px;
     margin:auto;
     display:flex;
     justify-content:space-between;
-    padding:12px 16px;
+    align-items:center;
+    padding:12px 18px;
 }
 
 nav a{
     color:var(--fg);
     text-decoration:none;
     font-size:12px;
-    opacity:0.75;
-    transition:0.2s;
+    opacity:0.7;
+    transition:0.25s;
 }
 
 nav a:hover{
@@ -66,76 +78,103 @@ nav a:hover{
 }
 
 nav a.active{
-    color:var(--accent);
     opacity:1;
-    font-weight:600;
+    color:var(--accent);
 }
 
 /* CONTAINER */
+
 .container{
     max-width:820px;
     margin:auto;
     padding:120px 20px 80px;
 }
 
-/* TYPO */
+/* TYPOGRAPHY */
+
 h1,h2,p{
     margin:0;
 }
 
 h1{
     font-size:34px;
-    line-height:1.25;
-    letter-spacing:-0.6px;
+    line-height:1.2;
+    letter-spacing:-0.8px;
     border-left:2px solid var(--accent);
     padding-left:14px;
-    margin-bottom:14px;
-}
-
-h2{
-    font-size:18px;
-    color:var(--accent);
-    margin-bottom:18px;
-}
-
-p{
-    font-size:14px;
-    opacity:0.82;
-}
-
-small{
-    opacity:0.6;
-}
-
-/* HERO */
-.hero{
-    margin-bottom:50px;
+    margin-bottom:20px;
+    animation:pulse 6s infinite;
 }
 
 .hero-sub{
     font-size:15px;
-    opacity:0.75;
+    opacity:0.82;
+    margin-top:20px;
+}
+
+.hero-focus{
+    margin-top:28px;
+    padding-left:14px;
+    border-left:2px solid var(--accent);
+    font-size:14px;
+    opacity:0.95;
+}
+
+.hero-focus strong{
+    color:var(--accent);
+    font-weight:600;
+}
+
+h2{
+    margin-top:40px;
     margin-bottom:14px;
+    font-size:20px;
+    color:var(--accent);
 }
 
-.hero-meta{
-    font-size:13px;
-    opacity:0.55;
+p{
+    font-size:14px;
+    opacity:0.8;
 }
 
-/* SECTIONS */
+/* SECTION */
+
 .section{
-    margin-top:36px;
+    margin-top:42px;
     padding:24px;
     border:1px solid var(--border);
     background:rgba(17,21,28,0.72);
+    transition:0.3s;
 }
 
-.section p + p{
-    margin-top:18px;
+.section:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+}
+
+/* DIAGRAM */
+
+.diagram{
+    margin-top:24px;
+    text-align:center;
+}
+
+.diagram a{
+    display:block;
+    transition:0.3s;
+}
+
+.diagram a:hover{
+    transform:scale(1.01);
+}
+
+.diagram img{
+    max-width:100%;
+    border:1px solid var(--border);
 }
 
 /* CTA */
+
 .cta{
     display:inline-block;
     margin-top:22px;
@@ -143,214 +182,328 @@ small{
     border:1px solid var(--accent);
     color:var(--accent);
     text-decoration:none;
-    transition:0.2s;
+    transition:0.25s;
 }
 
 .cta:hover{
     background:var(--accent);
     color:var(--bg);
 }
+
+/* MATRIX */
+
+.matrix{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.matrix div{
+    border:1px solid var(--border);
+    padding:14px;
+    font-size:12px;
+    background:rgba(255,255,255,0.02);
+    opacity:0.82;
+}
+
+.matrix div:hover{
+    border-color:var(--accent);
+}
+
+/* FOOT NOTE */
+
+.note{
+    margin-top:16px;
+    font-size:12px;
+    opacity:0.55;
+}
+
+/* ANIMATION */
+
+@keyframes pulse{
+    0%{opacity:0.75;}
+    50%{opacity:1;}
+    100%{opacity:0.75;}
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    h1{
+        font-size:28px;
+    }
+
+    .matrix{
+        grid-template-columns:1fr;
+    }
+
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
+
 <nav>
     <div class="wrap">
+
         <a href="index.html"
-           class="nav-item"
-           data-en="Reality"
-           data-tr="Gerçeklik"></a>
+           class="active"
+           data-en="Home"
+           data-tr="Anasayfa">
+        </a>
 
         <a href="research.html"
-           class="nav-item"
            data-en="Research"
-           data-tr="Araştırma"></a>
+           data-tr="Araştırma">
+        </a>
 
         <a href="lab.html"
-           class="nav-item"
            data-en="Lab"
-           data-tr="Laboratuvar"></a>
+           data-tr="Laboratuvar">
+        </a>
 
         <a href="law.html"
-           class="nav-item"
            data-en="Law"
-           data-tr="Yasa"></a>
+           data-tr="Yasa">
+        </a>
 
         <a href="ma.html"
-           class="nav-item"
            data-en="Engine"
-           data-tr="Motor"></a>
+           data-tr="Motor">
+        </a>
+
     </div>
 </nav>
 
 <div class="container">
 
-<header class="hero">
+<!-- HERO -->
+
+<header>
 
     <h1
-        data-en="Reality as a Constraint-Invariant Structure"
-        data-tr="Kısıt-Değişmez Yapı Olarak Gerçeklik">
+    data-en="Reality as a Constraint-Invariant Structure"
+    data-tr="Kısıt-Değişmez Yapı Olarak Gerçeklik">
     </h1>
 
     <p class="hero-sub"
-       data-en="A Projection-Based Reformulation of Observed Existence"
-       data-tr="Gözlemlenen Varlığın Projeksiyon-Temelli Yeniden Formülasyonu">
+       data-en="A projection-based reformulation of observed existence. Reality is not the full system state, but the non-eliminable structure surviving across all admissible projections."
+       data-tr="Gözlenen varlığın projeksiyon-temelli yeniden formülasyonu. Gerçeklik tam sistem durumu değil, tüm geçerli projeksiyonlar altında korunabilen yapısal çekirdektir.">
     </p>
 
-    <p class="hero-meta">
-        H.I. GUVEN — May 2026
-    </p>
+    <div class="hero-focus">
+
+        <p
+        data-en="Markets, time, observers, and systems are treated as manifestations of constraint dynamics and structural invariance."
+        data-tr="Piyasalar, zaman, gözlemciler ve sistemler kısıt dinamikleri ile yapısal değişmezliğin görünümleri olarak ele alınır.">
+        </p>
+
+        <p style="margin-top:18px;">
+            <strong
+            data-en="Price is the record of system behavior."
+            data-tr="Fiyat, sistem davranışının kaydıdır.">
+            </strong>
+        </p>
+
+    </div>
 
 </header>
 
+<!-- CORE PRINCIPLE -->
+
 <section class="section">
 
     <h2
-        data-en="Abstract"
-        data-tr="Özet">
+    data-en="Core Principle"
+    data-tr="Temel İlke">
     </h2>
 
     <p
-        data-en="Reality is not a substrate or a representation, but the structurally invariant residue that persists across all admissible observational projections of an inaccessible system state."
-        data-tr="Gerçeklik bir öz veya temsil değil, erişilemeyen bir sistem durumunun tüm geçerli gözlemsel projeksiyonları boyunca korunan yapısal değişmez kalandır.">
+    data-en="The system does not evaluate options. It eliminates impossibilities. What remains is structural residue."
+    data-tr="Sistem seçenekleri değerlendirmez. İmkânsızlıkları eler. Geriye kalan yapısal kalandır.">
     </p>
 
 </section>
 
+<!-- OBSERVER STRUCTURE -->
+
 <section class="section">
 
     <h2
-        data-en="Core Principle"
-        data-tr="Temel İlke">
+    data-en="Observer–Structure Model"
+    data-tr="Gözlemci–Yapı Modeli">
     </h2>
 
     <p
-        data-en="Reality is the non-eliminable structural core under projection diversity."
-        data-tr="Gerçeklik, projeksiyon çeşitliliği altında elimine edilemeyen yapısal çekirdektir.">
+    data-en="Observed reality emerges through projection operators acting on inaccessible system states. Structure survives through invariant constraint relations."
+    data-tr="Gözlenen gerçeklik, erişilemeyen sistem durumları üzerinde çalışan projeksiyon operatörleri üzerinden ortaya çıkar. Yapı, değişmez kısıt ilişkileri sayesinde korunur.">
     </p>
+
+    <div class="diagram">
+
+        <a href="law.html">
+            <img src="time.diagram.jpg" alt="Observer Structure Model">
+        </a>
+
+        <p style="font-size:12px; opacity:0.6; margin-top:10px;">
+            Observer → Constraint Field → Projection → Residual Structure
+        </p>
+
+    </div>
 
 </section>
 
-<section class="section">
-
-    <h2
-        data-en="System Definition"
-        data-tr="Sistem Tanımı">
-    </h2>
-
-    <p>
-        S = full system state space (inaccessible)<br>
-        Pi_i = observation operators<br>
-        O_i = projected observations
-    </p>
-
-    <p>
-        O_i = Pi_i(S)
-    </p>
-
-</section>
+<!-- DECISION ENGINE -->
 
 <section class="section">
 
     <h2
-        data-en="Definition of Reality"
-        data-tr="Gerçekliğin Tanımı">
-    </h2>
-
-    <p>
-        R = ⋂ Pi_i(S)
-    </p>
-
-    <p
-        data-en="Reality is the invariant structure that cannot be eliminated under any admissible observational projection."
-        data-tr="Gerçeklik, hiçbir geçerli gözlemsel projeksiyon altında elimine edilemeyen değişmez yapıdır.">
-    </p>
-
-</section>
-
-<section class="section">
-
-    <h2
-        data-en="Constraint Interpretation"
-        data-tr="Kısıt Yorumu">
+    data-en="Decision Engine"
+    data-tr="Karar Motoru">
     </h2>
 
     <p
-        data-en="Reality emerges as the intersection of overlapping constraint systems imposed by observation operators."
-        data-tr="Gerçeklik, gözlem operatörlerinin dayattığı örtüşen kısıt sistemlerinin kesişimi olarak ortaya çıkar.">
+    data-en="Input State → Constraint Field → Invalid Path Elimination → Single Vector"
+    data-tr="Girdi → Kısıt Alanı → Geçersiz Yolların Elenmesi → Tek Vektör">
     </p>
 
-</section>
-
-<section class="section">
-
-    <h2
-        data-en="Axiom"
-        data-tr="Aksiyom">
-    </h2>
-
-    <p
-        data-en="Reality is not the system itself, nor its representation — it is what survives all projections."
-        data-tr="Gerçeklik sistemin kendisi veya temsili değildir — tüm projeksiyonlardan geriye kalandır.">
-    </p>
-
-</section>
-
-<section class="section">
-
-    <h2
-        data-en="Projection Layer"
-        data-tr="Projeksiyon Katmanı">
-    </h2>
-
-    <p
-        data-en="Market systems are lower-order projections emerging from deeper structural invariants."
-        data-tr="Piyasa sistemleri daha derin yapısal değişmezlerden ortaya çıkan alt-seviye projeksiyonlardır.">
-    </p>
-
-    <p
-        data-en="Price is the residue."
-        data-tr="Fiyat kalandır.">
-    </p>
-
-    <p
-        data-en="Price is the record of system behavior."
-        data-tr="Fiyat, sistem davranışının kaydıdır.">
+    <p style="margin-top:16px;"
+       data-en="The system collapses state space instead of computing probability."
+       data-tr="Sistem olasılık hesaplamaz, durum uzayını çökerterek indirger.">
     </p>
 
     <a class="cta"
-       href="research.html"
-       data-en="Enter Structure"
-       data-tr="Yapıya Gir">
+       href="ma.html"
+       data-en="Enter System"
+       data-tr="Sisteme Gir">
     </a>
+
+</section>
+
+<!-- STRUCTURAL LAYERS -->
+
+<section class="section">
+
+    <h2
+    data-en="Structural Layers"
+    data-tr="Yapısal Katmanlar">
+    </h2>
+
+    <p
+    data-en="01 — Constraints define possibility space"
+    data-tr="01 — Kısıtlar olasılık alanını tanımlar">
+    </p>
+
+    <p style="margin-top:10px;"
+    data-en="02 — Observation projects state space"
+    data-tr="02 — Gözlem durum uzayını projekte eder">
+    </p>
+
+    <p style="margin-top:10px;"
+    data-en="03 — Vector is irreducible residue"
+    data-tr="03 — Vektör indirgenemez kalandır">
+    </p>
+
+</section>
+
+<!-- AXIOM -->
+
+<section class="section">
+
+    <h2
+    data-en="Axiom"
+    data-tr="Aksiyom">
+    </h2>
+
+    <p
+    data-en="Reality is neither the inaccessible total system nor subjective representation. It is the invariant structure preserved across projection diversity."
+    data-tr="Gerçeklik ne erişilemeyen toplam sistemdir ne de öznel temsildir. Gerçeklik, projeksiyon çeşitliliği boyunca korunan değişmez yapıdır.">
+    </p>
+
+</section>
+
+<!-- DECISION MATRIX -->
+
+<section class="section">
+
+    <h2
+    data-en="Decision Matrix (9-State Collapse Model)"
+    data-tr="Karar Matrisi (9-Durum Çöküş Modeli)">
+    </h2>
+
+    <p
+    data-en="System evaluates collapse states across a structural 3x3 field."
+    data-tr="Sistem yapısal 3x3 alan üzerinde çöküş durumlarını değerlendirir.">
+    </p>
+
+    <div class="matrix">
+
+        <div>
+            [C1]<br>
+            Compression Low
+        </div>
+
+        <div>
+            [C2]<br>
+            Compression Mid
+        </div>
+
+        <div>
+            [C3]<br>
+            Compression High
+        </div>
+
+        <div>
+            [E1]<br>
+            Expansion Weak
+        </div>
+
+        <div>
+            [E2]<br>
+            Vector Formation
+        </div>
+
+        <div>
+            [E3]<br>
+            Expansion Exhaustion
+        </div>
+
+        <div>
+            [S1]<br>
+            Noise Dominant
+        </div>
+
+        <div>
+            [S2]<br>
+            Transition Zone
+        </div>
+
+        <div>
+            [S3]<br>
+            Structural Lock
+        </div>
+
+    </div>
+
+    <div class="note"
+         data-en="Vector is the non-reverted direction preserved after compression."
+         data-tr="Vektör, sıkışma sonrası geri alınamayan korunmuş yöndür.">
+    </div>
 
 </section>
 
 </div>
 
+<!-- LANGUAGE ENGINE -->
+
 <script>
-function getLang(){
-    const saved = localStorage.getItem("lang");
+const lang = localStorage.getItem("lang") || "en";
 
-    if(saved){
-        return saved;
-    }
-
-    const systemLang = navigator.language || navigator.userLanguage;
-
-    const lang = systemLang.toLowerCase().startsWith("tr")
-        ? "tr"
-        : "en";
-
-    localStorage.setItem("lang", lang);
-
-    return lang;
-}
-
-function applyLang(){
-
-    const lang = getLang();
+function projectLanguage(){
 
     document.querySelectorAll("[data-en]").forEach(el => {
 
@@ -359,20 +512,12 @@ function applyLang(){
         if(value){
             el.textContent = value;
         }
+
     });
+
 }
 
-applyLang();
-
-/* ACTIVE NAV */
-const path = window.location.pathname.split("/").pop();
-
-document.querySelectorAll(".nav-item").forEach(el => {
-
-    if(el.getAttribute("href") === path){
-        el.classList.add("active");
-    }
-});
+projectLanguage();
 </script>
 
 </body>
