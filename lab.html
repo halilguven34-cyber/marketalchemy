@@ -48,7 +48,6 @@ font-family:monospace;
 font-size:14px;
 opacity:0.85;
 transition: border-color 0.2s, background 0.2s;
-white-space:pre-line;
 }
 
 .clickable{
@@ -76,6 +75,22 @@ padding: 2px 6px;
 border: 1px solid #6da8ff;
 color: #6da8ff;
 margin-left: 10px;
+}
+
+.meta-info {
+display: block;
+margin-top: 8px;
+color: #888;
+font-size: 12px;
+font-style: italic;
+}
+
+.meta-description {
+display:none;
+font-size:13px;
+color:#888;
+margin-top:10px;
+line-height:1.5;
 }
 
 hr{
@@ -126,53 +141,42 @@ border-left: 2px solid #6da8ff;
 
 <hr>
 
-<!-- ENGINE CORE -->
+<!-- ENGINE CORE (RESTORED FULL BOT SYSTEM) -->
 <div class="section">
 <p class="big" id="engine-core"></p>
 
 <div class="box api-box clickable" onclick="toggleMeta('pascal-desc')">
 PASCAL <span class="status-tag">ACTIVE</span>
-<div id="pascal-desc"></div>
+<div id="pascal-desc" class="meta-description"></div>
 </div>
 
 <div class="box api-box clickable" onclick="toggleMeta('snipper-desc')">
 SNIPPER BOT <span class="status-tag">ACTIVE</span>
-<div id="snipper-desc"></div>
+<div id="snipper-desc" class="meta-description"></div>
 </div>
 
 <div class="box api-box clickable" onclick="toggleMeta('ultimate-desc')">
 ULTIMATE <span class="status-tag">TESTING</span>
-<div id="ultimate-desc"></div>
+<div id="ultimate-desc" class="meta-description"></div>
 </div>
 
-<div class="box api-box">
+<div class="box api-box clickable" onclick="toggleMeta('supervisor-desc')">
 SUPERVISOR <span class="status-tag">SHADOW</span>
+<div id="supervisor-desc" class="meta-description"></div>
 </div>
-
-<div class="box info-box" id="engine-note"></div>
 
 </div>
 
 <hr>
 
-<!-- PROJECTS LAYER (RESTORED) -->
+<!-- PROJECTS (RESTORED FULL LAYERED BLOCK) -->
 <div class="section">
-<p class="big">Projects</p>
+<p class="big" id="projects-title"></p>
 
-<div class="box clickable" id="proj-kobi">
-KOBI DERECELENDİRME ÖĞRENME MOTORU
-<span class="meta-info">Yapısal skorlama modelleri ve SME finansal veri akışı.</span>
-</div>
+<div class="box clickable" onclick="openProject('kobi')" id="proj-kobi"></div>
+<div class="box info-box" id="proj-radar"></div>
+<div class="box info-box" id="proj-bank"></div>
 
-<div class="box info-box" id="proj-radar">
-BORSAYA KOTA OLAN FİRMA RADARI
-<span class="meta-info">Bilanço + piyasa davranışı korelasyonu.</span>
-</div>
-
-<div class="box info-box" id="proj-bank">
-BANKA TİCARİ KREDİ TEKLİFLERİ
-<span class="meta-info">Kredi alan haritalama ve optimizasyon katmanı.</span>
-</div>
 </div>
 
 <hr>
@@ -193,47 +197,66 @@ const translations = {
     tr: {
         title: "Yapısal Finansal Zeka Laboratuvarı",
         subtitle: "Finansal davranışı yapısal düzeyde gözlemlemek — yüzeysel metriklerle değil.",
-        systemStatus: "SİSTEM DURUMU: CANLI YAPISAL GÖZLEM\nMOD: SÜREKLİ ALAN ANALİZİ\nÇIKTI: SADECE KARAR SİNYALLERİ",
+        systemStatus: "SİSTEM DURUMU: CANLI YAPISAL GÖZLEM",
         systemNotFinish: "Bu sistem bitmez.",
-        systemDesc: "Piyasalar statik değildir. Modeller gerçek koşullar altında evrilir.",
-        systemExtra: "Bu bir dashboard değil. Kısıt alanı üzerinden karar üretimi yapan bir gözlem katmanıdır.",
+        systemDesc: "Piyasalar statik değildir. Modeller evrilir.",
+        systemExtra: "Bu bir gözlem katmanıdır.",
         snapTitle: "Sistem Özeti",
-        snapData: "vektör: kararsız\nsürtünme: artıyor\nsıkışma: tespit\n\ndurum: HAZIR",
+        snapData: "vektör: kararsız\nsürtünme: artıyor\nsıkışma: tespit",
         liveSystems: "Canlı Sistemler",
         cryptoM: "KRİPTO PİYASALARI",
         forexM: "FOREX",
         commM: "EMTİA VE ALTIN",
         equityM: "HİSSE ENDEKSLERİ",
         engineCore: "Motor Çekirdeği",
-        engineNote: "Sistem notu: Motorlar strateji değildir. Piyasa yapısına uygulanan kısıt filtreleridir.",
+
+        pascal: "PASCAL: Likidite yapısını okuyan çekirdek sistem.",
+        snipper: "SNIPPER: Mikro yapı kırılımlarını yakalar.",
+        ultimate: "ULTIMATE: Deneysel adaptif motor.",
+        supervisor: "SUPERVISOR: Sistem üst denetim katmanı.",
+
+        projectsTitle: "Geliştirilen Projeler",
+        projKobi: "KOBİ SKOR MOTORU",
+        projRadar: "FİRMA RADARI",
+        projBank: "KREDİ TEKLİF SİSTEMİ",
+
         continuityTitle: "Yapısal Süreklilik",
-        continuityData: "DURUM: AKTİF\nSÜRTÜNME: DEĞİŞKEN\n\n→ HİZALANMA GİRİŞİ"
+        continuityData: "DURUM: AKTİF\nSÜRTÜNME: DEĞİŞKEN\n→ HİZALANMA"
     },
+
     en: {
         title: "Structural Financial Intelligence Lab",
         subtitle: "Observing financial behavior at structural level — not surface metrics.",
-        systemStatus: "SYSTEM STATUS: LIVE STRUCTURAL OBSERVATION\nMODE: CONTINUOUS FIELD ANALYSIS\nOUTPUT: DECISION SIGNALS ONLY",
+        systemStatus: "SYSTEM STATUS: LIVE STRUCTURAL OBSERVATION",
         systemNotFinish: "This system does not finish.",
-        systemDesc: "Markets are not static. Models evolve under real conditions.",
-        systemExtra: "This is not a dashboard. It is a constraint monitoring layer producing decision-relevant structure.",
+        systemDesc: "Markets are not static. Models evolve.",
+        systemExtra: "This is a structural observation layer.",
         snapTitle: "System Snapshot",
-        snapData: "vector: unstable\nfriction: increasing\ncompression: detected\n\nstate: PREPARE",
+        snapData: "vector: unstable\nfriction: increasing\ncompression: detected",
         liveSystems: "Live Systems",
         cryptoM: "CRYPTO MARKETS",
         forexM: "FOREX",
         commM: "COMMODITIES & GOLD",
         equityM: "EQUITY INDICES",
         engineCore: "Engine Core",
-        engineNote: "System note: Engines are not strategies. They are constraint filters applied to market structure.",
+
+        pascal: "PASCAL: Core liquidity structure interpreter.",
+        snipper: "SNIPPER: Micro structural breaker detection.",
+        ultimate: "ULTIMATE: Experimental adaptive engine.",
+        supervisor: "SUPERVISOR: System-wide control layer.",
+
+        projectsTitle: "Developed Projects",
+        projKobi: "SME SCORING ENGINE",
+        projRadar: "COMPANY RADAR",
+        projBank: "CREDIT OFFER SYSTEM",
+
         continuityTitle: "Structural Continuity",
-        continuityData: "STATE: ACTIVE\nFRICTION: VARIABLE\n\n→ ENTER ALIGNMENT"
+        continuityData: "STATE: ACTIVE\nFRICTION: VARIABLE\n→ ALIGNMENT"
     }
 };
 
 function applyLanguage(){
-    const lang = localStorage.getItem("lang") ||
-        (navigator.language.startsWith('tr') ? 'tr' : 'en');
-
+    const lang = navigator.language.startsWith('tr') ? 'tr' : 'en';
     const t = translations[lang];
 
     document.getElementById("title").innerText = t.title;
@@ -254,7 +277,11 @@ function applyLanguage(){
     document.getElementById("equity-m").innerText = t.equityM;
 
     document.getElementById("engine-core").innerText = t.engineCore;
-    document.getElementById("engine-note").innerText = t.engineNote;
+
+    document.getElementById("projects-title").innerText = t.projectsTitle;
+    document.getElementById("proj-kobi").innerText = t.projKobi;
+    document.getElementById("proj-radar").innerText = t.projRadar;
+    document.getElementById("proj-bank").innerText = t.projBank;
 
     document.getElementById("continuity-title").innerText = t.continuityTitle;
     document.getElementById("continuity-data").innerText = t.continuityData;
@@ -263,6 +290,11 @@ function applyLanguage(){
 function toggleMeta(id){
     const el = document.getElementById(id);
     el.style.display = (el.style.display === "block") ? "none" : "block";
+}
+
+function openProject(name){
+    localStorage.setItem("selectedProject", name);
+    window.location.href = "intake.html";
 }
 
 window.onload = applyLanguage;
