@@ -126,6 +126,7 @@ border-left: 2px solid #6da8ff;
 
 <hr>
 
+<!-- ENGINE CORE -->
 <div class="section">
 <p class="big" id="engine-core"></p>
 
@@ -154,6 +155,28 @@ SUPERVISOR <span class="status-tag">SHADOW</span>
 
 <hr>
 
+<!-- PROJECTS LAYER (RESTORED) -->
+<div class="section">
+<p class="big">Projects</p>
+
+<div class="box clickable" id="proj-kobi">
+KOBI DERECELENDİRME ÖĞRENME MOTORU
+<span class="meta-info">Yapısal skorlama modelleri ve SME finansal veri akışı.</span>
+</div>
+
+<div class="box info-box" id="proj-radar">
+BORSAYA KOTA OLAN FİRMA RADARI
+<span class="meta-info">Bilanço + piyasa davranışı korelasyonu.</span>
+</div>
+
+<div class="box info-box" id="proj-bank">
+BANKA TİCARİ KREDİ TEKLİFLERİ
+<span class="meta-info">Kredi alan haritalama ve optimizasyon katmanı.</span>
+</div>
+</div>
+
+<hr>
+
 <div class="section">
 <p class="big" id="continuity-title"></p>
 
@@ -175,7 +198,7 @@ const translations = {
         systemDesc: "Piyasalar statik değildir. Modeller gerçek koşullar altında evrilir.",
         systemExtra: "Bu bir dashboard değil. Kısıt alanı üzerinden karar üretimi yapan bir gözlem katmanıdır.",
         snapTitle: "Sistem Özeti",
-        snapData: "vektör: kararsız\nsürtünme: artıyor\nsıkışma: tespit\n\nsinyal güveni: oluşuyor\ndurum: HAZIR",
+        snapData: "vektör: kararsız\nsürtünme: artıyor\nsıkışma: tespit\n\ndurum: HAZIR",
         liveSystems: "Canlı Sistemler",
         cryptoM: "KRİPTO PİYASALARI",
         forexM: "FOREX",
@@ -183,10 +206,6 @@ const translations = {
         equityM: "HİSSE ENDEKSLERİ",
         engineCore: "Motor Çekirdeği",
         engineNote: "Sistem notu: Motorlar strateji değildir. Piyasa yapısına uygulanan kısıt filtreleridir.",
-        systemExtra: "Bu bir dashboard değil. Kısıt alanı üzerinden karar üretimi yapan bir gözlem katmanıdır.",
-        pascalLog: "",
-        snipperLog: "",
-        ultimateLog: "",
         continuityTitle: "Yapısal Süreklilik",
         continuityData: "DURUM: AKTİF\nSÜRTÜNME: DEĞİŞKEN\n\n→ HİZALANMA GİRİŞİ"
     },
@@ -198,7 +217,7 @@ const translations = {
         systemDesc: "Markets are not static. Models evolve under real conditions.",
         systemExtra: "This is not a dashboard. It is a constraint monitoring layer producing decision-relevant structure.",
         snapTitle: "System Snapshot",
-        snapData: "vector: unstable\nfriction: increasing\ncompression: detected\n\nsignal confidence: forming\nstate: PREPARE",
+        snapData: "vector: unstable\nfriction: increasing\ncompression: detected\n\nstate: PREPARE",
         liveSystems: "Live Systems",
         cryptoM: "CRYPTO MARKETS",
         forexM: "FOREX",
@@ -212,8 +231,8 @@ const translations = {
 };
 
 function applyLanguage(){
-    const lang = (localStorage.getItem("lang") ||
-                 (navigator.language.startsWith('tr') ? 'tr' : 'en'));
+    const lang = localStorage.getItem("lang") ||
+        (navigator.language.startsWith('tr') ? 'tr' : 'en');
 
     const t = translations[lang];
 
