@@ -10,12 +10,10 @@
 <meta name="description" content="Market Alchemy is a structural decision system modeling markets as constraint-driven dynamics where price is the residue of eliminated impossibilities.">
 <meta name="keywords" content="Market Alchemy, structural finance, decision physics, constraint system, trading model, market structure">
 
-<!-- V3 GRAPH NODE METADATA -->
 <meta name="graph-node" content="index">
 <meta name="node-type" content="decision-engine">
 <meta name="system-layer" content="surface">
 
-<!-- CANONICAL LANGUAGE STATE -->
 <script>
 if(!localStorage.getItem("lang")){
     const userLang = navigator.language || navigator.userLanguage;
@@ -40,7 +38,7 @@ body{
     line-height:1.6;
 }
 
-/* NAV */
+/* NAV (fully reactive) */
 nav{
     position:fixed;
     top:0;
@@ -65,10 +63,12 @@ nav a{
     text-decoration:none;
     font-size:12px;
     opacity:0.85;
+    transition:0.2s;
 }
 
 nav a:hover{
     color:var(--accent);
+    opacity:1;
 }
 
 /* CONTAINER */
@@ -81,16 +81,24 @@ nav a:hover{
 h1,h2,p{ margin:0; }
 
 h1{
-    font-size:26px;
+    font-size:34px;
+    letter-spacing:-0.5px;
     border-left:2px solid var(--accent);
     padding-left:12px;
     margin-bottom:10px;
+    animation:pulse 6s infinite;
 }
 
 h2{
     margin-top:40px;
-    font-size:18px;
+    font-size:20px;
     color:var(--accent);
+    opacity:0.9;
+}
+
+p{
+    font-size:14px;
+    opacity:0.78;
 }
 
 .section{
@@ -98,11 +106,27 @@ h2{
     padding:20px;
     border:1px solid var(--border);
     background:rgba(17,21,28,0.7);
+    transition:0.3s;
 }
 
+.section:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+}
+
+/* DIAGRAM GATE */
 .diagram{
     margin-top:20px;
     text-align:center;
+}
+
+.diagram a{
+    display:block;
+    transition:0.3s;
+}
+
+.diagram a:hover{
+    transform:scale(1.01);
 }
 
 .diagram img{
@@ -123,47 +147,45 @@ h2{
     background:var(--accent);
     color:var(--bg);
 }
+
+@keyframes pulse{
+    0%{opacity:0.7;}
+    50%{opacity:1;}
+    100%{opacity:0.7;}
+}
 </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION (V3 EDGE STANDARDIZED) -->
 <nav>
     <div class="wrap">
-        <a href="index.html" data-node="index">MA</a>
-        <a href="research.html" data-node="research">Research</a>
-        <a href="lab.html" data-node="lab">Lab</a>
-        <a href="law.html" data-node="law">Law</a>
-        <a href="ma.html" data-node="engine">Engine</a>
+        <a href="index.html" data-en="MA" data-tr="MA"></a>
+        <a href="research.html" data-en="Research" data-tr="Araştırma"></a>
+        <a href="lab.html" data-en="Lab" data-tr="Laboratuvar"></a>
+        <a href="law.html" data-en="Law" data-tr="Yasa"></a>
+        <a href="ma.html" data-en="Engine" data-tr="Motor"></a>
     </div>
 </nav>
 
 <div class="container">
 
-<!-- CORE IDENTITY -->
 <header>
-    <h1 id="title"
-        data-en="Market Alchemy"
-        data-tr="Market Alchemy">
-    </h1>
+    <h1 data-en="Market Alchemy" data-tr="Market Alchemy"></h1>
 
-    <p id="subtitle"
-       data-en="A structural decision physics system modeling financial markets as constraint-driven dynamics. Price is residue."
-       data-tr="Finansal piyasaları kısıt-tabanlı dinamikler olarak modelleyen yapısal karar fiziği sistemi. Fiyat, kalandır.">
+    <p data-en="A structural decision physics system modeling financial markets as constraint-driven dynamics. Price is the residue."
+       data-tr="Finansal piyasaları kısıt-tabanlı dinamikler olarak modelleyen yapısal karar fiziği sistemi. Fiyat, sistem davranışının kaydıdır.">
     </p>
 </header>
 
-<!-- CORE PRINCIPLE -->
 <section class="section">
     <h2 data-en="Core Principle" data-tr="Temel İlke"></h2>
 
-    <p data-en="The system does not evaluate options. It eliminates impossibilities. What remains is not choice but structural residue."
-       data-tr="Sistem seçenekleri değerlendirmez. İmkânsızları eler. Geriye kalan seçim değil, yapısal kalandır.">
+    <p data-en="The system does not evaluate options. It eliminates impossibilities. What remains is structural residue."
+       data-tr="Sistem seçenekleri değerlendirmez. İmkânsızlıkları eler. Geriye kalan yapısal kalandır.">
     </p>
 </section>
 
-<!-- OBSERVER MODEL -->
 <section class="section">
     <h2 data-en="Observer–Structure Model" data-tr="Gözlemci–Yapı Modeli"></h2>
 
@@ -172,15 +194,15 @@ h2{
     </p>
 
     <div class="diagram">
-        <img src="time.diagram.jpg" alt="Market Alchemy Observer Structure Model">
-
+        <a href="law.html">
+            <img src="time.diagram.jpg" alt="Observer Structure Model">
+        </a>
         <p style="font-size:12px; opacity:0.6;">
             Observer → Constraint Field → Projection → Residual Structure
         </p>
     </div>
 </section>
 
-<!-- ENGINE -->
 <section class="section">
     <h2 data-en="Decision Engine" data-tr="Karar Motoru"></h2>
 
@@ -188,17 +210,15 @@ h2{
        data-tr="Girdi → Kısıt Alanı → Geçersiz Yolların Elenmesi → Tek Vektör">
     </p>
 
-    <p data-en="The system does not compute probability. It collapses state space."
-       data-tr="Sistem olasılık hesaplamaz. Durum uzayını çökerterek indirger.">
+    <p data-en="The system collapses state space instead of computing probability."
+       data-tr="Sistem olasılık hesaplamaz, durum uzayını çökerterek indirger.">
     </p>
 
     <a class="cta" href="ma.html"
        data-en="Enter System"
-       data-tr="Sisteme Gir">
-    </a>
+       data-tr="Sisteme Gir"></a>
 </section>
 
-<!-- LAYERS -->
 <section class="section">
     <h2 data-en="Structural Layers" data-tr="Yapısal Katmanlar"></h2>
 
@@ -212,24 +232,26 @@ h2{
        data-tr="03 — Vektör indirgenemez kalandır"></p>
 </section>
 
-<!-- AXIOM -->
 <section class="section">
     <h2 data-en="Axiom" data-tr="Aksiyom"></h2>
 
     <p data-en="System is not choosing. System is filtering impossibility."
        data-tr="Sistem seçim yapmaz. İmkânsızlığı filtreler.">
     </p>
-
 </section>
 
 </div>
 
-<!-- V3 PROJECTION ENGINE (STABLE) -->
 <script>
 const lang = localStorage.getItem("lang") || "en";
 
 function projectLanguage(){
     document.querySelectorAll("[data-en]").forEach(el => {
+        const value = el.getAttribute("data-" + lang);
+        if(value) el.textContent = value;
+    });
+
+    document.querySelectorAll("nav a").forEach(el => {
         const value = el.getAttribute("data-" + lang);
         if(value) el.textContent = value;
     });
