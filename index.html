@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Market Alchemy — Structural Decision Physics</title>
+
+<meta name="description" content="Market Alchemy is a structural decision system modeling markets as constraint-driven dynamics where price is the residue of eliminated impossibilities.">
+<meta name="keywords" content="Market Alchemy, structural finance, decision physics, constraint system, trading model, market structure">
+
+<!-- CANONICAL LANGUAGE STATE -->
 <script>
 if(!localStorage.getItem("lang")){
     const userLang = navigator.language || navigator.userLanguage;
     localStorage.setItem("lang", userLang.toLowerCase().startsWith("tr") ? "tr" : "en");
 }
-
-const activeLang = localStorage.getItem("lang") || "en";
-document.documentElement.lang = activeLang;
 </script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Market Alchemy — Structural Law</title>
 
 <style>
 :root{
@@ -30,12 +32,10 @@ body{
     background:var(--bg);
     color:var(--fg);
     font-family: 'JetBrains Mono', monospace, -apple-system, sans-serif;
-    line-height: 1.5;
-    overflow-x: hidden;
+    line-height:1.6;
 }
 
-/* ───────────────── NAVBAR (VISIBLE ALWAYS) ───────────────── */
-nav.topbar{
+nav{
     position:fixed;
     top:0;
     left:0;
@@ -46,245 +46,185 @@ nav.topbar{
     border-bottom:1px solid var(--border);
 }
 
-nav.topbar .wrap{
+nav .wrap{
     max-width:900px;
     margin:auto;
     display:flex;
     justify-content:space-between;
-    align-items:center;
     padding:10px 16px;
 }
 
-nav.topbar a{
+nav a{
     color:var(--fg);
     text-decoration:none;
     font-size:12px;
-    letter-spacing:1px;
-    padding:6px 10px;
-    border:1px solid transparent;
-    transition:0.2s;
-}
-
-nav.topbar a:hover{
-    border:1px solid var(--accent);
-    color:var(--accent);
-}
-
-canvas#field{
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    z-index:0;
-    pointer-events:none;
-    opacity:0.35;
 }
 
 .container{
-    position:relative;
-    max-width:720px;
+    max-width:800px;
     margin:auto;
-    padding:110px 20px 80px;
-    z-index:1;
+    padding:120px 20px 80px;
+}
+
+h1,h2,p{
+    margin:0;
 }
 
 h1{
-    font-size:24px;
-    margin:0;
-    font-weight:600;
+    font-size:26px;
     border-left:2px solid var(--accent);
-    padding-left:15px;
+    padding-left:12px;
+    margin-bottom:10px;
 }
 
-.sub{
-    font-size:13px;
-    color:var(--muted);
-    margin-top:10px;
-    padding-left:17px;
+h2{
+    margin-top:40px;
+    font-size:18px;
+    color:var(--accent);
 }
 
-/* ENGINE */
-.engine{
-    margin:60px 0;
-    padding:40px;
+.section{
+    margin-top:40px;
+    padding:20px;
     border:1px solid var(--border);
-    background:rgba(17,21,28,0.85);
-    backdrop-filter:blur(12px);
-    position:relative;
+    background:rgba(17,21,28,0.7);
 }
 
-.engine::before{
-    content:"";
-    position:absolute;
-    top:0; left:0;
-    width:100%;
-    height:2px;
-    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+.diagram{
+    margin-top:20px;
+    text-align:center;
 }
 
-.engine-title{
-    font-size:10px;
-    letter-spacing:3px;
-    color:var(--accent);
-    margin-bottom:30px;
-    font-weight:bold;
+.diagram img{
+    max-width:100%;
+    border:1px solid var(--border);
 }
 
-.engine-line{
-    font-size:15px;
-    margin-bottom:20px;
-}
-
-.engine-line span{
-    color:var(--accent);
-    font-weight:bold;
-}
-
-.flow{
-    margin-top:40px;
-    font-size:14px;
-    color:var(--muted);
-}
-
-.flow div{
-    margin-bottom:12px;
-}
-
-.flow div::before{
-    content:"→ ";
-    color:var(--accent);
-}
-
-/* CTA */
 .cta{
-    margin-top:40px;
     display:inline-block;
+    margin-top:20px;
+    padding:10px 18px;
+    border:1px solid var(--accent);
     color:var(--accent);
     text-decoration:none;
-    font-size:13px;
-    letter-spacing:1px;
-    border:1px solid var(--accent);
-    padding:12px 24px;
-    transition:0.3s;
-    background:rgba(13,15,20,0.6);
 }
 
 .cta:hover{
     background:var(--accent);
     color:var(--bg);
 }
-
-/* DEPTH NAV */
-.depth{
-    margin-top:80px;
-    border-top:1px solid var(--border);
-}
-
-.depth a{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 0;
-    color:var(--fg);
-    text-decoration:none;
-    border-bottom:1px solid var(--border);
-    transition:0.2s;
-}
-
-.depth a:hover{
-    padding-left:10px;
-    background:rgba(109,168,255,0.05);
-}
-
-.depth a span{
-    color:var(--accent);
-    font-size:10px;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-    .network-grid{gap:20px;}
-}
 </style>
 </head>
 
 <body>
 
-<!-- FIXED NAVIGATION -->
-<nav class="topbar">
+<!-- NAVIGATION -->
+<nav>
     <div class="wrap">
-        <a href="index.html" class="en">MA</a>
-        <a href="index.html" class="tr">MA</a>
-
-        <a href="research.html" class="en">Research</a>
-        <a href="research.html" class="tr" style="display:none;">Araştırma</a>
-
-        <a href="lab.html" class="en">Lab</a>
-        <a href="lab.html" class="tr" style="display:none;">Laboratuvar</a>
-
-        <a href="law.html" class="en">Law</a>
-        <a href="law.html" class="tr" style="display:none;">Yasa</a>
-
-        <a href="ma.html" class="en">Engine</a>
-        <a href="ma.html" class="tr" style="display:none;">Motor</a>
+        <a href="index.html">MA</a>
+        <a href="research.html">Research</a>
+        <a href="lab.html">Lab</a>
+        <a href="law.html">Law</a>
+        <a href="ma.html">Engine</a>
     </div>
 </nav>
-
-<canvas id="field"></canvas>
 
 <div class="container">
 
+<!-- CORE IDENTITY -->
 <header>
-    <h1 class="en">Decision Physics Engine</h1>
-    <h1 class="tr" style="display:none;">Karar Fizik Motoru</h1>
+    <h1 id="title"
+        data-en="Market Alchemy"
+        data-tr="Market Alchemy">
+    </h1>
 
-    <div class="sub en">Structural decision system operating on financial market dynamics</div>
-    <div class="sub tr" style="display:none;">Finansal piyasa dinamikleri üzerinde çalışan yapısal karar sistemi</div>
+    <p id="subtitle"
+       data-en="A structural decision physics system modeling financial markets as constraint-driven dynamics. Price is residue."
+       data-tr="Finansal piyasaları kısıt-tabanlı dinamikler olarak modelleyen yapısal karar fiziği sistemi. Fiyat, kalandır.">
+    </p>
 </header>
 
-<section class="engine">
+<!-- CORE PRINCIPLE -->
+<section class="section">
+    <h2 data-en="Core Principle" data-tr="Temel İlke"></h2>
 
-    <div class="engine-title en">CONSTRAINT COLLAPSE CORE</div>
-    <div class="engine-title tr" style="display:none;">KISIT ÇÖKÜŞ ÇEKİRDEĞİ</div>
-
-    <div class="engine-line en">
-        Input State → Constraint Field → Invalid Paths Removal → <span>Single Vector</span>
-    </div>
-
-    <div class="engine-line tr" style="display:none;">
-        Girdi → Kısıt Alanı → Geçersiz Yolların Elenmesi → <span>Tek Vektör</span>
-    </div>
-
-    <div class="flow en">
-        <div>System does not evaluate options</div>
-        <div>System eliminates impossibilities</div>
-        <div>Result is not choice — it is residue</div>
-    </div>
-
-    <div class="flow tr" style="display:none;">
-        <div>Sistem seçenekleri değerlendirmez</div>
-        <div>Sistem imkânsızları eler</div>
-        <div>Sonuç seçim değil, kalandır</div>
-    </div>
-
-    <a class="cta en" href="ma.html">ENTER SYSTEM →</a>
-    <a class="cta tr" href="ma.html" style="display:none;">SİSTEME GİR →</a>
-
+    <p data-en="The system does not evaluate options. It eliminates impossibilities. What remains is not choice but structural residue."
+       data-tr="Sistem seçenekleri değerlendirmez. İmkânsızları eler. Geriye kalan seçim değil, yapısal kalandır.">
+    </p>
 </section>
 
-<nav class="depth">
-    <a href="research.html"><span>01 — Constraints</span><span class="en">Research Layer</span><span class="tr" style="display:none;">Araştırma</span></a>
-    <a href="lab.html"><span>02 — Observation</span><span class="en">Lab Layer</span><span class="tr" style="display:none;">Laboratuvar</span></a>
-    <a href="law.html"><span>03 — Vector</span><span class="en">Law Layer</span><span class="tr" style="display:none;">Yasa</span></a>
-</nav>
+<!-- OBSERVER MODEL -->
+<section class="section">
+    <h2 data-en="Observer–Structure Model" data-tr="Gözlemci–Yapı Modeli"></h2>
+
+    <p data-en="Market behavior is a projection of constraint fields filtered through observer-dependent resolution."
+       data-tr="Piyasa davranışı, gözlemciye bağlı çözünürlükten süzülen kısıt alanlarının projeksiyonudur.">
+    </p>
+
+    <div class="diagram">
+        <img src="Diagram.png" alt="Market Alchemy Observer Structure Model">
+
+        <p style="font-size:12px; opacity:0.6;">
+            Observer → Constraint Field → Projection → Residual Structure
+        </p>
+    </div>
+</section>
+
+<!-- ENGINE -->
+<section class="section">
+    <h2 data-en="Decision Engine" data-tr="Karar Motoru"></h2>
+
+    <p data-en="Input State → Constraint Field → Invalid Path Elimination → Single Vector"
+       data-tr="Girdi → Kısıt Alanı → Geçersiz Yolların Elenmesi → Tek Vektör">
+    </p>
+
+    <p data-en="The system does not compute probability. It collapses state space."
+       data-tr="Sistem olasılık hesaplamaz. Durum uzayını çökerterek indirger.">
+    </p>
+
+    <a class="cta" href="ma.html"
+       data-en="Enter System"
+       data-tr="Sisteme Gir">
+    </a>
+</section>
+
+<!-- LAYERS -->
+<section class="section">
+    <h2 data-en="Structural Layers" data-tr="Yapısal Katmanlar"></h2>
+
+    <p data-en="01 — Constraints define possibility space"
+       data-tr="01 — Kısıtlar olasılık alanını tanımlar"></p>
+
+    <p data-en="02 — Observation projects state space"
+       data-tr="02 — Gözlem durum uzayını projekte eder"></p>
+
+    <p data-en="03 — Vector is irreducible residue"
+       data-tr="03 — Vektör indirgenemez kalandır"></p>
+</section>
+
+<!-- AXIOM -->
+<section class="section">
+    <h2 data-en="Axiom" data-tr="Aksiyom"></h2>
+
+    <p data-en="System is not choosing. System is filtering impossibility."
+       data-tr="Sistem seçim yapmaz. İmkânsızlığı filtreler.">
+    </p>
+</section>
 
 </div>
 
+<!-- PROJECTION ENGINE -->
 <script>
 const lang = localStorage.getItem("lang") || "en";
-if(lang === "tr"){
-    document.querySelectorAll(".en").forEach(e=>e.style.display="none");
-    document.querySelectorAll(".tr").forEach(e=>e.style.display=(e.tagName==="A"?"flex":"block"));
+
+function projectLanguage(){
+    document.querySelectorAll("[data-en]").forEach(el => {
+        const value = el.getAttribute("data-" + lang);
+        if(value) el.textContent = value;
+    });
 }
+
+projectLanguage();
 </script>
 
 </body>
