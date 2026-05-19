@@ -10,6 +10,11 @@
 <meta name="description" content="Market Alchemy is a structural decision system modeling markets as constraint-driven dynamics where price is the residue of eliminated impossibilities.">
 <meta name="keywords" content="Market Alchemy, structural finance, decision physics, constraint system, trading model, market structure">
 
+<!-- V3 GRAPH NODE METADATA -->
+<meta name="graph-node" content="index">
+<meta name="node-type" content="decision-engine">
+<meta name="system-layer" content="surface">
+
 <!-- CANONICAL LANGUAGE STATE -->
 <script>
 if(!localStorage.getItem("lang")){
@@ -35,6 +40,7 @@ body{
     line-height:1.6;
 }
 
+/* NAV */
 nav{
     position:fixed;
     top:0;
@@ -58,17 +64,21 @@ nav a{
     color:var(--fg);
     text-decoration:none;
     font-size:12px;
+    opacity:0.85;
 }
 
+nav a:hover{
+    color:var(--accent);
+}
+
+/* CONTAINER */
 .container{
     max-width:800px;
     margin:auto;
     padding:120px 20px 80px;
 }
 
-h1,h2,p{
-    margin:0;
-}
+h1,h2,p{ margin:0; }
 
 h1{
     font-size:26px;
@@ -118,14 +128,14 @@ h2{
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAVIGATION (V3 EDGE STANDARDIZED) -->
 <nav>
     <div class="wrap">
-        <a href="index.html">MA</a>
-        <a href="research.html">Research</a>
-        <a href="lab.html">Lab</a>
-        <a href="law.html">Law</a>
-        <a href="ma.html">Engine</a>
+        <a href="index.html" data-node="index">MA</a>
+        <a href="research.html" data-node="research">Research</a>
+        <a href="lab.html" data-node="lab">Lab</a>
+        <a href="law.html" data-node="law">Law</a>
+        <a href="ma.html" data-node="engine">Engine</a>
     </div>
 </nav>
 
@@ -213,7 +223,7 @@ h2{
 
 </div>
 
-<!-- PROJECTION ENGINE -->
+<!-- V3 PROJECTION ENGINE (STABLE) -->
 <script>
 const lang = localStorage.getItem("lang") || "en";
 
