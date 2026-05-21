@@ -244,7 +244,7 @@ p{
         <a href="index.html" data-en="Home" data-tr="Anasayfa"></a>
         <a href="research.html" data-en="Research" data-tr="Araştırma"></a>
         <a href="lab.html" data-en="Lab" data-tr="Laboratuvar"></a>
-        <a href="law.html" data-en="Law" data-tr="Yasa"></a>
+        <a href="library.html" data-en="Library" data-tr="Kütüphane"></a>
         <a href="ma.html" data-en="Engine" data-tr="Motor"></a>
 
     </div>
@@ -420,7 +420,10 @@ function projectLanguage(){
 
 /* NAV ACTIVE STATE PATCH */
 (function(){
-    const path = window.location.pathname.split("/").pop();
+    let path = window.location.pathname.split("/").pop();
+    if (path === "" || path === "index.html") {
+        path = "index.html";
+    }
     document.querySelectorAll("nav a").forEach(a => {
         const href = a.getAttribute("href");
         if(href === path){
