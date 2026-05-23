@@ -4,28 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Everyday Patterns — Observable Structures of Life | Market Alchemy Lab</title>
-
-<meta name="description" content="Everyday Patterns explores observable structures emerging through animal behavior, environmental motion, biological interaction and systemic life dynamics.">
+<title>Lab — Market Alchemy</title>
 
 <link rel="canonical" href="https://marketalchemy.io/lab/everyday-patterns">
-
-<meta property="og:title" content="Everyday Patterns — Observable Structures of Life">
-<meta property="og:description" content="Observed universe through structural dynamics.">
-<meta property="og:type" content="website">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Everyday Patterns",
-  "description": "Observable structures emerging from living systems.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Market Alchemy"
-  }
-}
-</script>
 
 <style>
 body{
@@ -155,7 +136,7 @@ border:none;
 
 <hr>
 
-<!-- OBSERVED UNIVERSE -->
+<!-- OBSERVED UNIVERSE (NEW LAYER) -->
 <div class="section">
 
 <p class="big" id="observed-title"></p>
@@ -183,65 +164,172 @@ allowfullscreen>
 
 <hr>
 
+<!-- ENGINE CORE (RESTORED FULL BOT SYSTEM) -->
+<div class="section">
+<p class="big" id="engine-core"></p>
+
+<div class="box api-box clickable" onclick="toggleMeta('pascal-desc')">
+PASCAL <span class="status-tag">ACTIVE</span>
+<div id="pascal-desc" class="meta-description"></div>
+</div>
+
+<div class="box api-box clickable" onclick="toggleMeta('snipper-desc')">
+SNIPPER BOT <span class="status-tag">ACTIVE</span>
+<div id="snipper-desc" class="meta-description"></div>
+</div>
+
+<div class="box api-box clickable" onclick="toggleMeta('ultimate-desc')">
+ULTIMATE <span class="status-tag">TESTING</span>
+<div id="ultimate-desc" class="meta-description"></div>
+</div>
+
+<div class="box api-box clickable" onclick="toggleMeta('supervisor-desc')">
+SUPERVISOR <span class="status-tag">SHADOW</span>
+<div id="supervisor-desc" class="meta-description"></div>
+</div>
+
+</div>
+
+<hr>
+
+<!-- PROJECTS (RESTORED) -->
+<div class="section">
+<p class="big" id="projects-title"></p>
+
+<div class="box clickable" onclick="openProject('kobi')" id="proj-kobi"></div>
+<div class="box info-box" id="proj-radar"></div>
+<div class="box info-box" id="proj-bank"></div>
+
+</div>
+
+<hr>
+
+<!-- CONTINUITY (RESTORED) -->
+<div class="section">
+<p class="big" id="continuity-title"></p>
+
+<div class="box clickable"
+id="continuity-data"
+onclick="window.location.href='access.html?mode=lab'"></div>
+
+</div>
+
+</div>
+
 <script>
 const translations = {
-    tr: {
-        title: "Yapısal Finansal Zeka Laboratuvarı",
-        subtitle: "Finansal davranışı yapısal düzeyde gözlemlemek — yüzeysel metriklerle değil.",
-        systemStatus: "SİSTEM DURUMU: CANLI YAPISAL GÖZLEM",
-        systemNotFinish: "Bu sistem bitmez.",
-        systemDesc: "Piyasalar statik değildir. Modeller evrilir.",
-        systemExtra: "Bu bir gözlem katmanıdır.",
+tr:{
+title:"Yapısal Finansal Zeka Laboratuvarı",
+subtitle:"Finansal davranışı yapısal düzeyde gözlemlemek — yüzeysel metriklerle değil.",
+systemStatus:"SİSTEM DURUMU: CANLI YAPISAL GÖZLEM",
+systemNotFinish:"Bu sistem bitmez.",
+systemDesc:"Piyasalar statik değildir. Modeller evrilir.",
+systemExtra:"Bu bir gözlem katmanıdır.",
 
-        observedTitle: "Gözlemlenen Evren",
-        observedSubtitle: "Yaşam sistemleri üzerinden gözlemlenen yapısal davranış.",
-        observedDesc: "Everyday Patterns; biyolojik hareket, kolektif davranış, çevresel etkileşimler ve yaşam dinamikleri içinde ortaya çıkan tekrar eden yapıları gözlemler.",
-        observedExtra: "Piyasa gözlemlenebilir tek sistem değildir.\nYaşamın kendisi yapısal izler bırakır.",
+observedTitle:"Gözlemlenen Evren",
+observedSubtitle:"Yaşam sistemleri üzerinden gözlemlenen yapısal davranış.",
+observedDesc:"Everyday Patterns; biyolojik hareket, kolektif davranış, çevresel etkileşimler ve yaşam dinamikleri içinde ortaya çıkan tekrar eden yapıları gözlemler.",
+observedExtra:"Piyasa gözlemlenebilir tek sistem değildir.\nYaşamın kendisi yapısal izler bırakır.",
 
-        epChannel: "EVERYDAY PATTERNS → GÖZLEM KATMANINA ERİŞ",
-        epCategories: "Swarm Dynamics\nTerritorial Structures\nPredator Timing\nCompression & Release\nEmergent Coordination\nBiological Rhythm\nEnergy Preservation"
-    },
+epChannel:"EVERYDAY PATTERNS → GÖZLEM KATMANINA ERİŞ",
+epCategories:"Swarm Dynamics\nTerritorial Structures\nPredator Timing\nCompression & Release\nEmergent Coordination\nBiological Rhythm\nEnergy Preservation",
 
-    en: {
-        title: "Structural Financial Intelligence Lab",
-        subtitle: "Observing financial behavior at structural level — not surface metrics.",
-        systemStatus: "SYSTEM STATUS: LIVE STRUCTURAL OBSERVATION",
-        systemNotFinish: "This system does not finish.",
-        systemDesc: "Markets are not static. Models evolve.",
-        systemExtra: "This is a structural observation layer.",
+engineCore:"Motor Çekirdeği",
 
-        observedTitle: "Observed Universe",
-        observedSubtitle: "Structural behavior observed through living systems.",
-        observedDesc: "Everyday Patterns explores recurring structures emerging from biological motion, collective behavior, environmental interaction and observable life dynamics.",
-        observedExtra: "The market is not the only observable system.\nLife itself leaves structural signatures.",
+pascal:"PASCAL: Likidite yapısını okuyan çekirdek sistem.",
+snipper:"SNIPPER: Mikro yapı kırılımlarını yakalar.",
+ultimate:"ULTIMATE: Deneysel adaptif motor.",
+supervisor:"SUPERVISOR: Sistem üst denetim katmanı.",
 
-        epChannel: "EVERYDAY PATTERNS → ACCESS OBSERVATIONAL LAYER",
-        epCategories: "Swarm Dynamics\nTerritorial Structures\nPredator Timing\nCompression & Release\nEmergent Coordination\nBiological Rhythm\nEnergy Preservation"
-    }
+projectsTitle:"Geliştirilen Projeler",
+projKobi:"KOBİ SKOR MOTORU",
+projRadar:"FİRMA RADARI",
+projBank:"KREDİ TEKLİF SİSTEMİ",
+
+continuityTitle:"Yapısal Süreklilik",
+continuityData:"DURUM: AKTİF\nSÜRTÜNME: DEĞİŞKEN\n→ HİZALANMA"
+},
+
+en:{
+title:"Structural Financial Intelligence Lab",
+subtitle:"Observing financial behavior at structural level — not surface metrics.",
+systemStatus:"SYSTEM STATUS: LIVE STRUCTURAL OBSERVATION",
+systemNotFinish:"This system does not finish.",
+systemDesc:"Markets are not static. Models evolve.",
+systemExtra:"This is a structural observation layer.",
+
+observedTitle:"Observed Universe",
+observedSubtitle:"Structural behavior observed through living systems.",
+observedDesc:"Everyday Patterns explores recurring structures emerging from biological motion, collective behavior, environmental interaction and observable life dynamics.",
+observedExtra:"The market is not the only observable system.\nLife itself leaves structural signatures.",
+
+epChannel:"EVERYDAY PATTERNS → ACCESS OBSERVATIONAL LAYER",
+epCategories:"Swarm Dynamics\nTerritorial Structures\nPredator Timing\nCompression & Release\nEmergent Coordination\nBiological Rhythm\nEnergy Preservation",
+
+engineCore:"Engine Core",
+
+pascal:"PASCAL: Core liquidity structure interpreter.",
+snipper:"SNIPPER: Micro structural breaker detection.",
+ultimate:"ULTIMATE: Experimental adaptive engine.",
+supervisor:"SUPERVISOR: System-wide control layer.",
+
+projectsTitle:"Developed Projects",
+projKobi:"SME SCORING ENGINE",
+projRadar:"COMPANY RADAR",
+projBank:"CREDIT OFFER SYSTEM",
+
+continuityTitle:"Structural Continuity",
+continuityData:"STATE: ACTIVE\nFRICTION: VARIABLE\n→ ALIGNMENT"
+}
 };
 
 function applyLanguage(){
-    const lang = navigator.language.startsWith('tr') ? 'tr' : 'en';
-    const t = translations[lang];
+const lang=navigator.language.startsWith("tr")?"tr":"en";
+const t=translations[lang];
 
-    document.getElementById("title").innerText = t.title;
-    document.getElementById("subtitle").innerText = t.subtitle;
-    document.getElementById("system-status").innerText = t.systemStatus;
+document.getElementById("title").innerText=t.title;
+document.getElementById("subtitle").innerText=t.subtitle;
+document.getElementById("system-status").innerText=t.systemStatus;
 
-    document.getElementById("system-not-finish").innerText = t.systemNotFinish;
-    document.getElementById("system-desc").innerText = t.systemDesc;
-    document.getElementById("system-extra").innerText = t.systemExtra;
+document.getElementById("system-not-finish").innerText=t.systemNotFinish;
+document.getElementById("system-desc").innerText=t.systemDesc;
+document.getElementById("system-extra").innerText=t.systemExtra;
 
-    document.getElementById("observed-title").innerText = t.observedTitle;
-    document.getElementById("observed-subtitle").innerText = t.observedSubtitle;
-    document.getElementById("observed-desc").innerText = t.observedDesc;
-    document.getElementById("observed-extra").innerText = t.observedExtra;
+document.getElementById("observed-title").innerText=t.observedTitle;
+document.getElementById("observed-subtitle").innerText=t.observedSubtitle;
+document.getElementById("observed-desc").innerText=t.observedDesc;
+document.getElementById("observed-extra").innerText=t.observedExtra;
 
-    document.getElementById("ep-channel").innerText = t.epChannel;
-    document.getElementById("ep-categories").innerText = t.epCategories;
+document.getElementById("ep-channel").innerText=t.epChannel;
+document.getElementById("ep-categories").innerText=t.epCategories;
+
+document.getElementById("engine-core").innerText=t.engineCore;
+
+document.getElementById("pascal-desc").innerText=t.pascal;
+document.getElementById("snipper-desc").innerText=t.snipper;
+document.getElementById("ultimate-desc").innerText=t.ultimate;
+document.getElementById("supervisor-desc").innerText=t.supervisor;
+
+document.getElementById("projects-title").innerText=t.projectsTitle;
+document.getElementById("proj-kobi").innerText=t.projKobi;
+document.getElementById("proj-radar").innerText=t.projRadar;
+document.getElementById("proj-bank").innerText=t.projBank;
+
+document.getElementById("continuity-title").innerText=t.continuityTitle;
+document.getElementById("continuity-data").innerText=t.continuityData;
 }
 
-window.onload = applyLanguage;
+function toggleMeta(id){
+const el=document.getElementById(id);
+el.style.display=(el.style.display==="block")?"none":"block";
+}
+
+function openProject(name){
+localStorage.setItem("selectedProject",name);
+window.location.href="intake.html";
+}
+
+window.onload=applyLanguage;
 </script>
 
 </body>
