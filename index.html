@@ -13,7 +13,7 @@
 
 <meta name="graph-node" content="index">
 <meta name="node-type" content="decision-engine">
-<meta name="system-layer" content="surface">
+<meta name="system-layer" content="depth">
 
 <script>
 if(!localStorage.getItem("lang")){
@@ -97,8 +97,8 @@ h1,h2,p{
 }
 
 h1{
-    font-size:34px;
-    line-height:1.2;
+    font-size:30px;
+    line-height:1.3;
     letter-spacing:-0.8px;
     border-left:2px solid var(--accent);
     padding-left:14px;
@@ -150,6 +150,12 @@ p{
 .section:hover{
     border-color:var(--accent);
     transform:translateY(-2px);
+}
+
+/* AXIOM SPECIFIC STYLE (DERINLIK HISSI ICIN AYRIŞTIRILDI) */
+.section.axiom-layer {
+    border-left: 2px solid var(--accent);
+    background: rgba(13,15,20,0.5);
 }
 
 /* DIAGRAM */
@@ -230,7 +236,7 @@ p{
 /* MOBILE */
 
 @media(max-width:700px){
-    h1{font-size:28px;}
+    h1{font-size:24px;}
     .matrix{grid-template-columns:1fr;}
 }
 </style>
@@ -240,13 +246,11 @@ p{
 
 <nav>
     <div class="wrap">
-
-        <a href="index.html" data-en="Home" data-tr="Anasayfa"></a>
-        <a href="research.html" data-en="Research" data-tr="Araştırma"></a>
-        <a href="lab.html" data-en="Lab" data-tr="Laboratuvar"></a>
-        <a href="library.html" data-en="Library" data-tr="Kütüphane"></a>
-        <a href="ma.html" data-en="Engine" data-tr="Motor"></a>
-
+        <a href="index.html" data-en="Home" data-tr="Anasayfa">Home</a>
+        <a href="research.html" data-en="Research" data-tr="Araştırma">Research</a>
+        <a href="lab.html" data-en="Lab" data-tr="Laboratuvar">Lab</a>
+        <a href="library.html" data-en="Library" data-tr="Kütüphane">Library</a>
+        <a href="ma.html" data-en="Engine" data-tr="Motor">Engine</a>
     </div>
 </nav>
 
@@ -255,37 +259,43 @@ p{
 <header>
 
     <h1
-    data-en="What is Reality?"
-    data-tr="Gerçeklik Nedir?">
+    data-en="Invariant Constraint Structure"
+    data-tr="Değişmez Kısıt Yapısı">
+    Invariant Constraint Structure
     </h1>
 
     <p class="hero-sub"
-       data-en="A structural condition emerging from observation itself."
-       data-tr="Gözlemin kendisinden doğan yapısal bir koşul.">
+       data-en="A structural condition emerging from projection diversity."
+       data-tr="Projeksiyon çeşitliliğinden doğan yapısal bir koşul.">
+       A structural condition emerging from projection diversity.
     </p>
 
     <div class="hero-focus">
 
         <p
-        data-en="Reality is not the full system state."
-        data-tr="Gerçeklik tam sistem durumu değildir.">
+        data-en="Reality is not the total uncollapsed system state."
+        data-tr="Gerçeklik, çökmemiş toplam sistem durumu değildir.">
+        Reality is not the total uncollapsed system state.
         </p>
 
         <p
-        data-en="It is what survives across all valid projections."
-        data-tr="Tüm geçerli projeksiyonlar arasında hayatta kalandır.">
+        data-en="It is what survives across all valid observation vectors."
+        data-tr="Tüm geçerli gözlem vektörleri boyunca hayatta kalandır.">
+        It is what survives across all valid observation vectors.
         </p>
 
         <p style="margin-top:18px;">
             <strong
             data-en="Price is the record of system behavior."
             data-tr="Fiyat, sistem davranışının kaydıdır.">
+            Price is the record of system behavior.
             </strong>
         </p>
 
         <p style="margin-top:18px;"
-        data-en="A system for understanding markets, time, and decisions through structure."
-        data-tr="Piyasaları, zamanı ve kararları yapı üzerinden anlamlandıran bir sistem.">
+        data-en="A structural engine modeling markets, time, and decisions through irreversible state space elimination."
+        data-tr="Piyasaları, zamanı ve kararları geri döndürülemez durum uzayı elenmesi üzerinden modelleyen yapısal bir motor.">
+        A structural engine modeling markets, time, and decisions through irreversible state space elimination.
         </p>
 
     </div>
@@ -294,22 +304,24 @@ p{
 
 <section class="section">
 
-    <h2 data-en="Core Principle" data-tr="Temel İlke"></h2>
+    <h2 data-en="Core Principle" data-tr="Temel İlke">Core Principle</h2>
 
     <p
     data-en="The system does not evaluate options. It eliminates impossibilities. What remains is structural residue."
     data-tr="Sistem seçenekleri değerlendirmez. İmkânsızlıkları eler. Geriye kalan yapısal kalandır.">
+    The system does not evaluate options. It eliminates impossibilities. What remains is structural residue.
     </p>
 
 </section>
 
 <section class="section">
 
-    <h2 data-en="Observer–Structure Model" data-tr="Gözlemci–Yapı Modeli"></h2>
+    <h2 data-en="Observer–Structure Model" data-tr="Gözlemci–Yapı Modeli">Observer–Structure Model</h2>
 
     <p
     data-en="Observed reality emerges through projection operators acting on inaccessible system states. Structure survives through invariant constraint relations."
     data-tr="Gözlenen gerçeklik, erişilemeyen sistem durumları üzerinde çalışan projeksiyon operatörleri üzerinden ortaya çıkar. Yapı, değişmez kısıt ilişkileri sayesinde korunur.">
+    Observed reality emerges through projection operators acting on inaccessible system states. Structure survives through invariant constraint relations.
     </p>
 
     <div class="diagram">
@@ -328,48 +340,52 @@ p{
 
 <section class="section">
 
-    <h2 data-en="Decision Engine" data-tr="Karar Motoru"></h2>
+    <h2 data-en="Decision Engine" data-tr="Karar Motoru">Decision Engine</h2>
 
     <p
     data-en="Input State → Constraint Field → Invalid Path Elimination → Single Vector"
     data-tr="Girdi → Kısıt Alanı → Geçersiz Yolların Elenmesi → Tek Vektör">
+    Input State → Constraint Field → Invalid Path Elimination → Single Vector
     </p>
 
     <p style="margin-top:16px;"
        data-en="The system collapses state space instead of computing probability."
        data-tr="Sistem olasılık hesaplamaz, durum uzayını çökerterek indirger.">
+       The system collapses state space instead of computing probability.
     </p>
 
     <a class="cta"
        href="ma.html"
        data-en="Enter System"
        data-tr="Sisteme Gir">
+       Enter System
     </a>
 
 </section>
 
 <section class="section">
 
-    <h2 data-en="Structural Layers" data-tr="Yapısal Katmanlar"></h2>
+    <h2 data-en="Structural Layers" data-tr="Yapısal Katmanlar">Structural Layers</h2>
 
     <p data-en="01 — Constraints define possibility space"
-       data-tr="01 — Kısıtlar olasılık alanını tanımlar"></p>
+       data-tr="01 — Kısıtlar olasılık alanını tanımlar">01 — Constraints define possibility space</p>
 
     <p data-en="02 — Observation projects state space"
-       data-tr="02 — Gözlem durum uzayını projekte eder"></p>
+       data-tr="02 — Gözlem durum uzayını projekte eder">02 — Observation projects state space</p>
 
     <p data-en="03 — Vector is irreducible residue"
-       data-tr="03 — Vektör indirgenemez kalandır"></p>
+       data-tr="03 — Vektör indirgenemez kalandır">03 — Vector is irreducible residue</p>
 
 </section>
 
-<section class="section">
+<section class="section axiom-layer">
 
-    <h2 data-en="Axiom" data-tr="Aksiyom"></h2>
+    <h2 data-en="Axiom" data-tr="Aksiyom">Axiom</h2>
 
     <p
     data-en="Reality is neither the inaccessible total system nor subjective representation. It is the invariant structure preserved across projection diversity."
     data-tr="Gerçeklik ne erişilemeyen toplam sistemdir ne de öznel temsildir. Gerçeklik, projeksiyon çeşitliliği boyunca korunan değişmez yapıdır.">
+    Reality is neither the inaccessible total system nor subjective representation. It is the invariant structure preserved across projection diversity.
     </p>
 
 </section>
@@ -379,67 +395,69 @@ p{
     <h2
     data-en="Living Structural Engine"
     data-tr="Yaşayan Yapısal Motor">
+    Living Structural Engine
     </h2>
 
     <p
     data-en="The system does not move through probabilities. It passes through irreversible structural phases."
     data-tr="Sistem olasılıklar arasında hareket etmez. Geri döndürülemez yapısal fazlardan geçer.">
+    The system does not move through probabilities. It passes through irreversible structural phases.
     </p>
 
     <div class="matrix">
 
         <div>
-            <strong>01 — Axiom</strong><br><br>
-            Initial Constraint Geometry<br>
-            System parameter registration
+            <span data-en="01 — Axiom" data-tr="01 — Aksiyom">01 — Axiom</span><br><br>
+            <span data-en="Initial Constraint Geometry" data-tr="Başlangıç Kısıt Geometrisi">Initial Constraint Geometry</span><br>
+            <span data-en="System parameter registration" data-tr="Sistem parametre kaydı">System parameter registration</span>
         </div>
 
         <div>
-            <strong>02 — Collapse</strong><br><br>
-            Structural breakdown<br>
-            Previous equilibrium loss
+            <span data-en="02 — Collapse" data-tr="02 — Çöküş">02 — Collapse</span><br><br>
+            <span data-en="Structural breakdown" data-tr="Yapısal kırılma">Structural breakdown</span><br>
+            <span data-en="Previous equilibrium loss" data-tr="Önceki denge kaybı">Previous equilibrium loss</span>
         </div>
 
         <div>
-            <strong>03 — Observer</strong><br><br>
-            Access limitation<br>
-            Visibility degradation
+            <span data-en="03 — Observer" data-tr="03 — Gözlemci">03 — Observer</span><br><br>
+            <span data-en="Access limitation" data-tr="Erişim kısıtlaması">Access limitation</span><br>
+            <span data-en="Visibility degradation" data-tr="Görünürlük kaybı">Visibility degradation</span>
         </div>
 
         <div>
-            <strong>04 — Decision</strong><br><br>
-            State space narrowing<br>
-            Alternative elimination
+            <span data-en="04 — Decision" data-tr="04 — Karar">04 — Decision</span><br><br>
+            <span data-en="State space narrowing" data-tr="Durum uzayı daralması">State space narrowing</span><br>
+            <span data-en="Alternative elimination" data-tr="Alternatif elenmesi">Alternative elimination</span>
         </div>
 
         <div>
-            <strong>05 — Execution</strong><br><br>
-            Structural release<br>
-            Irreversible direction initiation
+            <span data-en="05 — Execution" data-tr="05 — İcra">05 — Execution</span><br><br>
+            <span data-en="Structural release" data-tr="Yapısal salınım">Structural release</span><br>
+            <span data-en="Irreversible direction initiation" data-tr="Geri döndürülemez yön başlangıcı">Irreversible direction initiation</span>
         </div>
 
         <div>
-            <strong>06 — Liquidation</strong><br><br>
-            Forced correction<br>
-            Systemic load expulsion
+            <span data-en="06 — Liquidation" data-tr="06 — Likidasyon">06 — Liquidation</span><br><br>
+            <span data-en="Forced correction" data-tr="Zorunlu düzeltme">Forced correction</span><br>
+            <span data-en="Systemic load expulsion" data-tr="Sistemik yük tahliyesi">Systemic load expulsion</span>
         </div>
 
         <div>
-            <strong>07 — Waiting</strong><br><br>
-            Structural cooling<br>
-            Energy dissipation
+            <span data-en="07 — Waiting" data-tr="07 — Bekleme">07 — Waiting</span><br><br>
+            <span data-en="Structural cooling" data-tr="Yapısal soğuma">Structural cooling</span><br>
+            <span data-en="Energy dissipation" data-tr="Enerji dağılımı">Energy dissipation</span>
         </div>
 
         <div>
-            <strong>08 — Vector</strong><br><br>
-            Direction persistence<br>
-            Momentum stabilization
+            <span data-en="08 — Vector" data-tr="08 — Vektör">08 — Vector</span><br><br>
+            <span data-en="Direction persistence" data-tr="Yön kararlılığı">Direction persistence</span><br>
+            <span data-en="Momentum stabilization" data-tr="Momentum stabilizasyonu">Momentum stabilization</span>
         </div>
 
         <div>
-            <strong>09 — Field</strong><br><br>
-            Constraint stabilization<br>
-            New structural matrix
+            <span data-en="09 — Field" data-tr="09 — Alan">09 — Field</span><br><br>
+            <span data-en="Constraint stabilization" data-tr="Kısıt stabilizasyonu">Constraint stabilization</span><br>
+            <span data-en="New structural matrix" data-tr="Yeni yapısal matris">New structural matrix</span>
         </div>
 
     </div>
@@ -447,6 +465,7 @@ p{
     <div class="note"
          data-en="Vector is not movement. Vector is preserved movement."
          data-tr="Vektör hareket değildir. Vektör korunmuş harekettir.">
+         Vector is not movement. Vector is preserved movement.
     </div>
 
 </section>
@@ -457,12 +476,10 @@ p{
 const lang = localStorage.getItem("lang") || "en";
 
 function projectLanguage(){
-
     document.querySelectorAll("[data-en]").forEach(el => {
         const value = el.getAttribute("data-" + lang);
         if(value) el.textContent = value;
     });
-
 }
 
 /* NAV ACTIVE STATE PATCH */
