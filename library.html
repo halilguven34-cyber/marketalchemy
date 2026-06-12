@@ -5,199 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Alchemy — Library</title>
 <style>
-body{
-margin:0;
-background:#0d0f14;
-color:#e8ecf1;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-}
-
-.container{
-max-width:760px;
-margin:auto;
-padding:40px 20px;
-}
-
-.section{
-margin-top:40px;
-}
-
-.big{
-font-size:22px;
-font-weight:600;
-margin-bottom:12px;
-}
-
-.muted{
-opacity:.6;
-line-height:1.6;
-}
-
-.book{
-display:flex;
-gap:16px;
-margin-top:30px;
-align-items:flex-start;
-}
-
-.book img{
-width:80px;
-height:auto;
-object-fit:contain;
-border-radius:6px;
-}
-
-.book-info{
-flex:1;
-}
-
-.book-desc{
-margin-top:10px;
-font-size:14px;
-opacity:.7;
-line-height:1.5;
-}
-
-.links a{
-color:#4da3ff;
-text-decoration:none;
-margin-right:12px;
-font-size:14px;
-}
+body{margin:0;background:#0d0f14;color:#e8ecf1;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+.container{max-width:760px;margin:auto;padding:40px 20px;}
+.section{margin-top:40px;}
+.big{font-size:24px;font-weight:600;margin-bottom:12px;letter-spacing:-0.5px;}
+.muted{opacity:.6;line-height:1.6;}
+.book{display:flex;gap:20px;margin-top:40px;padding-top:30px;border-top:1px solid #1f2430;align-items:flex-start;}
+.book img{width:90px;height:auto;object-fit:contain;border-radius:4px;box-shadow: 0 4px 12px rgba(0,0,0,0.5);}
+.book-info{flex:1;}
+.book-title{font-size:18px;font-weight:600;margin-bottom:4px;}
+.book-desc{margin-top:10px;font-size:14px;opacity:.75;line-height:1.6;}
+.bridge-note{margin-top:12px;padding:12px 16px;background:#141822;border-left:2px solid #6da8ff;font-size:13px;opacity:0.85;line-height:1.5;}
+.links{margin-top:12px;}
+.links a{color:#6da8ff;text-decoration:none;margin-right:16px;font-size:13px;font-weight:500;}
+.links a:hover{text-decoration:underline;}
 
 /* HERO */
-.hero{
-margin-top:20px;
-padding:30px;
-border:1px solid #1f2430;
-background:linear-gradient(180deg,#151921 0%,#0d0f14 100%);
-}
-
-.hero img{
-width:120px;
-border-radius:6px;
-margin-bottom:15px;
-}
-
-.hero-title{
-font-size:24px;
-font-weight:600;
-margin-bottom:10px;
-}
-
-.hero-desc{
-font-size:15px;
-opacity:.7;
-line-height:1.6;
-margin-bottom:15px;
-}
+.hero{margin-top:20px;padding:30px;border:1px solid #1f2430;background:linear-gradient(180deg,#151921 0%,#0d0f14 100%);position:relative;}
+.hero-content{display:flex;gap:24px;align-items:flex-start;}
+.hero img{width:110px;border-radius:4px;box-shadow: 0 4px 20px rgba(0,0,0,0.6);}
+.hero-body{flex:1;}
+.hero-title{font-size:22px;font-weight:600;margin-bottom:6px;}
+.hero-desc{font-size:14px;opacity:.8;line-height:1.6;margin-top:10px;}
 
 /* NAVBAR */
-nav{
-width:100%;
-display:flex;
-gap:18px;
-padding:14px 16px;
-border-bottom:1px solid #1f2430;
-font-size:14px;
-overflow-x:auto;
-white-space:nowrap;
--webkit-overflow-scrolling:touch;
-}
-
-nav::-webkit-scrollbar{
-display:none;
-}
-
-nav a{
-color:#e8ecf1;
-text-decoration:none;
-opacity:0.7;
-flex-shrink:0;
-}
-
-nav a.active{
-color:#6da8ff;
-opacity:1;
-font-weight:600;
-}
+nav{width:100%;display:flex;gap:18px;padding:14px 16px;border-bottom:1px solid #1f2430;font-size:14px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:#e8ecf1;text-decoration:none;opacity:0.7;flex-shrink:0;}
+nav a.active{color:#6da8ff;opacity:1;font-weight:600;}
 
 /* AUTHOR */
-.author-card {
-margin-top:100px;
-padding:30px;
-border:1px solid #1f2430;
-background: linear-gradient(180deg, #151921 0%, #0d0f14 100%);
-cursor:pointer;
-}
-
-.author-header {
-font-size:13px;
-text-transform:uppercase;
-letter-spacing:2px;
-color:#6da8ff;
-margin-bottom:10px;
-}
-
-.author-name {
-font-size:20px;
-font-weight:600;
-margin-bottom:15px;
-}
-
-.author-text {
-font-size:15px;
-opacity:0.7;
-line-height:1.6;
-}
+.author-card {margin-top:80px;padding:30px;border:1px solid #1f2430;background:#151921;cursor:pointer;transition:border-color 0.2s;}
+.author-card:hover{border-color:#6da8ff;}
+.author-header {font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#6da8ff;margin-bottom:6px;}
+.author-name {font-size:18px;font-weight:600;}
 
 /* SYSTEM */
-.system-block{
-margin-top:40px;
-padding:20px;
-border:1px solid #1f2430;
-background:#11151c;
-}
+.system-block{margin-top:60px;padding:24px;border:1px solid #1f2430;background:#11151c;}
+.system-title{font-size:11px;letter-spacing:2px;color:#6da8ff;margin-bottom:20px;font-weight:600;}
+.system-layer{margin-bottom:16px;}
+.system-layer:last-child{margin-bottom:0;}
+.system-layer span{font-size:11px;opacity:.5;display:block;margin-bottom:4px;font-weight:600;}
+.system-layer p{margin:0;font-size:14px;opacity:.9;}
 
-.system-title{
-font-size:12px;
-letter-spacing:2px;
-color:#6da8ff;
-margin-bottom:15px;
-}
-
-.system-layer{
-margin-bottom:12px;
-}
-
-.system-layer span{
-font-size:11px;
-opacity:.5;
-display:block;
-margin-bottom:4px;
-}
-
-.system-layer p{
-margin:0;
-font-size:14px;
-opacity:.8;
-}
-
-/* META */
-.book-meta{
-font-size:11px;
-letter-spacing:1px;
-color:#6da8ff;
-opacity:.7;
-margin-top:4px;
-}
-
-.struct-signal{
-margin-top:10px;
-font-size:12px;
-opacity:.5;
-line-height:1.4;
-}
+/* META & SIGNALS */
+.book-meta{font-size:11px;letter-spacing:1px;color:#6da8ff;font-weight:600;text-transform:uppercase;}
+.struct-signal{margin-top:8px;font-size:11px;font-family:monospace;color:#a2b1c6;opacity:0.8;background:#1c212c;padding:4px 8px;display:inline-block;border-radius:3px;}
 </style>
 </head>
 <body>
@@ -222,72 +75,98 @@ document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"bl
     <p class="big tr" style="display:none;">Zaman, zannettiğin şey değil.</p>
 </div>
 
+<!-- HERO: THE PLACE OF TIME -->
 <div class="hero">
-    <img src="Theplaceoftime.jpg">
-    <div class="hero-title en">The Place of Time</div>
-    <div class="hero-title tr" style="display:none;">Zamanın Yeri</div>
-    <div class="book-meta">LAYER I — LAW</div>
+    <div class="hero-content">
+        <img src="Theplaceoftime.jpg">
+        <div class="hero-body">
+            <div class="book-meta">LAYER I — LAW (TEMEL YASA)</div>
+            <div class="hero-title en">The Place of Time</div>
+            <div class="hero-title tr" style="display:none;">Zamanın Yeri</div>
+            
+            <div class="struct-signal">Ω: Undefined | Θ: Absolute</div>
 
-    <div class="hero-desc en">
-        <b>Axiom:</b> Time is not a flow; it is the visibility of structural depth differentiation. The arrow of time is defined by hierarchical containment.
-    </div>
-    <div class="hero-desc tr" style="display:none;">
-        <b>Aksiyom:</b> Zaman ölçülen bir akış değildir; yapının derinlik farkının görünürlüğüdür. Zamanın oku, hiyerarşik içerme (containment) ile belirlenir.
-    </div>
+            <div class="hero-desc en">
+                <b>Axiom:</b> Time is not a fundamental independent parameter or a continuous flow; it is the macroscopic visibility of structural depth differentiation. The arrow of time is defined strictly by hierarchical containment mechanics.
+            </div>
+            <div class="hero-desc tr" style="display:none;">
+                <b>Aksiyom:</b> Zaman bağımsız bir parametre veya sürekli bir akış değildir; yapının derinlik farkının makroskobik görünürlüğüdür. Zamanın yönü, tamamen hiyerarşik içerme (containment) mekanikleriyle belirlenir.
+            </div>
+            
+            <div class="bridge-note en">
+                <b>Bridge Note:</b> This text establishes Layer I. It abstracts the system away from temporal metrics, repositioning "price" and "states" as recordings of underlying structural configurations rather than stochastic processes.
+            </div>
+            <div class="bridge-note tr" style="display:none;">
+                <b>Köprü Notu:</b> Katman I'in kuramsal temelidir. Sistemi zamansal metriklerden arındırır; fiyatı ve durumları rastgele süreçler olarak değil, temeldeki yapısal kısıt konfigürasyonlarının birer kaydı olarak konumlandırır.
+            </div>
 
-    <div class="struct-signal">
-        Ω: undefined<br>
-        Θ: absolute
-    </div>
-
-    <div class="links">
-        <a href="https://play.google.com/store/books/details?id=kevSEQAAQBAJ" target="_blank">TR — Google Play</a>
-        <a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">EN — Amazon</a>
+            <div class="links">
+                <a href="https://play.google.com/store/books/details?id=kevSEQAAQBAJ" target="_blank">TR — Google Play</a>
+                <a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank">EN — Amazon</a>
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="section">
     <p class="muted en">
-        The dates stated in the books are determined through the analysis of historical processes.<br>
-        Structural transitions are made visible,<br>
-        guiding the observer within the structure.
+        The chronological parameters within these volumes are derived from rigorous structural trajectory analysis. Transitions are mapped to render the system's geometric shifts observable.
     </p>
     <p class="muted tr" style="display:none;">
-        Kitaplarda belirtilen tarihler, tarihsel süreçler analiz edilerek belirlenmiştir.<br>
-        Yapısal geçişler görünür kılınıp,<br>
-        gözlemciye yapı içinde rehberlik etmektedir.
+        Bu eserlerde sunulan kronolojik parametreler, katı yapısal yörünge analizlerinden türetilmiştir. Geçişler, sistemin geometrik değişimlerini gözlemlenebilir kılmak adına haritalandırılmıştır.
     </p>
 
-    <!-- Condensation -->
+    <!-- Condensation Point -->
     <div class="book">
         <img src="Thecondinsationpoint.png">
         <div class="book-info">
-            <div class="en" style="font-weight:600;">The Condensation Point</div>
-            <div class="tr" style="display:none; font-weight:600;">Yoğunlaşma Noktası</div>
-            <div class="book-meta">LAYER II — EXTRACTION</div>
+            <div class="book-meta">LAYER II — EXTRACTION (TÜRETME)</div>
+            <div class="book-title en">The Condensation Point</div>
+            <div class="book-title tr" style="display:none;">Yoğunlaşma Noktası</div>
+            
+            <div class="struct-signal">Ω: Observable | Θ: Emerging</div>
+
             <div class="book-desc en">
-                The critical threshold where the system transitions from disorder to organization.
+                Examines the critical mathematical thresholds where a system transitions from unconstrained disorder into rigid organization. Models the localization of energy configurations before phase shifts.
             </div>
             <div class="book-desc tr" style="display:none;">
-                Sistemin dağınıklıktan organizasyona geçtiği kritik eşik.
+                Sistemin kısıtsız dağınıklıktan kararlı bir organizasyona geçtiği kritik matematiksel eşikleri inceler. Faz değişimlerinden hemen önce enerji konfigürasyonlarının lokalize oluşunu modeller.
             </div>
-            <div class="struct-signal">Ω: observable | Θ: emerging</div>
+
+            <div class="bridge-note en">
+                <b>Bridge Note:</b> Focuses on extraction. Instead of predicting future states, it demonstrates how directional vectors are extracted when the state-space volume begins to condense under constraints.
+            </div>
+            <div class="bridge-note tr" style="display:none;">
+                <b>Köprü Notu:</b> Türetme katmanına odaklanır. Gelecekteki durumları tahmin etmek yerine, durum uzayı hacmi kısıtlar altında yoğunlaşmaya başladığında yönsel vektörlerin nasıl açığa çıkarıldığını gösterir.
+            </div>
+
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank">EN — Amazon</a>
             </div>
         </div>
     </div>
 
-    <!-- Tasfiye -->
+    <!-- Tasfiye TR -->
     <div class="book">
         <img src="Tasfiye.png">
         <div class="book-info">
-            <div class="en" style="font-weight:600;">Liquidation — The Market Alchemy Framework</div>
-            <div class="tr" style="display:none; font-weight:600;">Tasfiye: Faz Geçişi ve Sistem Entropisi</div>
-            <div class="book-meta">LAYER III — ENGINE</div>
-            <div class="book-desc en">Structural liquidation mechanics.</div>
-            <div class="book-desc tr" style="display:none;">Entropik tahliye mekanizması.</div>
-            <div class="struct-signal">Ω: suppressed | Θ: increasing</div>
+            <div class="book-meta">LAYER III — ENGINE (MOTOR)</div>
+            <div class="book-title en">Liquidation — The Market Alchemy Framework</div>
+            <div class="book-title tr" style="display:none;">Tasfiye: Faz Geçişi ve Sistem Entropisi</div>
+            
+            <div class="struct-signal">Ω: Suppressed | Θ: Increasing</div>
+
+            <div class="book-desc en">
+                Formalizes structural liquidation mechanics. Analyzes systemic evacuation protocols and thermodynamic information collapse when feedback loops suppress available degrees of freedom.
+            </div>
+            <div class="book-desc tr" style="display:none;">
+                Yapısal tasfiye mekanizmalarını formalize eder. Geri besleme döngüleri mevcut serbestlik derecelerini baskıladığında ortaya çıkan sistemsel tahliye protokollerini ve termodinamik bilgi çöküşünü analiz eder.
+            </div>
+            
+            <div class="bridge-note tr" style="display:none;">
+                <b>Köprü Notu:</b> Karar ve motor katmanıdır. Yapısal durumların zorunlu kıldığı tahliye alanlarını ve piyasa mikro yapısındaki zorunlu kararların geometrisini işler.
+            </div>
+
             <div class="links">
                 <a href="https://play.google.com/store/books/details?id=SE7GEQAAQBAJ" target="_blank">TR — Google Play</a>
             </div>
@@ -298,10 +177,19 @@ document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"bl
     <div class="book">
         <img src="Liquidation.jpg">
         <div class="book-info">
-            <div class="en" style="font-weight:600;">Liquidation</div>
-            <div class="book-meta">LAYER III — ENGINE</div>
-            <div class="book-desc en">Full English edition of the framework.</div>
-            <div class="struct-signal">Ω: suppressed | Θ: increasing</div>
+            <div class="book-meta">LAYER III — ENGINE (MOTOR)</div>
+            <div class="book-title en">Liquidation</div>
+            
+            <div class="struct-signal">Ω: Suppressed | Θ: Increasing</div>
+
+            <div class="book-desc en">
+                Complete international edition of the architectural liquidation framework, optimized for systemic risk models and non-linear state compression tracking.
+            </div>
+            
+            <div class="bridge-note en">
+                <b>Bridge Note:</b> The operational engine layer. Maps how forced execution zones emerge deterministically from structural constraints rather than stochastic probability.
+            </div>
+
             <div class="links">
                 <a href="https://play.google.com/store/books/details?id=ji_JEQAAQBAJ" target="_blank">EN — Google Play</a>
                 <a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank">EN — Amazon</a>
@@ -311,33 +199,34 @@ document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"bl
 
 </div>
 
+<!-- CORE SYSTEM ARCHITECTURE SUMMARY -->
 <div class="system-block">
-    <div class="system-title">SYSTEM STRUCTURE</div>
+    <div class="system-title">SYSTEM STRUCTURE MATRIX</div>
     <div class="system-layer">
         <span>LAYER I — LAW</span>
-        <p class="en">Price is the record of system behavior.</p>
-        <p class="tr" style="display:none;">Fiyat, sistem davranışının kaydıdır.</p>
+        <p class="en">Price is a frozen record of system configuration behavior.</p>
+        <p class="tr" style="display:none;">Fiyat, sistem konfigürasyon davranışının donmuş bir kaydıdır.</p>
     </div>
     <div class="system-layer">
         <span>LAYER II — EXTRACTION</span>
-        <p class="en">Direction is extracted, not predicted.</p>
-        <p class="tr" style="display:none;">Yön türetilir, tahmin edilmez.</p>
+        <p class="en">Directional invariants are extracted via state-space collapse, never predicted.</p>
+        <p class="tr" style="display:none;">Yönsel değişmezler durum uzayı çöküşü üzerinden türetilir, asla tahmin edilmez.</p>
     </div>
     <div class="system-layer">
         <span>LAYER III — ENGINE</span>
-        <p class="en">Decisions emerge from structural states.</p>
-        <p class="tr" style="display:none;">Kararlar yapısal durumlardan doğar.</p>
+        <p class="en">Systemic execution decisions emerge exclusively from deterministic structural states.</p>
+        <p class="tr" style="display:none;">Sistemsel icra kararları yalnızca deterministik yapısal durumlardan açığa çıkar.</p>
     </div>
 </div>
 
-<div style="margin-top:30px;">
-  <a href="research.html" style="color:#6da8ff; font-size:14px;" class="en">Continue to research →</a>
-  <a href="research.html" style="color:#6da8ff; font-size:14px; display:none;" class="tr">Araştırmaya devam et →</a>
+<div style="margin-top:40px;">
+  <a href="research.html" style="color:#6da8ff; font-size:14px; font-weight:600;" class="en">Continue to Technical Preprints →</a>
+  <a href="research.html" style="color:#6da8ff; font-size:14px; font-weight:600; display:none;" class="tr">Teknik Makalelere Devam Et →</a>
 </div>
 
 <div class="author-card" onclick="window.location.href='about.html'">
-    <div class="author-header en">Author</div>
-    <div class="author-header tr" style="display:none;">Yazar</div>
+    <div class="author-header en">System Architecture & Research</div>
+    <div class="author-header tr" style="display:none;">Sistem Mimarisi ve Araştırma</div>
     <div class="author-name">Halil İbrahim Güven</div>
 </div>
 
