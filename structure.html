@@ -282,18 +282,16 @@ footer{
 
 <body>
 
-<div id="nav"></div>
-<script>
-fetch("nav.html")
-.then(res => res.text())
-.then(data => {
-  document.getElementById("nav").innerHTML = data;
-
-  const lang = localStorage.getItem("lang") || "en";
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
-});
-</script>
+<nav>
+    <div class="wrap">
+        <a href="index.html" data-en="Kernel (SDA)" data-tr="Çekirdek (SDA)">Kernel (SDA)</a>
+        <a href="structure.html" class="active" data-en="Structure" data-tr="Yapı">Structure</a>
+        <a href="research.html" data-en="Research (SDT)" data-tr="Araştırma (SDT)">Research (SDT)</a>
+        <a href="library.html" data-en="Library" data-tr="Kütüphane">Library</a>
+        <a href="lab.html" data-en="Lab & Engines" data-tr="Lab & Motorlar">Lab & Motorlar</a>
+        <a href="observatory.html" data-en="Observatory" data-tr="Gözlemevi">Observatory</a>
+    </div>
+</nav>
 
 <div class="container">
 
@@ -302,20 +300,22 @@ fetch("nav.html")
         KERNEL ARCHITECTURE :: THEORETICAL SKELETON
     </div>
 
-    <h1 class="en">System Architecture & Foundations</h1>
-    <h1 class="tr" style="display:none;">Sistem Mimarisi ve Temeller</h1>
+    <h1 data-en="System Architecture & Foundations" data-tr="Sistem Mimarisi ve Temeller">
+        System Architecture & Foundations
+    </h1>
 
-    <p class="big en">SDA Axioms → SDT Derivations → Market Alchemy Operationalization</p>
-    <p class="big tr" style="display:none;">SDA Aksiyomları → SDT Türetimleri → Market Alchemy Operasyonelleşmesi</p>
+    <p class="big" data-en="SDA Axioms → SDT Derivations → Market Alchemy Operationalization" data-tr="SDA Aksiyomları → SDT Türetimleri → Market Alchemy Operasyonelleşmesi">
+        SDA Axioms → SDT Derivations → Market Alchemy Operationalization
+    </p>
 
-    <p class="muted en">This page outlines the structural skeleton of the research program. It establishes the causal chain moving from ontological foundations to measurable state-space consequences, and finally down to deterministic execution engines.</p>
-    <p class="muted tr" style="display:none;">Bu sayfa, araştırma programının yapısal iskeletini özetler. Ontolojik temellerden ölçülebilir durum uzayı sonuçlarına ve nihayetinde deterministik icra motorlarına uzanan nedensellik zincirini kurar.</p>
+    <p class="muted" data-en="This page outlines the structural skeleton of the research program. It establishes the causal chain moving from ontological foundations to measurable state-space consequences, and finally down to deterministic execution engines." data-tr="Bu sayfa, araştırma programının yapısal iskeletini özetler. Ontolojik temellerden ölçülebilir durum uzayı sonuçlarına ve nihayetinde deterministik icra motorlarına uzanan nedensellik zincirini kurar.">
+        This page outlines the structural skeleton of the research program. It establishes the causal chain moving from ontological foundations to measurable state-space consequences, and finally down to deterministic execution engines.
+    </p>
 </header>
 
 <!-- KNOWLEDGE GRAPH NAVIGATION -->
 <section class="section" style="margin-top: 20px;">
-    <div class="system-title" class="en">KERNEL KNOWLEDGE GRAPH NODE</div>
-    <div class="system-title tr" style="display:none;">ÇEKİRDEK BİLGİ AĞI DÜĞÜMÜ</div>
+    <div class="system-title" data-en="KERNEL KNOWLEDGE GRAPH NODE" data-tr="ÇEKİRDEK BİLGİ AĞI DÜĞÜMÜ">KERNEL KNOWLEDGE GRAPH NODE</div>
     <div class="kg-container">
         <div class="kg-node">
             <div class="kg-row">
@@ -340,28 +340,29 @@ fetch("nav.html")
 <!-- CHAIN STEP 1: SDA AXIOMS -->
 <div class="section">
     <div class="system-title">01 :: ONTOLOGY</div>
-    <div class="big en">1. Structural Determination Axioms (SDA)</div>
-    <div class="big tr" style="display:none;">1. Yapısal Belirlenim Aksiyomları (SDA)</div>
+    <div class="big" data-en="1. Structural Determination Axioms (SDA)" data-tr="1. Yapısal Belirlenim Aksiyomları (SDA)">1. Structural Determination Axioms (SDA)</div>
 
-    <p class="muted en">Structural Determination Axioms establish the fundamental ontological bedrock: reality and complex systems are non-stochastic, bounded, and governed by topological containment rather than probabilistic distributions.</p>
-    <p class="muted tr" style="display:none;">Yapısal Belirlenim Aksiyomları temel ontolojik zemini kurar: Gerçeklik ve karmaşık sistemler olasılıksal değildir; olasılık dağılımları yerine topolojik içerme mekanikleriyle yönetilen sınırlı yapılardır.</p>
+    <p class="muted" data-en="Structural Determination Axioms establish the fundamental ontological bedrock: reality and complex systems are non-stochastic, bounded, and governed by topological containment rather than probabilistic distributions." data-tr="Yapısal Belirlenim Aksiyomları temel ontolojik zemini kurar: Gerçeklik ve karmaşık sistemler olasılıksal değildir; olasılık dağılımları yerine topolojik içerme mekanikleriyle yönetilen sınırlı yapılardır.">
+        Structural Determination Axioms establish the fundamental ontological bedrock: reality and complex systems are non-stochastic, bounded, and governed by topological containment rather than probabilistic distributions.
+    </p>
 
     <div class="derived-result">
         <div class="derived-title">DERIVED RESULT — ONTOLOGICAL CONTAINMENT</div>
-        <div class="en">System evolution is constrained by energy-debt containment boundaries rather than stochastic random walks.</div>
-        <div class="tr" style="display:none;">Sistem evrimi, rastgele yürüyüşler yerine enerji-borç içerme sınırları tarafından kısıtlanır.</div>
-        <a href="index.html" class="derived-link">See: SDA Core Axioms →</a>
+        <div data-en="System evolution is constrained by energy-debt containment boundaries rather than stochastic random walks." data-tr="Sistem evrimi, rastgele yürüyüşler yerine enerji-borç içerme sınırları tarafından kısıtlanır.">
+            System evolution is constrained by energy-debt containment boundaries rather than stochastic random walks.
+        </div>
+        <a href="index.html" class="derived-link" data-en="See: SDA Core Axioms →" data-tr="Bkz: SDA Temel Aksiyomları →">See: SDA Core Axioms →</a>
     </div>
 </div>
 
 <!-- CHAIN STEP 2: SDT DERIVATIONS -->
 <div class="section">
     <div class="system-title">02 :: FORMAL DERIVATION</div>
-    <div class="big en">2. Structural Depth Theory (SDT)</div>
-    <div class="big tr" style="display:none;">2. Yapısal Derinlik Teorisi (SDT)</div>
+    <div class="big" data-en="2. Structural Depth Theory (SDT)" data-tr="2. Yapısal Derinlik Teorisi (SDT)">2. Structural Depth Theory (SDT)</div>
 
-    <p class="muted en">Structural Depth Theory translates SDA axioms into rigorous mathematical consequences using Category Theory and Sheafification, defining observable topological invariants across state-spaces.</p>
-    <p class="muted tr" style="display:none;">Yapısal Derinlik Teorisi, SDA aksiyomlarını Kategori Teorisi ve Demetleştirme kullanarak katı matematiksel sonuçlara dönüştürür ve durum uzaylarındaki gözlemlenebilir topolojik değişmezleri tanımlar.</p>
+    <p class="muted" data-en="Structural Depth Theory translates SDA axioms into rigorous mathematical consequences using Category Theory and Sheafification, defining observable topological invariants across state-spaces." data-tr="Yapısal Derinlik Teorisi, SDA aksiyomlarını Kategori Teorisi ve Demetleştirme kullanarak katı matematiksel sonuçlara dönüştürür ve durum uzaylarındaki gözlemlenebilir topolojik değişmezleri tanımlar.">
+        Structural Depth Theory translates SDA axioms into rigorous mathematical consequences using Category Theory and Sheafification, defining observable topological invariants across state-spaces.
+    </p>
 
     <div class="math-block">
         \mathcal{F}(U) \xrightarrow{\text{Sheafification}} \Gamma(X, \mathcal{F}) \implies \text{State-Space Invariants}
@@ -369,20 +370,21 @@ fetch("nav.html")
 
     <div class="derived-result">
         <div class="derived-title">DERIVED RESULT — PREPRINT SERIES</div>
-        <div class="en">Mathematical proofs and category-theoretic derivations archived across thirteen formal papers.</div>
-        <div class="tr" style="display:none;">On üç resmi makalede arşivlenmiş matematiksel ispatlar ve kategori-teorik türetimler.</div>
-        <a href="research.html" class="derived-link">See: Research Preprints (SDT I–XIII) →</a>
+        <div data-en="Mathematical proofs and category-theoretic derivations archived across thirteen formal papers." data-tr="On üç resmi makalede arşivlenmiş matematiksel ispatlar ve kategori-teorik türetimler.">
+            Mathematical proofs and category-theoretic derivations archived across thirteen formal papers.
+        </div>
+        <a href="research.html" class="derived-link" data-en="See: Research Preprints (SDT I–XIII) →" data-tr="Bkz: Araştırma Makaleleri (SDT I–XIII) →">See: Research Preprints (SDT I–XIII) →</a>
     </div>
 </div>
 
 <!-- CHAIN STEP 3: STRUCTURAL TIME -->
 <div class="section">
     <div class="system-title">03 :: CONCEPTUAL RE-ORIENTATION</div>
-    <div class="big en">3. Structural Time vs. Absolute Time</div>
-    <div class="big tr" style="display:none;">3. Yapısal Zaman - Mutlak Zaman Karşılaştırması</div>
+    <div class="big" data-en="3. Structural Time vs. Absolute Time" data-tr="3. Yapısal Zaman - Mutlak Zaman Karşılaştırması">3. Structural Time vs. Absolute Time</div>
 
-    <p class="muted en">Absolute background time ($t \in \mathbb{R}$) is rejected. Time is defined strictly as a derivative measurement operator ($\tau$) tracking configurational state-space motion across structural depth ($D$).</p>
-    <p class="muted tr" style="display:none;">Mutlak arka plan zamanı ($t \in \mathbb{R}$) reddedilir. Zaman, yalnızca yapısal derinlik ($D$) boyunca gerçekleşen konfigürasyonel durum uzayı hareketini izleyen türevsel bir ölçüm operatörü ($\tau$) olarak tanımlanır.</p>
+    <p class="muted" data-en="Absolute background time ($t \in \mathbb{R}$) is rejected. Time is defined strictly as a derivative measurement operator ($\tau$) tracking configurational state-space motion across structural depth ($D$)." data-tr="Mutlak arka plan zamanı ($t \in \mathbb{R}$) reddedilir. Zaman, yalnızca yapısal derinlik ($D$) boyunca gerçekleşen konfigürasyonel durum uzayı hareketini izleyen türevsel bir ölçüm operatörü ($\tau$) olarak tanımlanır.">
+        Absolute background time ($t \in \mathbb{R}$) is rejected. Time is defined strictly as a derivative measurement operator ($\tau$) tracking configurational state-space motion across structural depth ($D$).
+    </p>
 
     <div class="math-block">
         \tau = \mathcal{M}\left( \frac{\partial \Phi_{\text{config}}}{\partial D} \right)
@@ -390,64 +392,80 @@ fetch("nav.html")
 
     <div class="derived-result">
         <div class="derived-title">DERIVED RESULT — TIME AS STRUCTURAL DEPTH</div>
-        <div class="en">Temporal metrics are replaced by structural phase transition boundaries.</div>
-        <div class="tr" style="display:none;">Zamansal metriklerin yerini yapısal faz geçiş sınırları alır.</div>
-        <a href="library.html" class="derived-link">See: The Place of Time (Layer I Volume) →</a>
+        <div data-en="Temporal metrics are replaced by structural phase transition boundaries." data-tr="Zamansal metriklerin yerini yapısal faz geçiş sınırları alır.">
+            Temporal metrics are replaced by structural phase transition boundaries.
+        </div>
+        <a href="library.html" class="derived-link" data-en="See: The Place of Time (Layer I Volume) →" data-tr="Bkz: Zamanın Yeri (Katman I Cildi) →">See: The Place of Time (Layer I Volume) →</a>
     </div>
 </div>
 
 <!-- CHAIN STEP 4: OPERATIONALIZATION (MARKET ALCHEMY) -->
 <div class="section">
     <div class="system-title">04 :: OPERATIONALIZATION</div>
-    <div class="big en">4. Market Alchemy Framework</div>
-    <div class="big tr" style="display:none;">4. Market Alchemy Çerçevesi</div>
+    <div class="big" data-en="4. Market Alchemy Framework" data-tr="4. Market Alchemy Çerçevesi">4. Market Alchemy Framework</div>
 
-    <p class="muted en">Market Alchemy operationalizes SDT derived consequences into real-time computational models, bridging theoretical state-space constraints directly to execution engines.</p>
-    <p class="muted tr" style="display:none;">Market Alchemy, SDT türetimlerini gerçek zamanlı hesaplamalı modellere dönüştürerek teorik durum uzayı kısıtlarını doğrudan icra motorlarına bağlar.</p>
+    <p class="muted" data-en="Market Alchemy operationalizes SDT derived consequences into real-time computational models, bridging theoretical state-space constraints directly to execution engines." data-tr="Market Alchemy, SDT türetimlerini gerçek zamanlı hesaplamalı modellere dönüştürerek teorik durum uzayı kısıtlarını doğrudan icra motorlarına bağlar.">
+        Market Alchemy operationalizes SDT derived consequences into real-time computational models, bridging theoretical state-space constraints directly to execution engines.
+    </p>
 
     <div class="layer-grid">
         <div class="layer-card">
             <div class="layer-num">LAYER I — LAW</div>
-            <div class="layer-head en">State-Space Boundaries</div>
-            <div class="layer-head tr" style="display:none;">Durum Uzayı Sınırları</div>
-            <p class="muted en">Absolute topological constraints over system states.</p>
-            <p class="muted tr" style="display:none;">Sistem durumları üzerindeki mutlak topolojik kısıtlar.</p>
+            <div class="layer-head" data-en="State-Space Boundaries" data-tr="Durum Uzayı Sınırları">State-Space Boundaries</div>
+            <p class="muted" data-en="Absolute topological constraints over system states." data-tr="Sistem durumları üzerindeki mutlak topolojik kısıtlar.">
+                Absolute topological constraints over system states.
+            </p>
         </div>
 
         <div class="layer-card">
             <div class="layer-num">LAYER II — EXTRACTION</div>
-            <div class="layer-head en">Condensation Mechanics</div>
-            <div class="layer-head tr" style="display:none;">Yoğunlaşma Mekanikleri</div>
-            <p class="muted en">Directional vector extraction when degrees of freedom condense.</p>
-            <p class="muted tr" style="display:none;">Serbestlik dereceleri yoğunlaştığında yönsel vektör türetimi.</p>
-            <a href="library.html" class="derived-link">Derived Result: The Condensation Point →</a>
+            <div class="layer-head" data-en="Condensation Mechanics" data-tr="Yoğunlaşma Mekanikleri">Condensation Mechanics</div>
+            <p class="muted" data-en="Directional vector extraction when degrees of freedom condense." data-tr="Serbestlik dereceleri yoğunlaştığında yönsel vektör türetimi.">
+                Directional vector extraction when degrees of freedom condense.
+            </p>
+            <a href="library.html" class="derived-link" data-en="Derived Result: The Condensation Point →" data-tr="Türetilmiş Sonuç: Yoğunlaşma Noktası →">Derived Result: The Condensation Point →</a>
         </div>
 
         <div class="layer-card">
             <div class="layer-num">LAYER III — ENGINE</div>
-            <div class="layer-head en">Deterministic Execution Engine</div>
-            <div class="layer-head tr" style="display:none;">Deterministik İcra Motoru</div>
-            <p class="muted en">Real-time filtering of forced liquidation and evacuation zones.</p>
-            <p class="muted tr" style="display:none;">Zorunlu tasfiye ve tahliye alanlarının gerçek zamanlı filtrelenmesi.</p>
-            <a href="lab.html" class="derived-link">Derived Result: Pascal & Snipper Engines →</a>
+            <div class="layer-head" data-en="Deterministic Execution Engine" data-tr="Deterministik İcra Motoru">Deterministic Execution Engine</div>
+            <p class="muted" data-en="Real-time filtering of forced liquidation and evacuation zones." data-tr="Zorunlu tasfiye ve tahliye alanlarının gerçek zamanlı filtrelenmesi.">
+                Real-time filtering of forced liquidation and evacuation zones.
+            </p>
+            <a href="lab.html" class="derived-link" data-en="Derived Result: Pascal & Snipper Engines →" data-tr="Türetilmiş Sonuç: Pascal & Snipper Motorları →">Derived Result: Pascal & Snipper Engines →</a>
         </div>
 
         <div class="layer-card">
             <div class="layer-num">LAYER IV — EXECUTION CONSTRAINTS</div>
-            <div class="layer-head en">Invalid State Exclusion</div>
-            <div class="layer-head tr" style="display:none;">Geçersiz Durum Eliminasyonu</div>
-            <p class="muted en">Strict elimination of non-structural and noisy participation.</p>
-            <p class="muted tr" style="display:none;">Yapısal olmayan ve gürültülü katılımların kesin bir şekilde elenmesi.</p>
-            <a href="library.html" class="derived-link">Derived Result: INVALID STATE Volume →</a>
+            <div class="layer-head" data-en="Invalid State Exclusion" data-tr="Geçersiz Durum Eliminasyonu">Invalid State Exclusion</div>
+            <p class="muted" data-en="Strict elimination of non-structural and noisy participation." data-tr="Yapısal olmayan ve gürültülü katılımların kesin bir şekilde elenmesi.">
+                Strict elimination of non-structural and noisy participation.
+            </p>
+            <a href="library.html" class="derived-link" data-en="Derived Result: INVALID STATE Volume →" data-tr="Türetilmiş Sonuç: GEÇERSİZ DURUM Cildi →">Derived Result: INVALID STATE Volume →</a>
         </div>
     </div>
 </div>
 
 <footer>
-    <div class="muted en">Market Alchemy Architecture Blueprint • Halil Ibrahim Guven</div>
-    <div class="muted tr" style="display:none;">Market Alchemy Mimari Taslağı • Halil İbrahim Güven</div>
+    <div class="muted" data-en="Market Alchemy Architecture Blueprint • Halil Ibrahim Guven" data-tr="Market Alchemy Mimari Taslağı • Halil İbrahim Güven">
+        Market Alchemy Architecture Blueprint • Halil Ibrahim Guven
+    </div>
 </footer>
 
 </div>
+
+<script>
+const lang = localStorage.getItem("lang") || "en";
+
+function projectLanguage(){
+    document.querySelectorAll("[data-en]").forEach(el => {
+        const value = el.getAttribute("data-" + lang);
+        if(value) el.textContent = value;
+    });
+}
+
+projectLanguage();
+</script>
+
 </body>
 </html>
