@@ -7,9 +7,9 @@
 
 <title>Observatory Runtime — Real-Time System Metrics | Market Alchemy</title>
 
-<meta name="description" content="Live observatory runtime tracking real-time state-space parameters, execution telemetry, and structural depth metrics from v9.3 bot engine.">
+<meta name="description" content="Live observatory runtime tracking real-time state-space parameters, execution telemetry, and structural depth metrics from Market Alchemy engine.">
 
-<meta name="keywords" content="Observatory, System Telemetry, Runtime Metrics, Market Alchemy, Real-Time State Space, Pascal v9.3, Halil Ibrahim Guven">
+<meta name="keywords" content="Observatory, System Telemetry, Runtime Metrics, Market Alchemy, Real-Time State Space, STR Core, Halil Ibrahim Guven">
 
 <meta name="graph-node" content="observatory">
 <meta name="node-type" content="runtime-observatory">
@@ -383,7 +383,7 @@ fetch("nav.html")
 
 <!-- KNOWLEDGE GRAPH NAVIGATION -->
 <section class="section" style="margin-top: 20px;">
-    <div class="system-title" class="en">OBSERVATORY KNOWLEDGE GRAPH NODE</div>
+    <div class="system-title en">OBSERVATORY KNOWLEDGE GRAPH NODE</div>
     <div class="system-title tr" style="display:none;">GÖZLEMEVİ BİLGİ AĞI DÜĞÜMÜ</div>
     <div class="kg-container">
         <div class="kg-node">
@@ -422,12 +422,12 @@ fetch("nav.html")
             <div class="metric-sub">Monitored Assets</div>
         </div>
         <div class="metric-card">
-            <div class="metric-label">SIGNALS TODAY</div>
+            <div class="metric-label">PULSE COUNT</div>
             <div class="metric-value" id="val-signals">--</div>
-            <div class="metric-sub">Structural Collapses</div>
+            <div class="metric-sub">Active Manifolds</div>
         </div>
         <div class="metric-card">
-            <div class="metric-label">LAST SIGNAL</div>
+            <div class="metric-label">DOMINANT SINGULARITY</div>
             <div class="metric-value" id="val-lastsignal" style="font-size: 16px; line-height: 1.5;">--</div>
             <div class="metric-sub" id="val-lastupdate">Last Sync: --</div>
         </div>
@@ -440,8 +440,8 @@ fetch("nav.html")
     <div class="big en">Telemetry Telemetry Feed</div>
     <div class="big tr" style="display:none;">Telemetri Akış Günlüğü</div>
 
-    <p class="muted en">Real-time status updates and pulse logs fetched directly from runtime.json.</p>
-    <p class="muted tr" style="display:none;">Doğrudan runtime.json dosyasından çekilen gerçek zamanlı durum güncellemeleri ve nabız kayıtları.</p>
+    <p class="muted en">Real-time status updates and pulse logs fetched directly from Cloudflare Tunnel API.</p>
+    <p class="muted tr" style="display:none;">Doğrudan Cloudflare Tunnel API üzerinden çekilen gerçek zamanlı durum güncellemeleri ve nabız kayıtları.</p>
 
     <div class="console-block" id="console-stream">
         <div class="console-line"><span class="console-ts">[SYS_INIT]</span> <span class="console-tag">OBSERVATORY</span> <span class="console-val">Initializing runtime telemetry fetch loop...</span></div>
@@ -463,37 +463,46 @@ fetch("nav.html")
 </div>
 
 <script>
+// Cloudflare Tunnel API Endpoint
+const API_BASE = "https://yeah-carb-dated-downtown.trycloudflare.com";
+
 async function loadRuntime() {
+    const t0 = performance.now();
     try {
-        const res = await fetch("runtime.json?t=" + new Date().getTime());
+        const res = await fetch(`${API_BASE}/global-status?t=${new Date().getTime()}`);
         if (!res.ok) throw new Error("Telemetry node unreachable");
         
         const data = await res.json();
+        const t1 = performance.now();
+        const latency = Math.round(t1 - t0);
         
         // Status Badge Update
         const dot = document.getElementById("status-dot");
         const statusText = document.getElementById("status-text");
         
-        if (data.status === "online") {
+        if (data.pulse && data.pulse.length > 0) {
             dot.classList.remove("offline");
             statusText.innerText = "NODE ONLINE :: TELEMETRY ACTIVE";
             statusText.style.color = "var(--live)";
         } else {
             dot.classList.add("offline");
-            statusText.innerText = "NODE OFFLINE :: STANDBY";
+            statusText.innerText = "NODE INITIALIZING :: STANDBY";
             statusText.style.color = "var(--offline)";
         }
 
+        // Top Singularity Asset
+        const topSymbol = data.pulse && data.pulse.length > 0 ? data.pulse[0] : null;
+
         // Metrics Mapping
-        document.getElementById("val-engine").innerText = data.engine || "Pascal v9.3";
-        document.getElementById("val-latency").innerText = "Latency: " + (data.latency_ms || "--") + " ms";
-        document.getElementById("val-watchlist").innerText = data.watchlist !== undefined ? data.watchlist : "--";
-        document.getElementById("val-signals").innerText = data.signals_today !== undefined ? data.signals_today : "0";
-        document.getElementById("val-lastsignal").innerText = data.last_signal || "NO RECENT SIGNAL";
+        document.getElementById("val-engine").innerText = "STR Core (Θ/Ω/V)";
+        document.getElementById("val-latency").innerText = "Latency: " + latency + " ms";
+        document.getElementById("val-watchlist").innerText = data.table ? data.table.length : "15";
+        document.getElementById("val-signals").innerText = data.pulse ? data.pulse.length : "0";
+        document.getElementById("val-lastsignal").innerText = topSymbol ? `${topSymbol.symbol} (θ: ${Number(topSymbol.theta).toFixed(2)})` : "NONE";
         
-        // Format ISO Date
-        if (data.last_update) {
-            const dt = new Date(data.last_update);
+        // Format ISO Date / Timestamp
+        if (data.ts) {
+            const dt = new Date(data.ts * 1000);
             document.getElementById("val-lastupdate").innerText = "Last Sync: " + dt.toLocaleTimeString();
         }
 
@@ -502,7 +511,7 @@ async function loadRuntime() {
         const timeStr = new Date().toLocaleTimeString();
         const line = document.createElement("div");
         line.className = "console-line";
-        line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">PULSE_OK</span> <span class="console-val">Synced with ${data.engine}. Last Signal: ${data.last_signal || 'None'}</span>`;
+        line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">PULSE_OK</span> <span class="console-val">Dominant: ${topSymbol ? topSymbol.symbol : 'None'} | State: ${topSymbol ? topSymbol.state : 'Scanning'} | Latency: ${latency}ms</span>`;
         
         consoleStream.appendChild(line);
         if (consoleStream.children.length > 8) {
@@ -519,9 +528,9 @@ async function loadRuntime() {
     }
 }
 
-// Fetch every 15 seconds
+// Fetch every 5 seconds
 loadRuntime();
-setInterval(loadRuntime, 15000);
+setInterval(loadRuntime, 5000);
 </script>
 
 </body>
