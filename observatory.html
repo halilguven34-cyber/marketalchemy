@@ -261,6 +261,61 @@ h1{
     opacity: 0.85;
 }
 
+/* TABLE STYLES */
+
+.data-table-wrapper {
+    margin-top: 16px;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    text-align: left;
+}
+
+.data-table th, .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.data-table th {
+    background: rgba(255,255,255,0.03);
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tr:hover td {
+    background: rgba(109, 168, 255, 0.04);
+}
+
+.tag-state {
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 2px;
+}
+
+.tag-state.active {
+    background: rgba(0, 255, 157, 0.15);
+    color: var(--live);
+    border: 1px solid rgba(0, 255, 157, 0.3);
+}
+
+.tag-state.idle {
+    background: rgba(232, 236, 241, 0.05);
+    color: var(--muted);
+    border: 1px solid var(--border);
+}
+
 /* CONSOLE LOG */
 
 .console-block {
@@ -437,7 +492,7 @@ fetch("nav.html")
 <!-- LIVE STREAM CONSOLE -->
 <div class="section">
     <div class="system-title">02 :: ENGINE EXECUTION STREAM</div>
-    <div class="big en">Telemetry Telemetry Feed</div>
+    <div class="big en">Telemetry Feed</div>
     <div class="big tr" style="display:none;">Telemetri Akış Günlüğü</div>
 
     <p class="muted en">Real-time status updates and pulse logs fetched directly from Cloudflare Tunnel API.</p>
@@ -455,6 +510,32 @@ fetch("nav.html")
     </div>
 </div>
 
+<!-- LIVE MANIFOLD TABLE -->
+<div class="section">
+    <div class="system-title">03 :: LIVE SCANNER MANIFOLD</div>
+    <div class="big en">Real-Time State Space Table</div>
+    <div class="big tr" style="display:none;">Gerçek Zamanlı Durum Uzayı Tablosu</div>
+
+    <div class="data-table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Theta (θ)</th>
+                    <th>Omega (Ω)</th>
+                    <th>Vol (V)</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr>
+                    <td colspan="5" style="text-align: center; color: var(--muted);">Loading manifold state data...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <footer>
     <div class="muted en">Market Alchemy Observatory Runtime • Halil Ibrahim Guven</div>
     <div class="muted tr" style="display:none;">Market Alchemy Gözlemevi Çalışma Zamanı • Halil İbrahim Güven</div>
@@ -463,8 +544,8 @@ fetch("nav.html")
 </div>
 
 <script>
-// Cloudflare Tunnel API Endpoint
-const API_BASE = "https://yeah-carb-dated-downtown.trycloudflare.com";
+// Cloudflare Tunnel Fixed Domain Endpoint
+const API_BASE = "https://node.marketalchemy.io";
 
 async function loadRuntime() {
     const t0 = performance.now();
@@ -496,7 +577,7 @@ async function loadRuntime() {
         // Metrics Mapping
         document.getElementById("val-engine").innerText = "STR Core (Θ/Ω/V)";
         document.getElementById("val-latency").innerText = "Latency: " + latency + " ms";
-        document.getElementById("val-watchlist").innerText = data.table ? data.table.length : "15";
+        document.getElementById("val-watchlist").innerText = data.table ? data.table.length : "0";
         document.getElementById("val-signals").innerText = data.pulse ? data.pulse.length : "0";
         document.getElementById("val-lastsignal").innerText = topSymbol ? `${topSymbol.symbol} (θ: ${Number(topSymbol.theta).toFixed(2)})` : "NONE";
         
@@ -515,9 +596,28 @@ async function loadRuntime() {
         
         consoleStream.appendChild(line);
         if (consoleStream.children.length > 8) {
-            consoleStream.removeChild(consoleStream.children[1]); // Keep initial log, purge old ones
+            consoleStream.removeChild(consoleStream.children[1]);
         }
         consoleStream.scrollTop = consoleStream.scrollHeight;
+
+        // Render Table Rows
+        if (data.table && data.table.length > 0) {
+            const tbody = document.getElementById("table-body");
+            tbody.innerHTML = "";
+            data.table.forEach(item => {
+                const tr = document.createElement("tr");
+                const isPulse = data.pulse && data.pulse.some(p => p.symbol === item.symbol);
+                
+                tr.innerHTML = `
+                    <td style="font-weight:600; color:var(--fg);">${item.symbol}</td>
+                    <td style="color:var(--accent);">${Number(item.theta).toFixed(4)}</td>
+                    <td>${Number(item.omega || 0).toFixed(4)}</td>
+                    <td>${Number(item.vol || 0).toFixed(4)}</td>
+                    <td><span class="tag-state ${isPulse ? 'active' : 'idle'}">${isPulse ? 'SINGULARITY' : 'SCANNING'}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
 
     } catch (err) {
         const dot = document.getElementById("status-dot");
