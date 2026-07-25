@@ -45,8 +45,6 @@ body{
     line-height:1.7;
 }
 
-/* NAVIGATION */
-
 nav{
     position:fixed;
     top:0;
@@ -69,9 +67,7 @@ nav .wrap{
     white-space:nowrap;
 }
 
-nav .wrap::-webkit-scrollbar{
-    display:none;
-}
+nav .wrap::-webkit-scrollbar{display:none;}
 
 nav a{
     color:var(--fg);
@@ -83,30 +79,16 @@ nav a{
     flex-shrink:0;
 }
 
-nav a:last-child{
-    margin-right:0;
-}
-
-nav a:hover{
+nav a:hover, nav a.active{
     opacity:1;
     color:var(--accent);
 }
-
-nav a.active{
-    opacity:1;
-    color:var(--accent);
-    font-weight:600;
-}
-
-/* CONTAINER */
 
 .container{
     max-width:820px;
     margin:auto;
     padding:110px 20px 80px;
 }
-
-/* NODE PATH */
 
 .node-path{
     font-size:11px;
@@ -116,8 +98,6 @@ nav a.active{
     margin-bottom:12px;
     text-transform:uppercase;
 }
-
-/* TYPOGRAPHY & SECTIONS */
 
 h1,h2,h3,p{margin:0;}
 
@@ -141,11 +121,7 @@ h1{
     transition:0.3s;
 }
 
-.section:hover{
-    border-color:var(--accent);
-}
-
-/* STATUS INDICATOR */
+.section:hover{border-color:var(--accent);}
 
 .live-badge {
     display: inline-flex;
@@ -180,8 +156,6 @@ h1{
     100% { opacity: 0.3; }
 }
 
-/* KNOWLEDGE GRAPH VISUALIZER */
-
 .kg-container {
     margin-top: 16px;
     padding: 14px;
@@ -191,18 +165,8 @@ h1{
     overflow-x: auto;
 }
 
-.kg-node {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.kg-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-}
+.kg-node {display: flex; flex-direction: column; gap: 8px;}
+.kg-row {display: flex; align-items: center; gap: 10px; white-space: nowrap;}
 
 .kg-tag {
     padding: 4px 8px;
@@ -214,19 +178,9 @@ h1{
     transition: 0.2s;
 }
 
-.kg-tag:hover, .kg-tag.active-node {
-    border-color: var(--accent);
-    color: var(--accent);
-}
-
-.kg-arrow {
-    color: var(--muted);
-    font-size: 10px;
-}
-
+.kg-tag:hover, .kg-tag.active-node {border-color: var(--accent); color: var(--accent);}
+.kg-arrow {color: var(--muted); font-size: 10px;}
 .system-title{font-size:11px;letter-spacing:2px;color:var(--accent);margin-bottom:12px;font-weight:600;}
-
-/* METRICS GRID */
 
 .metrics-grid {
     display: grid;
@@ -241,82 +195,18 @@ h1{
     border: 1px solid var(--border);
 }
 
-.metric-label {
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: var(--muted);
-    text-transform: uppercase;
-}
+.metric-label {font-size: 10px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase;}
+.metric-value {font-size: 20px; font-weight: 700; color: var(--fg); margin: 6px 0 2px;}
+.metric-sub {font-size: 11px; color: var(--accent); opacity: 0.85;}
 
-.metric-value {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--fg);
-    margin: 6px 0 2px;
-}
+.data-table-wrapper {margin-top: 16px; overflow-x: auto; border: 1px solid var(--border);}
+.data-table {width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;}
+.data-table th, .data-table td {padding: 10px 14px; border-bottom: 1px solid var(--border);}
+.data-table th {background: rgba(255,255,255,0.03); color: var(--accent); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;}
 
-.metric-sub {
-    font-size: 11px;
-    color: var(--accent);
-    opacity: 0.85;
-}
-
-/* TABLE STYLES */
-
-.data-table-wrapper {
-    margin-top: 16px;
-    overflow-x: auto;
-    border: 1px solid var(--border);
-}
-
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-    text-align: left;
-}
-
-.data-table th, .data-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--border);
-}
-
-.data-table th {
-    background: rgba(255,255,255,0.03);
-    color: var(--accent);
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.data-table tr:last-child td {
-    border-bottom: none;
-}
-
-.data-table tr:hover td {
-    background: rgba(109, 168, 255, 0.04);
-}
-
-.tag-state {
-    padding: 2px 6px;
-    font-size: 10px;
-    font-weight: 600;
-    border-radius: 2px;
-}
-
-.tag-state.active {
-    background: rgba(0, 255, 157, 0.15);
-    color: var(--live);
-    border: 1px solid rgba(0, 255, 157, 0.3);
-}
-
-.tag-state.idle {
-    background: rgba(232, 236, 241, 0.05);
-    color: var(--muted);
-    border: 1px solid var(--border);
-}
-
-/* CONSOLE LOG */
+.tag-state {padding: 2px 6px; font-size: 10px; font-weight: 600; border-radius: 2px;}
+.tag-state.active {background: rgba(0, 255, 157, 0.15); color: var(--live); border: 1px solid rgba(0, 255, 157, 0.3);}
+.tag-state.idle {background: rgba(232, 236, 241, 0.05); color: var(--muted); border: 1px solid var(--border);}
 
 .console-block {
     margin-top: 14px;
@@ -330,26 +220,10 @@ h1{
     max-height: 220px;
 }
 
-.console-line {
-    margin-bottom: 6px;
-    display: flex;
-    gap: 12px;
-}
-
-.console-ts {
-    color: var(--muted);
-    opacity: 0.5;
-}
-
-.console-tag {
-    color: var(--accent);
-}
-
-.console-val {
-    color: var(--fg);
-}
-
-/* DERIVED LINK BOX */
+.console-line {margin-bottom: 6px; display: flex; gap: 12px;}
+.console-ts {color: var(--muted); opacity: 0.5;}
+.console-tag {color: var(--accent);}
+.console-val {color: var(--fg);}
 
 .derived-result {
     margin-top: 14px;
@@ -360,29 +234,32 @@ h1{
     font-size: 12px;
 }
 
-.derived-title {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    color: var(--accent);
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 4px;
+.derived-title {font-size: 10px; letter-spacing: 1.5px; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;}
+.derived-link {display: inline-block; margin-top: 6px; color: var(--accent); text-decoration: none; font-weight: 600; font-size: 11px;}
+.derived-link:hover {text-decoration: underline;}
+
+/* THEORETICAL MAPPING BOX */
+.theory-bridge {
+    margin-top: 16px;
+    padding: 14px;
+    background: rgba(255,255,255,0.01);
+    border: 1px dashed var(--border);
+    font-size: 12px;
+    color: var(--muted);
 }
 
-.derived-link {
+.share-btn {
     display: inline-block;
-    margin-top: 6px;
+    margin-top: 8px;
+    padding: 4px 10px;
+    background: rgba(109,168,255,0.1);
+    border: 1px solid var(--accent);
     color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
     font-size: 11px;
+    cursor: pointer;
+    transition: 0.2s;
 }
-
-.derived-link:hover {
-    text-decoration: underline;
-}
-
-/* FOOTER */
+.share-btn:hover { background: var(--accent); color: var(--bg); }
 
 footer{
     margin-top:80px;
@@ -454,6 +331,8 @@ fetch("nav.html")
                 <a href="observatory.html" class="kg-tag active-node">Live Observatory Runtime</a>
                 <span class="kg-arrow">→</span>
                 <a href="research.html" class="kg-tag">Research SDT</a>
+                <span class="kg-arrow">→</span>
+                <a href="library.html" class="kg-tag">Documentation Books</a>
             </div>
         </div>
     </div>
@@ -487,6 +366,22 @@ fetch("nav.html")
             <div class="metric-sub" id="val-lastupdate">Last Sync: --</div>
         </div>
     </div>
+
+    <!-- SHARE SINGULARITY SNIPPET -->
+    <div style="margin-top: 12px; text-align: right;">
+        <button class="share-btn" onclick="shareTelemetry()">[ Share Live Singularity Telemetry ]</button>
+    </div>
+</div>
+
+<!-- THEORETICAL PARAMETER MAPPING -->
+<div class="section">
+    <div class="system-title">THEORETICAL PARAMETER INTERPRETATION</div>
+    <div class="theory-bridge">
+        <b style="color:var(--fg);">Theta (θ):</b> Structural Compression Operator — Measures the reduction in degrees of freedom.<br>
+        <b style="color:var(--fg);">Omega (Ω):</b> Containment Boundary Volatility — Tracks the phase shift threshold before state collapse.<br>
+        <b style="color:var(--fg);">Vol (V):</b> Logarithmic Returns Density Matrix.<br>
+        <a href="library.html" class="derived-link" style="margin-top:8px;">See theoretical formalization in <i>The Place of Time</i> & <i>Liquidation</i> →</a>
+    </div>
 </div>
 
 <!-- LIVE STREAM CONSOLE -->
@@ -494,9 +389,6 @@ fetch("nav.html")
     <div class="system-title">02 :: ENGINE EXECUTION STREAM</div>
     <div class="big en">Telemetry Feed</div>
     <div class="big tr" style="display:none;">Telemetri Akış Günlüğü</div>
-
-    <p class="muted en">Real-time status updates and pulse logs fetched directly from Cloudflare Tunnel API.</p>
-    <p class="muted tr" style="display:none;">Doğrudan Cloudflare Tunnel API üzerinden çekilen gerçek zamanlı durum güncellemeleri ve nabız kayıtları.</p>
 
     <div class="console-block" id="console-stream">
         <div class="console-line"><span class="console-ts">[SYS_INIT]</span> <span class="console-tag">OBSERVATORY</span> <span class="console-val">Initializing runtime telemetry fetch loop...</span></div>
@@ -544,8 +436,8 @@ fetch("nav.html")
 </div>
 
 <script>
-// Cloudflare Tunnel Fixed Domain Endpoint
 const API_BASE = "https://node.marketalchemy.io";
+let latestTopSymbol = null;
 
 async function loadRuntime() {
     const t0 = performance.now();
@@ -557,7 +449,6 @@ async function loadRuntime() {
         const t1 = performance.now();
         const latency = Math.round(t1 - t0);
         
-        // Status Badge Update
         const dot = document.getElementById("status-dot");
         const statusText = document.getElementById("status-text");
         
@@ -571,23 +462,20 @@ async function loadRuntime() {
             statusText.style.color = "var(--offline)";
         }
 
-        // Top Singularity Asset
         const topSymbol = data.pulse && data.pulse.length > 0 ? data.pulse[0] : null;
+        latestTopSymbol = topSymbol;
 
-        // Metrics Mapping
         document.getElementById("val-engine").innerText = "STR Core (Θ/Ω/V)";
         document.getElementById("val-latency").innerText = "Latency: " + latency + " ms";
         document.getElementById("val-watchlist").innerText = data.table ? data.table.length : "0";
         document.getElementById("val-signals").innerText = data.pulse ? data.pulse.length : "0";
         document.getElementById("val-lastsignal").innerText = topSymbol ? `${topSymbol.symbol} (θ: ${Number(topSymbol.theta).toFixed(2)})` : "NONE";
         
-        // Format ISO Date / Timestamp
         if (data.ts) {
             const dt = new Date(data.ts * 1000);
             document.getElementById("val-lastupdate").innerText = "Last Sync: " + dt.toLocaleTimeString();
         }
 
-        // Console Stream Append
         const consoleStream = document.getElementById("console-stream");
         const timeStr = new Date().toLocaleTimeString();
         const line = document.createElement("div");
@@ -600,7 +488,6 @@ async function loadRuntime() {
         }
         consoleStream.scrollTop = consoleStream.scrollHeight;
 
-        // Render Table Rows
         if (data.table && data.table.length > 0) {
             const tbody = document.getElementById("table-body");
             tbody.innerHTML = "";
@@ -628,7 +515,17 @@ async function loadRuntime() {
     }
 }
 
-// Fetch every 5 seconds
+function shareTelemetry() {
+    if (!latestTopSymbol) {
+        alert("No active singularity currently detected.");
+        return;
+    }
+    const text = `Market Alchemy Observatory Telemetry:\nDominant Singularity State: ${latestTopSymbol.symbol}\nTheta (θ): ${Number(latestTopSymbol.theta).toFixed(4)}\nState-Space Metric: Active Manifold\n\nLive Telemetry Stream: https://marketalchemy.io/observatory.html`;
+    navigator.clipboard.writeText(text).then(() => {
+        alert("Telemetry record copied to clipboard!");
+    });
+}
+
 loadRuntime();
 setInterval(loadRuntime, 5000);
 </script>
