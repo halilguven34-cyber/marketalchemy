@@ -28,25 +28,23 @@ if(!localStorage.getItem("lang")){
 <style>
 :root{
     --bg:#0d0f14;
-    --panel:#151921;
-    --line:#1f2430;
-    --text:#e8ecf1;
+    --fg:#e8ecf1;
     --muted:rgba(232,236,241,0.6);
-    --blue:#6da8ff;
+    --accent:#6da8ff;
+    --border:#1f2430;
+    --card-bg:rgba(17,21,28,0.72);
     --live:#00ff9d;
     --offline:#ff5555;
-    --card-bg:rgba(17,21,28,0.72);
 }
 
 body{
     margin:0;
     background:var(--bg);
-    color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--fg);
+    font-family:'JetBrains Mono', monospace, -apple-system, sans-serif;
     line-height:1.7;
 }
 
-/* NAVIGATION */
 nav{
     position:fixed;
     top:0;
@@ -55,7 +53,7 @@ nav{
     z-index:9999;
     background:rgba(13,15,20,0.92);
     backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid var(--border);
 }
 
 nav .wrap{
@@ -69,12 +67,10 @@ nav .wrap{
     white-space:nowrap;
 }
 
-nav .wrap::-webkit-scrollbar{
-    display:none;
-}
+nav .wrap::-webkit-scrollbar{display:none;}
 
 nav a{
-    color:var(--text);
+    color:var(--fg);
     text-decoration:none;
     font-size:12px;
     opacity:0.7;
@@ -83,23 +79,13 @@ nav a{
     flex-shrink:0;
 }
 
-nav a:last-child{
-    margin-right:0;
-}
-
-nav a:hover{
+nav a:hover, nav a.active{
     opacity:1;
-    color:var(--blue);
-}
-
-nav a.active{
-    opacity:1;
-    color:var(--blue);
-    font-weight:600;
+    color:var(--accent);
 }
 
 .container{
-    max-width:760px;
+    max-width:820px;
     margin:auto;
     padding:110px 20px 80px;
 }
@@ -107,7 +93,7 @@ nav a.active{
 .node-path{
     font-size:11px;
     letter-spacing:1px;
-    color:var(--blue);
+    color:var(--accent);
     opacity:0.85;
     margin-bottom:12px;
     text-transform:uppercase;
@@ -119,7 +105,7 @@ h1{
     font-size:26px;
     line-height:1.3;
     letter-spacing:-0.8px;
-    border-left:2px solid var(--blue);
+    border-left:2px solid var(--accent);
     padding-left:14px;
     margin-bottom:20px;
 }
@@ -130,12 +116,12 @@ h1{
 .section{
     margin-top:28px;
     padding:22px;
-    border:1px solid var(--line);
+    border:1px solid var(--border);
     background:var(--card-bg);
     transition:0.3s;
 }
 
-.section:hover{border-color:var(--blue);}
+.section:hover{border-color:var(--accent);}
 
 .live-badge {
     display: inline-flex;
@@ -173,7 +159,7 @@ h1{
 .kg-container {
     margin-top: 16px;
     padding: 14px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
     background: rgba(13,15,20,0.8);
     font-size: 12px;
     overflow-x: auto;
@@ -184,17 +170,17 @@ h1{
 
 .kg-tag {
     padding: 4px 8px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
     background: rgba(255,255,255,0.03);
-    color: var(--text);
+    color: var(--fg);
     text-decoration: none;
     font-size: 11px;
     transition: 0.2s;
 }
 
-.kg-tag:hover, .kg-tag.active-node {border-color: var(--blue); color: var(--blue);}
+.kg-tag:hover, .kg-tag.active-node {border-color: var(--accent); color: var(--accent);}
 .kg-arrow {color: var(--muted); font-size: 10px;}
-.system-title{font-size:11px;letter-spacing:2px;color:var(--blue);margin-bottom:12px;font-weight:600;}
+.system-title{font-size:11px;letter-spacing:2px;color:var(--accent);margin-bottom:12px;font-weight:600;}
 
 .metrics-grid {
     display: grid;
@@ -206,28 +192,28 @@ h1{
 .metric-card {
     padding: 16px;
     background: rgba(255,255,255,0.02);
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
 }
 
 .metric-label {font-size: 10px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase;}
-.metric-value {font-size: 20px; font-weight: 700; color: var(--text); margin: 6px 0 2px;}
-.metric-sub {font-size: 11px; color: var(--blue); opacity: 0.85;}
+.metric-value {font-size: 20px; font-weight: 700; color: var(--fg); margin: 6px 0 2px;}
+.metric-sub {font-size: 11px; color: var(--accent); opacity: 0.85;}
 
-.data-table-wrapper {margin-top: 16px; overflow-x: auto; border: 1px solid var(--line);}
+.data-table-wrapper {margin-top: 16px; overflow-x: auto; border: 1px solid var(--border);}
 .data-table {width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;}
-.data-table th, .data-table td {padding: 10px 14px; border-bottom: 1px solid var(--line);}
-.data-table th {background: rgba(255,255,255,0.03); color: var(--blue); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;}
+.data-table th, .data-table td {padding: 10px 14px; border-bottom: 1px solid var(--border);}
+.data-table th {background: rgba(255,255,255,0.03); color: var(--accent); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;}
 
 .tag-state {padding: 2px 6px; font-size: 10px; font-weight: 600; border-radius: 2px;}
 .tag-state.active {background: rgba(0, 255, 157, 0.15); color: var(--live); border: 1px solid rgba(0, 255, 157, 0.3);}
-.tag-state.idle {background: rgba(232, 236, 241, 0.05); color: var(--muted); border: 1px solid var(--line);}
+.tag-state.idle {background: rgba(232, 236, 241, 0.05); color: var(--muted); border: 1px solid var(--border);}
 
 .console-block {
     margin-top: 14px;
     padding: 14px 16px;
     background: #090b0e;
-    border: 1px solid var(--line);
-    font-family: -apple-system,BlinkMacSystemFont,sans-serif;
+    border: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: #a2b1c6;
     overflow-x: auto;
@@ -236,27 +222,27 @@ h1{
 
 .console-line {margin-bottom: 6px; display: flex; gap: 12px;}
 .console-ts {color: var(--muted); opacity: 0.5;}
-.console-tag {color: var(--blue);}
-.console-val {color: var(--text);}
+.console-tag {color: var(--accent);}
+.console-val {color: var(--fg);}
 
 .derived-result {
     margin-top: 14px;
     padding: 12px 16px;
     background: rgba(109, 168, 255, 0.05);
     border: 1px solid rgba(109, 168, 255, 0.2);
-    border-left: 3px solid var(--blue);
+    border-left: 3px solid var(--accent);
     font-size: 12px;
 }
 
-.derived-title {font-size: 10px; letter-spacing: 1.5px; color: var(--blue); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;}
-.derived-link {display: inline-block; margin-top: 6px; color: var(--blue); text-decoration: none; font-weight: 600; font-size: 11px;}
+.derived-title {font-size: 10px; letter-spacing: 1.5px; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;}
+.derived-link {display: inline-block; margin-top: 6px; color: var(--accent); text-decoration: none; font-weight: 600; font-size: 11px;}
 .derived-link:hover {text-decoration: underline;}
 
 .theory-bridge {
     margin-top: 16px;
     padding: 14px;
     background: rgba(255,255,255,0.01);
-    border: 1px dashed var(--line);
+    border: 1px dashed var(--border);
     font-size: 12px;
     color: var(--muted);
     line-height: 1.8;
@@ -267,13 +253,13 @@ h1{
     margin-top: 8px;
     padding: 4px 10px;
     background: rgba(109,168,255,0.1);
-    border: 1px solid var(--blue);
-    color: var(--blue);
+    border: 1px solid var(--accent);
+    color: var(--accent);
     font-size: 11px;
     cursor: pointer;
     transition: 0.2s;
 }
-.share-btn:hover { background: var(--blue); color: var(--bg); }
+.share-btn:hover { background: var(--accent); color: var(--bg); }
 
 .lang-switch {
     display: flex;
@@ -282,22 +268,22 @@ h1{
 }
 .lang-btn {
     background: none;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
     color: var(--muted);
     padding: 2px 8px;
     font-size: 10px;
     cursor: pointer;
-    font-family: inherit;
+    font-family: 'JetBrains Mono', monospace;
 }
 .lang-btn.active {
-    border-color: var(--blue);
-    color: var(--blue);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 footer{
     margin-top:80px;
     padding-top:30px;
-    border-top:1px solid var(--line);
+    border-top:1px solid var(--border);
     font-size:12px;
     color:var(--muted);
 }
@@ -415,8 +401,8 @@ footer{
         <p class="tr" style="display:none;">Gözlemevi, Market Alchemy V12 Yapısal Çalışma Zamanı Motoru tarafından beslenmektedir. Motor, tekil teknik göstergeler yerine her varlığı yapısal bir durum uzayının parçası olarak değerlendirir. Her gözlem döngüsünde fiyat, işlem hacmi ve açık pozisyon verileri kullanılarak Theta ($\Theta$), Omega ($\Omega$), yapısal geçiş yoğunluğu ($\Delta S$) ve sıkışma yoğunluğu ($C$) hesaplanır. Bu metrikler birlikte değerlendirilerek piyasanın yapısal fazı ve olası tekillik koşulları belirlenir. Gözlemevinin amacı alım-satım sinyali üretmekten ziyade, piyasanın yapısal evrimini gerçek zamanlı olarak gözlemlemek, kritik faz geçişlerini görünür kılmak ve araştırma ile karar destek süreçleri için nesnel finansal zeka sağlamaktır.</p>
         
         <div style="margin-top: 12px;">
-            <b style="color:var(--text);" class="en">What can be observed?</b>
-            <b style="color:var(--text);" class="tr" style="display:none;">Neler gözlemlenebilir?</b>
+            <b style="color:var(--fg);" class="en">What can be observed?</b>
+            <b style="color:var(--fg);" class="tr" style="display:none;">Neler gözlemlenebilir?</b>
             <ul style="margin: 6px 0 0 16px; padding: 0;">
                 <li class="en">Structural compression</li><li class="tr" style="display:none;">Yapısal sıkışma</li>
                 <li class="en">Phase transitions</li><li class="tr" style="display:none;">Faz geçişleri</li>
@@ -470,10 +456,10 @@ footer{
     <div class="big en">Core Metrics Matrix</div>
     <div class="big tr" style="display:none;">Çekirdek Metrik Matrisi</div>
     <div class="theory-bridge">
-        <b style="color:var(--text);">Theta ($\theta$):</b> <span class="en">Structural State — Measures the reduction in degrees of freedom across market manifolds.</span><span class="tr" style="display:none;">Yapısal Durum — Piyasa manifoldlarındaki serbestlik derecesi azalmasını ölçer.</span><br>
-        <b style="color:var(--text);">Omega ($\Omega$):</b> <span class="en">Opportunity Estimate — Tracks phase shift thresholds and containment boundary volatility.</span><span class="tr" style="display:none;">Fırsat Kestirimi — Faz değişim eşiklerini ve kapsama sınırı volatilitesini izler.</span><br>
-        <b style="color:var(--text);">Delta-S ($\Delta S$):</b> <span class="en">Structural Transition — Quantifies structural gradient shifts between temporal memory states.</span><span class="tr" style="display:none;">Yapısal Geçiş — Zamansal bellek durumları arasındaki yapısal gradyan değişimlerini nicelleştirir.</span><br>
-        <b style="color:var(--text);">Compression ($C$):</b> <span class="en">Compression Intensity — Primary driver for two-stage phase evaluation ($C \ge 0.75 \rightarrow \text{COMPRESSION_BASIN}$).</span><span class="tr" style="display:none;">Sıkışma Yoğunluğu — İki aşamalı faz değerlendirmesi için ana sürücü ($C \ge 0.75 \rightarrow \text{COMPRESSION_BASIN}$).</span><br>
+        <b style="color:var(--fg);">Theta ($\theta$):</b> <span class="en">Structural State — Measures the reduction in degrees of freedom across market manifolds.</span><span class="tr" style="display:none;">Yapısal Durum — Piyasa manifoldlarındaki serbestlik derecesi azalmasını ölçer.</span><br>
+        <b style="color:var(--fg);">Omega ($\Omega$):</b> <span class="en">Opportunity Estimate — Tracks phase shift thresholds and containment boundary volatility.</span><span class="tr" style="display:none;">Fırsat Kestirimi — Faz değişim eşiklerini ve kapsama sınırı volatilitesini izler.</span><br>
+        <b style="color:var(--fg);">Delta-S ($\Delta S$):</b> <span class="en">Structural Transition — Quantifies structural gradient shifts between temporal memory states.</span><span class="tr" style="display:none;">Yapısal Geçiş — Zamansal bellek durumları arasındaki yapısal gradyan değişimlerini nicelleştirir.</span><br>
+        <b style="color:var(--fg);">Compression ($C$):</b> <span class="en">Compression Intensity — Primary driver for two-stage phase evaluation ($C \ge 0.75 \rightarrow \text{COMPRESSION_BASIN}$).</span><span class="tr" style="display:none;">Sıkışma Yoğunluğu — İki aşamalı faz değerlendirmesi için ana sürücü ($C \ge 0.75 \rightarrow \text{COMPRESSION_BASIN}$).</span><br>
         <a href="library.html" class="derived-link" style="margin-top:8px;"><span class="en">See theoretical formalization in <i>The Place of Time</i> & <i>Liquidation</i> →</span><span class="tr" style="display:none;"><i>The Place of Time</i> ve <i>Liquidation</i> eserlerindeki teorik formalleştirmeleri inceleyin →</span></a>
     </div>
 </div>
@@ -563,8 +549,8 @@ async function loadRuntime() {
                 const isPulse = data.pulse && data.pulse.some(p => p.symbol === item.symbol);    
                     
                 tr.innerHTML = `    
-                    <td style="font-weight:600; color:var(--text);">${item.symbol}</td>    
-                    <td style="color:var(--blue);">${Number(item.theta).toFixed(4)}</td>    
+                    <td style="font-weight:600; color:var(--fg);">${item.symbol}</td>    
+                    <td style="color:var(--accent);">${Number(item.theta).toFixed(4)}</td>    
                     <td>${Number(item.omega || 0).toFixed(4)}</td>    
                     <td>${Number(item.vol || 0).toFixed(4)}</td>    
                     <td><span class="tag-state ${isPulse ? 'active' : 'idle'}">${isPulse ? 'SINGULARITY' : 'SCANNING'}</span></td>    
