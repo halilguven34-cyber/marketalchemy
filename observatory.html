@@ -435,228 +435,97 @@ fetch("nav.html")
 
 </div>
 
-<script>
-const API_BASE = "https://node.marketalchemy.io";
-let latestTopSymbol = null;
-
-async function loadRuntime() {
-
-    const t0 = performance.now();
-
-    try {
-
-        const res = await fetch(`${API_BASE}/global-status?t=${Date.now()}`);
-
-        if (!res.ok) {
-            throw new Error("Telemetry node unreachable");
-        }
-
-        const data = await res.json();
-        const latency = Math.round(performance.now() - t0);
-
-        const dot = document.getElementById("status-dot");
-        const statusText = document.getElementById("status-text");
-
-        // ==================================================
-        // NODE HEALTH
-        // ==================================================
-
-        dot.classList.remove("offline");
-        statusText.style.color = "var(--live)";
-
-        const hasPulse = Array.isArray(data.pulse) && data.pulse.length > 0;
-
-        if (hasPulse) {
-            statusText.innerText = "NODE ACTIVE :: SINGULARITY DETECTED";
-        } else {
-            statusText.innerText = "NODE ACTIVE :: SCANNING";
-        }
-
-        // ==================================================
-        // DOMINANT SIGNAL
-        // ==================================================
-
-        const topSymbol = hasPulse ? data.pulse[0] : null;
-        latestTopSymbol = topSymbol;
-
-        // ==================================================
-        // METRICS
-        // ==================================================
-
-        document.getElementById("val-engine").innerText =
-            "STR Core (Θ/Ω/V)";
-
-        document.getElementById("val-latency").innerText =
-            `Latency: ${latency} ms`;
-
-        document.getElementById("val-watchlist").innerText =
-            data.table ? data.table.length : 0;
-
-        document.getElementById("val-signals").innerText =
-            hasPulse ? data.pulse.length : 0;
-
-        document.getElementById("val-lastsignal").innerText =
-            topSymbol
-                ? `${topSymbol.symbol} (θ: ${Number(topSymbol.theta).toFixed(2)})`
-                : "NONE";
-
-        if (data.ts) {
-
-            const dt = new Date(data.ts * 1000);
-
-            document.getElementById("val-lastupdate").innerText =
-                "Last Sync: " + dt.toLocaleTimeString();
-
-        }
-
-        // ==================================================
-        // CONSOLE STREAM
-        // ==================================================
-
-        const consoleStream = document.getElementById("console-stream");
-
-        const timeStr = new Date().toLocaleTimeString();
-
-        const line = document.createElement("div");
-        line.className = "console-line";
-
-        let runtimeMessage;
-
-        if (topSymbol) {
-
-            runtimeMessage =
-                `SINGULARITY ${topSymbol.symbol} | θ=${Number(topSymbol.theta).toFixed(2)} | ${latency} ms`;
-
-        } else {
-
-            runtimeMessage =
-                `SCANNING WATCHLIST | ${latency} ms`;
-
-        }
-
-        line.innerHTML = `
-            <span class="console-ts">[${timeStr}]</span>
-            <span class="console-tag">NODE</span>
-            <span class="console-val">${runtimeMessage}</span>
-        `;
-
-        consoleStream.appendChild(line);
-
-        while (consoleStream.children.length > 8) {
-            consoleStream.removeChild(consoleStream.children[1]);
-        }
-
-        consoleStream.scrollTop = consoleStream.scrollHeight;
-
-        // ==================================================
-        // LIVE TABLE
-        // ==================================================
-
-        const tbody = document.getElementById("table-body");
-
-        if (!data.table || data.table.length === 0) {
-
-            tbody.innerHTML =
-                `<tr>
-                    <td colspan="5"
-                        style="text-align:center;color:var(--muted);">
-                        No runtime telemetry available.
-                    </td>
-                </tr>`;
-
-            return;
-
-        }
-
-        tbody.innerHTML = "";
-
-        data.table.forEach(item => {
-
-            const isPulse =
-                hasPulse &&
-                data.pulse.some(p => p.symbol === item.symbol);
-
-            const tr = document.createElement("tr");
-
-            tr.innerHTML = `
-                <td style="font-weight:600;color:var(--fg);">
-                    ${item.symbol}
-                </td>
-
-                <td style="color:var(--accent);">
-                    ${Number(item.theta).toFixed(4)}
-                </td>
-
-                <td>
-                    ${Number(item.omega || 0).toFixed(4)}
-                </td>
-
-                <td>
-                    ${Number(item.vol || 0).toFixed(4)}
-                </td>
-
-                <td>
-                    <span class="tag-state ${isPulse ? "active" : "idle"}">
-                        ${isPulse ? "SINGULARITY" : "SCANNING"}
-                    </span>
-                </td>
-            `;
-
-            tbody.appendChild(tr);
-
-        });
-
-    }
-
-    catch (err) {
-
-        const dot = document.getElementById("status-dot");
-        const statusText = document.getElementById("status-text");
-
-        dot.classList.add("offline");
-
-        statusText.style.color = "var(--offline)");
-        statusText.innerText = "NODE DISCONNECTED";
-
-        console.error(err);
-
-    }
-
-}
-
-function shareTelemetry() {
-
-    if (!latestTopSymbol) {
-
-        alert("No active singularity currently detected.");
-
-        return;
-
-    }
-
-    const text =
-`Market Alchemy Observatory Telemetry
-
-Dominant Singularity:
-${latestTopSymbol.symbol}
-
-Theta:
-${Number(latestTopSymbol.theta).toFixed(4)}
-
-Live:
-https://marketalchemy.io/observatory.html`;
-
-    navigator.clipboard.writeText(text);
-
-    alert("Telemetry copied.");
-
-}
-
-loadRuntime();
-
-setInterval(loadRuntime, 5000);
-
-</script>
-
-</body>
-</html>
+<script>    
+const API_BASE = "https://node.marketalchemy.io";    
+let latestTopSymbol = null;    
+    
+async function loadRuntime() {    
+    const t0 = performance.now();    
+    try {    
+        const res = await fetch(`${API_BASE}/global-status?t=${new Date().getTime()}`);    
+        if (!res.ok) throw new Error("Telemetry node unreachable");    
+            
+        const data = await res.json();    
+        const t1 = performance.now();    
+        const latency = Math.round(t1 - t0);    
+            
+        const dot = document.getElementById("status-dot");    
+        const statusText = document.getElementById("status-text");    
+            
+        if (data.pulse && data.pulse.length > 0) {    
+            dot.classList.remove("offline");    
+            statusText.innerText = "NODE ONLINE :: TELEMETRY ACTIVE";    
+            statusText.style.color = "var(--live)";    
+        } else {    
+            dot.classList.add("offline");    
+            statusText.innerText = "NODE INITIALIZING :: STANDBY";    
+            statusText.style.color = "var(--offline)";    
+        }    
+    
+        const topSymbol = data.pulse && data.pulse.length > 0 ? data.pulse[0] : null;    
+        latestTopSymbol = topSymbol;    
+    
+        document.getElementById("val-engine").innerText = "STR Core (Θ/Ω/V)";    
+        document.getElementById("val-latency").innerText = "Latency: " + latency + " ms";    
+        document.getElementById("val-watchlist").innerText = data.table ? data.table.length : "0";    
+        document.getElementById("val-signals").innerText = data.pulse ? data.pulse.length : "0";    
+        document.getElementById("val-lastsignal").innerText = topSymbol ? `${topSymbol.symbol} (θ: ${Number(topSymbol.theta).toFixed(2)})` : "NONE";    
+            
+        if (data.ts) {    
+            const dt = new Date(data.ts * 1000);    
+            document.getElementById("val-lastupdate").innerText = "Last Sync: " + dt.toLocaleTimeString();    
+        }    
+    
+        const consoleStream = document.getElementById("console-stream");    
+        const timeStr = new Date().toLocaleTimeString();    
+        const line = document.createElement("div");    
+        line.className = "console-line";    
+        line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">PULSE_OK</span> <span class="console-val">Dominant: ${topSymbol ? topSymbol.symbol : 'None'} | State: ${topSymbol ? topSymbol.state : 'Scanning'} | Latency: ${latency}ms</span>`;    
+            
+        consoleStream.appendChild(line);    
+        if (consoleStream.children.length > 8) {    
+            consoleStream.removeChild(consoleStream.children[1]);    
+        }    
+        consoleStream.scrollTop = consoleStream.scrollHeight;    
+    
+        if (data.table && data.table.length > 0) {    
+            const tbody = document.getElementById("table-body");    
+            tbody.innerHTML = "";    
+            data.table.forEach(item => {    
+                const tr = document.createElement("tr");    
+                const isPulse = data.pulse && data.pulse.some(p => p.symbol === item.symbol);    
+                    
+                tr.innerHTML = `    
+                    <td style="font-weight:600; color:var(--fg);">${item.symbol}</td>    
+                    <td style="color:var(--accent);">${Number(item.theta).toFixed(4)}</td>    
+                    <td>${Number(item.omega || 0).toFixed(4)}</td>    
+                    <td>${Number(item.vol || 0).toFixed(4)}</td>    
+                    <td><span class="tag-state ${isPulse ? 'active' : 'idle'}">${isPulse ? 'SINGULARITY' : 'SCANNING'}</span></td>    
+                `;    
+                tbody.appendChild(tr);    
+            });    
+        }    
+    
+    } catch (err) {    
+        const dot = document.getElementById("status-dot");    
+        const statusText = document.getElementById("status-text");    
+        dot.classList.add("offline");    
+        statusText.innerText = "NODE DISCONNECTED";    
+        statusText.style.color = "var(--offline)";    
+    }    
+}    
+    
+function shareTelemetry() {    
+    if (!latestTopSymbol) {    
+        alert("No active singularity currently detected.");    
+        return;    
+    }    
+    const text = `Market Alchemy Observatory Telemetry:\nDominant Singularity State: ${latestTopSymbol.symbol}\nTheta (θ): ${Number(latestTopSymbol.theta).toFixed(4)}\nState-Space Metric: Active Manifold\n\nLive Telemetry Stream: https://marketalchemy.io/observatory.html`;    
+    navigator.clipboard.writeText(text).then(() => {    
+        alert("Telemetry record copied to clipboard!");    
+    });    
+}    
+    
+loadRuntime();    
+setInterval(loadRuntime, 5000);    
+</script>  </body>    </html>
