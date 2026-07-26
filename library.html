@@ -146,10 +146,42 @@ h1{
 .hero-title{font-size:22px;font-weight:600;margin-bottom:6px;}
 .hero-desc{font-size:14px;opacity:.8;line-height:1.6;margin-top:10px;}
 
-.book{display:flex;gap:20px;margin-top:36px;padding-top:28px;border-top:1px solid var(--border);align-items:flex-start;}
+/* Kitap Kartı Yapısı ve Görsel Entegrasyonu */
+.book{
+    display:flex;
+    gap:24px;
+    margin-top:36px;
+    padding-top:28px;
+    border-top:1px solid var(--border);
+    align-items:flex-start;
+}
+.book:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+
+.book-cover {
+    width: 120px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    background: #141822;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.book-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
 .book-info{flex:1;}
 .book-title{font-size:18px;font-weight:600;margin-bottom:4px;}
-.book-desc{margin-top:10px;font-size:14px;opacity:.75;line-height:1.6;}
+.book-desc{
+    margin-top:10px;
+    font-size:13.5px;
+    opacity:.8;
+    line-height:1.65;
+    white-space: pre-line;
+}
 
 .links{margin-top:14px; display:flex; gap:16px; flex-wrap:wrap;}
 .links a{color:var(--accent);text-decoration:none;font-size:12px;font-weight:500;}
@@ -169,6 +201,11 @@ footer{
 /* Dil bazlı dinamik görünürlük sınıfları */
 body.lang-tr .en-only { display: none !important; }
 body.lang-en .tr-only { display: none !important; }
+
+@media(max-width: 600px){
+    .book { flex-direction: column; }
+    .book-cover { width: 100px; }
+}
 </style>
 </head>
 
@@ -234,7 +271,7 @@ if (lang === "tr") {
     </div>
 </div>
 
-<!-- EXTRA LAYER: YAPISAL DERİNLİK -->
+<!-- EXTRA LAYER: YAPISAL DERİNLİK (Kitap 3) -->
 <div class="hero">
     <div class="hero-content">
         <div class="hero-body">
@@ -242,11 +279,22 @@ if (lang === "tr") {
                 <span class="en-only">SPECIAL LAYER — KERNEL</span>
                 <span class="tr-only">ÖZEL KATMAN — ÇEKİRDEK</span>
             </div>
-            <div class="hero-title">YAPISAL DERİNLİK: Gerçeklik, Zaman, Bilgi ve Organizasyon</div>
+            <div class="hero-title">
+                <span class="en-only">Structural Depth: Reality, Time, Information, and Organization</span>
+                <span class="tr-only">YAPISAL DERİNLİK: Gerçeklik, Zaman, Bilgi ve Organizasyon</span>
+            </div>
             <div class="struct-signal">Ω: Native TR | Θ: Kernel Axiom</div>
             <div class="hero-desc">
-                <span class="en-only">Core reference work in Turkish covering the foundational axioms and system dynamics of Structural Depth Theory.</span>
-                <span class="tr-only">Yapısal Derinlik Teorisinin çekirdek aksiyomlarını ve sistem dinamiklerini ele alan Türkçe temel başvuru eseri.</span>
+                <span class="en-only">
+                    A comprehensive study seeking answers to existence within a single structural framework. 
+                    Reality, time, entropy, evolution, information, and consciousness are examined as manifestations of the same fundamental structural principle rather than independent problems.
+                    Represents the theoretical synthesis of 17 independent DOI-indexed research papers.
+                </span>
+                <span class="tr-only">
+                    Bir şeyin var olması onu açıklamaz. Asıl soru şudur: Neden hâlâ var?
+                    YAPISAL DERİNLİK, bu sorulara tek bir yapısal çerçeve içinde cevap arayan kapsamlı bir incelemedir.
+                    Bu eser, yazarın DOI indeksli 17 bağımsız araştırma çalışmasından oluşan daha geniş bir araştırma programının teorik sentezini temsil etmektedir.
+                </span>
             </div>
             <div class="links">
                 <a href="https://play.google.com/store/books/details/Halil_%C4%B0brahim_G%C3%9CVEN_YAPISAL_DER%C4%B0NL%C4%B0K?id=5FvvEQAAQBAJ" target="_blank" rel="noopener">TR — Google Play Books</a>
@@ -257,18 +305,32 @@ if (lang === "tr") {
 
 <div class="section" style="margin-top:36px; padding:24px; border:1px solid var(--border); background:var(--card-bg);">
     
-    <!-- LAYER I: THE PLACE OF TIME -->
-    <div class="book" style="border-top:none; margin-top:0; padding-top:0;">
+    <!-- LAYER I: THE PLACE OF TIME / ZAMANIN YERİ -->
+    <div class="book">
+        <div class="book-cover">
+            <img src="path_to_cover_place_of_time.jpg" alt="The Place of Time Cover">
+        </div>
         <div class="book-info">
             <div class="book-meta">
                 <span class="en-only">LAYER I — LAW</span>
                 <span class="tr-only">KATMAN I — YASA</span>
             </div>
-            <div class="book-title">The Place of Time: Time as Structural Depth</div>
+            <div class="book-title">
+                <span class="en-only">The Place of Time: Time as Structural Depth</span>
+                <span class="tr-only">Zamanın Yeri: Yapısal Derinlik Olarak Zaman</span>
+            </div>
             <div class="struct-signal">Ω: Undefined | Θ: Absolute</div>
             <div class="book-desc">
-                <span class="en-only">Time is not a fundamental independent parameter; it is the macroscopic visibility of structural depth differentiation.</span>
-                <span class="tr-only">Zaman temel bağımsız bir parametre değildir; yapısal derinlik farklılaşmasının makroskopik görünürlüğüdür.</span>
+                <span class="en-only">
+                    Time is not flowing. You are not measuring time; you are measuring structural depth.
+                    This book removes time from the clock and places it into the system architecture.
+                    Time is not a flow; it is the derivative consequence of layered structure.
+                </span>
+                <span class="tr-only">
+                    Zaman akmıyor. Ölçtüğünüz şey zaman değil, yapısal derinliktir.
+                    Bu kitap, zamanı saatten söküp sistemin mimarisine yerleştirir.
+                    Zaman bir akış değil, katmanlaşmış yapının türevsel sonucudur.
+                </span>
             </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank" rel="noopener">EN — Amazon (ASIN: B0GNWP4NKL)</a>
@@ -277,18 +339,32 @@ if (lang === "tr") {
         </div>
     </div>
 
-    <!-- LAYER II: THE CONDENSATION POINT -->
+    <!-- LAYER II: THE CONDENSATION POINT / YOĞUNLAŞMA NOKTASI -->
     <div class="book">
+        <div class="book-cover">
+            <img src="path_to_cover_condensation.jpg" alt="The Condensation Point Cover">
+        </div>
         <div class="book-info">
             <div class="book-meta">
                 <span class="en-only">LAYER II — EXTRACTION</span>
                 <span class="tr-only">KATMAN II — TÜRETME</span>
             </div>
-            <div class="book-title">The Condensation Point: Debt, Energy, and the Narrowing of Global Coordination (2026–2035)</div>
+            <div class="book-title">
+                <span class="en-only">The Condensation Point: Debt, Energy, and the Narrowing of Global Coordination (2026–2035)</span>
+                <span class="tr-only">Yoğunlaşma Noktası: Borç, Enerji ve Küresel Koordinasyonun Daralması (2026–2035)</span>
+            </div>
             <div class="struct-signal">Ω: Observable | Θ: Emerging</div>
             <div class="book-desc">
-                <span class="en-only">Examines critical mathematical thresholds where systems transition from unconstrained disorder into rigid organization.</span>
-                <span class="tr-only">Sistemlerin kısıtlanmamış düzensizlikten katı organizasyona geçiş yaptığı kritik matematiksel eşikleri inceler.</span>
+                <span class="en-only">
+                    The world is not collapsing. It is condensing. 
+                    Examines the structural limits shaping the global economy between 2026 and 2035. 
+                    Maps arithmetic and physical constraints that narrow coordination: debt sustainability, energy return, and trust.
+                </span>
+                <span class="tr-only">
+                    Dünya çökmüyor, yoğunlaşıyor. 
+                    2026–2035 yılları arasında küresel ekonomiyi şekillendiren yapısal sınırları inceler. 
+                    Kriz kehaneti değil; borç sürdürülebilirliği, enerji getirisi ve kurumsal güven eşiklerini haritalandıran yapısal bir çerçevedir.
+                </span>
             </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank" rel="noopener">EN — Amazon (ASIN: B0GN1DBVH7)</a>
@@ -296,18 +372,32 @@ if (lang === "tr") {
         </div>
     </div>
 
-    <!-- LAYER III: LIQUIDATION -->
+    <!-- LAYER III: LIQUIDATION / TASFİYE -->
     <div class="book">
+        <div class="book-cover">
+            <img src="path_to_cover_liquidation.jpg" alt="Liquidation Cover">
+        </div>
         <div class="book-info">
             <div class="book-meta">
                 <span class="en-only">LAYER III — ENGINE</span>
                 <span class="tr-only">KATMAN III — MOTOR</span>
             </div>
-            <div class="book-title">Liquidation: The Market Alchemy Framework</div>
+            <div class="book-title">
+                <span class="en-only">Liquidation: The Market Alchemy Framework</span>
+                <span class="tr-only">Tasfiye: Market Alchemy Çerçevesi</span>
+            </div>
             <div class="struct-signal">Ω: Suppressed | Θ: Increasing</div>
             <div class="book-desc">
-                <span class="en-only">Formalizes structural liquidation mechanics and thermodynamic information collapse when feedback loops suppress degrees of freedom.</span>
-                <span class="tr-only">Geri besleme döngüleri serbestlik derecelerini bastırdığında ortaya çıkan yapısal tasfiye mekanizmalarını ve termodinamik bilgi çöküşünü resmileştirir.</span>
+                <span class="en-only">
+                    Modern economic order was built on growth assumptions. 
+                    When debt grows exponentially while physical production hits limits, systems realign. 
+                    Demonstrates that economic systems rely on energy, complexity, and trust rather than mere finance.
+                </span>
+                <span class="tr-only">
+                    Modern ekonomik düzen büyüme varsayımı üzerine kuruldu. 
+                    Borç üstel büyürken reel üretim fiziksel sınırlara tabidir. 
+                    Tasfiye, ekonomik sistemlerin finansal değil; enerji, karmaşıklık ve güven üzerine kurulu olduğunu gösteren bir analizdir.
+                </span>
             </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank" rel="noopener">EN — Amazon (ASIN: B0GRSW8SWN)</a>
@@ -316,18 +406,31 @@ if (lang === "tr") {
         </div>
     </div>
 
-    <!-- LAYER IV: INVALID STATE -->
+    <!-- LAYER IV: INVALID STATE / GEÇERSİZ DURUM -->
     <div class="book">
+        <div class="book-cover">
+            <img src="path_to_cover_invalid_state.jpg" alt="Invalid State Cover">
+        </div>
         <div class="book-info">
             <div class="book-meta">
                 <span class="en-only">LAYER IV — EXECUTION & BEHAVIORAL CONSTRAINTS</span>
                 <span class="tr-only">KATMAN IV — İCRA VE DAVRANIŞSAL KISITLAR</span>
             </div>
-            <div class="book-title">INVALID STATE: Why Traders Create Unnecessary Losses</div>
+            <div class="book-title">
+                <span class="en-only">INVALID STATE: Why Traders Create Unnecessary Losses</span>
+                <span class="tr-only">GEÇERSİZ DURUM: Yatırımcılar Neden Gereksiz Kayıplar Üretir?</span>
+            </div>
             <div class="struct-signal">Ω: Collapsed | Θ: Strict Barrier</div>
             <div class="book-desc">
-                <span class="en-only">Analyzes execution-level breakdown occurring when market participants trade outside valid structural constraints.</span>
-                <span class="tr-only">Piyasa katılımcıları geçerli yapısal kısıtların dışında işlem yaptığında oluşan icra düzeyindeki kırılmaları analiz eder.</span>
+                <span class="en-only">
+                    Most traders don't lose because of the market; they trade from an invalid state. 
+                    Explores the hidden conditions before every trade. 
+                    The trade is not the decision; the decision comes first. Stop improving your entries, start improving your state.
+                </span>
+                <span class="tr-only">
+                    Poizsyonlar değil, zihinsel ve yapısal durumlar kaybeder. 
+                    Piyasa katılımcıları geçerli yapısal kısıtların dışında işlem yaptığında oluşan icra düzeyindeki kırılmaları ve karardan önce gelen yapısal hazırlığı inceler.
+                </span>
             </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0H9BY6SVK" target="_blank" rel="noopener">EN — Amazon (ASIN: B0H9BY6SVK)</a>
@@ -335,18 +438,31 @@ if (lang === "tr") {
         </div>
     </div>
 
-    <!-- LAYER V: THE SHAPE OF ABSENCE -->
+    <!-- LAYER V: THE SHAPE OF ABSENCE / ZAHİDE -->
     <div class="book">
+        <div class="book-cover">
+            <img src="path_to_cover_shape_of_absence.jpg" alt="The Shape of Absence Cover">
+        </div>
         <div class="book-info">
             <div class="book-meta">
                 <span class="en-only">LAYER V — ADVANCED STRUCTURAL SYNTHESIS</span>
                 <span class="tr-only">KATMAN V — GELİŞMİŞ YAPISAL SENTEZ</span>
             </div>
-            <div class="book-title">The Shape of Absence: Love, Loss, and the Mystery of What Remains</div>
+            <div class="book-title">
+                <span class="en-only">The Shape of Absence: Love, Loss, and the Mystery of What Remains</span>
+                <span class="tr-only">Yokluğun Şekli / Zahide: Sevgi, Kayıp ve Kalanın Gizemi</span>
+            </div>
             <div class="struct-signal">Ω: Terminal | Θ: Unified Field</div>
             <div class="book-desc">
-                <span class="en-only">Explores change, what survives loss, and how meaning emerges through relationship within systemic boundaries.</span>
-                <span class="tr-only">Değişimi, kayıptan neyin sağ çıktığını ve sistemik sınırlar içinde anlamın ilişki yoluyla nasıl ortaya çıktığını inceler.</span>
+                <span class="en-only">
+                    Explores change, what survives loss, and how meaning emerges through relationship within systemic boundaries. 
+                    Bridges abstract philosophical theory with the profound concrete realities of human existence and containment.
+                </span>
+                <span class="tr-only">
+                    "Bir şeyin var olması, neden var olduğunu açıklamaz." 
+                    Newton, Einstein, Leibniz, Darwin ve Schrödinger gibi zihinlerin buluştuğu zamansız bir salonda; 
+                    saf soyut kuramlar ile somut yaşamın, yitirilen bir canlının ardında bıraktığı izlerin ve containment kavramının kesişim noktası.
+                </span>
             </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0H875RHXR" target="_blank" rel="noopener">EN — Amazon (ASIN: B0H875RHXR)</a>
