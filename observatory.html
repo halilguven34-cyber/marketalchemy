@@ -5,11 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Observatory Runtime — Real-Time System Metrics | Market Alchemy</title>
+<title>Observatory Runtime & V12 Architecture — Real-Time Structural Telemetry | Market Alchemy</title>
 
-<meta name="description" content="Live observatory runtime tracking real-time state-space parameters, execution telemetry, and structural depth metrics from Market Alchemy engine.">
+<meta name="description" content="Explore Market Alchemy V12 Observatory runtime telemetry, two-stage phase detection, structural metrics (Theta, Omega, Delta-S, Compression), and system architecture.">
 
-<meta name="keywords" content="Observatory, System Telemetry, Runtime Metrics, Market Alchemy, Real-Time State Space, STR Core, Halil Ibrahim Guven">
+<meta name="keywords" content="Observatory, V12 Architecture, System Telemetry, Runtime Metrics, Market Alchemy, State Space, Structural Depth Theory, Halil Ibrahim Guven">
 
 <meta name="graph-node" content="observatory">
 <meta name="node-type" content="runtime-observatory">
@@ -102,7 +102,7 @@ nav a:hover, nav a.active{
 h1,h2,h3,p{margin:0;}
 
 h1{
-    font-size:28px;
+    font-size:26px;
     line-height:1.3;
     letter-spacing:-0.8px;
     border-left:2px solid var(--accent);
@@ -246,6 +246,17 @@ h1{
     border: 1px dashed var(--border);
     font-size: 12px;
     color: var(--muted);
+    line-height: 1.8;
+}
+
+.architecture-flow {
+    margin-top: 14px;
+    padding: 14px;
+    background: rgba(9, 11, 14, 0.8);
+    border: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .share-btn {
@@ -260,6 +271,25 @@ h1{
     transition: 0.2s;
 }
 .share-btn:hover { background: var(--accent); color: var(--bg); }
+
+.lang-switch {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.lang-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 2px 8px;
+    font-size: 10px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+}
+.lang-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+}
 
 footer{
     margin-top:80px;
@@ -284,33 +314,50 @@ fetch("nav.html")
 .then(res => res.text())
 .then(data => {
   document.getElementById("nav").innerHTML = data;
-
-  const lang = localStorage.getItem("lang") || "en";
-  document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-  document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
+  updateLanguageView();
 });
+
+function switchLang(lang) {
+    localStorage.setItem("lang", lang);
+    updateLanguageView();
+}
+
+function updateLanguageView() {
+    const lang = localStorage.getItem("lang") || "en";
+    document.querySelectorAll(".en").forEach(e => e.style.display = (lang === "en" ? "block" : "none"));
+    document.querySelectorAll(".tr").forEach(e => e.style.display = (lang === "tr" ? "block" : "none"));
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+    });
+}
 </script>
 
 <div class="container">
 
+<!-- LANGUAGE SWITCHER -->
+<div class="lang-switch">
+    <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-btn" data-lang="tr" onclick="switchLang('tr')">TR</button>
+</div>
+
+<!-- 1. HERO SECTION -->
 <header>
     <div class="live-badge">
         <span class="live-dot" id="status-dot"></span>
         <span id="status-text">CONNECTING TO NODE...</span>
     </div>
 
-    <div class="node-path" data-en="RUNTIME LAYER :: OBSERVATORY SYSTEM TELEMETRY" data-tr="ÇALIŞMA ZAMANI KATMANI :: GÖZLEMEVİ SİSTEM TELEMETRİSİ">
-        RUNTIME LAYER :: OBSERVATORY SYSTEM TELEMETRY
-    </div>
+    <div class="node-path en">RUNTIME LAYER :: V12 OBSERVATORY SYSTEM TELEMETRY</div>
+    <div class="node-path tr" style="display:none;">ÇALIŞMA ZAMANI KATMANI :: V12 GÖZLEMEVİ SİSTEM TELEMETRİSİ</div>
 
-    <h1 class="en">Observatory Telemetry & State Monitor</h1>
-    <h1 class="tr" style="display:none;">Gözlemevi Telemetri ve Durum İzleyici</h1>
+    <h1 class="en">Market Alchemy V12 Structural Observation Platform</h1>
+    <h1 class="tr" style="display:none;">Market Alchemy V12 Yapısal Gözlem Platformu</h1>
 
     <p class="big en">Real-Time State-Space Telemetry & Execution Bounds</p>
     <p class="big tr" style="display:none;">Gerçek Zamanlı Durum Uzayı Telemetrisi ve İcra Sınırları</p>
 
-    <p class="muted en">Live runtime telemetry fed directly from active execution engines operating under Structural Depth Theory.</p>
-    <p class="muted tr" style="display:none;">Yapısal Derinlik Teorisi altında çalışan aktif icra motorlarından doğrudan beslenen canlı çalışma zamanı telemetrisi.</p>
+    <p class="muted en">Real-time structural analysis of cryptocurrency markets using state-aware estimation, event-driven telemetry, and continuous phase evaluation under Structural Depth Theory.</p>
+    <p class="muted tr" style="display:none;">Yapısal Derinlik Teorisi altında durum farkındalıklı kestirim, olay tabanlı telemetri ve sürekli faz değerlendirmesi kullanarak kripto para piyasalarının gerçek zamanlı yapısal analizi.</p>
 </header>
 
 <!-- KNOWLEDGE GRAPH NAVIGATION -->
@@ -338,9 +385,9 @@ fetch("nav.html")
     </div>
 </section>
 
-<!-- REAL-TIME TELEMETRY METRICS -->
+<!-- 2. LIVE RUNTIME METRICS -->
 <div class="section">
-    <div class="system-title">01 :: LIVE ENGINE METRICS</div>
+    <div class="system-title">01 :: LIVE ENGINE TELEMETRY</div>
     <div class="big en">Active Runtime Parameters</div>
     <div class="big tr" style="display:none;">Aktif Çalışma Zamanı Parametreleri</div>
 
@@ -353,7 +400,7 @@ fetch("nav.html")
         <div class="metric-card">
             <div class="metric-label">WATCHLIST COUNT</div>
             <div class="metric-value" id="val-watchlist">--</div>
-            <div class="metric-sub">Monitored Assets</div>
+            <div class="metric-sub" class="en">Monitored Assets</div>
         </div>
         <div class="metric-card">
             <div class="metric-label">PULSE COUNT</div>
@@ -369,40 +416,25 @@ fetch("nav.html")
 
     <!-- SHARE SINGULARITY SNIPPET -->
     <div style="margin-top: 12px; text-align: right;">
-        <button class="share-btn" onclick="shareTelemetry()">[ Share Live Singularity Telemetry ]</button>
+        <button class="share-btn" onclick="shareTelemetry()"><span class="en">[ Share Live Singularity Telemetry ]</span><span class="tr" style="display:none;">[ Canlı Singülarite Telemetrisini Paylaş ]</span></button>
     </div>
 </div>
 
-<!-- THEORETICAL PARAMETER MAPPING -->
+<!-- 3. LIVE STRUCTURAL METRICS & THEORETICAL MAPPING -->
 <div class="section">
-    <div class="system-title">THEORETICAL PARAMETER INTERPRETATION</div>
+    <div class="system-title">02 :: STRUCTURAL PARAMETER INTERPRETATION</div>
+    <div class="big en">Core Metrics Matrix</div>
+    <div class="big tr" style="display:none;">Çekirdek Metrik Matrisi</div>
     <div class="theory-bridge">
-        <b style="color:var(--fg);">Theta (θ):</b> Structural Compression Operator — Measures the reduction in degrees of freedom.<br>
-        <b style="color:var(--fg);">Omega (Ω):</b> Containment Boundary Volatility — Tracks the phase shift threshold before state collapse.<br>
-        <b style="color:var(--fg);">Vol (V):</b> Logarithmic Returns Density Matrix.<br>
-        <a href="library.html" class="derived-link" style="margin-top:8px;">See theoretical formalization in <i>The Place of Time</i> & <i>Liquidation</i> →</a>
+        <b style="color:var(--fg);">Theta ($\theta$):</b> <span class="en">Structural Compression Operator — Measures the reduction in degrees of freedom across market manifolds.</span><span class="tr" style="display:none;">Yapısal Sıkıştırma Operatörü — Piyasa manifoldlarındaki serbestlik derecesi azalmasını ölçer.</span><br>
+        <b style="color:var(--fg);">Omega ($\Omega$):</b> <span class="en">Containment Boundary Volatility — Tracks phase shift thresholds before structural state collapse.</span><span class="tr" style="display:none;">Kapsama Sınırı Volatilitesi — Yapısal durum çöküşü öncesi faz değişim eşiklerini izler.</span><br>
+        <b style="color:var(--fg);">Delta-S ($\Delta S$):</b> <span class="en">Entropy Delta — Quantifies structural gradient shifts between temporal memory states.</span><span class="tr" style="display:none;">Entropi Farkı — Zamansal bellek durumları arasındaki yapısal gradyan değişimlerini nicelleştirir.</span><br>
+        <b style="color:var(--fg);">Compression ($C$):</b> <span class="en">State Compression Ratio — Primary driver for two-stage phase evaluation ($C \ge 0.75 \rightarrow \text{COMPRESSION_BASIN}$).</span><span class="tr" style="display:none;">Durum Sıkıştırma Oranı — İki aşamalı faz değerlendirmesi için ana sürücü ($C \ge 0.75 \rightarrow \text{COMPRESSION_BASIN}$).</span><br>
+        <a href="library.html" class="derived-link" style="margin-top:8px;"><span class="en">See theoretical formalization in <i>The Place of Time</i> & <i>Liquidation</i> →</span><span class="tr" style="display:none;"><i>The Place of Time</i> ve <i>Liquidation</i> eserlerindeki teorik formalleştirmeleri inceleyin →</span></a>
     </div>
 </div>
 
-<!-- LIVE STREAM CONSOLE -->
-<div class="section">
-    <div class="system-title">02 :: ENGINE EXECUTION STREAM</div>
-    <div class="big en">Telemetry Feed</div>
-    <div class="big tr" style="display:none;">Telemetri Akış Günlüğü</div>
-
-    <div class="console-block" id="console-stream">
-        <div class="console-line"><span class="console-ts">[SYS_INIT]</span> <span class="console-tag">OBSERVATORY</span> <span class="console-val">Initializing runtime telemetry fetch loop...</span></div>
-    </div>
-
-    <div class="derived-result">
-        <div class="derived-title">DERIVED RESULT — EXECUTION INFRASTRUCTURE</div>
-        <div class="en">Inspect Pascal engine specifications and deterministic execution routines.</div>
-        <div class="tr" style="display:none;">Pascal motoru özelliklerini ve deterministik icra rutinlerini inceleyin.</div>
-        <a href="lab.html" class="derived-link">See: Lab & Engines Architecture →</a>
-    </div>
-</div>
-
-<!-- LIVE MANIFOLD TABLE -->
+<!-- 4. LIVE SCANNER MANIFOLD -->
 <div class="section">
     <div class="system-title">03 :: LIVE SCANNER MANIFOLD</div>
     <div class="big en">Real-Time State Space Table</div>
@@ -426,6 +458,67 @@ fetch("nav.html")
             </tbody>
         </table>
     </div>
+</div>
+
+<!-- 5. SINGULARITY PULSE & STREAM -->
+<div class="section">
+    <div class="system-title">04 :: ENGINE EXECUTION STREAM</div>
+    <div class="big en">Telemetry Feed & Singularity Pulse</div>
+    <div class="big tr" style="display:none;">Telemetri Akışı ve Singülarite Darbesi</div>
+
+    <div class="console-block" id="console-stream">
+        <div class="console-line"><span class="console-ts">[SYS_INIT]</span> <span class="console-tag">OBSERVATORY</span> <span class="console-val">Initializing runtime telemetry fetch loop...</span></div>
+    </div>
+
+    <div class="derived-result">
+        <div class="derived-title">TWO-STAGE PHASE DETECTION LOGIC</div>
+        <div class="en">Engine determines base phase ($C \ge 0.75 \rightarrow \text{COMPRESSION_BASIN}$). Observatory applies secondary structural filter ($C \ge 0.80$ and $\Delta S \ge 1.20$) to trigger official <b>SINGULARITY</b> markers.</div>
+        <div class="tr" style="display:none;">Motor temel fazı belirler ($C \ge 0.75 \rightarrow \text{COMPRESSION_BASIN}$). Gözlemevi, resmi <b>SINGULARITY</b> etiketlerini tetiklemek için ikincil yapısal filtreyi ($C \ge 0.80$ ve $\Delta S \ge 1.20$) uygular.</div>
+        <a href="lab.html" class="derived-link"><span class="en">See: Lab & Engines Architecture →</span><span class="tr" style="display:none;">İncele: Lab ve Motor Mimarisi →</span></a>
+    </div>
+</div>
+
+<!-- 6. RUNTIME ARCHITECTURE (V12 PIPELINE) -->
+<div class="section">
+    <div class="system-title">05 :: SYSTEM ARCHITECTURE & V12 PIPELINE</div>
+    <div class="big en">Deterministic Execution Stack</div>
+    <div class="big tr" style="display:none;">Deterministik İcra Yığını</div>
+    
+    <p class="muted en" style="margin-top:10px;">V12 operates on a decoupled modular architecture ensuring robust state estimation, real-time data feeding, and multi-channel telemetry distribution.</p>
+    <p class="muted tr" style="display:none;">V12, sağlam durum kestirimi, gerçek zamanlı veri beslemesi ve çok kanallı telemetri dağıtımı sağlayan ayrıştırılmış modüler bir mimari üzerinde çalışır.</p>
+
+    <div class="architecture-flow">
+        [Market Data Feed] <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+        [Structural Estimator (Θ, Ω, ΔS, C)] <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+        [Temporal Memory Layer] <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+        [Phase Detector (Two-Stage Evaluation)] <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+        [Event Bus / Runtime Pipeline] <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+        [Observatory API & Telegram Dispatcher]
+    </div>
+
+    <div class="theory-bridge" style="margin-top:14px;">
+        <b>V12 Module Layout:</b><br>
+        • <code>measurement/</code> → Data ingestion and runtime measurement<br>
+        • <code>analytics/</code> → Theta/Omega ranking and adaptive thresholds<br>
+        • <code>detectors/</code> → Phase and singularity detection<br>
+        • <code>pipeline/</code> → Event bus and data routing<br>
+        • <code>observer/</code> → FastAPI observatory backend<br>
+        • <code>telemetry/</code> → Research records and diagnostics<br>
+        • <code>alerts/</code> → Telegram dispatchers<br>
+        • <code>validation/</code> → Robustness testing frameworks<br>
+        • <code>backtest/</code> → Historical performance analysis<br>
+        • <code>core/</code> → Mathematical primitives
+    </div>
+</div>
+
+<!-- 7. RESEARCH FOUNDATION -->
+<div class="section">
+    <div class="system-title">06 :: RESEARCH FOUNDATION</div>
+    <div class="big en">Structural Depth Theory Application</div>
+    <div class="big tr" style="display:none;">Yapısal Derinlik Teorisi Uygulaması</div>
+    <p class="muted en" style="margin-top:10px;">This observatory is not merely a technical dashboard relying on surface indicators; it is the live production application of <b>Structural Depth Theory (SDT)</b>. The metrics tracked here stem from rigorous constraint-structure modeling across complex systems.</p>
+    <p class="muted tr" style="display:none;">Bu gözlemevi yalnızca yüzeysel göstergelere dayanan teknik bir pano değildir; <b>Yapısal Derinlik Teorisi'nin (SDT)</b> canlı üretim uygulamasıdır. Burada izlenen metrikler, karmaşık sistemler üzerindeki titiz kısıt-yapı modellemesinden türetilmiştir.</p>
+    <a href="research.html" class="derived-link"><span class="en">Explore SDT Research Papers & Preprints →</span><span class="tr" style="display:none;">SDT Araştırma Makalelerini ve Ön Baskılarını Keşfedin →</span></a>
 </div>
 
 <footer>
@@ -466,7 +559,7 @@ async function loadRuntime() {
         const topSymbol = hasPulse ? data.pulse[0] : null;    
         latestTopSymbol = topSymbol;    
     
-        document.getElementById("val-engine").innerText = "STR Core (Θ/Ω/V)";    
+        document.getElementById("val-engine").innerText = "V12 STR Core (Θ/Ω/ΔS/C)";    
         document.getElementById("val-latency").innerText = "Latency: " + latency + " ms";    
         document.getElementById("val-watchlist").innerText = data.table ? data.table.length : "0";    
         document.getElementById("val-signals").innerText = data.pulse ? data.pulse.length : "0";    
@@ -481,7 +574,7 @@ async function loadRuntime() {
         const timeStr = new Date().toLocaleTimeString();    
         const line = document.createElement("div");    
         line.className = "console-line";    
-        line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">PULSE_OK</span> <span class="console-val">Dominant: ${topSymbol ? topSymbol.symbol : 'None'} | State: ${topSymbol ? topSymbol.state : 'Scanning'} | Latency: ${latency}ms</span>`;    
+        line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">V12_PULSE</span> <span class="console-val">Dominant: ${topSymbol ? topSymbol.symbol : 'None'} | State: ${topSymbol ? topSymbol.state : 'Scanning'} | Latency: ${latency}ms</span>`;    
             
         consoleStream.appendChild(line);    
         if (consoleStream.children.length > 8) {    
@@ -521,7 +614,7 @@ function shareTelemetry() {
         alert("No active singularity currently detected.");    
         return;    
     }    
-    const text = `Market Alchemy Observatory Telemetry:\nDominant Singularity State: ${latestTopSymbol.symbol}\nTheta (θ): ${Number(latestTopSymbol.theta).toFixed(4)}\nState-Space Metric: Active Manifold\n\nLive Telemetry Stream: https://marketalchemy.io/observatory.html`;    
+    const text = `Market Alchemy V12 Observatory Telemetry:\nDominant Singularity State: ${latestTopSymbol.symbol}\nTheta (θ): ${Number(latestTopSymbol.theta).toFixed(4)}\nState-Space Metric: Active Manifold\n\nLive Telemetry Stream: https://marketalchemy.io/observatory.html`;    
     navigator.clipboard.writeText(text).then(() => {    
         alert("Telemetry record copied to clipboard!");    
     });    
