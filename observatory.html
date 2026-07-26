@@ -374,9 +374,62 @@ function updateLanguageView() {
     </div>
 </section>
 
-<!-- 3. LIVE RUNTIME METRICS -->
+<!-- 1. LIVE SCANNER & CONSOLE (NEW 01) -->
 <div class="section">
-    <div class="system-title">01 :: LIVE RUNTIME TELEMETRY</div>
+    <div class="system-title">01 :: LIVE SCANNER MANIFOLD</div>
+    <div class="big en">Real-Time State Space Table</div>
+    <div class="big tr" style="display:none;">Gerçek Zamanlı Durum Uzayı Tablosu</div>
+
+    <div class="data-table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Theta (θ)</th>
+                    <th>Omega (Ω)</th>
+                    <th>Vol (V)</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr>
+                    <td colspan="5" style="text-align: center; color: var(--muted);">Loading manifold state data...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="console-block" id="console-stream" style="margin-top: 16px;">
+        <div class="console-line"><span class="console-ts">[SYS_INIT]</span> <span class="console-tag">OBSERVATORY</span> <span class="console-val">Initializing runtime telemetry fetch loop...</span></div>
+    </div>
+</div>
+
+<!-- 2. ARCHITECTURE & PURPOSE (NEW 02) -->
+<div class="section">
+    <div class="system-title">02 :: ARCHITECTURE & PURPOSE</div>
+    <div class="big en">Architecture & Purpose</div>
+    <div class="big tr" style="display:none;">Mimari ve Amaç</div>
+    <div class="theory-bridge" style="margin-top: 14px;">
+        <p class="en">The observatory is powered by the Market Alchemy V12 Structural Runtime Engine. Rather than relying on isolated technical indicators, the engine treats each asset as part of a structural state space. In each observation cycle, price, trading volume, and open interest data are used to compute Theta ($\Theta$), Omega ($\Omega$), structural transition intensity ($\Delta S$), and compression intensity ($C$). Evaluated together, these metrics determine the structural phase of the market and potential singularity conditions. The purpose of the observatory is not to generate trading signals, but to observe the structural evolution of the market in real time, make critical phase transitions visible, and provide objective intelligence for research and decision-support processes.</p>
+        <p class="tr" style="display:none;">Gözlemevi, Market Alchemy V12 Yapısal Çalışma Zamanı Motoru tarafından beslenmektedir. Motor, tekil teknik göstergeler yerine her varlığı yapısal bir durum uzayının parçası olarak değerlendirir. Her gözlem döngüsünde fiyat, işlem hacmi ve açık pozisyon verileri kullanılarak Theta ($\Theta$), Omega ($\Omega$), yapısal geçiş yoğunluğu ($\Delta S$) ve sıkışma yoğunluğu ($C$) hesaplanır. Bu metrikler birlikte değerlendirilerek piyasanın yapısal fazı ve olası tekillik koşulları belirlenir. Gözlemevinin amacı alım-satım sinyali üretmekten ziyade, piyasanın yapısal evrimini gerçek zamanlı olarak gözlemlemek, kritik faz geçişlerini görünür kılmak ve araştırma ile karar destek süreçleri için nesnel finansal zeka sağlamaktır.</p>
+        
+        <div style="margin-top: 12px;">
+            <b style="color:var(--fg);" class="en">What can be observed?</b>
+            <b style="color:var(--fg);" class="tr" style="display:none;">Neler gözlemlenebilir?</b>
+            <ul style="margin: 6px 0 0 16px; padding: 0;">
+                <li class="en">Structural compression</li><li class="tr" style="display:none;">Yapısal sıkışma</li>
+                <li class="en">Phase transitions</li><li class="tr" style="display:none;">Faz geçişleri</li>
+                <li class="en">Energy accumulation</li><li class="tr" style="display:none;">Enerji birikimi</li>
+                <li class="en">Singularity formation</li><li class="tr" style="display:none;">Tekillik oluşumu</li>
+                <li class="en">Live structural intelligence</li><li class="tr" style="display:none;">Canlı yapısal finansal zeka</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 3. LIVE RUNTIME FINANCIAL INTELLIGENCE (NEW 03) -->
+<div class="section">
+    <div class="system-title">03 :: LIVE RUNTIME INTELLIGENCE</div>
     <div class="big en">Active Runtime Parameters</div>
     <div class="big tr" style="display:none;">Aktif Çalışma Zamanı Parametreleri</div>
 
@@ -406,64 +459,11 @@ function updateLanguageView() {
 
     <!-- SHARE SINGULARITY SNIPPET -->
     <div style="margin-top: 12px; text-align: right;">
-        <button class="share-btn" id="share-telemetry-btn" onclick="shareTelemetry()"><span class="en">[ Share Live Singularity Telemetry ]</span><span class="tr" style="display:none;">[ Canlı Singülarite Telemetrisini Paylaş ]</span></button>
+        <button class="share-btn" id="share-telemetry-btn" onclick="shareTelemetry()"><span class="en">[ Share Live Singularity Intelligence ]</span><span class="tr" style="display:none;">[ Canlı Singülarite Finansal Zekasını Paylaş ]</span></button>
     </div>
 </div>
 
-<!-- 4. LIVE SCANNER & CONSOLE -->
-<div class="section">
-    <div class="system-title">02 :: LIVE SCANNER MANIFOLD</div>
-    <div class="big en">Real-Time State Space Table</div>
-    <div class="big tr" style="display:none;">Gerçek Zamanlı Durum Uzayı Tablosu</div>
-
-    <div class="data-table-wrapper">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Symbol</th>
-                    <th>Theta (θ)</th>
-                    <th>Omega (Ω)</th>
-                    <th>Vol (V)</th>
-                    <th>State</th>
-                </tr>
-            </thead>
-            <tbody id="table-body">
-                <tr>
-                    <td colspan="5" style="text-align: center; color: var(--muted);">Loading manifold state data...</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="console-block" id="console-stream" style="margin-top: 16px;">
-        <div class="console-line"><span class="console-ts">[SYS_INIT]</span> <span class="console-tag">OBSERVATORY</span> <span class="console-val">Initializing runtime telemetry fetch loop...</span></div>
-    </div>
-</div>
-
-<!-- 5. ABOUT THIS OBSERVATORY (ARCHITECTURE & PURPOSE) -->
-<div class="section">
-    <div class="system-title">03 :: ARCHITECTURE & PURPOSE</div>
-    <div class="big en">Architecture & Purpose</div>
-    <div class="big tr" style="display:none;">Mimari ve Amaç</div>
-    <div class="theory-bridge" style="margin-top: 14px;">
-        <p class="en">The observatory is powered by the Market Alchemy V12 Structural Runtime Engine. Rather than relying on isolated technical indicators, the engine treats each asset as part of a structural state space. In each observation cycle, price, trading volume, and open interest data are used to compute Theta ($\Theta$), Omega ($\Omega$), structural transition intensity ($\Delta S$), and compression intensity ($C$). Evaluated together, these metrics determine the structural phase of the market and potential singularity conditions. The purpose of the observatory is not to generate trading signals, but to observe the structural evolution of the market in real time, make critical phase transitions visible, and provide objective telemetry for research and decision-support processes.</p>
-        <p class="tr" style="display:none;">Gözlemevi, Market Alchemy V12 Yapısal Çalışma Zamanı Motoru tarafından beslenmektedir. Motor, tekil teknik göstergeler yerine her varlığı yapısal bir durum uzayının parçası olarak değerlendirir. Her gözlem döngüsünde fiyat, işlem hacmi ve açık pozisyon verileri kullanılarak Theta ($\Theta$), Omega ($\Omega$), yapısal geçiş yoğunluğu ($\Delta S$) ve sıkışma yoğunluğu ($C$) hesaplanır. Bu metrikler birlikte değerlendirilerek piyasanın yapısal fazı ve olası tekillik koşulları belirlenir. Gözlemevinin amacı alım-satım sinyali üretmekten ziyade, piyasanın yapısal evrimini gerçek zamanlı olarak gözlemlemek, kritik faz geçişlerini görünür kılmak ve araştırma ile karar destek süreçleri için nesnel telemetri sağlamaktır.</p>
-        
-        <div style="margin-top: 12px;">
-            <b style="color:var(--fg);" class="en">What can be observed?</b>
-            <b style="color:var(--fg);" class="tr" style="display:none;">Neler gözlemlenebilir?</b>
-            <ul style="margin: 6px 0 0 16px; padding: 0;">
-                <li class="en">Structural compression</li><li class="tr" style="display:none;">Yapısal sıkışma</li>
-                <li class="en">Phase transitions</li><li class="tr" style="display:none;">Faz geçişleri</li>
-                <li class="en">Energy accumulation</li><li class="tr" style="display:none;">Enerji birikimi</li>
-                <li class="en">Singularity formation</li><li class="tr" style="display:none;">Tekillik oluşumu</li>
-                <li class="en">Live structural telemetry</li><li class="tr" style="display:none;">Canlı yapısal telemetri</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- 6. THEORY (CORE METRICS) -->
+<!-- 4. THEORY (CORE METRICS) -->
 <div class="section">
     <div class="system-title">04 :: STRUCTURAL PARAMETER THEORY</div>
     <div class="big en">Core Metrics Matrix</div>
@@ -477,7 +477,7 @@ function updateLanguageView() {
     </div>
 </div>
 
-<!-- 7. RESEARCH & DEEP DIVE LINKS -->
+<!-- 5. RESEARCH & DEEP DIVE LINKS -->
 <div class="section">
     <div class="system-title">05 :: FURTHER EXPLORATION</div>
     <div class="big en">Where can I learn more?</div>
@@ -586,9 +586,9 @@ function shareTelemetry() {
         alert("No active singularity currently detected.");    
         return;    
     }    
-    const text = `Market Alchemy V12 Observatory Intelligence:\nDominant Singularity State: ${latestTopSymbol.symbol}\nTheta (θ): ${Number(latestTopSymbol.theta).toFixed(4)}\nState-Space Metric: Active Manifold\n\nLive Telemetry Stream: https://marketalchemy.io/observatory.html`;    
+    const text = `Market Alchemy V12 Observatory Intelligence:\nDominant Singularity State: ${latestTopSymbol.symbol}\nTheta (θ): ${Number(latestTopSymbol.theta).toFixed(4)}\nState-Space Metric: Active Manifold\n\nLive Intelligence Stream: https://marketalchemy.io/observatory.html`;    
     navigator.clipboard.writeText(text).then(() => {    
-        alert("Telemetry record copied to clipboard!");    
+        alert("Intelligence record copied to clipboard!");    
     });    
 }    
     
