@@ -150,7 +150,6 @@ h1{
 .book-info{flex:1;}
 .book-title{font-size:18px;font-weight:600;margin-bottom:4px;}
 .book-desc{margin-top:10px;font-size:14px;opacity:.75;line-height:1.6;}
-.bridge-note{margin-top:12px;padding:12px 16px;background:#141822;border-left:2px solid var(--accent);font-size:13px;opacity:0.85;}
 
 .links{margin-top:14px; display:flex; gap:16px; flex-wrap:wrap;}
 .links a{color:var(--accent);text-decoration:none;font-size:12px;font-weight:500;}
@@ -166,6 +165,10 @@ footer{
     font-size:12px;
     color:var(--muted);
 }
+
+/* Dil bazlı dinamik görünürlük sınıfları */
+body.lang-tr .en-only { display: none !important; }
+body.lang-en .tr-only { display: none !important; }
 </style>
 </head>
 
@@ -184,31 +187,50 @@ footer{
 
 <script>
 const lang = localStorage.getItem("lang") || "en";
-document.querySelectorAll("[data-en]").forEach(el => {
-    if(lang === "tr" && el.getAttribute("data-tr")) {
-        el.textContent = el.getAttribute("data-tr");
-    }
-});
+if (lang === "tr") {
+    document.body.classList.add("lang-tr");
+} else {
+    document.body.classList.add("lang-en");
+}
 </script>
 
 <div class="container">
 
 <header>
-    <div class="node-path tr-text" data-en="KNOWLEDGE BASE :: CORPUS & COMMERCIAL SHOWCASE" data-tr="BİLGİ TABANI :: KÜLLİYAT VE TİCARİ GÖSTERİM">KNOWLEDGE BASE :: CORPUS & COMMERCIAL SHOWCASE</div>
-    <h1 class="en">Research Library & Structural Corpus</h1>
-    <h1 class="tr" style="display:none;">Araştırma Kütüphanesi ve Yapısal Külliyat</h1>
-    <p class="big en">Time is not what you think.</p>
-    <p class="big tr" style="display:none;">Zaman, zannettiğin şey değil.</p>
+    <div class="node-path">
+        <span class="en-only">KNOWLEDGE BASE :: CORPUS & COMMERCIAL SHOWCASE</span>
+        <span class="tr-only">BİLGİ TABANI :: KÜLLİYAT VE TİCARİ GÖSTERİM</span>
+    </div>
+    <h1>
+        <span class="en-only">Research Library & Structural Corpus</span>
+        <span class="tr-only">Araştırma Kütüphanesi ve Yapısal Külliyat</span>
+    </h1>
+    <p class="big">
+        <span class="en-only">Time is not what you think.</span>
+        <span class="tr-only">Zaman, zannettiğin şey değil.</span>
+    </p>
 </header>
 
 <div class="showcase-banner">
     <div>
-        <div style="font-weight:600; font-size:15px;" class="tr-text" data-en="Official Author Hubs & Direct Distribution" data-tr="Resmi Yazar Merkezleri ve Doğrudan Dağıtım">Official Author Hubs & Direct Distribution</div>
-        <div style="font-size:13px; opacity:0.75; margin-top:4px;" class="tr-text" data-en="Access the verified corpus via Amazon Author Page and Google Play Books." data-tr="Doğrulanmış külliyata Amazon Yazar Sayfası ve Google Play Kitaplar üzerinden erişin.">Access the verified corpus via Amazon Author Page and Google Play Books.</div>
+        <div style="font-weight:600; font-size:15px;">
+            <span class="en-only">Official Author Hubs & Direct Distribution</span>
+            <span class="tr-only">Resmi Yazar Merkezleri ve Doğrudan Dağıtım</span>
+        </div>
+        <div style="font-size:13px; opacity:0.75; margin-top:4px;">
+            <span class="en-only">Access the verified corpus via Amazon Author Page and Google Play Books.</span>
+            <span class="tr-only">Doğrulanmış külliyata Amazon Yazar Sayfası ve Google Play Kitaplar üzerinden erişin.</span>
+        </div>
     </div>
     <div class="btn-group">
-        <a href="https://www.amazon.com/author/higuven" target="_blank" rel="noopener" class="btn tr-text" data-en="Amazon Author Page" data-tr="Amazon Yazar Sayfası">Amazon Author Page</a>
-        <a href="https://play.google.com/store/books/author?id=Halil+%C4%B0brahim+G%C3%BCven" target="_blank" rel="noopener" class="btn btn-outline tr-text" data-en="Google Play Books" data-tr="Google Play Kitaplar">Google Play Books</a>
+        <a href="https://www.amazon.com/author/higuven" target="_blank" rel="noopener" class="btn">
+            <span class="en-only">Amazon Author Page</span>
+            <span class="tr-only">Amazon Yazar Sayfası</span>
+        </a>
+        <a href="https://play.google.com/store/books/author?id=Halil+%C4%B0brahim+G%C3%BCven" target="_blank" rel="noopener" class="btn btn-outline">
+            <span class="en-only">Google Play Books</span>
+            <span class="tr-only">Google Play Kitaplar</span>
+        </a>
     </div>
 </div>
 
@@ -216,10 +238,16 @@ document.querySelectorAll("[data-en]").forEach(el => {
 <div class="hero">
     <div class="hero-content">
         <div class="hero-body">
-            <div class="book-meta tr-text" data-en="SPECIAL LAYER — KERNEL (ÖZEL KATMAN)" data-tr="ÖZEL KATMAN — ÇEKİRDEK">SPECIAL LAYER — KERNEL (ÖZEL KATMAN)</div>
+            <div class="book-meta">
+                <span class="en-only">SPECIAL LAYER — KERNEL</span>
+                <span class="tr-only">ÖZEL KATMAN — ÇEKİRDEK</span>
+            </div>
             <div class="hero-title">YAPISAL DERİNLİK: Gerçeklik, Zaman, Bilgi ve Organizasyon</div>
             <div class="struct-signal">Ω: Native TR | Θ: Kernel Axiom</div>
-            <div class="hero-desc tr-text" data-en="Core reference work in Turkish covering the foundational axioms and system dynamics of Structural Depth Theory." data-tr="Yapısal Derinlik Teorisinin çekirdek aksiyomlarını ve sistem dinamiklerini ele alan Türkçe temel başvuru eseri.">Core reference work in Turkish covering the foundational axioms and system dynamics of Structural Depth Theory.</div>
+            <div class="hero-desc">
+                <span class="en-only">Core reference work in Turkish covering the foundational axioms and system dynamics of Structural Depth Theory.</span>
+                <span class="tr-only">Yapısal Derinlik Teorisinin çekirdek aksiyomlarını ve sistem dinamiklerini ele alan Türkçe temel başvuru eseri.</span>
+            </div>
             <div class="links">
                 <a href="https://play.google.com/store/books/details/Halil_%C4%B0brahim_G%C3%9CVEN_YAPISAL_DER%C4%B0NL%C4%B0K?id=5FvvEQAAQBAJ" target="_blank" rel="noopener">TR — Google Play Books</a>
             </div>
@@ -232,10 +260,16 @@ document.querySelectorAll("[data-en]").forEach(el => {
     <!-- LAYER I: THE PLACE OF TIME -->
     <div class="book" style="border-top:none; margin-top:0; padding-top:0;">
         <div class="book-info">
-            <div class="book-meta tr-text" data-en="LAYER I — LAW (TEMEL YASA)" data-tr="KATMAN I — YASA">LAYER I — LAW (TEMEL YASA)</div>
+            <div class="book-meta">
+                <span class="en-only">LAYER I — LAW</span>
+                <span class="tr-only">KATMAN I — YASA</span>
+            </div>
             <div class="book-title">The Place of Time: Time as Structural Depth</div>
             <div class="struct-signal">Ω: Undefined | Θ: Absolute</div>
-            <div class="book-desc tr-text" data-en="Time is not a fundamental independent parameter; it is the macroscopic visibility of structural depth differentiation." data-tr="Zaman temel bağımsız bir parametre değildir; yapısal derinlik farklılaşmasının makroskopik görünürlüğüdür.">Time is not a fundamental independent parameter; it is the macroscopic visibility of structural depth differentiation.</div>
+            <div class="book-desc">
+                <span class="en-only">Time is not a fundamental independent parameter; it is the macroscopic visibility of structural depth differentiation.</span>
+                <span class="tr-only">Zaman temel bağımsız bir parametre değildir; yapısal derinlik farklılaşmasının makroskopik görünürlüğüdür.</span>
+            </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank" rel="noopener">EN — Amazon (ASIN: B0GNWP4NKL)</a>
                 <a href="https://play.google.com/store/books/details/Halil_%C4%B0brahim_G%C3%9CVEN_ZAMANIN_YER%C4%B0?id=kevSEQAAQBAJ" target="_blank" rel="noopener">TR — Google Play Books (Zamanın Yeri)</a>
@@ -246,10 +280,16 @@ document.querySelectorAll("[data-en]").forEach(el => {
     <!-- LAYER II: THE CONDENSATION POINT -->
     <div class="book">
         <div class="book-info">
-            <div class="book-meta tr-text" data-en="LAYER II — EXTRACTION (TÜRETME)" data-tr="KATMAN II — TÜRETME">LAYER II — EXTRACTION (TÜRETME)</div>
+            <div class="book-meta">
+                <span class="en-only">LAYER II — EXTRACTION</span>
+                <span class="tr-only">KATMAN II — TÜRETME</span>
+            </div>
             <div class="book-title">The Condensation Point: Debt, Energy, and the Narrowing of Global Coordination (2026–2035)</div>
             <div class="struct-signal">Ω: Observable | Θ: Emerging</div>
-            <div class="book-desc tr-text" data-en="Examines critical mathematical thresholds where systems transition from unconstrained disorder into rigid organization." data-tr="Sistemlerin kısıtlanmamış düzensizlikten katı organizasyona geçiş yaptığı kritik matematiksel eşikleri inceler.">Examines critical mathematical thresholds where systems transition from unconstrained disorder into rigid organization.</div>
+            <div class="book-desc">
+                <span class="en-only">Examines critical mathematical thresholds where systems transition from unconstrained disorder into rigid organization.</span>
+                <span class="tr-only">Sistemlerin kısıtlanmamış düzensizlikten katı organizasyona geçiş yaptığı kritik matematiksel eşikleri inceler.</span>
+            </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank" rel="noopener">EN — Amazon (ASIN: B0GN1DBVH7)</a>
             </div>
@@ -259,10 +299,16 @@ document.querySelectorAll("[data-en]").forEach(el => {
     <!-- LAYER III: LIQUIDATION -->
     <div class="book">
         <div class="book-info">
-            <div class="book-meta tr-text" data-en="LAYER III — ENGINE (MOTOR)" data-tr="KATMAN III — MOTOR">LAYER III — ENGINE (MOTOR)</div>
+            <div class="book-meta">
+                <span class="en-only">LAYER III — ENGINE</span>
+                <span class="tr-only">KATMAN III — MOTOR</span>
+            </div>
             <div class="book-title">Liquidation: The Market Alchemy Framework</div>
             <div class="struct-signal">Ω: Suppressed | Θ: Increasing</div>
-            <div class="book-desc tr-text" data-en="Formalizes structural liquidation mechanics and thermodynamic information collapse when feedback loops suppress degrees of freedom." data-tr="Geri besleme döngüleri serbestlik derecelerini bastırdığında ortaya çıkan yapısal tasfiye mekanizmalarını ve termodinamik bilgi çöküşünü resmileştirir.">Formalizes structural liquidation mechanics and thermodynamic information collapse when feedback loops suppress degrees of freedom.</div>
+            <div class="book-desc">
+                <span class="en-only">Formalizes structural liquidation mechanics and thermodynamic information collapse when feedback loops suppress degrees of freedom.</span>
+                <span class="tr-only">Geri besleme döngüleri serbestlik derecelerini bastırdığında ortaya çıkan yapısal tasfiye mekanizmalarını ve termodinamik bilgi çöküşünü resmileştirir.</span>
+            </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank" rel="noopener">EN — Amazon (ASIN: B0GRSW8SWN)</a>
                 <a href="https://play.google.com/store/books/details/Halil_%C4%B0brahim_G%C3%9CVEN_Tasfiye?id=SE7GEQAAQBAJ" target="_blank" rel="noopener">TR — Google Play Books (Tasfiye)</a>
@@ -273,10 +319,16 @@ document.querySelectorAll("[data-en]").forEach(el => {
     <!-- LAYER IV: INVALID STATE -->
     <div class="book">
         <div class="book-info">
-            <div class="book-meta tr-text" data-en="LAYER IV — EXECUTION & BEHAVIORAL CONSTRAINTS" data-tr="KATMAN IV — İCRA VE DAVRANIŞSAL KISITLAR">LAYER IV — EXECUTION & BEHAVIORAL CONSTRAINTS</div>
+            <div class="book-meta">
+                <span class="en-only">LAYER IV — EXECUTION & BEHAVIORAL CONSTRAINTS</span>
+                <span class="tr-only">KATMAN IV — İCRA VE DAVRANIŞSAL KISITLAR</span>
+            </div>
             <div class="book-title">INVALID STATE: Why Traders Create Unnecessary Losses</div>
             <div class="struct-signal">Ω: Collapsed | Θ: Strict Barrier</div>
-            <div class="book-desc tr-text" data-en="Analyzes execution-level breakdown occurring when market participants trade outside valid structural constraints." data-tr="Piyasa katılımcıları geçerli yapısal kısıtların dışında işlem yaptığında oluşan icra düzeyindeki kırılmaları analiz eder.">Analyzes execution-level breakdown occurring when market participants trade outside valid structural constraints.</div>
+            <div class="book-desc">
+                <span class="en-only">Analyzes execution-level breakdown occurring when market participants trade outside valid structural constraints.</span>
+                <span class="tr-only">Piyasa katılımcıları geçerli yapısal kısıtların dışında işlem yaptığında oluşan icra düzeyindeki kırılmaları analiz eder.</span>
+            </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0H9BY6SVK" target="_blank" rel="noopener">EN — Amazon (ASIN: B0H9BY6SVK)</a>
             </div>
@@ -286,10 +338,16 @@ document.querySelectorAll("[data-en]").forEach(el => {
     <!-- LAYER V: THE SHAPE OF ABSENCE -->
     <div class="book">
         <div class="book-info">
-            <div class="book-meta tr-text" data-en="LAYER V — ADVANCED STRUCTURAL SYNTHESIS" data-tr="KATMAN V — GELİŞMİŞ YAPISAL SENTEZ">LAYER V — ADVANCED STRUCTURAL SYNTHESIS</div>
+            <div class="book-meta">
+                <span class="en-only">LAYER V — ADVANCED STRUCTURAL SYNTHESIS</span>
+                <span class="tr-only">KATMAN V — GELİŞMİŞ YAPISAL SENTEZ</span>
+            </div>
             <div class="book-title">The Shape of Absence: Love, Loss, and the Mystery of What Remains</div>
             <div class="struct-signal">Ω: Terminal | Θ: Unified Field</div>
-            <div class="book-desc tr-text" data-en="Explores change, what survives loss, and how meaning emerges through relationship within systemic boundaries." data-tr="Değişimi, kayıptan neyin sağ çıktığını ve sistemik sınırlar içinde anlamın ilişki yoluyla nasıl ortaya çıktığını inceler.">Explores change, what survives loss, and how meaning emerges through relationship within systemic boundaries.</div>
+            <div class="book-desc">
+                <span class="en-only">Explores change, what survives loss, and how meaning emerges through relationship within systemic boundaries.</span>
+                <span class="tr-only">Değişimi, kayıptan neyin sağ çıktığını ve sistemik sınırlar içinde anlamın ilişki yoluyla nasıl ortaya çıktığını inceler.</span>
+            </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0H875RHXR" target="_blank" rel="noopener">EN — Amazon (ASIN: B0H875RHXR)</a>
                 <a href="https://play.google.com/store/books/details/Halil_%C4%B0brahim_G%C3%9CVEN_ZAH%C4%B0DE?id=mpv3EQAAQBAJ" target="_blank" rel="noopener">TR — Google Play Books (Zahide)</a>
@@ -300,20 +358,13 @@ document.querySelectorAll("[data-en]").forEach(el => {
 </div>
 
 <footer>
-    <div class="tr-text" data-en="Market Alchemy Documentation & Research Catalog • Halil Ibrahim Guven" data-tr="Market Alchemy Dokümantasyon ve Araştırma Kataloğu • Halil İbrahim Güven">Market Alchemy Documentation & Research Catalog • Halil Ibrahim Guven</div>
+    <div>
+        <span class="en-only">Market Alchemy Documentation & Research Catalog • Halil Ibrahim Guven</span>
+        <span class="tr-only">Market Alchemy Dokümantasyon ve Araştırma Kataloğu • Halil İbrahim Güven</span>
+    </div>
 </footer>
 
 </div>
-
-<script>
-if(lang === "tr"){
-    document.querySelectorAll(".tr-text").forEach(el => {
-        if(el.getAttribute("data-tr")){
-            el.textContent = el.getAttribute("data-tr");
-        }
-    });
-}
-</script>
 
 </body>
 </html>
