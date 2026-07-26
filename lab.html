@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Lab — Systems & Engines | Market Alchemy</title>
+<title>Laboratory & Engines — Market Alchemy</title>
 
-<meta name="description" content="Market Alchemy Laboratory: Experimental research engines, active structural modules, SME scoring architectures, and real-time behavioral observation systems." />
-<meta name="keywords" content="Market Alchemy, Lab, Pascal Engine, Snipper Engine, Ultimate Engine, Supervisor, SME Scoring, Financial Intelligence, Structural Depth" />
+<meta name="description" content="Market Alchemy Laboratory: Experimental research engines, V14 Theta runtime tests, Python structural pipelines, and real-time behavioral observation systems." />
+<meta name="keywords" content="Market Alchemy, Lab, V14 Theta, Python Architectures, Pascal Engine, Snipper Engine, Ultimate Engine, Supervisor, Financial Intelligence, Structural Depth" />
 
 <meta name="graph-node" content="lab">
 <meta name="node-type" content="experimental-engine">
@@ -23,7 +23,7 @@
 --text:#edf2f7;
 --blue:#6da8ff;
 --blue2:#9ec3ff;
---glow:rgba(109,168,255,0.14);
+--live:#00ff9d;
 }
 
 *{
@@ -61,19 +61,17 @@ border-bottom:1px solid var(--line);
 }
 
 nav .wrap{
-max-width:980px;
+max-width:950px;
 margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:12px 24px;
+padding:12px 18px;
 overflow-x:auto;
 white-space:nowrap;
 }
 
-nav .wrap::-webkit-scrollbar{
-display:none;
-}
+nav .wrap::-webkit-scrollbar{display:none;}
 
 nav a{
 color:var(--text);
@@ -85,16 +83,7 @@ margin-right:16px;
 flex-shrink:0;
 }
 
-nav a:last-child{
-margin-right:0;
-}
-
-nav a:hover{
-opacity:1;
-color:var(--blue);
-}
-
-nav a.active{
+nav a:hover, nav a.active{
 opacity:1;
 color:var(--blue);
 font-weight:600;
@@ -136,7 +125,7 @@ margin-bottom:20px;
 
 h1{
 margin:0;
-font-size:44px;
+font-size:40px;
 line-height:1.1;
 max-width:760px;
 font-weight:700;
@@ -146,7 +135,7 @@ letter-spacing:-1px;
 .hero-sub{
 margin-top:24px;
 max-width:700px;
-font-size:16px;
+font-size:15px;
 line-height:1.8;
 color:var(--soft);
 }
@@ -175,6 +164,7 @@ margin-bottom:8px;
 .metric-value{
 font-size:20px;
 font-weight:600;
+color:var(--blue);
 }
 
 .section{
@@ -196,7 +186,7 @@ letter-spacing:-0.5px;
 }
 
 .section-desc{
-max-width:620px;
+max-width:720px;
 font-size:14px;
 line-height:1.8;
 color:var(--soft);
@@ -262,27 +252,10 @@ transition:0.25s;
 overflow:hidden;
 }
 
-.box::after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(90deg, transparent, rgba(109,168,255,0.03), transparent);
-opacity:0;
-transition:0.3s;
-}
-
 .box:hover{
 border-color:var(--blue);
 transform:translateY(-2px);
 box-shadow:0 0 0 1px rgba(109,168,255,0.12), 0 18px 40px rgba(0,0,0,0.35);
-}
-
-.box:hover::after{
-opacity:1;
-}
-
-.clickable{
-cursor:pointer;
 }
 
 .label{
@@ -312,18 +285,25 @@ align-items:center;
 gap:8px;
 font-size:11px;
 padding:6px 10px;
-border:1px solid rgba(109,168,255,0.4);
+border:1px solid rgba(0,255,157,0.4);
 margin-top:18px;
-color:var(--blue2);
-background:rgba(109,168,255,0.06);
+color:var(--live);
+background:rgba(0,255,157,0.06);
 }
 
 .dot{
 width:7px;
 height:7px;
 border-radius:50%;
-background:var(--blue);
-box-shadow:0 0 12px var(--blue);
+background:var(--live);
+box-shadow:0 0 12px var(--live);
+animation: blink 2s infinite;
+}
+
+@keyframes blink {
+0% { opacity: 0.3; }
+50% { opacity: 1; }
+100% { opacity: 0.3; }
 }
 
 .core-grid{
@@ -375,44 +355,20 @@ line-height:1.7;
 color:var(--soft);
 }
 
-.timeline{
-display:flex;
-flex-direction:column;
-gap:18px;
+/* TERMINAL LOG SIMULATION */
+.terminal-block {
+margin-top: 16px;
+padding: 16px;
+background: #06080c;
+border: 1px solid var(--line);
+font-family: 'JetBrains Mono', monospace;
+font-size: 12px;
+color: var(--blue2);
+line-height: 1.6;
 }
 
-.timeline-item{
-padding:22px;
-border-left:2px solid var(--blue);
-background:rgba(255,255,255,0.02);
-border-top:1px solid var(--line);
-border-right:1px solid var(--line);
-border-bottom:1px solid var(--line);
-}
-
-.timeline-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-margin-bottom:12px;
-}
-
-.timeline-title{
-font-weight:600;
-font-size:16px;
-}
-
-.timeline-state{
-font-size:11px;
-letter-spacing:1px;
-color:var(--blue2);
-}
-
-.timeline-desc{
-font-size:13px;
-line-height:1.7;
-color:var(--soft);
+.terminal-line {
+margin-bottom: 4px;
 }
 
 .footer{
@@ -460,21 +416,10 @@ opacity: 1;
 }
 
 @media(max-width:768px){
-.container{
-padding:90px 18px 100px;
-}
-
-.hero{
-padding:36px 20px;
-}
-
-h1{
-font-size:32px;
-}
-
-.section{
-margin-top:60px;
-}
+.container{padding:90px 18px 100px;}
+.hero{padding:36px 20px;}
+h1{font-size:30px;}
+.section{margin-top:60px;}
 }
 </style>
 </head>
@@ -483,141 +428,181 @@ margin-top:60px;
 
 <nav>
     <div class="wrap">
-        <a href="index.html">Kernel (SDA)</a>
-        <a href="structure.html">Structure</a>
-        <a href="research.html">Research (SDT)</a>
-        <a href="library.html">Library</a>
-        <a href="lab.html" class="active">Lab & Engines</a>
-        <a href="observatory.html">Observatory</a>
+        <a href="index.html" data-en="Home" data-tr="Anasayfa">Home</a>
+        <a href="structure.html" data-en="Structure" data-tr="Yapı">Structure</a>
+        <a href="research.html" data-en="Research" data-tr="Araştırma">Research</a>
+        <a href="observatory.html" data-en="Observatory" data-tr="Gözlem">Observatory</a>
+        <a href="lab.html" class="active" data-en="Laboratory" data-tr="Labaratuvar">Laboratory</a>
+        <a href="library.html" data-en="Library" data-tr="Kitaplık">Library</a>
     </div>
 </nav>
 
 <div class="container">
 
 <section class="hero">
-    <div class="hero-label" id="hero-label">MARKET ALCHEMY // FINANCIAL INTELLIGENCE DEEP LAYERS</div>
+    <div class="hero-label en">MARKET ALCHEMY // EXPERIMENTAL RESEARCH ENGINE</div>
+    <div class="hero-label tr" style="display:none;">MARKET ALCHEMY // DENEYSEL ARAŞTIRMA MOTORU</div>
 
-    <h1 id="title">Structural Financial Intelligence Laboratory</h1>
+    <h1 class="en">Structural Financial Intelligence Laboratory</h1>
+    <h1 class="tr" style="display:none;">Yapısal Finansal Zeka Laboratuvarı</h1>
 
-    <p class="hero-sub" id="subtitle">Experimental research layer observing markets not as price, but as behavioral structure.</p>
+    <p class="hero-sub en">Experimental research layer verifying SDA and SDT axioms through Python architectures, real-time telemetry, and automated intelligence pipelines.</p>
+    <p class="hero-sub tr" style="display:none;">SDA ve SDT aksiyomlarını Python mimarileri, gerçek zamanlı telemetri ve otomatize zeka boru hatlarıyla doğrulayan deneysel araştırma katmanı.</p>
 
     <div class="hero-grid">
         <div class="metric">
-            <div class="metric-title">SYSTEM STATE</div>
-            <div class="metric-value" id="system-status">LIVE</div>
+            <div class="metric-title en">RUNTIME ENGINE</div>
+            <div class="metric-title tr" style="display:none;">ÇALIŞMA ZAMANI</div>
+            <div class="metric-value">V14 THETA</div>
         </div>
 
         <div class="metric">
-            <div class="metric-title">OBSERVATION MODE</div>
-            <div class="metric-value" id="system-mode">STRUCTURAL</div>
+            <div class="metric-title en">PIPELINE ARCHITECTURE</div>
+            <div class="metric-title tr" style="display:none;">MİMARİ YAPI</div>
+            <div class="metric-value">PYTHON / ASYNC</div>
         </div>
 
         <div class="metric">
-            <div class="metric-title">STRUCTURAL DEPTH</div>
-            <div class="metric-value">Θ ↑</div>
+            <div class="metric-title en">MEASUREMENT BASIS</div>
+            <div class="metric-title tr" style="display:none;">ÖLÇÜM TEMELİ</div>
+            <div class="metric-value">θ & Ω METRICS</div>
         </div>
 
         <div class="metric">
-            <div class="metric-title">VECTOR STATE</div>
-            <div class="metric-value" id="vector-state">PRESERVED</div>
+            <div class="metric-title en">PRODUCTIZATION</div>
+            <div class="metric-title tr" style="display:none;">ÜRÜNLEŞTİRME</div>
+            <div class="metric-value">ACTIVE BOTS</div>
         </div>
     </div>
 </section>
 
 <!-- KNOWLEDGE GRAPH NODE NAVIGATION -->
 <section class="section" style="margin-top: 24px;">
-    <div class="label">EXECUTION ENGINE KNOWLEDGE GRAPH LINK</div>
+    <div class="label en">LABORATORY KNOWLEDGE GRAPH NODE</div>
+    <div class="label tr" style="display:none;">LABORATUVAR BİLGİ AĞI DÜĞÜMÜ</div>
     <div class="kg-container">
         <div class="kg-node">
             <div class="kg-row">
-                <a href="index.html" class="kg-tag">SDA Axioms</a>
+                <a href="index.html" class="kg-tag">SDA Kernel</a>
                 <span class="kg-arrow">→</span>
-                <a href="library.html" class="kg-tag">Library (Layer I-III)</a>
+                <a href="structure.html" class="kg-tag">Structural Blueprint</a>
                 <span class="kg-arrow">→</span>
-                <a href="lab.html" class="kg-tag active-node">Lab Engines (Pascal/Snipper)</a>
+                <a href="lab.html" class="kg-tag active-node">Lab & Python Engines</a>
             </div>
             <div class="kg-row" style="margin-left: 20px; margin-top: 6px;">
                 <span class="kg-arrow">↳</span>
-                <a href="research.html" class="kg-tag">Zenodo SDT Papers</a>
+                <a href="observatory.html" class="kg-tag">Live Observatory</a>
                 <span class="kg-arrow">→</span>
-                <a href="observatory.html" class="kg-tag">Live Observatory Stream</a>
+                <a href="research.html" class="kg-tag">Research SDT</a>
+                <span class="kg-arrow">→</span>
+                <a href="library.html" class="kg-tag">Library</a>
             </div>
         </div>
     </div>
 </section>
 
+<!-- V14 THETA TESTING & PROOF MECHANISMS -->
 <section class="section">
     <div class="section-header">
         <div>
-            <div class="section-title" id="system-not-finish">This system does not finish.</div>
-            <p class="section-desc" id="system-desc">Markets are not static. Structures evolve. Vectors emerge, persist or collapse.</p>
-            <p class="section-desc" id="system-extra">This laboratory is built on observation, filtering, structural alignment and behavioral extraction.</p>
+            <div class="section-title en">V14 Theta Testing & Measurement Architecture</div>
+            <div class="section-title tr" style="display:none;">V14 Theta Testleri ve Ölçüm Mimarisi</div>
+            <p class="section-desc en">Markets serve as the laboratory for testing Structural Depth Theory (SDT). Python-based simulation engines execute continuous state-space evaluations to test $\Theta$ thresholds and capture compression/expansion dynamics.</p>
+            <p class="section-desc tr" style="display:none;">Piyasalar, Yapısal Derinlik Teorisi'ni (SDT) test etmek için birer laboratuvar işlevi görür. Python tabanlı simülasyon motorları, $\Theta$ eşiklerini test etmek ve sıkışma/genişleme dinamiklerini yakalamak için sürekli durum uzayı değerlendirmeleri çalıştırır.</p>
         </div>
     </div>
 
     <div class="grid">
         <div class="box">
-            <div class="label">STRUCTURAL LAW</div>
-            <div class="box-title">Compression → Expansion → Preservation</div>
-            <div class="box-desc" id="phase-desc">Compression → candidate structure.
-Expansion → directional visibility.
-Preservation → true vector formation.</div>
+            <div class="label">PYTHON SIMULATION CORE</div>
+            <div class="box-title en">Asynchronous State-Space Parsing</div>
+            <div class="box-title tr" style="display:none;">Asenkron Durum Uzayı Analizi</div>
+            <div class="box-desc en">High-frequency state vectors are ingested via modular Python scripts, calculating multi-layer structural friction and temporal memory decay in real time.</div>
+            <div class="box-desc tr" style="display:none;">Yüksek frekanslı durum vektörleri modüler Python betikleriyle işlenir; çok katmanlı yapısal sürtünme ve zamansal bellek sönümlenmesi gerçek zamanlı hesaplanır.</div>
         </div>
 
         <div class="box">
-            <div class="label">MARKET ALCHEMY</div>
-            <div class="box-title">Observable Behavior Extraction</div>
-            <div class="box-desc" id="alchemy-desc">Market Alchemy is a structural decision system extracting actionable states from observable behavior.</div>
+            <div class="label">V14 ENGINE PROOF</div>
+            <div class="box-title en">Theta ($\Theta$) Threshold Verification</div>
+            <div class="box-title tr" style="display:none;">Theta ($\Theta$) Eşik Doğrulaması</div>
+            <div class="box-desc en">V14 test benches isolate market noise from structural transitions, mapping exact boundaries where thermodynamic equilibrium breaks into directional momentum.</div>
+            <div class="box-desc tr" style="display:none;">V14 test düzenekleri, piyasa gürültüsünü yapısal geçişlerden izole ederek termodinamik dengenin yönsel momentuma dönüştüğü kesin sınırları haritalandırır.</div>
         </div>
 
         <div class="box">
-            <div class="label">ONTOLOGY</div>
-            <div class="box-title">Depth over Chronology</div>
-            <div class="box-desc" id="ontology-desc">Time is not event count, but structural depth.
-Θ = depth(G)</div>
+            <div class="label">BOT PRODUCTIZATION</div>
+            <div class="box-title en">From Theory to Autonomous Bots</div>
+            <div class="box-title tr" style="display:none;"> Teoriden Otonom Botlara</div>
+            <div class="box-desc en">Successful experimental verification cycles automatically transition algorithmic models into production-grade execution bots (Pascal & Snipper lines).</div>
+            <div class="box-desc tr" style="display:none;">Başarılı deneysel doğrulama döngüleri, algoritmik modelleri otomatik olarak üretim sınıfı yürütme botlarına (Pascal ve Snipper hatları) dönüştürür.</div>
         </div>
     </div>
 </section>
 
+<!-- LIVE PYTHON PIPELINE TELEMETRY SIMULATION -->
 <section class="section">
     <div class="section-header">
         <div>
-            <div class="section-title" id="observed-title">Observed Universe</div>
-            <p class="section-desc" id="observed-desc">The market is not the only observable system. Life itself leaves recurring structural signatures.</p>
+            <div class="section-title en">Live Python Pipeline Telemetry</div>
+            <div class="section-title tr" style="display:none;">Canlı Python Boru Hattı Telemetrisi</div>
+            <p class="section-desc en">Real-time simulation loop output executing structural validation across active market manifolds.</p>
+            <p class="section-desc tr" style="display:none;">Aktif piyasa manifoldlarında yapısal doğrulama yürüten gerçek zamanlı simülasyon döngüsü çıktısı.</p>
+        </div>
+    </div>
+
+    <div class="terminal-block">
+        <div class="terminal-line">[01:42:10] [PY_CORE] Initializing V14 Theta Runtime Environment...</div>
+        <div class="terminal-line">[01:42:11] [MANIFOLD] Loading state space dimensions: θ(t), Ω(t), ΔS, C</div>
+        <div class="terminal-line">[01:42:13] [TEST_BENCH] Executing friction coefficient loop over target arrays... SUCCESS</div>
+        <div class="terminal-line">[01:42:15] [ENGINE] Pascal structural compression index: 0.82 (BASIN_LOCKED)</div>
+        <div class="terminal-line">[01:42:18] [BOT_DAEMON] Snipper micro-break detector primed. Awaiting phase shift trigger.</div>
+    </div>
+</section>
+
+<!-- EVERYDAY PATTERNS & BEHAVIORAL EXTRACTION -->
+<section class="section">
+    <div class="section-header">
+        <div>
+            <div class="section-title en">Everyday Patterns & Universal Signatures</div>
+            <div class="section-title tr" style="display:none;">Günlük Desenler ve Evrensel İmzalar</div>
+            <div class="section-desc en">Markets are not unique; structural laws govern all complex adaptive systems. Living systems, swarms, and human operational behavior leave identical thermodynamic footprints.</div>
+            <div class="section-desc tr" style="display:none;">Piyasalar benzersiz değildir; yapısal yasalar tüm karmaşık uyarlamalı sistemleri yönetir. Canlı sistemler, sürü dinamikleri ve insan operasyonel davranışı özdeş termodinamik izler bırakır.</div>
         </div>
     </div>
 
     <div class="grid">
         <div class="box">
-            <div class="label">OBSERVATIONAL LAYER</div>
-            <div class="box-title" id="observed-subtitle">Structural Observation Through Living Systems</div>
-            <div class="box-desc" id="observed-extra">Swarm Dynamics
-Territorial Structures
-Predator Timing
-Compression & Release
-Emergent Coordination
-Biological Rhythm
-Energy Preservation</div>
+            <div class="label en">CROSS-DOMAIN OBSERVATION</div>
+            <div class="label tr" style="display:none;">ÇAPRAZ DİSİPLİNLERARASI GÖZLEM</div>
+            <div class="box-title en">Systemic Friction & Flow Mapping</div>
+            <div class="box-title tr" style="display:none;">Sistemsel Sürtünme ve Akış Haritalaması</div>
+            <div class="box-desc en">Swarm Dynamics, Territorial Structures, Predator Timing, Compression & Release cycles, Emergent Coordination, and Biological Rhythm preservation.</div>
+            <div class="box-desc tr" style="display:none;">Sürü Dinamikleri, Bölgesel Yapılar, Avcı Zamanlaması, Sıkışma ve Salınım döngüleri, Beliren Koordinasyon ve Biyolojik Ritim korunumu.</div>
         </div>
 
         <div class="box">
             <div class="label">CHANNEL ACCESS</div>
-            <div class="box-title" id="ep-channel">EVERYDAY PATTERNS</div>
-            <div class="box-desc" id="ep-categories">Cross-domain structural mapping of systemic friction and flow.</div>
+            <div class="box-title">EVERYDAY PATTERNS</div>
+            <div class="box-desc en">Extracting structural continuity laws from non-financial domains to strengthen core market analytics and Python agent design.</div>
+            <div class="box-desc tr" style="display:none;">Temel piyasa analitiğini ve Python ajan tasarımını güçlendirmek için finansal olmayan alanlardan yapısal süreklilik yasalarının çıkarılması.</div>
 
             <div class="status">
                 <div class="dot"></div>
-                LIVE OBSERVATION
+                <span class="en">ACTIVE OBSERVATION RUNTIME</span>
+                <span class="tr" style="display:none;">AKTİF GÖZLEM ÇALIŞMA ZAMANI</span>
             </div>
         </div>
     </div>
 </section>
 
+<!-- FINANCIAL INTELLIGENCE DEEP LAYERS (ENGINES) -->
 <section class="section">
     <div class="section-header">
         <div>
-            <div class="section-title" id="engine-core">Financial Intelligence Deep Layers</div>
-            <p class="section-desc" id="engine-desc">Not surface signals; structure, friction, momentum preservation and behavioral continuity are interpreted.</p>
+            <div class="section-title en">Financial Intelligence Deep Layers (Engines)</div>
+            <div class="section-title tr" style="display:none;">Finansal Zeka Derin Katmanları (Motorlar)</div>
+            <div class="section-desc en">Experimental software systems engineered to interpret structure, friction, momentum preservation, and behavioral continuity.</div>
+            <div class="section-desc tr" style="display:none;">Yapıyı, sürtünmeyi, momentum korunumunu ve davranışsal sürekliliği yorumlamak için tasarlanmış deneysel yazılım sistemleri.</div>
         </div>
     </div>
 
@@ -627,8 +612,10 @@ Energy Preservation</div>
                 <div class="engine-name">PASCAL</div>
                 <div class="engine-status">ACTIVE</div>
             </div>
-            <div class="box-desc" id="pascal-short">Liquidity geometry interpreter.</div>
-            <div id="pascal-desc" class="engine-meta">PASCAL analyzes liquidity flow, compression zones and structural breakout probability hidden behind price behavior.</div>
+            <div class="box-desc en" id="pascal-short">Liquidity geometry interpreter.</div>
+            <div class="box-desc tr" style="display:none;" id="pascal-short-tr">Likidite geometri yorumlayıcısı.</div>
+            <div id="pascal-desc" class="engine-meta en">PASCAL analyzes liquidity flow, compression zones and structural breakout probability hidden behind price behavior through Python vector arrays.</div>
+            <div id="pascal-desc-tr" class="engine-meta tr" style="display:none;">PASCAL, Python vektör dizileri aracılığıyla fiyat davranışının arkasında gizlenen likidite akışını, sıkışma bölgelerini ve yapısal kırılma olasılığını analiz eder.</div>
         </div>
 
         <div class="engine-card" onclick="toggleMeta('snipper-desc')">
@@ -636,8 +623,10 @@ Energy Preservation</div>
                 <div class="engine-name">SNIPPER</div>
                 <div class="engine-status">ACTIVE</div>
             </div>
-            <div class="box-desc" id="snipper-short">Micro structural break detector.</div>
-            <div id="snipper-desc" class="engine-meta">SNIPPER identifies structural momentum distortions and abrupt directional divergence at lower time scales.</div>
+            <div class="box-desc en" id="snipper-short">Micro structural break detector.</div>
+            <div class="box-desc tr" style="display:none;" id="snipper-short-tr">Mikro yapısal kırılma dedektörü.</div>
+            <div id="snipper-desc" class="engine-meta en">SNIPPER identifies structural momentum distortions and abrupt directional divergence at lower temporal scales using high-speed event loops.</div>
+            <div id="snipper-desc-tr" class="engine-meta tr" style="display:none;">SNIPPER, yüksek hızlı olay döngüleri kullanarak daha düşük zamansal ölçeklerde yapısal momentum bozulmalarını ve ani yönsel sapmaları tespit eder.</div>
         </div>
 
         <div class="engine-card" onclick="toggleMeta('ultimate-desc')">
@@ -645,8 +634,10 @@ Energy Preservation</div>
                 <div class="engine-name">ULTIMATE</div>
                 <div class="engine-status">TESTING</div>
             </div>
-            <div class="box-desc" id="ultimate-short">Adaptive experimental engine.</div>
-            <div id="ultimate-desc" class="engine-meta">ULTIMATE combines structural depth principles with adaptive behavioral modeling and execution logic.</div>
+            <div class="box-desc en" id="ultimate-short">Adaptive experimental engine.</div>
+            <div class="box-desc tr" style="display:none;" id="ultimate-short-tr">Uyarlanabilir deneysel motor.</div>
+            <div id="ultimate-desc" class="engine-meta en">ULTIMATE combines structural depth principles with adaptive behavioral modeling and automated execution logic under live stress conditions.</div>
+            <div id="ultimate-desc-tr" class="engine-meta tr" style="display:none;">ULTIMATE, canlı stres koşulları altında yapısal derinlik ilkelerini uyarlanabilir davranışsal modelleme ve otomatize yürütme mantığıyla birleştirir.</div>
         </div>
 
         <div class="engine-card" onclick="toggleMeta('supervisor-desc')">
@@ -654,75 +645,46 @@ Energy Preservation</div>
                 <div class="engine-name">SUPERVISOR</div>
                 <div class="engine-status">SHADOW</div>
             </div>
-            <div class="box-desc" id="supervisor-short">Meta observation layer.</div>
-            <div id="supervisor-desc" class="engine-meta">SUPERVISOR observes system-wide behavior without direct intervention, acting as a shadow monitoring layer.</div>
+            <div class="box-desc en" id="supervisor-short">Meta observation layer.</div>
+            <div class="box-desc tr" style="display:none;" id="supervisor-short-tr">Meta gözlem katmanı.</div>
+            <div id="supervisor-desc" class="engine-meta en">SUPERVISOR observes system-wide agent behavior without direct intervention, acting as an autonomous shadow monitoring and validation layer.</div>
+            <div id="supervisor-desc-tr" class="engine-meta tr" style="display:none;">SUPERVISOR, doğrudan müdahale etmeden sistem geneli ajan davranışını gözlemler ve otonom bir gölge izleme/doğrulama katmanı olarak görev yapar.</div>
         </div>
     </div>
 </section>
 
+<!-- STRUCTURAL CONTINUITY -->
 <section class="section">
     <div class="section-header">
         <div>
-            <div class="section-title" id="projects-title">Active Structural Projects</div>
-            <p class="section-desc" id="projects-desc">Financial observation and decision systems evolving inside the live laboratory.</p>
+            <div class="section-title en">Structural Continuity</div>
+            <div class="section-title tr" style="display:none;">Yapısal Süreklilik</div>
+            <div class="section-desc en">The system does not merely operate; it observes itself, measures friction, and seeks structural alignment.</div>
+            <div class="section-desc tr" style="display:none;">Sistem yalnızca çalışmaz; kendini gözlemler, sürtünmeyi ölçer ve yapısal hizalanma arar.</div>
         </div>
     </div>
 
-    <div class="timeline">
-        <div class="timeline-item clickable" onclick="openProject('kobi')">
-            <div class="timeline-top">
-                <div class="timeline-title" id="proj-kobi">SME SCORING ENGINE</div>
-                <div class="timeline-state">ACTIVE</div>
-            </div>
-            <div class="timeline-desc" id="proj-kobi-desc">Evaluation system interpreting companies through structural continuity and adaptation capacity rather than static balance sheets.</div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-top">
-                <div class="timeline-title" id="proj-radar">COMPANY RADAR</div>
-                <div class="timeline-state">OBSERVING</div>
-            </div>
-            <div class="timeline-desc" id="proj-radar-desc">Observation infrastructure scanning behavioral fractures, operational friction and structural instability across companies.</div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-top">
-                <div class="timeline-title" id="proj-bank">CREDIT OFFER SYSTEM</div>
-                <div class="timeline-state">STRUCTURING</div>
-            </div>
-            <div class="timeline-desc" id="proj-bank-desc">Offer system transforming risk scoring from linear metrics into structural behavioral modeling.</div>
-        </div>
+    <div class="box" style="cursor: pointer;" onclick="window.location.href='observatory.html'">
+        <div class="en">STATE: ACTIVE_RUNNING<br>FRICTION_METRIC: VARIABLE<br>V14_OBSERVATION: CONTINUOUS<br>→ VERIFY TELEMETRY STREAM</div>
+        <div class="tr" style="display:none;">DURUM: AKTİF_ÇALIŞIYOR<br>SÜRTÜNME_METRİĞİ: DEĞİŞKEN<br>V14_GÖZLEM: SÜREKLİ<br>→ TELEMETRİ AKIŞINI DOĞRULA</div>
     </div>
-</section>
-
-<section class="section">
-    <div class="section-header">
-        <div>
-            <div class="section-title" id="continuity-title">Structural Continuity</div>
-            <p class="section-desc" id="continuity-desc">The system does not merely operate.
-It observes itself, measures friction and seeks alignment.</p>
-        </div>
-    </div>
-
-    <div class="box clickable" id="continuity-data" onclick="window.location.href='access.html?mode=lab'">STATE: ACTIVE
-FRICTION: VARIABLE
-OBSERVATION: CONTINUOUS
-→ ALIGNMENT</div>
 </section>
 
 <footer class="footer">
     <div class="footer-nav">
-        <a href="index.html">Kernel (SDA)</a>
-        <a href="structure.html">Structure</a>
-        <a href="research.html">Research</a>
-        <a href="library.html">Library</a>
-        <a href="lab.html">Lab</a>
-        <a href="observatory.html">Observatory</a>
+        <a href="index.html" data-en="Kernel (SDA)" data-tr="Kernel (SDA)">Kernel (SDA)</a>
+        <a href="structure.html" data-en="Structure" data-tr="Yapı">Structure</a>
+        <a href="research.html" data-en="Research" data-tr="Araştırma">Research</a>
+        <a href="library.html" data-en="Library" data-tr="Kitaplık">Library</a>
+        <a href="lab.html" data-en="Lab" data-tr="Lab">Lab</a>
+        <a href="observatory.html" data-en="Observatory" data-tr="Gözlem">Observatory</a>
     </div>
 
     <div class="footer-left">
-        <div id="footer-line1">System is never chaotic; the observer is insufficient.</div>
-        <div id="footer-line2">Structural depth increases through preservation.</div>
+        <div class="en">System is never chaotic; the observer is insufficient.</div>
+        <div class="tr" style="display:none;">Sistem asla kaotik değildir; gözlemci yetersizdir.</div>
+        <div class="en">Structural depth increases through preservation.</div>
+        <div class="tr" style="display:none;">Yapısal derinlik korunum yoluyla artar.</div>
     </div>
 
     <div class="footer-right">
@@ -732,185 +694,35 @@ OBSERVATION: CONTINUOUS
 
 </div>
 
-<!-- SEMANTIC SCHEMA DATA FOR EXPERIMENTAL ENGINES -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Market Alchemy Execution Lab",
-  "operatingSystem": "Linux, Cloudflare Workers, Python, WebSockets",
-  "applicationCategory": "FinancialIntelligenceEngine",
-  "author": {
-    "@type": "Person",
-    "name": "Halil Ibrahim Guven"
-  },
-  "description": "Experimental financial intelligence engines including Pascal, Snipper, and Ultimate executing structural liquidity and momentum extraction."
-}
-</script>
-
 <script>
-const translations = {
-tr:{
-heroLabel:"MARKET ALCHEMY // FİNANSAL ZEKA DERİN KATMANLARI",
-title:"Yapısal Finansal Zeka Laboratuvarı",
-subtitle:"Piyasayı fiyat olarak değil, davranışsal yapı olarak gözlemleyen deneysel araştırma katmanı.",
-systemStatus:"CANLI",
-systemMode:"YAPISAL",
-vectorState:"KORUNUYOR",
-systemNotFinish:"Bu sistem tamamlanmaz.",
-systemDesc:"Çünkü piyasa sabit değildir. Yapı değişir. Vektörler oluşur, korunur veya çöker.",
-systemExtra:"Bu laboratuvar; gözlem, filtreleme, yapısal hizalanma ve davranış çıkarımı üzerine kuruludur.",
-phaseDesc:"Compression → aday yapı.\nExpansion → yön görünürlüğü.\nPreservation → gerçek vektör doğumu.",
-alchemyDesc:"Market Alchemy; gözlemlenebilir davranışlardan aksiyon üretilebilir durumlar çıkaran yapısal karar sistemidir.",
-ontologyDesc:"Zaman olay sayısı değil, yapısal derinliktir.\nΘ = depth(G)",
-observedTitle:"Gözlemlenen Evren",
-observedSubtitle:"Yaşam Üzerinden Yapısal Gözlem",
-observedDesc:"Piyasa tek gözlemlenebilir sistem değildir. Yaşamın kendisi de tekrar eden yapısal izler bırakır.",
-observedExtra:"Swarm Dynamics\nTerritorial Structures\nPredator Timing\nCompression & Release\nEmergent Coordination\nBiological Rhythm\nEnergy Preservation",
-epChannel:"EVERYDAY PATTERNS",
-epCategories:"Sistemik sürtünme ve akışın disiplinlerarası yapısal haritalandırılması.",
-engineCore:"Finansal Zeka Derin Katmanları",
-engineDesc:"Yüzey sinyali değil; yapı, sürtünme, momentum korunumu ve davranış sürekliliği okunur.",
-pascalShort:"Likidite geometri yorumlayıcısı.",
-pascal:"PASCAL; fiyatın arkasındaki likidite akışını, sıkışma alanlarını ve yapısal kırılım ihtimallerini analiz eden çekirdek sistemdir.",
-snipperShort:"Mikro yapı kırılım dedektörü.",
-snipper:"SNIPPER; düşük zaman ölçeğinde yapısal momentum bozulmalarını ve ani yönsel ayrışmaları tespit eder.",
-ultimateShort:"Adaptif deneysel motor.",
-ultimate:"ULTIMATE; yapısal derinlik prensiplerini adaptif davranış modelleriyle birleştiren deneysel yürütme katmanıdır.",
-supervisorShort:"Üst denetim ve gölge gözlem.",
-supervisor:"SUPERVISOR; sistemlerin davranışını doğrudan müdahale etmeden izleyen üst gözlem katmanıdır.",
-projectsTitle:"Aktif Yapısal Projeler",
-projectsDesc:"Canlı laboratuvar içinde gelişen finansal gözlem ve karar sistemleri.",
-projKobi:"KOBİ SKOR MOTORU",
-projKobiDesc:"Şirket davranışını statik bilanço yerine yapısal süreklilik ve adaptasyon kapasitesi üzerinden yorumlayan değerlendirme sistemi.",
-projRadar:"FİRMA RADARI",
-projRadarDesc:"Şirketlerde davranışsal kırılma, risk yoğunlaşması ve operasyonel sürtünme izlerini tarayan gözlem altyapısı.",
-projBank:"KREDİ TEKLİF SİSTEMİ",
-projBankDesc:"Risk skorlamasını doğrusal metriklerden çıkarıp yapısal davranış modellerine taşıyan teklif sistemi.",
-continuityTitle:"Yapısal Süreklilik",
-continuityDesc:"Sistem sadece çalışmaz.\nKendini gözlemler, sürtünmeyi ölçer ve hizalanma arar.",
-continuityData:"DURUM: AKTİF\nSÜRTÜNME: DEĞİŞKEN\nGÖZLEM: SÜREKLİ\n→ HİZALANMA",
-footerLine1:"System is never chaotic; the observer is insufficient.",
-footerLine2:"Structural depth increases through preservation."
-},
-en:{
-heroLabel:"MARKET ALCHEMY // FINANCIAL INTELLIGENCE DEEP LAYERS",
-title:"Structural Financial Intelligence Laboratory",
-subtitle:"Experimental research layer observing markets not as price, but as behavioral structure.",
-systemStatus:"LIVE",
-systemMode:"STRUCTURAL",
-vectorState:"PRESERVED",
-systemNotFinish:"This system does not finish.",
-systemDesc:"Markets are not static. Structures evolve. Vectors emerge, persist or collapse.",
-systemExtra:"This laboratory is built on observation, filtering, structural alignment and behavioral extraction.",
-phaseDesc:"Compression → candidate structure.\nExpansion → directional visibility.\nPreservation → true vector formation.",
-alchemyDesc:"Market Alchemy is a structural decision system extracting actionable states from observable behavior.",
-ontologyDesc:"Time is not event count, but structural depth.\nΘ = depth(G)",
-observedTitle:"Observed Universe",
-observedSubtitle:"Structural Observation Through Living Systems",
-observedDesc:"The market is not the only observable system. Life itself leaves recurring structural signatures.",
-observedExtra:"Swarm Dynamics\nTerritorial Structures\nPredator Timing\nCompression & Release\nEmergent Coordination\nBiological Rhythm\nEnergy Preservation",
-epChannel:"EVERYDAY PATTERNS",
-epCategories:"Cross-domain structural mapping of systemic friction and flow.",
-engineCore:"Financial Intelligence Deep Layers",
-engineDesc:"Not surface signals; structure, friction, momentum preservation and behavioral continuity are interpreted.",
-pascalShort:"Liquidity geometry interpreter.",
-pascal:"PASCAL analyzes liquidity flow, compression zones and structural breakout probability hidden behind price behavior.",
-snipperShort:"Micro structural break detector.",
-snipper:"SNIPPER identifies structural momentum distortions and abrupt directional divergence at lower time scales.",
-ultimateShort:"Adaptive experimental engine.",
-ultimate:"ULTIMATE combines structural depth principles with adaptive behavioral modeling and execution logic.",
-supervisorShort:"Meta observation layer.",
-supervisor:"SUPERVISOR observes system-wide behavior without direct intervention, acting as a shadow monitoring layer.",
-projectsTitle:"Active Structural Projects",
-projectsDesc:"Financial observation and decision systems evolving inside the live laboratory.",
-projKobi:"SME SCORING ENGINE",
-projKobiDesc:"Evaluation system interpreting companies through structural continuity and adaptation capacity rather than static balance sheets.",
-projRadar:"COMPANY RADAR",
-projRadarDesc:"Observation infrastructure scanning behavioral fractures, operational friction and structural instability across companies.",
-projBank:"CREDIT OFFER SYSTEM",
-projBankDesc:"Offer system transforming risk scoring from linear metrics into structural behavioral modeling.",
-continuityTitle:"Structural Continuity",
-continuityDesc:"The system does not merely operate.\nIt observes itself, measures friction and seeks alignment.",
-continuityData:"STATE: ACTIVE\nFRICTION: VARIABLE\nOBSERVATION: CONTINUOUS\n→ ALIGNMENT",
-footerLine1:"System is never chaotic; the observer is insufficient.",
-footerLine2:"Structural depth increases through preservation."
-}
-};
-
-function applyLanguage(){
-const userLang = localStorage.getItem("lang") || (navigator.language.startsWith("tr") ? "tr" : "en");
-const t = translations[userLang];
-
-document.getElementById("hero-label").innerText=t.heroLabel;
-document.getElementById("title").innerText=t.title;
-document.getElementById("subtitle").innerText=t.subtitle;
-
-document.getElementById("system-status").innerText=t.systemStatus;
-document.getElementById("system-mode").innerText=t.systemMode;
-document.getElementById("vector-state").innerText=t.vectorState;
-
-document.getElementById("system-not-finish").innerText=t.systemNotFinish;
-document.getElementById("system-desc").innerText=t.systemDesc;
-document.getElementById("system-extra").innerText=t.systemExtra;
-
-document.getElementById("phase-desc").innerText=t.phaseDesc;
-document.getElementById("alchemy-desc").innerText=t.alchemyDesc;
-document.getElementById("ontology-desc").innerText=t.ontologyDesc;
-
-document.getElementById("observed-title").innerText=t.observedTitle;
-document.getElementById("observed-subtitle").innerText=t.observedSubtitle;
-document.getElementById("observed-desc").innerText=t.observedDesc;
-document.getElementById("observed-extra").innerText=t.observedExtra;
-document.getElementById("ep-channel").innerText=t.epChannel;
-document.getElementById("ep-categories").innerText=t.epCategories;
-
-document.getElementById("engine-core").innerText=t.engineCore;
-document.getElementById("engine-desc").innerText=t.engineDesc;
-
-document.getElementById("pascal-short").innerText=t.pascalShort;
-document.getElementById("pascal-desc").innerText=t.pascal;
-
-document.getElementById("snipper-short").innerText=t.snipperShort;
-document.getElementById("snipper-desc").innerText=t.snipper;
-
-document.getElementById("ultimate-short").innerText=t.ultimateShort;
-document.getElementById("ultimate-desc").innerText=t.ultimate;
-
-document.getElementById("supervisor-short").innerText=t.supervisorShort;
-document.getElementById("supervisor-desc").innerText=t.supervisor;
-
-document.getElementById("projects-title").innerText=t.projectsTitle;
-document.getElementById("projects-desc").innerText=t.projectsDesc;
-
-document.getElementById("proj-kobi").innerText=t.projKobi;
-document.getElementById("proj-kobi-desc").innerText=t.projKobiDesc;
-
-document.getElementById("proj-radar").innerText=t.projRadar;
-document.getElementById("proj-radar-desc").innerText=t.projRadarDesc;
-
-document.getElementById("proj-bank").innerText=t.projBank;
-document.getElementById("proj-bank-desc").innerText=t.projBankDesc;
-
-document.getElementById("continuity-title").innerText=t.continuityTitle;
-document.getElementById("continuity-desc").innerText=t.continuityDesc;
-document.getElementById("continuity-data").innerText=t.continuityData;
-
-document.getElementById("footer-line1").innerText=t.footerLine1;
-document.getElementById("footer-line2").innerText=t.footerLine2;
-}
-
 function toggleMeta(id){
-const el=document.getElementById(id);
-el.style.display = (el.style.display==="block") ? "none" : "block";
+    const el = document.getElementById(id);
+    const elTr = document.getElementById(id + "-tr");
+    const lang = localStorage.getItem("lang") || "en";
+    
+    if(lang === "tr" && elTr) {
+        elTr.style.display = (elTr.style.display === "block") ? "none" : "block";
+    } else if(el) {
+        el.style.display = (el.style.display === "block") ? "none" : "block";
+    }
 }
 
-function openProject(name){
-localStorage.setItem("selectedProject",name);
-window.location.href="intake.html";
+function updateLanguageView() {
+    const lang = localStorage.getItem("lang") || "en";
+    
+    document.querySelectorAll(".en").forEach(e => e.style.display = (lang === "en" ? (e.tagName === 'SPAN' || e.classList.contains('metric-value') ? 'inline' : 'block') : 'none'));
+    document.querySelectorAll(".tr").forEach(e => e.style.display = (lang === "tr" ? (e.tagName === 'SPAN' || e.classList.contains('metric-value') ? 'inline' : 'block') : 'none'));
+    
+    document.querySelectorAll("nav a[data-en]").forEach(a => {
+        const text = a.getAttribute(`data-${lang}`);
+        if (text) {
+            a.textContent = text;
+        }
+    });
 }
 
-window.onload=applyLanguage;
+// Sayfa yüklendiğinde dili uygula
+updateLanguageView();
 </script>
 
 </body>
