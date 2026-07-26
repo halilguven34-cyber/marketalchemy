@@ -452,17 +452,18 @@ async function loadRuntime() {
         const dot = document.getElementById("status-dot");    
         const statusText = document.getElementById("status-text");    
             
-        if (data.pulse && data.pulse.length > 0) {    
-            dot.classList.remove("offline");    
-            statusText.innerText = "NODE ONLINE :: TELEMETRY ACTIVE";    
-            statusText.style.color = "var(--live)";    
-        } else {    
-            dot.classList.add("offline");    
-            statusText.innerText = "NODE INITIALIZING :: STANDBY";    
-            statusText.style.color = "var(--offline)";    
-        }    
+        const hasPulse = data.pulse && data.pulse.length > 0;
+
+        dot.classList.remove("offline");
+        statusText.style.color = "var(--live)";
+
+        if (hasPulse) {
+            statusText.innerText = "NODE ACTIVE :: SINGULARITY DETECTED";
+        } else {
+            statusText.innerText = "NODE ACTIVE :: SCANNING";
+        }
     
-        const topSymbol = data.pulse && data.pulse.length > 0 ? data.pulse[0] : null;    
+        const topSymbol = hasPulse ? data.pulse[0] : null;    
         latestTopSymbol = topSymbol;    
     
         document.getElementById("val-engine").innerText = "STR Core (Θ/Ω/V)";    
@@ -528,4 +529,7 @@ function shareTelemetry() {
     
 loadRuntime();    
 setInterval(loadRuntime, 5000);    
-</script>  </body>    </html>
+</script>
+
+</body>
+</html>
