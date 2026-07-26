@@ -312,7 +312,7 @@ footer{
 
 <!-- LANGUAGE SWITCHER -->
 <div class="lang-switch">
-    <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+    <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
     <button class="lang-btn" data-lang="tr" onclick="switchLang('tr')">TR</button>
 </div>
 
@@ -589,13 +589,23 @@ function switchLang(lang) {
 
 function updateLanguageView() {
     const lang = localStorage.getItem("lang") || "en";
+    
     document.querySelectorAll(".en").forEach(e => e.style.display = (lang === "en" ? "block" : "none"));
     document.querySelectorAll(".tr").forEach(e => e.style.display = (lang === "tr" ? "block" : "none"));
+    
     document.querySelectorAll(".lang-btn").forEach(btn => {
         btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
     });
+
+    document.querySelectorAll("nav a[data-en]").forEach(a => {
+        const text = a.getAttribute(`data-${lang}`);
+        if (text) {
+            a.textContent = text;
+        }
+    });
 }
 
+// Sayfa açıldığında dili zorla kontrol et ve uygula
 updateLanguageView();
 </script>
 
