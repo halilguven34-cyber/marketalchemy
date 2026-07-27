@@ -60,6 +60,7 @@ function renderPhase(phaseKey, updateHistory = true){
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = ref.url || "#";
+            // DÜZELTME: ref.title yerine getLocalized(ref.title) kullanılarak objenin doğru dile çevrilmesi sağlandı
             a.textContent = getLocalized(ref.title) || "Reference Document";
             li.appendChild(a);
             refsList.appendChild(li);
