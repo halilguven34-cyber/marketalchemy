@@ -1,0 +1,15 @@
+{
+  "phase_key": {
+    "tag": { "en": "...", "tr": "..." },
+    "title": { "en": "...", "tr": "..." },
+    "definition": { "en": "...", "tr": "..." },
+    "interpretation": { "en": "...", "tr": "..." },
+    "applications": { "en": "...", "tr": "..." },
+    "references": [
+      {
+        "title": { "en": "...", "tr": "..." },
+        "url": "..."
+      }
+    ]
+  }
+}
