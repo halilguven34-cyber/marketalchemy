@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Structural Atlas — Market Alchemy Research</title>
+
+<meta name="description" content="Explore the universal architecture of structural transformation through interactive phase states.">
+<meta name="graph-node" content="structural-atlas">
+<meta name="system-layer" content="atlas-portal">
+
+<script>
+if(!localStorage.getItem("lang")){
+    const userLang = navigator.language || navigator.userLanguage;
+    localStorage.setItem(
+        "lang",
+        userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
+    );
+}
+</script>
+
+<style>
+:root{
+    --bg:#0d0f14;
+    --fg:#e8ecf1;
+    --muted:rgba(232,236,241,0.6);
+    --accent:#6da8ff;
+    --border:#1f2430;
+    --card-bg:rgba(17,21,28,0.72);
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:'JetBrains Mono', monospace, -apple-system, sans-serif;
+    line-height:1.7;
+}
+
+/* NAVIGATION */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+    background:rgba(13,15,20,0.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+}
+
+nav .wrap{
+    max-width:950px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 18px;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+nav .wrap::-webkit-scrollbar{
+    display:none;
+}
+
+nav a{
+    color:var(--fg);
+    text-decoration:none;
+    font-size:12px;
+    opacity:0.7;
+    transition:0.25s;
+    margin-right:16px;
+    flex-shrink:0;
+}
+
+nav a:last-child{
+    margin-right:0;
+}
+
+nav a:hover{
+    opacity:1;
+    color:var(--accent);
+}
+
+nav a.active{
+    opacity:1;
+    color:var(--accent);
+    font-weight:600;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:950px;
+    margin:auto;
+    padding:110px 20px 80px;
+}
+
+/* BREADCRUMB */
+
+.node-path{
+    font-size:11px;
+    letter-spacing:1px;
+    color:var(--accent);
+    opacity:0.85;
+    margin-bottom:12px;
+    text-transform:uppercase;
+}
+
+/* TYPOGRAPHY */
+
+h1,h2,h3,p{
+    margin:0;
+}
+
+h1{
+    font-size:28px;
+    line-height:1.3;
+    letter-spacing:-0.8px;
+    border-left:2px solid var(--accent);
+    padding-left:14px;
+    margin-bottom:12px;
+}
+
+.atlas-subtitle{
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:30px;
+}
+
+/* ATLAS LAYOUT (GRID + PANEL) */
+
+.atlas-layout{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:24px;
+    align-items:start;
+}
+
+/* MATRIX GRAPH VIEW */
+
+.matrix-visual{
+    border:1px solid var(--border);
+    background:var(--card-bg);
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:10px;
+}
+
+.phase-node{
+    border:1px solid var(--border);
+    background:rgba(255,255,255,0.02);
+    padding:12px 8px;
+    text-align:center;
+    cursor:pointer;
+    transition:0.25s;
+    font-size:11px;
+    font-family:inherit;
+    color:var(--fg);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    min-height:75px;
+}
+
+.phase-node:hover{
+    border-color:var(--accent);
+    background:rgba(109,168,255,0.05);
+}
+
+.phase-node.active{
+    border-color:var(--accent);
+    background:var(--accent);
+    color:var(--bg);
+    font-weight:600;
+}
+
+.phase-node .p-id{
+    font-size:9px;
+    opacity:0.7;
+    margin-bottom:4px;
+    text-transform:uppercase;
+}
+
+.phase-node.active .p-id{
+    opacity:0.9;
+}
+
+/* RIGHT INSPECTION PANEL */
+
+.inspection-panel{
+    border:1px solid var(--border);
+    background:var(--card-bg);
+    padding:24px;
+    min-height:340px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.panel-header{
+    border-bottom:1px solid var(--border);
+    padding-bottom:14px;
+    margin-bottom:16px;
+}
+
+.panel-tag{
+    font-size:10px;
+    color:var(--accent);
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+    display:block;
+}
+
+.panel-title{
+    font-size:16px;
+    font-weight:600;
+}
+
+.panel-body{
+    font-size:13px;
+    opacity:0.85;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.panel-metrics{
+    border-top:1px solid var(--border);
+    padding-top:14px;
+    font-size:11px;
+    opacity:0.7;
+    display:flex;
+    justify-content:space-between;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:80px;
+    padding-top:30px;
+    border-top:1px solid var(--border);
+    font-size:12px;
+    color:var(--muted);
+}
+
+.footer-nav{
+    display:flex;
+    gap:16px;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+}
+
+.footer-nav a{
+    color:var(--fg);
+    text-decoration:none;
+    opacity:0.7;
+    transition:0.2s;
+}
+
+.footer-nav a:hover{
+    color:var(--accent);
+    opacity:1;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+    .atlas-layout{grid-template-columns:1fr;}
+    h1{font-size:24px;}
+    .container{padding-top:90px;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="wrap">
+        <a href="../index.html" data-en="Home" data-tr="Anasayfa">Home</a>
+        <a href="../structure.html" data-en="Structure" data-tr="Yapı">Structure</a>
+        <a href="../research.html" data-en="Research" data-tr="Araştırma">Research</a>
+        <a href="../observatory.html" data-en="Observatory" data-tr="Gözlem">Observatory</a>
+        <a href="../lab.html" data-en="Laboratory" data-tr="Laboratuvar">Laboratuvar</a>
+        <a href="../library.html" data-en="Library" data-tr="Kitaplık">Library</a>
+        <a href="index.html" class="active" data-en="Atlas" data-tr="Atlas">Atlas</a>
+    </div>
+</nav>
+
+<div class="container">
+
+<header>
+    <div class="node-path" data-en="SYSTEM PORTAL :: STRUCTURAL ATLAS" data-tr="SİSTEM PORTALI :: YAPIŞAL ATLAS">
+        SYSTEM PORTAL :: STRUCTURAL ATLAS
+    </div>
+
+    <h1 data-en="Structural Atlas" data-tr="Yapısal Atlas">
+        Structural Atlas
+    </h1>
+
+    <p class="atlas-subtitle"
+       data-en="Explore the universal architecture of structural transformation. Only the domain changes."
+       data-tr="Yapısal dönüşümün evrensel mimarisini keşfedin. Yalnızca alan değişir.">
+       Explore the universal architecture of structural transformation. Only the domain changes.
+    </p>
+</header>
+
+<div class="atlas-layout">
+
+    <!-- LEFT: MATRIX GRAPH VIEW -->
+    <div class="matrix-visual" id="matrixGrid">
+        <button class="phase-node active" data-phase="axiom" onclick="selectPhase('axiom')">
+            <span class="p-id">01</span>
+            <span data-en="Axiom" data-tr="Aksiyom">Axiom</span>
+        </button>
+
+        <button class="phase-node" data-phase="collapse" onclick="selectPhase('collapse')">
+            <span class="p-id">02</span>
+            <span data-en="Collapse" data-tr="Çöküş">Collapse</span>
+        </button>
+
+        <button class="phase-node" data-phase="observer" onclick="selectPhase('observer')">
+            <span class="p-id">03</span>
+            <span data-en="Observer" data-tr="Gözlemci">Observer</span>
+        </button>
+
+        <button class="phase-node" data-phase="decision" onclick="selectPhase('decision')">
+            <span class="p-id">04</span>
+            <span data-en="Decision" data-tr="Karar">Decision</span>
+        </button>
+
+        <button class="phase-node" data-phase="execution" onclick="selectPhase('execution')">
+            <span class="p-id">05</span>
+            <span data-en="Execution" data-tr="İcra">Execution</span>
+        </button>
+
+        <button class="phase-node" data-phase="liquidation" onclick="selectPhase('liquidation')">
+            <span class="p-id">06</span>
+            <span data-en="Liquidation" data-tr="Likidasyon">Liquidation</span>
+        </button>
+
+        <button class="phase-node" data-phase="waiting" onclick="selectPhase('waiting')">
+            <span class="p-id">07</span>
+            <span data-en="Waiting" data-tr="Bekleme">Waiting</span>
+        </button>
+
+        <button class="phase-node" data-phase="vector" onclick="selectPhase('vector')">
+            <span class="p-id">08</span>
+            <span data-en="Vector" data-tr="Vektör">Vector</span>
+        </button>
+
+        <button class="phase-node" data-phase="field" onclick="selectPhase('field')">
+            <span class="p-id">09</span>
+            <span data-en="Field" data-tr="Alan">Field</span>
+        </button>
+    </div>
+
+    <!-- RIGHT: INSPECTION PANEL -->
+    <div class="inspection-panel">
+        <div>
+            <div class="panel-header">
+                <span class="panel-tag" id="panelTag">Phase 01 — Axiom</span>
+                <div class="panel-title" id="panelTitle">Initial Constraint Geometry</div>
+            </div>
+            <div class="panel-body" id="panelDesc">
+                System parameter registration and baseline geometric constraints establishing the boundary conditions for all subsequent transformations.
+            </div>
+        </div>
+
+        <div class="panel-metrics">
+            <span id="metricState">State: Active & Invariant</span>
+            <span id="metricLayer">Layer: Kernel Matrix</span>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../structure.html">Structure</a>
+        <a href="../research.html">Research</a>
+        <a href="../observatory.html">Observatory</a>
+        <a href="../lab.html">Laboratory</a>
+        <a href="../library.html">Library</a>
+        <a href="index.html">Atlas</a>
+    </div>
+    <p data-en="Market Alchemy Research — Structural Atlas Portal & System Architecture."
+       data-tr="Market Alchemy Research — Yapısal Atlas Portalı ve Sistem Mimarisi.">
+       Market Alchemy Research — Structural Atlas Portal & System Architecture.
+    </p>
+</footer>
+
+</div>
+
+<script>
+const lang = localStorage.getItem("lang") || "en";
+
+const phaseData = {
+    axiom: {
+        en: { tag: "Phase 01 — Axiom", title: "Initial Constraint Geometry", desc: "System parameter registration and baseline geometric constraints establishing the boundary conditions for all subsequent transformations." },
+        tr: { tag: "Faz 01 — Aksiyom", title: "Başlangıç Kısıt Geometrisi", desc: "Tüm sonraki dönüşümler için sınır koşullarını belirleyen sistem parametre kaydı ve taban geometrik kısıtları." }
+    },
+    collapse: {
+        en: { tag: "Phase 02 — Collapse", title: "Structural Breakdown", desc: "Previous equilibrium loss and rapid dimensional shedding under escalating systemic stress limits." },
+        tr: { tag: "Faz 02 — Çöküş", title: "Yapısal Kırılma", desc: "Artan sistemik stres sınırları altında önceki denge kaybı ve hızlı boyutsal tasfiye." }
+    },
+    observer: {
+        en: { tag: "Phase 03 — Observer", title: "Access Limitation", desc: "Visibility degradation and projection constraints operating under transition latency (τ)." },
+        tr: { tag: "Faz 03 — Gözlemci", title: "Erişim Kısıtlaması", desc: "Geçiş gecikmesi (τ) altında çalışan görünürlük kaybı ve projeksiyon kısıtları." }
+    },
+    decision: {
+        en: { tag: "Phase 04 — Decision", title: "State Space Narrowing", desc: "Systematic elimination of structural impossibilities. Invalid paths are pruned under strict constraint." },
+        tr: { tag: "Faz 04 — Karar", title: "Durum Uzayı Daralması", desc: "Yapısal imkânsızlıkların sistematik olarak elenmesi. Geçersiz yollar katı kısıt altında budanır." }
+    },
+    execution: {
+        en: { tag: "Phase 05 — Execution", title: "Structural Release", desc: "Irreversible direction initiation and energy discharge across the cleared structural channel." },
+        tr: { tag: "Faz 05 — İcra", title: "Yapısal Salınım", desc: "Temizlenen yapısal kanal boyunca geri döndürülemez yön başlangıcı ve enerji deşarjı." }
+    },
+    liquidation: {
+        en: { tag: "Phase 06 — Liquidation", title: "Forced Correction", desc: "Systemic load expulsion and mandatory clearing of residual unstable components." },
+        tr: { tag: "Faz 06 — Likidasyon", title: "Zorunlu Düzeltme", desc: "Sistemik yük tahliyesi ve artık kararsız bileşenlerin zorunlu tasfiyesi." }
+    },
+    waiting: {
+        en: { tag: "Phase 07 — Waiting", title: "Structural Cooling", desc: "Energy dissipation and stabilization phase preceding the formation of a new directional matrix." },
+        tr: { tag: "Faz 07 — Bekleme", title: "Yapısal Soğuma", desc: "Yeni bir yönsel matrisin oluşumundan önceki enerji dağılımı ve stabilizasyon evresi." }
+    },
+    vector: {
+        en: { tag: "Phase 08 — Vector", title: "Direction Persistence", desc: "Momentum stabilization and preserved directional movement across invariant depth (Θ, Ω)." },
+        tr: { tag: "Faz 08 — Vektör", title: "Yön Kararlılığı", desc: "Değişmez derinlik (Θ, Ω) boyunca momentum stabilizasyonu ve korunan yönsel hareket." }
+    },
+    field: {
+        en: { tag: "Phase 09 — Field", title: "Constraint Stabilization", desc: "Emergence of the new structural matrix establishing boundaries for the next operational cycle." },
+        tr: { tag: "Faz 09 — Alan", title: "Kısıt Stabilizasyonu", desc: "Sonraki operasyonel döngü için sınırları belirleyen yeni yapısal matrisin ortaya çıkışı." }
+    }
+};
+
+function selectPhase(phaseKey){
+    // Update active class on buttons
+    document.querySelectorAll('.phase-node').forEach(btn => {
+        if(btn.getAttribute('data-phase') === phaseKey){
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // Update panel content based on current language
+    const data = phaseData[phaseKey][lang] || phaseData[phaseKey]['en'];
+    document.getElementById('panelTag').textContent = data.tag;
+    document.getElementById('panelTitle').textContent = data.title;
+    document.getElementById('panelDesc').textContent = data.desc;
+}
+
+function projectLanguage(){
+    document.querySelectorAll("[data-en]").forEach(el => {
+        const value = el.getAttribute("data-" + lang);
+        if(value) el.textContent = value;
+    });
+}
+
+projectLanguage();
+</script>
+
+</body>
+</html>
