@@ -192,13 +192,13 @@ h1{
     opacity:0.9;
 }
 
-/* RIGHT INSPECTION PANEL */
+/* RIGHT INSPECTION PANEL (EXPANDED SKELETON) */
 
 .inspection-panel{
     border:1px solid var(--border);
     background:var(--card-bg);
     padding:24px;
-    min-height:340px;
+    min-height:420px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -206,8 +206,8 @@ h1{
 
 .panel-header{
     border-bottom:1px solid var(--border);
-    padding-bottom:14px;
-    margin-bottom:16px;
+    padding-bottom:12px;
+    margin-bottom:14px;
 }
 
 .panel-tag{
@@ -215,25 +215,56 @@ h1{
     color:var(--accent);
     letter-spacing:1px;
     text-transform:uppercase;
-    margin-bottom:6px;
+    margin-bottom:4px;
     display:block;
 }
 
 .panel-title{
-    font-size:16px;
+    font-size:15px;
     font-weight:600;
 }
 
-.panel-body{
-    font-size:13px;
-    opacity:0.85;
-    line-height:1.6;
+.panel-sections{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
     margin-bottom:20px;
+}
+
+.panel-section-title{
+    font-size:10px;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    color:var(--accent);
+    opacity:0.9;
+    margin-bottom:2px;
+}
+
+.panel-section-body{
+    font-size:12px;
+    opacity:0.85;
+    line-height:1.5;
+}
+
+.panel-references-list{
+    list-style-type:none;
+    padding:0;
+    margin:0;
+    font-size:12px;
+}
+
+.panel-references-list a{
+    color:var(--accent);
+    text-decoration:none;
+}
+
+.panel-references-list a:hover{
+    text-decoration:underline;
 }
 
 .panel-metrics{
     border-top:1px solid var(--border);
-    padding-top:14px;
+    padding-top:12px;
     font-size:11px;
     opacity:0.7;
     display:flex;
@@ -315,61 +346,84 @@ footer{
 
     <!-- LEFT: MATRIX GRAPH VIEW -->
     <div class="matrix-visual" id="matrixGrid">
-        <button class="phase-node active" data-phase="axiom" onclick="selectPhase('axiom')">
+        <button class="phase-node active" data-phase="axiom" onclick="onNodeClick('axiom')">
             <span class="p-id">01</span>
             <span data-en="Axiom" data-tr="Aksiyom">Axiom</span>
         </button>
 
-        <button class="phase-node" data-phase="collapse" onclick="selectPhase('collapse')">
+        <button class="phase-node" data-phase="collapse" onclick="onNodeClick('collapse')">
             <span class="p-id">02</span>
             <span data-en="Collapse" data-tr="Çöküş">Collapse</span>
         </button>
 
-        <button class="phase-node" data-phase="observer" onclick="selectPhase('observer')">
+        <button class="phase-node" data-phase="observer" onclick="onNodeClick('observer')">
             <span class="p-id">03</span>
             <span data-en="Observer" data-tr="Gözlemci">Observer</span>
         </button>
 
-        <button class="phase-node" data-phase="decision" onclick="selectPhase('decision')">
+        <button class="phase-node" data-phase="decision" onclick="onNodeClick('decision')">
             <span class="p-id">04</span>
             <span data-en="Decision" data-tr="Karar">Decision</span>
         </button>
 
-        <button class="phase-node" data-phase="execution" onclick="selectPhase('execution')">
+        <button class="phase-node" data-phase="execution" onclick="onNodeClick('execution')">
             <span class="p-id">05</span>
             <span data-en="Execution" data-tr="İcra">Execution</span>
         </button>
 
-        <button class="phase-node" data-phase="liquidation" onclick="selectPhase('liquidation')">
+        <button class="phase-node" data-phase="liquidation" onclick="onNodeClick('liquidation')">
             <span class="p-id">06</span>
             <span data-en="Liquidation" data-tr="Likidasyon">Liquidation</span>
         </button>
 
-        <button class="phase-node" data-phase="waiting" onclick="selectPhase('waiting')">
+        <button class="phase-node" data-phase="waiting" onclick="onNodeClick('waiting')">
             <span class="p-id">07</span>
             <span data-en="Waiting" data-tr="Bekleme">Waiting</span>
         </button>
 
-        <button class="phase-node" data-phase="vector" onclick="selectPhase('vector')">
+        <button class="phase-node" data-phase="vector" onclick="onNodeClick('vector')">
             <span class="p-id">08</span>
             <span data-en="Vector" data-tr="Vektör">Vector</span>
         </button>
 
-        <button class="phase-node" data-phase="field" onclick="selectPhase('field')">
+        <button class="phase-node" data-phase="field" onclick="onNodeClick('field')">
             <span class="p-id">09</span>
             <span data-en="Field" data-tr="Alan">Field</span>
         </button>
     </div>
 
-    <!-- RIGHT: INSPECTION PANEL -->
+    <!-- RIGHT: EXPANDED INSPECTION PANEL -->
     <div class="inspection-panel">
         <div>
             <div class="panel-header">
                 <span class="panel-tag" id="panelTag">Phase 01 — Axiom</span>
                 <div class="panel-title" id="panelTitle">Initial Constraint Geometry</div>
             </div>
-            <div class="panel-body" id="panelDesc">
-                System parameter registration and baseline geometric constraints establishing the boundary conditions for all subsequent transformations.
+
+            <div class="panel-sections">
+                <div>
+                    <div class="panel-section-title" data-en="Definition" data-tr="Tanım">Definition</div>
+                    <div class="panel-section-body" id="panelDef">--</div>
+                </div>
+
+                <div>
+                    <div class="panel-section-title" data-en="Interpretation" data-tr="Yorumlama">Interpretation</div>
+                    <div class="panel-section-body" id="panelInterp">--</div>
+                </div>
+
+                <div>
+                    <div class="panel-section-title" data-en="Applications" data-tr="Uygulamalar">Applications</div>
+                    <div class="panel-section-body" id="panelApps">--</div>
+                </div>
+
+                <div>
+                    <div class="panel-section-title" data-en="References" data-tr="Referanslar">References</div>
+                    <div class="panel-section-body">
+                        <ul class="panel-references-list" id="panelRefs">
+                            <li>--</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -401,48 +455,45 @@ footer{
 
 <script>
 const lang = localStorage.getItem("lang") || "en";
+let phasesCache = {};
+let currentPhase = "axiom";
 
-const phaseData = {
-    axiom: {
-        en: { tag: "Phase 01 — Axiom", title: "Initial Constraint Geometry", desc: "System parameter registration and baseline geometric constraints establishing the boundary conditions for all subsequent transformations." },
-        tr: { tag: "Faz 01 — Aksiyom", title: "Başlangıç Kısıt Geometrisi", desc: "Tüm sonraki dönüşümler için sınır koşullarını belirleyen sistem parametre kaydı ve taban geometrik kısıtları." }
-    },
-    collapse: {
-        en: { tag: "Phase 02 — Collapse", title: "Structural Breakdown", desc: "Previous equilibrium loss and rapid dimensional shedding under escalating systemic stress limits." },
-        tr: { tag: "Faz 02 — Çöküş", title: "Yapısal Kırılma", desc: "Artan sistemik stres sınırları altında önceki denge kaybı ve hızlı boyutsal tasfiye." }
-    },
-    observer: {
-        en: { tag: "Phase 03 — Observer", title: "Access Limitation", desc: "Visibility degradation and projection constraints operating under transition latency (τ)." },
-        tr: { tag: "Faz 03 — Gözlemci", title: "Erişim Kısıtlaması", desc: "Geçiş gecikmesi (τ) altında çalışan görünürlük kaybı ve projeksiyon kısıtları." }
-    },
-    decision: {
-        en: { tag: "Phase 04 — Decision", title: "State Space Narrowing", desc: "Systematic elimination of structural impossibilities. Invalid paths are pruned under strict constraint." },
-        tr: { tag: "Faz 04 — Karar", title: "Durum Uzayı Daralması", desc: "Yapısal imkânsızlıkların sistematik olarak elenmesi. Geçersiz yollar katı kısıt altında budanır." }
-    },
-    execution: {
-        en: { tag: "Phase 05 — Execution", title: "Structural Release", desc: "Irreversible direction initiation and energy discharge across the cleared structural channel." },
-        tr: { tag: "Faz 05 — İcra", title: "Yapısal Salınım", desc: "Temizlenen yapısal kanal boyunca geri döndürülemez yön başlangıcı ve enerji deşarjı." }
-    },
-    liquidation: {
-        en: { tag: "Phase 06 — Liquidation", title: "Forced Correction", desc: "Systemic load expulsion and mandatory clearing of residual unstable components." },
-        tr: { tag: "Faz 06 — Likidasyon", title: "Zorunlu Düzeltme", desc: "Sistemik yük tahliyesi ve artık kararsız bileşenlerin zorunlu tasfiyesi." }
-    },
-    waiting: {
-        en: { tag: "Phase 07 — Waiting", title: "Structural Cooling", desc: "Energy dissipation and stabilization phase preceding the formation of a new directional matrix." },
-        tr: { tag: "Faz 07 — Bekleme", title: "Yapısal Soğuma", desc: "Yeni bir yönsel matrisin oluşumundan önceki enerji dağılımı ve stabilizasyon evresi." }
-    },
-    vector: {
-        en: { tag: "Phase 08 — Vector", title: "Direction Persistence", desc: "Momentum stabilization and preserved directional movement across invariant depth (Θ, Ω)." },
-        tr: { tag: "Faz 08 — Vektör", title: "Yön Kararlılığı", desc: "Değişmez derinlik (Θ, Ω) boyunca momentum stabilizasyonu ve korunan yönsel hareket." }
-    },
-    field: {
-        en: { tag: "Phase 09 — Field", title: "Constraint Stabilization", desc: "Emergence of the new structural matrix establishing boundaries for the next operational cycle." },
-        tr: { tag: "Faz 09 — Alan", title: "Kısıt Stabilizasyonu", desc: "Sonraki operasyonel döngü için sınırları belirleyen yeni yapısal matrisin ortaya çıkışı." }
+function getLocalized(fieldObj) {
+    if(!fieldObj) return "";
+    return fieldObj[lang] || fieldObj['en'] || "";
+}
+
+async function loadPhasesData(){
+    try {
+        const response = await fetch("phases.json");
+        if(!response.ok) throw new Error("Failed to load phases.json");
+        phasesCache = await response.json();
+        
+        let initialPhase = location.hash.replace("#", "").trim();
+        if(!initialPhase || !phasesCache.hasOwnProperty(initialPhase)){
+            initialPhase = "axiom";
+        }
+        renderPhase(initialPhase, false);
+    } catch(err) {
+        console.error("Atlas Data Layer Error:", err);
+        document.getElementById('panelTag').textContent = "SYSTEM ERROR";
+        document.getElementById('panelTitle').textContent = "Data Loading Failure";
+        document.getElementById('panelDef').textContent = lang === "tr" 
+            ? "Atlas veri katmanı yüklenemedi (phases.json erişilemiyor)." 
+            : "Atlas data could not be loaded.";
+        document.getElementById('panelInterp').textContent = "";
+        document.getElementById('panelApps').textContent = "";
+        document.getElementById('panelRefs').innerHTML = "<li>--</li>";
     }
-};
+}
 
-function selectPhase(phaseKey){
-    // Update active class on buttons
+function renderPhase(phaseKey, updateHistory = true){
+    if(!phasesCache || !phasesCache.hasOwnProperty(phaseKey)) {
+        phaseKey = "axiom";
+    }
+
+    currentPhase = phaseKey;
+
     document.querySelectorAll('.phase-node').forEach(btn => {
         if(btn.getAttribute('data-phase') === phaseKey){
             btn.classList.add('active');
@@ -451,12 +502,45 @@ function selectPhase(phaseKey){
         }
     });
 
-    // Update panel content based on current language
-    const data = phaseData[phaseKey][lang] || phaseData[phaseKey]['en'];
-    document.getElementById('panelTag').textContent = data.tag;
-    document.getElementById('panelTitle').textContent = data.title;
-    document.getElementById('panelDesc').textContent = data.desc;
+    const pData = phasesCache[phaseKey];
+    document.getElementById('panelTag').textContent = getLocalized(pData.tag);
+    document.getElementById('panelTitle').textContent = getLocalized(pData.title);
+    document.getElementById('panelDef').textContent = getLocalized(pData.definition);
+    document.getElementById('panelInterp').textContent = getLocalized(pData.interpretation);
+    document.getElementById('panelApps').textContent = getLocalized(pData.applications);
+
+    const refsList = document.getElementById('panelRefs');
+    refsList.innerHTML = "";
+    if(pData.references && pData.references.length > 0) {
+        pData.references.forEach(ref => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = ref.url || "#";
+            a.textContent = ref.title || "Reference Document";
+            li.appendChild(a);
+            refsList.appendChild(li);
+        });
+    } else {
+        const li = document.createElement('li');
+        li.textContent = lang === "tr" ? "Referans bulunmuyor." : "No references registered.";
+        refsList.appendChild(li);
+    }
+
+    if(updateHistory){
+        location.hash = phaseKey;
+    }
 }
+
+function onNodeClick(phaseKey){
+    renderPhase(phaseKey, true);
+}
+
+window.addEventListener("hashchange", () => {
+    const phase = location.hash.replace("#", "").trim();
+    if(phase && phasesCache.hasOwnProperty(phase) && phase !== currentPhase){
+        renderPhase(phase, false);
+    }
+});
 
 function projectLanguage(){
     document.querySelectorAll("[data-en]").forEach(el => {
@@ -466,6 +550,7 @@ function projectLanguage(){
 }
 
 projectLanguage();
+loadPhasesData();
 </script>
 
 </body>
