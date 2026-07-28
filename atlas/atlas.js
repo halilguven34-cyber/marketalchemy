@@ -1,6 +1,6 @@
 const lang = localStorage.getItem("lang") || "en";
 let phasesCache = {};
-let currentPhase = "axiom";
+let currentPhase = "phase_i";
 
 function getLocalized(fieldObj) {
     if(!fieldObj) return "";
@@ -15,7 +15,7 @@ async function loadPhasesData(){
         
         let initialPhase = location.hash.replace("#", "").trim();
         if(!initialPhase || !phasesCache.hasOwnProperty(initialPhase)){
-            initialPhase = "axiom";
+            initialPhase = "phase_i";
         }
         renderPhase(initialPhase, false);
     } catch(err) {
@@ -33,7 +33,7 @@ async function loadPhasesData(){
 
 function renderPhase(phaseKey, updateHistory = true){
     if(!phasesCache || !phasesCache.hasOwnProperty(phaseKey)) {
-        phaseKey = "axiom";
+        phaseKey = "phase_i";
     }
 
     currentPhase = phaseKey;
@@ -60,7 +60,6 @@ function renderPhase(phaseKey, updateHistory = true){
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = ref.url || "#";
-            // DÜZELTME: ref.title yerine getLocalized(ref.title) kullanılarak objenin doğru dile çevrilmesi sağlandı
             a.textContent = getLocalized(ref.title) || "Reference Document";
             li.appendChild(a);
             refsList.appendChild(li);
