@@ -1,3 +1,7 @@
+*{
+    background:red !important;
+    color:yellow !important;
+}
 :root{
     --bg:#0d0f14;
     --fg:#e8ecf1;
