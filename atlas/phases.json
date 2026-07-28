@@ -1,81 +1,144 @@
 {
-  "phases": [
-    {
-      "id": "phase_i",
-      "title": "Foundational Axiomatics & Containment",
-      "timeframe": "2026 Q1",
-      "description": "Establishing containment measures, the structural law of time, entropy unification, and thermodynamic energy traps.",
-      "concepts": [
-        "containment",
-        "structural_time",
-        "entropy",
-        "energy_traps"
-      ],
-      "equations": [
-        "structural_law_of_time",
-        "containment_measure"
-      ],
-      "papers": [
-        "zenodo.19071535",
-        "zenodo.19206624",
-        "zenodo.19265862",
-        "zenodo.19655155"
-      ],
-      "domains": [
-        "physics",
-        "temporal_mechanics"
-      ]
+  "phase_i": {
+    "tag": {
+      "tr": "ÇEKİRDEK AKSIOM",
+      "en": "FOUNDATIONAL AXIOM"
     },
-    {
-      "id": "phase_ii",
-      "title": "Categorical & Quantum Topologies",
-      "timeframe": "2026 Q2",
-      "description": "Formulating Grothendieck site foundations (SDT I), sheaf-theoretic coherence (SDT II), and quantum non-commutative accessibility algebras.",
-      "concepts": [
-        "grothendieck_sites",
-        "sheaf_coherence",
-        "quantum_constraints",
-        "accessibility_algebra"
-      ],
-      "equations": [
-        "canonical_morphism_kernel",
-        "spectral_accessibility"
-      ],
-      "papers": [
-        "zenodo.20315582",
-        "zenodo.20558159",
-        "zenodo.20689230"
-      ],
-      "domains": [
-        "physics",
-        "organization_systems"
-      ]
+    "title": {
+      "tr": "Foundational Axiomatics & Containment",
+      "en": "Foundational Axiomatics & Containment"
     },
-    {
-      "id": "phase_iii",
-      "title": "Spectral Accessibility & Representation Independence",
-      "timeframe": "2026 Q3 - Active",
-      "description": "Deriving accessibility from invariant constraint geometry (SDT III) and establishing the domain-independent axiomatic framework (SDA).",
-      "concepts": [
-        "sda_framework",
-        "spectral_accessibility_theorem",
-        "constraint_geometry",
-        "empirical_validation"
-      ],
-      "equations": [
-        "spectral_deformation_operator",
-        "structural_determination_axioms"
-      ],
-      "papers": [
-        "zenodo.21362546",
-        "zenodo.21465879",
-        "zenodo.21627634"
-      ],
-      "domains": [
-        "physics",
-        "financial_systems",
-        "temporal_mechanics"
-      ]
-    }
-  ]
+    "definition": {
+      "tr": "Kapsama önlemlerinin, zamanın yapısal yasasının, entropi birleşiminin ve termodinamik enerji tuzaklarının kurulması.",
+      "en": "Establishing containment measures, the structural law of time, entropy unification, and thermodynamic energy traps."
+    },
+    "interpretation": {
+      "tr": "Sistemin temel sınır koşulları, türevsel zaman ölçüsü ve enerji korunum mekanizmaları bu fazda aksiyomatik olarak tanımlanır.",
+      "en": "The foundational boundary conditions, structural time measure, and energy conservation mechanisms of the system are axiomatically defined in this phase."
+    },
+    "applications": {
+      "tr": "Termodinamik alan denklemleri, sistem sınırlandırma matrisleri ve entropi eşik optimizasyonları.",
+      "en": "Thermodynamic field equations, system containment matrices, and entropy threshold optimizations."
+    },
+    "references": [
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Zenodo.19071535)",
+          "en": "Zenodo Research Archive (Zenodo.19071535)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.19071535"
+      },
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Zenodo.19206624)",
+          "en": "Zenodo Research Archive (Zenodo.19206624)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.19206624"
+      },
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Zenodo.19265862)",
+          "en": "Zenodo Research Archive (Zenodo.19265862)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.19265862"
+      },
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Zenodo.19655155)",
+          "en": "Zenodo Research Archive (Zenodo.19655155)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.19655155"
+      }
+    ]
+  },
+  "phase_ii": {
+    "tag": {
+      "tr": "KATEGORİK TOPOLOJİ",
+      "en": "CATEGORICAL TOPOLOGY"
+    },
+    "title": {
+      "tr": "Categorical & Quantum Topologies",
+      "en": "Categorical & Quantum Topologies"
+    },
+    "definition": {
+      "tr": "Grothendieck site temellerinin (SDT I), demet teorik uyumun (SDT II) ve kuantum değişmeli olmayan erişilebilirlik cebirlerinin formüle edilmesi.",
+      "en": "Formulating Grothendieck site foundations (SDT I), sheaf-theoretic coherence (SDT II), and quantum non-commutative accessibility algebras."
+    },
+    "interpretation": {
+      "tr": "Yapının yerel-küresel tutarlılığı ve faz geçişlerindeki topolojik değişmezler türetilir.",
+      "en": "The local-global consistency of the structure and topological invariants across phase transitions are derived."
+    },
+    "applications": {
+      "tr": "Demet uyumluluk testleri ve non-komütatif erişilebilirlik matrisleri.",
+      "en": "Sheaf coherence tests and non-commutative accessibility matrices."
+    },
+    "references": [
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Zenodo.20315582)",
+          "en": "Zenodo Research Archive (Zenodo.20315582)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.20315582"
+      },
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Zenodo.20558159)",
+          "en": "Zenodo Research Archive (Zenodo.20558159)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.20558159"
+      },
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Zenodo.20689230)",
+          "en": "Zenodo Research Archive (Zenodo.20689230)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.20689230"
+      }
+    ]
+  },
+  "phase_iii": {
+    "tag": {
+      "tr": "AKTİF SPEKTRAL ERİŞİM",
+      "en": "ACTIVE SPECTRAL ACCESS"
+    },
+    "title": {
+      "tr": "Spectral Accessibility & Representation Independence",
+      "en": "Spectral Accessibility & Representation Independence"
+    },
+    "definition": {
+      "tr": "Değişmez kısıt geometrisinden erişilebilirliğin türetilmesi (SDT III) ve alandan bağımsız aksiyomatik çerçevenin (SDA) kurulması.",
+      "en": "Deriving accessibility from invariant constraint geometry (SDT III) and establishing the domain-independent axiomatic framework (SDA)."
+    },
+    "interpretation": {
+      "tr": "Sistem mimarisinin evrensel geçerliliği ve ampirik doğrulama katmanları bu aşamada işletilir.",
+      "en": "The universal validity of the system architecture and empirical validation layers are executed at this stage."
+    },
+    "applications": {
+      "tr": "SDA motor optimizasyonları, spektral deformasyon simülasyonları ve canlı sistem doğrulamaları.",
+      "en": "SDA engine optimizations, spectral deformation simulations, and live system validations."
+    },
+    "references": [
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Zenodo.21362546)",
+          "en": "Zenodo Research Archive (Zenodo.21362546)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.21362546"
+      },
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Zenodo.21465879)",
+          "en": "Zenodo Research Archive (Zenodo.21465879)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.21465879"
+      },
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Zenodo.21627634)",
+          "en": "Zenodo Research Archive (Zenodo.21627634)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.21627634"
+      }
+    ]
+  }
 }
