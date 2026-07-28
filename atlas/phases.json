@@ -134,7 +134,15 @@
       "tr": "Optimizasyon motorları ve karar kural matrisleri.",
       "en": "Optimization engines and decision rule matrices."
     },
-    "references": []
+    "references": [
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (SDT IV — Karar Matrisi)",
+          "en": "Zenodo Research Archive (SDT IV — Decision Matrix)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.21627634"
+      }
+    ]
   },
   "execution": {
     "tag": {
@@ -157,7 +165,15 @@
       "tr": "Canlı sistem icra motorları ve işlem katmanı.",
       "en": "Live system execution engines and transaction layer."
     },
-    "references": []
+    "references": [
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (SDA İcra Protokolü)",
+          "en": "Zenodo Research Archive (SDA Execution Protocol)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.21627634"
+      }
+    ]
   },
   "liquidation": {
     "tag": {
@@ -180,7 +196,15 @@
       "tr": "Risk temizliği ve entropi dengeleme protokolleri.",
       "en": "Risk clearance and entropy balancing protocols."
     },
-    "references": []
+    "references": [
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Termodinamik Tasfiye)",
+          "en": "Zenodo Research Archive (Thermodynamic Clearance)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.21627634"
+      }
+    ]
   },
   "waiting": {
     "tag": {
@@ -203,7 +227,15 @@
       "tr": "Statik durum izleme ve sabır matrisleri.",
       "en": "Static state monitoring and patience matrices."
     },
-    "references": []
+    "references": [
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Potansiyel Enerji Havuzları)",
+          "en": "Zenodo Research Archive (Potential Energy Pools)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.21627634"
+      }
+    ]
   },
   "vector": {
     "tag": {
@@ -226,7 +258,15 @@
       "tr": "Yönsel ivme hesaplamaları ve akış analitiği.",
       "en": "Directional acceleration calculations and flow analytics."
     },
-    "references": []
+    "references": [
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Vektörel Alan Dinamikleri)",
+          "en": "Zenodo Research Archive (Vector Field Dynamics)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.21627634"
+      }
+    ]
   },
   "field": {
     "tag": {
@@ -249,6 +289,14 @@
       "tr": "Sistem mimarisi bütünsellik testleri ve genel alan teorisi.",
       "en": "System architecture integrity tests and general field theory."
     },
-    "references": []
+    "references": [
+      {
+        "title": {
+          "tr": "Zenodo Araştırma Arşivi (Genel Alan Mimarisi)",
+          "en": "Zenodo Research Archive (General Field Architecture)"
+        },
+        "url": "https://doi.org/10.5281/zenodo.21627634"
+      }
+    ]
   }
 }
