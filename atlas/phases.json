@@ -1,173 +1,81 @@
 {
-  "axiom": {
-    "tag": { "en": "Phase 01 — Axiom", "tr": "Faz 01 — Aksiyom" },
-    "title": { "en": "Initial Constraint Geometry", "tr": "Başlangıç Kısıt Geometrisi" },
-    "definition": { 
-      "en": "System parameter registration and baseline geometric constraints establishing the boundary conditions for all subsequent transformations.", 
-      "tr": "Tüm sonraki dönüşümler için sınır koşullarını belirleyen sistem parametre kaydı ve taban geometrik kısıtları." 
+  "phases": [
+    {
+      "id": "phase_i",
+      "title": "Foundational Axiomatics & Containment",
+      "timeframe": "2026 Q1",
+      "description": "Establishing containment measures, the structural law of time, entropy unification, and thermodynamic energy traps.",
+      "concepts": [
+        "containment",
+        "structural_time",
+        "entropy",
+        "energy_traps"
+      ],
+      "equations": [
+        "structural_law_of_time",
+        "containment_measure"
+      ],
+      "papers": [
+        "zenodo.19071535",
+        "zenodo.19206624",
+        "zenodo.19265862",
+        "zenodo.19655155"
+      ],
+      "domains": [
+        "physics",
+        "temporal_mechanics"
+      ]
     },
-    "interpretation": { 
-      "en": "Defines the absolute boundaries within which the system operates. No directional movement is possible without violating invariant parameters.", 
-      "tr": "Sistemin içinde çalıştığı mutlak sınırları tanımlar. Değişmez parametreler ihlal edilmeden hiçbir yönsel hareket mümkün değildir." 
+    {
+      "id": "phase_ii",
+      "title": "Categorical & Quantum Topologies",
+      "timeframe": "2026 Q2",
+      "description": "Formulating Grothendieck site foundations (SDT I), sheaf-theoretic coherence (SDT II), and quantum non-commutative accessibility algebras.",
+      "concepts": [
+        "grothendieck_sites",
+        "sheaf_coherence",
+        "quantum_constraints",
+        "accessibility_algebra"
+      ],
+      "equations": [
+        "canonical_morphism_kernel",
+        "spectral_accessibility"
+      ],
+      "papers": [
+        "zenodo.20315582",
+        "zenodo.20558159",
+        "zenodo.20689230"
+      ],
+      "domains": [
+        "physics",
+        "organization_systems"
+      ]
     },
-    "applications": { 
-      "en": "Market opening ranges, initial thermodynamic equilibrium states, system boot parameters.", 
-      "tr": "Piyasa açılış aralıkları, ilk termodinamik denge halleri, sistem açılış parametreleri." 
-    },
-    "references": [
-      { "title": { "en": "Field Theory of Structural Boundaries", "tr": "Yapısal Sınırlar Alan Teorisi" }, "url": "../library/field-theory.html" }
-    ]
-  },
-  "collapse": {
-    "tag": { "en": "Phase 02 — Collapse", "tr": "Faz 02 — Çöküş" },
-    "title": { "en": "Structural Breakdown", "tr": "Yapısal Kırılma" },
-    "definition": { 
-      "en": "Previous equilibrium loss and rapid dimensional shedding under escalating systemic stress limits.", 
-      "tr": "Artan sistemik stres sınırları altında önceki denge kaybı ve hızlı boyutsal tasfiye." 
-    },
-    "interpretation": { 
-      "en": "Occurs when internal stress exceeds the structural tensile strength. The system sheds excess degrees of freedom rapidly.", 
-      "tr": "İç stres yapısal gerilme direncini aştığında gerçekleşir. Sistem, fazla serbestlik derecelerini hızla tasfiye eder." 
-    },
-    "applications": { 
-      "en": "Liquidity cascades, phase transitions in matter, organizational restructuring under shock.", 
-      "tr": "Likidite kaskadları, maddede faz geçişleri, şok altında örgütsel yeniden yapılandırma." 
-    },
-    "references": [
-      { "title": { "en": "Kinetics of Rapid Dimensional Shedding", "tr": "Hızlı Boyutsal Tasfiye Kinetiği" }, "url": "../library/kinetics.html" }
-    ]
-  },
-  "observer": {
-    "tag": { "en": "Phase 03 — Observer", "tr": "Faz 03 — Gözlemci" },
-    "title": { "en": "Access Limitation", "tr": "Erişim Kısıtlaması" },
-    "definition": { 
-      "en": "Visibility degradation and projection constraints operating under transition latency (τ).", 
-      "tr": "Geçiş gecikmesi (τ) altında çalışan görünürlük kaybı ve projeksiyon kısıtları." 
-    },
-    "interpretation": { 
-      "en": "During high-velocity shifts, direct measurement is distorted by transition latency, forcing reliance on delayed projections.", 
-      "tr": "Yüksek hızlı değişimler sırasında doğrudan ölçüm geçiş gecikmesi nedeniyle bozulur ve gecikmeli projeksiyonlara bağımlılık yaratır." 
-    },
-    "applications": { 
-      "en": "Order book visibility loss during flash moves, sensory degradation in turbulent flows.", 
-      "tr": "Ani hareketlerde emir defteri görünürlük kaybı, çalkantılı akışlarda duyusal bozulma." 
-    },
-    "references": [
-      { "title": { "en": "Latency and Projection Constraints in Systems", "tr": "Sistemlerde Gecikme ve Projeksiyon Kısıtları" }, "url": "../library/latency.html" }
-    ]
-  },
-  "decision": {
-    "tag": { "en": "Phase 04 — Decision", "tr": "Faz 04 — Karar" },
-    "title": { "en": "State Space Narrowing", "tr": "Durum Uzayı Daralması" },
-    "definition": { 
-      "en": "Systematic elimination of structural impossibilities. Invalid paths are pruned under strict constraint.", 
-      "tr": "Yapısal imkânsızlıkların sistematik olarak elenmesi. Geçersiz yollar katı kısıt altında budanır." 
-    },
-    "interpretation": { 
-      "en": "Entropy reduction through selective constraint application. The system collapses multiple potential states into a singular viable trajectory.", 
-      "tr": "Seçici kısıt uygulaması yoluyla entropi azalması. Sistem, birden fazla potansiyel durumu tek bir geçerli yörüngede daraltır." 
-    },
-    "applications": { 
-      "en": "Algorithmic path pruning, strategic corporate resource allocation, decision tree convergence.", 
-      "tr": "Algoritmik yol budaması, stratejik kurumsal kaynak tahsisi, karar ağacı yakınsaması." 
-    },
-    "references": [
-      { "title": { "en": "Entropy Reduction via Constraint Pruning", "tr": "Kısıt Budama Yoluyla Entropi Azaltımı" }, "url": "../library/entropy.html" }
-    ]
-  },
-  "execution": {
-    "tag": { "en": "Phase 05 — Execution", "tr": "Faz 05 — İcra" },
-    "title": { "en": "Structural Release", "tr": "Yapısal Salınım" },
-    "definition": { 
-      "en": "Irreversible direction initiation and energy discharge across the cleared structural channel.", 
-      "tr": "Temizlenen yapısal kanal boyunca geri döndürülemez yön başlangıcı ve enerji deşarjı." 
-    },
-    "interpretation": { 
-      "en": "The moment of kinetic translation where stored potential energy converts into directional momentum across the path.", 
-      "tr": "Depolanan potansiyel enerjinin yol boyunca yönsel momenta dönüştüğü kinetik çeviri anı." 
-    },
-    "applications": { 
-      "en": "Order execution phase, mechanical impulse release, policy implementation trigger.", 
-      "tr": "Emir icra fazı, mekanik darbe salınımı, politika uygulama tetikleyicisi." 
-    },
-    "references": [
-      { "title": { "en": "Irreversible Energy Discharge Dynamics", "tr": "Geri Dönüşsüz Enerji Deşarj Dinamikleri" }, "url": "../library/energy-discharge.html" }
-    ]
-  },
-  "liquidation": {
-    "tag": { "en": "Phase 06 — Liquidation", "tr": "Faz 06 — Likidasyon" },
-    "title": { "en": "Forced Correction", "tr": "Zorunlu Düzeltme" },
-    "definition": { 
-      "en": "Systemic load expulsion and mandatory clearing of residual unstable components.", 
-      "tr": "Sistemik yük tahliyesi ve artık kararsız bileşenlerin zorunlu tasfiyesi." 
-    },
-    "interpretation": { 
-      "en": "Purging of accumulated structural debt. Incompatible configurations are forcefully scrubbed from the operational matrix.", 
-      "tr": "Biriken yapısal borcun tasfiyesi. Uyumsuz konfigürasyonlar operasyonel matristen zorla arındırılır." 
-    },
-    "applications": { 
-      "en": "Margin liquidation events, portfolio rebalancing, cellular apoptosis.", 
-      "tr": "Marj tasfiye olayları, portföy yeniden dengelemesi, hücresel apoptoz." 
-    },
-    "references": [
-      { "title": { "en": "Systemic Load Expulsion Mechanics", "tr": "Sistemik Yük Tahliye Mekanikleri" }, "url": "../library/load-expulsion.html" }
-    ]
-  },
-  "waiting": {
-    "tag": { "en": "Phase 07 — Waiting", "tr": "Faz 07 — Bekleme" },
-    "title": { "en": "Structural Cooling", "tr": "Yapısal Soğuma" },
-    "definition": { 
-      "en": "Energy dissipation and stabilization phase preceding the formation of a new directional matrix.", 
-      "tr": "Yeni bir yönsel matrisin oluşumundan önceki enerji dağılımı ve stabilizasyon evresi." 
-    },
-    "interpretation": { 
-      "en": "A quiescent interval allowing thermal and structural gradients to settle before subsequent state transitions.", 
-      "tr": "Sonraki durum geçişlerinden önce termal ve yapısal gradyanların oturmasını sağlayan durgun bir aralık." 
-    },
-    "applications": { 
-      "en": "Consolidation ranges, thermal annealing in metallurgy, strategic latency intervals.", 
-      "tr": "Konsolidasyon aralıkları, metalurjide ısıl tavlama, stratejik gecikme aralıkları." 
-    },
-    "references": [
-      { "title": { "en": "Quiescent Thermal Gradient Dissipation", "tr": "Durgun Isıl Gradyan Dağılımı" }, "url": "../library/thermal-gradient.html" }
-    ]
-  },
-  "vector": {
-    "tag": { "en": "Phase 08 — Vector", "tr": "Faz 08 — Vektör" },
-    "title": { "en": "Direction Persistence", "tr": "Yön Kararlılığı" },
-    "definition": { 
-      "en": "Momentum stabilization and preserved directional movement across invariant depth (Θ, Ω).", 
-      "tr": "Değişmez derinlik (Θ, Ω) boyunca momentum stabilizasyonu ve korunan yönsel hareket." 
-    },
-    "interpretation": { 
-      "en": "Established trajectory stability where systemic resistance remains minimal relative to forward momentum.", 
-      "tr": "İleri momenta göre sistemik direncin minimum kaldığı kurulmuş yörünge kararlılığı." 
-    },
-    "applications": { 
-      "en": "Trend persistence phases, laminar fluid flow, institutional policy continuity.", 
-      "tr": "Trend süreklilik fazları, laminar akışkan hareketi, kurumsal politika sürekliliği." 
-    },
-    "references": [
-      { "title": { "en": "Invariant Depth and Momentum Persistence", "tr": "Değişmez Derinlik ve Momentum Sürekliliği" }, "url": "../library/momentum-persistence.html" }
-    ]
-  },
-  "field": {
-    "tag": { "en": "Phase 09 — Field", "tr": "Faz 09 — Alan" },
-    "title": { "en": "Constraint Stabilization", "tr": "Kısıt Stabilizasyonu" },
-    "definition": { 
-      "en": "Emergence of the new structural matrix establishing boundaries for the next operational cycle.", 
-      "tr": "Sonraki operasyonel döngü için sınırları belirleyen yeni yapısal matrisin ortaya çıkışı." 
-    },
-    "interpretation": { 
-      "en": "Full realization of the structural shift. A new baseline geometry is set, completing the transformation cycle.", 
-      "tr": "Yapısal değişimin tam olarak gerçekleşmesi. Dönüşüm döngüsünü tamamlayan yeni bir taban geometrisi kurulur." 
-    },
-    "applications": { 
-      "en": "New structural regime establishment, ecosystem equilibrium formation, market paradigm shift.", 
-      "tr": "Yeni yapısal rejim tesisi, ekosistem denge oluşumu, piyasa paradigma değişimi." 
-    },
-    "references": [
-      { "title": { "en": "Emergence of New Structural Matrices", "tr": "Yeni Yapısal Matrislerin Ortaya Çıkışı" }, "url": "../library/new-matrices.html" }
-    ]
-  }
+    {
+      "id": "phase_iii",
+      "title": "Spectral Accessibility & Representation Independence",
+      "timeframe": "2026 Q3 - Active",
+      "description": "Deriving accessibility from invariant constraint geometry (SDT III) and establishing the domain-independent axiomatic framework (SDA).",
+      "concepts": [
+        "sda_framework",
+        "spectral_accessibility_theorem",
+        "constraint_geometry",
+        "empirical_validation"
+      ],
+      "equations": [
+        "spectral_deformation_operator",
+        "structural_determination_axioms"
+      ],
+      "papers": [
+        "zenodo.21362546",
+        "zenodo.21465879",
+        "zenodo.21627634"
+      ],
+      "domains": [
+        "physics",
+        "financial_systems",
+        "temporal_mechanics"
+      ]
+    }
+  ]
 }
