@@ -1,5 +1,5 @@
 {
-  "phase_i": {
+  "axiom": {
     "tag": {
       "tr": "ÇEKİRDEK AKSIOM",
       "en": "FOUNDATIONAL AXIOM"
@@ -34,24 +34,10 @@
           "en": "Zenodo Research Archive (Zenodo.19206624)"
         },
         "url": "https://doi.org/10.5281/zenodo.19206624"
-      },
-      {
-        "title": {
-          "tr": "Zenodo Araştırma Arşivi (Zenodo.19265862)",
-          "en": "Zenodo Research Archive (Zenodo.19265862)"
-        },
-        "url": "https://doi.org/10.5281/zenodo.19265862"
-      },
-      {
-        "title": {
-          "tr": "Zenodo Araştırma Arşivi (Zenodo.19655155)",
-          "en": "Zenodo Research Archive (Zenodo.19655155)"
-        },
-        "url": "https://doi.org/10.5281/zenodo.19655155"
       }
     ]
   },
-  "phase_ii": {
+  "collapse": {
     "tag": {
       "tr": "KATEGORİK TOPOLOJİ",
       "en": "CATEGORICAL TOPOLOGY"
@@ -86,17 +72,10 @@
           "en": "Zenodo Research Archive (Zenodo.20558159)"
         },
         "url": "https://doi.org/10.5281/zenodo.20558159"
-      },
-      {
-        "title": {
-          "tr": "Zenodo Araştırma Arşivi (Zenodo.20689230)",
-          "en": "Zenodo Research Archive (Zenodo.20689230)"
-        },
-        "url": "https://doi.org/10.5281/zenodo.20689230"
       }
     ]
   },
-  "phase_iii": {
+  "observer": {
     "tag": {
       "tr": "AKTİF SPEKTRAL ERİŞİM",
       "en": "ACTIVE SPECTRAL ACCESS"
@@ -131,14 +110,145 @@
           "en": "Zenodo Research Archive (Zenodo.21465879)"
         },
         "url": "https://doi.org/10.5281/zenodo.21465879"
-      },
-      {
-        "title": {
-          "tr": "Zenodo Araştırma Arşivi (Zenodo.21627634)",
-          "en": "Zenodo Research Archive (Zenodo.21627634)"
-        },
-        "url": "https://doi.org/10.5281/zenodo.21627634"
       }
     ]
+  },
+  "decision": {
+    "tag": {
+      "tr": "VEKTÖREL BİFÜRKASYON",
+      "en": "VECTORIAL BIFURCATION"
+    },
+    "title": {
+      "tr": "Decision Threshold & Trajectory Lock",
+      "en": "Decision Threshold & Trajectory Lock"
+    },
+    "definition": {
+      "tr": "Sistemin potansiyel yörüngeler arasından tek bir spektral yola kilitlendiği karar eşiği.",
+      "en": "The decision threshold where the system locks into a single spectral path among potential trajectories."
+    },
+    "interpretation": {
+      "tr": "Karar noktası entropik maliyetin minimuma indirildiği optimal yörünge seçimidir.",
+      "en": "The decision point is the optimal trajectory selection minimizing entropic cost."
+    },
+    "applications": {
+      "tr": "Optimizasyon motorları ve karar kural matrisleri.",
+      "en": "Optimization engines and decision rule matrices."
+    },
+    "references": []
+  },
+  "execution": {
+    "tag": {
+      "tr": "ENERJİ İLETİMİ",
+      "en": "ENERGY TRANSMISSION"
+    },
+    "title": {
+      "tr": "Kinetic Actualization & Operation",
+      "en": "Kinetic Actualization & Operation"
+    },
+    "definition": {
+      "tr": "Seçilen vektörel yolun fiziksel veya piyasa katmanında fiiliyata dökülmesi.",
+      "en": "Actualization of the selected vector path in the physical or market layer."
+    },
+    "interpretation": {
+      "tr": "Teorik kısıtların kinetik enerjiye dönüştüğü uygulama evresidir.",
+      "en": "The application phase where theoretical constraints convert into kinetic energy."
+    },
+    "applications": {
+      "tr": "Canlı sistem icra motorları ve işlem katmanı.",
+      "en": "Live system execution engines and transaction layer."
+    },
+    "references": []
+  },
+  "liquidation": {
+    "tag": {
+      "tr": "SİSTEMİK TASFİYE",
+      "en": "SYSTEMIC CLEARANCE"
+    },
+    "title": {
+      "tr": "Residual Clearance & Balancing",
+      "en": "Residual Clearance & Balancing"
+    },
+    "definition": {
+      "tr": "Artık enerjinin ve verimsiz formasyonların sistem dışına itilmesi.",
+      "en": "Expulsion of residual energy and inefficient formations from the system."
+    },
+    "interpretation": {
+      "tr": "Likidasyon, bir sonraki aksiyomatik döngü için temiz bir alan yaratır.",
+      "en": "Liquidation creates a clean space for the next axiomatic cycle."
+    },
+    "applications": {
+      "tr": "Risk temizliği ve entropi dengeleme protokolleri.",
+      "en": "Risk clearance and entropy balancing protocols."
+    },
+    "references": []
+  },
+  "waiting": {
+    "tag": {
+      "tr": "POTANSİYEL BİRİKİM",
+      "en": "POTENTIAL ACCUMULATION"
+    },
+    "title": {
+      "tr": "Equilibrium & Patience Matrix",
+      "en": "Equilibrium & Patience Matrix"
+    },
+    "definition": {
+      "tr": "Sistemin yeni bir kısıt geometrisi oluşana kadar stabil dengede kaldığı evre.",
+      "en": "The phase where the system remains in stable equilibrium until a new constraint geometry forms."
+    },
+    "interpretation": {
+      "tr": "Bekleme pasif bir eylemsizlik değil, potansiyel enerji biriktirme durumudur.",
+      "en": "Waiting is not passive inertia, but a state of accumulating potential energy."
+    },
+    "applications": {
+      "tr": "Statik durum izleme ve sabır matrisleri.",
+      "en": "Static state monitoring and patience matrices."
+    },
+    "references": []
+  },
+  "vector": {
+    "tag": {
+      "tr": "YÖNLÜ AKIŞ",
+      "en": "DIRECTED FLOW"
+    },
+    "title": {
+      "tr": "Dynamic Field & Acceleration",
+      "en": "Dynamic Field & Acceleration"
+    },
+    "definition": {
+      "tr": "Sistematik hareketin belirli bir yöne ve ivmeye kavuştuğu alan evresi.",
+      "en": "The field phase where systematic movement acquires a specific direction and acceleration."
+    },
+    "interpretation": {
+      "tr": "Vektör, enerjinin uzay-zaman içindeki anlık yönelimini belirler.",
+      "en": "Vector determines the instantaneous orientation of energy within space-time."
+    },
+    "applications": {
+      "tr": "Yönsel ivme hesaplamaları ve akış analitiği.",
+      "en": "Directional acceleration calculations and flow analytics."
+    },
+    "references": []
+  },
+  "field": {
+    "tag": {
+      "tr": "BÜTÜNCÜL MATRİS",
+      "en": "HOLISTIC MATRIX"
+    },
+    "title": {
+      "tr": "Systemic Field & General Architecture",
+      "en": "Systemic Field & General Architecture"
+    },
+    "definition": {
+      "tr": "Tüm fazların ve bileşenlerin etkileştiği nihai sistemik alan.",
+      "en": "The ultimate systemic field where all phases and components interact."
+    },
+    "interpretation": {
+      "tr": "Alan, bireysel bileşenlerin toplamından oluşan üst düzey bir varlık uzayıdır.",
+      "en": "The field is a higher-level existence space composed of the sum of individual components."
+    },
+    "applications": {
+      "tr": "Sistem mimarisi bütünsellik testleri ve genel alan teorisi.",
+      "en": "System architecture integrity tests and general field theory."
+    },
+    "references": []
   }
 }
