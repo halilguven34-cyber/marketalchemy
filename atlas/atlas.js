@@ -1,6 +1,6 @@
 const lang = localStorage.getItem("lang") || "en";
 let phasesCache = {};
-let currentPhase = "phase_i";
+let currentPhase = "axiom";
 
 function getLocalized(fieldObj) {
     if(!fieldObj) return "";
@@ -15,7 +15,7 @@ async function loadPhasesData(){
         
         let initialPhase = location.hash.replace("#", "").trim();
         if(!initialPhase || !phasesCache.hasOwnProperty(initialPhase)){
-            initialPhase = "phase_i";
+            initialPhase = "axiom";
         }
         renderPhase(initialPhase, false);
     } catch(err) {
@@ -33,7 +33,7 @@ async function loadPhasesData(){
 
 function renderPhase(phaseKey, updateHistory = true){
     if(!phasesCache || !phasesCache.hasOwnProperty(phaseKey)) {
-        phaseKey = "phase_i";
+        phaseKey = "axiom";
     }
 
     currentPhase = phaseKey;
