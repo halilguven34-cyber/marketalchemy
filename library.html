@@ -19,6 +19,112 @@
 
 <meta name="description" content="Market Alchemy Research Library: Complete publication corpus mapping SDA kernel axioms to live execution engines.">
 <meta name="keywords" content="Market Alchemy, Structural Depth, The Place of Time, The Condensation Point, Liquidation, Invalid State, The Shape of Absence, Halil Ibrahim Guven">
+<meta name="author" content="Halil İbrahim Güven">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://marketalchemy.io/library.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Research Library & Structural Corpus | Market Alchemy">
+<meta property="og:description" content="Research publications, books and structural corpus by Halil İbrahim Güven.">
+<meta property="og:url" content="https://marketalchemy.io/library.html">
+<meta property="og:site_name" content="Market Alchemy">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Research Library & Structural Corpus | Market Alchemy">
+<meta name="twitter:description" content="Research publications, books and structural corpus by Halil İbrahim Güven.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://marketalchemy.io/#halil-ibrahim-guven",
+      "name": "Halil İbrahim Güven",
+      "alternateName": "Halil Ibrahim Guven",
+      "url": "https://marketalchemy.io/",
+      "sameAs": [
+        "https://www.amazon.com/author/higuven",
+        "https://play.google.com/store/books/author?id=Halil+%C4%B0brahim+G%C3%BCven"
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://marketalchemy.io/library.html",
+      "url": "https://marketalchemy.io/library.html",
+      "name": "Market Alchemy Research Library & Structural Corpus",
+      "description": "Market Alchemy Research Library: Complete publication corpus mapping SDA kernel axioms to live execution engines.",
+      "author": {
+        "@id": "https://marketalchemy.io/#halil-ibrahim-guven"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Market Alchemy",
+        "url": "https://marketalchemy.io/"
+      }
+    },
+    {
+      "@type": "Book",
+      "name": "Structural Depth: Reality, Time, Information, and Organization",
+      "alternateName": "Yapısal Derinlik: Gerçeklik, Zaman, Bilgi ve Organizasyon",
+      "author": {
+        "@id": "https://marketalchemy.io/#halil-ibrahim-guven"
+      },
+      "image": "https://marketalchemy.io/Structural.png",
+      "url": "https://play.google.com/store/books/details/Halil_%C4%B0brahim_G%C3%9CVEN_YAPISAL_DER%C4%B0NL%C4%B0K?id=5FvvEQAAQBAJ"
+    },
+    {
+      "@type": "Book",
+      "name": "The Place of Time: Time as Structural Depth",
+      "alternateName": "Zamanın Yeri: Yapısal Derinlik Olarak Zaman",
+      "author": {
+        "@id": "https://marketalchemy.io/#halil-ibrahim-guven"
+      },
+      "image": "https://marketalchemy.io/Theplaceoftime.jpg",
+      "url": "https://www.amazon.com/dp/B0GNWP4NKL"
+    },
+    {
+      "@type": "Book",
+      "name": "The Condensation Point: Debt, Energy, and the Narrowing of Global Coordination (2026–2035)",
+      "author": {
+        "@id": "https://marketalchemy.io/#halil-ibrahim-guven"
+      },
+      "image": "https://marketalchemy.io/Thecondinsationpoint.png",
+      "url": "https://www.amazon.com/dp/B0GN1DBVH7"
+    },
+    {
+      "@type": "Book",
+      "name": "Liquidation: The Market Alchemy Framework",
+      "alternateName": "Tasfiye: Market Alchemy Çerçevesi",
+      "author": {
+        "@id": "https://marketalchemy.io/#halil-ibrahim-guven"
+      },
+      "image": "https://marketalchemy.io/Liquidation.jpg",
+      "url": "https://www.amazon.com/dp/B0GRSW8SWN"
+    },
+    {
+      "@type": "Book",
+      "name": "INVALID STATE: Why Traders Create Unnecessary Losses",
+      "author": {
+        "@id": "https://marketalchemy.io/#halil-ibrahim-guven"
+      },
+      "image": "https://marketalchemy.io/Invalidstate.jpg",
+      "url": "https://www.amazon.com/dp/B0H9BY6SVK"
+    },
+    {
+      "@type": "Book",
+      "name": "The Shape of Absence: Love, Loss, and the Mystery of What Remains",
+      "alternateName": "Yokluğun Şekli / Zahide: Sevgi, Kayıp ve Kalanın Gizemi",
+      "author": {
+        "@id": "https://marketalchemy.io/#halil-ibrahim-guven"
+      },
+      "image": "https://marketalchemy.io/Shapeofabsence.jpg",
+      "url": "https://www.amazon.com/dp/B0H875RHXR"
+    }
+  ]
+}
+</script>
 
 <script>
 if(!localStorage.getItem("lang")){
@@ -156,7 +262,6 @@ h1{
 .hero-title{font-size:22px;font-weight:600;margin-bottom:6px;}
 .hero-desc{font-size:14px;opacity:.8;line-height:1.6;margin-top:10px;}
 
-/* Kitap Kartı Yapısı ve Görsel Entegrasyonu */
 .book{
     display:flex;
     gap:24px;
@@ -208,12 +313,14 @@ footer{
     color:var(--muted);
 }
 
-/* Dil bazlı dinamik görünürlük sınıfları */
 body.lang-tr .en-only { display: none !important; }
 body.lang-en .tr-only { display: none !important; }
 
 @media(max-width: 600px){
-    .book { flex-direction: column; }
+    .book,
+    .hero-content {
+        flex-direction: column;
+    }
     .book-cover { width: 100px; }
 }
 </style>
@@ -284,6 +391,11 @@ if (lang === "tr") {
 <!-- EXTRA LAYER: YAPISAL DERİNLİK (Kitap 3) -->
 <div class="hero">
     <div class="hero-content">
+
+        <div class="book-cover">
+            <img src="Structural.png" alt="Yapısal Derinlik — Gerçeklik, Zaman, Bilgi ve Organizasyon kitap kapağı">
+        </div>
+
         <div class="hero-body">
             <div class="book-meta">
                 <span class="en-only">SPECIAL LAYER — KERNEL</span>
@@ -314,33 +426,23 @@ if (lang === "tr") {
 </div>
 
 <div class="section" style="margin-top:36px; padding:24px; border:1px solid var(--border); background:var(--card-bg);">
-    
-    <!-- LAYER I: THE PLACE OF TIME / ZAMANIN YERİ -->
+
+    <!-- LAYER I -->
     <div class="book">
         <div class="book-cover">
-            <img src="path_to_cover_place_of_time.jpg" alt="The Place of Time Cover">
+            <img src="Theplaceoftime.jpg" alt="The Place of Time: Time as Structural Depth book cover">
         </div>
         <div class="book-info">
-            <div class="book-meta">
-                <span class="en-only">LAYER I — LAW</span>
-                <span class="tr-only">KATMAN I — YASA</span>
-            </div>
-            <div class="book-title">
-                <span class="en-only">The Place of Time: Time as Structural Depth</span>
-                <span class="tr-only">Zamanın Yeri: Yapısal Derinlik Olarak Zaman</span>
-            </div>
+            <div class="book-meta"><span class="en-only">LAYER I — LAW</span><span class="tr-only">KATMAN I — YASA</span></div>
+            <div class="book-title"><span class="en-only">The Place of Time: Time as Structural Depth</span><span class="tr-only">Zamanın Yeri: Yapısal Derinlik Olarak Zaman</span></div>
             <div class="struct-signal">Ω: Undefined | Θ: Absolute</div>
             <div class="book-desc">
-                <span class="en-only">
-                    Time is not flowing. You are not measuring time; you are measuring structural depth.
+                <span class="en-only">Time is not flowing. You are not measuring time; you are measuring structural depth.
                     This book removes time from the clock and places it into the system architecture.
-                    Time is not a flow; it is the derivative consequence of layered structure.
-                </span>
-                <span class="tr-only">
-                    Zaman akmıyor. Ölçtüğünüz şey zaman değil, yapısal derinliktir.
+                    Time is not a flow; it is the derivative consequence of layered structure.</span>
+                <span class="tr-only">Zaman akmıyor. Ölçtüğünüz şey zaman değil, yapısal derinliktir.
                     Bu kitap, zamanı saatten söküp sistemin mimarisine yerleştirir.
-                    Zaman bir akış değil, katmanlaşmış yapının türevsel sonucudur.
-                </span>
+                    Zaman bir akış değil, katmanlaşmış yapının türevsel sonucudur.</span>
             </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0GNWP4NKL" target="_blank" rel="noopener">EN — Amazon (ASIN: B0GNWP4NKL)</a>
@@ -349,32 +451,22 @@ if (lang === "tr") {
         </div>
     </div>
 
-    <!-- LAYER II: THE CONDENSATION POINT / YOĞUNLAŞMA NOKTASI -->
+    <!-- LAYER II -->
     <div class="book">
         <div class="book-cover">
-            <img src="path_to_cover_condensation.jpg" alt="The Condensation Point Cover">
+            <img src="Thecondinsationpoint.png" alt="The Condensation Point book cover">
         </div>
         <div class="book-info">
-            <div class="book-meta">
-                <span class="en-only">LAYER II — EXTRACTION</span>
-                <span class="tr-only">KATMAN II — TÜRETME</span>
-            </div>
-            <div class="book-title">
-                <span class="en-only">The Condensation Point: Debt, Energy, and the Narrowing of Global Coordination (2026–2035)</span>
-                <span class="tr-only">Yoğunlaşma Noktası: Borç, Enerji ve Küresel Koordinasyonun Daralması (2026–2035)</span>
-            </div>
+            <div class="book-meta"><span class="en-only">LAYER II — EXTRACTION</span><span class="tr-only">KATMAN II — TÜRETME</span></div>
+            <div class="book-title"><span class="en-only">The Condensation Point: Debt, Energy, and the Narrowing of Global Coordination (2026–2035)</span><span class="tr-only">Yoğunlaşma Noktası: Borç, Enerji ve Küresel Koordinasyonun Daralması (2026–2035)</span></div>
             <div class="struct-signal">Ω: Observable | Θ: Emerging</div>
             <div class="book-desc">
-                <span class="en-only">
-                    The world is not collapsing. It is condensing. 
-                    Examines the structural limits shaping the global economy between 2026 and 2035. 
-                    Maps arithmetic and physical constraints that narrow coordination: debt sustainability, energy return, and trust.
-                </span>
-                <span class="tr-only">
-                    Dünya çökmüyor, yoğunlaşıyor. 
-                    2026–2035 yılları arasında küresel ekonomiyi şekillendiren yapısal sınırları inceler. 
-                    Kriz kehaneti değil; borç sürdürülebilirliği, enerji getirisi ve kurumsal güven eşiklerini haritalandıran yapısal bir çerçevedir.
-                </span>
+                <span class="en-only">The world is not collapsing. It is condensing.
+                    Examines the structural limits shaping the global economy between 2026 and 2035.
+                    Maps arithmetic and physical constraints that narrow coordination: debt sustainability, energy return, and trust.</span>
+                <span class="tr-only">Dünya çökmüyor, yoğunlaşıyor.
+                    2026–2035 yılları arasında küresel ekonomiyi şekillendiren yapısal sınırları inceler.
+                    Kriz kehaneti değil; borç sürdürülebilirliği, enerji getirisi ve kurumsal güven eşiklerini haritalandıran yapısal bir çerçevedir.</span>
             </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0GN1DBVH7" target="_blank" rel="noopener">EN — Amazon (ASIN: B0GN1DBVH7)</a>
@@ -382,32 +474,22 @@ if (lang === "tr") {
         </div>
     </div>
 
-    <!-- LAYER III: LIQUIDATION / TASFİYE -->
+    <!-- LAYER III -->
     <div class="book">
         <div class="book-cover">
-            <img src="path_to_cover_liquidation.jpg" alt="Liquidation Cover">
+            <img src="Liquidation.jpg" alt="Liquidation: The Market Alchemy Framework book cover">
         </div>
         <div class="book-info">
-            <div class="book-meta">
-                <span class="en-only">LAYER III — ENGINE</span>
-                <span class="tr-only">KATMAN III — MOTOR</span>
-            </div>
-            <div class="book-title">
-                <span class="en-only">Liquidation: The Market Alchemy Framework</span>
-                <span class="tr-only">Tasfiye: Market Alchemy Çerçevesi</span>
-            </div>
+            <div class="book-meta"><span class="en-only">LAYER III — ENGINE</span><span class="tr-only">KATMAN III — MOTOR</span></div>
+            <div class="book-title"><span class="en-only">Liquidation: The Market Alchemy Framework</span><span class="tr-only">Tasfiye: Market Alchemy Çerçevesi</span></div>
             <div class="struct-signal">Ω: Suppressed | Θ: Increasing</div>
             <div class="book-desc">
-                <span class="en-only">
-                    Modern economic order was built on growth assumptions. 
-                    When debt grows exponentially while physical production hits limits, systems realign. 
-                    Demonstrates that economic systems rely on energy, complexity, and trust rather than mere finance.
-                </span>
-                <span class="tr-only">
-                    Modern ekonomik düzen büyüme varsayımı üzerine kuruldu. 
-                    Borç üstel büyürken reel üretim fiziksel sınırlara tabidir. 
-                    Tasfiye, ekonomik sistemlerin finansal değil; enerji, karmaşıklık ve güven üzerine kurulu olduğunu gösteren bir analizdir.
-                </span>
+                <span class="en-only">Modern economic order was built on growth assumptions.
+                    When debt grows exponentially while physical production hits limits, systems realign.
+                    Demonstrates that economic systems rely on energy, complexity, and trust rather than mere finance.</span>
+                <span class="tr-only">Modern ekonomik düzen büyüme varsayımı üzerine kuruldu.
+                    Borç üstel büyürken reel üretim fiziksel sınırlara tabidir.
+                    Tasfiye, ekonomik sistemlerin finansal değil; enerji, karmaşıklık ve güven üzerine kurulu olduğunu gösteren bir analizdir.</span>
             </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0GRSW8SWN" target="_blank" rel="noopener">EN — Amazon (ASIN: B0GRSW8SWN)</a>
@@ -416,31 +498,21 @@ if (lang === "tr") {
         </div>
     </div>
 
-    <!-- LAYER IV: INVALID STATE / GEÇERSİZ DURUM -->
+    <!-- LAYER IV -->
     <div class="book">
         <div class="book-cover">
-            <img src="path_to_cover_invalid_state.jpg" alt="Invalid State Cover">
+            <img src="Invalidstate.jpg" alt="INVALID STATE: Why Traders Create Unnecessary Losses book cover">
         </div>
         <div class="book-info">
-            <div class="book-meta">
-                <span class="en-only">LAYER IV — EXECUTION & BEHAVIORAL CONSTRAINTS</span>
-                <span class="tr-only">KATMAN IV — İCRA VE DAVRANIŞSAL KISITLAR</span>
-            </div>
-            <div class="book-title">
-                <span class="en-only">INVALID STATE: Why Traders Create Unnecessary Losses</span>
-                <span class="tr-only">GEÇERSİZ DURUM: Yatırımcılar Neden Gereksiz Kayıplar Üretir?</span>
-            </div>
+            <div class="book-meta"><span class="en-only">LAYER IV — EXECUTION & BEHAVIORAL CONSTRAINTS</span><span class="tr-only">KATMAN IV — İCRA VE DAVRANIŞSAL KISITLAR</span></div>
+            <div class="book-title"><span class="en-only">INVALID STATE: Why Traders Create Unnecessary Losses</span><span class="tr-only">GEÇERSİZ DURUM: Yatırımcılar Neden Gereksiz Kayıplar Üretir?</span></div>
             <div class="struct-signal">Ω: Collapsed | Θ: Strict Barrier</div>
             <div class="book-desc">
-                <span class="en-only">
-                    Most traders don't lose because of the market; they trade from an invalid state. 
-                    Explores the hidden conditions before every trade. 
-                    The trade is not the decision; the decision comes first. Stop improving your entries, start improving your state.
-                </span>
-                <span class="tr-only">
-                    Poizsyonlar değil, zihinsel ve yapısal durumlar kaybeder. 
-                    Piyasa katılımcıları geçerli yapısal kısıtların dışında işlem yaptığında oluşan icra düzeyindeki kırılmaları ve karardan önce gelen yapısal hazırlığı inceler.
-                </span>
+                <span class="en-only">Most traders don't lose because of the market; they trade from an invalid state.
+                    Explores the hidden conditions before every trade.
+                    The trade is not the decision; the decision comes first. Stop improving your entries, start improving your state.</span>
+                <span class="tr-only">Poizsyonlar değil, zihinsel ve yapısal durumlar kaybeder.
+                    Piyasa katılımcıları geçerli yapısal kısıtların dışında işlem yaptığında oluşan icra düzeyindeki kırılmaları ve karardan önce gelen yapısal hazırlığı inceler.</span>
             </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0H9BY6SVK" target="_blank" rel="noopener">EN — Amazon (ASIN: B0H9BY6SVK)</a>
@@ -448,31 +520,21 @@ if (lang === "tr") {
         </div>
     </div>
 
-    <!-- LAYER V: THE SHAPE OF ABSENCE / ZAHİDE -->
+    <!-- LAYER V -->
     <div class="book">
         <div class="book-cover">
-            <img src="path_to_cover_shape_of_absence.jpg" alt="The Shape of Absence Cover">
+            <img src="Shapeofabsence.jpg" alt="The Shape of Absence: Love, Loss, and the Mystery of What Remains book cover">
         </div>
         <div class="book-info">
-            <div class="book-meta">
-                <span class="en-only">LAYER V — ADVANCED STRUCTURAL SYNTHESIS</span>
-                <span class="tr-only">KATMAN V — GELİŞMİŞ YAPISAL SENTEZ</span>
-            </div>
-            <div class="book-title">
-                <span class="en-only">The Shape of Absence: Love, Loss, and the Mystery of What Remains</span>
-                <span class="tr-only">Yokluğun Şekli / Zahide: Sevgi, Kayıp ve Kalanın Gizemi</span>
-            </div>
+            <div class="book-meta"><span class="en-only">LAYER V — ADVANCED STRUCTURAL SYNTHESIS</span><span class="tr-only">KATMAN V — GELİŞMİŞ YAPISAL SENTEZ</span></div>
+            <div class="book-title"><span class="en-only">The Shape of Absence: Love, Loss, and the Mystery of What Remains</span><span class="tr-only">Yokluğun Şekli / Zahide: Sevgi, Kayıp ve Kalanın Gizemi</span></div>
             <div class="struct-signal">Ω: Terminal | Θ: Unified Field</div>
             <div class="book-desc">
-                <span class="en-only">
-                    Explores change, what survives loss, and how meaning emerges through relationship within systemic boundaries. 
-                    Bridges abstract philosophical theory with the profound concrete realities of human existence and containment.
-                </span>
-                <span class="tr-only">
-                    "Bir şeyin var olması, neden var olduğunu açıklamaz." 
-                    Newton, Einstein, Leibniz, Darwin ve Schrödinger gibi zihinlerin buluştuğu zamansız bir salonda; 
-                    saf soyut kuramlar ile somut yaşamın, yitirilen bir canlının ardında bıraktığı izlerin ve containment kavramının kesişim noktası.
-                </span>
+                <span class="en-only">Explores change, what survives loss, and how meaning emerges through relationship within systemic boundaries.
+                    Bridges abstract philosophical theory with the profound concrete realities of human existence and containment.</span>
+                <span class="tr-only">"Bir şeyin var olması, neden var olduğunu açıklamaz."
+                    Newton, Einstein, Leibniz, Darwin ve Schrödinger gibi zihinlerin buluştuğu zamansız bir salonda;
+                    saf soyut kuramlar ile somut yaşamın, yitirilen bir canlının ardında bıraktığı izlerin ve containment kavramının kesişim noktası.</span>
             </div>
             <div class="links">
                 <a href="https://www.amazon.com/dp/B0H875RHXR" target="_blank" rel="noopener">EN — Amazon (ASIN: B0H875RHXR)</a>
