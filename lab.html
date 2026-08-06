@@ -3,26 +3,64 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
+<script async src="[https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8](https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8)"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8NGN65VXH8');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-8NGN65VXH8');
 </script>
-
-<title>Laboratory & Engines — Market Alchemy</title>
-
-<meta name="description" content="Market Alchemy Laboratory: Experimental research engines, V14 Theta runtime tests, Python structural pipelines, and real-time behavioral observation systems." />
-<meta name="keywords" content="Market Alchemy, Lab, V14 Theta, Python Architectures, Pascal Engine, Snipper Engine, Ultimate Engine, Supervisor, Financial Intelligence, Structural Depth" />
-
+<title>Market Alchemy Research Engine (MARE) — Production Ready MVP Laboratory</title>
+<meta name="description" content="Market Alchemy Research Engine (MARE): Live production-ready MVP running on Termux Android, implementing Structural Determination Axioms (SDA) and Structural Depth Theory (SDT) through an immutable Python research pipeline." />
+<meta name="keywords" content="Market Alchemy, MARE, Structural Financial Intelligence, Python Research Engine, Structural Depth Theory, Market Scanner, Algorithmic Research, Termux Python, Research Laboratory, Quantitative Research" />
+<link rel="canonical" href="[https://marketalchemy.io/lab.html](https://marketalchemy.io/lab.html)" />
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="[https://marketalchemy.io/lab.html](https://marketalchemy.io/lab.html)" />
+<meta property="og:title" content="Market Alchemy Research Engine (MARE) — Live Laboratory" />
+<meta property="og:description" content="Production-ready MVP running continuously on Termux Android. Investigating financial markets as evolving structural systems." />
+<meta property="og:image" content="[https://marketalchemy.io/assets/og-lab.png](https://marketalchemy.io/assets/og-lab.png)" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Market Alchemy Research Engine (MARE)" />
+<meta name="twitter:description" content="Live structural financial intelligence laboratory running on Python and Termux Android." />
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "Organization",
+"@id": "https://marketalchemy.io/#organization",
+"name": "Market Alchemy Research Program",
+"url": "https://marketalchemy.io"
+},
+{
+"@type": "WebSite",
+"@id": "https://marketalchemy.io/#website",
+"url": "https://marketalchemy.io",
+"name": "Market Alchemy",
+"publisher": {
+"@id": "https://marketalchemy.io/#organization"
+}
+},
+{
+"@type": "WebPage",
+"@id": "https://marketalchemy.io/lab.html#webpage",
+"url": "https://marketalchemy.io/lab.html",
+"name": "Market Alchemy Research Engine (MARE) — Laboratory",
+"isPartOf": {
+"@id": "https://marketalchemy.io/#website"
+},
+"description": "Production-ready MVP laboratory running live on Termux Android executing Structural Depth Theory."
+}
+]
+}
+</script>
 <meta name="graph-node" content="lab">
 <meta name="node-type" content="experimental-engine">
 <meta name="system-layer" content="execution">
-
 <style>
 :root{
 --bg:#090b10;
@@ -35,12 +73,10 @@
 --blue2:#9ec3ff;
 --live:#00ff9d;
 }
-
 *{
 box-sizing:border-box;
 scroll-behavior:smooth;
 }
-
 body{
 margin:0;
 background:
@@ -51,14 +87,11 @@ color:var(--text);
 font-family:'JetBrains Mono', monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 overflow-x:hidden;
 }
-
 a{
 color:inherit;
 text-decoration:none;
 }
-
 /* NAVIGATION */
-
 nav{
 position:fixed;
 top:0;
@@ -69,7 +102,6 @@ background:rgba(9,11,16,0.92);
 backdrop-filter:blur(12px);
 border-bottom:1px solid var(--line);
 }
-
 nav .wrap{
 max-width:950px;
 margin:auto;
@@ -80,9 +112,7 @@ padding:12px 18px;
 overflow-x:auto;
 white-space:nowrap;
 }
-
 nav .wrap::-webkit-scrollbar{display:none;}
-
 nav a{
 color:var(--text);
 text-decoration:none;
@@ -92,21 +122,17 @@ transition:0.25s;
 margin-right:16px;
 flex-shrink:0;
 }
-
 nav a:hover, nav a.active{
 opacity:1;
 color:var(--blue);
 font-weight:600;
 }
-
 /* CONTAINER */
-
 .container{
 max-width:980px;
 margin:auto;
 padding:110px 24px 120px;
 }
-
 .hero{
 position:relative;
 padding:60px 40px;
@@ -114,7 +140,6 @@ background:linear-gradient(180deg,#11151d 0%, #0d1016 100%);
 border:1px solid var(--line);
 overflow:hidden;
 }
-
 .hero::before{
 content:"";
 position:absolute;
@@ -124,7 +149,6 @@ width:320px;
 height:320px;
 background:radial-gradient(circle, rgba(109,168,255,0.14), transparent 70%);
 }
-
 .hero-label{
 font-size:11px;
 letter-spacing:2px;
@@ -132,16 +156,14 @@ text-transform:uppercase;
 color:var(--blue2);
 margin-bottom:20px;
 }
-
 h1{
 margin:0;
-font-size:40px;
+font-size:38px;
 line-height:1.1;
 max-width:760px;
 font-weight:700;
 letter-spacing:-1px;
 }
-
 .hero-sub{
 margin-top:24px;
 max-width:700px;
@@ -149,20 +171,17 @@ font-size:15px;
 line-height:1.8;
 color:var(--soft);
 }
-
 .hero-grid{
 margin-top:40px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:14px;
 }
-
 .metric{
 padding:18px;
 background:rgba(255,255,255,0.02);
 border:1px solid var(--line);
 }
-
 .metric-title{
 font-size:11px;
 letter-spacing:1px;
@@ -170,17 +189,14 @@ text-transform:uppercase;
 color:var(--soft);
 margin-bottom:8px;
 }
-
 .metric-value{
-font-size:20px;
+font-size:18px;
 font-weight:600;
 color:var(--blue);
 }
-
 .section{
 margin-top:80px;
 }
-
 .section-header{
 display:flex;
 align-items:center;
@@ -188,13 +204,11 @@ justify-content:space-between;
 gap:20px;
 margin-bottom:24px;
 }
-
 .section-title{
 font-size:24px;
 font-weight:700;
 letter-spacing:-0.5px;
 }
-
 .section-desc{
 max-width:720px;
 font-size:14px;
@@ -202,538 +216,260 @@ line-height:1.8;
 color:var(--soft);
 margin-top:8px;
 }
-
-/* KNOWLEDGE GRAPH VISUALIZER */
-
-.kg-container {
-margin-top: 16px;
-padding: 16px;
-border: 1px solid var(--line);
-background: rgba(17,21,29,0.6);
-font-size: 12px;
-overflow-x: auto;
-}
-
-.kg-node {
-display: flex;
-flex-direction: column;
-gap: 8px;
-}
-
-.kg-row {
-display: flex;
-align-items: center;
-gap: 10px;
-white-space: nowrap;
-}
-
-.kg-tag {
-padding: 4px 8px;
-border: 1px solid var(--line);
-background: rgba(255,255,255,0.03);
-color: var(--text);
-text-decoration: none;
-font-size: 11px;
-transition: 0.2s;
-}
-
-.kg-tag:hover, .kg-tag.active-node {
-border-color: var(--blue);
-color: var(--blue);
-}
-
-.kg-arrow {
-color: var(--soft);
-font-size: 10px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:18px;
-}
-
-.box{
-position:relative;
-padding:24px;
-background:linear-gradient(180deg,var(--panel),var(--panel2));
-border:1px solid var(--line);
-transition:0.25s;
-overflow:hidden;
-}
-
-.box:hover{
-border-color:var(--blue);
-transform:translateY(-2px);
-box-shadow:0 0 0 1px rgba(109,168,255,0.12), 0 18px 40px rgba(0,0,0,0.35);
-}
-
-.label{
-font-size:11px;
-letter-spacing:1px;
-text-transform:uppercase;
-color:var(--blue2);
-margin-bottom:14px;
-}
-
-.box-title{
-font-size:18px;
-font-weight:600;
-margin-bottom:12px;
-}
-
-.box-desc{
-font-size:13px;
-line-height:1.7;
-color:var(--soft);
-white-space:pre-line;
-}
-
-.status{
-display:inline-flex;
-align-items:center;
-gap:8px;
-font-size:11px;
-padding:6px 10px;
-border:1px solid rgba(0,255,157,0.4);
-margin-top:18px;
-color:var(--live);
-background:rgba(0,255,157,0.06);
-}
-
-.dot{
-width:7px;
-height:7px;
-border-radius:50%;
-background:var(--live);
-box-shadow:0 0 12px var(--live);
-animation: blink 2s infinite;
-}
-
-@keyframes blink {
-0% { opacity: 0.3; }
-50% { opacity: 1; }
-100% { opacity: 0.3; }
-}
-
-.core-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-}
-
-.engine-card{
-padding:24px;
-background:linear-gradient(180deg,#131923,#0f141c);
-border:1px solid var(--line);
-transition:0.25s;
-cursor:pointer;
-}
-
-.engine-card:hover{
-border-color:var(--blue);
-background:linear-gradient(180deg,#161d29,#10161f);
-}
-
-.engine-top{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-bottom:16px;
-}
-
-.engine-name{
-font-size:16px;
-font-weight:700;
-letter-spacing:0.5px;
-}
-
-.engine-status{
-font-size:10px;
-padding:4px 8px;
-border:1px solid rgba(109,168,255,0.4);
-color:var(--blue2);
-}
-
-.engine-meta{
-display:none;
-margin-top:16px;
-padding-top:16px;
-border-top:1px solid var(--line);
-font-size:13px;
-line-height:1.7;
-color:var(--soft);
-}
-
-/* TERMINAL LOG SIMULATION */
-.terminal-block {
-margin-top: 16px;
-padding: 16px;
-background: #06080c;
-border: 1px solid var(--line);
-font-family: 'JetBrains Mono', monospace;
-font-size: 12px;
-color: var(--blue2);
-line-height: 1.6;
-}
-
-.terminal-line {
-margin-bottom: 4px;
-}
-
-.footer{
-margin-top:100px;
-padding-top:40px;
-border-top:1px solid var(--line);
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.footer-left{
-font-size:12px;
-line-height:1.8;
-color:var(--soft);
-}
-
-.footer-right{
-font-size:11px;
-letter-spacing:2px;
-text-transform:uppercase;
-color:var(--blue2);
-}
-
-.footer-nav {
-width: 100%;
-display: flex;
-gap: 16px;
-margin-bottom: 20px;
-flex-wrap: wrap;
-font-size: 12px;
-}
-
-.footer-nav a {
-color: var(--text);
-opacity: 0.7;
-transition: 0.2s;
-}
-
-.footer-nav a:hover {
-color: var(--blue);
-opacity: 1;
-}
-
-@media(max-width:768px){
-.container{padding:90px 18px 100px;}
-.hero{padding:36px 20px;}
-h1{font-size:30px;}
-.section{margin-top:60px;}
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-    <div class="wrap">
-        <a href="index.html" data-en="Home" data-tr="Anasayfa">Home</a>
-        <a href="structure.html" data-en="Structure" data-tr="Yapı">Structure</a>
-        <a href="research.html" data-en="Research" data-tr="Araştırma">Research</a>
-        <a href="observatory.html" data-en="Observatory" data-tr="Gözlem">Observatory</a>
-        <a href="lab.html" class="active" data-en="Laboratory" data-tr="Labaratuvar">Laboratory</a>
-        <a href="library.html" data-en="Library" data-tr="Kitaplık">Library</a>
-    </div>
-</nav>
-
-<div class="container">
-
-<section class="hero">
-    <div class="hero-label en">MARKET ALCHEMY // EXPERIMENTAL RESEARCH ENGINE</div>
-    <div class="hero-label tr" style="display:none;">MARKET ALCHEMY // DENEYSEL ARAŞTIRMA MOTORU</div>
-
-    <h1 class="en">Structural Financial Intelligence Laboratory</h1>
-    <h1 class="tr" style="display:none;">Yapısal Finansal Zeka Laboratuvarı</h1>
-
-    <p class="hero-sub en">Experimental research layer verifying SDA and SDT axioms through Python architectures, real-time telemetry, and automated intelligence pipelines.</p>
-    <p class="hero-sub tr" style="display:none;">SDA ve SDT aksiyomlarını Python mimarileri, gerçek zamanlı telemetri ve otomatize zeka boru hatlarıyla doğrulayan deneysel araştırma katmanı.</p>
-
-    <div class="hero-grid">
-        <div class="metric">
-            <div class="metric-title en">RUNTIME ENGINE</div>
-            <div class="metric-title tr" style="display:none;">ÇALIŞMA ZAMANI</div>
-            <div class="metric-value">V14 THETA</div>
-        </div>
-
-        <div class="metric">
-            <div class="metric-title en">PIPELINE ARCHITECTURE</div>
-            <div class="metric-title tr" style="display:none;">MİMARİ YAPI</div>
-            <div class="metric-value">PYTHON / ASYNC</div>
-        </div>
-
-        <div class="metric">
-            <div class="metric-title en">MEASUREMENT BASIS</div>
-            <div class="metric-title tr" style="display:none;">ÖLÇÜM TEMELİ</div>
-            <div class="metric-value">θ & Ω METRICS</div>
-        </div>
-
-        <div class="metric">
-            <div class="metric-title en">PRODUCTIZATION</div>
-            <div class="metric-title tr" style="display:none;">ÜRÜNLEŞTİRME</div>
-            <div class="metric-value">ACTIVE BOTS</div>
-        </div>
-    </div>
-</section>
-
-<!-- KNOWLEDGE GRAPH NODE NAVIGATION -->
+/* KNOWLEDGE GRAPH NODE NAVIGATION -->
 <section class="section" style="margin-top: 24px;">
-    <div class="label en">LABORATORY KNOWLEDGE GRAPH NODE</div>
-    <div class="label tr" style="display:none;">LABORATUVAR BİLGİ AĞI DÜĞÜMÜ</div>
-    <div class="kg-container">
-        <div class="kg-node">
-            <div class="kg-row">
-                <a href="index.html" class="kg-tag">SDA Kernel</a>
-                <span class="kg-arrow">→</span>
-                <a href="structure.html" class="kg-tag">Structural Blueprint</a>
-                <span class="kg-arrow">→</span>
-                <a href="lab.html" class="kg-tag active-node">Lab & Python Engines</a>
-            </div>
-            <div class="kg-row" style="margin-left: 20px; margin-top: 6px;">
-                <span class="kg-arrow">↳</span>
-                <a href="observatory.html" class="kg-tag">Live Observatory</a>
-                <span class="kg-arrow">→</span>
-                <a href="research.html" class="kg-tag">Research SDT</a>
-                <span class="kg-arrow">→</span>
-                <a href="library.html" class="kg-tag">Library</a>
-            </div>
-        </div>
-    </div>
+<div class="label en">LABORATORY KNOWLEDGE GRAPH NODE</div>
+<div class="label tr" style="display:none;">LABORATUVAR BİLGİ AĞI DÜĞÜMÜ</div>
+<div class="kg-container">
+<div class="kg-node">
+<div class="kg-row">
+<a href="index.html" class="kg-tag">SDA Kernel</a>
+<span class="kg-arrow">→</span>
+<a href="structure.html" class="kg-tag">Structural Blueprint</a>
+<span class="kg-arrow">→</span>
+<a href="lab.html" class="kg-tag active-node">MARE MVP Laboratory</a>
+</div>
+<div class="kg-row" style="margin-left: 20px; margin-top: 6px;">
+<span class="kg-arrow">↳</span>
+<a href="observatory.html" class="kg-tag">Live Observatory</a>
+<span class="kg-arrow">→</span>
+<a href="research.html" class="kg-tag">Research SDT</a>
+<span class="kg-arrow">→</span>
+<a href="library.html" class="kg-tag">Library</a>
+</div>
+</div>
+</div>
 </section>
-
-<!-- V14 THETA TESTING & PROOF MECHANISMS -->
+<!-- PRODUCTION MVP PIPELINE ARCHITECTURE -->
 <section class="section">
-    <div class="section-header">
-        <div>
-            <div class="section-title en">V14 Theta Testing & Measurement Architecture</div>
-            <div class="section-title tr" style="display:none;">V14 Theta Testleri ve Ölçüm Mimarisi</div>
-            <p class="section-desc en">Markets serve as the laboratory for testing Structural Depth Theory (SDT). Python-based simulation engines execute continuous state-space evaluations to test $\Theta$ thresholds and capture compression/expansion dynamics.</p>
-            <p class="section-desc tr" style="display:none;">Piyasalar, Yapısal Derinlik Teorisi'ni (SDT) test etmek için birer laboratuvar işlevi görür. Python tabanlı simülasyon motorları, $\Theta$ eşiklerini test etmek ve sıkışma/genişleme dinamiklerini yakalamak için sürekli durum uzayı değerlendirmeleri çalıştırır.</p>
-        </div>
-    </div>
-
-    <div class="grid">
-        <div class="box">
-            <div class="label">PYTHON SIMULATION CORE</div>
-            <div class="box-title en">Asynchronous State-Space Parsing</div>
-            <div class="box-title tr" style="display:none;">Asenkron Durum Uzayı Analizi</div>
-            <div class="box-desc en">High-frequency state vectors are ingested via modular Python scripts, calculating multi-layer structural friction and temporal memory decay in real time.</div>
-            <div class="box-desc tr" style="display:none;">Yüksek frekanslı durum vektörleri modüler Python betikleriyle işlenir; çok katmanlı yapısal sürtünme ve zamansal bellek sönümlenmesi gerçek zamanlı hesaplanır.</div>
-        </div>
-
-        <div class="box">
-            <div class="label">V14 ENGINE PROOF</div>
-            <div class="box-title en">Theta ($\Theta$) Threshold Verification</div>
-            <div class="box-title tr" style="display:none;">Theta ($\Theta$) Eşik Doğrulaması</div>
-            <div class="box-desc en">V14 test benches isolate market noise from structural transitions, mapping exact boundaries where thermodynamic equilibrium breaks into directional momentum.</div>
-            <div class="box-desc tr" style="display:none;">V14 test düzenekleri, piyasa gürültüsünü yapısal geçişlerden izole ederek termodinamik dengenin yönsel momentuma dönüştüğü kesin sınırları haritalandırır.</div>
-        </div>
-
-        <div class="box">
-            <div class="label">BOT PRODUCTIZATION</div>
-            <div class="box-title en">From Theory to Autonomous Bots</div>
-            <div class="box-title tr" style="display:none;"> Teoriden Otonom Botlara</div>
-            <div class="box-desc en">Successful experimental verification cycles automatically transition algorithmic models into production-grade execution bots (Pascal & Snipper lines).</div>
-            <div class="box-desc tr" style="display:none;">Başarılı deneysel doğrulama döngüleri, algoritmik modelleri otomatik olarak üretim sınıfı yürütme botlarına (Pascal ve Snipper hatları) dönüştürür.</div>
-        </div>
-    </div>
+<div class="section-header">
+<div>
+<div class="section-title en">Production MVP Pipeline Architecture</div>
+<div class="section-title tr" style="display:none;">Production MVP Boru Hattı Mimarisi</div>
+<p class="section-desc en">MARE operates through an immutable, modular research pipeline connecting ingestion, measurement, interpretation, and SQLite persistence under autonomous supervisor supervision.</p>
+<p class="section-desc tr" style="display:none;">MARE; veri alımı, ölçüm, yorumlama ve SQLite kalıcılığını otonom denetçi kontrolü altında birleştiren değişmez ve modüler bir araştırma boru hattıyla çalışır.</p>
+</div>
+</div>
+<div class="pipeline-flow">
+<div class="pipeline-step">
+<span class="en">Market Scanner (Dynamic / Planned)</span>
+<span class="tr" style="display:none;">Piyasa Tarayıcısı (Dinamik / Planlanan)</span>
+<span class="status-dev">IN DEVELOPMENT</span>
+</div>
+<div class="pipeline-arrow">↓</div>
+<div class="pipeline-step">
+<span class="en">Dynamic Watchlist</span>
+<span class="tr" style="display:none;">Dinamik İzleme Listesi</span>
+<span class="status-dev">IN DEVELOPMENT</span>
+</div>
+<div class="pipeline-arrow">↓</div>
+<div class="pipeline-step">
+<span class="en">Measurement Engine</span>
+<span class="tr" style="display:none;">Ölçüm Motoru</span>
+<span class="status-ok">✔ LIVE</span>
+</div>
+<div class="pipeline-arrow">↓</div>
+<div class="pipeline-step">
+<span class="en">Feature Extraction Engine</span>
+<span class="tr" style="display:none;">Öznitelik Çıkarma Motoru</span>
+<span class="status-ok">✔ LIVE</span>
+</div>
+<div class="pipeline-arrow">↓</div>
+<div class="pipeline-step">
+<span class="en">Structural Interpretation Engine</span>
+<span class="tr" style="display:none;">Yapısal Yorumlama Motoru</span>
+<span class="status-ok">✔ LIVE</span>
+</div>
+<div class="pipeline-arrow">↓</div>
+<div class="pipeline-step">
+<span class="en">Qualification Engine</span>
+<span class="tr" style="display:none;">Nitelendirme Motoru</span>
+<span class="status-ok">✔ LIVE</span>
+</div>
+<div class="pipeline-arrow">↓</div>
+<div class="pipeline-step">
+<span class="en">Ranking Engine</span>
+<span class="tr" style="display:none;">Sıralama Motoru</span>
+<span class="status-ok">✔ LIVE</span>
+</div>
+<div class="pipeline-arrow">↓</div>
+<div class="pipeline-step">
+<span class="en">Decision Engine</span>
+<span class="tr" style="display:none;">Karar Motoru</span>
+<span class="status-ok">✔ LIVE</span>
+</div>
+<div class="pipeline-arrow">↓</div>
+<div class="pipeline-step">
+<span class="en">Execution Dispatcher & SQLite Repository</span>
+<span class="tr" style="display:none;">Yürütme Dağıtıcısı ve SQLite Havuzu</span>
+<span class="status-ok">✔ LIVE</span>
+</div>
+</div>
 </section>
-
-<!-- LIVE PYTHON PIPELINE TELEMETRY SIMULATION -->
+<!-- LIVE RUNTIME TELEMETRY LOGS -->
 <section class="section">
-    <div class="section-header">
-        <div>
-            <div class="section-title en">Live Python Pipeline Telemetry</div>
-            <div class="section-title tr" style="display:none;">Canlı Python Boru Hattı Telemetrisi</div>
-            <p class="section-desc en">Real-time simulation loop output executing structural validation across active market manifolds.</p>
-            <p class="section-desc tr" style="display:none;">Aktif piyasa manifoldlarında yapısal doğrulama yürüten gerçek zamanlı simülasyon döngüsü çıktısı.</p>
-        </div>
-    </div>
-
-    <div class="terminal-block">
-        <div class="terminal-line">[01:42:10] [PY_CORE] Initializing V14 Theta Runtime Environment...</div>
-        <div class="terminal-line">[01:42:11] [MANIFOLD] Loading state space dimensions: θ(t), Ω(t), ΔS, C</div>
-        <div class="terminal-line">[01:42:13] [TEST_BENCH] Executing friction coefficient loop over target arrays... SUCCESS</div>
-        <div class="terminal-line">[01:42:15] [ENGINE] Pascal structural compression index: 0.82 (BASIN_LOCKED)</div>
-        <div class="terminal-line">[01:42:18] [BOT_DAEMON] Snipper micro-break detector primed. Awaiting phase shift trigger.</div>
-    </div>
+<div class="section-header">
+<div>
+<div class="section-title en">Live Runtime Telemetry</div>
+<div class="section-title tr" style="display:none;">Canlı Çalışma Zamanı Telemetrisi</div>
+<p class="section-desc en">Representative execution logs from the running MARE instance on the Termux Android environment.</p>
+<p class="section-desc tr" style="display:none;">Termux Android ortamında çalışan MARE örneğinden temsilî yürütme kayıtları.</p>
+</div>
+</div>
+<div class="terminal-block">
+<div class="terminal-line">[SUPERVISOR] Atomic PID lock acquired (O_CREAT | O_EXCL). Runtime active.</div>
+<div class="terminal-line">[MEASUREMENT] Ingested market manifold state. Computed state vector θ(t), Ω(t).</div>
+<div class="terminal-line">[FEATURE_ENGINE] Extracted multi-layer friction coefficients & temporal memory decay.</div>
+<div class="terminal-line">[INTERPRETATION] Structural compression verified. Phase transition threshold checked.</div>
+<div class="terminal-line">[DECISION_ENGINE] Research bundle synthesized. Action flag generated.</div>
+<div class="terminal-line">[PERSISTENCE] SQLite transaction committed successfully. health.json updated.</div>
+</div>
 </section>
-
-<!-- EVERYDAY PATTERNS & BEHAVIORAL EXTRACTION -->
+<!-- RESEARCH STATUS OVERVIEW -->
 <section class="section">
-    <div class="section-header">
-        <div>
-            <div class="section-title en">Everyday Patterns & Universal Signatures</div>
-            <div class="section-title tr" style="display:none;">Günlük Desenler ve Evrensel İmzalar</div>
-            <div class="section-desc en">Markets are not unique; structural laws govern all complex adaptive systems. Living systems, swarms, and human operational behavior leave identical thermodynamic footprints.</div>
-            <div class="section-desc tr" style="display:none;">Piyasalar benzersiz değildir; yapısal yasalar tüm karmaşık uyarlamalı sistemleri yönetir. Canlı sistemler, sürü dinamikleri ve insan operasyonel davranışı özdeş termodinamik izler bırakır.</div>
-        </div>
-    </div>
-
-    <div class="grid">
-        <div class="box">
-            <div class="label en">CROSS-DOMAIN OBSERVATION</div>
-            <div class="label tr" style="display:none;">ÇAPRAZ DİSİPLİNLERARASI GÖZLEM</div>
-            <div class="box-title en">Systemic Friction & Flow Mapping</div>
-            <div class="box-title tr" style="display:none;">Sistemsel Sürtünme ve Akış Haritalaması</div>
-            <div class="box-desc en">Swarm Dynamics, Territorial Structures, Predator Timing, Compression & Release cycles, Emergent Coordination, and Biological Rhythm preservation.</div>
-            <div class="box-desc tr" style="display:none;">Sürü Dinamikleri, Bölgesel Yapılar, Avcı Zamanlaması, Sıkışma ve Salınım döngüleri, Beliren Koordinasyon ve Biyolojik Ritim korunumu.</div>
-        </div>
-
-        <div class="box">
-            <div class="label">CHANNEL ACCESS</div>
-            <div class="box-title">EVERYDAY PATTERNS</div>
-            <div class="box-desc en">Extracting structural continuity laws from non-financial domains to strengthen core market analytics and Python agent design.</div>
-            <div class="box-desc tr" style="display:none;">Temel piyasa analitiğini ve Python ajan tasarımını güçlendirmek için finansal olmayan alanlardan yapısal süreklilik yasalarının çıkarılması.</div>
-
-            <div class="status">
-                <div class="dot"></div>
-                <span class="en">ACTIVE OBSERVATION RUNTIME</span>
-                <span class="tr" style="display:none;">AKTİF GÖZLEM ÇALIŞMA ZAMANI</span>
-            </div>
-        </div>
-    </div>
+<div class="section-header">
+<div>
+<div class="section-title en">Research Status & Component Matrix</div>
+<div class="section-title tr" style="display:none;">Araştırma Durumu ve Bileşen Matrisi</div>
+<div class="section-desc en">Current deployment status of the Market Alchemy Research Engine modules.</div>
+<div class="section-desc tr" style="display:none;">Market Alchemy Araştırma Motoru modüllerinin mevcut devreye alma durumu.</div>
+</div>
+</div>
+<div class="core-grid">
+<div class="engine-card">
+<div class="engine-top">
+<div class="engine-name">SUPERVISOR & HEALTH</div>
+<div class="engine-status">PRODUCTION</div>
+</div>
+<div class="box-desc en">Atomic locking mechanisms, TOCTOU prevention, health.json monitoring, and persistent process supervision.</div>
+<div class="box-desc tr" style="display:none;">Atomik kilit mekanizmaları, TOCTOU önleme, health.json izleme ve kalıcı süreç denetimi.</div>
+</div>
+<div class="engine-card">
+<div class="engine-top">
+<div class="engine-name">MEASUREMENT & FEATURE</div>
+<div class="engine-status">PRODUCTION</div>
+</div>
+<div class="box-desc en">Core mathematical engines evaluating structural organization, constraints, and thermodynamic friction.</div>
+<div class="box-desc tr" style="display:none;">Yapısal organizasyonu, kısıtları ve termodinamik sürtünmeyi değerlendiren çekirdek matematiksel motorlar.</div>
+</div>
+<div class="engine-card">
+<div class="engine-top">
+<div class="engine-name">INTERPRETATION & DECISION</div>
+<div class="engine-status">PRODUCTION</div>
+</div>
+<div class="box-desc en">Synthesizing immutable research bundles into deterministic decisions and persistent repository records.</div>
+<div class="box-desc tr" style="display:none;">Değişmez araştırma demetlerini deterministik kararlara ve kalıcı veritabanı kayıtlarına dönüştürme.</div>
+</div>
+<div class="engine-card">
+<div class="engine-top">
+<div class="engine-name">DYNAMIC SCANNER</div>
+<div class="engine-status">PLANNED</div>
+</div>
+<div class="box-desc en">Upcoming automated multi-market discovery layer for expanded structural manifold analysis.</div>
+<div class="box-desc tr" style="display:none;">Genişletilmiş yapısal manifold analizi için yakında eklenecek otonom çoklu piyasa keşif katmanı.</div>
+</div>
+</div>
 </section>
-
-<!-- FINANCIAL INTELLIGENCE DEEP LAYERS (ENGINES) -->
+<!-- RESEARCH FUNDING & COLLABORATION -->
 <section class="section">
-    <div class="section-header">
-        <div>
-            <div class="section-title en">Financial Intelligence Deep Layers (Engines)</div>
-            <div class="section-title tr" style="display:none;">Finansal Zeka Derin Katmanları (Motorlar)</div>
-            <div class="section-desc en">Experimental software systems engineered to interpret structure, friction, momentum preservation, and behavioral continuity.</div>
-            <div class="section-desc tr" style="display:none;">Yapıyı, sürtünmeyi, momentum korunumunu ve davranışsal sürekliliği yorumlamak için tasarlanmış deneysel yazılım sistemleri.</div>
-        </div>
-    </div>
-
-    <div class="core-grid">
-        <div class="engine-card" onclick="toggleMeta('pascal-desc')">
-            <div class="engine-top">
-                <div class="engine-name">PASCAL</div>
-                <div class="engine-status">ACTIVE</div>
-            </div>
-            <div class="box-desc en" id="pascal-short">Liquidity geometry interpreter.</div>
-            <div class="box-desc tr" style="display:none;" id="pascal-short-tr">Likidite geometri yorumlayıcısı.</div>
-            <div id="pascal-desc" class="engine-meta en">PASCAL analyzes liquidity flow, compression zones and structural breakout probability hidden behind price behavior through Python vector arrays.</div>
-            <div id="pascal-desc-tr" class="engine-meta tr" style="display:none;">PASCAL, Python vektör dizileri aracılığıyla fiyat davranışının arkasında gizlenen likidite akışını, sıkışma bölgelerini ve yapısal kırılma olasılığını analiz eder.</div>
-        </div>
-
-        <div class="engine-card" onclick="toggleMeta('snipper-desc')">
-            <div class="engine-top">
-                <div class="engine-name">SNIPPER</div>
-                <div class="engine-status">ACTIVE</div>
-            </div>
-            <div class="box-desc en" id="snipper-short">Micro structural break detector.</div>
-            <div class="box-desc tr" style="display:none;" id="snipper-short-tr">Mikro yapısal kırılma dedektörü.</div>
-            <div id="snipper-desc" class="engine-meta en">SNIPPER identifies structural momentum distortions and abrupt directional divergence at lower temporal scales using high-speed event loops.</div>
-            <div id="snipper-desc-tr" class="engine-meta tr" style="display:none;">SNIPPER, yüksek hızlı olay döngüleri kullanarak daha düşük zamansal ölçeklerde yapısal momentum bozulmalarını ve ani yönsel sapmaları tespit eder.</div>
-        </div>
-
-        <div class="engine-card" onclick="toggleMeta('ultimate-desc')">
-            <div class="engine-top">
-                <div class="engine-name">ULTIMATE</div>
-                <div class="engine-status">TESTING</div>
-            </div>
-            <div class="box-desc en" id="ultimate-short">Adaptive experimental engine.</div>
-            <div class="box-desc tr" style="display:none;" id="ultimate-short-tr">Uyarlanabilir deneysel motor.</div>
-            <div id="ultimate-desc" class="engine-meta en">ULTIMATE combines structural depth principles with adaptive behavioral modeling and automated execution logic under live stress conditions.</div>
-            <div id="ultimate-desc-tr" class="engine-meta tr" style="display:none;">ULTIMATE, canlı stres koşulları altında yapısal derinlik ilkelerini uyarlanabilir davranışsal modelleme ve otomatize yürütme mantığıyla birleştirir.</div>
-        </div>
-
-        <div class="engine-card" onclick="toggleMeta('supervisor-desc')">
-            <div class="engine-top">
-                <div class="engine-name">SUPERVISOR</div>
-                <div class="engine-status">SHADOW</div>
-            </div>
-            <div class="box-desc en" id="supervisor-short">Meta observation layer.</div>
-            <div class="box-desc tr" style="display:none;" id="supervisor-short-tr">Meta gözlem katmanı.</div>
-            <div id="supervisor-desc" class="engine-meta en">SUPERVISOR observes system-wide agent behavior without direct intervention, acting as an autonomous shadow monitoring and validation layer.</div>
-            <div id="supervisor-desc-tr" class="engine-meta tr" style="display:none;">SUPERVISOR, doğrudan müdahale etmeden sistem geneli ajan davranışını gözlemler ve otonom bir gölge izleme/doğrulama katmanı olarak görev yapar.</div>
-        </div>
-    </div>
+<div class="section-header">
+<div>
+<div class="section-title en">Research Funding & Collaborations</div>
+<div class="section-title tr" style="display:none;">Araştırma Finansmanı ve İş Birlikleri</div>
+<div class="section-desc en">Market Alchemy is developed as an independent scientific initiative. To accelerate research infrastructure development, we collaborate on selected technical domains.</div>
+<div class="section-desc tr" style="display:none;">Market Alchemy bağımsız bir bilimsel girişim olarak geliştirilmektedir. Araştırma altyapısının gelişimini hızlandırmak amacıyla seçilen teknik alanlarda iş birliği yapmaktayız.</div>
+</div>
+</div>
+<div class="grid">
+<div class="box">
+<div class="label en">ENGINEERING DOMAINS</div>
+<div class="label tr" style="display:none;">MÜHENDİSLİK ALANLARI</div>
+<div class="box-title en">Professional Collaborations</div>
+<div class="box-title tr" style="display:none;">Profesyonel İş Birlikleri</div>
+<div class="box-desc en">• Python software engineering
+• MVP development & prototyping
+• Research automation & tooling
+• Financial data infrastructure
+• Quantitative research architecture
+• Custom algorithmic development</div>
+<div class="box-desc tr" style="display:none;">• Python yazılım mühendisliği
+• MVP geliştirme ve prototipleme
+• Araştırma otomasyonu ve araçları
+• Finansal veri altyapısı
+• Kantitatif araştırma mimarisi
+• Özel algoritmik geliştirme</div>
+</div>
+<div class="box">
+<div class="label en">PROGRAM SUSTAINABILITY</div>
+<div class="label tr" style="display:none;">PROGRAM SÜRDÜRÜLEBİLİRLİĞİ</div>
+<div class="box-title en">Independent Science</div>
+<div class="box-title tr" style="display:none;">Bağımsız Bilim</div>
+<div class="box-desc en">Commercial software engineering and custom development projects directly support the continued advancement of the Market Alchemy research program.</div>
+<div class="box-desc tr" style="display:none;">Ticari yazılım mühendisliği ve özel geliştirme projeleri, Market Alchemy araştırma programının sürekli ilerlemesini doğrudan destekler.</div>
+<div class="status">
+<div class="dot"></div>
+<span class="en">COLLABORATIONS OPEN</span>
+<span class="tr" style="display:none;">İŞ BİRLİKLERİ AÇIK</span>
+</div>
+</div>
+</div>
 </section>
-
-<!-- STRUCTURAL CONTINUITY -->
+<!-- SIGNATURE FORMULA -->
 <section class="section">
-    <div class="section-header">
-        <div>
-            <div class="section-title en">Structural Continuity</div>
-            <div class="section-title tr" style="display:none;">Yapısal Süreklilik</div>
-            <div class="section-desc en">The system does not merely operate; it observes itself, measures friction, and seeks structural alignment.</div>
-            <div class="section-desc tr" style="display:none;">Sistem yalnızca çalışmaz; kendini gözlemler, sürtünmeyi ölçer ve yapısal hizalanma arar.</div>
-        </div>
-    </div>
+<div class="section-header">
+<div>
+<div class="section-title en">Structural Signature</div>
+<div class="section-title tr" style="display:none;">Yapısal İmza</div>
+</div>
+</div>
+<div class="box">
+<div class="box-desc" style="font-size: 14px; color: var(--text);">
+Price records events.
 
-    <div class="box" style="cursor: pointer;" onclick="window.location.href='observatory.html'">
-        <div class="en">STATE: ACTIVE_RUNNING<br>FRICTION_METRIC: VARIABLE<br>V14_OBSERVATION: CONTINUOUS<br>→ VERIFY TELEMETRY STREAM</div>
-        <div class="tr" style="display:none;">DURUM: AKTİF_ÇALIŞIYOR<br>SÜRTÜNME_METRİĞİ: DEĞİŞKEN<br>V14_GÖZLEM: SÜREKLİ<br>→ TELEMETRİ AKIŞINI DOĞRULA</div>
-    </div>
-</section>
+Structure determines events.
 
-<footer class="footer">
-    <div class="footer-nav">
-        <a href="index.html" data-en="Kernel (SDA)" data-tr="Kernel (SDA)">Kernel (SDA)</a>
-        <a href="structure.html" data-en="Structure" data-tr="Yapı">Structure</a>
-        <a href="research.html" data-en="Research" data-tr="Araştırma">Research</a>
-        <a href="library.html" data-en="Library" data-tr="Kitaplık">Library</a>
-        <a href="lab.html" data-en="Lab" data-tr="Lab">Lab</a>
-        <a href="observatory.html" data-en="Observatory" data-tr="Gözlem">Observatory</a>
-    </div>
 
-    <div class="footer-left">
-        <div class="en">System is never chaotic; the observer is insufficient.</div>
-        <div class="tr" style="display:none;">Sistem asla kaotik değildir; gözlemci yetersizdir.</div>
-        <div class="en">Structural depth increases through preservation.</div>
-        <div class="tr" style="display:none;">Yapısal derinlik korunum yoluyla artar.</div>
-    </div>
+Vector → Friction → Time
 
-    <div class="footer-right">
-        MARKET ALCHEMY LAB
-    </div>
-</footer>
+
+\Theta = f(\Omega, C)
 
 </div>
-
+</div>
+</section>
+<footer class="footer">
+<div class="footer-nav">
+<a href="index.html" data-en="Kernel (SDA)" data-tr="Kernel (SDA)">Kernel (SDA)</a>
+<a href="structure.html" data-en="Structure" data-tr="Yapı">Structure</a>
+<a href="research.html" data-en="Research" data-tr="Araştırma">Research</a>
+<a href="library.html" data-en="Library" data-tr="Kitaplık">Library</a>
+<a href="lab.html" data-en="Lab" data-tr="Lab">Lab</a>
+<a href="observatory.html" data-en="Observatory" data-tr="Gözlem">Observatory</a>
+</div>
+<div class="footer-left">
+<div class="en">System is never chaotic; the observer is insufficient.</div>
+<div class="tr" style="display:none;">Sistem asla kaotik değildir; gözlemci yetersizdir.</div>
+<div class="en">Structural depth increases through preservation.</div>
+<div class="tr" style="display:none;">Yapısal derinlik korunum yoluyla artar.</div>
+</div>
+<div class="footer-right">
+MARKET ALCHEMY LAB
+</div>
+</footer>
+</div>
 <script>
-function toggleMeta(id){
-    const el = document.getElementById(id);
-    const elTr = document.getElementById(id + "-tr");
-    const lang = localStorage.getItem("lang") || "en";
-    
-    if(lang === "tr" && elTr) {
-        elTr.style.display = (elTr.style.display === "block") ? "none" : "block";
-    } else if(el) {
-        el.style.display = (el.style.display === "block") ? "none" : "block";
-    }
-}
-
 function updateLanguageView() {
-    const lang = localStorage.getItem("lang") || "en";
-    
-    document.querySelectorAll(".en").forEach(e => e.style.display = (lang === "en" ? (e.tagName === 'SPAN' || e.classList.contains('metric-value') ? 'inline' : 'block') : 'none'));
-    document.querySelectorAll(".tr").forEach(e => e.style.display = (lang === "tr" ? (e.tagName === 'SPAN' || e.classList.contains('metric-value') ? 'inline' : 'block') : 'none'));
-    
-    document.querySelectorAll("nav a[data-en]").forEach(a => {
-        const text = a.getAttribute(`data-${lang}`);
-        if (text) {
-            a.textContent = text;
-        }
-    });
+const lang = localStorage.getItem("lang") || "en";
+document.querySelectorAll(".en").forEach(e => e.style.display = (lang === "en" ? (e.tagName === 'SPAN' || e.classList.contains('metric-value') ? 'inline' : 'block') : 'none'));
+document.querySelectorAll(".tr").forEach(e => e.style.display = (lang === "tr" ? (e.tagName === 'SPAN' || e.classList.contains('metric-value') ? 'inline' : 'block') : 'none'));
+document.querySelectorAll("nav a[data-en]").forEach(a => {
+const text = a.getAttribute(data-${lang});
+if (text) {
+a.textContent = text;
 }
-
-// Sayfa yüklendiğinde dili uygula
+});
+}
 updateLanguageView();
 </script>
-
 </body>
 </html>
