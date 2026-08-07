@@ -17,9 +17,9 @@
 
 <title>Market Alchemy Observatory — Structural Market Intelligence</title>
 
-<meta name="description" content="Explore Market Alchemy Observatory providing immutable structural market intelligence powered by V0.8.4 Protocol. Track state space, coverage, flow distribution, and consensus telemetry.">
+<meta name="description" content="Explore Market Alchemy Observatory providing immutable structural market intelligence powered by V0.8.5 Protocol. Track state space, coverage, flow distribution, and consensus telemetry.">
 
-<meta name="keywords" content="Observatory, Structural Market Intelligence, V0.8.4 Protocol, System Telemetry, Runtime Metrics, Market Alchemy, State Space, Structural Depth Theory, Halil Ibrahim Guven">
+<meta name="keywords" content="Observatory, Structural Market Intelligence, V0.8.5 Protocol, System Telemetry, Runtime Metrics, Market Alchemy, State Space, Structural Depth Theory, Halil Ibrahim Guven">
 
 <meta name="graph-node" content="observatory">
 <meta name="node-type" content="runtime-observatory">
@@ -45,6 +45,7 @@ if(!localStorage.getItem("lang")){
     --card-bg:rgba(17,21,28,0.72);
     --live:#00ff9d;
     --offline:#ff5555;
+    --warning:#ffcc00;
 }
 
 body{
@@ -262,8 +263,9 @@ h1{
 .data-table th {background: rgba(255,255,255,0.03); color: var(--accent); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;}
 
 .tag-state {padding: 2px 6px; font-size: 10px; font-weight: 600; border-radius: 2px;}
-.tag-state.active {background: rgba(0, 255, 157, 0.15); color: var(--live); border: 1px solid rgba(0, 255, 157, 0.3);}
-.tag-state.idle {background: rgba(232, 236, 241, 0.05); color: var(--muted); border: 1px solid var(--border);}
+.tag-state.complete {background: rgba(0, 255, 157, 0.15); color: var(--live); border: 1px solid rgba(0, 255, 157, 0.3);}
+.tag-state.degraded {background: rgba(255, 204, 0, 0.15); color: var(--warning); border: 1px solid rgba(255, 204, 0, 0.3);}
+.tag-state.insufficient {background: rgba(255, 85, 85, 0.15); color: var(--offline); border: 1px solid rgba(255, 85, 85, 0.3);}
 
 .console-block {
     margin-top: 14px;
@@ -370,8 +372,8 @@ footer{
         <span id="status-text">READING IMMUTABLE ARTIFACTS...</span>
     </div>
 
-    <div class="node-path en">PROTOCOL V0.8.4 :: MARKET ALCHEMY OBSERVATORY</div>
-    <div class="node-path tr" style="display:none;">PROTOKOL V0.8.4 :: MARKET ALCHEMY GÖZLEMEVİ</div>
+    <div class="node-path en">PROTOCOL V0.8.5 :: MARKET ALCHEMY OBSERVATORY</div>
+    <div class="node-path tr" style="display:none;">PROTOKOL V0.8.5 :: MARKET ALCHEMY GÖZLEMEVİ</div>
 
     <h1 class="en">Market Alchemy Observatory</h1>
     <h1 class="tr" style="display:none;">Market Alchemy Gözlemevi</h1>
@@ -452,7 +454,7 @@ footer{
         <div class="metric-card">
             <div class="metric-label">TOTAL UNIVERSE</div>
             <div class="metric-value" id="val-universe">--</div>
-            <div class="metric-sub" id="val-coverage">Covered: --</div>
+            <div class="metric-sub" id="val-coverage">Complete: -- | Degraded: --</div>
         </div>
         <div class="metric-card">
             <div class="metric-label">ACTIVE / ELIGIBLE</div>
@@ -551,8 +553,8 @@ footer{
     <div class="big en">Immutable State Machine Protocol</div>
     <div class="big tr" style="display:none;">Değişmez Durum Makinesi Protokolü</div>
     <div class="theory-bridge" style="margin-top: 14px;">
-        <p class="en">The Market Alchemy platform operates on a strict V0.8.4 decoupled architecture. The Scanner functions as the sole Producer, writing immutable state artifacts (dashboard.json, assets_full.json, market_signature.json, delta_events.jsonl) to the persistence layer. Clients (Web UI, FastAPI, Telegram Bot, CLI) function as pure Consumers reading these versioned protocol messages without direct coupling to the scanner engine.</p>
-        <p class="tr" style="display:none;">Market Alchemy platformu, katı bir V0.8.4 ayrıştırılmış mimari üzerinde çalışır. Tarayıcı (Scanner), kalıcılık katmanına değişmez durum artifact'leri (dashboard.json, assets_full.json, market_signature.json, delta_events.jsonl) yazan tek Üretici (Producer) olarak işlev görür. İstemciler (Web UI, FastAPI, Telegram Bot, CLI) ise tarayıcı motoruyla doğrudan bağlantı kurmadan bu sürümlü protokol mesajlarını okuyan saf Tüketiciler (Consumers) olarak çalışır.</p>
+        <p class="en">The Market Alchemy platform operates on a strict V0.8.5 decoupled architecture. The Scanner functions as the sole Producer, writing immutable state artifacts (dashboard.json, assets_full.json, market_signature.json, delta_events.jsonl) to the persistence layer. Clients (Web UI, FastAPI, Telegram Bot, CLI) function as pure Consumers reading these versioned protocol messages without direct coupling to the scanner engine.</p>
+        <p class="tr" style="display:none;">Market Alchemy platformu, katı bir V0.8.5 ayrıştırılmış mimari üzerinde çalışır. Tarayıcı (Scanner), kalıcılık katmanına değişmez durum artifact'leri (dashboard.json, assets_full.json, market_signature.json, delta_events.jsonl) yazan tek Üretici (Producer) olarak işlev görür. İstemciler (Web UI, FastAPI, Telegram Bot, CLI) ise tarayıcı motoruyla doğrudan bağlantı kurmadan bu sürümlü protokol mesajlarını okuyan saf Tüketiciler (Consumers) olarak çalışır.</p>
         
         <div style="margin-top: 12px;">
             <b style="color:var(--fg);" class="en">Core Protocol Layers:</b>
@@ -594,6 +596,23 @@ const DASHBOARD_URL = "dashboard.json";
 const ASSETS_URL = "assets_full.json";
 const DELTA_URL = "delta_events.jsonl";
 let latestDashboardData = null;
+let lastObservedRunId = null;
+let activeController = null;
+
+async function fetchRuntimeArtifact(filename, signal) {
+    const response = await fetch(`${filename}?ts=${Date.now()}`, {
+        signal: signal,
+        cache: "no-store",
+        headers: {
+            "Pragma": "no-cache",
+            "Cache-Control": "no-cache"
+        }
+    });
+    if (!response.ok) {
+        throw new Error(`Artifact okunamadı: ${filename}`);
+    }
+    return await response.json();
+}
 
 function updateStateMachineUI(state) {
     const states = ['ready', 'awaiting', 'executed', 'generated'];
@@ -615,18 +634,41 @@ function updateStateMachineUI(state) {
 }
     
 async function loadRuntimeProtocol() {
+    if (document.hidden) return;
+
+    if (activeController) {
+        activeController.abort();
+    }
+    activeController = new AbortController();
+    const signal = activeController.signal;
+
     const t0 = performance.now();
     try {
-        const [dashRes, assetsRes, deltaRes] = await Promise.all([
-            fetch(`${DASHBOARD_URL}?t=${new Date().getTime()}`),
-            fetch(`${ASSETS_URL}?t=${new Date().getTime()}`),
-            fetch(`${DELTA_URL}?t=${new Date().getTime()}`).catch(() => null)
+        const results = await Promise.allSettled([
+            fetchRuntimeArtifact(DASHBOARD_URL, signal),
+            fetchRuntimeArtifact(ASSETS_URL, signal),
+            fetch(`${DELTA_URL}?ts=${Date.now()}`, {
+                signal: signal,
+                cache: "no-store",
+                headers: {
+                    "Pragma": "no-cache",
+                    "Cache-Control": "no-cache"
+                }
+            }).then(r => r.ok ? r.text() : "")
         ]);
 
-        if (!dashRes.ok || !assetsRes.ok) throw new Error("Immutable artifacts unreachable");
+        const dashboardRes = results[0];
+        const assetsRes = results[1];
+        const deltaRes = results[2];
 
-        const dashboard = await dashRes.json();
-        const assetsFull = await assetsRes.json();
+        if (dashboardRes.status !== "fulfilled") {
+            throw new Error("Dashboard artifact could not be retrieved.");
+        }
+
+        const dashboard = dashboardRes.value;
+        const assetsFull = assetsRes.status === "fulfilled" ? assetsRes.value : {};
+        const deltaText = deltaRes.status === "fulfilled" ? deltaRes.value : "";
+
         latestDashboardData = dashboard;
 
         const t1 = performance.now();
@@ -642,37 +684,53 @@ async function loadRuntimeProtocol() {
         const scannerState = dashboard.scanner_status || dashboard.state || "READY";
         updateStateMachineUI(scannerState);
 
-        // Fill Metrics precisely aligned with Python dashboard.json schema
-        document.getElementById("val-runid").innerText = dashboard.run_id || "--";
+        const currentRunId = dashboard.run_id || "--";
+        document.getElementById("val-runid").innerText = currentRunId;
         document.getElementById("val-state").innerText = `State: ${scannerState}`;
         document.getElementById("val-lastupdate").innerText = dashboard.last_update || "--";
 
         const sig = dashboard.signature || {};
-        document.getElementById("val-universe").innerText = sig.total_universe ?? "--";
-        document.getElementById("val-coverage").innerText = `Complete: ${sig.complete_universe ?? "--"}`;
-        document.getElementById("val-eligible").innerText = sig.eligible ?? "--";
-        document.getElementById("val-insufficient").innerText = `Insufficient: ${sig.insufficient ?? "--"}`;
+        const totalUniverse = sig.total_universe ?? "--";
+        const completeCount = sig.complete_count ?? 0;
+        const degradedCount = sig.degraded_count ?? 0;
+        const insufficientCount = sig.insufficient_count ?? 0;
+        const bullishTotal = sig.bullish_total ?? 0;
+        const bearishTotal = sig.bearish_total ?? 0;
+        const eligibleCount = completeCount + degradedCount;
 
-        document.getElementById("val-dominant").innerText = sig.dominant_flow || "--";
-        document.getElementById("val-bear-bull").innerText = `Bullish: ${sig.bullish_total ?? "--"} | Bearish: ${sig.bearish_total ?? "--"}`;
+        let dominantFlow = "MIXED";
+        if (bullishTotal > bearishTotal) {
+            dominantFlow = "BULLISH";
+        } else if (bearishTotal > bullishTotal) {
+            dominantFlow = "BEARISH";
+        }
+
+        document.getElementById("val-universe").innerText = totalUniverse;
+        document.getElementById("val-coverage").innerText = `Complete: ${completeCount} | Degraded: ${degradedCount}`;
+        document.getElementById("val-eligible").innerText = eligibleCount;
+        document.getElementById("val-insufficient").innerText = `Insufficient: ${insufficientCount}`;
+
+        document.getElementById("val-dominant").innerText = dominantFlow;
+        document.getElementById("val-bear-bull").innerText = `Bullish: ${bullishTotal} | Bearish: ${bearishTotal}`;
 
         const topConsensus = dashboard.top_consensus || [];
         document.getElementById("val-consensus").innerText = topConsensus.length > 0 ? (topConsensus[0].symbol || topConsensus[0]) : "--";
 
-        // Console Stream update
         const consoleStream = document.getElementById("console-stream");
-        const timeStr = new Date().toLocaleTimeString();
-        const line = document.createElement("div");
-        line.className = "console-line";
-        line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">PROTOCOL_READ</span> <span class="console-val">RunID: ${dashboard.run_id} | State: ${scannerState} | Latency: ${latency}ms</span>`;
-        
-        consoleStream.appendChild(line);
-        if (consoleStream.children.length > 8) {
-            consoleStream.removeChild(consoleStream.children[1]);
+        if (currentRunId !== lastObservedRunId) {
+            lastObservedRunId = currentRunId;
+            const timeStr = new Date().toLocaleTimeString();
+            const line = document.createElement("div");
+            line.className = "console-line";
+            line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">NEW_RUN</span> <span class="console-val">RunID: ${currentRunId} | State: ${scannerState} | Latency: ${latency}ms</span>`;
+            
+            consoleStream.appendChild(line);
+            if (consoleStream.children.length > 8) {
+                consoleStream.removeChild(consoleStream.children[1]);
+            }
+            consoleStream.scrollTop = consoleStream.scrollHeight;
         }
-        consoleStream.scrollTop = consoleStream.scrollHeight;
 
-        // Fill Table from assets_full.json dictionary object correctly via Object.values
         const assetsArray = Array.isArray(assetsFull) ? assetsFull : Object.values(assetsFull);
         if (assetsArray.length > 0) {
             const tbody = document.getElementById("table-body");
@@ -680,24 +738,27 @@ async function loadRuntimeProtocol() {
             assetsArray.slice(0, 15).forEach(item => {
                 const symbol = item.symbol || item.asset || "N/A";
                 const direction = item.direction || item.flow || item.structural_state || "--";
-                const coherence = item.coherence || item.score || "--";
-                const conviction = item.conviction || "--";
+                const coherence = item.coherence ?? item.score ?? "--";
+                const conviction = item.conviction ?? "--";
+                const status = (item.status || "COMPLETE").toUpperCase();
                 
+                let badgeClass = "complete";
+                if (status.includes("DEGRADED")) badgeClass = "degraded";
+                else if (status.includes("INSUFFICIENT")) badgeClass = "insufficient";
+
                 const tr = document.createElement("tr");
                 tr.innerHTML = `
                     <td style="font-weight:600; color:var(--fg);">${symbol}</td>
                     <td style="color:var(--accent);">${direction}</td>
                     <td>${coherence}</td>
                     <td>${conviction}</td>
-                    <td><span class="tag-state active">ACTIVE</span></td>
+                    <td><span class="tag-state ${badgeClass}">${status}</span></td>
                 `;
                 tbody.appendChild(tr);
             });
         }
 
-        // Parse delta_events.jsonl if available
-        if (deltaRes && deltaRes.ok) {
-            const deltaText = await deltaRes.text();
+        if (deltaText && deltaText.trim().length > 0) {
             const deltaLines = deltaText.trim().split("\n").filter(l => l.trim().length > 0);
             if (deltaLines.length > 0) {
                 const deltaTbody = document.getElementById("delta-table-body");
@@ -705,12 +766,26 @@ async function loadRuntimeProtocol() {
                 deltaLines.slice(-10).reverse().forEach(rowStr => {
                     try {
                         const ev = JSON.parse(rowStr);
+                        const ts = ev.timestamp || "N/A";
+                        const symbol = ev.symbol || "N/A";
+                        
+                        let transitionText = ev.transition || "";
+                        if (!transitionText && (ev.old_direction || ev.new_direction)) {
+                            const oldDir = ev.old_direction || "N/A";
+                            const newDir = ev.new_direction || "N/A";
+                            transitionText = `${oldDir} → ${newDir}`;
+                        } else if (!transitionText) {
+                            transitionText = "State Shift";
+                        }
+
+                        const prevState = ev.previous_state || ev.old_direction || "--";
+
                         const tr = document.createElement("tr");
                         tr.innerHTML = `
-                            <td style="color:var(--muted);">${ev.timestamp || ev.time || "N/A"}</td>
-                            <td style="font-weight:600; color:var(--fg);">${ev.symbol || ev.asset || "N/A"}</td>
-                            <td>${ev.previous_state || ev.prev || "--"}</td>
-                            <td style="color:var(--accent);">${ev.transition || ev.event || ev.delta || "State Shift"}</td>
+                            <td style="color:var(--muted);">${ts}</td>
+                            <td style="font-weight:600; color:var(--fg);">${symbol}</td>
+                            <td>${prevState}</td>
+                            <td style="color:var(--accent);">${transitionText}</td>
                         `;
                         deltaTbody.appendChild(tr);
                     } catch (e) {
@@ -721,11 +796,16 @@ async function loadRuntimeProtocol() {
         }
 
     } catch (err) {
+        if (err.name === 'AbortError') return;
         const dot = document.getElementById("status-dot");
         const statusText = document.getElementById("status-text");
         dot.classList.add("offline");
         statusText.innerText = "ARTIFACTS UNAVAILABLE";
         statusText.style.color = "var(--offline)";
+    } finally {
+        if (activeController?.signal === signal) {
+            activeController = null;
+        }
     }
 }
 
@@ -737,11 +817,44 @@ function shareTelemetry() {
     const sig = latestDashboardData.signature || {};
     const topConsensus = latestDashboardData.top_consensus || [];
     const topSym = topConsensus.length > 0 ? (topConsensus[0].symbol || topConsensus[0]) : "--";
+    const bullishTotal = sig.bullish_total ?? 0;
+    const bearishTotal = sig.bearish_total ?? 0;
+    const dominantFlow = bullishTotal > bearishTotal ? "BULLISH" : (bearishTotal > bullishTotal ? "BEARISH" : "MIXED");
 
-    const text = `Market Alchemy Protocol V0.8.4 Observatory Intelligence:\nRun ID: ${latestDashboardData.run_id}\nDominant Flow: ${sig.dominant_flow}\nTop Consensus: ${topSym}\n\nImmutable Intelligence Stream: https://marketalchemy.io/observatory.html`;
-    navigator.clipboard.writeText(text).then(() => {
-        alert("Protocol telemetry record copied to clipboard!");
-    });
+    const text = `Market Alchemy Protocol V0.8.5 Observatory Intelligence:\nRun ID: ${latestDashboardData.run_id}\nDominant Flow: ${dominantFlow}\nTop Consensus: ${topSym}\n\nImmutable Intelligence Stream: https://marketalchemy.io/observatory.html`;
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Protocol telemetry record copied to clipboard!");
+        }).catch(() => {
+            fallbackCopyText(text);
+        });
+    } else {
+        fallbackCopyText(text);
+    }
+}
+
+function fallbackCopyText(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.opacity = "0";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            alert("Protocol telemetry record copied to clipboard (fallback)!");
+        } else {
+            alert("Copy failed.");
+        }
+    } catch (err) {
+        alert("Copy not supported on this context.");
+    }
+    document.body.removeChild(textArea);
 }
 
 loadRuntimeProtocol();
