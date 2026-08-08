@@ -15,24 +15,24 @@
   gtag('config', 'G-8NGN65VXH8');
 </script>
 
-<title>Market Alchemy Observatory — Layer Architecture Observatory V4.2</title>
+<title>Market Alchemy Observatory — Structural Market Intelligence</title>
 
-<meta name="description" content="Explore Market Alchemy Observatory V4.2 powered by FastAPI Gateway and complete Layer 3 Market Signature & Layer 2 Structural Manifold Intelligence.">
-
-<meta name="keywords" content="Observatory V4.2, Structural Market Intelligence, Layer Architecture, System Telemetry, Market Alchemy, State Space, Structural Depth Theory, Halil Ibrahim Guven">
+<meta name="description" content="Explore Market Alchemy Observatory V5 powered by FastAPI Gateway and structural market intelligence.">
+<meta name="keywords" content="Observatory V5, Structural Market Intelligence, Layer Architecture, System Telemetry, Market Alchemy, State Space, Structural Depth Theory, Halil Ibrahim Guven">
 
 <meta name="graph-node" content="observatory">
-<meta name="node-type" content="runtime-observatory-v4.2">
+<meta name="node-type" content="runtime-observatory-v5">
 <meta name="system-layer" content="execution-telemetry">
 
 <script>
-if(!localStorage.getItem("lang")){
-    const userLang = navigator.language || navigator.userLanguage;
-    localStorage.setItem(
-        "lang",
-        userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
-    );
-}
+// Centralized automatic language detection & localStorage persistence
+(function() {
+    if (!localStorage.getItem("lang")) {
+        const userLang = navigator.language || navigator.userLanguage || "en";
+        const langCode = userLang.toLowerCase().startsWith("tr") ? "tr" : "en";
+        localStorage.setItem("lang", langCode);
+    }
+})();
 </script>
 
 <style>
@@ -100,7 +100,7 @@ nav a:hover, nav a.active{
 .container{
     max-width:820px;
     margin:auto;
-    padding:110px 20px 80px;
+    padding:100px 20px 80px;
 }
 
 .node-path{
@@ -108,7 +108,7 @@ nav a:hover, nav a.active{
     letter-spacing:1px;
     color:var(--accent);
     opacity:0.85;
-    margin-bottom:12px;
+    margin-bottom:8px;
     text-transform:uppercase;
 }
 
@@ -120,14 +120,14 @@ h1{
     letter-spacing:-0.8px;
     border-left:2px solid var(--accent);
     padding-left:14px;
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 
 .big{font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:-0.5px;}
 .muted{opacity:.65;line-height:1.6;font-size:14px;}
 
 .section{
-    margin-top:28px;
+    margin-top:24px;
     padding:22px;
     border:1px solid var(--border);
     background:var(--card-bg);
@@ -169,31 +169,29 @@ h1{
     100% { opacity: 0.3; }
 }
 
-.kg-container {
-    margin-top: 16px;
-    padding: 14px;
-    border: 1px solid var(--border);
-    background: rgba(13,15,20,0.8);
-    font-size: 12px;
-    overflow-x: auto;
-}
-
-.kg-node {display: flex; flex-direction: column; gap: 8px;}
-.kg-row {display: flex; align-items: center; gap: 10px; white-space: nowrap;}
-
-.kg-tag {
-    padding: 4px 8px;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.03);
-    color: var(--fg);
-    text-decoration: none;
-    font-size: 11px;
-    transition: 0.2s;
-}
-
-.kg-tag:hover, .kg-tag.active-node {border-color: var(--accent); color: var(--accent);}
-.kg-arrow {color: var(--muted); font-size: 10px;}
 .system-title{font-size:11px;letter-spacing:2px;color:var(--accent);margin-bottom:12px;font-weight:600;}
+
+/* Optimized 2+2+1 Grid Layout for Current Market State */
+.metrics-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.metric-card {
+    padding: 14px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+}
+
+.metric-card.full-width {
+    grid-column: span 2;
+}
+
+.metric-label {font-size: 9px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase;}
+.metric-value {font-size: 15px; font-weight: 700; color: var(--fg); margin: 4px 0 2px;}
+.metric-sub {font-size: 10px; color: var(--accent); opacity: 0.85;}
 
 .metrics-grid {
     display: grid;
@@ -202,34 +200,91 @@ h1{
     margin-top: 16px;
 }
 
-.metrics-grid-3 {
+/* Structural Market Distribution Counter Banner (Contraction / Expansion / Other) */
+.market-distribution-banner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 16px;
+    gap: 10px;
+    margin-bottom: 16px;
 }
 
-.metric-card {
-    padding: 16px;
-    background: rgba(255,255,255,0.02);
+.dist-card {
+    padding: 12px;
+    background: rgba(255,255,255,0.015);
     border: 1px solid var(--border);
+    text-align: center;
 }
 
-.metric-label {font-size: 10px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase;}
-.metric-value {font-size: 18px; font-weight: 700; color: var(--fg); margin: 6px 0 2px;}
-.metric-sub {font-size: 11px; color: var(--accent); opacity: 0.85;}
+.dist-count {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--fg);
+}
+
+.dist-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2px;
+}
 
 .data-table-wrapper {margin-top: 16px; overflow-x: auto; border: 1px solid var(--border);}
 .data-table {width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;}
 .data-table th, .data-table td {padding: 10px 14px; border-bottom: 1px solid var(--border);}
 .data-table th {background: rgba(255,255,255,0.03); color: var(--accent); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;}
 
-.tag-state {padding: 2px 6px; font-size: 10px; font-weight: 600; border-radius: 2px;}
+/* Responsive Asset Cards (Mobile View) */
+.asset-cards-container {
+    display: none;
+    margin-top: 16px;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.asset-card-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.asset-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+}
+
+.asset-card-body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    font-size: 11px;
+}
+
+.asset-card-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.asset-card-label {
+    color: var(--muted);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tag-state {padding: 2px 6px; font-size: 10px; font-weight: 600; border-radius: 2px; display: inline-block;}
 .tag-state.expansion {background: rgba(0, 255, 157, 0.15); color: var(--live); border: 1px solid rgba(0, 255, 157, 0.3);}
 .tag-state.contraction {background: rgba(255, 85, 85, 0.15); color: var(--offline); border: 1px solid rgba(255, 85, 85, 0.3);}
 .tag-state.accumulation {background: rgba(109, 168, 255, 0.15); color: var(--blue); border: 1px solid rgba(109, 168, 255, 0.3);}
 .tag-state.stable {background: rgba(140, 149, 161, 0.15); color: var(--gray); border: 1px solid rgba(140, 149, 161, 0.3);}
 .tag-state.transition {background: rgba(255, 204, 0, 0.15); color: var(--warning); border: 1px solid rgba(255, 204, 0, 0.3);}
+.tag-state.distribution {background: rgba(255, 153, 0, 0.15); color: var(--warning); border: 1px solid rgba(255, 153, 0, 0.3);}
 
 .console-block {
     margin-top: 14px;
@@ -252,7 +307,7 @@ h1{
 .derived-link:hover {text-decoration: underline;}
 
 .theory-bridge {
-    margin-top: 16px;
+    margin-top: 14px;
     padding: 14px;
     background: rgba(255,255,255,0.01);
     border: 1px dashed var(--border);
@@ -274,28 +329,9 @@ h1{
 }
 .share-btn:hover { background: var(--accent); color: var(--bg); }
 
-.lang-switch {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
-}
-.lang-btn {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 2px 8px;
-    font-size: 10px;
-    cursor: pointer;
-    font-family: 'JetBrains Mono', monospace;
-}
-.lang-btn.active {
-    border-color: var(--accent);
-    color: var(--accent);
-}
-
 footer{
-    margin-top:80px;
-    padding-top:30px;
+    margin-top:60px;
+    padding-top:24px;
     border-top:1px solid var(--border);
     font-size:12px;
     color:var(--muted);
@@ -303,7 +339,10 @@ footer{
 
 @media(max-width:700px){
     .container{padding-top:90px;}
-    .metrics-grid, .metrics-grid-3{grid-template-columns:1fr;}
+    .metrics-grid{grid-template-columns:1fr;}
+    .market-distribution-banner{grid-template-columns:1fr;}
+    .data-table-wrapper {display: none;}
+    .asset-cards-container {display: flex;}
 }
 </style>
 </head>
@@ -316,249 +355,166 @@ footer{
         <a href="structure.html" data-en="Structure" data-tr="Yapı">Structure</a>
         <a href="research.html" data-en="Research" data-tr="Araştırma">Research</a>
         <a href="observatory.html" class="active" data-en="Observatory" data-tr="Gözlem">Observatory</a>
-        <a href="lab.html" data-en="Laboratory" data-tr="Labaratuvar">Laboratory</a>
+        <a href="lab.html" data-en="Laboratory" data-tr="Laboratuvar">Laboratory</a>
         <a href="library.html" data-en="Library" data-tr="Kitaplık">Library</a>
     </div>
 </nav>
 
 <div class="container">
 
-<!-- LANGUAGE SWITCHER -->
-<div class="lang-switch">
-    <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
-    <button class="lang-btn" data-lang="tr" onclick="switchLang('tr')">TR</button>
-</div>
-
-<!-- 1. HERO SECTION -->
+<!-- 1. LIVE STATUS & CURRENT MARKET STATE -->
 <header>
     <div class="live-badge">
         <span class="live-dot" id="status-dot"></span>
-        <span id="status-text">CONNECTING TO FASTAPI GATEWAY...</span>
+        <span id="status-text" data-en="LIVE TELEMETRY" data-tr="CANLI TELEMETRİ">LIVE TELEMETRY</span>
     </div>
 
-    <div class="node-path en">LAYER ARCHITECTURE OBSERVATORY V4.2</div>
-    <div class="node-path tr" style="display:none;">KATMAN MİMARİSİ GÖZLEMEVİ V4.2</div>
+    <div class="node-path" data-en="MARKET OBSERVATION V5" data-tr="PİYASA GÖZLEMİ V5">MARKET OBSERVATION V5</div>
 
-    <h1 class="en">Market Alchemy Observatory V4.2</h1>
-    <h1 class="tr" style="display:none;">Market Alchemy Gözlemevi V4.2</h1>
+    <h1 data-en="Observatory V5" data-tr="Gözlemevi V5">Observatory V5</h1>
+    <p class="muted" data-en="Real-time structural market observation." data-tr="Gerçek zamanlı yapısal piyasa gözlemi.">Real-time structural market observation.</p>
 
-    <p class="big en">Complete Macro Market Signature & Structural Manifold Telemetry</p>
-    <p class="big tr" style="display:none;">Eksiksiz Makro Piyasa İmzası ve Yapısal Manifold Telemetrisi</p>
-
-    <p class="muted en">Consuming complete Layer 3 Market Signature telemetry and Layer 2 structural manifold arrays (Theta, Omega, Flow, State, Shock, Nearest Neighbors) via FastAPI Gateway.</p>
-    <p class="muted tr" style="display:none;">FastAPI Gateway üzerinden eksiksiz Katman 3 Piyasa İmzası telemetrisini ve Katman 2 yapısal manifold dizilerini (Teta, Omega, Akış, Durum, Şok, En Yakın Komşular) tüketir.</p>
+    <!-- CURRENT MARKET STATE GRID (2+2+1 Optimized Layout) -->
+    <div class="metrics-grid-5" style="margin-top: 18px;">
+        <div class="metric-card" style="background: rgba(109,168,255,0.04); border-color: var(--accent);">
+            <div class="metric-label" data-en="Dominant State" data-tr="Baskın Durum">Dominant State</div>
+            <div class="metric-value" id="summary-state" style="font-size: 13px;">--</div>
+            <div class="metric-sub" data-en="Macro Regime" data-tr="Makro Rejim">Macro Regime</div>
+        </div>
+        <div class="metric-card" style="background: rgba(109,168,255,0.04); border-color: var(--accent);">
+            <div class="metric-label" data-en="Phase" data-tr="Faz">Phase</div>
+            <div class="metric-value" id="summary-phase" style="font-size: 13px;">--</div>
+            <div class="metric-sub" data-en="Structural Phase" data-tr="Yapısal Faz">Structural Phase</div>
+        </div>
+        <div class="metric-card" style="background: rgba(109,168,255,0.04); border-color: var(--accent);">
+            <div class="metric-label" data-en="Θ (Structural Depth)" data-tr="Θ (Yapısal Derinlik)">Θ (Structural Depth)</div>
+            <div class="metric-value" id="summary-theta">--</div>
+            <div class="metric-sub" data-en="Depth Index" data-tr="Derinlik Endeksi">Depth Index</div>
+        </div>
+        <div class="metric-card" style="background: rgba(109,168,255,0.04); border-color: var(--accent);">
+            <div class="metric-label" data-en="Accessible Configuration Volume" data-tr="Erişilebilir Konfigürasyon Hacmi">Accessible Configuration Volume</div>
+            <div class="metric-value" id="summary-omega">--</div>
+            <div class="metric-sub">Ω</div>
+        </div>
+        <div class="metric-card full-width" style="background: rgba(109,168,255,0.04); border-color: var(--accent);">
+            <div class="metric-label" data-en="System Coherence" data-tr="Sistem Uyum Derecesi">System Coherence</div>
+            <div class="metric-value" id="summary-coherence">--</div>
+            <div class="metric-sub" data-en="Synchronization Index" data-tr="Senkronizasyon Endeksi">Synchronization Index</div>
+        </div>
+    </div>
 </header>
 
-<!-- 2. KNOWLEDGE GRAPH NAVIGATION -->
-<section class="section" style="margin-top: 20px;">
-    <div class="system-title en">OBSERVATORY KNOWLEDGE GRAPH NODE</div>
-    <div class="system-title tr" style="display:none;">GÖZLEMEVİ BİLGİ AĞI DÜĞÜMÜ</div>
-    <div class="kg-container">
-        <div class="kg-node">
-            <div class="kg-row">
-                <a href="index.html" class="kg-tag">SDA (Kernel)</a>
-                <span class="kg-arrow">→</span>
-                <a href="structure.html" class="kg-tag">Structural Blueprint</a>
-                <span class="kg-arrow">→</span>
-                <a href="lab.html" class="kg-tag">Lab & Engines</a>
-            </div>
-            <div class="kg-row" style="margin-left: 20px; margin-top: 6px;">
-                <span class="kg-arrow">↳</span>
-                <a href="observatory.html" class="kg-tag active-node">Observatory V4.2 Runtime</a>
-                <span class="kg-arrow">→</span>
-                <a href="research.html" class="kg-tag">Research SDT</a>
-                <span class="kg-arrow">→</span>
-                <a href="library.html" class="kg-tag">Documentation Books</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 1. PIPELINE RUNTIME TELEMETRY -->
+<!-- 2. WHAT THE SYSTEM IS SHOWING (OBSERVATIONAL LANGUAGE) -->
 <div class="section">
-    <div class="system-title">01 :: LAYER PIPELINE RUNTIME TELEMETRY</div>
-    <div class="big en">Pipeline Status & Engine Metrics</div>
-    <div class="big tr" style="display:none;">Boru Hattı Durumu ve Motor Metrikleri</div>
-
-    <div class="metrics-grid" style="margin-top: 18px;">
-        <div class="metric-card">
-            <div class="metric-label">ENGINE VERSION</div>
-            <div class="metric-value" id="val-engine" style="font-size: 15px;">--</div>
-            <div class="metric-sub" id="val-status">Status: --</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-label">LAST SUCCESSFUL RUN</div>
-            <div class="metric-value" id="val-lastrun" style="font-size: 13px;">--</div>
-            <div class="metric-sub en">UTC Timestamp</div>
-            <div class="metric-sub tr" style="display:none;">UTC Zaman Damgası</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-label">TOP ASSETS</div>
-            <div class="metric-value" id="val-universe">--</div>
-            <div class="metric-sub en">Layer 1 Universe Count</div>
-            <div class="metric-sub tr" style="display:none;">Katman 1 Evren Sayısı</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-label">STRUCTURAL ASSETS</div>
-            <div class="metric-value" id="val-structural-count">--</div>
-            <div class="metric-sub en">Layer 2 Processed Manifold</div>
-            <div class="metric-sub tr" style="display:none;">Katman 2 İşlenen Manifold</div>
-        </div>
-    </div>
-
-    <div class="console-block" id="console-stream" style="margin-top: 16px;">
-        <div class="console-line"><span class="console-ts">[GATEWAY_INIT]</span> <span class="console-tag">CONSUMER</span> <span class="console-val">Connecting to FastAPI Gateway endpoints (/dashboard, /market-signature, /structural-assets)...</span></div>
+    <div class="system-title" data-en="WHAT THE SYSTEM IS SHOWING" data-tr="SİSTEMİN GÖSTERDİĞİ">WHAT THE SYSTEM IS SHOWING</div>
+    <div class="muted" id="system-narrative" style="font-size: 14px; line-height: 1.7; color: var(--fg);">
+        Analyzing real-time structural manifold state streams...
     </div>
 </div>
 
-<!-- 2. MARKET SIGNATURE (LAYER 3 COMPLETE) -->
+<!-- 3. STRUCTURAL MARKET MAP -->
 <div class="section">
-    <div class="system-title">02 :: MARKET SIGNATURE (LAYER 3 COMPLETE)</div>
-    <div class="big en">Complete Macro Market Signature Telemetry</div>
-    <div class="big tr" style="display:none;">Eksiksiz Makro Piyasa İmzası Telemetrisi</div>
+    <div class="system-title" data-en="STRUCTURAL MARKET MAP" data-tr="YAPISAL PİYASA HARİTASI">STRUCTURAL MARKET MAP</div>
+    <div class="big en">Market Matrix & Asset Telemetry</div>
+    <div class="big tr" style="display:none;">Piyasa Matrisi ve Varlık Telemetrisi</div>
 
-    <div class="metrics-grid-3" style="margin-top: 18px;">
-        <div class="metric-card">
-            <div class="metric-label">MARKET Θ</div>
-            <div class="metric-value" id="sig-theta">--</div>
-            <div class="metric-sub en">Structural Depth Index</div>
-            <div class="metric-sub tr" style="display:none;">Yapısal Derinlik Endeksi</div>
+    <!-- Unified Classification Distribution Banner -->
+    <div class="market-distribution-banner" id="distribution-banner">
+        <div class="dist-card">
+            <div class="dist-count" id="count-contraction">0</div>
+            <div class="dist-label" data-en="Contraction" data-tr="Daralma">Contraction</div>
         </div>
-        <div class="metric-card">
-            <div class="metric-label">MARKET Ω</div>
-            <div class="metric-value" id="sig-omega">--</div>
-            <div class="metric-sub en">Manifold Curvature</div>
-            <div class="metric-sub tr" style="display:none;">Manifold Eğriliği</div>
+        <div class="dist-card">
+            <div class="dist-count" id="count-expansion">0</div>
+            <div class="dist-label" data-en="Expansion" data-tr="Genişleme">Expansion</div>
         </div>
-        <div class="metric-card">
-            <div class="metric-label">MARKET FLOW</div>
-            <div class="metric-value" id="sig-flow">--</div>
-            <div class="metric-sub en">Directional Vector</div>
-            <div class="metric-sub tr" style="display:none;">Yönsel Vektör</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-label">COHERENCE</div>
-            <div class="metric-value" id="sig-coherence">--</div>
-            <div class="metric-sub en">System Synchronization</div>
-            <div class="metric-sub tr" style="display:none;">Sistem Senkronizasyonu</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-label">DOMINANT STATE</div>
-            <div class="metric-value" id="sig-state" style="font-size: 14px;">--</div>
-            <div class="metric-sub en">Macro Regime Classification</div>
-            <div class="metric-sub tr" style="display:none;">Makro Rejim Sınıflandırması</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-label">PHASE</div>
-            <div class="metric-value" id="sig-phase" style="font-size: 14px;">--</div>
-            <div class="metric-sub en">Structural State Phase</div>
-            <div class="metric-sub tr" style="display:none;">Yapısal Durum Fazı</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-label">COMPRESSION RATIO</div>
-            <div class="metric-value" id="sig-compression">--</div>
-            <div class="metric-sub en">Compression Node Metric</div>
-            <div class="metric-sub tr" style="display:none;">Sıkışma Düğümü Metriği</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-label">EXPANSION RATIO</div>
-            <div class="metric-value" id="sig-expansion">--</div>
-            <div class="metric-sub en">Expansion Node Metric</div>
-            <div class="metric-sub tr" style="display:none;">Genleşme Düğümü Metriği</div>
-        </div>
-        <div class="metric-card">
-            <div class="metric-label">RISK INDEX & PROB</div>
-            <div class="metric-value" id="sig-risk" style="font-size: 14px;">--</div>
-            <div class="metric-sub" id="sig-risk-sub">Transition Prob: --</div>
+        <div class="dist-card">
+            <div class="dist-count" id="count-other">0</div>
+            <div class="dist-label" data-en="Other / Transition" data-tr="Diğer / Geçiş">Other / Transition</div>
         </div>
     </div>
-</div>
 
-<!-- 3. LAYER 2 STRUCTURAL MANIFOLD TABLE (/structural-assets) -->
-<div class="section">
-    <div class="system-title">03 :: LAYER 2 STRUCTURAL MANIFOLD ARTIFACTS</div>
-    <div class="big en">Structural Depth Telemetry Table (/structural-assets)</div>
-    <div class="big tr" style="display:none;">Yapısal Derinlik Telemetri Tablosu (/structural-assets)</div>
-
+    <!-- Desktop Table View -->
     <div class="data-table-wrapper">
         <table class="data-table">
             <thead>
                 <tr>
-                    <th>SYM</th>
+                    <th data-en="Asset" data-tr="Varlık">Asset</th>
                     <th>Θ</th>
                     <th>Ω</th>
-                    <th>FLOW</th>
-                    <th>STATE</th>
-                    <th>SHOCK</th>
+                    <th data-en="Structural State" data-tr="Yapısal Durum">Structural State</th>
+                    <th data-en="Shock" data-tr="Şok">Shock</th>
                     <th id="col-nearest-header">NEAREST (EUCLIDEAN DISTANCE)</th>
                 </tr>
             </thead>
             <tbody id="table-body">
                 <tr>
-                    <td id="table-loading-cell" style="text-align: center; color: var(--muted);">Loading Layer 2 structural manifold records...</td>
+                    <td colspan="6" style="text-align: center; color: var(--muted);" data-en="Loading structural manifold records..." data-tr="Yapısal manifold kayıtları yükleniyor...">Loading structural manifold records...</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
+    <!-- Mobile Responsive Cards View -->
+    <div class="asset-cards-container" id="cards-container">
+        <div style="text-align: center; color: var(--muted); font-size: 12px; padding: 12px;" data-en="Loading asset records..." data-tr="Varlık kayıtları yükleniyor...">Loading asset records...</div>
+    </div>
+
     <!-- SHARE INTEL SNIPPET -->
     <div style="margin-top: 12px; text-align: right;">
-        <button class="share-btn" id="share-telemetry-btn" onclick="shareTelemetry()"><span class="en">[ Share Protocol Telemetry ]</span><span class="tr" style="display:none;">[ Protokol Telemetrisini Paylaş ]</span></button>
+        <button class="share-btn" onclick="shareTelemetry()"><span class="en">[ Share Protocol Telemetry ]</span><span class="tr" style="display:none;">[ Protokol Telemetrisini Paylaş ]</span></button>
     </div>
 </div>
 
-<!-- 4. DELTA EVENTS (COMING SOON) -->
+<!-- 4. DEEP SYSTEM TELEMETRY -->
 <div class="section">
-    <div class="system-title">04 :: DELTA EVENTS STREAM</div>
-    <div class="big en">Recent State Transitions</div>
-    <div class="big tr" style="display:none;">Son Durum Geçişleri</div>
-    <div class="theory-bridge" style="margin-top: 14px; text-align: center;">
-        <p class="en" style="color: var(--accent);">[ COMING SOON ] Real-time state transition event stream via Layer telemetry.</p>
-        <p class="tr" style="display:none; color: var(--accent);">[ YAKINDA ] Katman telemetrisi üzerinden gerçek zamanlı durum geçiş olay akışı.</p>
+    <div class="system-title" data-en="DEEP SYSTEM TELEMETRY" data-tr="DERİN SİSTEM TELEMETRİSİ">DEEP SYSTEM TELEMETRY</div>
+    <div class="big en">Pipeline Status & Engine Metrics</div>
+    <div class="big tr" style="display:none;">Boru Hattı Durumu ve Motor Metrikleri</div>
+
+    <div class="metrics-grid" style="margin-top: 14px;">
+        <div class="metric-card">
+            <div class="metric-label">ENGINE VERSION</div>
+            <div class="metric-value" id="val-engine" style="font-size: 14px;">--</div>
+            <div class="metric-sub" id="val-status">Status: --</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label" data-en="LAST SUCCESSFUL RUN" data-tr="SON BAŞARILI ÇALIŞMA">LAST SUCCESSFUL RUN</div>
+            <div class="metric-value" id="val-lastrun" style="font-size: 12px;">--</div>
+            <div class="metric-sub en">UTC Timestamp</div>
+            <div class="metric-sub tr" style="display:none;">UTC Zaman Damgası</div>
+        </div>
+    </div>
+
+    <div class="console-block" id="console-stream" style="margin-top: 14px;">
+        <div class="console-line"><span class="console-ts">[INIT]</span> <span class="console-tag">CONSUMER</span> <span class="console-val">Connecting to FastAPI Gateway endpoints (/dashboard, /market-signature, /structural-assets)...</span></div>
     </div>
 </div>
 
-<!-- 5. ARCHITECTURE & PROTOCOL SPECIFICATION -->
+<!-- 5. ABOUT THE OBSERVATION -->
 <div class="section">
-    <div class="system-title">05 :: LAYER ARCHITECTURE & PURPOSE</div>
-    <div class="big en">FastAPI Gateway & Structural Depth Theory</div>
-    <div class="big tr" style="display:none;">FastAPI Gateway ve Yapısal Derinlik Teorisi</div>
-    <div class="theory-bridge" style="margin-top: 14px;">
-        <p class="en">The Market Alchemy platform operates on a robust Layer Architecture. Layer 2 calculates internal structural depth derivatives (Theta, Omega, Flow, State, Shock, and Nearest Neighbors) rather than relying on superficial price indicators. FastAPI Gateway exposes these immutable artifacts cleanly to consumers like this Observatory V4.2 interface.</p>
-        <p class="tr" style="display:none;">Market Alchemy platformu güçlü bir Katman Mimarisi üzerinde çalışır. Katman 2, yüzeysel fiyat göstergelerine güvenmek yerine dahili yapısal derinlik türevlerini (Teta, Omega, Akış, Durum, Şok ve En Yakın Komşular) hesaplar. FastAPI Gateway, bu değişmez artifact'leri Observatory V4.2 arayüzü gibi tüketicilere temiz bir şekilde sunar.</p>
+    <div class="system-title" data-en="ABOUT THE OBSERVATION" data-tr="GÖZLEM HAKKINDA">ABOUT THE OBSERVATION</div>
+    <div class="theory-bridge" style="margin-top: 0; border: none; padding: 0; background: none;">
+        <p class="en">Observatory reports structural observations generated by the Market Alchemy system. It does not provide price predictions or trading recommendations. Layer 2 computes internal structural depth derivatives (Theta, Accessible Configuration Volume Omega, Flow, State, Shock) rather than relying on superficial price indicators.</p>
+        <p class="tr" style="display:none;">Gözlemevi, Market Alchemy sistemi tarafından üretilen yapısal gözlemleri raporlar. Fiyat tahmini veya alım satım tavsiyesi sunmaz. Katman 2, yüzeysel fiyat göstergelerine güvenmek yerine dahili yapısal derinlik türevlerini (Teta, Erişilebilir Konfigürasyon Hacmi Omega, Akış, Durum, Şok) hesaplar.</p>
         
         <div style="margin-top: 12px;">
-            <b class="en" style="color:var(--fg);">Core Pipeline Layers:</b>
-            <b class="tr" style="display:none; color:var(--fg);">Çekirdek Boru Hattı Katmanları:</b>
-            <ul style="margin: 6px 0 0 16px; padding: 0;">
-                <li class="en">Layer 1: MarketAlchemyScanner (Universe & Raw Data)</li><li class="tr" style="display:none;">Katman 1: MarketAlchemyScanner (Evren ve Ham Veri)</li>
-                <li class="en">Layer 2: StructuralEngine (Theta, Omega, Manifold)</li><li class="tr" style="display:none;">Katman 2: StructuralEngine (Teta, Omega, Manifold)</li>
-                <li class="en">Layer 3: MarketSignatureEngine (Macro Signature)</li><li class="tr" style="display:none;">Katman 3: MarketSignatureEngine (Makro İmza)</li>
-                <li class="en">Layer 4: FastAPI Gateway & Atomic Writer</li><li class="tr" style="display:none;">Katman 4: FastAPI Gateway ve Atomik Yazıcı</li>
-            </ul>
+            <a href="structure.html" class="derived-link" data-en="→ Technical Architecture & Blueprint" data-tr="→ Teknik Mimari ve Taslak">→ Technical Architecture & Blueprint</a>
         </div>
     </div>
 </div>
 
-<!-- 6. RESEARCH & DEEP DIVE LINKS -->
-<div class="section">
-    <div class="system-title">06 :: FURTHER EXPLORATION</div>
-    <div class="big en">Where can I learn more?</div>
-    <div class="big tr" style="display:none;">Daha fazlasını nerede öğrenebilirim?</div>
-    <p class="muted en" style="margin-top:10px;">Navigate through the core components of Structural Depth Theory and the Market Alchemy platform architecture:</p>
-    <p class="muted tr" style="display:none;">Yapısal Derinlik Teorisi'nin çekirdek bileşenlerinde ve Market Alchemy platform mimarisinde gezinin:</p>
-    
-    <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;">
-        <a href="structure.html" class="derived-link">→ Structural Blueprint</a>
-        <a href="research.html" class="derived-link">→ Research & Papers</a>
-        <a href="library.html" class="derived-link">→ Documentation Books</a>
-        <a href="lab.html" class="derived-link">→ Lab & Engines Architecture</a>
-    </div>
-</div>
-
 <footer>
-    <div class="muted en">Market Alchemy Observatory V4.2 • Halil Ibrahim Guven</div>
-    <div class="muted tr" style="display:none;">Market Alchemy Gözlemevi V4.2 • Halil İbrahim Güven</div>
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div class="muted en">Market Alchemy Observatory V5 • Halil Ibrahim Guven</div>
+        <div class="muted tr" style="display:none;">Market Alchemy Gözlemevi V5 • Halil İbrahim Güven</div>
+        <div style="display: flex; gap: 16px; font-size: 11px;">
+            <a href="structure.html" style="color: var(--muted); text-decoration: none;" data-en="Structure" data-tr="Yapı">Structure</a>
+            <a href="research.html" style="color: var(--muted); text-decoration: none;" data-en="Research" data-tr="Araştırma">Research</a>
+            <a href="lab.html" style="color: var(--muted); text-decoration: none;" data-en="Laboratory" data-tr="Laboratuvar">Laboratory</a>
+            <a href="library.html" style="color: var(--muted); text-decoration: none;" data-en="Library" data-tr="Kitaplık">Library</a>
+        </div>
+    </div>
 </footer>
 
 </div>
@@ -572,7 +528,92 @@ const SIGNATURE_URL = `${API_BASE}/market-signature`;
 
 let latestDashboardData = null;
 let latestMarketSignature = null;
+let latestStructuralList = [];
 let activeController = null;
+
+// Translation dictionary for runtime states and tags
+const dictionary = {
+    en: {
+        EXPANSION: "EXPANSION",
+        CONTRACTION: "CONTRACTION",
+        ACCUMULATION: "ACCUMULATION",
+        DISTRIBUTION: "DISTRIBUTION",
+        TRANSITION: "TRANSITION",
+        STABLE: "STABLE",
+        BEAR: "BEAR",
+        BULL: "BULL",
+        NEUTRAL: "NEUTRAL",
+        UNKNOWN: "UNKNOWN",
+        STRUCTURAL_DEPTH: "Θ (Structural Depth)",
+        CONFIG_VOLUME: "Ω (Config Volume)",
+        FLOW: "Flow",
+        SHOCK: "Shock",
+        NEAREST: "Nearest",
+        NO_ASSETS: "No structural manifold assets returned."
+    },
+    tr: {
+        EXPANSION: "GENİŞLEME",
+        CONTRACTION: "DARALMA",
+        ACCUMULATION: "BİRİKİM",
+        DISTRIBUTION: "DAĞITIM",
+        TRANSITION: "GEÇİŞ",
+        STABLE: "KARARLI",
+        BEAR: "AYI",
+        BULL: "BOĞA",
+        NÖTR: "NÖTR",
+        NEUTRAL: "NÖTR",
+        UNKNOWN: "BİLİNMİYOR",
+        STRUCTURAL_DEPTH: "Θ (Yapısal Derinlik)",
+        CONFIG_VOLUME: "Ω (Konfigürasyon Hacmi)",
+        FLOW: "Akış",
+        SHOCK: "Şok",
+        NEAREST: "En Yakın",
+        NO_ASSETS: "Yapısal manifold varlığı bulunamadı."
+    }
+};
+
+function parseAndTranslateState(rawState) {
+    if (!rawState) return { en: "UNKNOWN", tr: "BİLİNMİYOR" };
+    const lang = localStorage.getItem("lang") || "en";
+    const clean = String(rawState).trim().toUpperCase();
+    
+    if (clean.includes("_")) {
+        const parts = clean.split("_");
+        const translatedParts = parts.map(p => {
+            if (dictionary.en[p] || dictionary.tr[p]) {
+                return (lang === "tr") ? (dictionary.tr[p] || p) : (dictionary.en[p] || p);
+            }
+            return p;
+        });
+        return translatedParts.join(" · ");
+    }
+    
+    return (lang === "tr") ? (dictionary.tr[clean] || clean) : (dictionary.en[clean] || clean);
+}
+
+function parseAndTranslateFlow(flowVal) {
+    const lang = localStorage.getItem("lang") || "en";
+    let base = "NEUTRAL";
+    let prefix = "■ ";
+    if (typeof flowVal === 'number') {
+        if (flowVal > 0) { base = "EXPANSION"; prefix = "▲ "; }
+        else if (flowVal < 0) { base = "CONTRACTION"; prefix = "▼ "; }
+    } else if (typeof flowVal === 'string') {
+        const up = flowVal.toUpperCase();
+        if (up.includes("EXPANSION") || up.includes("BULL") || up.includes("UP")) { base = "EXPANSION"; prefix = "▲ "; }
+        else if (up.includes("CONTRACTION") || up.includes("BEAR") || up.includes("DOWN")) { base = "CONTRACTION"; prefix = "▼ "; }
+    }
+    const translatedWord = (lang === "tr") ? (dictionary.tr[base] || base) : (dictionary.en[base] || base);
+    return prefix + translatedWord;
+}
+
+// Unified Single State Classification Logic
+function classifyAssetState(item) {
+    const state = (item.state || item.status || "").toUpperCase();
+    if (state.includes("EXPANSION") || state.includes("BULL")) return "expansion";
+    if (state.includes("CONTRACTION") || state.includes("BEAR")) return "contraction";
+    return "other";
+}
 
 async function fetchRuntimeArtifact(endpoint, signal) {
     const response = await fetch(`${endpoint}?ts=${Date.now()}`, {
@@ -620,6 +661,7 @@ async function loadRuntimeProtocol() {
 
         latestDashboardData = dashboard;
         latestMarketSignature = marketSigRes.market_signature || marketSigRes || dashboard.market_signature || {};
+        latestStructuralList = structuralData.structural_assets || dashboard.structural_assets || [];
 
         const t1 = performance.now();
         const latency = Math.round(t1 - t0);
@@ -629,42 +671,31 @@ async function loadRuntimeProtocol() {
 
         dot.classList.remove("offline");
         statusText.style.color = "var(--live)";
-        statusText.innerText = "GATEWAY CONNECTED :: TELEMETRY ACTIVE";
-
-        document.getElementById("val-engine").innerText = dashboard.engine || "MarketAlchemyMasterDashboard";
-        document.getElementById("val-status").innerText = `Status: ${dashboard.status || "HEALTHY"} (${latency}ms)`;
-        document.getElementById("val-lastrun").innerText = dashboard.last_successful_run || "--";
-
-        const topAssets = dashboard.top_assets || [];
-        const structuralAssetsList = structuralData.structural_assets || dashboard.structural_assets || [];
         
-        document.getElementById("val-universe").innerText = topAssets.length;
-        document.getElementById("val-structural-count").innerText = structuralAssetsList.length;
+        const lang = localStorage.getItem("lang") || "en";
+        statusText.innerText = lang === "tr" ? "CANLI TELEMETRİ AKTİF" : "LIVE TELEMETRY ACTIVE";
+
+        const statusLabel = lang === "tr" ? "Durum" : "Status";
+        const healthyLabel = lang === "tr" ? "SAĞLIKLI" : "HEALTHY";
+        document.getElementById("val-engine").innerText = dashboard.engine || "MarketAlchemyMasterDashboard";
+        document.getElementById("val-status").innerText = `${statusLabel}: ${dashboard.status || healthyLabel} · ${latency}ms`;
+        document.getElementById("val-lastrun").innerText = dashboard.last_successful_run || "--";
 
         const sigData = latestMarketSignature;
         
-        document.getElementById("sig-theta").innerText = sigData.market_theta !== undefined ? Number(sigData.market_theta).toFixed(3) : "--";
-        document.getElementById("sig-omega").innerText = sigData.market_omega !== undefined ? Number(sigData.market_omega).toFixed(3) : "--";
+        document.getElementById("summary-theta").innerText = sigData.market_theta !== undefined ? Number(sigData.market_theta).toFixed(3) : "--";
+        document.getElementById("summary-omega").innerText = sigData.market_omega !== undefined ? Number(sigData.market_omega).toFixed(3) : "--";
+        document.getElementById("summary-coherence").innerText = sigData.coherence !== undefined ? Number(sigData.coherence).toFixed(3) : "--";
         
-        const rawFlow = sigData.market_flow ?? sigData.phase ?? 0;
-        let flowDisplay = rawFlow;
-        if (typeof rawFlow === 'number') {
-            flowDisplay = rawFlow > 0 ? "▲ Expansion" : rawFlow < 0 ? "▼ Contraction" : "■ Neutral";
-        } else if (typeof rawFlow === 'string') {
-            flowDisplay = rawFlow.toUpperCase();
-        }
-        document.getElementById("sig-flow").innerText = flowDisplay;
-        
-        document.getElementById("sig-coherence").innerText = sigData.coherence !== undefined ? Number(sigData.coherence).toFixed(3) : "--";
-        document.getElementById("sig-state").innerText = sigData.dominant_state || "UNKNOWN";
-        document.getElementById("sig-phase").innerText = sigData.phase || "--";
-        document.getElementById("sig-compression").innerText = sigData.compression_ratio !== undefined ? Number(sigData.compression_ratio).toFixed(3) : "--";
-        document.getElementById("sig-expansion").innerText = sigData.expansion_ratio !== undefined ? Number(sigData.expansion_ratio).toFixed(3) : "--";
-        
-        const riskIdx = sigData.risk_index !== undefined ? Number(sigData.risk_index).toFixed(2) : "--";
-        const transProb = sigData.transition_probability !== undefined ? Number(sigData.transition_probability).toFixed(2) : "--";
-        document.getElementById("sig-risk").innerText = riskIdx;
-        document.getElementById("sig-risk-sub").innerText = `Transition Prob: ${transProb}`;
+        const rawState = sigData.dominant_state || "STABLE";
+        const rawPhase = sigData.phase || "UNAVAILABLE";
+
+        document.getElementById("summary-state").innerText = parseAndTranslateState(rawState);
+        document.getElementById("summary-phase").innerText = parseAndTranslateState(rawPhase);
+
+        buildSystemNarrative(sigData, latestStructuralList, lang);
+        renderDistributionCounters(latestStructuralList);
+        renderAssetTelemetry(latestStructuralList, lang);
 
         const consoleStream = document.getElementById("console-stream");
         const timeStr = new Date().toLocaleTimeString();
@@ -672,11 +703,7 @@ async function loadRuntimeProtocol() {
         line.className = "console-line";
         
         const gatewayId = dashboard.gateway || "FastAPI";
-        const sigName = sigData.dominant_state || "STABLE";
-        const phaseName = sigData.phase || "--";
-        const riskVal = riskIdx;
-
-        line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">GATEWAY: ${gatewayId}</span> <span class="console-val">Ver: ${dashboard.version} | Latency: ${latency}ms | Sig: ${sigName} | Phase: ${phaseName} | Risk: ${riskVal}</span>`;
+        line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">GATEWAY: ${gatewayId}</span> <span class="console-val">Ver: ${dashboard.version} | Latency: ${latency}ms | State: ${rawState} | Phase: ${rawPhase}</span>`;
         
         consoleStream.appendChild(line);
         while (consoleStream.children.length > 6) {
@@ -684,63 +711,13 @@ async function loadRuntimeProtocol() {
         }
         consoleStream.scrollTop = consoleStream.scrollHeight;
 
-        if (structuralAssetsList.length > 0) {
-            const tbody = document.getElementById("table-body");
-            tbody.innerHTML = "";
-            structuralAssetsList.forEach(item => {
-                const symbol = item.symbol || item.asset || "N/A";
-                const theta = item.theta !== undefined ? Number(item.theta).toFixed(3) : "--";
-                const omega = item.omega !== undefined ? Number(item.omega).toFixed(3) : "--";
-                
-                const itemFlowVal = item.flow ?? item.direction ?? 0;
-                let flowStr = "■ Neutral";
-                if (typeof itemFlowVal === 'number') {
-                    flowStr = itemFlowVal > 0 ? "▲ Expansion" : itemFlowVal < 0 ? "▼ Contraction" : "■ Neutral";
-                } else {
-                    flowStr = String(itemFlowVal).toUpperCase();
-                }
-
-                const state = (item.state || item.status || "STABLE").toUpperCase();
-                
-                const shockVal = item.vector?.shock ?? item.shock ?? 0;
-                const shock = (shockVal === 0 || shockVal === undefined) ? "—" : Number(shockVal).toFixed(2);
-                
-                let nearest = "--";
-                if (Array.isArray(item.nearest_neighbours)) {
-                    nearest = item.nearest_neighbours
-                        .map(n => `${n.symbol} (${Number(n.distance).toFixed(3)})`)
-                        .join(", ");
-                } else if (typeof item.nearest_neighbours === 'string') {
-                    nearest = item.nearest_neighbours;
-                }
-
-                let badgeClass = "stable";
-                if (state.includes("EXPANSION")) badgeClass = "expansion";
-                else if (state.includes("CONTRACTION")) badgeClass = "contraction";
-                else if (state.includes("ACCUMULATION")) badgeClass = "accumulation";
-                else if (state.includes("TRANSITION")) badgeClass = "transition";
-                else if (state.includes("STABLE")) badgeClass = "stable";
-
-                const tr = document.createElement("tr");
-                tr.innerHTML = `
-                    <td style="font-weight:600; color:var(--fg);">${symbol}</td>
-                    <td style="color:var(--accent);">${theta}</td>
-                    <td>${omega}</td>
-                    <td style="color:var(--accent);">${flowStr}</td>
-                    <td><span class="tag-state ${badgeClass}">${state}</span></td>
-                    <td>${shock}</td>
-                    <td style="font-size:11px; color:var(--muted);">${nearest}</td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
     } catch (err) {
         if (err.name === 'AbortError') return;
         const dot = document.getElementById("status-dot");
         const statusText = document.getElementById("status-text");
         dot.classList.add("offline");
-        statusText.innerText = "GATEWAY UNAVAILABLE";
+        const lang = localStorage.getItem("lang") || "en";
+        statusText.innerText = lang === "tr" ? "SİSTEM BAĞLANTISI YOK" : "GATEWAY UNAVAILABLE";
         statusText.style.color = "var(--offline)";
     } finally {
         if (activeController?.signal === signal) {
@@ -749,21 +726,160 @@ async function loadRuntimeProtocol() {
     }
 }
 
+function buildSystemNarrative(sig, assets, lang) {
+    const narrativeEl = document.getElementById("system-narrative");
+    if (!narrativeEl) return;
+
+    let contractionCount = 0;
+    let expansionCount = 0;
+    let otherCount = 0;
+
+    assets.forEach(item => {
+        const type = classifyAssetState(item);
+        if (type === "expansion") expansionCount++;
+        else if (type === "contraction") contractionCount++;
+        else otherCount++;
+    });
+
+    const stateStr = parseAndTranslateState(sig.dominant_state || "STABLE").toLowerCase();
+    const phaseStr = parseAndTranslateState(sig.phase || "stable").toLowerCase();
+    const coherenceVal = sig.coherence !== undefined ? Number(sig.coherence).toFixed(2) : "0.00";
+
+    if (lang === "tr") {
+        narrativeEl.innerText = `Piyasa şu anda ${stateStr} rejiminde. Baskın faz ${phaseStr}. Sistem uyum derecesi ${coherenceVal}; ${contractionCount} varlık daralma, ${expansionCount} varlık genişleme yapısında.`;
+    } else {
+        narrativeEl.innerText = `The market is currently in a ${stateStr} regime. The dominant phase is ${phaseStr}. System coherence is ${coherenceVal}, with ${contractionCount} assets in contraction and ${expansionCount} in expansion.`;
+    }
+}
+
+function renderDistributionCounters(assets) {
+    let contractionCount = 0;
+    let expansionCount = 0;
+    let otherCount = 0;
+
+    assets.forEach(item => {
+        const type = classifyAssetState(item);
+        if (type === "expansion") expansionCount++;
+        else if (type === "contraction") contractionCount++;
+        else otherCount++;
+    });
+
+    document.getElementById("count-contraction").innerText = contractionCount;
+    document.getElementById("count-expansion").innerText = expansionCount;
+    document.getElementById("count-other").innerText = otherCount;
+}
+
+function renderAssetTelemetry(assets, lang) {
+    const tbody = document.getElementById("table-body");
+    const cardsContainer = document.getElementById("cards-container");
+    
+    tbody.innerHTML = "";
+    cardsContainer.innerHTML = "";
+
+    const dict = dictionary[lang] || dictionary.en;
+
+    if (assets.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--muted);">${dict.NO_ASSETS}</td></tr>`;
+        cardsContainer.innerHTML = `<div style="text-align: center; color: var(--muted); font-size: 12px; padding: 12px;">${dict.NO_ASSETS}</div>`;
+        return;
+    }
+
+    assets.forEach(item => {
+        const symbol = item.symbol || item.asset || "N/A";
+        const theta = item.theta !== undefined ? Number(item.theta).toFixed(3) : "--";
+        const omega = item.omega !== undefined ? Number(item.omega).toFixed(3) : "--";
+        
+        const flowVal = item.flow ?? item.direction ?? 0;
+        const flowDisplay = parseAndTranslateFlow(flowVal);
+
+        const state = (item.state || item.status || "STABLE").toUpperCase();
+        const translatedState = parseAndTranslateState(state);
+        
+        const shockVal = item.vector?.shock ?? item.shock ?? 0;
+        const shock = (shockVal === 0 || shockVal === undefined) ? "—" : Number(shockVal).toFixed(2);
+        
+        let nearest = "--";
+        if (Array.isArray(item.nearest_neighbours)) {
+            nearest = item.nearest_neighbours
+                .map(n => `${n.symbol} (${Number(n.distance).toFixed(3)})`)
+                .join(", ");
+        } else if (typeof item.nearest_neighbours === 'string') {
+            nearest = item.nearest_neighbours;
+        }
+
+        let badgeClass = "stable";
+        if (state.includes("EXPANSION") || state.includes("BULL")) badgeClass = "expansion";
+        else if (state.includes("CONTRACTION") || state.includes("BEAR")) badgeClass = "contraction";
+        else if (state.includes("ACCUMULATION")) badgeClass = "accumulation";
+        else if (state.includes("TRANSITION")) badgeClass = "transition";
+        else if (state.includes("DISTRIBUTION")) badgeClass = "distribution";
+
+        // Desktop Table Row
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td style="font-weight:600; color:var(--fg);">${symbol}</td>
+            <td style="color:var(--accent);">${theta}</td>
+            <td>${omega}</td>
+            <td><span class="tag-state ${badgeClass}">${translatedState}</span> <span style="font-size:11px; opacity:0.8; margin-left:4px;">${flowDisplay}</span></td>
+            <td>${shock}</td>
+            <td style="font-size:11px; color:var(--muted);">${nearest}</td>
+        `;
+        tbody.appendChild(tr);
+
+        // Mobile Responsive Card with Fully Translated Labels
+        const card = document.createElement("div");
+        card.className = "asset-card-item";
+        card.innerHTML = `
+            <div class="asset-card-header">
+                <span style="font-weight:700; font-size:13px; color:var(--fg);">${symbol}</span>
+                <span class="tag-state ${badgeClass}">${translatedState}</span>
+            </div>
+            <div class="asset-card-body">
+                <div class="asset-card-row">
+                    <span class="asset-card-label">${dict.STRUCTURAL_DEPTH}</span>
+                    <span style="color:var(--accent); font-weight:600;">${theta}</span>
+                </div>
+                <div class="asset-card-row">
+                    <span class="asset-card-label">${dict.CONFIG_VOLUME}</span>
+                    <span>${omega}</span>
+                </div>
+                <div class="asset-card-row">
+                    <span class="asset-card-label">${dict.FLOW}</span>
+                    <span>${flowDisplay}</span>
+                </div>
+                <div class="asset-card-row">
+                    <span class="asset-card-label">${dict.SHOCK}</span>
+                    <span>${shock}</span>
+                </div>
+            </div>
+            ${nearest !== "--" ? `<div style="font-size:10px; color:var(--muted); border-top:1px dashed var(--border); padding-top:6px; margin-top:2px;">${dict.NEAREST}: ${nearest}</div>` : ""}
+        `;
+        cardsContainer.appendChild(card);
+    });
+}
+
 function shareTelemetry() {
     if (!latestDashboardData) {
         alert("No protocol telemetry currently loaded.");
         return;
     }
     const sigData = latestMarketSignature || {};
-    const macroFlow = sigData.market_flow ?? sigData.phase ?? "UNKNOWN";
-    const dominantState = sigData.dominant_state ?? "UNKNOWN";
-    const coherenceVal = sigData.coherence ?? "--";
+    const lang = localStorage.getItem("lang") || "en";
+    const dominantState = parseAndTranslateState(sigData.dominant_state || "UNKNOWN");
+    const phase = parseAndTranslateState(sigData.phase || "UNKNOWN");
+    const theta = sigData.market_theta !== undefined ? Number(sigData.market_theta).toFixed(3) : "--";
+    const coherence = sigData.coherence !== undefined ? Number(sigData.coherence).toFixed(3) : "--";
 
-    const text = `Market Alchemy Observatory V4.2 Telemetry:\nEngine Version: ${latestDashboardData.version}\nMarket Flow: ${macroFlow}\nDominant State: ${dominantState}\nCoherence: ${coherenceVal}\n\nLive Stream: https://marketalchemy.io/observatory`;
+    let text = "";
+    if (lang === "tr") {
+        text = `Market Alchemy Gözlemevi\nPiyasa Durumu: ${dominantState}\nFaz: ${phase}\nYapısal Derinlik (Θ): ${theta}\nSistem Uyum Derecesi: ${coherence}\n\nCanlı Gözlemevi: https://marketalchemy.io/observatory`;
+    } else {
+        text = `Market Alchemy Observatory\nMarket State: ${dominantState}\nPhase: ${phase}\nStructural Depth (Θ): ${theta}\nSystem Coherence: ${coherence}\n\nLive Observatory: https://marketalchemy.io/observatory`;
+    }
     
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
-            alert("Protocol telemetry record copied to clipboard!");
+            alert(lang === "tr" ? "Protokol telemetri kaydı panoya kopyalandı!" : "Protocol telemetry record copied to clipboard!");
         }).catch(() => {
             fallbackCopyText(text);
         });
@@ -783,24 +899,12 @@ function fallbackCopyText(text) {
     textArea.focus();
     textArea.select();
     try {
-        const successful = document.execCommand('copy');
-        if (successful) {
-            alert("Protocol telemetry record copied to clipboard (fallback)!");
-        } else {
-            alert("Copy failed.");
-        }
+        document.execCommand('copy');
+        alert("Copied to clipboard!");
     } catch (err) {
-        alert("Copy not supported on this context.");
+        alert("Copy not supported.");
     }
     document.body.removeChild(textArea);
-}
-
-loadRuntimeProtocol();
-setInterval(loadRuntimeProtocol, 10000);
-
-function switchLang(lang) {
-    localStorage.setItem("lang", lang);
-    updateLanguageView();
 }
 
 function updateLanguageView() {
@@ -813,14 +917,19 @@ function updateLanguageView() {
         e.hidden = (lang !== "tr");
     });
     
-    document.querySelectorAll(".lang-btn").forEach(btn => {
-        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
-    });
-
     document.querySelectorAll("nav a[data-en]").forEach(a => {
         const text = a.getAttribute(`data-${lang}`);
         if (text) {
             a.textContent = text;
+        }
+    });
+
+    document.querySelectorAll("[data-en][data-tr]").forEach(el => {
+        if (!el.classList.contains("en") && !el.classList.contains("tr")) {
+            const text = el.getAttribute(`data-${lang}`);
+            if (text) {
+                el.textContent = text;
+            }
         }
     });
 
@@ -830,7 +939,10 @@ function updateLanguageView() {
     }
 }
 
+// Initial execution
 updateLanguageView();
+loadRuntimeProtocol();
+setInterval(loadRuntimeProtocol, 10000);
 </script>
 
 </body>
