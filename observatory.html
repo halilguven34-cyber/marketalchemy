@@ -15,14 +15,14 @@
   gtag('config', 'G-8NGN65VXH8');
 </script>
 
-<title>Market Alchemy Observatory — Structural Market Intelligence</title>
+<title>Market Alchemy Observatory — Layer Architecture Observatory V4.2</title>
 
-<meta name="description" content="Explore Market Alchemy Observatory providing immutable structural market intelligence powered by V0.8.5 Protocol. Track state space, coverage, flow distribution, and consensus telemetry.">
+<meta name="description" content="Explore Market Alchemy Observatory V4.2 powered by FastAPI Gateway and complete Layer 3 Market Signature & Layer 2 Structural Manifold Intelligence.">
 
-<meta name="keywords" content="Observatory, Structural Market Intelligence, V0.8.5 Protocol, System Telemetry, Runtime Metrics, Market Alchemy, State Space, Structural Depth Theory, Halil Ibrahim Guven">
+<meta name="keywords" content="Observatory V4.2, Structural Market Intelligence, Layer Architecture, System Telemetry, Market Alchemy, State Space, Structural Depth Theory, Halil Ibrahim Guven">
 
 <meta name="graph-node" content="observatory">
-<meta name="node-type" content="runtime-observatory">
+<meta name="node-type" content="runtime-observatory-v4.2">
 <meta name="system-layer" content="execution-telemetry">
 
 <script>
@@ -46,6 +46,8 @@ if(!localStorage.getItem("lang")){
     --live:#00ff9d;
     --offline:#ff5555;
     --warning:#ffcc00;
+    --blue:#6da8ff;
+    --gray:#8c95a1;
 }
 
 body{
@@ -200,6 +202,13 @@ h1{
     margin-top: 16px;
 }
 
+.metrics-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 16px;
+}
+
 .metric-card {
     padding: 16px;
     background: rgba(255,255,255,0.02);
@@ -207,55 +216,8 @@ h1{
 }
 
 .metric-label {font-size: 10px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase;}
-.metric-value {font-size: 20px; font-weight: 700; color: var(--fg); margin: 6px 0 2px;}
+.metric-value {font-size: 18px; font-weight: 700; color: var(--fg); margin: 6px 0 2px;}
 .metric-sub {font-size: 11px; color: var(--accent); opacity: 0.85;}
-
-/* STATE MACHINE PIPELINE STYLES */
-.state-machine-flow {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    margin-top: 16px;
-    padding: 14px;
-    background: rgba(9,11,14,0.6);
-    border: 1px solid var(--border);
-    overflow-x: auto;
-}
-
-.state-node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: var(--muted);
-    text-align: center;
-    flex-shrink: 0;
-}
-
-.state-pill {
-    padding: 6px 10px;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.02);
-    color: var(--muted);
-    font-size: 11px;
-    margin-bottom: 4px;
-    transition: 0.3s;
-}
-
-.state-node.active .state-pill {
-    border-color: var(--live);
-    color: var(--live);
-    background: rgba(0, 255, 157, 0.08);
-    box-shadow: 0 0 10px rgba(0, 255, 157, 0.15);
-}
-
-.state-arrow {
-    color: var(--muted);
-    font-size: 12px;
-    opacity: 0.4;
-}
 
 .data-table-wrapper {margin-top: 16px; overflow-x: auto; border: 1px solid var(--border);}
 .data-table {width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;}
@@ -263,9 +225,11 @@ h1{
 .data-table th {background: rgba(255,255,255,0.03); color: var(--accent); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;}
 
 .tag-state {padding: 2px 6px; font-size: 10px; font-weight: 600; border-radius: 2px;}
-.tag-state.complete {background: rgba(0, 255, 157, 0.15); color: var(--live); border: 1px solid rgba(0, 255, 157, 0.3);}
-.tag-state.degraded {background: rgba(255, 204, 0, 0.15); color: var(--warning); border: 1px solid rgba(255, 204, 0, 0.3);}
-.tag-state.insufficient {background: rgba(255, 85, 85, 0.15); color: var(--offline); border: 1px solid rgba(255, 85, 85, 0.3);}
+.tag-state.expansion {background: rgba(0, 255, 157, 0.15); color: var(--live); border: 1px solid rgba(0, 255, 157, 0.3);}
+.tag-state.contraction {background: rgba(255, 85, 85, 0.15); color: var(--offline); border: 1px solid rgba(255, 85, 85, 0.3);}
+.tag-state.accumulation {background: rgba(109, 168, 255, 0.15); color: var(--blue); border: 1px solid rgba(109, 168, 255, 0.3);}
+.tag-state.stable {background: rgba(140, 149, 161, 0.15); color: var(--gray); border: 1px solid rgba(140, 149, 161, 0.3);}
+.tag-state.transition {background: rgba(255, 204, 0, 0.15); color: var(--warning); border: 1px solid rgba(255, 204, 0, 0.3);}
 
 .console-block {
     margin-top: 14px;
@@ -339,7 +303,7 @@ footer{
 
 @media(max-width:700px){
     .container{padding-top:90px;}
-    .metrics-grid{grid-template-columns:1fr;}
+    .metrics-grid, .metrics-grid-3{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -369,20 +333,20 @@ footer{
 <header>
     <div class="live-badge">
         <span class="live-dot" id="status-dot"></span>
-        <span id="status-text">READING IMMUTABLE ARTIFACTS...</span>
+        <span id="status-text">CONNECTING TO FASTAPI GATEWAY...</span>
     </div>
 
-    <div class="node-path en">PROTOCOL V0.8.5 :: MARKET ALCHEMY OBSERVATORY</div>
-    <div class="node-path tr" style="display:none;">PROTOKOL V0.8.5 :: MARKET ALCHEMY GÖZLEMEVİ</div>
+    <div class="node-path en">LAYER ARCHITECTURE OBSERVATORY V4.2</div>
+    <div class="node-path tr" style="display:none;">KATMAN MİMARİSİ GÖZLEMEVİ V4.2</div>
 
-    <h1 class="en">Market Alchemy Observatory</h1>
-    <h1 class="tr" style="display:none;">Market Alchemy Gözlemevi</h1>
+    <h1 class="en">Market Alchemy Observatory V4.2</h1>
+    <h1 class="tr" style="display:none;">Market Alchemy Gözlemevi V4.2</h1>
 
-    <p class="big en">Immutable Structural Intelligence Protocol</p>
-    <p class="big tr" style="display:none;">Değişmez Yapısal Zekâ Protokolü</p>
+    <p class="big en">Complete Macro Market Signature & Structural Manifold Telemetry</p>
+    <p class="big tr" style="display:none;">Eksiksiz Makro Piyasa İmzası ve Yapısal Manifold Telemetrisi</p>
 
-    <p class="muted en">This observatory consumes immutable state artifacts produced by the Market Alchemy scanner. It establishes a decoupled consumer architecture parsing core metrics, execution telemetry, and structural flows directly.</p>
-    <p class="muted tr" style="display:none;">Bu gözlemevi, Market Alchemy tarayıcısı tarafından üretilen değişmez durum artifact'lerini tüketir. Çekirdek metrikleri, yürütme telemetrisini ve yapısal akışları doğrudan ayrıştıran ayrıştırılmış bir tüketici mimarisi kurar.</p>
+    <p class="muted en">Consuming complete Layer 3 Market Signature telemetry and Layer 2 structural manifold arrays (Theta, Omega, Flow, State, Shock, Nearest Neighbors) via FastAPI Gateway.</p>
+    <p class="muted tr" style="display:none;">FastAPI Gateway üzerinden eksiksiz Katman 3 Piyasa İmzası telemetrisini ve Katman 2 yapısal manifold dizilerini (Teta, Omega, Akış, Durum, Şok, En Yakın Komşular) tüketir.</p>
 </header>
 
 <!-- 2. KNOWLEDGE GRAPH NAVIGATION -->
@@ -400,7 +364,7 @@ footer{
             </div>
             <div class="kg-row" style="margin-left: 20px; margin-top: 6px;">
                 <span class="kg-arrow">↳</span>
-                <a href="observatory.html" class="kg-tag active-node">Immutable Observatory Runtime</a>
+                <a href="observatory.html" class="kg-tag active-node">Observatory V4.2 Runtime</a>
                 <span class="kg-arrow">→</span>
                 <a href="research.html" class="kg-tag">Research SDT</a>
                 <span class="kg-arrow">→</span>
@@ -410,107 +374,128 @@ footer{
     </div>
 </section>
 
-<!-- 1. SCANNER STATE MACHINE & RUNTIME METRICS -->
+<!-- 1. PIPELINE RUNTIME TELEMETRY -->
 <div class="section">
-    <div class="system-title">01 :: SCANNER STATE MACHINE & RUNTIME TELEMETRY</div>
-    <div class="big en">State Machine Pipeline</div>
-    <div class="big tr" style="display:none;">Durum Makinesi Boru Hattı</div>
-
-    <!-- STATE MACHINE PIPELINE VISUALIZATION -->
-    <div class="state-machine-flow">
-        <div class="state-node" id="sm-ready">
-            <div class="state-pill">READY</div>
-            <span>Init</span>
-        </div>
-        <div class="state-arrow">→</div>
-        <div class="state-node" id="sm-awaiting">
-            <div class="state-pill">AWAITING_SIGNAL</div>
-            <span>Queue</span>
-        </div>
-        <div class="state-arrow">→</div>
-        <div class="state-node" id="sm-executed">
-            <div class="state-pill">QUERY_EXECUTED</div>
-            <span>Scan</span>
-        </div>
-        <div class="state-arrow">→</div>
-        <div class="state-node" id="sm-generated">
-            <div class="state-pill">RESPONSE_GEN</div>
-            <span>Artifacts</span>
-        </div>
-    </div>
+    <div class="system-title">01 :: LAYER PIPELINE RUNTIME TELEMETRY</div>
+    <div class="big en">Pipeline Status & Engine Metrics</div>
+    <div class="big tr" style="display:none;">Boru Hattı Durumu ve Motor Metrikleri</div>
 
     <div class="metrics-grid" style="margin-top: 18px;">
         <div class="metric-card">
-            <div class="metric-label">RUN ID</div>
-            <div class="metric-value" id="val-runid" style="font-size: 15px;">--</div>
-            <div class="metric-sub" id="val-state">State: --</div>
+            <div class="metric-label">ENGINE VERSION</div>
+            <div class="metric-value" id="val-engine" style="font-size: 15px;">--</div>
+            <div class="metric-sub" id="val-status">Status: --</div>
         </div>
         <div class="metric-card">
-            <div class="metric-label">LAST UPDATE / SCAN</div>
-            <div class="metric-value" id="val-lastupdate" style="font-size: 14px;">--</div>
-            <div class="metric-sub" class="en">Artifact Timestamp</div>
-            <div class="metric-sub tr" style="display:none;">Artifact Zaman Damgası</div>
+            <div class="metric-label">LAST SUCCESSFUL RUN</div>
+            <div class="metric-value" id="val-lastrun" style="font-size: 13px;">--</div>
+            <div class="metric-sub en">UTC Timestamp</div>
+            <div class="metric-sub tr" style="display:none;">UTC Zaman Damgası</div>
         </div>
         <div class="metric-card">
-            <div class="metric-label">TOTAL UNIVERSE</div>
+            <div class="metric-label">TOP ASSETS</div>
             <div class="metric-value" id="val-universe">--</div>
-            <div class="metric-sub" id="val-coverage">Complete: -- | Degraded: --</div>
+            <div class="metric-sub en">Layer 1 Universe Count</div>
+            <div class="metric-sub tr" style="display:none;">Katman 1 Evren Sayısı</div>
         </div>
         <div class="metric-card">
-            <div class="metric-label">ACTIVE / ELIGIBLE</div>
-            <div class="metric-value" id="val-eligible">--</div>
-            <div class="metric-sub" id="val-insufficient">Insufficient: --</div>
+            <div class="metric-label">STRUCTURAL ASSETS</div>
+            <div class="metric-value" id="val-structural-count">--</div>
+            <div class="metric-sub en">Layer 2 Processed Manifold</div>
+            <div class="metric-sub tr" style="display:none;">Katman 2 İşlenen Manifold</div>
         </div>
     </div>
 
     <div class="console-block" id="console-stream" style="margin-top: 16px;">
-        <div class="console-line"><span class="console-ts">[PROTOCOL_INIT]</span> <span class="console-tag">CONSUMER</span> <span class="console-val">Loading immutable state artifacts from dashboard.json & assets_full.json...</span></div>
+        <div class="console-line"><span class="console-ts">[GATEWAY_INIT]</span> <span class="console-tag">CONSUMER</span> <span class="console-val">Connecting to FastAPI Gateway endpoints (/dashboard, /market-signature, /structural-assets)...</span></div>
     </div>
 </div>
 
-<!-- 2. MARKET SIGNATURE & TOP CONSENSUS -->
+<!-- 2. MARKET SIGNATURE (LAYER 3 COMPLETE) -->
 <div class="section">
-    <div class="system-title">02 :: MARKET SIGNATURE & TOP CONSENSUS</div>
-    <div class="big en">Structural Signature Overview</div>
-    <div class="big tr" style="display:none;">Yapısal İmza Genel Bakışı</div>
+    <div class="system-title">02 :: MARKET SIGNATURE (LAYER 3 COMPLETE)</div>
+    <div class="big en">Complete Macro Market Signature Telemetry</div>
+    <div class="big tr" style="display:none;">Eksiksiz Makro Piyasa İmzası Telemetrisi</div>
 
-    <div class="metrics-grid" style="grid-template-columns: 1fr 1fr;">
+    <div class="metrics-grid-3" style="margin-top: 18px;">
         <div class="metric-card">
-            <div class="metric-label" class="en">SIGNATURE DOMINANT FLOW</div>
-            <div class="metric-label tr" style="display:none;">İMZA BASKIN AKIŞI</div>
-            <div class="metric-value" id="val-dominant" style="font-size: 18px;">--</div>
-            <div class="metric-sub" id="val-bear-bull">Bullish: -- | Bearish: --</div>
+            <div class="metric-label">MARKET Θ</div>
+            <div class="metric-value" id="sig-theta">--</div>
+            <div class="metric-sub en">Structural Depth Index</div>
+            <div class="metric-sub tr" style="display:none;">Yapısal Derinlik Endeksi</div>
         </div>
         <div class="metric-card">
-            <div class="metric-label" class="en">TOP CONSENSUS ASSET</div>
-            <div class="metric-label tr" style="display:none;">EN ÜST DÜZEY UZLAŞI VARLIĞI</div>
-            <div class="metric-value" id="val-consensus">--</div>
-            <div class="metric-sub" class="en">Highest Coherence & Conviction</div>
-            <div class="metric-sub tr" style="display:none;">En Yüksek Uyum ve İnanç</div>
+            <div class="metric-label">MARKET Ω</div>
+            <div class="metric-value" id="sig-omega">--</div>
+            <div class="metric-sub en">Manifold Curvature</div>
+            <div class="metric-sub tr" style="display:none;">Manifold Eğriliği</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">MARKET FLOW</div>
+            <div class="metric-value" id="sig-flow">--</div>
+            <div class="metric-sub en">Directional Vector</div>
+            <div class="metric-sub tr" style="display:none;">Yönsel Vektör</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">COHERENCE</div>
+            <div class="metric-value" id="sig-coherence">--</div>
+            <div class="metric-sub en">System Synchronization</div>
+            <div class="metric-sub tr" style="display:none;">Sistem Senkronizasyonu</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">DOMINANT STATE</div>
+            <div class="metric-value" id="sig-state" style="font-size: 14px;">--</div>
+            <div class="metric-sub en">Macro Regime Classification</div>
+            <div class="metric-sub tr" style="display:none;">Makro Rejim Sınıflandırması</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">PHASE</div>
+            <div class="metric-value" id="sig-phase" style="font-size: 14px;">--</div>
+            <div class="metric-sub en">Structural State Phase</div>
+            <div class="metric-sub tr" style="display:none;">Yapısal Durum Fazı</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">COMPRESSION RATIO</div>
+            <div class="metric-value" id="sig-compression">--</div>
+            <div class="metric-sub en">Compression Node Metric</div>
+            <div class="metric-sub tr" style="display:none;">Sıkışma Düğümü Metriği</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">EXPANSION RATIO</div>
+            <div class="metric-value" id="sig-expansion">--</div>
+            <div class="metric-sub en">Expansion Node Metric</div>
+            <div class="metric-sub tr" style="display:none;">Genleşme Düğümü Metriği</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">RISK INDEX & PROB</div>
+            <div class="metric-value" id="sig-risk" style="font-size: 14px;">--</div>
+            <div class="metric-sub" id="sig-risk-sub">Transition Prob: --</div>
         </div>
     </div>
 </div>
 
-<!-- 3. ASSETS MANIFOLD TABLE (assets_full.json) -->
+<!-- 3. LAYER 2 STRUCTURAL MANIFOLD TABLE (/structural-assets) -->
 <div class="section">
-    <div class="system-title">03 :: ASSETS MANIFOLD ARTIFACTS</div>
-    <div class="big en">Full State Space Table (assets_full.json)</div>
-    <div class="big tr" style="display:none;">Tam Durum Uzayı Tablosu (assets_full.json)</div>
+    <div class="system-title">03 :: LAYER 2 STRUCTURAL MANIFOLD ARTIFACTS</div>
+    <div class="big en">Structural Depth Telemetry Table (/structural-assets)</div>
+    <div class="big tr" style="display:none;">Yapısal Derinlik Telemetri Tablosu (/structural-assets)</div>
 
     <div class="data-table-wrapper">
         <table class="data-table">
             <thead>
                 <tr>
-                    <th>Symbol</th>
-                    <th>Direction</th>
-                    <th>Coherence</th>
-                    <th>Conviction</th>
-                    <th>State</th>
+                    <th>SYM</th>
+                    <th>Θ</th>
+                    <th>Ω</th>
+                    <th>FLOW</th>
+                    <th>STATE</th>
+                    <th>SHOCK</th>
+                    <th id="col-nearest-header">NEAREST (EUCLIDEAN DISTANCE)</th>
                 </tr>
             </thead>
             <tbody id="table-body">
                 <tr>
-                    <td colspan="5" style="text-align: center; color: var(--muted);">Loading immutable asset records...</td>
+                    <td id="table-loading-cell" style="text-align: center; color: var(--muted);">Loading Layer 2 structural manifold records...</td>
                 </tr>
             </tbody>
         </table>
@@ -522,47 +507,34 @@ footer{
     </div>
 </div>
 
-<!-- 4. DELTA EVENTS (delta_events.jsonl) -->
+<!-- 4. DELTA EVENTS (COMING SOON) -->
 <div class="section">
     <div class="system-title">04 :: DELTA EVENTS STREAM</div>
-    <div class="big en">Recent State Transitions (delta_events.jsonl)</div>
-    <div class="big tr" style="display:none;">Son Durum Geçişleri (delta_events.jsonl)</div>
-
-    <div class="data-table-wrapper" style="margin-top: 14px;">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Timestamp</th>
-                    <th>Symbol</th>
-                    <th>Previous State</th>
-                    <th>Transition / Delta</th>
-                </tr>
-            </thead>
-            <tbody id="delta-table-body">
-                <tr>
-                    <td colspan="4" style="text-align: center; color: var(--muted);">Loading delta transition stream...</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="big en">Recent State Transitions</div>
+    <div class="big tr" style="display:none;">Son Durum Geçişleri</div>
+    <div class="theory-bridge" style="margin-top: 14px; text-align: center;">
+        <p class="en" style="color: var(--accent);">[ COMING SOON ] Real-time state transition event stream via Layer telemetry.</p>
+        <p class="tr" style="display:none; color: var(--accent);">[ YAKINDA ] Katman telemetrisi üzerinden gerçek zamanlı durum geçiş olay akışı.</p>
     </div>
 </div>
 
 <!-- 5. ARCHITECTURE & PROTOCOL SPECIFICATION -->
 <div class="section">
-    <div class="system-title">05 :: PROTOCOL ARCHITECTURE & PURPOSE</div>
-    <div class="big en">Immutable State Machine Protocol</div>
-    <div class="big tr" style="display:none;">Değişmez Durum Makinesi Protokolü</div>
+    <div class="system-title">05 :: LAYER ARCHITECTURE & PURPOSE</div>
+    <div class="big en">FastAPI Gateway & Structural Depth Theory</div>
+    <div class="big tr" style="display:none;">FastAPI Gateway ve Yapısal Derinlik Teorisi</div>
     <div class="theory-bridge" style="margin-top: 14px;">
-        <p class="en">The Market Alchemy platform operates on a strict V0.8.5 decoupled architecture. The Scanner functions as the sole Producer, writing immutable state artifacts (dashboard.json, assets_full.json, market_signature.json, delta_events.jsonl) to the persistence layer. Clients (Web UI, FastAPI, Telegram Bot, CLI) function as pure Consumers reading these versioned protocol messages without direct coupling to the scanner engine.</p>
-        <p class="tr" style="display:none;">Market Alchemy platformu, katı bir V0.8.5 ayrıştırılmış mimari üzerinde çalışır. Tarayıcı (Scanner), kalıcılık katmanına değişmez durum artifact'leri (dashboard.json, assets_full.json, market_signature.json, delta_events.jsonl) yazan tek Üretici (Producer) olarak işlev görür. İstemciler (Web UI, FastAPI, Telegram Bot, CLI) ise tarayıcı motoruyla doğrudan bağlantı kurmadan bu sürümlü protokol mesajlarını okuyan saf Tüketiciler (Consumers) olarak çalışır.</p>
+        <p class="en">The Market Alchemy platform operates on a robust Layer Architecture. Layer 2 calculates internal structural depth derivatives (Theta, Omega, Flow, State, Shock, and Nearest Neighbors) rather than relying on superficial price indicators. FastAPI Gateway exposes these immutable artifacts cleanly to consumers like this Observatory V4.2 interface.</p>
+        <p class="tr" style="display:none;">Market Alchemy platformu güçlü bir Katman Mimarisi üzerinde çalışır. Katman 2, yüzeysel fiyat göstergelerine güvenmek yerine dahili yapısal derinlik türevlerini (Teta, Omega, Akış, Durum, Şok ve En Yakın Komşular) hesaplar. FastAPI Gateway, bu değişmez artifact'leri Observatory V4.2 arayüzü gibi tüketicilere temiz bir şekilde sunar.</p>
         
         <div style="margin-top: 12px;">
-            <b style="color:var(--fg);" class="en">Core Protocol Layers:</b>
-            <b style="color:var(--fg);" class="tr" style="display:none;">Çekirdek Protokol Katmanları:</b>
+            <b class="en" style="color:var(--fg);">Core Pipeline Layers:</b>
+            <b class="tr" style="display:none; color:var(--fg);">Çekirdek Boru Hattı Katmanları:</b>
             <ul style="margin: 6px 0 0 16px; padding: 0;">
-                <li class="en">Layer 1: MarketAlchemyScanner (Producer)</li><li class="tr" style="display:none;">Katman 1: MarketAlchemyScanner (Üretici)</li>
-                <li class="en">Layer 2: Protocol + Immutable Artifacts</li><li class="tr" style="display:none;">Katman 2: Protokol + Değişmez Artifact'ler</li>
-                <li class="en">Layer 3: Decoupled Consumers (Web, API, Telegram, CLI)</li><li class="tr" style="display:none;">Katman 3: Ayrıştırılmış Tüketiciler (Web, API, Telegram, CLI)</li>
+                <li class="en">Layer 1: MarketAlchemyScanner (Universe & Raw Data)</li><li class="tr" style="display:none;">Katman 1: MarketAlchemyScanner (Evren ve Ham Veri)</li>
+                <li class="en">Layer 2: StructuralEngine (Theta, Omega, Manifold)</li><li class="tr" style="display:none;">Katman 2: StructuralEngine (Teta, Omega, Manifold)</li>
+                <li class="en">Layer 3: MarketSignatureEngine (Macro Signature)</li><li class="tr" style="display:none;">Katman 3: MarketSignatureEngine (Makro İmza)</li>
+                <li class="en">Layer 4: FastAPI Gateway & Atomic Writer</li><li class="tr" style="display:none;">Katman 4: FastAPI Gateway ve Atomik Yazıcı</li>
             </ul>
         </div>
     </div>
@@ -585,22 +557,23 @@ footer{
 </div>
 
 <footer>
-    <div class="muted en">Market Alchemy Observatory Runtime • Halil Ibrahim Guven</div>
-    <div class="muted tr" style="display:none;">Market Alchemy Gözlemevi Çalışma • Halil İbrahim Güven</div>
+    <div class="muted en">Market Alchemy Observatory V4.2 • Halil Ibrahim Guven</div>
+    <div class="muted tr" style="display:none;">Market Alchemy Gözlemevi V4.2 • Halil İbrahim Güven</div>
 </footer>
 
 </div>
 
 <script>    
-const DASHBOARD_URL = "dashboard.json";
-const ASSETS_URL = "assets_full.json";
-const DELTA_URL = "delta_events.jsonl";
+const DASHBOARD_URL = "/dashboard";
+const STRUCTURAL_URL = "/structural-assets";
+const SIGNATURE_URL = "/market-signature";
+
 let latestDashboardData = null;
-let lastObservedRunId = null;
+let latestMarketSignature = null;
 let activeController = null;
 
-async function fetchRuntimeArtifact(filename, signal) {
-    const response = await fetch(`${filename}?ts=${Date.now()}`, {
+async function fetchRuntimeArtifact(endpoint, signal) {
+    const response = await fetch(`${endpoint}?ts=${Date.now()}`, {
         signal: signal,
         cache: "no-store",
         headers: {
@@ -609,28 +582,9 @@ async function fetchRuntimeArtifact(filename, signal) {
         }
     });
     if (!response.ok) {
-        throw new Error(`Artifact okunamadı: ${filename}`);
+        throw new Error(`Endpoint okunamadı: ${endpoint}`);
     }
     return await response.json();
-}
-
-function updateStateMachineUI(state) {
-    const states = ['ready', 'awaiting', 'executed', 'generated'];
-    states.forEach(s => {
-        const el = document.getElementById(`sm-${s}`);
-        if (el) el.classList.remove('active');
-    });
-
-    const upperState = (state || "").toUpperCase();
-    if (upperState.includes("READY")) {
-        document.getElementById('sm-ready').classList.add('active');
-    } else if (upperState.includes("AWAITING") || upperState.includes("SIGNAL")) {
-        document.getElementById('sm-awaiting').classList.add('active');
-    } else if (upperState.includes("EXECUTED") || upperState.includes("SCAN")) {
-        document.getElementById('sm-executed').classList.add('active');
-    } else {
-        document.getElementById('sm-generated').classList.add('active');
-    }
 }
     
 async function loadRuntimeProtocol() {
@@ -646,30 +600,24 @@ async function loadRuntimeProtocol() {
     try {
         const results = await Promise.allSettled([
             fetchRuntimeArtifact(DASHBOARD_URL, signal),
-            fetchRuntimeArtifact(ASSETS_URL, signal),
-            fetch(`${DELTA_URL}?ts=${Date.now()}`, {
-                signal: signal,
-                cache: "no-store",
-                headers: {
-                    "Pragma": "no-cache",
-                    "Cache-Control": "no-cache"
-                }
-            }).then(r => r.ok ? r.text() : "")
+            fetchRuntimeArtifact(STRUCTURAL_URL, signal),
+            fetchRuntimeArtifact(SIGNATURE_URL, signal)
         ]);
 
         const dashboardRes = results[0];
-        const assetsRes = results[1];
-        const deltaRes = results[2];
+        const structuralRes = results[1];
+        const signatureRes = results[2];
 
         if (dashboardRes.status !== "fulfilled") {
-            throw new Error("Dashboard artifact could not be retrieved.");
+            throw new Error("Dashboard endpoint could not be retrieved.");
         }
 
         const dashboard = dashboardRes.value;
-        const assetsFull = assetsRes.status === "fulfilled" ? assetsRes.value : {};
-        const deltaText = deltaRes.status === "fulfilled" ? deltaRes.value : "";
+        const structuralData = structuralRes.status === "fulfilled" ? structuralRes.value : {};
+        const marketSigRes = signatureRes.status === "fulfilled" ? signatureRes.value : {};
 
         latestDashboardData = dashboard;
+        latestMarketSignature = marketSigRes.market_signature || marketSigRes || dashboard.market_signature || {};
 
         const t1 = performance.now();
         const latency = Math.round(t1 - t0);
@@ -679,120 +627,110 @@ async function loadRuntimeProtocol() {
 
         dot.classList.remove("offline");
         statusText.style.color = "var(--live)";
-        statusText.innerText = "PROTOCOL READY :: ARTIFACTS LOADED";
+        statusText.innerText = "GATEWAY CONNECTED :: TELEMETRY ACTIVE";
 
-        const scannerState = dashboard.scanner_status || dashboard.state || "READY";
-        updateStateMachineUI(scannerState);
+        document.getElementById("val-engine").innerText = dashboard.engine || "MarketAlchemyMasterDashboard";
+        document.getElementById("val-status").innerText = `Status: ${dashboard.status || "HEALTHY"} (${latency}ms)`;
+        document.getElementById("val-lastrun").innerText = dashboard.last_successful_run || "--";
 
-        const currentRunId = dashboard.run_id || "--";
-        document.getElementById("val-runid").innerText = currentRunId;
-        document.getElementById("val-state").innerText = `State: ${scannerState}`;
-        document.getElementById("val-lastupdate").innerText = dashboard.last_update || "--";
+        const topAssets = dashboard.top_assets || [];
+        const structuralAssetsList = structuralData.structural_assets || dashboard.structural_assets || [];
+        
+        document.getElementById("val-universe").innerText = topAssets.length;
+        document.getElementById("val-structural-count").innerText = structuralAssetsList.length;
 
-        const sig = dashboard.signature || {};
-        const totalUniverse = sig.total_universe ?? "--";
-        const completeCount = sig.complete_count ?? 0;
-        const degradedCount = sig.degraded_count ?? 0;
-        const insufficientCount = sig.insufficient_count ?? 0;
-        const bullishTotal = sig.bullish_total ?? 0;
-        const bearishTotal = sig.bearish_total ?? 0;
-        const eligibleCount = completeCount + degradedCount;
-
-        let dominantFlow = "MIXED";
-        if (bullishTotal > bearishTotal) {
-            dominantFlow = "BULLISH";
-        } else if (bearishTotal > bullishTotal) {
-            dominantFlow = "BEARISH";
+        const sigData = latestMarketSignature;
+        
+        document.getElementById("sig-theta").innerText = sigData.market_theta !== undefined ? Number(sigData.market_theta).toFixed(3) : "--";
+        document.getElementById("sig-omega").innerText = sigData.market_omega !== undefined ? Number(sigData.market_omega).toFixed(3) : "--";
+        
+        const rawFlow = sigData.market_flow ?? sigData.phase ?? 0;
+        let flowDisplay = rawFlow;
+        if (typeof rawFlow === 'number') {
+            flowDisplay = rawFlow > 0 ? "▲ Expansion" : rawFlow < 0 ? "▼ Contraction" : "■ Neutral";
+        } else if (typeof rawFlow === 'string') {
+            flowDisplay = rawFlow.toUpperCase();
         }
-
-        document.getElementById("val-universe").innerText = totalUniverse;
-        document.getElementById("val-coverage").innerText = `Complete: ${completeCount} | Degraded: ${degradedCount}`;
-        document.getElementById("val-eligible").innerText = eligibleCount;
-        document.getElementById("val-insufficient").innerText = `Insufficient: ${insufficientCount}`;
-
-        document.getElementById("val-dominant").innerText = dominantFlow;
-        document.getElementById("val-bear-bull").innerText = `Bullish: ${bullishTotal} | Bearish: ${bearishTotal}`;
-
-        const topConsensus = dashboard.top_consensus || [];
-        document.getElementById("val-consensus").innerText = topConsensus.length > 0 ? (topConsensus[0].symbol || topConsensus[0]) : "--";
+        document.getElementById("sig-flow").innerText = flowDisplay;
+        
+        document.getElementById("sig-coherence").innerText = sigData.coherence !== undefined ? Number(sigData.coherence).toFixed(3) : "--";
+        document.getElementById("sig-state").innerText = sigData.dominant_state || "UNKNOWN";
+        document.getElementById("sig-phase").innerText = sigData.phase || "--";
+        document.getElementById("sig-compression").innerText = sigData.compression_ratio !== undefined ? Number(sigData.compression_ratio).toFixed(3) : "--";
+        document.getElementById("sig-expansion").innerText = sigData.expansion_ratio !== undefined ? Number(sigData.expansion_ratio).toFixed(3) : "--";
+        
+        const riskIdx = sigData.risk_index !== undefined ? Number(sigData.risk_index).toFixed(2) : "--";
+        const transProb = sigData.transition_probability !== undefined ? Number(sigData.transition_probability).toFixed(2) : "--";
+        document.getElementById("sig-risk").innerText = riskIdx;
+        document.getElementById("sig-risk-sub").innerText = `Transition Prob: ${transProb}`;
 
         const consoleStream = document.getElementById("console-stream");
-        if (currentRunId !== lastObservedRunId) {
-            lastObservedRunId = currentRunId;
-            const timeStr = new Date().toLocaleTimeString();
-            const line = document.createElement("div");
-            line.className = "console-line";
-            line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">NEW_RUN</span> <span class="console-val">RunID: ${currentRunId} | State: ${scannerState} | Latency: ${latency}ms</span>`;
-            
-            consoleStream.appendChild(line);
-            if (consoleStream.children.length > 8) {
-                consoleStream.removeChild(consoleStream.children[1]);
-            }
-            consoleStream.scrollTop = consoleStream.scrollHeight;
-        }
+        const timeStr = new Date().toLocaleTimeString();
+        const line = document.createElement("div");
+        line.className = "console-line";
+        
+        const gatewayId = dashboard.gateway || "FastAPI";
+        const sigName = sigData.dominant_state || "STABLE";
+        const phaseName = sigData.phase || "--";
+        const riskVal = riskIdx;
 
-        const assetsArray = Array.isArray(assetsFull) ? assetsFull : Object.values(assetsFull);
-        if (assetsArray.length > 0) {
+        line.innerHTML = `<span class="console-ts">[${timeStr}]</span> <span class="console-tag">GATEWAY: ${gatewayId}</span> <span class="console-val">Ver: ${dashboard.version} | Latency: ${latency}ms | Sig: ${sigName} | Phase: ${phaseName} | Risk: ${riskVal}</span>`;
+        
+        consoleStream.appendChild(line);
+        while (consoleStream.children.length > 6) {
+            consoleStream.removeChild(consoleStream.children[1]);
+        }
+        consoleStream.scrollTop = consoleStream.scrollHeight;
+
+        if (structuralAssetsList.length > 0) {
             const tbody = document.getElementById("table-body");
             tbody.innerHTML = "";
-            assetsArray.slice(0, 15).forEach(item => {
+            structuralAssetsList.forEach(item => {
                 const symbol = item.symbol || item.asset || "N/A";
-                const direction = item.direction || item.flow || item.structural_state || "--";
-                const coherence = item.coherence ?? item.score ?? "--";
-                const conviction = item.conviction ?? "--";
-                const status = (item.status || "COMPLETE").toUpperCase();
+                const theta = item.theta !== undefined ? Number(item.theta).toFixed(3) : "--";
+                const omega = item.omega !== undefined ? Number(item.omega).toFixed(3) : "--";
                 
-                let badgeClass = "complete";
-                if (status.includes("DEGRADED")) badgeClass = "degraded";
-                else if (status.includes("INSUFFICIENT")) badgeClass = "insufficient";
+                const itemFlowVal = item.flow ?? item.direction ?? 0;
+                let flowStr = "■ Neutral";
+                if (typeof itemFlowVal === 'number') {
+                    flowStr = itemFlowVal > 0 ? "▲ Expansion" : itemFlowVal < 0 ? "▼ Contraction" : "■ Neutral";
+                } else {
+                    flowStr = String(itemFlowVal).toUpperCase();
+                }
+
+                const state = (item.state || item.status || "STABLE").toUpperCase();
+                
+                const shockVal = item.vector?.shock ?? item.shock ?? 0;
+                const shock = (shockVal === 0 || shockVal === undefined) ? "—" : Number(shockVal).toFixed(2);
+                
+                let nearest = "--";
+                if (Array.isArray(item.nearest_neighbours)) {
+                    nearest = item.nearest_neighbours
+                        .map(n => `${n.symbol} (${Number(n.distance).toFixed(3)})`)
+                        .join(", ");
+                } else if (typeof item.nearest_neighbours === 'string') {
+                    nearest = item.nearest_neighbours;
+                }
+
+                let badgeClass = "stable";
+                if (state.includes("EXPANSION")) badgeClass = "expansion";
+                else if (state.includes("CONTRACTION")) badgeClass = "contraction";
+                else if (state.includes("ACCUMULATION")) badgeClass = "accumulation";
+                else if (state.includes("TRANSITION")) badgeClass = "transition";
+                else if (state.includes("STABLE")) badgeClass = "stable";
 
                 const tr = document.createElement("tr");
                 tr.innerHTML = `
                     <td style="font-weight:600; color:var(--fg);">${symbol}</td>
-                    <td style="color:var(--accent);">${direction}</td>
-                    <td>${coherence}</td>
-                    <td>${conviction}</td>
-                    <td><span class="tag-state ${badgeClass}">${status}</span></td>
+                    <td style="color:var(--accent);">${theta}</td>
+                    <td>${omega}</td>
+                    <td style="color:var(--accent);">${flowStr}</td>
+                    <td><span class="tag-state ${badgeClass}">${state}</span></td>
+                    <td>${shock}</td>
+                    <td style="font-size:11px; color:var(--muted);">${nearest}</td>
                 `;
                 tbody.appendChild(tr);
             });
-        }
-
-        if (deltaText && deltaText.trim().length > 0) {
-            const deltaLines = deltaText.trim().split("\n").filter(l => l.trim().length > 0);
-            if (deltaLines.length > 0) {
-                const deltaTbody = document.getElementById("delta-table-body");
-                deltaTbody.innerHTML = "";
-                deltaLines.slice(-10).reverse().forEach(rowStr => {
-                    try {
-                        const ev = JSON.parse(rowStr);
-                        const ts = ev.timestamp || "N/A";
-                        const symbol = ev.symbol || "N/A";
-                        
-                        let transitionText = ev.transition || "";
-                        if (!transitionText && (ev.old_direction || ev.new_direction)) {
-                            const oldDir = ev.old_direction || "N/A";
-                            const newDir = ev.new_direction || "N/A";
-                            transitionText = `${oldDir} → ${newDir}`;
-                        } else if (!transitionText) {
-                            transitionText = "State Shift";
-                        }
-
-                        const prevState = ev.previous_state || ev.old_direction || "--";
-
-                        const tr = document.createElement("tr");
-                        tr.innerHTML = `
-                            <td style="color:var(--muted);">${ts}</td>
-                            <td style="font-weight:600; color:var(--fg);">${symbol}</td>
-                            <td>${prevState}</td>
-                            <td style="color:var(--accent);">${transitionText}</td>
-                        `;
-                        deltaTbody.appendChild(tr);
-                    } catch (e) {
-                        // ignore malformed line
-                    }
-                });
-            }
         }
 
     } catch (err) {
@@ -800,7 +738,7 @@ async function loadRuntimeProtocol() {
         const dot = document.getElementById("status-dot");
         const statusText = document.getElementById("status-text");
         dot.classList.add("offline");
-        statusText.innerText = "ARTIFACTS UNAVAILABLE";
+        statusText.innerText = "GATEWAY UNAVAILABLE";
         statusText.style.color = "var(--offline)";
     } finally {
         if (activeController?.signal === signal) {
@@ -814,14 +752,12 @@ function shareTelemetry() {
         alert("No protocol telemetry currently loaded.");
         return;
     }
-    const sig = latestDashboardData.signature || {};
-    const topConsensus = latestDashboardData.top_consensus || [];
-    const topSym = topConsensus.length > 0 ? (topConsensus[0].symbol || topConsensus[0]) : "--";
-    const bullishTotal = sig.bullish_total ?? 0;
-    const bearishTotal = sig.bearish_total ?? 0;
-    const dominantFlow = bullishTotal > bearishTotal ? "BULLISH" : (bearishTotal > bullishTotal ? "BEARISH" : "MIXED");
+    const sigData = latestMarketSignature || {};
+    const macroFlow = sigData.market_flow ?? sigData.phase ?? "UNKNOWN";
+    const dominantState = sigData.dominant_state ?? "UNKNOWN";
+    const coherenceVal = sigData.coherence ?? "--";
 
-    const text = `Market Alchemy Protocol V0.8.5 Observatory Intelligence:\nRun ID: ${latestDashboardData.run_id}\nDominant Flow: ${dominantFlow}\nTop Consensus: ${topSym}\n\nImmutable Intelligence Stream: https://marketalchemy.io/observatory.html`;
+    const text = `Market Alchemy Observatory V4.2 Telemetry:\nEngine Version: ${latestDashboardData.version}\nMarket Flow: ${macroFlow}\nDominant State: ${dominantState}\nCoherence: ${coherenceVal}\n\nLive Stream: https://marketalchemy.io/observatory`;
     
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
@@ -868,8 +804,12 @@ function switchLang(lang) {
 function updateLanguageView() {
     const lang = localStorage.getItem("lang") || "en";
     
-    document.querySelectorAll(".en").forEach(e => e.style.display = (lang === "en" ? "block" : "none"));
-    document.querySelectorAll(".tr").forEach(e => e.style.display = (lang === "tr" ? "block" : "none"));
+    document.querySelectorAll(".en").forEach(e => {
+        e.hidden = (lang !== "en");
+    });
+    document.querySelectorAll(".tr").forEach(e => {
+        e.hidden = (lang !== "tr");
+    });
     
     document.querySelectorAll(".lang-btn").forEach(btn => {
         btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
@@ -881,6 +821,11 @@ function updateLanguageView() {
             a.textContent = text;
         }
     });
+
+    const nearestHeader = document.getElementById("col-nearest-header");
+    if (nearestHeader) {
+        nearestHeader.textContent = lang === "tr" ? "EN YAKIN KOMŞULAR (ÖKLİD UZAKLIĞI)" : "NEAREST (EUCLIDEAN DISTANCE)";
+    }
 }
 
 updateLanguageView();
