@@ -564,9 +564,11 @@ footer{
 </div>
 
 <script>    
-const DASHBOARD_URL = "/dashboard";
-const STRUCTURAL_URL = "/structural-assets";
-const SIGNATURE_URL = "/market-signature";
+const API_BASE = "https://api.marketalchemy.io";
+
+const DASHBOARD_URL = `${API_BASE}/dashboard`;
+const STRUCTURAL_URL = `${API_BASE}/structural-assets`;
+const SIGNATURE_URL = `${API_BASE}/market-signature`;
 
 let latestDashboardData = null;
 let latestMarketSignature = null;
