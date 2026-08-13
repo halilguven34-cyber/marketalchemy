@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) — preserved -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());gtag('config','G-8NGN65VXH8');
 </script>
+
 <title>Research Program Map | Structural Depth, SDA & SDT — Market Alchemy</title>
 <meta name="description" content="Explore the Market Alchemy research program: Structural Depth Theory (SDT), Structural Determination Axioms (SDA), structural time, constraint-invariant reality, complex systems, markets, and empirical testing.">
 <meta name="keywords" content="Structural Depth Theory, SDT, Structural Determination Axioms, SDA, structural depth, structural time, constraint invariant structure, complex systems, Market Alchemy, empirical research">
@@ -35,6 +38,11 @@ if(!localStorage.getItem("lang")){
  localStorage.setItem("lang",userLang.toLowerCase().startsWith("tr")?"tr":"en");
 }
 </script>
+
+<!-- =========================================================
+     STRUCTURED DATA — Research Knowledge Graph
+     Existing page architecture preserved; semantic layer added.
+     ========================================================= -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -43,9 +51,91 @@ if(!localStorage.getItem("lang")){
       "@type": "Person",
       "@id": "https://marketalchemy.io/research.html#author",
       "name": "Halil Ibrahim Guven",
+      "url": "https://marketalchemy.io/research.html",
       "sameAs": [
         "https://orcid.org/0009-0008-4942-5495"
+      ],
+      "knowsAbout": [
+        "Structural Depth",
+        "Structural Determination Axioms",
+        "Structural Depth Theory",
+        "Structural Time",
+        "Constraint-Invariant Structure",
+        "Complex Systems",
+        "Empirical Research"
+      ],
+      "memberOf": {
+        "@id": "https://marketalchemy.io/research.html#research-program"
+      }
+    },
+    {
+      "@type": "ResearchProject",
+      "@id": "https://marketalchemy.io/research.html#research-program",
+      "name": "Structural Depth Research Program",
+      "alternateName": [
+        "Market Alchemy Research Program",
+        "Structural Depth Research"
+      ],
+      "url": "https://marketalchemy.io/research.html",
+      "description": "An independent research program investigating structural depth, structural determination, constraints, observation, time, complex systems, organization, markets, and empirical validation.",
+      "member": {
+        "@id": "https://marketalchemy.io/research.html#author"
+      },
+      "subjectOf": {
+        "@id": "https://marketalchemy.io/research-archive.html#webpage"
+      },
+      "knowsAbout": [
+        "Structural Depth",
+        "Structural Determination Axioms",
+        "Structural Depth Theory",
+        "Structural Time",
+        "Projection Theory",
+        "Constraint-Invariant Structure",
+        "Complex Systems",
+        "Markets and Financial Systems",
+        "Empirical Research"
+      ],
+      "sameAs": [
+        "https://zenodo.org/communities/structural-depth"
       ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://marketalchemy.io/research.html#sda",
+      "name": "Structural Determination Axioms",
+      "alternateName": "SDA",
+      "description": "A representation-independent axiomatic framework for asking what a system is before selecting how it is described or measured.",
+      "inDefinedTermSet": {
+        "@id": "https://marketalchemy.io/research.html#research-program"
+      }
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://marketalchemy.io/research.html#sdt",
+      "name": "Structural Depth Theory",
+      "alternateName": "SDT",
+      "description": "A framework for studying how systems become organized through layers of constraints, relations, and containment.",
+      "inDefinedTermSet": {
+        "@id": "https://marketalchemy.io/research.html#research-program"
+      }
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://marketalchemy.io/research.html#structural-time",
+      "name": "Structural Time",
+      "description": "An investigation of time through change and coordination internal to a system rather than only as an external background clock.",
+      "inDefinedTermSet": {
+        "@id": "https://marketalchemy.io/research.html#research-program"
+      }
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://marketalchemy.io/research.html#projection-theory",
+      "name": "Projection Theory",
+      "description": "An investigation of what remains unchanged when the same system is observed, reduced, or represented in different ways.",
+      "inDefinedTermSet": {
+        "@id": "https://marketalchemy.io/research.html#research-program"
+      }
     },
     {
       "@type": "CollectionPage",
@@ -57,30 +147,53 @@ if(!localStorage.getItem("lang")){
       "author": {
         "@id": "https://marketalchemy.io/research.html#author"
       },
+      "mainEntity": {
+        "@id": "https://marketalchemy.io/research.html#research-program"
+      },
+      "about": {
+        "@id": "https://marketalchemy.io/research.html#research-program"
+      },
+      "hasPart": {
+        "@id": "https://marketalchemy.io/research-archive.html#webpage"
+      },
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://marketalchemy.io/#website",
         "url": "https://marketalchemy.io/",
         "name": "Market Alchemy"
-      },
-      "mainEntity": {
-        "@id": "https://doi.org/10.5281/zenodo.21780917"
       }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://marketalchemy.io/#website",
+      "url": "https://marketalchemy.io/",
+      "name": "Market Alchemy",
+      "description": "Market Alchemy research and systems platform.",
+      "inLanguage": ["en", "tr"]
     },
     {
       "@type": "ScholarlyArticle",
       "@id": "https://doi.org/10.5281/zenodo.21780917",
       "headline": "Reality as a Constraint-Invariant Structure — Version 2: Theoretical-Empirical Bridge",
+      "name": "Reality as a Constraint-Invariant Structure — Version 2: Theoretical-Empirical Bridge",
       "author": {
         "@id": "https://marketalchemy.io/research.html#author"
       },
       "datePublished": "2026",
       "url": "https://doi.org/10.5281/zenodo.21780917",
-      "sameAs": "https://doi.org/10.5281/zenodo.21780917"
+      "sameAs": "https://doi.org/10.5281/zenodo.21780917",
+      "identifier": "10.5281/zenodo.21780917",
+      "about": {
+        "@id": "https://marketalchemy.io/research.html#research-program"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://marketalchemy.io/research.html#webpage"
+      }
     }
   ]
 }
 </script>
+
 <style>
 :root{--bg:#0d0f14;--panel:#151921;--line:#1f2430;--text:#e8ecf1;--muted:rgba(232,236,241,.6);--blue:#6da8ff}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.5}
@@ -101,7 +214,9 @@ h1{font-size:28px;margin-bottom:8px;margin-top:20px}.program-sub{color:var(--mut
 a{color:inherit;text-decoration:none}hr{border:none;border-top:1px solid var(--line);margin:40px 0}
 </style>
 </head>
+
 <body>
+
 <nav><div class="wrap">
 <a href="index.html" data-en="Home" data-tr="Anasayfa">Home</a>
 <a href="structure.html" data-en="Structure" data-tr="Yapı">Structure</a>
@@ -113,11 +228,13 @@ a{color:inherit;text-decoration:none}hr{border:none;border-top:1px solid var(--l
 
 <div class="container">
 <h1 data-en="Research Program Map" data-tr="Araştırma Programı Haritası">Research Program Map</h1>
+
 <div class="program-sub" data-en="Market Alchemy is an independent research program built around one question: how much of what we observe belongs to the system itself, and how much belongs to the way we observe it? The program explores this question across time, complex systems, markets, physics, organization, and computation." data-tr="Market Alchemy, tek bir temel soru etrafında gelişen bağımsız bir araştırma programıdır: Gözlemlediğimiz şeylerin ne kadarı sistemin kendisine, ne kadarı ona bakma biçimimize aittir? Program bu soruyu zaman, karmaşık sistemler, piyasalar, fizik, organizasyon ve hesaplama alanlarında araştırır.">Market Alchemy is an independent research program built around one question: how much of what we observe belongs to the system itself, and how much belongs to the way we observe it? The program explores this question across time, complex systems, markets, physics, organization, and computation.</div>
 
 <div class="identity-bar">
 <a href="https://orcid.org/0009-0008-4942-5495" target="_blank" rel="noopener noreferrer" aria-label="Halil Ibrahim Guven ORCID profile" class="id-badge">ORCID: 0009-0008-4942-5495</a>
 <a href="https://zenodo.org" target="_blank" rel="noopener noreferrer" class="id-badge">Zenodo Archive</a>
+<a href="https://zenodo.org/communities/structural-depth" target="_blank" rel="noopener noreferrer" class="id-badge" data-en="Structural Depth Community" data-tr="Structural Depth Topluluğu">Structural Depth Community</a>
 <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="id-badge">GitHub Repositories</a>
 </div>
 
