@@ -657,6 +657,163 @@ h2{
     line-height:1.8;
 }
 
+/* ============================================================
+   ARCHIVE LAYERS
+   ============================================================ */  .archive-section{  
+margin-top:24px;  
+padding:22px;  
+border:1px solid var(--border);  
+background:var(--card-bg);  
+}  .archive-section:hover{
+border-color:var(--accent);
+}
+
+.archive-description{
+margin-top:4px;
+color:var(--muted);
+font-size:11px;
+line-height:1.7;
+}
+
+.archive-table-wrapper{
+margin-top:16px;
+overflow-x:auto;
+border:1px solid var(--border);
+}
+
+.archive-table{
+width:100%;
+border-collapse:collapse;
+font-size:11px;
+text-align:left;
+}
+
+.archive-table th,
+.archive-table td{
+padding:10px 12px;
+border-bottom:1px solid var(--border);
+white-space:nowrap;
+}
+
+.archive-table th{
+background:rgba(255,255,255,0.03);
+color:var(--accent);
+font-size:9px;
+letter-spacing:1px;
+text-transform:uppercase;
+}
+
+.archive-table td{
+color:var(--fg);
+}
+
+.archive-cycle{
+color:var(--accent);
+font-weight:700;
+}
+
+.archive-state{
+font-size:10px;
+padding:2px 6px;
+border:1px solid var(--border);
+display:inline-block;
+}
+
+.archive-time{
+color:var(--muted);
+font-size:10px;
+}
+
+.archive-assets{
+color:var(--accent);
+font-weight:600;
+}
+
+.archive-empty{
+text-align:center;
+color:var(--muted);
+padding:18px !important;
+}
+
+.archive-footer{
+margin-top:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+color:var(--muted);
+font-size:10px;
+}
+
+.archive-clear-btn{
+border:1px solid var(--border);
+background:rgba(255,255,255,0.02);
+color:var(--muted);
+padding:5px 9px;
+font-family:inherit;
+font-size:10px;
+cursor:pointer;
+}
+
+.archive-clear-btn:hover{
+border-color:var(--accent);
+color:var(--accent);
+}
+
+.archive-mobile{
+display:none;
+margin-top:16px;
+flex-direction:column;
+gap:8px;
+}
+
+.archive-mobile-card{
+border:1px solid var(--border);
+background:rgba(255,255,255,0.02);
+padding:12px;
+}
+
+.archive-mobile-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding-bottom:7px;
+margin-bottom:8px;
+border-bottom:1px solid var(--border);
+}
+
+.archive-mobile-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+font-size:10px;
+}
+
+.archive-mobile-label{
+display:block;
+color:var(--muted);
+font-size:8px;
+text-transform:uppercase;
+letter-spacing:.5px;
+margin-bottom:2px;
+}
+
+@media(max-width:700px){
+
+.archive-table-wrapper{
+display:none;
+}
+
+.archive-mobile{
+display:flex;
+}
+
+.archive-footer{
+margin-top:12px;
+}
+
+}
+
 footer{
     margin-top:60px;
     padding-top:24px;
@@ -1317,6 +1474,120 @@ observation reference, but live runtime values require JavaScript.
 </section>
 
 
+<!-- ============================================================    
+     ARCHIVE LAYERS    
+     ============================================================ -->  <div    
+    class="archive-section"    
+    id="archive-section">  <div    
+    class="system-title"    
+    data-en="ARCHIVE LAYERS"    
+    data-tr="ARŞİV KATMANLARI">    
+    ARCHIVE LAYERS    
+</div>    <div    
+    class="big en">    
+    Historical Structural Snapshots    
+</div>    <div    
+    class="big tr"    
+    style="display:none;">    
+    Geçmiş Yapısal Snapshot'lar    
+</div>    <div    
+    class="archive-description"    
+    data-en="Each successful observation cycle is preserved as a structural snapshot."    
+    data-tr="Her başarılı gözlem döngüsü yapısal bir snapshot olarak korunur.">    
+    Each successful observation cycle is preserved as a structural snapshot.    
+</div>    <div class="archive-table-wrapper">    <table class="archive-table">    
+
+    <thead>    
+
+        <tr>    
+
+            <th    
+                data-en="Cycle"    
+                data-tr="Döngü">    
+                Cycle    
+            </th>    
+
+            <th    
+                data-en="Timestamp"    
+                data-tr="Zaman">    
+                Timestamp    
+            </th>    
+
+            <th    
+                data-en="State"    
+                data-tr="Durum">    
+                State    
+            </th>    
+
+            <th>    
+                Θ    
+            </th>    
+
+            <th>    
+                Ω    
+            </th>    
+
+            <th    
+                data-en="Coherence"    
+                data-tr="Uyum">    
+                Coherence    
+            </th>    
+
+            <th    
+                data-en="Assets"    
+                data-tr="Varlık">    
+                Assets    
+            </th>    
+
+        </tr>    
+
+    </thead>    
+
+    <tbody id="archive-table-body">    
+
+        <tr>    
+
+            <td    
+                colspan="7"    
+                class="archive-empty"    
+                data-en="No archived observations yet."    
+                data-tr="Henüz arşivlenmiş gözlem yok.">    
+                No archived observations yet.    
+            </td>    
+
+        </tr>    
+
+    </tbody>    
+
+</table>
+
+</div>    <div    
+    class="archive-mobile"    
+    id="archive-mobile">    
+</div>    <div class="archive-footer">    <span    
+    id="archive-count">    
+    0 records    
+</span>    
+
+<button    
+    class="archive-clear-btn"    
+    onclick="clearArchive()">    
+
+    <span class="en">    
+        Clear Local Archive    
+    </span>    
+
+    <span    
+        class="tr"    
+        style="display:none;">    
+        Yerel Arşivi Temizle    
+    </span>    
+
+</button>
+
+</div>  </div>
+
+
 <!-- =========================================================
      DEEP SYSTEM TELEMETRY
 ========================================================= -->
@@ -1491,7 +1762,7 @@ Gözlemevi, Market Alchemy sistemi tarafından üretilen yapısal
 gözlemleri raporlar. Fiyat tahmini veya alım satım tavsiyesi
 sunmaz.
 
-Katman 2, yüzeysel fiyat göstergelerine güvenmek yerine
+Katman 2, yüzeysel göstergelerine güvenmek yerine
 Teta, Erişilebilir Konfigürasyon Hacmi Omega, Akış, Durum
 ve Şok dahil olmak üzere dahili yapısal derinlik türevlerini
 hesaplar.
@@ -1638,6 +1909,15 @@ const STRUCTURAL_URL =
 
 const SIGNATURE_URL =
     `${API_BASE}/market-signature`;
+
+/* ============================================================
+ARCHIVE LAYER
+============================================================ */
+
+const ARCHIVE_STORAGE_KEY = "ma_observatory_archive_v1";
+const MAX_ARCHIVE_RECORDS = 30;
+
+let archiveRecords = [];
 
 
 /* =========================================================
@@ -2020,6 +2300,533 @@ function normalizeStructuralAssets(
 }
 
 
+/*
+|--------------------------------------------------------------------------
+
+ARCHIVE STORAGE
+
+*/
+
+function loadArchive() {
+
+try {
+
+const stored =    
+    localStorage.getItem(    
+        ARCHIVE_STORAGE_KEY    
+    );    
+
+if (!stored) {    
+    archiveRecords = [];    
+    return;    
+}    
+
+const parsed =    
+    JSON.parse(stored);    
+
+archiveRecords =    
+    Array.isArray(parsed)    
+        ? parsed    
+        : [];
+
+}
+
+catch (err) {
+
+console.warn(    
+    "Archive could not be loaded:",    
+    err    
+);    
+
+archiveRecords = [];
+
+}
+
+}
+
+function saveArchive() {
+
+try {
+
+localStorage.setItem(    
+    ARCHIVE_STORAGE_KEY,    
+    JSON.stringify(archiveRecords)    
+);
+
+}
+
+catch (err) {
+
+console.warn(    
+    "Archive could not be saved:",    
+    err    
+);
+
+}
+
+}
+
+function createArchiveSnapshot(
+dashboard,
+signature,
+assets
+) {
+
+return {
+
+id:    
+    Date.now(),    
+
+timestamp:    
+    dashboard.last_successful_run ||    
+    new Date().toISOString(),    
+
+state:    
+    signature.dominant_state ||    
+    "UNKNOWN",    
+
+phase:    
+    signature.phase ||    
+    "UNKNOWN",    
+
+theta:    
+    signature.market_theta !== undefined    
+        ? Number(    
+            signature.market_theta    
+        )    
+        : null,    
+
+omega:    
+    signature.market_omega !== undefined    
+        ? Number(    
+            signature.market_omega    
+        )    
+        : null,    
+
+coherence:    
+    signature.coherence !== undefined    
+        ? Number(    
+            signature.coherence    
+        )    
+        : null,    
+
+assetCount:    
+    Array.isArray(assets)    
+        ? assets.length    
+        : 0,    
+
+assets:    
+    Array.isArray(assets)    
+        ? assets    
+        : []
+
+};
+
+}
+
+function archiveSnapshot(
+dashboard,
+signature,
+assets
+) {
+
+const snapshot =
+createArchiveSnapshot(
+dashboard,
+signature,
+assets
+);
+
+/*
+
+Prevent duplicate archive entries
+
+when the same backend timestamp is returned.
+*/
+
+
+const duplicate =
+archiveRecords.some(
+record =>
+record.timestamp ===
+snapshot.timestamp
+);
+
+if (duplicate) {
+return;
+}
+
+archiveRecords.unshift(
+snapshot
+);
+
+/*
+
+Keep newest records only.
+*/
+
+
+if (
+archiveRecords.length >
+MAX_ARCHIVE_RECORDS
+) {
+
+archiveRecords =    
+    archiveRecords.slice(    
+        0,    
+        MAX_ARCHIVE_RECORDS    
+    );
+
+}
+
+saveArchive();
+
+renderArchive();
+
+}
+
+function renderArchive() {
+
+const tbody =
+document.getElementById(
+"archive-table-body"
+);
+
+const mobile =
+document.getElementById(
+"archive-mobile"
+);
+
+const count =
+document.getElementById(
+"archive-count"
+);
+
+if (!tbody || !mobile) {
+return;
+}
+
+const lang =
+localStorage.getItem("lang") ||
+"en";
+
+tbody.innerHTML = "";
+mobile.innerHTML = "";
+
+if (
+!archiveRecords.length
+) {
+
+tbody.innerHTML = `    
+
+    <tr>    
+
+        <td    
+            colspan="7"    
+            class="archive-empty">    
+
+            ${    
+                lang === "tr"    
+                    ? "Henüz arşivlenmiş gözlem yok."    
+                    : "No archived observations yet."    
+            }    
+
+        </td>    
+
+    </tr>    
+
+`;    
+
+if (count) {    
+
+    count.innerText =    
+        lang === "tr"    
+            ? "0 kayıt"    
+            : "0 records";    
+
+}    
+
+return;
+
+}
+
+archiveRecords.forEach(
+(record, index) => {
+
+const translatedState =    
+        parseAndTranslateState(    
+            record.state    
+        );    
+
+    const translatedPhase =    
+        parseAndTranslateState(    
+            record.phase    
+        );    
+
+    const time =    
+        formatArchiveTime(    
+            record.timestamp    
+        );    
+
+    /*    
+     * Desktop row    
+     */    
+
+    const tr =    
+        document.createElement("tr");    
+
+    tr.innerHTML = `    
+
+        <td    
+            class="archive-cycle">    
+            #${archiveRecords.length - index}    
+        </td>    
+
+        <td    
+            class="archive-time">    
+            ${time}    
+        </td>    
+
+        <td>    
+
+            <span    
+                class="archive-state">    
+                ${translatedState}    
+            </span>    
+
+            <div    
+                style="font-size:9px;color:var(--muted);margin-top:3px;">    
+                ${translatedPhase}    
+            </div>    
+
+        </td>    
+
+        <td    
+            style="color:var(--accent);">    
+            ${formatNumeric(record.theta,3)}    
+        </td>    
+
+        <td>    
+            ${formatNumeric(record.omega,3)}    
+        </td>    
+
+        <td>    
+            ${formatNumeric(record.coherence,3)}    
+        </td>    
+
+        <td    
+            class="archive-assets">    
+            ${record.assetCount}    
+        </td>    
+
+    `;    
+
+    tbody.appendChild(tr);    
+
+    /*    
+     * Mobile card    
+     */    
+
+    const card =    
+        document.createElement("div");    
+
+    card.className =    
+        "archive-mobile-card";    
+
+    card.innerHTML = `    
+
+        <div    
+            class="archive-mobile-header">    
+
+            <span    
+                class="archive-cycle">    
+                #${archiveRecords.length - index}    
+            </span>    
+
+            <span    
+                class="archive-time">    
+                ${time}    
+            </span>    
+
+        </div>    
+
+        <div    
+            class="archive-mobile-grid">    
+
+            <div>    
+
+                <span    
+                    class="archive-mobile-label">    
+
+                    ${    
+                        lang === "tr"    
+                            ? "Durum"    
+                            : "State"    
+                    }    
+
+                </span>    
+
+                ${translatedState}    
+
+            </div>    
+
+            <div>    
+
+                <span    
+                    class="archive-mobile-label">    
+
+                    ${    
+                        lang === "tr"    
+                            ? "Faz"    
+                            : "Phase"    
+                    }    
+
+                </span>    
+
+                ${translatedPhase}    
+
+            </div>    
+
+            <div>    
+
+                <span    
+                    class="archive-mobile-label">    
+                    Θ    
+                </span>    
+
+                ${formatNumeric(record.theta,3)}    
+
+            </div>    
+
+            <div>    
+
+                <span    
+                    class="archive-mobile-label">    
+                    Ω    
+                </span>    
+
+                ${formatNumeric(record.omega,3)}    
+
+            </div>    
+
+            <div>    
+
+                <span    
+                    class="archive-mobile-label">    
+
+                    ${    
+                        lang === "tr"    
+                            ? "Uyum"    
+                            : "Coherence"    
+                    }    
+
+                </span>    
+
+                ${formatNumeric(record.coherence,3)}    
+
+            </div>    
+
+            <div>    
+
+                <span    
+                    class="archive-mobile-label">    
+
+                    ${    
+                        lang === "tr"    
+                            ? "Varlık"    
+                            : "Assets"    
+                    }    
+
+                </span>    
+
+                ${record.assetCount}    
+
+            </div>    
+
+        </div>    
+
+    `;    
+
+    mobile.appendChild(card);    
+
+}
+
+);
+
+if (count) {
+
+count.innerText =    
+    lang === "tr"    
+        ? `${archiveRecords.length} kayıt`    
+        : `${archiveRecords.length} records`;
+
+}
+
+}
+
+function formatArchiveTime(
+timestamp
+) {
+
+if (!timestamp) {
+return "--";
+}
+
+try {
+
+const date =    
+    new Date(timestamp);    
+
+if (    
+    Number.isNaN(    
+        date.getTime()    
+    )    
+) {    
+    return timestamp;    
+}    
+
+return date.toISOString()    
+    .replace("T"," ")    
+    .replace(".000Z"," UTC");
+
+}
+
+catch {
+
+return timestamp;
+
+}
+
+}
+
+function clearArchive() {
+
+const lang =
+localStorage.getItem("lang") ||
+"en";
+
+const confirmed =
+confirm(
+lang === "tr"
+? "Yerel arşiv temizlensin mi?"
+: "Clear the local archive?"
+);
+
+if (!confirmed) {
+return;
+}
+
+archiveRecords = [];
+
+localStorage.removeItem(
+ARCHIVE_STORAGE_KEY
+);
+
+renderArchive();
+
+}
+
+
 /* =========================================================
    NUMERIC FORMAT
 ========================================================= */
@@ -2238,6 +3045,22 @@ async function loadRuntimeProtocol(){
                 structuralData,
                 dashboard
             );
+
+
+        /*
+
+        ARCHIVE CURRENT SUCCESSFUL SNAPSHOT
+
+        Current table is replaced on every cycle.
+
+        Archive keeps the historical snapshot.
+        */
+
+        archiveSnapshot(
+        dashboard,
+        latestMarketSignature,
+        latestStructuralList
+        );
 
 
         const latency =
@@ -3633,7 +4456,11 @@ document.addEventListener(
    INITIALIZATION
 ========================================================= */
 
+loadArchive();
+
 updateLanguageView();
+
+renderArchive();
 
 loadRuntimeProtocol();
 
