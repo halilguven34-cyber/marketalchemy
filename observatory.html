@@ -2351,7 +2351,7 @@ if (!archiveRecords.length) {
 }  
 
 archiveRecords.forEach((record, index) => {  
-    const prevRecord = archiveRecords[index + 1]; // Bir önceki 5 dk'lık döngü  
+    const prevRecord = archiveRecords[index + 1]; // Bir önceki döngü (Karşılaştırmalı matris referansı)  
     const translatedState = parseAndTranslateState(record.state);  
     const translatedPhase = parseAndTranslateState(record.phase);  
     const time = formatArchiveTime(record.timestamp);  
@@ -2363,6 +2363,24 @@ archiveRecords.forEach((record, index) => {
         const cls = diff >= 0 ? "delta-positive" : "delta-negative";  
         const sign = diff >= 0 ? "+" : "";  
         thetaDeltaHtml = `<span class="archive-delta-badge ${cls}">${sign}${diff.toFixed(3)}</span>`;  
+    }  
+
+    // Ω (Omega) Delta Hesaplama  
+    let omegaDeltaHtml = "";  
+    if (prevRecord && prevRecord.omega !== null && record.omega !== null) {  
+        const diff = record.omega - prevRecord.omega;  
+        const cls = diff >= 0 ? "delta-positive" : "delta-negative";  
+        const sign = diff >= 0 ? "+" : "";  
+        omegaDeltaHtml = `<span class="archive-delta-badge ${cls}">${sign}${diff.toFixed(3)}</span>`;  
+    }  
+
+    // Coherence Delta Hesaplama  
+    let coherenceDeltaHtml = "";  
+    if (prevRecord && prevRecord.coherence !== null && record.coherence !== null) {  
+        const diff = record.coherence - prevRecord.coherence;  
+        const cls = diff >= 0 ? "delta-positive" : "delta-negative";  
+        const sign = diff >= 0 ? "+" : "";  
+        coherenceDeltaHtml = `<span class="archive-delta-badge ${cls}">${sign}${diff.toFixed(3)}</span>`;  
     }  
 
     const card = document.createElement("div");  
@@ -2377,13 +2395,13 @@ archiveRecords.forEach((record, index) => {
             </div>  
             <div class="archive-snapshot-meta" style="font-size:11px;">  
                 <span>Θ: <strong style="color:var(--accent);">${formatNumeric(record.theta, 3)}</strong>${thetaDeltaHtml}</span>  
-                <span>Ω: <strong>${formatNumeric(record.omega, 3)}</strong></span>  
-                <span>${lang === "tr" ? "Uyum" : "Coherence"}: <strong>${formatNumeric(record.coherence, 3)}</strong></span>  
+                <span>Ω: <strong>${formatNumeric(record.omega, 3)}</strong>${omegaDeltaHtml}</span>  
+                <span>${lang === "tr" ? "Uyum" : "Coherence"}: <strong>${formatNumeric(record.coherence, 3)}</strong>${coherenceDeltaHtml}</span>  
             </div>  
         </div>  
-        <div class="archive-snapshot-body" style="font-size:11px; color:var(--muted);">  
-            ${lang === "tr" ? "Faz" : "Phase"}: <span style="color:var(--fg);">${translatedPhase}</span> |   
-            ${lang === "tr" ? "Varlık" : "Assets"}: <span style="color:var(--fg);">${record.assetCount}</span>  
+        <div class="archive-snapshot-body" style="font-size:11px; color:var(--muted); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">  
+            <div>${lang === "tr" ? "Faz" : "Phase"}: <span style="color:var(--fg);">${translatedPhase}</span></div>   
+            <div>${lang === "tr" ? "Varlık" : "Assets"}: <span style="color:var(--fg);">${record.assetCount}</span></div>  
         </div>  
     `;  
 
