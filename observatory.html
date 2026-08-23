@@ -658,160 +658,83 @@ h2{
 }
 
 /* ============================================================
-   ARCHIVE LAYERS
-   ============================================================ */  .archive-section{  
-margin-top:24px;  
-padding:22px;  
-border:1px solid var(--border);  
-background:var(--card-bg);  
-}  .archive-section:hover{
-border-color:var(--accent);
+COMPARATIVE ARCHIVE LAYERS (SNAPSHOT MATRIX)
+============================================================ */
+.archive-section {
+margin-top: 24px;
+padding: 22px;
+border: 1px solid var(--border);
+background: var(--card-bg);
+transition: 0.3s;
 }
-
-.archive-description{
-margin-top:4px;
-color:var(--muted);
-font-size:11px;
-line-height:1.7;
+.archive-section:hover {
+border-color: var(--accent);
 }
-
-.archive-table-wrapper{
-margin-top:16px;
-overflow-x:auto;
-border:1px solid var(--border);
+.archive-description {
+margin-top: 4px;
+color: var(--muted);
+font-size: 11px;
+line-height: 1.7;
 }
-
-.archive-table{
-width:100%;
-border-collapse:collapse;
-font-size:11px;
-text-align:left;
+.archive-snapshot-card {
+border: 1px solid var(--border);
+background: rgba(255, 255, 255, 0.015);
+margin-bottom: 12px;
+padding: 14px 16px;
+transition: 0.2s;
 }
-
-.archive-table th,
-.archive-table td{
-padding:10px 12px;
-border-bottom:1px solid var(--border);
-white-space:nowrap;
+.archive-snapshot-card:hover {
+border-color: var(--accent);
 }
-
-.archive-table th{
-background:rgba(255,255,255,0.03);
-color:var(--accent);
-font-size:9px;
-letter-spacing:1px;
-text-transform:uppercase;
+.archive-snapshot-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
+padding-bottom: 8px;
+border-bottom: 1px solid var(--border);
 }
-
-.archive-table td{
-color:var(--fg);
+.archive-snapshot-meta {
+display: flex;
+gap: 14px;
+align-items: center;
+font-size: 11px;
 }
-
-.archive-cycle{
-color:var(--accent);
-font-weight:700;
+.archive-snapshot-body {
+margin-top: 10px;
 }
-
-.archive-state{
-font-size:10px;
-padding:2px 6px;
-border:1px solid var(--border);
-display:inline-block;
+.archive-delta-badge {
+font-size: 9px;
+padding: 1px 5px;
+border-radius: 2px;
+margin-left: 4px;
+font-weight: 600;
 }
+.delta-positive { color: var(--live); background: rgba(0,255,157,0.1); }
+.delta-negative { color: var(--offline); background: rgba(255,85,85,0.1); }
 
-.archive-time{
-color:var(--muted);
-font-size:10px;
+.archive-footer {
+margin-top: 16px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 10px;
+color: var(--muted);
+font-size: 10px;
 }
-
-.archive-assets{
-color:var(--accent);
-font-weight:600;
+.archive-clear-btn {
+border: 1px solid var(--border);
+background: rgba(255,255,255,0.02);
+color: var(--muted);
+padding: 5px 9px;
+font-family: inherit;
+font-size: 10px;
+cursor: pointer;
 }
-
-.archive-empty{
-text-align:center;
-color:var(--muted);
-padding:18px !important;
-}
-
-.archive-footer{
-margin-top:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-color:var(--muted);
-font-size:10px;
-}
-
-.archive-clear-btn{
-border:1px solid var(--border);
-background:rgba(255,255,255,0.02);
-color:var(--muted);
-padding:5px 9px;
-font-family:inherit;
-font-size:10px;
-cursor:pointer;
-}
-
-.archive-clear-btn:hover{
-border-color:var(--accent);
-color:var(--accent);
-}
-
-.archive-mobile{
-display:none;
-margin-top:16px;
-flex-direction:column;
-gap:8px;
-}
-
-.archive-mobile-card{
-border:1px solid var(--border);
-background:rgba(255,255,255,0.02);
-padding:12px;
-}
-
-.archive-mobile-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding-bottom:7px;
-margin-bottom:8px;
-border-bottom:1px solid var(--border);
-}
-
-.archive-mobile-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:8px;
-font-size:10px;
-}
-
-.archive-mobile-label{
-display:block;
-color:var(--muted);
-font-size:8px;
-text-transform:uppercase;
-letter-spacing:.5px;
-margin-bottom:2px;
-}
-
-@media(max-width:700px){
-
-.archive-table-wrapper{
-display:none;
-}
-
-.archive-mobile{
-display:flex;
-}
-
-.archive-footer{
-margin-top:12px;
-}
-
+.archive-clear-btn:hover {
+border-color: var(--accent);
+color: var(--accent);
 }
 
 footer{
@@ -1476,116 +1399,37 @@ observation reference, but live runtime values require JavaScript.
 
 <!-- ============================================================    
      ARCHIVE LAYERS    
-     ============================================================ -->  <div    
-    class="archive-section"    
-    id="archive-section">  <div    
-    class="system-title"    
-    data-en="ARCHIVE LAYERS"    
-    data-tr="ARŞİV KATMANLARI">    
-    ARCHIVE LAYERS    
-</div>    <div    
-    class="big en">    
-    Historical Structural Snapshots    
-</div>    <div    
-    class="big tr"    
-    style="display:none;">    
-    Geçmiş Yapısal Snapshot'lar    
-</div>    <div    
-    class="archive-description"    
-    data-en="Each successful observation cycle is preserved as a structural snapshot."    
-    data-tr="Her başarılı gözlem döngüsü yapısal bir snapshot olarak korunur.">    
-    Each successful observation cycle is preserved as a structural snapshot.    
-</div>    <div class="archive-table-wrapper">    <table class="archive-table">    
+     ============================================================ -->
+<div class="archive-section" id="archive-section">  
+    <div class="system-title" data-en="ARCHIVE LAYERS" data-tr="ARŞİV KATMANLARI">  
+        ARCHIVE LAYERS  
+    </div>  
+    <div class="big en">  
+        Comparative Historical Snapshots  
+    </div>  
+    <div class="big tr" style="display:none;">  
+        Karşılaştırmalı Geçmiş Snapshot'lar  
+    </div>  
+    <div class="archive-description"   
+         data-en="Each successful observation cycle is preserved with structural delta metrics."   
+         data-tr="Her başarılı gözlem döngüsü yapısal değişim (delta) metrikleriyle korunur.">  
+        Each successful observation cycle is preserved with structural delta metrics.  
+    </div>  <!-- Dinamik Karşılaştırmalı Snapshot Listesinin Basılacağı Yer -->  
+<div id="archive-snapshot-list" style="margin-top:16px; display:flex; flex-direction:column; gap:12px;">  
+    <div class="archive-empty" style="text-align:center; color:var(--muted); padding:18px;">  
+        No archived observations yet.  
+    </div>  
+</div>  
 
-    <thead>    
+<div class="archive-footer">  
+    <span id="archive-count">0 records</span>  
+    <button class="archive-clear-btn" onclick="clearArchive()">  
+        <span class="en">Clear Local Archive</span>  
+        <span class="tr" style="display:none;">Yerel Arşivi Temizle</span>  
+    </button>  
+</div>
 
-        <tr>    
-
-            <th    
-                data-en="Cycle"    
-                data-tr="Döngü">    
-                Cycle    
-            </th>    
-
-            <th    
-                data-en="Timestamp"    
-                data-tr="Zaman">    
-                Timestamp    
-            </th>    
-
-            <th    
-                data-en="State"    
-                data-tr="Durum">    
-                State    
-            </th>    
-
-            <th>    
-                Θ    
-            </th>    
-
-            <th>    
-                Ω    
-            </th>    
-
-            <th    
-                data-en="Coherence"    
-                data-tr="Uyum">    
-                Coherence    
-            </th>    
-
-            <th    
-                data-en="Assets"    
-                data-tr="Varlık">    
-                Assets    
-            </th>    
-
-        </tr>    
-
-    </thead>    
-
-    <tbody id="archive-table-body">    
-
-        <tr>    
-
-            <td    
-                colspan="7"    
-                class="archive-empty"    
-                data-en="No archived observations yet."    
-                data-tr="Henüz arşivlenmiş gözlem yok.">    
-                No archived observations yet.    
-            </td>    
-
-        </tr>    
-
-    </tbody>    
-
-</table>
-
-</div>    <div    
-    class="archive-mobile"    
-    id="archive-mobile">    
-</div>    <div class="archive-footer">    <span    
-    id="archive-count">    
-    0 records    
-</span>    
-
-<button    
-    class="archive-clear-btn"    
-    onclick="clearArchive()">    
-
-    <span class="en">    
-        Clear Local Archive    
-    </span>    
-
-    <span    
-        class="tr"    
-        style="display:none;">    
-        Yerel Arşivi Temizle    
-    </span>    
-
-</button>
-
-</div>  </div>
+</div>
 
 
 <!-- =========================================================
@@ -2486,280 +2330,70 @@ renderArchive();
 }
 
 function renderArchive() {
-
-const tbody =
-document.getElementById(
-"archive-table-body"
-);
-
-const mobile =
-document.getElementById(
-"archive-mobile"
-);
-
-const count =
-document.getElementById(
-"archive-count"
-);
-
-if (!tbody || !mobile) {
-return;
-}
-
-const lang =
-localStorage.getItem("lang") ||
-"en";
-
-tbody.innerHTML = "";
-mobile.innerHTML = "";
-
-if (
-!archiveRecords.length
-) {
-
-tbody.innerHTML = `    
-
-    <tr>    
-
-        <td    
-            colspan="7"    
-            class="archive-empty">    
-
-            ${    
-                lang === "tr"    
-                    ? "Henüz arşivlenmiş gözlem yok."    
-                    : "No archived observations yet."    
-            }    
-
-        </td>    
-
-    </tr>    
-
-`;    
-
-if (count) {    
-
-    count.innerText =    
-        lang === "tr"    
-            ? "0 kayıt"    
-            : "0 records";    
-
-}    
-
-return;
-
-}
-
-archiveRecords.forEach(
-(record, index) => {
-
-const translatedState =    
-        parseAndTranslateState(    
-            record.state    
-        );    
-
-    const translatedPhase =    
-        parseAndTranslateState(    
-            record.phase    
-        );    
-
-    const time =    
-        formatArchiveTime(    
-            record.timestamp    
-        );    
-
-    /*    
-     * Desktop row    
-     */    
-
-    const tr =    
-        document.createElement("tr");    
-
-    tr.innerHTML = `    
-
-        <td    
-            class="archive-cycle">    
-            #${archiveRecords.length - index}    
-        </td>    
-
-        <td    
-            class="archive-time">    
-            ${time}    
-        </td>    
-
-        <td>    
-
-            <span    
-                class="archive-state">    
-                ${translatedState}    
-            </span>    
-
-            <div    
-                style="font-size:9px;color:var(--muted);margin-top:3px;">    
-                ${translatedPhase}    
-            </div>    
-
-        </td>    
-
-        <td    
-            style="color:var(--accent);">    
-            ${formatNumeric(record.theta,3)}    
-        </td>    
-
-        <td>    
-            ${formatNumeric(record.omega,3)}    
-        </td>    
-
-        <td>    
-            ${formatNumeric(record.coherence,3)}    
-        </td>    
-
-        <td    
-            class="archive-assets">    
-            ${record.assetCount}    
-        </td>    
-
-    `;    
-
-    tbody.appendChild(tr);    
-
-    /*    
-     * Mobile card    
-     */    
-
-    const card =    
-        document.createElement("div");    
-
-    card.className =    
-        "archive-mobile-card";    
-
-    card.innerHTML = `    
-
-        <div    
-            class="archive-mobile-header">    
-
-            <span    
-                class="archive-cycle">    
-                #${archiveRecords.length - index}    
-            </span>    
-
-            <span    
-                class="archive-time">    
-                ${time}    
-            </span>    
-
-        </div>    
-
-        <div    
-            class="archive-mobile-grid">    
-
-            <div>    
-
-                <span    
-                    class="archive-mobile-label">    
-
-                    ${    
-                        lang === "tr"    
-                            ? "Durum"    
-                            : "State"    
-                    }    
-
-                </span>    
-
-                ${translatedState}    
-
-            </div>    
-
-            <div>    
-
-                <span    
-                    class="archive-mobile-label">    
-
-                    ${    
-                        lang === "tr"    
-                            ? "Faz"    
-                            : "Phase"    
-                    }    
-
-                </span>    
-
-                ${translatedPhase}    
-
-            </div>    
-
-            <div>    
-
-                <span    
-                    class="archive-mobile-label">    
-                    Θ    
-                </span>    
-
-                ${formatNumeric(record.theta,3)}    
-
-            </div>    
-
-            <div>    
-
-                <span    
-                    class="archive-mobile-label">    
-                    Ω    
-                </span>    
-
-                ${formatNumeric(record.omega,3)}    
-
-            </div>    
-
-            <div>    
-
-                <span    
-                    class="archive-mobile-label">    
-
-                    ${    
-                        lang === "tr"    
-                            ? "Uyum"    
-                            : "Coherence"    
-                    }    
-
-                </span>    
-
-                ${formatNumeric(record.coherence,3)}    
-
-            </div>    
-
-            <div>    
-
-                <span    
-                    class="archive-mobile-label">    
-
-                    ${    
-                        lang === "tr"    
-                            ? "Varlık"    
-                            : "Assets"    
-                    }    
-
-                </span>    
-
-                ${record.assetCount}    
-
-            </div>    
-
-        </div>    
-
-    `;    
-
-    mobile.appendChild(card);    
-
-}
-
-);
-
-if (count) {
-
-count.innerText =    
-    lang === "tr"    
-        ? `${archiveRecords.length} kayıt`    
-        : `${archiveRecords.length} records`;
-
+const listContainer = document.getElementById("archive-snapshot-list");
+const count = document.getElementById("archive-count");
+
+if (!listContainer) return;  
+
+const lang = localStorage.getItem("lang") || "en";  
+listContainer.innerHTML = "";  
+
+if (!archiveRecords.length) {  
+    listContainer.innerHTML = `  
+        <div style="text-align:center; color:var(--muted); padding:18px; border:1px solid var(--border);">  
+            ${lang === "tr" ? "Henüz arşivlenmiş gözlem yok." : "No archived observations yet."}  
+        </div>  
+    `;  
+    if (count) {  
+        count.innerText = lang === "tr" ? "0 kayıt" : "0 records";  
+    }  
+    return;  
+}  
+
+archiveRecords.forEach((record, index) => {  
+    const prevRecord = archiveRecords[index + 1]; // Bir önceki 5 dk'lık döngü  
+    const translatedState = parseAndTranslateState(record.state);  
+    const translatedPhase = parseAndTranslateState(record.phase);  
+    const time = formatArchiveTime(record.timestamp);  
+
+    // Θ (Theta) Delta Hesaplama  
+    let thetaDeltaHtml = "";  
+    if (prevRecord && prevRecord.theta !== null && record.theta !== null) {  
+        const diff = record.theta - prevRecord.theta;  
+        const cls = diff >= 0 ? "delta-positive" : "delta-negative";  
+        const sign = diff >= 0 ? "+" : "";  
+        thetaDeltaHtml = `<span class="archive-delta-badge ${cls}">${sign}${diff.toFixed(3)}</span>`;  
+    }  
+
+    const card = document.createElement("div");  
+    card.className = "archive-snapshot-card";  
+
+    card.innerHTML = `  
+        <div class="archive-snapshot-header">  
+            <div class="archive-snapshot-meta">  
+                <span class="archive-cycle" style="color:var(--accent); font-weight:700;">#${archiveRecords.length - index}</span>  
+                <span class="archive-time" style="color:var(--muted);">${time}</span>  
+                <span class="archive-state" style="font-size:10px; padding:2px 6px; border:1px solid var(--border);">${translatedState}</span>  
+            </div>  
+            <div class="archive-snapshot-meta" style="font-size:11px;">  
+                <span>Θ: <strong style="color:var(--accent);">${formatNumeric(record.theta, 3)}</strong>${thetaDeltaHtml}</span>  
+                <span>Ω: <strong>${formatNumeric(record.omega, 3)}</strong></span>  
+                <span>${lang === "tr" ? "Uyum" : "Coherence"}: <strong>${formatNumeric(record.coherence, 3)}</strong></span>  
+            </div>  
+        </div>  
+        <div class="archive-snapshot-body" style="font-size:11px; color:var(--muted);">  
+            ${lang === "tr" ? "Faz" : "Phase"}: <span style="color:var(--fg);">${translatedPhase}</span> |   
+            ${lang === "tr" ? "Varlık" : "Assets"}: <span style="color:var(--fg);">${record.assetCount}</span>  
+        </div>  
+    `;  
+
+    listContainer.appendChild(card);  
+});  
+
+if (count) {  
+    count.innerText = lang === "tr"   
+        ? `${archiveRecords.length} karşılaştırmalı snapshot`   
+        : `${archiveRecords.length} comparative snapshots`;  
 }
 
 }
