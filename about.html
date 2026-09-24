@@ -1,157 +1,1112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Market Alchemy — About</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NGN65VXH8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+  gtag('config', 'G-8NGN65VXH8');
+</script>
+
+<title>Halil İbrahim Güven — Creator of Market Alchemy Research</title>
+
+<meta name="description"
+      content="Halil İbrahim Güven is an independent researcher, author, and creator of Market Alchemy Research, developing Structural Depth Theory, Structural Determination Axioms, empirical computational research, and decision technologies.">
+
+<meta name="keywords"
+      content="Halil İbrahim Güven, Halil Ibrahim Guven, Market Alchemy, Market Alchemy Research, Structural Depth Theory, Structural Determination Axioms, SDA, independent researcher, computational research, structural intelligence">
+
+<meta name="author" content="Halil İbrahim Güven">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="graph-node" content="creator">
+<meta name="node-type" content="person">
+<meta name="system-layer" content="research">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://marketalchemy.io/about.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Halil İbrahim Güven — Creator of Market Alchemy Research">
+<meta property="og:description"
+      content="Independent researcher, author, and creator of Market Alchemy Research.">
+<meta property="og:url" content="https://marketalchemy.io/about.html">
+<meta property="og:site_name" content="Market Alchemy Research">
+<meta property="og:image" content="https://marketalchemy.io/author.jpg">
+<meta property="og:image:alt" content="Halil İbrahim Güven">
+
+<!-- Profile metadata -->
+<meta property="profile:first_name" content="Halil İbrahim">
+<meta property="profile:last_name" content="Güven">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Halil İbrahim Güven — Creator of Market Alchemy Research">
+<meta name="twitter:description"
+      content="Independent researcher, author, and creator of Market Alchemy Research.">
+<meta name="twitter:image" content="https://marketalchemy.io/author.jpg">
+
+<script>
+if(!localStorage.getItem("lang")){
+    const userLang = navigator.language || navigator.userLanguage;
+    localStorage.setItem(
+        "lang",
+        userLang.toLowerCase().startsWith("tr") ? "tr" : "en"
+    );
+}
+</script>
 
 <style>
-body{
-margin:0;
-background:#0d0f14;
-color:#e8ecf1;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+:root{
+    --bg:#0d0f14;
+    --fg:#e8ecf1;
+    --muted:rgba(232,236,241,0.6);
+    --accent:#6da8ff;
+    --border:#1f2430;
+    --card-bg:rgba(17,21,28,0.72);
 }
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:'JetBrains Mono', monospace, -apple-system, sans-serif;
+    line-height:1.7;
+}
+
+/* NAVIGATION */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+    background:rgba(13,15,20,0.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+}
+
+nav .wrap{
+    max-width:950px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 18px;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+nav .wrap::-webkit-scrollbar{
+    display:none;
+}
+
+nav a{
+    color:var(--fg);
+    text-decoration:none;
+    font-size:12px;
+    opacity:0.7;
+    transition:0.25s;
+    margin-right:16px;
+    flex-shrink:0;
+}
+
+nav a:last-child{
+    margin-right:0;
+}
+
+nav a:hover{
+    opacity:1;
+    color:var(--accent);
+}
+
+nav a.active{
+    opacity:1;
+    color:var(--accent);
+    font-weight:600;
+}
+
+/* CONTAINER */
 
 .container{
-max-width:760px;
-margin:auto;
-padding:40px 20px;
+    max-width:820px;
+    margin:auto;
+    padding:110px 20px 80px;
 }
 
-.card{
-padding:30px;
-border:1px solid #1f2430;
-background:linear-gradient(180deg,#151921 0%,#0d0f14 100%);
+/* NODE PATH */
+
+.node-path{
+    font-size:11px;
+    letter-spacing:1px;
+    color:var(--accent);
+    opacity:0.85;
+    margin-bottom:12px;
+    text-transform:uppercase;
 }
 
-.header{
-font-size:13px;
-text-transform:uppercase;
-letter-spacing:2px;
-color:#6da8ff;
-margin-bottom:10px;
+/* TYPOGRAPHY */
+
+h1,h2,h3,p{
+    margin:0;
 }
 
-.name{
-font-size:22px;
-font-weight:600;
-margin-bottom:20px;
+h1{
+    font-size:30px;
+    line-height:1.3;
+    letter-spacing:-0.8px;
+    border-left:2px solid var(--accent);
+    padding-left:14px;
+    margin-bottom:20px;
+    animation:pulse 6s infinite;
 }
 
-.text{
-font-size:15px;
-opacity:.7;
-line-height:1.6;
+.hero-sub{
+    font-size:15px;
+    opacity:0.82;
+    margin-top:20px;
 }
+
+.hero-focus{
+    margin-top:28px;
+    padding-left:14px;
+    border-left:2px solid var(--accent);
+    font-size:14px;
+    opacity:0.95;
+}
+
+.hero-focus strong{
+    color:var(--accent);
+    font-weight:600;
+}
+
+h2{
+    margin-top:40px;
+    margin-bottom:14px;
+    font-size:18px;
+    color:var(--accent);
+    letter-spacing:-0.3px;
+}
+
+p{
+    font-size:14px;
+    opacity:0.8;
+}
+
+/* SECTION */
+
+.section{
+    margin-top:36px;
+    padding:24px;
+    border:1px solid var(--border);
+    background:var(--card-bg);
+    transition:0.3s;
+}
+
+.section:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+}
+
+.section.axiom-layer{
+    border-left:2px solid var(--accent);
+    background:rgba(13,15,20,0.5);
+}
+
+/* AUTHOR */
 
 .author{
-display:flex;
-gap:16px;
-align-items:flex-start;
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
 }
 
 .author img{
-width:72px;
-height:72px;
-border-radius:50%;
-object-fit:cover;
+    width:88px;
+    height:88px;
+    border-radius:50%;
+    object-fit:cover;
+    border:1px solid var(--border);
+    flex-shrink:0;
+}
+
+.author-meta{
+    min-width:0;
+}
+
+.author-role{
+    font-size:12px;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-bottom:6px;
+}
+
+.author-name{
+    font-size:22px;
+    font-weight:600;
+    line-height:1.35;
+    margin-bottom:8px;
+}
+
+.author-location{
+    font-size:12px;
+    color:var(--muted);
+}
+
+.identity-grid{
+    margin-top:22px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.identity-item{
+    border:1px solid var(--border);
+    padding:14px;
+    background:rgba(255,255,255,0.02);
+}
+
+.identity-label{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:var(--accent);
+    margin-bottom:5px;
+}
+
+.identity-value{
+    font-size:12px;
+    opacity:0.82;
+}
+
+.identity-value a{
+    color:var(--fg);
+    text-decoration:none;
+}
+
+.identity-value a:hover{
+    color:var(--accent);
+}
+
+/* LINKS */
+
+.link-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+}
+
+.cta{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    text-decoration:none;
+    font-size:12px;
+    transition:0.25s;
+}
+
+.cta:hover{
+    background:var(--accent);
+    color:var(--bg);
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:80px;
+    padding-top:30px;
+    border-top:1px solid var(--border);
+    font-size:12px;
+    color:var(--muted);
+}
+
+.footer-nav{
+    display:flex;
+    gap:16px;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+}
+
+.footer-nav a{
+    color:var(--fg);
+    text-decoration:none;
+    opacity:0.7;
+    transition:0.2s;
+}
+
+.footer-nav a:hover{
+    color:var(--accent);
+    opacity:1;
+}
+
+.note{
+    margin-top:16px;
+    font-size:12px;
+    opacity:0.55;
+}
+
+/* ANIMATION */
+
+@keyframes pulse{
+    0%{opacity:0.75;}
+    50%{opacity:1;}
+    100%{opacity:0.75;}
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    h1{
+        font-size:24px;
+    }
+
+    .container{
+        padding-top:90px;
+    }
+
+    .author{
+        flex-direction:column;
+    }
+
+    .author img{
+        width:76px;
+        height:76px;
+    }
+
+    .identity-grid{
+        grid-template-columns:1fr;
+    }
 }
 </style>
-
-<script>
-const userLang = navigator.language || navigator.userLanguage;
-const lang = userLang.startsWith("tr") ? "tr" : "en";
-
-window.onload = () => {
-document.querySelectorAll(".en").forEach(e => e.style.display = (lang==="en"?"block":"none"));
-document.querySelectorAll(".tr").forEach(e => e.style.display = (lang==="tr"?"block":"none"));
-};
-</script>
-
-<!-- SEO -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Halil İbrahim Güven",
-  "url": "https://marketalchemy.io/about.html",
-  "sameAs": [
-    "https://orcid.org/0009-0008-4942-5495"
-  ],
-  "jobTitle": "Financial Analyst, Researcher, Author",
-  "knowsAbout": [
-    "Financial systems",
-    "Entropy",
-    "Structural markets",
-    "System behavior"
-  ]
-}
-</script>
-
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="wrap">
+
+        <a href="index.html"
+           data-en="Home"
+           data-tr="Anasayfa">
+           Home
+        </a>
+
+        <a href="structure.html"
+           data-en="Structure"
+           data-tr="Yapı">
+           Structure
+        </a>
+
+        <a href="research.html"
+           data-en="Research"
+           data-tr="Araştırma">
+           Research
+        </a>
+
+        <a href="observatory.html"
+           data-en="Observatory"
+           data-tr="Gözlem">
+           Observatory
+        </a>
+
+        <a href="lab.html"
+           data-en="Laboratory"
+           data-tr="Laboratuvar">
+           Laboratory
+        </a>
+
+        <a href="library.html"
+           data-en="Library"
+           data-tr="Kitaplık">
+           Library
+        </a>
+
+        <a href="about.html"
+           class="active"
+           data-en="Creator"
+           data-tr="Yaratıcı">
+           Creator
+        </a>
+
+    </div>
+</nav>
+
+
 <div class="container">
 
-<div class="card">
+<header>
 
-<div class="author">
-<img src="/author.jpg" alt="Halil Ibrahim Guven">
+    <div class="node-path"
+         data-en="RESEARCH SYSTEM :: CREATOR IDENTITY"
+         data-tr="ARAŞTIRMA SİSTEMİ :: YARATICI KİMLİĞİ">
+         RESEARCH SYSTEM :: CREATOR IDENTITY
+    </div>
 
-<div>
+    <h1
+        data-en="Halil İbrahim Güven — Creator of Market Alchemy Research"
+        data-tr="Halil İbrahim Güven — Market Alchemy Research Yaratıcısı">
+        Halil İbrahim Güven — Creator of Market Alchemy Research
+    </h1>
 
-<div class="header en">Author</div>
-<div class="header tr" style="display:none;">Yazar</div>
+    <p class="hero-sub"
+       data-en="Independent researcher, author, and creator of Market Alchemy Research."
+       data-tr="Bağımsız araştırmacı, yazar ve Market Alchemy Research'ün yaratıcısı.">
+       Independent researcher, author, and creator of Market Alchemy Research.
+    </p>
 
-<div class="name">Halil İbrahim Güven</div>
+    <div class="hero-focus">
 
-<div class="text en">
-MBA graduate.<br>
-Holds CMB licenses.<br>
-18 years of experience as a financial (technical) analyst.<br>
-Researcher and author since 2016.<br>
-5 years experience as a bank analyst.<br><br>
+        <p
+            data-en="Research · Structural Depth · Structural Determination · Empirical Computation · System Architecture"
+            data-tr="Araştırma · Yapısal Derinlik · Yapısal Belirlenim · Ampirik Hesaplama · Sistem Mimarisi">
+            Research · Structural Depth · Structural Determination · Empirical Computation · System Architecture
+        </p>
 
-Developed the Structural Depth framework.<br>
-Focus: system behavior, entropy, and structural markets.<br>
-Market Alchemy is the applied layer.
+        <p style="margin-top:14px;">
+            <strong
+                data-en="Market Alchemy is the research and technology architecture developed through this program."
+                data-tr="Market Alchemy, bu araştırma programı boyunca geliştirilen araştırma ve teknoloji mimarisidir.">
+                Market Alchemy is the research and technology architecture developed through this program.
+            </strong>
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- IDENTITY -->
+
+<section class="section">
+
+    <div class="author">
+
+        <img
+            src="author.jpg"
+            alt="Halil İbrahim Güven — Creator of Market Alchemy Research"
+            onerror="this.style.display='none'">
+
+        <div class="author-meta">
+
+            <div class="author-role"
+                 data-en="Creator & Independent Researcher"
+                 data-tr="Yaratıcı ve Bağımsız Araştırmacı">
+                 Creator & Independent Researcher
+            </div>
+
+            <div class="author-name">
+                Halil İbrahim Güven
+            </div>
+
+            <div class="author-location"
+                 data-en="Kırklareli, Türkiye"
+                 data-tr="Kırklareli, Türkiye">
+                 Kırklareli, Türkiye
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="identity-grid">
+
+        <div class="identity-item">
+
+            <div class="identity-label"
+                 data-en="Research Program"
+                 data-tr="Araştırma Programı">
+                 Research Program
+            </div>
+
+            <div class="identity-value">
+                Market Alchemy Research
+            </div>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <div class="identity-label"
+                 data-en="Role"
+                 data-tr="Rol">
+                 Role
+            </div>
+
+            <div class="identity-value"
+                 data-en="Creator & System Architect"
+                 data-tr="Yaratıcı ve Sistem Mimarı">
+                 Creator & System Architect
+            </div>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <div class="identity-label"
+                 data-en="Research Identity"
+                 data-tr="Araştırmacı Kimliği">
+                 Research Identity
+            </div>
+
+            <div class="identity-value"
+                 data-en="Independent Researcher & Author"
+                 data-tr="Bağımsız Araştırmacı ve Yazar">
+                 Independent Researcher & Author
+            </div>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <div class="identity-label"
+                 data-en="Location"
+                 data-tr="Konum">
+                 Location
+            </div>
+
+            <div class="identity-value">
+                Kırklareli, Türkiye
+            </div>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <div class="identity-label">
+                ORCID
+            </div>
+
+            <div class="identity-value">
+                <a
+                    href="https://orcid.org/0009-0008-4942-5495"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    0009-0008-4942-5495 ↗
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <div class="identity-label"
+                 data-en="Research Archive"
+                 data-tr="Araştırma Arşivi">
+                 Research Archive
+            </div>
+
+            <div class="identity-value">
+                <a href="research-archive.html"
+                   data-en="Market Alchemy Research Archive →"
+                   data-tr="Market Alchemy Araştırma Arşivi →">
+                   Market Alchemy Research Archive →
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CREATOR / RESEARCH PROGRAM -->
+
+<section class="section">
+
+    <h2
+        data-en="Creator of Market Alchemy"
+        data-tr="Market Alchemy'nin Yaratıcısı">
+        Creator of Market Alchemy
+    </h2>
+
+    <p
+        data-en="Halil İbrahim Güven is the creator and system architect of Market Alchemy Research, an independent research program investigating structural determination, structural depth, complex systems, time, markets, and computational methods."
+        data-tr="Halil İbrahim Güven; yapısal belirlenim, yapısal derinlik, karmaşık sistemler, zaman, piyasalar ve hesaplamalı yöntemleri araştıran bağımsız araştırma programı Market Alchemy Research'ün yaratıcısı ve sistem mimarıdır.">
+        Halil İbrahim Güven is the creator and system architect of Market Alchemy Research, an independent research program investigating structural determination, structural depth, complex systems, time, markets, and computational methods.
+    </p>
+
+    <p style="margin-top:16px;"
+       data-en="The program develops theoretical frameworks, formal models, empirical tests, computational experiments, reproducible research tools, and working decision-system architectures."
+       data-tr="Program; teorik çerçeveler, formel modeller, ampirik testler, hesaplamalı deneyler, yeniden üretilebilir araştırma araçları ve çalışan karar sistemi mimarileri geliştirir.">
+       The program develops theoretical frameworks, formal models, empirical tests, computational experiments, reproducible research tools, and working decision-system architectures.
+    </p>
+
+    <p style="margin-top:16px;"
+       data-en="MarketAlchemy.io is the public research and technology interface of this program."
+       data-tr="MarketAlchemy.io, bu programın kamuya açık araştırma ve teknoloji arayüzüdür.">
+       MarketAlchemy.io is the public research and technology interface of this program.
+    </p>
+
+</section>
+
+
+<!-- RESEARCH IDENTITY -->
+
+<section class="section">
+
+    <h2
+        data-en="Research Identity"
+        data-tr="Araştırmacı Kimliği">
+        Research Identity
+    </h2>
+
+    <p
+        data-en="His work combines a background in financial and technical analysis with independent research in structural systems and computational methods. He has worked as a financial analyst for more than 18 years, including experience in banking analysis, and has pursued independent research and authorship since 2016."
+        data-tr="Çalışmaları, finansal ve teknik analiz geçmişini yapısal sistemler ve hesaplamalı yöntemler alanındaki bağımsız araştırmalarla birleştirir. 18 yılı aşkın finansal analistlik deneyimine, banka analistliği deneyimine ve 2016'dan bu yana bağımsız araştırmacı-yazarlık çalışmalarına sahiptir.">
+        His work combines a background in financial and technical analysis with independent research in structural systems and computational methods. He has worked as a financial analyst for more than 18 years, including experience in banking analysis, and has pursued independent research and authorship since 2016.
+    </p>
+
+    <p style="margin-top:16px;"
+       data-en="His research program has developed from theoretical work on Structural Depth and structural determination toward formalization, computational implementation, empirical testing, and reproducibility."
+       data-tr="Araştırma programı, Yapısal Derinlik ve yapısal belirlenim üzerine teorik çalışmalardan formelleştirme, hesaplamalı uygulama, ampirik test ve yeniden üretilebilirlik aşamalarına doğru gelişmiştir.">
+       His research program has developed from theoretical work on Structural Depth and structural determination toward formalization, computational implementation, empirical testing, and reproducibility.
+    </p>
+
+</section>
+
+
+<!-- CORE FRAMEWORKS -->
+
+<section class="section axiom-layer">
+
+    <h2
+        data-en="Core Research Frameworks"
+        data-tr="Temel Araştırma Çerçeveleri">
+        Core Research Frameworks
+    </h2>
+
+    <p>
+        <strong
+            data-en="Structural Determination Axioms (SDA)"
+            data-tr="Yapısal Belirlenim Aksiyomları (SDA)">
+            Structural Determination Axioms (SDA)
+        </strong>
+    </p>
+
+    <p style="margin-top:8px;"
+       data-en="An axiomatic layer defining a minimal structural vocabulary for investigating systems before selecting a particular representation or measurement."
+       data-tr="Belirli bir temsil veya ölçüm seçilmeden önce sistemleri incelemek için minimal bir yapısal sözlük tanımlayan aksiyomatik katman.">
+       An axiomatic layer defining a minimal structural vocabulary for investigating systems before selecting a particular representation or measurement.
+    </p>
+
+
+    <p style="margin-top:20px;">
+        <strong
+            data-en="Structural Depth Theory (SDT)"
+            data-tr="Yapısal Derinlik Teorisi (SDT)">
+            Structural Depth Theory (SDT)
+        </strong>
+    </p>
+
+    <p style="margin-top:8px;"
+       data-en="A framework for studying how systems become organized through layers of constraints, relations, accessibility, and containment."
+       data-tr="Sistemlerin kısıtlar, ilişkiler, erişilebilirlik ve containment katmanları üzerinden nasıl organize olduğunu inceleyen çerçeve.">
+       A framework for studying how systems become organized through layers of constraints, relations, accessibility, and containment.
+    </p>
+
+
+    <p style="margin-top:20px;">
+        <strong
+            data-en="Empirical Computational Research"
+            data-tr="Ampirik Hesaplamalı Araştırma">
+            Empirical Computational Research
+        </strong>
+    </p>
+
+    <p style="margin-top:8px;"
+       data-en="The research program translates selected theoretical structures into computable quantities, experiments, live telemetry, matched controls, and reproducible computational procedures."
+       data-tr="Araştırma programı seçilmiş teorik yapıları hesaplanabilir niceliklere, deneylere, canlı telemetriye, eşleştirilmiş kontrollere ve yeniden üretilebilir hesaplamalı prosedürlere dönüştürür.">
+       The research program translates selected theoretical structures into computable quantities, experiments, live telemetry, matched controls, and reproducible computational procedures.
+    </p>
+
+</section>
+
+
+<!-- RESEARCH TO TECHNOLOGY -->
+
+<section class="section">
+
+    <h2
+        data-en="From Research to Technology"
+        data-tr="Araştırmadan Teknolojiye">
+        From Research to Technology
+    </h2>
+
+    <p
+        data-en="The Market Alchemy architecture connects theoretical research with computational implementation. Research outputs can become models, experiments, decision-support engines, observability systems, and reproducible computational tools."
+        data-tr="Market Alchemy mimarisi teorik araştırmayı hesaplamalı uygulamayla birleştirir. Araştırma çıktıları modeller, deneyler, karar destek motorları, gözlemlenebilirlik sistemleri ve yeniden üretilebilir hesaplamalı araçlara dönüşebilir.">
+        The Market Alchemy architecture connects theoretical research with computational implementation. Research outputs can become models, experiments, decision-support engines, observability systems, and reproducible computational tools.
+    </p>
+
+    <p style="margin-top:16px;"
+       data-en="The public Observatory provides an accessible runtime layer through which selected computational outputs can be observed in real time."
+       data-tr="Herkese açık Gözlemevi, seçilmiş hesaplamalı çıktıların gerçek zamanlı olarak gözlemlenebildiği erişilebilir çalışma katmanını sağlar.">
+       The public Observatory provides an accessible runtime layer through which selected computational outputs can be observed in real time.
+    </p>
+
+    <div class="link-row">
+
+        <a class="cta"
+           href="research.html"
+           data-en="Explore Research →"
+           data-tr="Araştırmayı İncele →">
+           Explore Research →
+        </a>
+
+        <a class="cta"
+           href="observatory.html"
+           data-en="Open Observatory →"
+           data-tr="Gözlemevini Aç →">
+           Open Observatory →
+        </a>
+
+        <a class="cta"
+           href="lab.html"
+           data-en="Inspect Laboratory →"
+           data-tr="Laboratuvarı İncele →">
+           Inspect Laboratory →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- PUBLICATION / ARCHIVE -->
+
+<section class="section">
+
+    <h2
+        data-en="Research Corpus"
+        data-tr="Araştırma Külliyatı">
+        Research Corpus
+    </h2>
+
+    <p
+        data-en="The Market Alchemy Research Archive preserves the chronological development of the program, including research articles, preprints, DOI records, source-code records, theoretical formulations, empirical studies, and reproducibility materials."
+        data-tr="Market Alchemy Araştırma Arşivi; araştırma makaleleri, ön baskılar, DOI kayıtları, kaynak kod kayıtları, teorik formülasyonlar, ampirik çalışmalar ve yeniden üretilebilirlik materyalleri dahil olmak üzere programın kronolojik gelişimini korur.">
+        The Market Alchemy Research Archive preserves the chronological development of the program, including research articles, preprints, DOI records, source-code records, theoretical formulations, empirical studies, and reproducibility materials.
+    </p>
+
+    <p style="margin-top:16px;"
+       data-en="The archive is maintained as the primary public research record of the Market Alchemy program."
+       data-tr="Arşiv, Market Alchemy programının birincil kamuya açık araştırma kaydı olarak tutulmaktadır.">
+       The archive is maintained as the primary public research record of the Market Alchemy program.
+    </p>
+
+    <div class="link-row">
+
+        <a class="cta"
+           href="research-archive.html"
+           data-en="Open Research Archive →"
+           data-tr="Araştırma Arşivini Aç →">
+           Open Research Archive →
+        </a>
+
+        <a class="cta"
+           href="research.html"
+           data-en="View Research Program →"
+           data-tr="Araştırma Programını Gör →">
+           View Research Program →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- EXTERNAL IDENTITY -->
+
+<section class="section">
+
+    <h2
+        data-en="Verified Research Identity"
+        data-tr="Doğrulanabilir Araştırmacı Kimliği">
+        Verified Research Identity
+    </h2>
+
+    <p
+        data-en="The following identifier provides a persistent external reference for this research identity."
+        data-tr="Aşağıdaki tanımlayıcı, bu araştırmacı kimliği için kalıcı bir harici referans sağlar.">
+        The following identifier provides a persistent external reference for this research identity.
+    </p>
+
+    <div class="identity-grid">
+
+        <div class="identity-item">
+
+            <div class="identity-label">
+                ORCID
+            </div>
+
+            <div class="identity-value">
+                <a
+                    href="https://orcid.org/0009-0008-4942-5495"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    0009-0008-4942-5495 ↗
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <div class="identity-label"
+                 data-en="Canonical Website"
+                 data-tr="Kanonik Web Sitesi">
+                 Canonical Website
+            </div>
+
+            <div class="identity-value">
+                <a
+                    href="https://marketalchemy.io/"
+                    data-en="marketalchemy.io ↗"
+                    data-tr="marketalchemy.io ↗">
+                    marketalchemy.io ↗
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-nav">
+
+        <a href="index.html"
+           data-en="Home"
+           data-tr="Anasayfa">
+           Home
+        </a>
+
+        <a href="structure.html"
+           data-en="Structure"
+           data-tr="Yapı">
+           Structure
+        </a>
+
+        <a href="research.html"
+           data-en="Research"
+           data-tr="Araştırma">
+           Research
+        </a>
+
+        <a href="observatory.html"
+           data-en="Observatory"
+           data-tr="Gözlem">
+           Observatory
+        </a>
+
+        <a href="lab.html"
+           data-en="Laboratory"
+           data-tr="Laboratuvar">
+           Laboratory
+        </a>
+
+        <a href="library.html"
+           data-en="Library"
+           data-tr="Kitaplık">
+           Library
+        </a>
+
+        <a href="about.html"
+           data-en="Creator"
+           data-tr="Yaratıcı">
+           Creator
+        </a>
+
+    </div>
+
+    <p
+        data-en="Market Alchemy Research — Institutional Computational Technologies & System Architecture by Halil Ibrahim Guven."
+        data-tr="Market Alchemy Research — Halil İbrahim Güven tarafından geliştirilen bağımsız araştırma ve sistem mimarisi.">
+        Market Alchemy Research — Institutional Computational Technologies & System Architecture by Halil Ibrahim Guven.
+    </p>
+
+    <div class="note"
+         data-en="Independent Researcher & Creator · Kırklareli, Türkiye"
+         data-tr="Bağımsız Araştırmacı ve Yaratıcı · Kırklareli, Türkiye">
+         Independent Researcher & Creator · Kırklareli, Türkiye
+    </div>
+
+</footer>
+
 </div>
 
-<div class="text tr" style="display:none;">
-MBA mezunu.<br>
-SPK lisansları sahibi.<br>
-18 yıllık finansal (teknik) analist deneyimi.<br>
-2016’dan bu yana araştırmacı yazar.<br>
-5 yıl banka analist/uzman deneyimi.<br><br>
 
-Yapısal Derinlik çerçevesinin geliştiricisidir.<br>
-Odak: sistem davranışı, entropi ve yapısal piyasalar.<br>
-Market Alchemy bu yaklaşımın uygulama katmanıdır.
-</div>
+<!-- STRUCTURED DATA -->
 
-<div class="text en" style="margin-top:12px; opacity:.5;">
-ORCID: <a href="https://orcid.org/0009-0008-4942-5495" target="_blank" style="color:#6da8ff; text-decoration:none;">
-0009-0008-4942-5495
-</a>
-</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
 
-<div class="text tr" style="display:none; margin-top:12px; opacity:.5;">
-ORCID: <a href="https://orcid.org/0009-0008-4942-5495" target="_blank" style="color:#6da8ff; text-decoration:none;">
-0009-0008-4942-5495
-</a>
-</div>
+    {
+      "@type": "WebSite",
+      "@id": "https://marketalchemy.io/#website",
+      "url": "https://marketalchemy.io/",
+      "name": "Market Alchemy Research",
+      "description": "Independent research and computational technology program focused on structural determination, structural depth, empirical research, and system architecture.",
+      "publisher": {
+        "@id": "https://marketalchemy.io/#author"
+      }
+    },
 
-</div>
+    {
+      "@type": "Person",
+      "@id": "https://marketalchemy.io/#author",
+      "name": "Halil Ibrahim Guven",
+      "alternateName": "Halil İbrahim Güven",
+      "url": "https://marketalchemy.io/about.html",
+      "image": "https://marketalchemy.io/author.jpg",
+      "jobTitle": "Independent Researcher & System Architect",
+      "description": "Independent researcher, author, and creator of Market Alchemy Research.",
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Kırklareli, Türkiye"
+      },
+      "knowsAbout": [
+        "Structural Depth Theory",
+        "Structural Determination Axioms",
+        "Structural Determination",
+        "Complex Systems",
+        "Computational Research",
+        "Empirical Research",
+        "Computational Decision Systems",
+        "System Architecture",
+        "Quantitative Finance"
+      ],
+      "sameAs": [
+        "https://orcid.org/0009-0008-4942-5495"
+      ],
+      "mainEntityOfPage": {
+        "@id": "https://marketalchemy.io/about.html#webpage"
+      }
+    },
 
-</div>
+    {
+      "@type": "WebPage",
+      "@id": "https://marketalchemy.io/about.html#webpage",
+      "url": "https://marketalchemy.io/about.html",
+      "name": "Halil İbrahim Güven — Creator of Market Alchemy Research",
+      "description": "Creator and independent researcher behind Market Alchemy Research.",
+      "isPartOf": {
+        "@id": "https://marketalchemy.io/#website"
+      },
+      "about": {
+        "@id": "https://marketalchemy.io/#author"
+      },
+      "mainEntity": {
+        "@id": "https://marketalchemy.io/#author"
+      },
+      "inLanguage": [
+        "en",
+        "tr"
+      ]
+    },
 
-</div>
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://marketalchemy.io/about.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Market Alchemy Research",
+          "item": "https://marketalchemy.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Creator",
+          "item": "https://marketalchemy.io/about.html"
+        }
+      ]
+    }
 
-</div>
+  ]
+}
+</script>
+
+
+<!-- LANGUAGE + ACTIVE NAVIGATION -->
+
+<script>
+
+const lang = localStorage.getItem("lang") || "en";
+
+function projectLanguage(){
+
+    document.querySelectorAll("[data-en]").forEach(el => {
+
+        const value = el.getAttribute("data-" + lang);
+
+        if(value){
+            el.textContent = value;
+        }
+
+    });
+
+}
+
+
+/* NAV ACTIVE STATE */
+
+(function(){
+
+    let path = window.location.pathname.split("/").pop();
+
+    if(path === "" || path === "index.html"){
+        path = "index.html";
+    }
+
+    document.querySelectorAll("nav a").forEach(a => {
+
+        const href = a.getAttribute("href");
+
+        if(href === path){
+            a.classList.add("active");
+        }else{
+            a.classList.remove("active");
+        }
+
+    });
+
+})();
+
+
+projectLanguage();
+
+</script>
 
 </body>
 </html>
