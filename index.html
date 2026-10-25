@@ -275,6 +275,71 @@ p{
     color:var(--bg);
 }
 
+/* OBSERVATORY FEATURE CTA */
+.observatory-feature{
+    margin-top:24px;
+    padding:24px;
+    border:1px solid rgba(109,168,255,0.55);
+    background:linear-gradient(135deg, rgba(109,168,255,0.10), rgba(17,21,28,0.88) 58%, rgba(109,168,255,0.04));
+    position:relative;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.observatory-feature:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+}
+
+.observatory-feature-top{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:var(--accent);
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.observatory-live-dot{
+    width:7px;
+    height:7px;
+    flex-shrink:0;
+    border-radius:50%;
+    background:#8ee6a3;
+    box-shadow:0 0 10px rgba(142,230,163,0.65);
+}
+
+.observatory-feature h2{
+    margin-top:0;
+    margin-bottom:12px;
+    font-size:21px;
+    line-height:1.4;
+}
+
+.observatory-feature p{
+    max-width:690px;
+}
+
+.observatory-feature .cta{
+    margin-top:20px;
+    padding:11px 18px;
+    font-size:13px;
+    font-weight:600;
+    background:rgba(109,168,255,0.08);
+}
+
+.observatory-feature .cta:hover{
+    background:var(--accent);
+}
+
+.observatory-feature-note{
+    margin-top:12px;
+    font-size:11px;
+    color:var(--muted);
+}
+
 /* MATRIX */
 
 .matrix{
@@ -345,6 +410,8 @@ footer{
     h1{font-size:24px;}
     .matrix{grid-template-columns:1fr;}
     .container{padding-top:90px;}
+    .observatory-feature{padding:20px;}
+    .observatory-feature h2{font-size:19px;}
 }
 </style>
 </head>
@@ -403,6 +470,41 @@ footer{
         </p>
 
     </div>
+
+    <!-- FEATURED PUBLIC OBSERVATORY ENTRY -->
+    <section class="observatory-feature" aria-labelledby="observatory-feature-title">
+        <div class="observatory-feature-top">
+            <span class="observatory-live-dot" aria-hidden="true"></span>
+            <span data-en="PUBLIC OBSERVATORY · LIVE MARKET TELEMETRY"
+                  data-tr="AÇIK GÖZLEMEVİ · CANLI PİYASA TELEMETRİSİ">
+                PUBLIC OBSERVATORY · LIVE MARKET TELEMETRY
+            </span>
+        </div>
+
+        <h2 id="observatory-feature-title"
+            data-en="The market is moving. Observe the structure beneath."
+            data-tr="Piyasa hareket ediyor. Altındaki yapıyı gözlemle.">
+            The market is moving. Observe the structure beneath.
+        </h2>
+
+        <p data-en="Explore the crypto market through seven timeframes, structural classifications, movement efficiency, and live scanner telemetry. See what the system is observing as market conditions evolve."
+           data-tr="Kripto piyasasını yedi zaman dilimi, yapısal sınıflandırmalar, hareket verimliliği ve canlı tarayıcı telemetrisi üzerinden keşfet. Piyasa koşulları değişirken sistemin neleri gözlemlediğini gör.">
+            Explore the crypto market through seven timeframes, structural classifications, movement efficiency, and live scanner telemetry. See what the system is observing as market conditions evolve.
+        </p>
+
+        <a class="cta"
+           href="observatory.html"
+           data-en="Enter the Live Observatory →"
+           data-tr="Canlı Gözlemevine Gir →">
+            Enter the Live Observatory →
+        </a>
+
+        <div class="observatory-feature-note"
+             data-en="Free public research layer · No account required"
+             data-tr="Ücretsiz açık araştırma katmanı · Hesap gerektirmez">
+            Free public research layer · No account required
+        </div>
+    </section>
 
 </header>
 
@@ -519,7 +621,7 @@ footer{
     <h2 data-en="Structural Hierarchy" data-tr="Yapısal Hiyerarşi">Structural Hierarchy</h2>
     <p data-en="01 — Constraints define the total geometric possibility space" data-tr="01 — Kısıtlar toplam geometrik olasılık alanını tanımlar">01 — Constraints define the total geometric possibility space</p>
     <p data-en="02 — Observation projects state space under transition latency (τ)" data-tr="02 — Gözlem, durum uzayını geçiş gecikmesi (τ) altında projekte eder">02 — Observation projects state space under transition latency (τ)</p>
-    <p data-en="03 — Vector (Θ, Ω) is the irreducible structural residue" data-tr="03 — Vektör (Θ, Ω) indirgenemez yapısal kalandır">03 — Vector (Θ, Ω) is the irreducible structural residue</p>
+    <p data-en="03 — Vector (Θ, Ω) is the irreducible structural residue" data-tr="03 — Vektör (Θ, Ω) indirgenemez yapısal kalandır">03 — Vektör (Θ, Ω) indirgenemez yapısal kalandır</p>
 </section>
 
 <section class="section axiom-layer">
@@ -580,12 +682,12 @@ footer{
             <span data-en="Energy dissipation" data-tr="Enerji dağılımı">Energy dissipation</span>
         </div>
         <div>
-            <span data-en="08 — Vector" data-tr="08 — Vektör">08 — Vector</span><br><br>
+            <span data-en="08 — Vector" data-tr="08 — Vektör">08 — Vektör</span><br><br>
             <span data-en="Direction persistence" data-tr="Yön kararlılığı">Direction persistence</span><br>
             <span data-en="Momentum stabilization" data-tr="Momentum stabilization">Momentum stabilization</span>
         </div>
         <div>
-            <span data-en="09 — Field" data-tr="09 — Alan">09 — Field</span><br><br>
+            <span data-en="09 — Field" data-tr="09 — Alan">09 — Alan</span><br><br>
             <span data-en="Constraint stabilization" data-tr="Kısıt stabilizasyonu">Constraint stabilization</span><br>
             <span data-en="New structural matrix" data-tr="Yeni yapısal matris">New structural matrix</span>
         </div>
